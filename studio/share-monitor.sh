@@ -22,8 +22,12 @@ check_brand() { # $1 slug, $2 port, $3 log-suffix (optional), $4 agent-suffix (o
   local url
   url=$(grep -o -E 'https://[a-z0-9-]+\.trycloudflare\.com' "$clog" 2>/dev/null | tail -1)
   if [ -z "$url" ] || ! curl -s -o /dev/null -m 25 "$url/" ; then
-    echo "$(date '+%F %T') [$slug] tunnel down -> kickstart" >> "$rt/monitor.log"
-    launchctl kickstart "gui/$UIDN/$agent_t" >> "$rt/monitor.log" 2>&1
+    echo "$(date '+%F %T') [$slug] tunnel down -> full agent reload (kickstart cannot renew dead Quick Tunnel sessions)" >> "$rt/monitor.log"
+    launchctl bootout "gui/$UIDN/$agent_t" >> "$rt/monitor.log" 2>&1
+    sleep 3
+    pkill -f "cloudflared tunnel --url http://localhost:$port" >> "$rt/monitor.log" 2>&1
+    sleep 3
+    launchctl bootstrap "gui/$UIDN" "$HOME/Library/LaunchAgents/$agent_t.plist" >> "$rt/monitor.log" 2>&1
     sleep 20
     url=$(grep -o -E 'https://[a-z0-9-]+\.trycloudflare\.com' "$clog" 2>/dev/null | tail -1)
   fi
