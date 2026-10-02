@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asya Eğitim — Kaynak vs Üretim (fidelity tanısı)</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#FFFFFF;color:#141210;font-family:Georgia,serif;line-height:1.5}
+  .wrap{max-width:1100px;margin:0 auto;padding:48px 40px 80px}
+  .mono{font-family:Menlo,monospace;font-size:12px;color:#6F6A5E}
+  h1{font-size:32px;font-weight:600;margin:10px 0 4px}
+  section{border-top:2px solid #141210;padding:26px 0 30px;margin-top:30px}
+  h2{font-size:20px;margin-bottom:2px}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:800px){.duo{grid-template-columns:1fr}}
+  .panel{border:1px solid #E0D6BE;border-radius:4px;overflow:hidden}
+  .panel img{width:100%;display:block}
+  .panel .lbl{font-family:Menlo,monospace;font-size:11px;color:#6F6A5E;padding:10px 14px;border-top:1px solid #E0D6BE}
+  table{border-collapse:collapse;font-size:13px;margin-top:12px;width:100%}
+  table th,table td{border:1px solid #E0D6BE;padding:7px 12px;text-align:left;vertical-align:top}
+  table th{background:#141210;color:#fff;font-family:Menlo,monospace;font-size:11px;font-weight:400}
+  .lost{color:#B3372A;font-weight:bold}
+  .kept{color:#2F7A4D;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="mono">ASYA EĞİTİM · GÖRSEL FIDELITY TANI · KAYNAK vs ÜRETİM (yan yana, süssüz)</p>
+  <h1>Kaynak mı, üretim mi daha güçlü?</h1>
+
+  <section>
+    <h2>İşaret: kaynak raster ↔ üretim SVG</h2>
+    <div class="duo">
+      <div class="panel"><img src="../explorations/high-aesthetic-direction-3/image-1790766584024.png" alt="Kaynak yön görseli"><div class="lbl">KAYNAK — 13–15 kıl çıta, ışıyan açıklık, eriyen komşu çıtalar, chiaroscuro</div></div>
+      <div class="panel" style="display:flex;align-items:center;justify-content:center;padding:40px;background:#F7F3E9"><img src="../assets/logo-primary.svg" alt="Üretim birincil logo" style="max-width:90%"></div>
+    </div>
+    <div class="mono" style="margin-top:8px">ÜRETİM — 9 tekdüze bar + yassı bronz çubuk (yukarıdaki SVG gerçek asset’tir)</div>
+  </section>
+
+  <section>
+    <h2>Kayıp tablosu</h2>
+    <table>
+      <tr><th>Özellik</th><th>Kaynak</th><th>Üretim</th><th>Durum</th></tr>
+      <tr><td>Çıta inceliği/sayısı</td><td>13–15 kıl çizgi, varyantlı</td><td>9 uniform bar</td><td class="lost">KAYIP</td></tr>
+      <tr><td>Açıklık</td><td>ışık parlaması + erime</td><td>yassı bronz bar</td><td class="lost">KAYIP</td></tr>
+      <tr><td>Işık/atmosfer</td><td>chiaroscuro, falloff</td><td>düz kâğıt zemin</td><td class="lost">KAYIP</td></tr>
+      <tr><td>Serif karakteri</td><td>keskin Didone ritmi</td><td>yumuşak Fraunces</td><td class="lost">ZAYIFLADI</td></tr>
+      <tr><td>Palet gerilimi</td><td>ışıyan altın/siyah</td><td>matlaşmış bronz</td><td class="lost">ZAYIFLADI</td></tr>
+      <tr><td>Kavram + hiyerarşi</td><td>seçim/odak/geçit + basamak</td><td>korundu</td><td class="kept">KORUNDU</td></tr>
+      <tr><td>Slot matematiği, φ hikâyesi</td><td>yok (üretim uydurması)</td><td>sistemde</td><td class="lost">GEREKSİZ SİSTEMLEŞTİRME</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Hüküm</h2>
+    <p>Üretim kavramı korudu, estetiği kaybetti. Kayıpların tamamı SVG/CSS ile geri kazanılabilir (gradyan + glow, ince varyantlı çıta, Didone-yönü serif re-evaluasyonu, koyu-alan öncelikli sunum). Yeni konsept gerekmez — sadık rekonstrüksiyon gerekir.</p>
+  </section>
+</div>
+</body>
+</html>

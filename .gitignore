@@ -1,0 +1,12 @@
+# Brand Studio — git exclusions (kept local-only, never pushed)
+_archive/
+asya-egitim-site.zip
+**/share-runtime/
+*.log
+.DS_Store
+**/.DS_Store
+# NOTE: brands/*/share/ contains regenerated review-site copies of
+# explorations/ originals (rebuilt anytime via /brand-share). Excluded
+# to keep the repo lean; explorations/ originals ARE tracked.
+**/share/
+node_modules/

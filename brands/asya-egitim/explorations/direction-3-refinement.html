@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yön 3 Kanıt Panosu — Açıklık İşaretinin Tescili</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#141210;--paper:#F7F3E9;--bronze:#A8875B;--muted:#6f6a5e;--line:#E0D6BE;
+    --fd:"Fraunces",Georgia,serif;--ft:"Inter",system-ui,sans-serif}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--ft);line-height:1.6}
+  .wrap{max-width:1080px;margin:0 auto;padding:52px 36px 90px}
+  .tag{display:inline-block;font-family:var(--ft);font-size:.72rem;font-weight:600;letter-spacing:.14em;background:var(--ink);color:var(--paper);padding:4px 10px;border-radius:99px}
+  h1{font-family:var(--fd);font-size:clamp(2rem,4.6vw,3.2rem);font-weight:600;margin:12px 0 6px}
+  h1 em{font-weight:400}
+  .concept{font-family:var(--fd);font-style:italic;font-size:1.15rem;color:#45403a;max-width:36em}
+  section{border-top:2px solid var(--ink);padding:22px 0 28px;margin-top:32px}
+  section h2{font-family:var(--fd);font-size:1.25rem;margin-bottom:4px}
+  .note{font-size:.76rem;color:var(--muted);margin-bottom:12px}
+  .mono{font-size:.76rem;color:var(--muted)}
+  .stage{background:#fff;border:1px solid var(--line);border-radius:4px;padding:32px;display:flex;align-items:center;justify-content:center;min-height:170px}
+  .stage.dark{background:var(--ink)}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.duo{grid-template-columns:1fr}}
+  .cap{font-size:.76rem;color:var(--muted);margin-top:8px}
+  .proof{display:flex;gap:22px;align-items:flex-end;background:#fff;border:1px solid var(--line);border-radius:4px;padding:24px;flex-wrap:wrap}
+  .spec-table{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:12px}
+  .spec-table th,.spec-table td{border:1px solid var(--line);padding:8px 12px;text-align:left}
+  .spec-table th{background:var(--ink);color:var(--paper);font-weight:500}
+  .fair{background:var(--paper);border:3px solid var(--ink);border-radius:4px;padding:34px;position:relative;overflow:hidden}
+  .infopage{background:#fff;border:1px solid var(--line);border-radius:4px;padding:28px}
+  .infopage .rule{height:6px;background:var(--ink);margin:12px 0}
+  @media(max-width:640px){.wrap{padding:34px 18px 60px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">Yön 3 · Kanıt Panosu</span>
+  <h1>Seçici Açıklık <em>/ tescilli geometri + tipografi + beyaz-zemin kanıtı</em></h1>
+  <p class="concept">Senior review’ün üç şartı tek panoda kanıtlanır: tescilli siluet, tipografik güvenilirlik (Türkçe glif ilişkileriyle), mimari imgeye yaslanmayan beyaz-zemin uygulamaları.</p>
+
+  <section>
+    <h2>1 · Tescilli açıklık geometrisi</h2>
+    <p class="note">Kural: 9 çıta + 1 eksik çıta (seçim boşluğu) + sınırları aşan tek bronz bıçak (altın-oran dışı merkez). Siluet = boşluk + taşma; salt “panjur” değil.</p>
+    <div class="stage">
+      <svg viewBox="0 0 420 190" width="100%" style="max-width:460px" role="img" aria-label="Tescilli açıklık">
+        <g fill="#141210">
+          <rect x="40" y="30" width="10" height="130"/><rect x="62" y="30" width="10" height="130"/>
+          <rect x="84" y="30" width="10" height="130"/><rect x="106" y="30" width="10" height="130"/>
+          <rect x="150" y="30" width="10" height="130"/><rect x="172" y="30" width="10" height="130"/>
+          <rect x="194" y="30" width="10" height="130"/><rect x="216" y="30" width="10" height="130"/>
+          <rect x="238" y="30" width="10" height="130"/>
+        </g>
+        <rect x="122" y="14" width="16" height="162" fill="#A8875B"/>
+        <rect x="122" y="14" width="16" height="10" fill="#F7F3E9" opacity=".55"/>
+      </svg>
+    </div>
+    <p class="cap">Eksik 5. çıta (boşluk) + üstten 16, alttan 2 birim taşan bıçak — monokromda ve 16px’te yaşayan iki işaret.</p>
+    <div class="duo" style="margin-top:14px">
+      <div><div class="stage"><svg viewBox="0 0 120 120" width="120"><rect x="0" y="0" width="120" height="120" fill="#141210"/><g fill="#F7F3E9"><rect x="22" y="24" width="6" height="72"/><rect x="34" y="24" width="6" height="72"/><rect x="46" y="24" width="6" height="72"/><rect x="70" y="24" width="6" height="72"/><rect x="82" y="24" width="6" height="72"/></g><rect x="56" y="14" width="9" height="92" fill="#A8875B"/></svg></div><p class="cap">Monokrom kanıtı: boşluk + bıçak renksiz de okunur.</p></div>
+      <div><div class="stage"><div style="background:#141210;padding:12px;border-radius:4px"><svg viewBox="0 0 120 120" width="16" height="16"><rect x="0" y="0" width="120" height="120" fill="#141210"/><g fill="#F7F3E9"><rect x="22" y="24" width="6" height="72"/><rect x="34" y="24" width="6" height="72"/><rect x="46" y="24" width="6" height="72"/><rect x="70" y="24" width="6" height="72"/><rect x="82" y="24" width="6" height="72"/></g><rect x="56" y="14" width="9" height="92" fill="#A8875B"/></svg></div></div><p class="cap">Gerçek 16px: bıçak + boşluk çifti seçilir (büyütülmüş kutuda).</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2 · Kelime-mark tipografisi (Türkçe glif ilişkileri)</h2>
+    <p class="note">Fraunces 72pt optical + el yapımı tracking; akademik اعتبار yazı sisteminden gelir, bronz bitişten değil.</p>
+    <div class="stage" style="flex-direction:column;gap:6px">
+      <div style="font-family:var(--fd);font-weight:600;font-size:2.6rem;letter-spacing:.015em">ASYA EĞİTİM</div>
+      <div style="font-family:var(--fd);font-weight:600;font-size:2.6rem;letter-spacing:.015em;color:var(--muted)">ÇİN EĞİTİM</div>
+      <div style="font-family:var(--ft);font-weight:500;font-size:.95rem;letter-spacing:.42em">STUDY IN ASIA</div>
+    </div>
+    <table class="spec-table">
+      <tr><th>Kilitlenme</th><th>Satır</th><th>Tracking</th><th>Not</th></tr>
+      <tr><td>ASYA EĞİTİM</td><td>Fraunces Semibold, caps</td><td>+15/1000</td><td>Ğ breve’si satır üstü boşlukta korunur; İ noktası ile çakışmaz</td></tr>
+      <tr><td>ÇİN EĞİTİM</td><td>Fraunces Semibold, %78 boy</td><td>+15/1000</td><td>Ç sedilla + Ğ aynı satırda testli; şemsiyeden bir basamak küçük</td></tr>
+      <tr><td>STUDY IN ASIA</td><td>Inter Medium, caps</td><td>+420/1000</td><td>İngilizce kilit yalnızca yardımcı; asla birincil değil</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>3 · Beyaz üniversite-bilgi sayfası (mimarisiz kanıt)</h2>
+    <div class="infopage">
+      <p class="mono">SEUL ULUSAL ÜNİVERSİTESİ · LİSANS · 2026 GÜZ</p>
+      <h3 style="font-family:var(--fd);font-size:1.7rem;font-weight:600;margin:6px 0">Bilgisayar Mühendisliği</h3>
+      <div class="rule" style="width:38%"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;font-size:.85rem">
+        <div><b>Son tarih</b><br>15 Ocak · erken 1 Eki</div>
+        <div><b>Gerekenler</b><br>TOEFL 100+ · transkript · 2 referans</div>
+        <div style="border-left:5px solid var(--bronze);padding-left:10px"><b>Danışman notu</b><br><em>“Niyet mektubunda laboratuvar vurgusu.”</em></div>
+      </div>
+    </div>
+    <p class="cap">Açıklık içerik seçiminde çalışır: danışman notu bronz marjda; çıta deseni yok, mimari imge yok.</p>
+  </section>
+
+  <section>
+    <h2>4 · Parlak fuar grafiği + öğrenci-led iletişim</h2>
+    <div class="fair">
+      <p class="mono">ASYA EĞİTİM · FUAR DUVARI 2026</p>
+      <div style="font-family:var(--fd);font-size:2.2rem;font-weight:600;line-height:1.1;margin:8px 0">120+ üniversite.<br>Tek seçici eşik.</div>
+      <div style="display:inline-block;background:var(--ink);color:var(--paper);padding:10px 22px;border-radius:99px;font-weight:600;font-size:.9rem">Kabul hikâyeleri →</div>
+      <div style="margin-top:18px;border:1px solid var(--ink);border-radius:4px;padding:14px 16px;background:#fff"><b>Zeynep — NUS Bilgisayar, tam burs.</b> <em>“Eşik, başvurudan kabule kadar yanımdaydı.”</em></div>
+    </div>
+    <p class="cap">Koyu-lüks dengesizliği uygulama katmanında kapanır: gündüz fuar + öğrenci sesi, aynı sistemle.</p>
+  </section>
+</div>
+</body>
+</html>

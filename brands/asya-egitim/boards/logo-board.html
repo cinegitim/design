@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asya Eğitim — Kanonik Logo Sistemi (Yön 3 · C varyantı)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#141210;--paper:#F7F3E9;--bronze:#A8875B;--muted:#6F6A5E;--line:#E0D6BE;
+    --fd:"Fraunces",Georgia,serif;--ft:"Inter",system-ui,sans-serif;--fm:"IBM Plex Mono",monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--ft);line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:52px 36px 90px}
+  .tag{display:inline-block;font-family:var(--fm);font-size:.72rem;letter-spacing:.14em;background:var(--ink);color:var(--paper);padding:4px 10px;border-radius:99px}
+  h1{font-family:var(--fd);font-size:clamp(2.2rem,5vw,3.4rem);font-weight:600;margin:12px 0 6px}
+  h1 em{font-weight:400}
+  .lede{font-family:var(--fd);font-style:italic;font-size:1.15rem;color:#45403a;max-width:36em}
+  section{border-top:2px solid var(--ink);padding:22px 0 28px;margin-top:32px}
+  section h2{font-family:var(--fd);font-size:1.25rem;margin-bottom:4px}
+  .note{font-family:var(--fm);font-size:.74rem;color:var(--muted);margin-bottom:12px}
+  .stage{background:#fff;border:1px solid var(--line);border-radius:4px;padding:32px;display:flex;align-items:center;justify-content:center;min-height:170px}
+  .stage.dark{background:var(--ink)}
+  .stage img{max-width:100%;height:auto}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+  @media(max-width:760px){.duo{grid-template-columns:1fr}}
+  .cap{font-family:var(--fm);font-size:.74rem;color:var(--muted);margin-top:8px}
+  table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin-top:12px}
+  table.spec th,table.spec td{border:1px solid var(--line);padding:7px 12px;text-align:left}
+  table.spec th{background:var(--ink);color:var(--paper);font-weight:500;font-family:var(--fm);font-size:.74rem}
+  .sizes{display:flex;gap:26px;align-items:flex-end;background:#fff;border:1px solid var(--line);border-radius:4px;padding:28px;flex-wrap:wrap}
+  .mis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .mis .m{background:#fff;border:1px solid var(--line);border-radius:4px;padding:16px;text-align:center;font-family:var(--fm);font-size:.72rem;color:var(--muted)}
+  .mis .m .x{color:#A8875B;font-weight:500}
+  .apps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:760px){.apps{grid-template-columns:1fr}}
+  .apps .a{background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .apps .a .bd{padding:18px;font-size:.85rem}
+  .apps .a .mono{font-family:var(--fm);font-size:.72rem;color:var(--indigo,#2A3A6B)}
+  .apps .a .bh{background:var(--ink);color:var(--paper);padding:20px;border-left:6px solid var(--bronze)}
+  .apps .a .bh b{font-family:var(--fd);font-size:1.2rem;font-weight:600;display:block}
+  .apps .a .bh span{font-family:var(--fm);font-size:.72rem;opacity:.8}
+  .fair{background:var(--paper);border:3px solid var(--ink);border-radius:4px;padding:30px}
+  @media(max-width:640px){.wrap{padding:34px 18px 60px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">Kanonik sistem · Yön 3 · C varyantı</span>
+  <h1>Seçici Açıklık <em>/ production proof board</em></h1>
+  <p class="lede">9 çıta + seçim boşluğu + sınırları aşan bronz bıçak. Tüm kilitlenmeler gerçek production asset’lerden (path-based wordmark) gösterilir.</p>
+
+  <section>
+    <h2>Geometri konstrüksiyonu (kilitli)</h2>
+    <p class="note">optik varyant C · üst taşma 26 / alt taşma 16 (≈ φ) · seçim kriteri: en ayırt edici dengeli siluet</p>
+    <div class="stage">
+      <svg viewBox="-40 -16 306 222" width="100%" style="max-width:520px">
+        <g stroke="#2A3A6B" stroke-width="1" opacity=".55" stroke-dasharray="4 3">
+          <path d="M0 30 H226 M0 160 H226 M108 -16 V206"/>
+          <rect x="-40" y="-16" width="306" height="16" fill="none"/><rect x="-40" y="190" width="306" height="16" fill="none"/>
+        </g>
+        <g fill="#141210">
+          <rect x="0" y="30" width="10" height="130"/><rect x="24" y="30" width="10" height="130"/><rect x="48" y="30" width="10" height="130"/><rect x="72" y="30" width="10" height="130"/><rect x="120" y="30" width="10" height="130"/><rect x="144" y="30" width="10" height="130"/><rect x="168" y="30" width="10" height="130"/><rect x="192" y="30" width="10" height="130"/><rect x="216" y="30" width="10" height="130"/>
+        </g>
+        <rect x="100" y="4" width="16" height="172" fill="#A8875B"/>
+        <g font-family="IBM Plex Mono,monospace" font-size="11" fill="#6F6A5E">
+          <text x="0" y="14">s=10 p=24</text><text x="150" y="14">b=16</text><text x="60" y="200">boşluk 34 · taşma +26/+16</text>
+        </g>
+      </svg>
+    </div>
+    <table class="spec">
+      <tr><th>Parametre</th><th>Değer</th></tr>
+      <tr><td>Alan / çıta bandı</td><td>226 × 190 birim (bant 226 × 130)</td></tr>
+      <tr><td>Çıta / pitch / boşluk</td><td>9 çıta · s=10 · p=24 · iç boşluk 34 (slot 4 eksik)</td></tr>
+      <tr><td>Blade</td><td>w=16, boşluk merkezi (x100–116) · üst +26 / alt +16 (≈ φ)</td></tr>
+      <tr><td>Güvenli alan</td><td>32 birim (2b) her yönde</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Final birincil logo</h2>
+    <p class="note">assets/logo-primary.svg · path-based Fraunces wordmark · taban hizalı cap 92</p>
+    <div class="stage"><img src="../assets/logo-primary.svg" alt="Birincil logo" style="max-width:520px"></div>
+  </section>
+
+  <section>
+    <h2>İkincil + kompakt</h2>
+    <div class="duo">
+      <div><div class="stage"><img src="../assets/logo-secondary.svg" alt="İkincil logo" style="max-width:300px"></div><p class="cap">assets/logo-secondary.svg</p></div>
+      <div><div class="stage"><img src="../assets/logo-compact.svg" alt="Kompakt logo" style="max-width:300px"></div><p class="cap">assets/logo-compact.svg</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Simge · 16/32/64px · monokrom · açık/koyu</h2>
+    <div class="trio">
+      <div><div class="stage"><img src="../assets/icon.svg" alt="Simge" style="width:120px"></div><p class="cap">assets/icon.svg</p></div>
+      <div><div class="stage dark" style="color:#F7F3E9"><svg viewBox="0 0 1230 190" width="100%" role="img" aria-label="Monokrom ters"><g fill="currentColor"><rect x="0" y="30" width="10" height="130"/><rect x="24" y="30" width="10" height="130"/><rect x="48" y="30" width="10" height="130"/><rect x="72" y="30" width="10" height="130"/><rect x="120" y="30" width="10" height="130"/><rect x="144" y="30" width="10" height="130"/><rect x="168" y="30" width="10" height="130"/><rect x="192" y="30" width="10" height="130"/><rect x="216" y="30" width="10" height="130"/></g><rect x="100" y="4" width="16" height="172" fill="currentColor"/><g transform="translate(270,31.4629) scale(0.0657143)"><path d="M348 1387H939L944 1491H341ZM465 1910Q465 1931 450.5 1943.5Q436 1956 404 1956H90Q59 1956 44.0 1943.5Q29 1931 29 1910Q29 1895 37.5 1884.5Q46 1874 68 1863L101 1850Q131 1835 147.5 1811.0Q164 1787 183 1726L503 748Q516 704 510.0 684.5Q504 665 469 653Q441 644 430.0 631.5Q419 619 419 601Q419 580 434.0 568.0Q449 556 481 556H969Q1001 556 1016.0 568.0Q1031 580 1031 601Q1031 620 1019.5 632.0Q1008 644 983 652Q956 660 951.0 675.0Q946 690 957 724L1297 1749Q1313 1799 1331.0 1822.5Q1349 1846 1382 1856Q1411 1867 1421.0 1879.0Q1431 1891 1431 1910Q1431 1931 1416.0 1943.5Q1401 1956 1369 1956H928Q897 1956 882.0 1943.5Q867 1931 867 1910Q867 1892 877.5 1881.0Q888 1870 910 1863L967 1851Q993 1843 992.0 1825.0Q991 1807 979 1768L625 676L658 656L315 1710Q302 1751 302.0 1777.5Q302 1804 318.5 1820.5Q335 1837 369 1851L423 1864Q443 1872 454.0 1882.0Q465 1892 465 1910Z M2194 1987Q2112 1987 2053.0 1967.5Q1994 1948 1956.5 1929.0Q1919 1910 1901 1910Q1881 1910 1868.0 1922.0Q1855 1934 1843.5 1949.5Q1832 1965 1819.0 1977.0Q1806 1989 1787 1989Q1766 1989 1752.5 1976.5Q1739 1964 1734 1935L1665 1609Q1661 1587 1670.5 1571.0Q1680 1555 1702 1548Q1726 1540 1744.0 1549.0Q1762 1558 1775 1584Q1832 1696 1896.5 1762.0Q1961 1828 2031.0 1856.0Q2101 1884 2174 1884Q2276 1884 2335.0 1831.0Q2394 1778 2394 1689Q2395 1631 2368.0 1584.5Q2341 1538 2266.0 1494.0Q2191 1450 2044 1402Q1892 1353 1800.5 1288.5Q1709 1224 1668.0 1138.0Q1627 1052 1627 938Q1627 817 1684.5 725.0Q1742 633 1846.5 581.5Q1951 530 2091 530Q2181 530 2240.0 548.5Q2299 567 2337.0 586.0Q2375 605 2400 605Q2422 605 2434.0 585.5Q2446 566 2460.0 546.5Q2474 527 2502 527Q2524 527 2538.5 541.0Q2553 555 2564 593L2658 921Q2666 947 2656.5 967.5Q2647 988 2624 995Q2601 1003 2582.5 993.5Q2564 984 2552 961Q2490 837 2419.5 765.5Q2349 694 2274.0 663.0Q2199 632 2122 632Q2020 632 1959.5 690.5Q1899 749 1899 843Q1899 900 1925.5 949.0Q1952 998 2026.0 1044.5Q2100 1091 2240 1143Q2395 1198 2486.5 1262.0Q2578 1326 2617.5 1406.5Q2657 1487 2657 1591Q2657 1700 2602.0 1790.0Q2547 1880 2444.0 1933.5Q2341 1987 2194 1987Z M3646 1509 3402 1552 2977 727Q2961 694 2947.5 681.0Q2934 668 2912 660L2881 650Q2858 643 2849.0 630.5Q2840 618 2840 602Q2840 580 2855.5 568.0Q2871 556 2902 556H3381Q3413 556 3429.0 568.0Q3445 580 3445 602Q3445 640 3397 653L3349 662Q3312 671 3304.5 687.5Q3297 704 3314 740L3640 1420L3537 1474L3881 782Q3903 737 3892.5 706.0Q3882 675 3834 661L3783 650Q3766 645 3756.0 633.0Q3746 621 3746 602Q3746 580 3761.0 568.0Q3776 556 3807 556H4110Q4141 556 4156.0 568.0Q4171 580 4171 602Q4171 619 4162.5 630.0Q4154 641 4132 650L4116 656Q4096 664 4079.0 677.5Q4062 691 4044.5 717.5Q4027 744 4004 792ZM3362 1444H3671V1789Q3671 1811 3684.0 1825.0Q3697 1839 3721 1846L3778 1859Q3820 1872 3820 1910Q3820 1931 3805.5 1943.5Q3791 1956 3760 1956H3273Q3242 1956 3227.5 1943.5Q3213 1931 3213 1910Q3213 1872 3255 1859L3312 1846Q3337 1839 3349.5 1825.0Q3362 1811 3362 1789Z M4599 1387H5190L5195 1491H4592ZM4716 1910Q4716 1931 4701.5 1943.5Q4687 1956 4655 1956H4341Q4310 1956 4295.0 1943.5Q4280 1931 4280 1910Q4280 1895 4288.5 1884.5Q4297 1874 4319 1863L4352 1850Q4382 1835 4398.5 1811.0Q4415 1787 4434 1726L4754 748Q4767 704 4761.0 684.5Q4755 665 4720 653Q4692 644 4681.0 631.5Q4670 619 4670 601Q4670 580 4685.0 568.0Q4700 556 4732 556H5220Q5252 556 5267.0 568.0Q5282 580 5282 601Q5282 620 5270.5 632.0Q5259 644 5234 652Q5207 660 5202.0 675.0Q5197 690 5208 724L5548 1749Q5564 1799 5582.0 1822.5Q5600 1846 5633 1856Q5662 1867 5672.0 1879.0Q5682 1891 5682 1910Q5682 1931 5667.0 1943.5Q5652 1956 5620 1956H5179Q5148 1956 5133.0 1943.5Q5118 1931 5118 1910Q5118 1892 5128.5 1881.0Q5139 1870 5161 1863L5218 1851Q5244 1843 5243.0 1825.0Q5242 1807 5230 1768L4876 676L4909 656L4566 1710Q4553 1751 4553.0 1777.5Q4553 1804 4569.5 1820.5Q4586 1837 4620 1851L4674 1864Q4694 1872 4705.0 1882.0Q4716 1892 4716 1910Z M6726 1203H7043Q7105 1203 7130.5 1179.0Q7156 1155 7169 1085Q7175 1061 7187.5 1049.0Q7200 1037 7219 1036Q7257 1034 7268 1079L7345 1376Q7351 1402 7344.5 1417.5Q7338 1433 7317 1440Q7297 1446 7279.5 1440.0Q7262 1434 7250 1415Q7223 1369 7199.5 1344.5Q7176 1320 7147.0 1311.0Q7118 1302 7073 1302H6726ZM6383 602Q6383 580 6398.0 568.0Q6413 556 6444 556H7204Q7240 556 7263.5 546.0Q7287 536 7307.5 526.0Q7328 516 7355 516Q7385 516 7400.5 533.0Q7416 550 7428 589L7508 870Q7515 895 7507.0 912.0Q7499 929 7477 936Q7452 944 7432.0 935.0Q7412 926 7399 901Q7361 823 7328.5 774.5Q7296 726 7263.0 700.5Q7230 675 7191.5 665.5Q7153 656 7102 656H6842V1757Q6842 1807 6870.0 1831.5Q6898 1856 6955 1856H7131Q7199 1856 7249.0 1833.5Q7299 1811 7344.5 1747.5Q7390 1684 7445 1559Q7455 1536 7472.0 1528.0Q7489 1520 7511 1523Q7536 1527 7546.5 1545.0Q7557 1563 7550 1590L7464 1919Q7454 1957 7437.0 1975.0Q7420 1993 7387 1993Q7364 1993 7343.5 1983.5Q7323 1974 7299.0 1965.0Q7275 1956 7240 1956H6444Q6413 1956 6398.0 1943.5Q6383 1931 6383 1910Q6383 1872 6425 1859L6482 1846Q6507 1839 6519.5 1825.0Q6532 1811 6532 1789V723Q6532 701 6519.5 687.0Q6507 673 6482 666L6425 653Q6383 640 6383 602Z M8999 1929Q8999 1963 8985.5 1978.0Q8972 1993 8943 1993Q8918 1993 8898.5 1977.0Q8879 1961 8862.5 1940.0Q8846 1919 8830.0 1903.0Q8814 1887 8796 1887Q8775 1887 8746.5 1903.0Q8718 1919 8676.5 1939.5Q8635 1960 8575.5 1976.5Q8516 1993 8432 1993Q8270 1993 8142.0 1939.5Q8014 1886 7924.0 1788.5Q7834 1691 7786.5 1556.5Q7739 1422 7739 1259Q7739 1100 7792.0 965.0Q7845 830 7940.0 730.5Q8035 631 8162.5 576.0Q8290 521 8441 521Q8548 521 8615.0 541.0Q8682 561 8721.0 580.5Q8760 600 8782 600Q8808 600 8821.0 583.0Q8834 566 8848.0 548.5Q8862 531 8888 531Q8906 531 8917.5 542.5Q8929 554 8937 581L9042 927Q9049 950 9037.5 968.0Q9026 986 9003 991Q8979 996 8960.0 986.5Q8941 977 8930 953Q8876 831 8806.5 760.5Q8737 690 8655.5 659.5Q8574 629 8480 629Q8353 629 8256.5 699.5Q8160 770 8105.5 898.5Q8051 1027 8051 1202Q8051 1411 8112.5 1556.0Q8174 1701 8280.5 1776.0Q8387 1851 8522 1851Q8569 1851 8606.0 1842.0Q8643 1833 8668.5 1816.0Q8694 1799 8707.5 1774.0Q8721 1749 8721 1718V1477Q8721 1453 8709.0 1441.0Q8697 1429 8662 1421L8599 1408Q8575 1402 8561.5 1390.0Q8548 1378 8548 1360Q8548 1340 8563.5 1328.0Q8579 1316 8610 1316H9074Q9106 1316 9121.0 1328.0Q9136 1340 9136 1360Q9136 1377 9126.0 1388.0Q9116 1399 9093 1407L9054 1417Q9026 1426 9012.5 1438.5Q8999 1451 8999 1477ZM8444 319Q8509 319 8553.0 290.0Q8597 261 8627 198Q8637 183 8647.0 176.0Q8657 169 8668 169Q8687 169 8697.0 183.0Q8707 197 8705 221Q8696 339 8625.0 407.0Q8554 475 8444 475Q8334 475 8262.5 407.0Q8191 339 8183 221Q8181 197 8191.0 183.0Q8201 169 8219 169Q8232 169 8241.5 176.0Q8251 183 8261 198Q8291 262 8336.0 290.5Q8381 319 8444 319Z M9813 1789Q9813 1811 9826.0 1825.0Q9839 1839 9863 1846L9920 1859Q9962 1872 9962 1910Q9962 1931 9947.5 1943.5Q9933 1956 9902 1956H9415Q9384 1956 9369.5 1943.5Q9355 1931 9355 1910Q9355 1872 9397 1859L9454 1846Q9478 1839 9491.0 1825.0Q9504 1811 9504 1789V723Q9504 701 9491.0 687.0Q9478 673 9454 666L9397 653Q9355 640 9355 602Q9355 580 9369.5 568.0Q9384 556 9415 556H9902Q9933 556 9947.5 568.0Q9962 580 9962 602Q9962 640 9920 653L9863 666Q9839 673 9826.0 687.0Q9813 701 9813 723ZM9659 469Q9588 469 9546.5 431.5Q9505 394 9505 332Q9505 271 9546.5 233.5Q9588 196 9659 196Q9732 196 9773.0 233.5Q9814 271 9814 332Q9814 393 9773.0 431.0Q9732 469 9659 469Z M10472 556H11176Q11213 556 11237.0 546.5Q11261 537 11279.5 528.0Q11298 519 11320 519Q11353 519 11370.0 535.0Q11387 551 11397 589L11464 912Q11470 940 11460.0 958.0Q11450 976 11426 981Q11403 985 11385.5 976.5Q11368 968 11356 943Q11304 826 11266.5 765.5Q11229 705 11191.5 683.0Q11154 661 11101 661H10979V1789Q10979 1811 10992.0 1825.0Q11005 1839 11029 1846L11086 1859Q11128 1872 11128 1910Q11128 1956 11067 1956H10580Q10550 1956 10535.0 1943.5Q10520 1931 10520 1910Q10520 1872 10562 1859L10619 1846Q10644 1839 10656.5 1825.0Q10669 1811 10669 1789V661H10547Q10495 661 10457.0 683.0Q10419 705 10381.5 765.5Q10344 826 10292 943Q10280 968 10262.5 976.5Q10245 985 10222 981Q10198 976 10188.5 958.0Q10179 940 10184 912L10251 589Q10261 551 10278.0 535.0Q10295 519 10328 519Q10350 519 10368.5 528.0Q10387 537 10411.0 546.5Q10435 556 10472 556Z M12144 1789Q12144 1811 12157.0 1825.0Q12170 1839 12194 1846L12251 1859Q12293 1872 12293 1910Q12293 1931 12278.5 1943.5Q12264 1956 12233 1956H11746Q11715 1956 11700.5 1943.5Q11686 1931 11686 1910Q11686 1872 11728 1859L11785 1846Q11809 1839 11822.0 1825.0Q11835 1811 11835 1789V723Q11835 701 11822.0 687.0Q11809 673 11785 666L11728 653Q11686 640 11686 602Q11686 580 11700.5 568.0Q11715 556 11746 556H12233Q12264 556 12278.5 568.0Q12293 580 12293 602Q12293 640 12251 653L12194 666Q12170 673 12157.0 687.0Q12144 701 12144 723ZM11990 469Q11919 469 11877.5 431.5Q11836 394 11836 332Q11836 271 11877.5 233.5Q11919 196 11990 196Q12063 196 12104.0 233.5Q12145 271 12145 332Q12145 393 12104.0 431.0Q12063 469 11990 469Z M13442 1576 13340 1609 13716 647Q13735 596 13761.5 576.0Q13788 556 13834 556H14123Q14154 556 14169.5 568.0Q14185 580 14185 602Q14185 621 14174.5 633.5Q14164 646 14142 653L14091 667Q14057 676 14045.0 694.0Q14033 712 14035 752L14111 1775Q14113 1809 14125.5 1823.0Q14138 1837 14168 1846L14218 1859Q14239 1866 14248.5 1878.0Q14258 1890 14258 1908Q14258 1928 14243.0 1942.0Q14228 1956 14197 1956H13715Q13684 1956 13668.5 1943.5Q13653 1931 13653 1910Q13653 1892 13662.5 1879.5Q13672 1867 13696 1859L13747 1846Q13782 1836 13794.5 1821.0Q13807 1806 13805 1775L13722 724L13815 718L13388 1819Q13370 1867 13351.0 1881.5Q13332 1896 13306 1896Q13287 1896 13271.0 1890.5Q13255 1885 13241.5 1868.0Q13228 1851 13213 1815L12780 747L12869 715L12782 1745Q12779 1788 12800.5 1810.0Q12822 1832 12860 1848L12909 1865Q12925 1872 12934.0 1881.5Q12943 1891 12943 1908Q12943 1930 12928.0 1943.0Q12913 1956 12882 1956H12564Q12533 1956 12518.0 1943.5Q12503 1931 12503 1910Q12503 1889 12516.0 1877.5Q12529 1866 12550 1858L12590 1844Q12624 1833 12644.5 1810.0Q12665 1787 12668 1744L12751 770Q12755 723 12741.5 699.5Q12728 676 12694 667L12645 654Q12622 647 12611.0 635.0Q12600 623 12600 603Q12600 556 12663 556H12948Q12991 556 13017.5 573.5Q13044 591 13064 643Z" fill="currentColor"/></g></svg></div><p class="cap">assets/logo-mono.svg (currentColor)</p></div>
+      <div><div class="sizes" style="border:none;padding:12px">
+        <img src="../assets/favicon.svg" style="width:64px" alt="64px"><img src="../assets/favicon.svg" style="width:32px" alt="32px"><img src="../assets/favicon.svg" style="width:16px;height:16px" alt="16px gerçek">
+      </div><p class="cap">assets/favicon.svg · 16px piksel-kanıtlı</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Türkçe tipografi (gerçek render kanıtlı)</h2>
+    <p class="note">Fraunces Semibold +15/1000 · Inter EN +420/1000 · cmap + piksel doğrulamalı</p>
+    <div class="stage" style="flex-direction:column;gap:4px">
+      <div style="font-family:var(--fd);font-weight:600;font-size:2rem">ASYA EĞİTİM · ÇİN EĞİTİM</div>
+      <div style="font-family:var(--fd);font-weight:600;font-size:1.4rem">JAPONYA'DA EĞİTİM · GÜNEY KORE'DE EĞİTİM</div>
+      <div style="font-family:var(--ft);font-weight:500;font-size:.9rem;letter-spacing:.42em">STUDY IN ASIA</div>
+      <div style="font-family:var(--fd);font-size:1.2rem">Ğ ğ İ ı Ş ş Ç ç Ö ö Ü ü</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Çin Eğitim hiyerarşisi + genişleme kuralı</h2>
+    <div class="stage" style="justify-content:flex-start;padding-left:48px">
+      <svg viewBox="0 0 460 200" width="100%" style="max-width:460px">
+        <g fill="#141210"><rect x="24" y="20" width="10" height="100"/><rect x="44" y="20" width="10" height="100"/><rect x="64" y="20" width="10" height="100"/><rect x="104" y="20" width="10" height="100"/><rect x="124" y="20" width="10" height="100"/></g>
+        <rect x="80" y="8" width="14" height="124" fill="#A8875B"/>
+        <text x="150" y="80" font-family="Fraunces,Georgia,serif" font-weight="600" font-size="34" fill="#141210">Asya Eğitim</text>
+        <rect x="152" y="104" width="10" height="10" fill="#6F6A5E"/>
+        <text x="170" y="114" font-family="'IBM Plex Mono',monospace" font-size="17" letter-spacing="2" fill="#6F6A5E">ÇİN EĞİTİM</text>
+        <text x="150" y="152" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#6F6A5E">Japonya · G. Kore · Singapur · Hong Kong → aynı kural, ayrı logo yok</text>
+      </svg>
+    </div>
+    <p class="cap">Şemsiye tam sistem; alt marka %78 mono-muted, girintili — asla eşdeğer değil.</p>
+  </section>
+
+  <section>
+    <h2>Uygulama kanıtları (sistemden türetildi)</h2>
+    <div class="apps">
+      <div class="a"><div class="bd"><span class="mono" style="font-family:var(--fm);font-size:.72rem;color:#2A3A6B">SEUL ULUSAL · SON TARİH 15 OCAK</span><br><b style="font-family:var(--fd);font-size:1.15rem">TOEFL 100+ · transkript · 2 referans</b><br><span style="border-left:5px solid var(--bronze);padding-left:8px">danışman notu: “niyet mektubunda laboratuvar vurgusu”</span></div><p class="cap" style="padding:0 18px 14px">Beyaz bilgi UI</p></div>
+      <div class="a"><div class="fair"><p class="mono" style="font-family:var(--fm);font-size:.72rem">ASYA EĞİTİM · FUAR 2026</p><div style="font-family:var(--fd);font-size:1.7rem;font-weight:600">120+ üniversite. Tek seçici eşik.</div></div><p class="cap" style="padding:0 18px 14px">Parlak fuar ortamı</p></div>
+      <div class="a"><div class="bh"><span>KABUL HİKÂYESİ · 2026</span><b>Zeynep — NUS Bilgisayar, tam burs.</b></div><div class="bd">Öğrenci-odaklı anlatı, marj başlığıyla.</div></div>
+      <div class="a"><div class="bd"><span class="mono" style="font-family:var(--fm);font-size:.72rem">SİMGELER</span><br>
+        <svg viewBox="0 0 300 60" width="100%"><g fill="none" stroke="#141210" stroke-width="3"><rect x="10" y="8" width="26" height="26"/><path d="M10 47 H60 M10 55 H48" /><rect x="90" y="8" width="26" height="26"/><circle cx="116" cy="8" r="0"/><path d="M90 47 H140 M90 55 H128"/><rect x="170" y="8" width="26" height="26"/><path d="M176 34 L186 34 L196 20" /></g><circle cx="196" cy="20" r="4" fill="#A8875B"/></svg>
+        üniversite · takvim · belge — 2px yapılandırılmış ikon dili</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Yanlış kullanımlar</h2>
+    <div class="mis">
+      <div class="m">döndürme ✕</div><div class="m">esnetme ✕</div><div class="m">sistem-dışı renk ✕</div>
+      <div class="m">efekt/gölge ✕</div><div class="m">bıçağı silme ✕</div><div class="m">boşluğu taşıma ✕</div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
