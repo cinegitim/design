@@ -29,7 +29,8 @@
   <h1>Mühür — 10 çeşit</h1>
   <p class="lede">Aynı mühür fikri, 10 imza + 10 tipografi. Başlıklara tıklayarak açıp kapat.</p>
 
-  <details open>
+  <nav style="position:sticky;top:0;z-index:50;background:#141210;border-radius:8px;margin-top:18px;padding:10px 14px;display:flex;gap:8px;flex-wrap:wrap"><a href="#c-klasik" style="color:#F7F3E9;text-decoration:none;font-family:Menlo,monospace;font-size:11px;border:1px solid #A8875B;border-radius:99px;padding:5px 12px">V-01–V-04 Klasik</a><a href="#c-felsefi" style="color:#F7F3E9;text-decoration:none;font-family:Menlo,monospace;font-size:11px;border:1px solid #A8875B;border-radius:99px;padding:5px 12px">V-05–V-07 Felsefi</a><a href="#c-modern" style="color:#F7F3E9;text-decoration:none;font-family:Menlo,monospace;font-size:11px;border:1px solid #A8875B;border-radius:99px;padding:5px 12px">V-08–V-10 Modern</a><a href="#c-uygulama" style="color:#F7F3E9;text-decoration:none;font-family:Menlo,monospace;font-size:11px;border:1px solid #A8875B;border-radius:99px;padding:5px 12px">10 Uygulama</a><a href="#c-web" style="color:#F7F3E9;text-decoration:none;font-family:Menlo,monospace;font-size:11px;border:1px solid #A8875B;border-radius:99px;padding:5px 12px">3 Web</a><a href="#c-webhd" style="color:#F7F3E9;text-decoration:none;font-family:Menlo,monospace;font-size:11px;border:1px solid #A8875B;border-radius:99px;padding:5px 12px">3 Web-HD</a><a href="#c-ieft" style="color:#F7F3E9;text-decoration:none;font-family:Menlo,monospace;font-size:11px;border:1px solid #A8875B;border-radius:99px;padding:5px 12px">12 IEFT</a></nav>
+  <details id="c-klasik" open>
     <summary><span class="n">V-01–V-04</span> Klasik diziler <small>— üç zirve · tek zirve+hilal · yuvarlak mühür · dikey mühür</small></summary>
     <div class="body">
       <h3>V-01 · Üç zirve + güneş (serif)</h3><a href="assets/seal-v-01.png"><img loading="lazy" src="assets/seal-v-01.png" alt="V-01"></a>
@@ -39,7 +40,7 @@
     </div>
   </details>
 
-  <details>
+  <details id="c-felsefi">
     <summary><span class="n">V-05–V-07</span> Felsefi diziler <small>— Fuji-çam · iki çizgi · çift çerçeve</small></summary>
     <div class="body">
       <h3>V-05 · Yuvarlak mühür + Fuji-çam (klasik serif)</h3><a href="assets/seal-v-05.png"><img loading="lazy" src="assets/seal-v-05.png" alt="V-05"></a>
@@ -48,7 +49,7 @@
     </div>
   </details>
 
-  <details>
+  <details id="c-modern">
     <summary><span class="n">V-08–V-10</span> Modern diziler <small>— yatay mühür · eskitme · tek çizgi</small></summary>
     <div class="body">
       <h3>V-08 · Yatay mühür + ufuk güneşi (sans)</h3><a href="assets/seal-v-08.png"><img loading="lazy" src="assets/seal-v-08.png" alt="V-08"></a>
@@ -56,7 +57,7 @@
       <h3>V-10 · Tek çizgi + nokta güneş (hafif grotesk)</h3><a href="assets/seal-v-10.png"><img loading="lazy" src="assets/seal-v-10.png" alt="V-10"></a>
     </div>
   </details>
-  <details>
+  <details id="c-uygulama">
     <summary><span class="n">10 UYGULAMA</span> V-01 Uygulama Seti <small>— aynı mühür, her yüzeyde</small></summary>
     <div class="body">
       <h3>Defter</h3><a href="assets/app-notebook.png"><img loading="lazy" src="assets/app-notebook.png" alt="Defter"></a>
@@ -71,12 +72,37 @@
       <h3>Hikâye (story)</h3><a href="assets/app-story.png"><img loading="lazy" src="assets/app-story.png" alt="Hikaye"></a>
     </div>
   </details>
-  <details>
+  <details id="c-web">
     <summary><span class="n">3 WEB</span> V-01 Web Sitesi <small>— ana sayfa · üniversiteler · mobil</small></summary>
     <div class="body">
       <h3>Ana sayfa (navigasyon + 5 ülke + yorumlar)</h3><a href="assets/web-home.png"><img loading="lazy" src="assets/web-home.png" alt="Ana sayfa"></a>
       <h3>Üniversite dizini (filtre + arama + kartlar)</h3><a href="assets/web-unis.png"><img loading="lazy" src="assets/web-unis.png" alt="Dizin"></a>
       <h3>Mobil ana sayfa (5 ülke + sticky CTA)</h3><a href="assets/web-mobile.png"><img loading="lazy" src="assets/web-mobile.png" alt="Mobil"></a>
+    </div>
+  </details>
+  <details id="c-webhd">
+    <summary><span class="n">3 WEB-HD</span> V-01 Web Sitesi HD <small>— ana sayfa · dizin · koyu hero (1536px)</small></summary>
+    <div class="body">
+      <h3>Ana sayfa HD (navigasyon + 5 ülke + yorumlar)</h3><a href="assets/webhd-home.png"><img loading="lazy" src="assets/webhd-home.png" alt="Ana sayfa HD"></a>
+      <h3>Üniversite dizini HD (filtre + arama + 6 kart)</h3><a href="assets/webhd-dir.png"><img loading="lazy" src="assets/webhd-dir.png" alt="Dizin HD"></a>
+      <h3>Koyu hero HD (mühür + 5 ülke)</h3><a href="assets/webhd-dark.png"><img loading="lazy" src="assets/webhd-dark.png" alt="Koyu hero HD"></a>
+    </div>
+  </details>
+  <details id="c-ieft">
+    <summary><span class="n">12 IEFT</span> IEFT Fuar Seti <small>— 20–26 Ekim 2026 · İzmir/Ankara/İstanbul</small></summary>
+    <div class="body">
+      <h3>Sosyal — geri sayım</h3><a href="assets/ieft-social-countdown.png"><img loading="lazy" src="assets/ieft-social-countdown.png" alt="Geri sayım"></a>
+      <h3>Sosyal — davetiye</h3><a href="assets/ieft-social-invite.png"><img loading="lazy" src="assets/ieft-social-invite.png" alt="Davetiye"></a>
+      <h3>Sosyal — şehir tarihleri</h3><a href="assets/ieft-social-dates.png"><img loading="lazy" src="assets/ieft-social-dates.png" alt="Tarihler"></a>
+      <h3>Sosyal — burs spotu</h3><a href="assets/ieft-social-scholarship.png"><img loading="lazy" src="assets/ieft-social-scholarship.png" alt="Burs"></a>
+      <h3>Sosyal — seminer duyurusu</h3><a href="assets/ieft-social-seminar.png"><img loading="lazy" src="assets/ieft-social-seminar.png" alt="Seminer"></a>
+      <h3>Stand konsepti (3m duvar)</h3><a href="assets/ieft-booth.png"><img loading="lazy" src="assets/ieft-booth.png" alt="Stand"></a>
+      <h3>Roll-up (85×200)</h3><a href="assets/ieft-rollup.png"><img loading="lazy" src="assets/ieft-rollup.png" alt="Roll-up"></a>
+      <h3>A5 broşür — kapak</h3><a href="assets/ieft-brochure-cover.png"><img loading="lazy" src="assets/ieft-brochure-cover.png" alt="Kapak"></a>
+      <h3>A5 broşür — iç yayılım</h3><a href="assets/ieft-brochure-spread.png"><img loading="lazy" src="assets/ieft-brochure-spread.png" alt="İç yayılım"></a>
+      <h3>A5 broşür — arka kapak</h3><a href="assets/ieft-brochure-back.png"><img loading="lazy" src="assets/ieft-brochure-back.png" alt="Arka kapak"></a>
+      <h3>Yaka kartı</h3><a href="assets/ieft-badge.png"><img loading="lazy" src="assets/ieft-badge.png" alt="Yaka kartı"></a>
+      <h3>A4 katlamalı el ilanı</h3><a href="assets/ieft-flyer.png"><img loading="lazy" src="assets/ieft-flyer.png" alt="El ilanı"></a>
     </div>
   </details>
 </div>
