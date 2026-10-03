@@ -21,7 +21,7 @@
   .body h3{font-size:17px;margin:20px 0 6px}
   .body img{width:100%;display:block;border:1px solid #E0D6BE;border-radius:6px;margin-top:8px}
   @media(max-width:640px){.wrap{padding:32px 16px 60px}}
-</style>
+nav.crumbs{background:transparent;border:1px solid #E0D6BE;border-radius:8px;margin-top:18px;padding:10px 16px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}nav.crumbs a{color:#141210;text-decoration:underline;font-family:Menlo,monospace;font-size:12px}nav.crumbs span{color:#6F6A5E}nav.crumbs b{font-size:15px}</style>
 </head>
 <body>
 <div class="wrap">
@@ -29,7 +29,7 @@
   <h1>Mühür — 10 çeşit</h1>
   <p class="lede">Aynı mühür fikri, 10 imza + 10 tipografi. Başlıklara tıklayarak açıp kapat.</p>
 
-  <nav style="position:sticky;top:0;z-index:50;background:#141210;border-radius:8px;margin-top:18px;padding:10px 14px;display:flex;gap:8px;flex-wrap:wrap"><a href="#c-klasik" style="color:#F7F3E9;text-decoration:none;font-family:Menlo,monospace;font-size:11px;border:1px solid #A8875B;border-radius:99px;padding:5px 12px">V-01–V-04 Klasik</a><a href="#c-felsefi" style="color:#F7F3E9;text-decoration:none;font-family:Menlo,monospace;font-size:11px;border:1px solid #A8875B;border-radius:99px;padding:5px 12px">V-05–V-07 Felsefi</a><a href="#c-modern" style="color:#F7F3E9;text-decoration:none;font-family:Menlo,monospace;font-size:11px;border:1px solid #A8875B;border-radius:99px;padding:5px 12px">V-08–V-10 Modern</a><a href="#c-uygulama" style="color:#F7F3E9;text-decoration:none;font-family:Menlo,monospace;font-size:11px;border:1px solid #A8875B;border-radius:99px;padding:5px 12px">10 Uygulama</a><a href="#c-web" style="color:#F7F3E9;text-decoration:none;font-family:Menlo,monospace;font-size:11px;border:1px solid #A8875B;border-radius:99px;padding:5px 12px">3 Web</a><a href="#c-webhd" style="color:#F7F3E9;text-decoration:none;font-family:Menlo,monospace;font-size:11px;border:1px solid #A8875B;border-radius:99px;padding:5px 12px">3 Web-HD</a><a href="#c-ieft" style="color:#F7F3E9;text-decoration:none;font-family:Menlo,monospace;font-size:11px;border:1px solid #A8875B;border-radius:99px;padding:5px 12px">12 IEFT</a></nav>
+  <nav class="crumbs"><a href="https://cinegitim.github.io/design/">design/</a> <span>›</span> <b>Mühür</b></nav>
   <details id="c-klasik" open>
     <summary><span class="n">V-01–V-04</span> Klasik diziler <small>— üç zirve · tek zirve+hilal · yuvarlak mühür · dikey mühür</small></summary>
     <div class="body">
@@ -73,21 +73,13 @@
     </div>
   </details>
   <details id="c-web">
-    <summary><span class="n">3 WEB</span> V-01 Web Sitesi <small>— ana sayfa · üniversiteler · mobil</small></summary>
+    <summary><span class="n">6 WEB</span> V-01 Web Sitesi <small>— ana sayfa · dizin · mobil · HD</small></summary>
     <div class="body">
       <h3>Ana sayfa (navigasyon + 5 ülke + yorumlar)</h3><a href="assets/web-home.png"><img loading="lazy" src="assets/web-home.png" alt="Ana sayfa"></a>
       <h3>Üniversite dizini (filtre + arama + kartlar)</h3><a href="assets/web-unis.png"><img loading="lazy" src="assets/web-unis.png" alt="Dizin"></a>
       <h3>Mobil ana sayfa (5 ülke + sticky CTA)</h3><a href="assets/web-mobile.png"><img loading="lazy" src="assets/web-mobile.png" alt="Mobil"></a>
-    </div>
-  </details>
-  <details id="c-webhd">
-    <summary><span class="n">3 WEB-HD</span> V-01 Web Sitesi HD <small>— ana sayfa · dizin · koyu hero (1536px)</small></summary>
-    <div class="body">
-      <h3>Ana sayfa HD (navigasyon + 5 ülke + yorumlar)</h3><a href="assets/webhd-home.png"><img loading="lazy" src="assets/webhd-home.png" alt="Ana sayfa HD"></a>
-      <h3>Üniversite dizini HD (filtre + arama + 6 kart)</h3><a href="assets/webhd-dir.png"><img loading="lazy" src="assets/webhd-dir.png" alt="Dizin HD"></a>
-      <h3>Koyu hero HD (mühür + 5 ülke)</h3><a href="assets/webhd-dark.png"><img loading="lazy" src="assets/webhd-dark.png" alt="Koyu hero HD"></a>
-    </div>
-  </details>
+    <h3>HD — Ana sayfa HD (navigasyon + 5 ülke + yorumlar)</h3><a href="assets/webhd-home.png"><img loading="lazy" src="assets/webhd-home.png" alt="Ana sayfa HD"></a><h3>HD — Üniversite dizini HD (filtre + arama + 6 kart)</h3><a href="assets/webhd-dir.png"><img loading="lazy" src="assets/webhd-dir.png" alt="Dizin HD"></a><h3>HD — Koyu hero HD (mühür + 5 ülke)</h3><a href="assets/webhd-dark.png"><img loading="lazy" src="assets/webhd-dark.png" alt="Koyu hero HD"></a></div></details>
+  
   <details id="c-ieft">
     <summary><span class="n">12 IEFT</span> IEFT Fuar Seti <small>— 20–26 Ekim 2026 · İzmir/Ankara/İstanbul</small></summary>
     <div class="body">
