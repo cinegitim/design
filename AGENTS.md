@@ -49,6 +49,10 @@ brief → Muse Spark research/reasoning → 3 distinct directions → SVG/HTML w
 
 The selected direction image stays the visual source of truth until production proves aesthetic parity. "Concept captured" ≠ "design captured". No LOCKED/CANONICAL/APPROVED status without human approval.
 
+## Delivery rule (standing)
+
+No requested change is local-only. Every change finishes on GitHub + live site: edit → `publish/<topic>` branch → PR → merge to `main` → verify Pages build → verify the live URL serves the change. Quick Tunnels are for instant previews only, never the deliverable. Never report done before the live site proves it.
+
 ## File conventions
 
 - `brands/<slug>/brand-brief.md` — agent-filled inferred brief (copy of `studio/templates/brand-brief.md`).
