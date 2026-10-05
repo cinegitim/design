@@ -22,8 +22,7 @@
   "global_iou": 0.9346,
   "bytes": 4207,
   "notch_iou": 0.7008,
-  "notch_red_recall": 0.3441,
-  "notch_depth_src_px": null
+  "notch_red_recall": 0.3441
  },
  "A1": {
   "local_iou": 0.924,
@@ -34,8 +33,7 @@
   "global_iou": 0.9355,
   "bytes": 5041,
   "notch_iou": 0.7767,
-  "notch_red_recall": 0.8484,
-  "notch_depth_src_px": null
+  "notch_red_recall": 0.8484
  },
  "A2": {
   "local_iou": 0.9232,
@@ -46,8 +44,7 @@
   "global_iou": 0.9354,
   "bytes": 4482,
   "notch_iou": 0.7637,
-  "notch_red_recall": 0.8484,
-  "notch_depth_src_px": null
+  "notch_red_recall": 0.8484
  },
  "A3": {
   "local_iou": 0.9278,
@@ -58,8 +55,7 @@
   "global_iou": 0.9358,
   "bytes": 4525,
   "notch_iou": 0.8282,
-  "notch_red_recall": 0.7901,
-  "notch_depth_src_px": null
+  "notch_red_recall": 0.7901
  },
  "notch_zone_seal_px": [
   190,
