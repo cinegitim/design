@@ -1,0 +1,74 @@
+{
+ "zone_seal_px": [
+  150,
+  95,
+  250,
+  150
+ ],
+ "render_px": 1200,
+ "source": "seal-source.png (1536x1024 raster, 400x370 seal)",
+ "zone_render_px": [
+  450,
+  285,
+  750,
+  450
+ ],
+ "A": {
+  "local_iou": 0.9146,
+  "local_mae": 8.958,
+  "local_rmse": 31.65,
+  "local_px_off_gt32": 2680,
+  "local_pct_off": 5.41,
+  "global_iou": 0.9346,
+  "bytes": 4207,
+  "notch_iou": 0.7008,
+  "notch_red_recall": 0.3441,
+  "notch_depth_src_px": null
+ },
+ "A1": {
+  "local_iou": 0.924,
+  "local_mae": 8.185,
+  "local_rmse": 29.294,
+  "local_px_off_gt32": 2457,
+  "local_pct_off": 4.96,
+  "global_iou": 0.9355,
+  "bytes": 5041,
+  "notch_iou": 0.7767,
+  "notch_red_recall": 0.8484,
+  "notch_depth_src_px": null
+ },
+ "A2": {
+  "local_iou": 0.9232,
+  "local_mae": 8.291,
+  "local_rmse": 29.586,
+  "local_px_off_gt32": 2487,
+  "local_pct_off": 5.02,
+  "global_iou": 0.9354,
+  "bytes": 4482,
+  "notch_iou": 0.7637,
+  "notch_red_recall": 0.8484,
+  "notch_depth_src_px": null
+ },
+ "A3": {
+  "local_iou": 0.9278,
+  "local_mae": 7.924,
+  "local_rmse": 28.545,
+  "local_px_off_gt32": 2379,
+  "local_pct_off": 4.81,
+  "global_iou": 0.9358,
+  "bytes": 4525,
+  "notch_iou": 0.8282,
+  "notch_red_recall": 0.7901,
+  "notch_depth_src_px": null
+ },
+ "notch_zone_seal_px": [
+  190,
+  112,
+  212,
+  124
+ ],
+ "notch_zone_render_px": [
+  66,
+  36
+ ]
+}
