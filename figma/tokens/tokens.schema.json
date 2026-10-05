@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "figma/tokens/tokens.schema.json",
+  "title": "Brand Studio — Figma token schema",
+  "description": "Machine-readable brand token mirror. Values derive from brands/<slug>/brand-system.md; never edited independently.",
+  "type": "object",
+  "properties": {
+    "$description": { "type": "string" },
+    "$provenance": { "type": "string", "description": "canonical source path" },
+    "$version": { "type": "string" },
+    "color": { "$ref": "#/definitions/group" },
+    "typography": { "type": "object", "patternProperties": { "^[a-z][a-zA-Z0-9]*$": { "$ref": "#/definitions/group" } }, "additionalProperties": false },
+    "logo": { "type": "object", "patternProperties": { "^[a-z][a-zA-Z0-9]*$": { "$ref": "#/definitions/group" } }, "additionalProperties": false },
+    "space": { "$ref": "#/definitions/group" },
+    "grid": { "$ref": "#/definitions/group" },
+    "motion": { "$ref": "#/definitions/group" },
+    "texture": { "$ref": "#/definitions/group" },
+    "subbrand": { "$ref": "#/definitions/group" }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "group": {
+      "type": "object",
+      "patternProperties": { "^[a-z][a-zA-Z0-9]*$": { "$ref": "#/definitions/token" } },
+      "additionalProperties": false
+    },
+    "token": {
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "$value": { "type": ["string", "number", "boolean"] },
+            "$type": { "enum": ["color", "fontFamily", "fontWeight", "fontSize", "dimension", "number", "duration", "string", "boolean"] },
+            "$unit": { "type": "string" },
+            "$description": { "type": "string" }
+          },
+          "required": ["$value", "$type"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "$alias": { "type": "string", "description": "reference to another token (Figma variable alias)" },
+            "$type": { "enum": ["color", "fontFamily", "fontWeight", "fontSize", "dimension", "number", "duration", "string", "boolean"] },
+            "$description": { "type": "string" }
+          },
+          "required": ["$alias"],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

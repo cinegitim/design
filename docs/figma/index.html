@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design — Figma Katmanı</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#F7F3E9;color:#141210;font-family:Georgia,serif;line-height:1.6}
+  .wrap{max-width:860px;margin:0 auto;padding:64px 32px 90px}
+  .mono{font-family:Menlo,monospace;font-size:12px;color:#6F6A5E}
+  h1{font-size:36px;font-weight:600;margin:10px 0 4px}
+  h2{font-size:22px;font-weight:600;margin:52px 0 10px;padding-top:18px;border-top:2px solid #141210}
+  .sub{color:#6F6A5E;font-size:16px;margin-bottom:8px}
+  .pipeline{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;margin-top:22px}
+  .pipe{flex:1;min-width:190px;background:#fff;border:2px solid #141210;border-radius:8px;padding:14px 16px}
+  .pipe b{font-size:14px;display:block}
+  .pipe span{font-family:Menlo,monospace;font-size:11px;color:#6F6A5E;display:block;margin-top:4px}
+  .pipe.canon{background:#141210;color:#F7F3E9}
+  .pipe.canon span{color:#A8875B}
+  .arrow{align-self:center;font-size:18px;color:#A8875B}
+  .rules{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .rule{flex:1;min-width:220px;border-left:3px solid #A8875B;padding:6px 14px;font-size:14px}
+  .rule b{display:block;font-size:14px}
+  .swatches{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .sw{flex:1;min-width:150px;border:2px solid #141210;border-radius:8px;overflow:hidden;background:#fff}
+  .sw .chip{height:64px}
+  .sw .meta{padding:10px 12px}
+  .sw .meta b{font-size:13px;display:block}
+  .sw .meta span{font-family:Menlo,monospace;font-size:11px;color:#6F6A5E;display:block}
+  .typeface{margin-top:14px;font-size:15px}
+  .typeface .spec{display:block;margin:10px 0}
+  .typeface .d{font-size:26px;font-weight:600}
+  .typeface .t{font-size:16px}
+  .typeface .m{font-family:Menlo,monospace;font-size:13px}
+  .scale{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+  .bar{display:flex;align-items:center;gap:12px}
+  .bar i{display:block;height:14px;background:#A8875B;border-radius:2px}
+  .bar span{font-family:Menlo,monospace;font-size:11px;color:#6F6A5E}
+  .geo{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+  .geo th{font-family:Menlo,monospace;font-size:11px;color:#6F6A5E;text-align:left;font-weight:500;border-bottom:2px solid #141210;padding:6px 8px}
+  .geo td{border-bottom:1px solid #d8d2c4;padding:6px 8px}
+  .geo td:first-child{font-family:Menlo,monospace;font-size:12px}
+  .pages{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+  @media(max-width:680px){.pages{grid-template-columns:1fr}}
+  .pg{background:#fff;border:2px solid #141210;border-radius:8px;padding:14px 16px}
+  .pg b{font-size:14px}
+  .pg span{font-family:Menlo,monospace;font-size:11px;color:#6F6A5E;display:block;margin-top:4px}
+  .phase{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .ph{flex:1;min-width:200px;border:2px solid #141210;border-radius:8px;padding:12px 16px;font-size:14px;background:#fff}
+  .ph b{font-family:Menlo,monospace;font-size:12px}
+  .ph.done{border-color:#A8875B}
+  .links{margin-top:14px}
+  .links a{display:inline-block;font-family:Menlo,monospace;font-size:12px;color:#141210;margin-right:18px;margin-top:8px}
+  .note{margin-top:52px;padding:14px 16px;border:2px dashed #A8875B;border-radius:8px;font-size:13px;color:#6F6A5E}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="mono">BRAND STUDIO · FIGMA LAYER · İZOLE SAYFA</p>
+  <h1>Figma katmanı</h1>
+  <p class="sub">İkinci bir source-of-truth değil — <b>brand-system.md</b>'nin makine-okunur aynası ve Figma uygulama katmanı.</p>
+
+  <div class="pipeline">
+    <div class="pipe canon"><b>brand-system.md</b><span>insan-okunur · canonical (tek kaynak)</span></div>
+    <div class="arrow">→</div>
+    <div class="pipe"><b>figma/tokens/*.tokens.json</b><span>makine-okunur ayna · türetilir</span></div>
+    <div class="arrow">→</div>
+    <div class="pipe"><b>Figma</b><span>Variables · Components · Templates</span></div>
+    <div class="arrow">→</div>
+    <div class="pipe"><b>Applications</b><span>export · kontrollü üretim</span></div>
+  </div>
+
+  <div class="rules">
+    <div class="rule"><b>Tek değer kuralı</b>Bir değer yalnızca brand-system.md'de yaşar; token dosyası ondan türetilir, elle bağımsız düzenlenmez.</div>
+    <div class="rule"><b>Determinizm</b>Typography, spacing, renk, logo kuralları ve layout token'a bağlı; image generation yalnızca değişken içeriği doldurur.</div>
+    <div class="rule"><b>Playground sandbox</b>Figma'daki serbest deneme alanından üretime akış yok; akması için brand-studio onay hattı gerekir.</div>
+  </div>
+
+  <h2>Token önizleme — asya-egitim</h2>
+  <p class="sub">figma/tokens/asya-egitim.tokens.json · brands/asya-egitim/brand-system.md'den türetildi</p>
+
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#141210"></div><div class="meta"><b>ink</b><span>#141210 · Mürekkep · 30</span></div></div>
+    <div class="sw"><div class="chip" style="background:#F7F3E9"></div><div class="meta"><b>paper</b><span>#F7F3E9 · Sıcak Kâğıt · 60</span></div></div>
+    <div class="sw"><div class="chip" style="background:#A8875B"></div><div class="meta"><b>bronze</b><span>#A8875B · Mineral Bronz · <8</span></div></div>
+    <div class="sw"><div class="chip" style="background:#6F6A5E"></div><div class="meta"><b>muted</b><span>#6F6A5E · ikincil metin</span></div></div>
+  </div>
+
+  <div class="typeface">
+    <span class="spec d" style="font-family:Georgia,serif">Fraunces 600 — display/wordmark · ölçek 1.333</span>
+    <span class="spec t" style="font-family:Georgia,serif">Inter 400/500/600 — text/UI · ölçek 1.25</span>
+    <span class="spec m">IBM Plex Mono 400/500 — indeks, etiket, veri</span>
+  </div>
+
+  <div class="scale">
+    <div class="bar"><i style="width:4px"></i><span>4 · base</span></div>
+    <div class="bar"><i style="width:16px"></i><span>16</span></div>
+    <div class="bar"><i style="width:32px"></i><span>32</span></div>
+    <div class="bar"><i style="width:64px"></i><span>64</span></div>
+  </div>
+
+  <table class="geo">
+    <tr><th>logo.geometry</th><th>değer</th><th>not</th></tr>
+    <tr><td>field</td><td>226 × 190 birim</td><td>çıta bandı 226 × 130</td></tr>
+    <tr><td>slatCount</td><td>9</td><td>slot 4 eksik = seçim boşluğu</td></tr>
+    <tr><td>blade</td><td>16 · taşma 26/16</td><td>üst:alt ≈ φ</td></tr>
+    <tr><td>clearSpace</td><td>32 birim</td><td>2b her yönde</td></tr>
+    <tr><td>motion</td><td>≤700ms</td><td>açıklık-perdesi</td></tr>
+  </table>
+
+  <h2>Figma blueprint — dosya sayfaları</h2>
+  <p class="sub">figma/blueprint.md · &lt;slug&gt; — Brand System</p>
+  <div class="pages">
+    <div class="pg"><b>00 Cover</b><span>kapak · versiyon · kapsam</span></div>
+    <div class="pg"><b>01 Brand DNA</b><span>concept · logo mantığı · palet · tip — salt-okunur referans</span></div>
+    <div class="pg"><b>02 Foundations</b><span>Variables/Styles kurulumu — token'sız token kullanılamaz</span></div>
+    <div class="pg"><b>03 Components</b><span>logo seti · ikonlar · bilgi paneli · CTA</span></div>
+    <div class="pg"><b>04 Patterns</b><span>desen kararları · yayılma yasakları</span></div>
+    <div class="pg"><b>05 Templates</b><span>social · story · poster · web hero · brochure</span></div>
+    <div class="pg"><b>06 Applications</b><span>§18 kontrol listesi aynası · export preset'leri</span></div>
+    <div class="pg"><b>07 Playground</b><span>sandbox · üretime akış yok</span></div>
+  </div>
+
+  <h2>Faz durumu</h2>
+  <div class="phase">
+    <div class="ph done"><b>FAZ 1 ✓</b><br>Token şeması + ilk token dosyası + Figma blueprint kurulu.</div>
+    <div class="ph"><b>FAZ 2 ⏳</b><br>Tokens Studio / Figma Variables sync — yalnızca çalışan entegrasyonla.</div>
+    <div class="ph"><b>FAZ 3 ⏳</b><br>/figma-sync komutu — yalnızca Faz 2 kanıtlanınca.</div>
+  </div>
+
+  <div class="links">
+    <a href="https://github.com/cinegitim/design/blob/main/figma/README.md">figma/README.md</a>
+    <a href="https://github.com/cinegitim/design/blob/main/figma/blueprint.md">figma/blueprint.md</a>
+    <a href="https://github.com/cinegitim/design/blob/main/figma/tokens/asya-egitim.tokens.json">asya-egitim.tokens.json</a>
+    <a href="https://github.com/cinegitim/design/blob/main/figma/tokens/tokens.schema.json">tokens.schema.json</a>
+  </div>
+
+  <div class="note">Bu sayfa tamamen izoledir: mevcut site navigasyonuna bağlı değildir, yalnızca doğrudan URL (<span class="mono">/figma/</span>) ile erişilir. Figma hattı brand-studio pipeline'ından ayrı yürür; <span class="mono">publish/figma-*</span> topic'leriyle yayınlanır.</div>
+</div>
+</body>
+</html>
