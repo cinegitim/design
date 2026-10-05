@@ -1,0 +1,97 @@
+{
+  "$description": "Asya Eğitim — makine-okunur marka tokenları. brands/asya-egitim/brand-system.md'den türetildi; değerler orada yaşar, burada bağımsız düzenlenmez.",
+  "$provenance": "brands/asya-egitim/brand-system.md (canonical)",
+  "$version": "1.0.0",
+
+  "color": {
+    "ink":    { "$value": "#141210", "$type": "color", "$description": "Mürekkep · birincil — proporsiyon 30 (§5)" },
+    "paper":  { "$value": "#F7F3E9", "$type": "color", "$description": "Sıcak Kâğıt · zemin — proporsiyon 60 (§5)" },
+    "bronze": { "$value": "#A8875B", "$type": "color", "$description": "Mineral Bronz · imza — yalnızca grafik, proporsiyon <8 (§5)" },
+    "muted":  { "$value": "#6F6A5E", "$type": "color", "$description": "ikincil metin (§5)" }
+  },
+
+  "typography": {
+    "family": {
+      "display": { "$value": "Fraunces", "$type": "fontFamily", "$description": "Display/wordmark; fallback Georgia, serif (§4)" },
+      "text":    { "$value": "Inter", "$type": "fontFamily", "$description": "Text/UI; fallback system-ui (§4)" },
+      "mono":    { "$value": "IBM Plex Mono", "$type": "fontFamily", "$description": "Accent/etiket/veri (§4)" }
+    },
+    "weight": {
+      "display":      { "$value": 600, "$type": "fontWeight", "$description": "Fraunces SemiBold (§4)" },
+      "textRegular":  { "$value": 400, "$type": "fontWeight", "$description": "Inter (§4)" },
+      "textMedium":   { "$value": 500, "$type": "fontWeight", "$description": "Inter (§4)" },
+      "textSemibold": { "$value": 600, "$type": "fontWeight", "$description": "Inter (§4)" },
+      "monoRegular":  { "$value": 400, "$type": "fontWeight", "$description": "IBM Plex Mono (§4)" },
+      "monoMedium":   { "$value": 500, "$type": "fontWeight", "$description": "IBM Plex Mono (§4)" }
+    },
+    "tracking": {
+      "wordmark": { "$value": 15,  "$type": "number", "$unit": "/1000", "$description": "+15/1000 — Fraunces caps (§1, §3)" },
+      "enLock":   { "$value": 420, "$type": "number", "$unit": "/1000", "$description": "+420/1000 — STUDY IN ASIA (§1)" }
+    },
+    "lineHeight": {
+      "body":    { "$value": 1.6, "$type": "number", "$description": "gövde (§4)" },
+      "heading": { "$value": 1.1, "$type": "number", "$description": "başlık — 1.05–1.15 bandı, orta değer (§4)" }
+    },
+    "scale": {
+      "displayRatio": { "$value": 1.333, "$type": "number", "$description": "display ölçek oranı (§4)" },
+      "uiRatio":      { "$value": 1.25,  "$type": "number", "$description": "UI ölçek oranı (§4)" }
+    }
+  },
+
+  "logo": {
+    "geometry": {
+      "fieldWidth":         { "$value": 226, "$type": "dimension", "$unit": "birim", "$description": "alan en — çıta bandı 226×130 (§2)" },
+      "fieldHeight":        { "$value": 190, "$type": "dimension", "$unit": "birim", "$description": "alan boy (§2)" },
+      "slatBandHeight":     { "$value": 130, "$type": "dimension", "$unit": "birim", "$description": "çıta bandı yüksekliği (§2)" },
+      "slatCount":          { "$value": 9,   "$type": "number",   "$description": "slot 0,1,2,3,5,6,7,8,9; slot 4 eksik = seçim boşluğu (§2)" },
+      "slatThickness":      { "$value": 10,  "$type": "dimension", "$unit": "birim", "$description": "çıta kalınlığı s (§2)" },
+      "pitch":              { "$value": 24,  "$type": "dimension", "$unit": "birim", "$description": "pitch p (§2)" },
+      "gap":                { "$value": 14,  "$type": "dimension", "$unit": "birim", "$description": "çıta arası (§2)" },
+      "gapInnerWidth":      { "$value": 34,  "$type": "dimension", "$unit": "birim", "$description": "boşluk iç genişliği (§2)" },
+      "bladeWidth":         { "$value": 16,  "$type": "dimension", "$unit": "birim", "$description": "blade b (§2)" },
+      "bladeXStart":        { "$value": 100, "$type": "dimension", "$unit": "birim", "$description": "blade başlangıç x — boşluk merkezli 100–116 (§2)" },
+      "bladeXEnd":          { "$value": 116, "$type": "dimension", "$unit": "birim", "$description": "blade bitiş x (§2)" },
+      "bladeOverhangTop":   { "$value": 26,  "$type": "dimension", "$unit": "birim", "$description": "üst taşma y 4–30 (§2)" },
+      "bladeOverhangBottom":{ "$value": 16,  "$type": "dimension", "$unit": "birim", "$description": "alt taşma y 160–176 (§2)" },
+      "overhangRatio":      { "$value": 1.625, "$type": "number", "$description": "üst:alt ≈ φ (26:16) (§2)" },
+      "clearSpace":         { "$value": 32,  "$type": "dimension", "$unit": "birim", "$description": "dış güvenli alan = 2b her yönde (§2)" },
+      "wordmarkCapHeight":  { "$value": 92,  "$type": "dimension", "$unit": "birim", "$description": "cap 92, taban çıta-altıyla hizalı (§3)" },
+      "baselineY":          { "$value": 160, "$type": "dimension", "$unit": "birim", "$description": "primary kelime-mark taban hizası (§2)" }
+    },
+    "sizes": {
+      "minPrimaryScreen": { "$value": 120, "$type": "dimension", "$unit": "px", "$description": "primary min ekran (§2)" },
+      "minPrimaryPrint":  { "$value": 35,  "$type": "dimension", "$unit": "mm", "$description": "primary min baskı (§2)" },
+      "minIconScreen":    { "$value": 24,  "$type": "dimension", "$unit": "px", "$description": "icon min ekran (§2)" },
+      "minIconPrint":     { "$value": 8,   "$type": "dimension", "$unit": "mm", "$description": "icon min baskı (§2)" }
+    }
+  },
+
+  "space": {
+    "base":  { "$value": 4,  "$type": "dimension", "$unit": "px", "$description": "taban birim — board konvansiyonu; brand-system.md spacing'i kilitlemez, kanonikleşince güncellenir" },
+    "step1": { "$value": 4,  "$type": "dimension", "$unit": "px" },
+    "step2": { "$value": 8,  "$type": "dimension", "$unit": "px" },
+    "step3": { "$value": 12, "$type": "dimension", "$unit": "px" },
+    "step4": { "$value": 16, "$type": "dimension", "$unit": "px" },
+    "step5": { "$value": 24, "$type": "dimension", "$unit": "px" },
+    "step6": { "$value": 32, "$type": "dimension", "$unit": "px" },
+    "step7": { "$value": 48, "$type": "dimension", "$unit": "px" },
+    "step8": { "$value": 64, "$type": "dimension", "$unit": "px" }
+  },
+
+  "grid": {
+    "columns": { "$value": 12, "$type": "number", "$description": "12 kolon editoryal (§6)" }
+  },
+
+  "motion": {
+    "apertureDuration": { "$value": 700, "$type": "duration", "$unit": "ms", "$description": "açıklık-perdesi ≤700ms (§14)" }
+  },
+
+  "texture": {
+    "paperGrain": { "$value": 5, "$type": "number", "$unit": "%", "$description": "kâğıt greni %4–6 bandı, orta değer (§8)" }
+  },
+
+  "subbrand": {
+    "countryLineOpacity": { "$value": 0.78, "$type": "number", "$description": "alt-marka ülke satırı %78 mono-muted (§16)" },
+    "countryLineColor":   { "$alias": "color.muted", "$type": "color", "$description": "ülke satırı rengi — muted'e bağlı (§16)" }
+  }
+}

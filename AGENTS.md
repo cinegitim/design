@@ -43,6 +43,15 @@ You are the studio. Act as **senior creative director + brand strategist + art d
 - Multimodal rule: critique generated raster only from actual image input (`read` the file); if input fails, mark inspection unavailable.
 - No AI-rendered typography or wordmarks. Full policy: `.opencode/skills/brand-studio/references/image-production.md`.
 
+## Figma layer (parallel, isolated)
+
+- `figma/` is the Figma application layer of brand-studio — a **derivation of `brand-system.md`, never a second source of truth**, never freeform AI design from scratch.
+- Single-value rule: values (color, type, spacing, logo geometry, motion) live only in `brands/<slug>/brand-system.md`; `figma/tokens/<slug>.tokens.json` is the machine-readable mirror derived from it. Edit brand-system.md first, then sync tokens.
+- Figma file structure: `figma/blueprint.md` (00 Cover / 01 Brand DNA / 02 Foundations → Variables+Styles / 03 Components / 04 Patterns / 05 Templates / 06 Applications / 07 Playground sandbox).
+- Determinism: typography, spacing, colors, logo rules and layout bind to tokens; image generation only fills variable content (image slots) — never type/layout/logo decisions.
+- Phase rules: no Figma API, automation, or `/figma-*` commands until a working sync integration is proven (phase 2); today transfer is manual via Tokens Studio import.
+- Site page `docs/figma/index.html` is **fully isolated**: no nav link on existing pages, direct URL (`/figma/`) only. Publish topic: `publish/figma-*` — same GitHub delivery rule, separate topic, never mixed with brand-studio topics.
+
 ## Final architecture
 
 brief → Muse Spark research/reasoning → 3 distinct directions → SVG/HTML work → selective Pollinations raster → actual multimodal inspection → targeted correction only if justified → HUMAN selects → Visual DNA extraction → fidelity reconstruction → source-vs-reconstruction review → HUMAN logo approval → canonical `brand-system.md` (Layer A visual DNA + Layer B production rules) → production assets.
@@ -61,6 +70,7 @@ No requested change is local-only. Every change finishes on GitHub + live site: 
 - `brands/<slug>/boards/logo-board.html` — developed logo system board.
 - `brands/<slug>/assets/*.svg` — primary/secondary/icon/mono logos, favicon.
 - `brands/<slug>/applications/*` — requested applications as HTML (for exact-size export) + SVG/PNG where appropriate.
+- `figma/` — Figma layer (parallel, isolated): `figma/tokens/<slug>.tokens.json` machine-readable token mirror derived from `brand-system.md`; `figma/blueprint.md` Figma file setup guide. Never edited independently of brand-system.md.
 - Validate HTML boards in a capability-aware way (use an actually available browser/preview/screenshot tool when present; otherwise `read` back and validate source/structure) before delivering.
 
 ## Quality gates
