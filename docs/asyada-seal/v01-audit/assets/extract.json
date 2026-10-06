@@ -1,0 +1,59 @@
+{
+ "source": "/Users/serdaryurt/Documents/OpenCode/Design/brands/asyada-egitim/explorations/visual-round-7-seal-variants/seal-v-01/image-1790886610188.png",
+ "raster": [
+  1536,
+  1024
+ ],
+ "seal": [
+  400,
+  370
+ ],
+ "seal_origin_in_raster": [
+  568,
+  97
+ ],
+ "components": [
+  [
+   96,
+   0,
+   0,
+   13,
+   15
+  ],
+  [
+   92,
+   387,
+   0,
+   13,
+   14
+  ],
+  [
+   6521,
+   155,
+   32,
+   92,
+   91
+  ],
+  [
+   21245,
+   0,
+   122,
+   400,
+   248
+  ],
+  [
+   109,
+   0,
+   355,
+   15,
+   15
+  ],
+  [
+   106,
+   385,
+   355,
+   15,
+   15
+  ]
+ ]
+}

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="tr"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>V-01 · Kaynak Denetim Raporu</title>
+<style>
+  :root{--red:#BD2120;--ink:#141210;--mute:#6F6A5E;--paper:#F7F3E9;--line:#DDD8CC}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:16px/1.6 "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  .wrap{max-width:1120px;margin:0 auto;padding:32px 20px 80px}
+  .crumbs{font:12px/1 ui-monospace,Menlo,monospace;color:var(--mute);letter-spacing:.08em;
+    text-transform:uppercase;margin-bottom:20px}
+  .crumbs a{color:var(--mute);text-decoration:none}
+  h1{font-size:32px;line-height:1.15;margin:0 0 10px}
+  .lede{max-width:76ch;color:var(--mute)}
+  .mono{font:12px/1.75 ui-monospace,Menlo,monospace;color:var(--mute)}
+  .warn{background:#fff;border:1px solid var(--line);border-left:4px solid var(--red);
+    padding:14px 18px;margin:22px 0;border-radius:3px}
+  .warn b{color:var(--red)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .lbl{font:11px ui-monospace,monospace;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--mute);margin:18px 0 7px}
+  img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:3px}
+  .px img{image-rendering:pixelated}
+  table{width:100%;border-collapse:collapse;margin:10px 0 6px;background:#fff;
+    border:1px solid var(--line);font-size:14px}
+  th,td{padding:8px 11px;text-align:left;border-bottom:1px solid var(--line)}
+  th{font:11px ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--mute);background:#FBF9F4}
+  td.m{font:13px ui-monospace,monospace;text-align:right}
+  ol.call{list-style:none;padding:0;margin:16px 0}
+  ol.call li{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
+  ol.call .num{flex:0 0 30px;height:30px;display:grid;place-items:center;background:var(--red);
+    color:#fff;border-radius:3px;font:700 15px/1 ui-monospace,monospace}
+  ol.call p{margin:3px 0 0;color:var(--mute);font-size:14px}
+  h3.sec{font-size:15px;margin:34px 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+  .ok{color:#2c6e49}
+</style></head><body><div class="wrap">
+
+  <div class="crumbs"><a href="https://cinegitim.github.io/design/">design/</a> ›
+    <a href="https://cinegitim.github.io/design/asyada-seal/">asyada-seal/</a> › <b>v01-audit</b></div>
+  <h1>V-01 · Kaynak Denetimi</h1>
+  <p class="lede">Seçili V-01 sembolü, <b>orijinal raster</b>dan yeniden çıkarıldı ve
+    mevcut A2 vektör adayıyla piksel piksel karşılaştırıldı. Aşağıdaki her fark yalnızca
+    gerçek piksellerden ölçülmüştür.</p>
+  <div class="warn"><b>İnsan incelemesi bekleniyor.</b> Bu bir denetim raporudur — hiçbir
+    aday seçilmedi, kanonikleştirilmedi ve SVG değiştirilmedi.</div>
+  <p class="mono">Kaynak: explorations/visual-round-7-seal-variants/seal-v-01/image-1790886610188.png
+    (1536×1024) → sembol 400×370 px · Aday: docs/asyada-seal/v01-micro/assets/micro-A2.svg
+    · Siluet IoU <b>0.9464</b> · fark eden piksel <b>%1.03</b></p>
+
+  <h3 class="sec">Karşılaştırma</h3>
+  <div class="grid2">
+    <div><div class="lbl">Orijinal raster</div><img src="assets/original.png" alt="Orijinal kaynak"></div>
+    <div><div class="lbl">A2 vektör adayı</div><img src="assets/a2.png" alt="A2 adayı"></div>
+  </div>
+  <div class="lbl">%50 katman</div>
+  <img src="assets/overlay.png" alt="Yüzde 50 opaklık katmanı">
+  <div class="lbl">Fark görüntüsü — kırmızı: kaynakta var, A2'de yok · mavi: A2'de fazla</div>
+  <img class="px" src="assets/diff.png" alt="Fark haritası">
+
+  <h3 class="sec">Tespit edilen farklar</h3>
+  <ol class="call">
+
+  <li class="c1"><span class="num">1</span><div><b>Nehir alt kenarı kesikliği</b><p>Kaynakta nehir alanın alt kenarından <b>taşar</b>: en alt satırda x=206–282 arasında 77px beyaz var. A2'de en alt satırda beyaz <b>yok</b> — nehir kenarın 1px üstünde bitiyor.</p></div></li>
+
+  <li class="c2"><span class="num">2</span><div><b>Güneş ile tepe birleşiyor</b><p>Kaynakta güneş ve sırt <b>ayrı</b> bileşenler (güneş 6521px, sırt+yol 18783px); tepe ucu çevresinde kırmızı boşluk var. A2'de tek birleşik bileşene dönüşüyor (24415px) — oyuk tepe ucuna değiyor.</p></div></li>
+
+  <li class="c3"><span class="num">3</span><div><b>Sırt çizgi kalınlığı</b><p>Çizgi dik ölçümde medyan: kaynak <b>17.68px</b>, A2 <b>16.97px</b> — A2 yaklaşık %4 daha ince.</p></div></li>
+
+  <li class="c4"><span class="num">4</span><div><b>Güneş çapı</b><p>Merkez satır genişliği: kaynak <b>92px</b>, A2 <b>90px</b>. Fit daire yarıçapı 45.08 → 44.97.</p></div></li>
+
+  </ol>
+
+  <h3 class="sec">Seçilen bölgeler (sol: orijinal, sağ: A2)</h3>
+
+  <div class="lbl">1 · Nehir alt kenarı kesikliği</div>
+  <img class="px" src="assets/zoom-bottom-exit.png" alt="Nehir alt kenarı kesikliği">
+
+  <div class="lbl">2 · Güneş ile tepe birleşiyor</div>
+  <img class="px" src="assets/zoom-sun-notch.png" alt="Güneş ile tepe birleşiyor">
+
+  <div class="lbl">3 · Sırt çizgi kalınlığı</div>
+  <img class="px" src="assets/zoom-ridge.png" alt="Sırt çizgi kalınlığı">
+
+  <div class="lbl">4 · Güneş çapı</div>
+  <img class="px" src="assets/zoom-sun-body.png" alt="Güneş çapı">
+
+  <h3 class="sec">Ölçüm tablosu</h3>
+  <table>
+    <tr><th>Özellik</th><th>Orijinal</th><th>A2</th><th>Durum</th></tr>
+    <tr><td>Kırmızı alan sınırları</td><td class="m">0,0 – 399,369</td><td class="m">0,0 – 399,369</td><td class="m ok">eşit</td></tr>
+    <tr><td>Açıklık (temiz boşluk)</td><td class="m">t32 l20 r20 b20</td><td class="m">t32 l20 r20 b20</td><td class="m ok">eşit</td></tr>
+    <tr><td>Güneş dairesi (cx,cy,r)</td><td class="m">200.24, 77.10, 45.08</td><td class="m">199.67, 77.39, 44.97</td><td class="m">≈</td></tr>
+    <tr><td>Güneş genişliği (merkez satır)</td><td class="m">92 px</td><td class="m">90 px</td><td class="m">−2</td></tr>
+    <tr><td>Girinti ağzı genişliği</td><td class="m">5 px (y=116)</td><td class="m">8 px (y=115)</td><td class="m">+3</td></tr>
+    <tr><td>Tepe konumları (x)</td><td class="m">85 · 286 · 315</td><td class="m">82 · 284 · 314</td><td class="m">≈</td></tr>
+    <tr><td>Sırt çizgi kalınlığı (dik, medyan)</td><td class="m">17.68 px</td><td class="m">16.97 px</td><td class="m">−0.71</td></tr>
+    <tr><td>Nehir maksimum genişliği</td><td class="m">69 px</td><td class="m">68 px</td><td class="m">−1</td></tr>
+    <tr><td>Alt kenardan taşma</td><td class="m">x=206–282 (77px)</td><td class="m">yok</td><td class="m">fark</td></tr>
+    <tr><td>Alan içi bileşen sayısı</td><td class="m">2 (ayrı)</td><td class="m">1 (birleşik)</td><td class="m">fark</td></tr>
+  </table>
+
+  <h3 class="sec">Yanlış varsayım</h3>
+  <p class="mono">Daha önce "iki ayrık beyaz eko / aksan çizgisi" bulunduğu yazılmıştı.
+  Yeniden çıkarma bunu <b>çürütüyor</b>: alan içinde yalnızca iki gerçek beyaz küme var —
+  güneş (6521px) ve sırt+yol (18759px). Ayrık aksan çizgisi <b>yoktur</b>. Kenar köşelerindeki
+  dört küçük leke (≈100px) kırmızı alanın yuvarlatılmış köşelerinden sızan kâğıt
+  zeminidir, logo unsuru değildir. Bu varsayım mühür galerisi sayfalarından kaldırıldı.</p>
+
+  <h3 class="sec">Yöntem notu</h3>
+  <p class="mono">A2, çıplak SVG olarak saydam arka planla render edilir; orijinal
+  kırpımda ise yuvarlak köşelerde kâğıt zemin (253,253,250) bulunur. Doğrudan karşılaştırma
+  dört sahte fark üretiyordu (IoU 0.9334). A2 önce ölçülen kâğıt rengine kompozit
+  edildi; adil karşılaştırma IoU <b>0.9464</b> verdi.</p>
+  <p class="mono">Hiçbir görüntü modeli kullanılmadı. Her iki logo da gerçek dosyalardan
+  kırpıldı. Görüntü üretimi çağrısı: 0.</p>
+</div></body></html>
