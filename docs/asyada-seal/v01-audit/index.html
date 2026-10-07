@@ -19,6 +19,7 @@
     padding:14px 18px;margin:22px 0;border-radius:3px}
   .warn b{color:var(--red)}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .lbl{font:11px ui-monospace,monospace;letter-spacing:.07em;text-transform:uppercase;
     color:var(--mute);margin:18px 0 7px}
   img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:3px}
@@ -33,9 +34,12 @@
   ol.call li{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
   ol.call .num{flex:0 0 30px;height:30px;display:grid;place-items:center;background:var(--red);
     color:#fff;border-radius:3px;font:700 15px/1 ui-monospace,monospace}
+  ol.call li.solved{opacity:.72}
+  ol.call li.solved .num{background:#2c6e49}
   ol.call p{margin:3px 0 0;color:var(--mute);font-size:14px}
   h3.sec{font-size:15px;margin:34px 0 6px;padding-top:16px;border-top:1px solid var(--line)}
   .ok{color:#2c6e49}
+  @media(max-width:900px){.grid3{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
 </style></head><body><div class="wrap">
 
   <div class="crumbs"><a href="https://cinegitim.github.io/design/">design/</a> ›
@@ -51,21 +55,35 @@
     · Siluet IoU <b>0.9464</b> · fark eden piksel <b>%1.03</b></p>
 
   <h3 class="sec">Karşılaştırma</h3>
-  <div class="grid2">
+  <div class="grid3">
     <div><div class="lbl">Orijinal raster</div><img src="assets/original.png" alt="Orijinal kaynak"></div>
-    <div><div class="lbl">A2 vektör adayı</div><img src="assets/a2.png" alt="A2 adayı"></div>
+    <div><div class="lbl">A2 (denetlenen aday)</div><img src="assets/a2.png" alt="A2 adayı"></div>
+    <div><div class="lbl">A2-düzeltilmiş</div><img src="assets/a2-corrected.png" alt="Düzeltilmiş A2"></div>
   </div>
-  <div class="lbl">%50 katman</div>
-  <img src="assets/overlay.png" alt="Yüzde 50 opaklık katmanı">
-  <div class="lbl">Fark görüntüsü — kırmızı: kaynakta var, A2'de yok · mavi: A2'de fazla</div>
-  <img class="px" src="assets/diff.png" alt="Fark haritası">
+  <div class="lbl">Tepe ucu / güneş oyığı — 20 kat (soldan: orijinal, A2, düzeltilmiş)</div>
+  <img class="px" src="assets/zoom-apex-fixed.png" alt="Tepe ucu karşılaştırması">
+  <div class="lbl">%50 katman — düzeltilmiş</div>
+  <img src="assets/overlay-corrected.png" alt="Yüzde 50 opaklık katmanı">
+  <div class="grid2">
+    <div><div class="lbl">Fark haritası — A2</div><img class="px" src="assets/diff-a2.png" alt="A2 fark haritası"></div>
+    <div><div class="lbl">Fark haritası — düzeltilmiş</div><img class="px" src="assets/diff-a2-corrected.png" alt="Düzeltilmiş fark haritası"></div>
+  </div>
+  <p class="mono">Kırmızı: kaynakta var, adayda yok · mavi: adayda fazla. Siluet IoU:
+    A2 <b>0.9448</b> → düzeltilmiş <b>0.9490</b>.</p>
+
+  <div class="warn"><b>Güneş/tepe birleşmesi düzeltildi.</b> A2'de oyuk bir kubbe olarak
+  yumuşatılmış ve y=120'de bitiyordu; bu yüzden tepe ucu onu doldurup güneşi sırtla
+  <b>tek bileşende</b> birleştiriyordu. Kaynakta oyuk düz kenarlı bir V'dir, tepe ucu
+  içine girer ve aralarında kırmızı boşluk kalır. Düzeltmede güneş, girintiyi zaten içeren
+  <b>kendi raster konturuyla</b> yeniden kuruldu — kusursuz daire orada yanlış ilkel:
+  tepe satırında daire 15px geniş, kaynak 26px.</div>
 
   <h3 class="sec">Tespit edilen farklar</h3>
   <ol class="call">
 
   <li class="c1"><span class="num">1</span><div><b>Nehir alt kenarı kesikliği</b><p>Kaynakta nehir alanın alt kenarından <b>taşar</b>: en alt satırda x=206–282 arasında 77px beyaz var. A2'de en alt satırda beyaz <b>yok</b> — nehir kenarın 1px üstünde bitiyor.</p></div></li>
 
-  <li class="c2"><span class="num">2</span><div><b>Güneş ile tepe birleşiyor</b><p>Kaynakta güneş ve sırt <b>ayrı</b> bileşenler (güneş 6521px, sırt+yol 18783px); tepe ucu çevresinde kırmızı boşluk var. A2'de tek birleşik bileşene dönüşüyor (24415px) — oyuk tepe ucuna değiyor.</p></div></li>
+  <li class="c2 solved"><span class="num">2</span><div><b>Güneş ile tepe birleşiyor — DÜZELTİLDİ</b><p>Kaynakta güneş ve sırt <b>ayrı</b> bileşenlerdir (güneş 6521px, sırt+yol 18783px); tepe ucunun çevresinde kırmızı boşluk kalır. A2'de oyuk yumuşatılmış bir kubbeye dönüşüyor ve tepe ucu onu doldurup ikisini <b>tek bileşende</b> (24415px) birleştiriyordu. Düzeltilmiş sürümde bileşen sayısı kaynakla aynı: <b>2</b>.</p></div></li>
 
   <li class="c3"><span class="num">3</span><div><b>Sırt çizgi kalınlığı</b><p>Çizgi dik ölçümde medyan: kaynak <b>17.68px</b>, A2 <b>16.97px</b> — A2 yaklaşık %4 daha ince.</p></div></li>
 
