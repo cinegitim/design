@@ -1,0 +1,82 @@
+{
+  "A1": {
+    "edge_black": 0.336,
+    "full_black": 0.325,
+    "clean": false
+  },
+  "A2": {
+    "edge_black": 0.978,
+    "full_black": 0.465,
+    "clean": false
+  },
+  "A3": {
+    "edge_black": 0.572,
+    "full_black": 0.176,
+    "clean": false
+  },
+  "A4": {
+    "edge_black": 0.563,
+    "full_black": 0.287,
+    "clean": false
+  },
+  "B1": {
+    "edge_black": 0.829,
+    "full_black": 0.299,
+    "clean": false
+  },
+  "B2": {
+    "edge_black": 0.0,
+    "full_black": 0.01,
+    "clean": true
+  },
+  "B3": {
+    "edge_black": 0.738,
+    "full_black": 0.449,
+    "clean": false
+  },
+  "B4": {
+    "edge_black": 0.779,
+    "full_black": 0.493,
+    "clean": false
+  },
+  "C1": {
+    "edge_black": 0.024,
+    "full_black": 0.097,
+    "clean": false
+  },
+  "C2": {
+    "edge_black": 0.794,
+    "full_black": 0.226,
+    "clean": false
+  },
+  "C3": {
+    "edge_black": 0.531,
+    "full_black": 0.355,
+    "clean": false
+  },
+  "C4": {
+    "edge_black": 0.738,
+    "full_black": 0.507,
+    "clean": false
+  },
+  "D1": {
+    "edge_black": 0.001,
+    "full_black": 0.0,
+    "clean": true
+  },
+  "D2": {
+    "edge_black": 0.597,
+    "full_black": 0.475,
+    "clean": false
+  },
+  "D3": {
+    "edge_black": 0.631,
+    "full_black": 0.221,
+    "clean": false
+  },
+  "D4": {
+    "edge_black": 0.568,
+    "full_black": 0.166,
+    "clean": false
+  }
+}
