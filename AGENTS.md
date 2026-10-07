@@ -43,6 +43,19 @@ You are the studio. Act as **senior creative director + brand strategist + art d
 - Multimodal rule: critique generated raster only from actual image input (`read` the file); if input fails, mark inspection unavailable.
 - No AI-rendered typography or wordmarks. Full policy: `.opencode/skills/brand-studio/references/image-production.md`.
 
+## Locked logo assets
+
+A human-approved logo is a locked asset, not a design task. Before any raster work, check `brands/<slug>/brand.json` for `canonicalLogo.locked`.
+
+**Asya'da Eğitim — V-01 is locked** (`brands/asyada-egitim/assets/v01-canonical.svg`, SHA-256 `8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a`). Record: `brands/asyada-egitim/decisions/2026-10-07-v01-canonical-lock.md`. Verify: `studio/tools/verify-canonical-logo.sh`.
+
+- **Never** ask an image model to draw, recreate, imitate or typeset a locked logo — not in a mockup, not in a scene, not as a background element.
+- **Always** composite the exact canonical SVG. Image models generate visual / background / composition only.
+- Only **placement** may change: position, size, clearspace, approved colour variant. Geometry never changes.
+- Logo inside flat design → reserve a clean logo-safe area during generation, composite the SVG afterward.
+- Logo on a perspective / physical surface → do **not** regenerate. Flag for the separate perspective/mockup workflow, which warps the same canonical asset.
+- Every final branded output records `canonical_logo_sha256` in its manifest.
+
 ## Figma layer (parallel, isolated)
 
 - `figma/` is the Figma application layer of brand-studio — a **derivation of `brand-system.md`, never a second source of truth**, never freeform AI design from scratch.
