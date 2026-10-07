@@ -10,6 +10,12 @@
 - Lockup system: **PROPOSED, 5 variants, human selection pending**
   (`brands/asyada-egitim/decisions/2026-10-07-lockup-system-proposal.md`,
   review page `docs/asyada-seal/lockups/`). Not canonical. No variant selected.
+- Wordmark: **PROPOSED, 3 fidelity levels (W1/W2/W3), human selection pending**
+  (`brands/asyada-egitim/decisions/2026-10-08-wordmark-reference-rebuild.md`,
+  review page `docs/asyada-seal/wordmark/`). Rebuilt against the approved
+  typographic reference. Not canonical. No candidate selected.
+  The 2026-10-07 lockup family is NOT rebuilt on these yet — the wordmark is
+  approved first, then the lockup family follows.
 
 ## Locked assets
 
