@@ -1,0 +1,47 @@
+{
+ "wordmark_1000": {
+  "render": [
+   1000,
+   485
+  ],
+  "lines": {
+   "tr1": {
+    "x0": 0,
+    "x1": 999,
+    "dev_left": 0,
+    "dev_right": 0
+   },
+   "tr2": {
+    "x0": 0,
+    "x1": 999,
+    "dev_left": 0,
+    "dev_right": 0
+   },
+   "en": {
+    "x0": 0,
+    "x1": 999,
+    "dev_left": 0,
+    "dev_right": 0
+   }
+  },
+  "gate": "each line must span [0,999] within 1 px"
+ },
+ "stacked": {
+  "render": [
+   1400,
+   1360
+  ]
+ },
+ "horizontal": {
+  "render": [
+   1600,
+   544
+  ]
+ },
+ "horizontal_dark": {
+  "render": [
+   1600,
+   544
+  ]
+ }
+}
