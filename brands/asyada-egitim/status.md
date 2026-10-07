@@ -7,6 +7,9 @@
 - Production work allowed: **YES**, within the locked-asset rules below
 - Current next action: apply the canonical logo to applications; every output
   records the canonical hash
+- Lockup system: **PROPOSED, 5 variants, human selection pending**
+  (`brands/asyada-egitim/decisions/2026-10-07-lockup-system-proposal.md`,
+  review page `docs/asyada-seal/lockups/`). Not canonical. No variant selected.
 
 ## Locked assets
 
