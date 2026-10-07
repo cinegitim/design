@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="tr"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Asya'da Eğitim — Lockup Sistemi · 5 Varyant</title>
+<style>
+:root{--paper:#F7F3E9;--ink:#141210;--verm:#BD2120;--mute:#6b635a;--line:#ddd5c4;--dark:#141210}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1200px;margin:0 auto;padding:40px 22px 90px}
+h1{font-size:34px;line-height:1.2;margin:0 0 6px}
+h2{font-size:23px;margin:56px 0 4px;padding-top:22px;border-top:1px solid var(--line)}
+h3{font-size:16px;margin:26px 0 6px}
+p{margin:9px 0}
+.sub{color:var(--mute);font-size:15px;margin-bottom:24px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.75}
+code{background:#fff;border:1px solid var(--line);border-radius:3px;padding:1px 5px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:14px 0}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.pending{background:var(--verm);color:#fff;padding:16px 20px;margin:26px 0;font-weight:600;letter-spacing:.04em}
+.note{background:#fff;border:1px solid var(--line);border-left:5px solid var(--verm);padding:15px 19px;margin:20px 0;border-radius:2px}
+.small{font-size:14px;color:var(--mute)}
+a{color:var(--verm)}
+.sheet{width:100%;border:1px solid var(--line);background:#fff;display:block}
+
+/* lockup stage */
+.stage{background:#fff;border:1px solid var(--line);border-radius:2px;padding:34px 26px;display:flex;align-items:center;justify-content:center;min-height:230px}
+.stage.dark{background:var(--dark);border-color:#000}
+.stage.dark img{filter:none}
+.stage img{max-width:100%;height:auto;display:block}
+.stage .tag{position:absolute}
+
+.vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(520px,1fr));gap:26px;margin:18px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.card>header{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);background:#FCFAF5}
+.card h3{margin:0;font-size:16px}
+.card .id{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--verm);font-weight:700}
+.card .body{padding:16px}
+.card .body>*{margin:0 0 12px}
+.card .body>*:last-child{margin-bottom:0}
+.swatches{display:flex;gap:0;height:78px;border:1px solid var(--line);border-radius:2px;overflow:hidden;margin-top:2px}
+.swatches .cell{flex:1;display:flex;align-items:center;justify-content:center;padding:8px}
+.swatches .cell.light{background:var(--paper)}
+.swatches .cell.dark{background:var(--dark)}
+.swatches .cell.brand{background:var(--verm)}
+.swatches .cell img{max-width:86%;max-height:62px}
+.sizes{background:#FCFAF5;border:1px solid var(--line);border-radius:2px;padding:14px 16px}
+.sizes .row{display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap}
+.sizes figure{margin:0;text-align:center}
+.sizes img{display:block;margin:0 auto 6px}
+.sizes figcaption{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:var(--mute)}
+.mock{background:#FCFAF5;border:1px solid var(--line);border-radius:2px;padding:14px 16px}
+.mock .line{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.mock .line:last-child{border-bottom:0}
+.mock .r{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:var(--mute);text-align:right;line-height:1.5}
+.spec{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;line-height:1.85;color:#3d3830}
+.spec b{color:var(--verm);font-weight:700}
+ul{padding-left:20px}li{margin:6px 0}
+</style></head><body><div class="wrap">
+
+<h1>Lockup Sistemi — 5 Varyant</h1>
+<p class="sub">Asya'da Eğitim · tek tipografi yönü, beş yapısal dizilim<br>
+Tüm varyantlar <b>aynı</b> yüzü kullanır: Helvetica Neue, Türkçe satır Bold, İngilizce satır Light (geniş harf aralığı), ortak ölçü, kırmızı apostrof, kilitli mühür.</p>
+
+<div class="pending">İNSAN LOCKUP SEÇİMİ BEKLENİYOR — hiçbir varyant seçilmedi, hiçbiri kanonikleştirilmedi.</div>
+
+<h2>Tek tipografi yönü — değişen tek şey yapı</h2>
+<table>
+<tr><th>Öğe</th><th>Değer</th><th>Neden</th></tr>
+<tr><td>Yüz</td><td class="mono">Helvetica Neue</td><td>Neo-grotesk, çağdaş, temiz; Türkçe için tam kapsamlı</td></tr>
+<tr><td>Türkçe satır</td><td class="mono">Bold · uppercase</td><td>Kelimenin taşıdığı ağırlık</td></tr>
+<tr><td>İngilizce satır</td><td class="mono">Light · uppercase · geniş aralık</td><td>İkincil, ama ince olması ezici değil — ayrıntılı</td></tr>
+<tr><td>Dikey ritim</td><td class="mono">satır aralığı 1.46 · EN düşüşü 0.70</td><td>Türkçe büyük harf yüksekliğinin katları — her varyantta optik olarak aynı</td></tr>
+<tr><td>Apostrof</td><td class="mono">’ U+2019 · #BD2120</td><td>Referansta tek renk aksanı; markanın kendi kırmızısı</td></tr>
+<tr><td>Kırmızı</td><td class="mono">#BD2120</td><td>Mührün kırmızısıyla <b>aynı</b> — iki kırmızı yok</td></tr>
+</table>
+<p class="small">Referansın asıl davranışı taklit edildi: <b>her satır ortak bir ölçüye gerekçelendirilir</b>, her satır o ölçü için kendi harf aralığını bulur. Bu yüzden <span class="mono">ASYA’DA</span> sık, <span class="mono">EĞİTİM</span> açık, <span class="mono">EDUCATION IN ASIA</span> çok açık set eder — üçü de tam olarak aynı genişlikte.</p>
+
+<div class="note">
+<b>Ölçü doğrulaması — ölçülerek, gözle değil.</b> 13 satarın tamamı ortak ölçüye hizalandı. En büyük artık <b>0.026 px</b> (ölçek 400–900 px üzerinde). Takip değerleri: Türkçe satır 1 <b>+6</b>, satır 2 <b>+153</b>, İngilizce <b>+177…+390</b> /1000 em.
+</div>
+
+<h2>Türkçe karakter ve apostrof testi</h2>
+<img class="sheet" src="assets/glyph-test.svg" alt="Türkçe glif ve apostrof testi">
+<p class="small">Gerçek font konturlarından çizildi — <span class="mono">&lt;text&gt;</span> etiketi kullanılmadı. Ğ Ğ İ İ Ş Ş Ç Ç Ö Ö Ü Ü ve küçük karşılıkları ile noktasız <span class="mono">ı</span> / <span class="mono">i</span> ayrımı üç ağırlıkta doğrulandı. 13 px büyük harf yüksekliğinde diyakritikler hâlâ okunuyor.</p>
+
+<h2>Beş varyant — yan yana</h2>
+<p class="small">Her kart: büyük gösterim · açık zemin · koyu zemin · küçük boyutlar · kullanım örneği · ölçüler.</p>
+<div class="vgrid" id="vgrid"></div>
+
+<h2>Varyant ölçü tablosu</h2>
+<table id="specs">
+<tr><th>ID</th><th>Varyant</th><th>Hizalama</th><th>Satır kırılması</th><th>Ölçü</th><th>TR büyük harf / ölçü</th><th>EN / TR</th><th>Mühür / TR cap</th><th>En-boy</th><th>Min genişlik</th></tr>
+</table>
+
+<h2>Koyu / mono sürüm — ne değişiyor, ne değişmiyor</h2>
+<div class="note">
+<b>Yalnızca renk.</b> Koyu sürüm, mührün <code>fill</code> özniteliklerini değiştirir: alan <code>#F7F3E9</code>, işaret <code>#141210</code> olur (onaylı <span class="mono">mono-paper</span> varyantı). Kanonik geometri — <span class="mono">d</span>, <span class="mono">x</span>, <span class="mono">y</span>, <span class="mono">width</span>, <span class="mono">height</span>, <span class="mono">rx</span> — kilitli dosyayla bayt bayt aynıdır. Hiçbir yol, eğri veya ölçü değiştirilmedi.
+</div>
+<table>
+<tr><th>Varyant</th><th>Açık zemin</th><th>Koyu / mono</th><th>Geometri farkı</th></tr>
+<tr id="geo"><td colspan="4" class="mono">—</td></tr>
+</table>
+
+<h2>Minimum boyut ve kullanım kuralları</h2>
+<table>
+<tr><th>Varyant</th><th>Min genişlik</th><th>Min yükseklik</th><th>Nerede</th><th>Alt sınırın altında</th></tr>
+<tr><td class="mono">P-01</td><td>170 px</td><td>190 px</td><td>Kurumsal belge, broşür kapak, imza bloğu</td><td class="mono">H-02'ye geç</td></tr>
+<tr><td class="mono">H-02</td><td>250 px</td><td>87 px</td><td>Web header, e-posta imzası, antet</td><td class="mono">C-03'e geç</td></tr>
+<tr><td class="mono">C-03</td><td>165 px</td><td>68 px</td><td>Dar yerleşim: altbilgi, sıkışık şerit, form</td><td class="mono">D-04'e geç</td></tr>
+<tr><td class="mono">D-04</td><td>110 px</td><td>80 px</td><td>Avatar, favicon rozeti, küçük UI, damga</td><td class="mono">Yalnız mühür (kanonik SVG)</td></tr>
+<tr><td class="mono">F-05</td><td>300 px</td><td>105 px</td><td>Resmi belge, sözleşme, diploma, sertifika</td><td class="mono">H-02'ye geç</td></tr>
+</table>
+
+<div class="note">
+<h3 style="margin-top:0">D-04 neden İngilizce satırı düşürüyor</h3>
+<p class="small">Bu tahmin değil, ölçüm. Tek satırlık Türkçe ölçü 13 karakter; İngilizce satır 17 karakter. Ortak ölçüye gerekçelenmesi için ya <b>+940/1000 em</b> harf aralığı gerekiyor (aşırı hava gibi görünüyor) ya da İngilizce <b>0.48</b> büyük harf yüksekliğine çıkıyor (TR/EN hiyerarşisi çöküyor). İkisinin de küçük boyutta sonucu gri bulanıklık. Bu yüzden D-04 tek dilli küçük kullanım kilididir; <b>200 px üzerinde iki dilli kilitler devreye girer.</b> Bu bir karar noktasıdır — onay bekliyor.</p>
+</div>
+
+<h2>Neyin değişmediği</h2>
+<ul>
+<li>Mühür geometrisi: kilitli kanonik SVG'den birebir. <code class="mono">8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a</code></li>
+<li>Yüz, ağırlıklar, palet, apostrof: beş varyantta de aynı</li>
+<li>Görsel üretim: <b>0 çağrı</b>. Her şey gerçek font konturu ve gerçek SVG yolu</li>
+<li>Tipografi <span class="mono">&lt;text&gt;</span> ile değil yollarla çizildi — hiçbir yerde font bağımlılığı yok</li>
+</ul>
+
+<div class="pending">İNSAN LOCKUP SEÇİMİ BEKLENİYOR</div>
+<p class="small" style="text-align:center"><a href="../">← Mühür galerisine dön</a></p>
+
+</div>
+
+<script>
+const V=[
+ {id:"P-01",name:"Primary stacked",arrange:"stacked",align:"Merkez",br:"ASYA’DA ⏎ EĞİTİM ⏎ EDUCATION IN ASIA",
+  m:"431.4",ratio:"0.167",enr:"0.28 × Light",seal:"3.24",asp:"0.89",minw:170,minh:190,
+  use:"Kurumsal belge, broşür kapak, imza bloğu — dikey alan"},
+ {id:"H-02",name:"Primary horizontal",arrange:"Yatay",align:"Sol",br:"ASYA’DA ⏎ EĞİTİM ⏎ EDUCATION IN ASIA",
+  m:"491.3",ratio:"0.167",enr:"0.28 × Light",seal:"3.42",asp:"2.87",minw:250,minh:87,
+  use:"Web header, e-posta imzası, antet — mühür yüksekliği = metin bloğu yüksekliği"},
+ {id:"C-03",name:"Compact",arrange:"Yatay",align:"Sol",br:"ASYA’DA ⏎ EĞİTİM ⏎ EDUCATION IN ASIA",
+  m:"527.3",ratio:"0.167",enr:"0.30 × Light",seal:"1.88",asp:"2.44",minw:165,minh:68,
+  use:"Altbilgi, sıkışık şerit, form — mühür geri çekilir, metin öne geçer"},
+ {id:"D-04",name:"Small-use / digital",arrange:"Dikey",align:"Merkez",br:"ASYA’DA EĞİTİM",
+  m:"772.7",ratio:"0.088",enr:"— (İngilizce yok)",seal:"7.04",asp:"1.38",minw:110,minh:80,
+  use:"Avatar, favicon rozeti, küçük UI, damga — tek dilli"},
+ {id:"F-05",name:"Formal bilingual",arrange:"Yatay",align:"Sol",br:"ASYA’DA ⏎ EĞİTİM ⏎ ─── ⏎ EDUCATION IN ASIA",
+  m:"515.3",ratio:"0.167",enr:"0.36 × Light",seal:"3.42",asp:"2.86",minw:300,minh:105,
+  use:"Resmi belge, sözleşme, diploma — kırmızı ince çizgi dil sınırını belirtir"}
+];
+
+const DISP={"P-01":230,"H-02":420,"C-03":400,"D-04":230,"F-05":420};
+const SMALL={"P-01":[170,120,90],"H-02":[250,180,120],"C-03":[165,120,90],"D-04":[110,80,56]};
+const MOCK={"P-01":"Belge altı","H-02":"Web header","C-03":"Altbilgi","D-04":"Avatar","F-05":"Sertifika"};
+
+const grid=document.getElementById("vgrid");
+V.forEach(v=>{
+  const d=document.createElement("div"); d.className="card";
+  const small=(SMALL[v.id]||[v.minw,v.minw*0.6,v.minw*0.4]).map(w=>
+    '<figure><img src="assets/svg/'+v.id+'.svg" width="'+w+'" alt="'+v.id+' '+w+'px"><figcaption>'+w+' px</figcaption></figure>').join("");
+  d.innerHTML=
+   '<header><span class="id">'+v.id+'</span><h3>'+v.name+'</h3><span class="id">'+v.asp+' : 1</span></header>'+
+   '<div class="body">'+
+     '<div class="stage"><img src="assets/svg/'+v.id+'.svg" width="'+DISP[v.id]+'" alt="'+v.name+' büyük gösterim"></div>'+
+     '<div class="swatches">'+
+       '<div class="cell light"><img src="assets/svg/'+v.id+'.svg" alt="açık zemin"></div>'+
+       '<div class="cell dark"><img src="assets/svg/'+v.id+'-mono.svg" alt="koyu zemin"></div>'+
+       '<div class="cell brand"><img src="assets/svg/'+v.id+'.svg" alt="marka zemini"></div>'+
+     '</div>'+
+     '<div class="sizes"><div class="row">'+small+'</div></div>'+
+     '<div class="mock"><div class="line"><img src="assets/svg/'+v.id+'.svg" height="26" alt="kullanım örneği">'+
+       '<span class="r">'+MOCK[v.id]+'<br>min '+v.minw+' px</span></div>'+
+       '<div class="line"><img src="assets/svg/'+v.id+'.svg" height="18" alt="kullanım örneği">'+
+       '<span class="r">'+MOCK[v.id]+' · 18 px yükseklik</span></div>'+
+     '</div>'+
+     '<div class="spec">'+
+       'hizalama &nbsp;<b>'+v.align+'</b><br>'+
+       'kırılma &nbsp;&nbsp;<b>'+v.br+'</b><br>'+
+       'ölçü &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>'+v.m+' px</b> · TR/ölçü <b>'+v.ratio+'</b><br>'+
+       'EN/TR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>'+v.enr+'</b><br>'+
+       'mühür/TR <b>'+v.seal+'</b> · min <b>'+v.minw+' × '+v.minh+' px</b>'+
+     '</div>'+
+   '</div>';
+  grid.appendChild(d);
+});
+
+const st=document.getElementById("specs");
+V.forEach(v=>{
+  const r=st.insertRow(-1);
+  [v.id,'<b>'+v.name+'</b>',v.align,v.br.replace(/ ⏎/g,"<br>"),v.m,v.ratio,v.enr,v.seal,v.asp,v.minw+" px"]
+   .forEach(c=>{const cell=r.insertCell();cell.innerHTML=c;});
+});
+
+document.getElementById("geo").innerHTML=
+ "5 varyant × 2 sürüm · <b>0</b> geometrik fark · her biri kilitli kanonik mührün aynı "+
+ "<span class='mono'>d</span> / <span class='mono'>rx</span> değerlerini taşıyor";
+</script>
+</body></html>
