@@ -74,9 +74,17 @@
   <div class="warn"><b>Güneş/tepe birleşmesi düzeltildi.</b> A2'de oyuk bir kubbe olarak
   yumuşatılmış ve y=120'de bitiyordu; bu yüzden tepe ucu onu doldurup güneşi sırtla
   <b>tek bileşende</b> birleştiriyordu. Kaynakta oyuk düz kenarlı bir V'dir, tepe ucu
-  içine girer ve aralarında kırmızı boşluk kalır. Düzeltmede güneş, girintiyi zaten içeren
-  <b>kendi raster konturuyla</b> yeniden kuruldu — kusursuz daire orada yanlış ilkel:
-  tepe satırında daire 15px geniş, kaynak 26px.</div>
+  içine girer ve aralarında kırmızı boşluk kalır.</div>
+  <p class="mono">Güneş <b>daire eksi oyuk</b> olarak yeniden kuruldu: gövde, oyuk bölgesi
+  hariç sınır noktalarından least-squares ile oturtulan bir daire —
+  <b>cx 200.24 · cy 77.78 · r 45.47</b>, artık hata en fazla <b>0.58px</b> — ve dört kübik
+  yay olarak çizildi. Yalnızca oyığın köşeleri düz kaldı; kaynakta onlar gerçekten düz.
+  Oyuk ise doğrudan maskenin kendi kırmızı boşluğundan satır satır okundu (y=116'da
+  x=199–202, y=122'de x=193–208), her satırda 1px içinde tutuluyor.</p>
+  <p class="mono">Bu arada ilk denemede iki ayrı yön hatası vardı ve ikisi de sessizce
+  oyuğu <b>dolduruyordu</b>: yayın oyuk üzerinden geçmesi (SVG'de y=90° aşağı olduğu için
+  uzun yol <b>azalan</b> açıyla dönmeli), ve oyuk dönüş yolunun yanlış yönde kurulması.
+  İkisi de piksel sayımıyla yakalandı, gözle değil.</p>
 
   <h3 class="sec">Tespit edilen farklar</h3>
   <ol class="call">
