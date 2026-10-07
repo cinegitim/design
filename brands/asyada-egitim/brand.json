@@ -2,7 +2,37 @@
   "name": "Asya'da Eğitim",
   "slug": "asyada-egitim",
   "englishName": "Education in Asia",
-  "status": "visual-exploration",
-  "approvedDirection": null,
-  "canonicalIdentity": false
+  "status": "canonical",
+  "approvedDirection": "V-01",
+  "canonicalIdentity": true,
+  "canonicalLogo": {
+    "locked": true,
+    "approvedOn": "2026-10-07",
+    "path": "brands/asyada-egitim/assets/v01-canonical.svg",
+    "sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "bytes": 4543,
+    "viewBox": "0 0 400 370",
+    "sourceRaster": "brands/asyada-egitim/explorations/visual-round-7-seal-variants/seal-v-01/image-1790886610188.png",
+    "decisionRecord": "brands/asyada-egitim/decisions/2026-10-07-v01-canonical-lock.md",
+    "verify": "studio/tools/verify-canonical-logo.sh",
+    "regenerate": false,
+    "neverImageModel": true,
+    "allowedPlacementOnly": [
+      "position",
+      "size",
+      "clearspace",
+      "approvedVariant"
+    ],
+    "approvedVariants": [
+      "full-colour",
+      "mono-ink",
+      "mono-paper",
+      "one-colour-white"
+    ],
+    "perspectiveSurfaces": "escalate-to-mockup-workflow",
+    "flatDesign": "reserve-logo-safe-area-then-composite"
+  },
+  "outputManifestRequired": [
+    "canonical_logo_sha256"
+  ]
 }

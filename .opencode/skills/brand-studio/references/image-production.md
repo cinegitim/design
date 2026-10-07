@@ -48,3 +48,23 @@ Unchanged: explicit `/brand-review` only. Never invoke automatically after gener
 ## Source of truth (fidelity transfer)
 
 A selected direction's generated image is the VISUAL SOURCE OF TRUTH until production proves aesthetic parity. Reconstruct toward it (finer variance, gradient/glow where vector-native, dark-field authority, type rhythm) rather than regularizing it away. Full pipeline: `identity-development.md`; comparison protocol: `visual-quality.md`.
+
+## Locked logos — never regenerate
+
+Once a human approves a logo, it stops being a design task and becomes a locked asset. Check `brands/<slug>/brand.json` for `canonicalLogo.locked` **before any raster work**.
+
+If a canonical logo exists, these rules are absolute:
+
+- **Never** prompt an image model to draw, recreate, imitate, approximate, trace or typeset the logo — not in a mockup, not in a scene, not "just for texture", not as a background element, not at low priority in a longer prompt.
+- **Always** composite the exact canonical SVG file from disk.
+- Image models generate the **visual / background / composition only**. The logo is never part of the generated pixels.
+- The only permitted changes are **placement parameters**: position, size, clearspace, and an approved colour variant. The underlying geometry never changes — no restyling, no re-colouring outside the approved variants, no re-fitting, no re-simplifying.
+- If a brand needs the logo **inside a flat design**, reserve a clean logo-safe area during generation (empty, uncluttered, correct contrast) and composite the canonical SVG into it afterward.
+- If a brand needs the logo on a **perspective or physical surface** (billboard, packaging wrap, signage in-scene, garment), do **not** attempt it by regeneration. Flag it for the separate perspective/mockup workflow, which warps the same canonical asset deterministically.
+- Every final branded output records `canonical_logo_sha256` in its manifest. Verify the asset is intact first:
+
+```sh
+studio/tools/verify-canonical-logo.sh
+```
+
+A locked logo is finished. Requests to "improve", "clean up" or "refine" it are declined; only an explicit new human decision plus a new lock record can change a canonical asset.
