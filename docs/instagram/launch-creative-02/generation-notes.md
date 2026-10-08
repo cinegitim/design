@@ -1,5 +1,9 @@
 # Image-first art direction — Experiment 02
 
+## Placement revision 02
+
+The five original compositions remain unchanged. This revision adds no image-model calls. It replaces the first logo/copy implementation with individually positioned, naturally proportioned Jost text rendered by Chromium and complete canonical SVG lockups. Original-paper texture cleanups (slide 02 title strip / slide 05 destination strip) and a local contrast shade (slide 02 floor) are transparent, separately editable assets; no canonical geometry is altered. `history/v1/` retains the superseded PNGs and source records.
+
 Five distinct gpt-image-2 compositions were generated before any slide HTML or SVG layout was authored. The image model supplied full-bleed photographic collage, atmosphere, crop, paper/ink treatments, movement, and the original typographic/copy apertures. Exact campaign copy and the canonical lockups were added only after art direction, as editable Jost SVG text and verbatim approved lockup SVGs.
 
 | Slide | Image-first visual brief | Reconstruction strategy |

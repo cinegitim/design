@@ -36,8 +36,14 @@ for slide in M["slides"]:
     editable=next(el for el in source_root.iter() if el.attrib.get('id')=='editable-campaign-copy')
     encoded_copy=json.loads(editable.attrib.get('data-exact-copy-json','[]'))
     assert encoded_copy==slide['copy'], slide['id']+" editable SVG copy mismatch"
+    # Verify visible text, not merely descriptive metadata.
+    visible=' '.join((el.text or '') for el in editable.iter() if el.tag.endswith('}text'))
+    assert ' '.join(visible.split())==' '.join(' '.join(slide['copy']).split()), slide['id']+' visible copy mismatch'
+    assert slide['render_validation']['jostLoaded']
+    assert not slide['render_validation']['issues'], slide['id']+' render collision/clipping issue'
     im=Image.open(final).convert('RGB')
     im.resize((324,405),Image.Resampling.LANCZOS).save(OUT/f"{slide['id']}-324x405.png",optimize=True)
+    im.resize((375,469),Image.Resampling.LANCZOS).save(OUT/f"{slide['id']}-375x469.png",optimize=True)
     finals.append((slide,im))
     # Compare against crop/scale of exact source art; guard against flattening the original design.
     source_img=ImageOps.fit(Image.open(original).convert('RGB'),(1080,1350),method=Image.Resampling.LANCZOS)
@@ -46,7 +52,7 @@ for slide in M["slides"]:
     changed_pct=round(changed/(1080*1350)*100,2)
     assert changed_pct < 55, f"{slide['id']} reconstruction altered too much of source ({changed_pct}%)"
     # Confirm actual logo-region pixel changes, not only a manifest declaration.
-    x,y=slide['logo_x_y_px']; w=slide['logo_width_px']; ar={"P-01":1.017,"C-03":2.312,"D-04":2.612,"H-02":2.666}[slide['canonical_lockup_id'].split('/')[0]]; h=round(w/ar)
+    x,y=slide['logo_x_y_px']; w=slide['logo_width_px']; h=round(slide['logo_height_px'])
     logo_diff=diff.crop((x,y,min(1080,x+w),min(1350,y+h)))
     logo_pixels=sum(1 for px in logo_diff.getdata() if px>45)
     assert logo_pixels>1200, f"{slide['id']} logo zone not genuinely composited"
@@ -68,33 +74,54 @@ for i,(o,f,label) in enumerate(pair_images):
     d.text((i*360+184,232),"FINAL",font=small,fill='#f7f3e9')
 pair.save(HERE/'original-to-final-contact-sheet.jpg',quality=91,optimize=True)
 
+# Before/after implementation comparison; archival PNGs remain byte-for-byte v1.
+revision_pair=Image.new('RGB',(10*216,294),'#17181b'); d=ImageDraw.Draw(revision_pair)
+for i,(slide,im) in enumerate(finals):
+    before=HERE/'history/v1/final'/Path(slide['final_file']).name
+    if before.exists():
+        old=Image.open(before).convert('RGB').resize((216,270),Image.Resampling.LANCZOS)
+        revision_pair.paste(old,(i*432,0))
+        revision_pair.paste(im.resize((216,270),Image.Resampling.LANCZOS),(i*432+216,0))
+        d.text((i*432+8,274),f"0{i+1}  V1",font=small,fill='#f7f3e9')
+        d.text((i*432+224,274),f"0{i+1}  V2",font=small,fill='#f7f3e9')
+revision_pair.save(HERE/'placement-v1-v2-contact-sheet.jpg',quality=94,optimize=True)
+
 # Verify every copied lockup against canonical manifest.
-canonical=json.loads((ROOT/'brands/asyada-egitim/assets/lockups/canonical-lockups.json').read_text())
+canonical_path=ROOT/'brands/asyada-egitim/assets/lockups/canonical-lockups.json'
+if not canonical_path.exists(): canonical_path=HERE/'assets/canonical-lockups.json'
+canonical=json.loads(canonical_path.read_text())
 records={r['canonical_lockup_id']:r for r in canonical['records']}
 for slide in M['slides']:
     rec=records[slide['canonical_lockup_id']]
     asset=ROOT/rec['canonical_file_path']
-    assert sha(asset)==rec['sha256']==slide['canonical_lockup_sha256']
+    if asset.exists(): assert sha(asset)==rec['sha256']
+    assert rec['sha256']==slide['canonical_lockup_sha256']
     copied=HERE/'assets/lockups'/asset.name
     assert sha(copied)==rec['sha256']
 
 M['pixel_integrity_review']=integrity
 M['package_file']='package/launch-carousel-5slides.zip'
-M['mobile_preview_files']=[f"mobile/{s['id']}-324x405.png" for s in M['slides']]
+M['mobile_preview_files']=[f"mobile/{s['id']}-375x469.png" for s in M['slides']]
 M['contact_sheet_file']='contact-sheet.png'
 M['source_vs_final_contact_sheet_file']='original-to-final-contact-sheet.jpg'
+M['revision_comparison_file']='placement-v1-v2-contact-sheet.jpg'
 (HERE/'manifest.json').write_text(json.dumps(M,ensure_ascii=False,indent=2))
 
-readme='''# Asya’da Eğitim — Launch Carousel Experiment 02\n\nFive publishable 1080×1350 PNGs are at the ZIP root, named 01-cover.png through 05-invitation.png.\n\n- `originals/`: unmodified generated artwork used as the visual source of truth (plus initial slide-05 version).\n- `source/`: editable SVG reconstructions with linked originals and canonical SVG lockups.\n- `assets/`: Jost variable font and verbatim manifest-listed canonical lockup SVGs.\n- `build.py`: deterministic SVG/PNG build.\n- `manifest.json`: exact copy, hashes, provenance, pixel-difference/fidelity metrics, and canonical lockup IDs/hashes.\n\nAI people/places are illustrative; no exact institution or landmark is claimed. Review pending; not published to Instagram.\n'''
+readme='''# Asya’da Eğitim — Launch Carousel Experiment 02 / placement revision 02\n\nFive 1080×1350 PNGs are at the ZIP root: 01-cover.png … 05-invitation.png. They are also in `final/` so all manifest paths resolve.\n\n- `originals/`: unmodified generated artwork; initial slide-05 version retained.\n- `source/`: editable SVG and HTML sources; Jost is embedded in SVG, canonical marks linked unchanged.\n- `assets/`: Jost, canonical manifest, verbatim SVG lockups and transparent, separately editable paper/contrast cleanup layers.\n- `render-validation.json`: actual Chromium font loading and glyph/complete-mark collision/clearspace metrics.\n\nRebuild: Python 3 + Pillow, Node.js + playwright-core and Chrome. Install with `npm install playwright-core`, set CHROME_PATH if not on macOS; `python3 build.py && python3 verify_and_package.py`. In a temporary install, set PLAYWRIGHT_MODULE to the absolute playwright-core directory.\n\nAI people/places are illustrative. Human review pending; not published to Instagram.\n'''
 (HERE/'package/README.md').write_text(readme,encoding='utf-8')
 zip_path=HERE/'package/launch-carousel-5slides.zip'
 if zip_path.exists(): zip_path.unlink()
 with zipfile.ZipFile(zip_path,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=8) as z:
     for slide in M['slides']:
         p=HERE/slide['final_file']; z.write(p,Path(slide['final_file']).name)
-    paths=[HERE/'manifest.json',HERE/'build.py',HERE/'verify_and_package.py',HERE/'generation-notes.md',HERE/'quality-review.md',HERE/'package/README.md',JOST,HERE/'contact-sheet.png',HERE/'original-to-final-contact-sheet.jpg']
+        z.write(p,slide['final_file'])
+    paths=[HERE/'manifest.json',HERE/'build.py',HERE/'render.mjs',HERE/'render-validation.json',HERE/'verify_and_package.py',HERE/'generation-notes.md',HERE/'quality-review.md',HERE/'package/README.md',JOST,HERE/'contact-sheet.png',HERE/'original-to-final-contact-sheet.jpg',HERE/'placement-v1-v2-contact-sheet.jpg']
     paths += sorted((HERE/'originals').glob('*.png'))
     paths += sorted((HERE/'source').glob('*.svg'))
+    paths += sorted((HERE/'source').glob('*.html'))
+    paths += sorted((HERE/'assets').glob('*.png'))
+    paths += sorted((HERE/'assets').glob('*.json'))
+    paths += sorted((HERE/'assets').glob('*.txt'))
     paths += sorted((HERE/'assets/lockups').glob('*.svg'))
     for p in paths:
         z.write(p,p.relative_to(HERE))

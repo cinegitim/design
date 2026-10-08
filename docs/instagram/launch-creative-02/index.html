@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Launch Carousel Experiment 02 — Asya’da Eğitim</title>
+<title>Launch Carousel Experiment 02 — Yerleşim revizyonu 02</title>
 <style>
 @font-face{font-family:Jost;src:url(assets/Jost-VF.ttf) format('truetype');font-weight:100 900;font-display:swap}
 :root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120;--muted:#a8a7a3}*{box-sizing:border-box}
@@ -20,9 +20,9 @@ h1{font-size:clamp(42px,7vw,82px);line-height:.98;letter-spacing:-.055em;max-wid
 .dots{display:flex;gap:9px}.dots button{width:34px;height:34px;padding:0;border-radius:50%;border:1px solid #777;background:transparent}.dots button[aria-current=true]{background:var(--red);border-color:var(--red)}
 .download{display:inline-block;background:var(--paper);color:var(--ink);padding:12px 16px;text-decoration:none;font-weight:700;margin-top:20px}
 .thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:0 0 55px}.thumbs button{padding:5px;background:#1e1f23;border:1px solid #36373b;text-align:left}.thumbs button[aria-current=true]{border:2px solid #e36b64}.thumbs img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}.thumbs span{display:block;padding:6px 4px 2px;font-size:13px}
-section.detail{border-top:1px solid #393a3e;padding:34px 0 46px}.section-title{display:flex;align-items:baseline;gap:14px}.section-title b{color:#e36b64;font-size:22px}.section-title h2{font-size:32px;margin:0}.detail-copy{max-width:850px;color:#cbc7c0;margin:8px 0 22px}
+.detail{border-top:1px solid #393a3e;padding:34px 0 46px}.section-title{display:flex;align-items:baseline;gap:14px}.section-title b{color:#e36b64;font-size:22px}.section-title h2{font-size:32px;margin:0}.detail-copy{max-width:850px;color:#cbc7c0;margin:8px 0 22px}
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1020px}.frame{padding:12px;background:#1c1d21;border:1px solid #34353a}.frame img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#08090b}.frame h3{font-size:17px;margin:0 0 10px}.frame p{font-size:13px;color:#bdb9b2;margin:9px 0 0}
-.mobile-row{display:flex;gap:15px;overflow:auto;padding:12px 0 26px}.mobile{flex:0 0 230px}.mobile img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border:1px solid #4a4b50}.mobile label{display:block;margin-top:7px;font-size:13px;color:#c8c4bc}
+.mobile-row{display:flex;gap:15px;overflow:auto;padding:12px 0 26px}.mobile{flex:0 0 min(375px,100%)}.mobile img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border:1px solid #4a4b50}.mobile label{display:block;margin-top:7px;font-size:13px;color:#c8c4bc}
 .files{background:#1b1c20;padding:22px;margin:28px 0}.files ul{display:flex;flex-wrap:wrap;gap:18px 28px;padding-left:20px}.files li{margin:3px 0}.small{font-size:13px;color:#b7b3ac}footer{padding:24px 0 55px;color:#aaa69f;font-size:13px;border-top:1px solid #393a3e}
 @media(max-width:760px){.wrap{width:min(100% - 28px,580px)}header{padding-top:32px}.hero{grid-template-columns:1fr;gap:20px}.viewer{width:min(100%,430px)}.side{max-width:540px;margin:auto}.thumbs{gap:6px}.thumbs span{font-size:11px}.compare{grid-template-columns:1fr}.section-title h2{font-size:27px}.lede{font-size:16px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
@@ -30,26 +30,28 @@ section.detail{border-top:1px solid #393a3e;padding:34px 0 46px}.section-title{d
 </head>
 <body>
 <header><div class="wrap">
- <div class="kicker">Asya’da Eğitim　·　Instagram launch carousel　·　Experiment 02</div>
+  <div class="kicker">Asya’da Eğitim　·　Experiment 02　·　Yerleşim revizyonu 02</div>
  <h1>Üniversite için<br>başka bir dünya var.</h1>
- <p class="lede">Beş özgün, gpt-image-2 ile görsel kompozisyonu önden üretilmiş slayt. Kolaj, sinematik öğrenci deneyimi ve kinetik tipografi tek kampanyada; exact Türkçe metin ve kanonik lockup’lar sonradan düzenlenebilir SVG katmanları olarak kuruldu.</p>
+ <p class="lede">Görsel yön korundu; beş slaytın metin ve logo yerleşimleri yeniden kuruldu. Gerçek Jost ağırlıkları, doğal harf oranları, kâğıt/fotoğraf sınırlarına uyan satır kırılımları ve kompozisyona göre değişen kanonik logo konumları.</p>
  <div class="notice"><b>Deneysel inceleme.</b> Bu sayfa ve carousel Instagram’da yayınlanmadı. Her slayt önce özgün kompozisyonunu, ardından aynı kompozisyonun doğru metin ve tam kanonik logo ile yeniden kurulmuş halini gösterir. Görseller AI ile üretilmiş temsili kampüs/şehir atmosferleridir.</div>
 </div></header>
 <main class="wrap">
  <div class="hero">
   <div class="viewer"><img id="heroImage" src="final/01-cover.png" alt="01 — kapak, tamamlanmış branded slide"><span id="heroIndex" class="index">01 / 05</span></div>
-  <div class="side"><div class="kicker">Interactive carousel</div><h2 id="heroTitle">01 — The Hook</h2><p id="heroText">Kapağı ve tüm beş slaytı ok tuşlarıyla, düğmelerle ya da aşağıdaki küçük görsellerle gez.</p>
+   <div class="side"><div class="kicker" id="revisionLabel">Yeni yerleşimler · v2</div><h2 id="heroTitle">01 — The Hook</h2><p id="heroText">Beş slaytı gez; aynı slaytta eski ve yeni yerleşimler arasında geçiş yap.</p>
+   <div class="mode"><button id="modeCurrent" aria-pressed="true">Yeni · v2</button> <button id="modePrevious" aria-pressed="false">Önceki · v1</button></div>
    <div class="controls"><button id="prev" aria-label="Önceki slayt">← Önceki</button><button id="next" aria-label="Sonraki slayt">Sonraki →</button></div>
    <div id="dots" class="dots" aria-label="Slayt seçimi"></div>
    <a class="download" href="package/launch-carousel-5slides.zip" download>5 PNG carousel paketini indir ↓</a>
   </div>
  </div>
  <nav class="thumbs" aria-label="Carousel thumbnails" id="thumbs"></nav>
- <figure class="files"><figcaption class="small">Beş final PNG’nin tek kare kontak sayfası · tümü 1080×1350</figcaption><a href="contact-sheet.png"><img src="contact-sheet.png" alt="Beş carousel slaytının tamamını gösteren kontak sayfası" style="display:block;width:100%;height:auto;margin-top:10px"></a></figure>
+  <figure class="files"><figcaption class="small">Beş final PNG’nin tek kare kontak sayfası · tümü 1080×1350</figcaption><a href="contact-sheet.png"><img src="contact-sheet.png" alt="Beş carousel slaytının tamamını gösteren kontak sayfası" style="display:block;width:100%;height:auto;margin-top:10px"></a></figure>
+  <figure class="files"><figcaption class="small">Her çiftte solda önceki yerleşim, sağda yeni yerleşim. <a href="history/v1/">Eski sürüm arşivi</a></figcaption><a href="placement-v1-v2-contact-sheet.jpg"><img src="placement-v1-v2-contact-sheet.jpg" alt="Beş slayt için önceki ve yeni yerleşimlerin yan yana karşılaştırması" style="display:block;width:100%;height:auto;margin-top:10px"></a></figure>
  <section><div class="section-title"><b>01—05</b><h2>Orijinal kompozisyon → üretim rekonstrüksiyonu</h2></div><p class="detail-copy">Solda gpt-image-2’nin logosuz, özgün görüntü kompozisyonu; sağda aynı raster kompozisyonun üstüne kurulan son 1080×1350 SVG üretim katmanı. Üretim kaynağında fotoğraf, exact metin, Jost ve canonical SVG ayrı ayrı düzenlenebilir/izlenebilir.</p><div id="comparisons"></div></section>
- <section><div class="section-title"><b>375 px</b><h2>Mobil ölçekte hızlı kontrol</h2></div><p class="detail-copy">Önizlemeler 324×405 px’e küçültülmüştür; PNG teslimleri 1080×1350 px olarak kalır.</p><div class="mobile-row" id="mobilePreviews"></div></section>
+  <section><div class="section-title"><b>375 px</b><h2>Mobil ölçekte hızlı kontrol</h2></div><p class="detail-copy">Önizlemeler 375×469 px; PNG teslimleri 1080×1350 px olarak kalır. 03’teki dar ülke etiketleri ve 05’in ince İngilizce imzası bu ölçekte ikincil okumadır.</p><div class="mobile-row" id="mobilePreviews"></div></section>
  <section class="files"><div class="section-title"><b>FILES</b><h2>Üretim ve doğrulama</h2></div><ul>
-  <li><a href="manifest.json">İçerik + canonical logo manifesti</a></li><li><a href="generation-notes.md">Image-first art direction notları</a></li><li><a href="contact-sheet.png">Beşli final kontak sayfası</a></li><li><a href="original-to-final-contact-sheet.jpg">Original → final karşılaştırma şeridi</a></li><li><a href="quality-review.md">Kritik görsel değerlendirme</a></li><li><a href="build.py">Tekrarlanabilir build source</a></li><li><a href="package/launch-carousel-5slides.zip">Publishable carousel ZIP</a></li>
+   <li><a href="manifest.json">İçerik + canonical logo manifesti</a></li><li><a href="render-validation.json">Font ve çakışma kontrolleri</a></li><li><a href="generation-notes.md">Image-first art direction notları</a></li><li><a href="contact-sheet.png">Beşli final kontak sayfası</a></li><li><a href="original-to-final-contact-sheet.jpg">Original → final karşılaştırma şeridi</a></li><li><a href="quality-review.md">Kritik görsel değerlendirme</a></li><li><a href="build.py">Tekrarlanabilir build source</a></li><li><a href="package/launch-carousel-5slides.zip">Güncel PNG + kaynak ZIP</a></li>
  </ul><p class="small">Her final PNG’de manifestte belirtilen tam, kanonik SVG lockup bulunur. SVG üretim kaynakları <code>source/</code> içinde; kullanılan original kompozisyonlar <code>originals/</code> içinde; kilitli logo SVG’leri ve Jost fontu <code>assets/</code> içinde.</p></section>
 </main><footer><div class="wrap">HUMAN EXPERIMENTAL CAMPAIGN REVIEW PENDING · Instagram’da yayınlanmadı · Asya’da Eğitim canonical logo geometry unchanged.</div></footer>
 <script>
@@ -60,16 +62,18 @@ const slides=[
  {id:'04-experience',file:'04-experience.png',original:'04-experience.png',title:'04 — Education Is Also an Experience',alt:'Human-centered academic and social collage'},
  {id:'05-invitation',file:'05-invitation.png',original:'05-invitation.png',title:'05 — The Brand Invitation',alt:'Ink-dominant bilingual brand finale'}
 ];
-const images={hero:document.querySelector('#heroImage'),index:document.querySelector('#heroIndex'),title:document.querySelector('#heroTitle'),dots:document.querySelector('#dots'),thumbs:document.querySelector('#thumbs')};let current=0;
+const images={hero:document.querySelector('#heroImage'),index:document.querySelector('#heroIndex'),title:document.querySelector('#heroTitle'),dots:document.querySelector('#dots'),thumbs:document.querySelector('#thumbs')};let current=0,previous=false;
 const comps=document.querySelector('#comparisons'),mobile=document.querySelector('#mobilePreviews');
 slides.forEach((s,i)=>{
  const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`Slayt ${i+1}: ${s.title}`);b.innerHTML=`<img src="final/${s.file}" alt=""><span>0${i+1} · ${s.title.split('— ')[1]}</span>`;b.addEventListener('click',()=>show(i));images.thumbs.appendChild(b);
  const d=document.createElement('button');d.type='button';d.textContent=String(i+1).padStart(2,'0');d.setAttribute('aria-label',`Slayt ${i+1}`);d.addEventListener('click',()=>show(i));images.dots.appendChild(d);
  const initialNote=i===4?` <a href="originals/05-invitation-first.png">İlk üretim (hedefli çatı düzeltmesinden önce)</a>`:'';
  const section=document.createElement('article');section.className='detail';section.id=s.id;section.innerHTML=`<div class="section-title"><b>0${i+1}</b><h2>${s.title.replace(/^0\d — /,'')}</h2></div><p class="detail-copy">${s.alt}</p><div class="compare"><div class="frame"><h3>Original · ChatGPT Image composition</h3><a href="originals/${s.original}" target="_blank"><img loading="lazy" src="originals/${s.original}" alt="${s.title} — generated original art"></a><p>Original visual artwork; no canonical lockup sent to the image model.${initialNote}</p></div><div class="frame"><h3>Final · 1080×1350 PNG</h3><a href="final/${s.file}" target="_blank"><img loading="lazy" src="final/${s.file}" alt="${s.title} — exact copy and canonical logo reconstructed"></a><p><a href="final/${s.file}" download>PNG’yi indir</a> · <a href="source/${s.id}.svg">Düzenlenebilir SVG kaynağı</a></p></div></div>`;comps.appendChild(section);
- const m=document.createElement('div');m.className='mobile';m.innerHTML=`<img loading="lazy" src="mobile/${s.id}-324x405.png" alt="${s.title} at mobile preview size"><label>0${i+1} · ${s.title.split('— ')[1]}</label>`;mobile.appendChild(m);
+  const m=document.createElement('div');m.className='mobile';m.innerHTML=`<img loading="lazy" src="mobile/${s.id}-375x469.png" alt="${s.title} at mobile preview size"><label>0${i+1} · ${s.title.split('— ')[1]}</label>`;mobile.appendChild(m);
 });
-function show(i){current=(i+slides.length)%slides.length;const s=slides[current];images.hero.src=`final/${s.file}`;images.hero.alt=`${s.title}, final campaign image`;images.index.textContent=`0${current+1} / 05`;images.title.textContent=s.title;[...images.dots.children].forEach((b,n)=>b.setAttribute('aria-current',String(n===current)));[...images.thumbs.children].forEach((b,n)=>b.setAttribute('aria-current',String(n===current)));}
+function show(i){current=(i+slides.length)%slides.length;const s=slides[current];images.hero.src=`${previous?'history/v1/':''}final/${s.file}?revision=${previous?'1':'2'}`;images.hero.alt=`${s.title}, ${previous?'önceki':'yeni'} yerleşim`;images.index.textContent=`0${current+1} / 05 · v${previous?'1':'2'}`;images.title.textContent=s.title;document.querySelector('#revisionLabel').textContent=previous?'Önceki yerleşimler · v1':'Yeni yerleşimler · v2';[...images.dots.children].forEach((b,n)=>b.setAttribute('aria-current',String(n===current)));[...images.thumbs.children].forEach((b,n)=>b.setAttribute('aria-current',String(n===current)));}
+document.querySelector('#modeCurrent').addEventListener('click',()=>{previous=false;document.querySelector('#modeCurrent').setAttribute('aria-pressed','true');document.querySelector('#modePrevious').setAttribute('aria-pressed','false');show(current)});
+document.querySelector('#modePrevious').addEventListener('click',()=>{previous=true;document.querySelector('#modeCurrent').setAttribute('aria-pressed','false');document.querySelector('#modePrevious').setAttribute('aria-pressed','true');show(current)});
 document.querySelector('#prev').addEventListener('click',()=>show(current-1));document.querySelector('#next').addEventListener('click',()=>show(current+1));document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(current+1);if(e.key==='ArrowLeft')show(current-1)});let startX=0;images.hero.addEventListener('touchstart',e=>startX=e.changedTouches[0].clientX,{passive:true});images.hero.addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>45)show(current+(dx<0?1:-1))},{passive:true});show(0);
 </script>
 </body></html>
