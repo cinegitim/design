@@ -17,6 +17,7 @@ body{background:var(--paper);color:var(--ink);font-family:"Jost",system-ui,-appl
 .topbar nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
 .topbar nav a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 16px;background:var(--card)}
 .topbar nav a.here,.topbar nav a:hover{border-color:var(--ink)}
+.topbar nav a.directory-link{background:var(--red);border-color:var(--red);color:#fff;font-weight:600}
 h1{font-size:clamp(38px,6vw,72px);letter-spacing:-.04em;line-height:1.02;margin:40px 0 8px}
 .lede{font-size:18px;max-width:64ch}
 .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
@@ -67,6 +68,14 @@ h2{font-size:clamp(24px,3.5vw,38px);letter-spacing:-.025em;margin:6px 0}
 .rules li b{color:var(--red)}
 a{color:inherit}
 .note{font-size:13px;color:var(--muted)}
+.page-directory{margin-top:34px;padding:24px;background:#ece7dc;border:1px solid var(--line);border-radius:16px;scroll-margin-top:20px}
+.page-directory .directory-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.page-directory .directory-head p{font-size:14px;color:var(--muted)}
+.page-directory .directory-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:18px}
+.page-directory a{display:flex;flex-direction:column;gap:4px;min-height:92px;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:10px;text-decoration:none;transition:border-color .15s,transform .15s}
+.page-directory a:hover,.page-directory a:focus-visible{border-color:var(--red);transform:translateY(-2px);outline:none}
+.page-directory a strong{font-size:15px;line-height:1.25}
+.page-directory a span{font-size:12px;color:var(--muted)}
 footer{margin-top:70px;border-top:1px solid var(--line);padding-top:22px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(max-width:900px){.stage{grid-template-columns:1fr}.grid2,.grid3{grid-template-columns:1fr}.wrap{padding:0 18px 70px}}
 </style>
@@ -76,7 +85,7 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:22px;font-si
   <div class="topbar">
     <img src="../asyada-seal/assets/v01-canonical.svg" alt="Mühür">
     <span class="t">ASYA'DA EĞİTİM &middot; BRAND STUDIO</span>
-    <nav><a href="../">Panel</a><a href="../identity/">Kimlik</a><a class="here" href="./">Instagram</a><a href="../archive/">Arşiv</a></nav>
+    <nav><a href="../">Panel</a><a href="../identity/">Kimlik</a><a class="here" href="./">Instagram</a><a class="directory-link" href="#pages">Tüm sayfalar ↓</a><a href="../archive/">Arşiv</a></nav>
   </div>
 
   <p class="kicker" style="margin-top:36px">INSTAGRAM STUDIO &middot; PHASE 0 — SYSTEM ARCHITECTURE</p>
@@ -88,7 +97,27 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:22px;font-si
   <div class="badges"><span class="badge">ACTIVE DEVELOPMENT — PHASE 0</span><span class="badge">NO CANONICAL TEMPLATES YET</span></div>
   <div class="cell" style="margin-top:22px;border:2px solid var(--red)"><span class="id">PHASE 1B · REVIEW</span><b>Art direction: 9 bitmiş kare (gerçek PNG)</b><p>İfadeci tipografi, fotoğraf anlatısı, grafik bilgi — üç mini-carousel, 3×3 akış, eleştirel değerlendirme.</p><p style="margin-top:10px"><a href="phase-1b/" style="font-weight:600">Faz 1B inceleme alanını aç &rarr;</a> &middot; <a href="phase-1/">Faz 1 (tel-kare arşivi) &rarr;</a></p></div>
 <div class="cell" style="margin-top:14px;border:2px solid var(--red)"><span class="id">PHASE 1C · GALLERY</span><b>Saf yaratıcı keşif: 9 ChatGPT konsepti</b><p>İfadeci tipografi, fotoğraf anlatısı, bilgi tasarımı — kod yok, şablon yok, seçim yok.</p><p style="margin-top:10px"><a href="phase-1c/" style="font-weight:600">Faz 1C galerisini aç &rarr;</a></p></div>
-<div class="cell" style="margin-top:14px;border:2px solid var(--red)"><span class="id">PHASE 2A · NEW</span><b>Pratik içerik: 6 aile × 3 varyasyon = 18 konsept</b><p>Profil, sıralama, şehir, son tarih, adımlar, rehberlik — gerçek zeminli, şablon yok, seçim yok.</p><p style="margin-top:10px"><a href="phase-2a/" style="font-weight:600">Faz 2A galerisini aç &rarr;</a></p></div>
+ <div class="cell" style="margin-top:14px;border:2px solid var(--red)"><span class="id">PHASE 2A · NEW</span><b>Pratik içerik: 6 aile × 3 varyasyon = 18 konsept</b><p>Profil, sıralama, şehir, son tarih, adımlar, rehberlik — gerçek zeminli, şablon yok, seçim yok.</p><p style="margin-top:10px"><a href="phase-2a/" style="font-weight:600">Faz 2A galerisini aç &rarr;</a></p></div>
+
+  <section class="page-directory" id="pages" aria-labelledby="pages-title">
+    <div class="directory-head"><div><div class="kicker">INSTAGRAM STUDIO · DİZİN</div><h2 id="pages-title">Oluşturulan tüm sayfalar</h2></div><p>14 sayfa · Herhangi bir projeye doğrudan geçin</p></div>
+    <div class="directory-grid">
+      <a href="./"><strong>Faz 0 · Sistem mimarisi</strong><span>Instagram Studio ana sayfası</span></a>
+      <a href="phase-1/"><strong>Faz 1 · Görsel gramer</strong><span>Carousel aileleri ve tel-kare arşivi</span></a>
+      <a href="phase-1b/"><strong>Faz 1B · Art direction</strong><span>Bitmiş kareler ve değerlendirme</span></a>
+      <a href="phase-1c/"><strong>Faz 1C · Yaratıcı keşif</strong><span>Dokuz konsept, şablonsuz galeri</span></a>
+      <a href="phase-2a/"><strong>Faz 2A · İçerik varyasyonları</strong><span>Altı aile, 18 konsept</span></a>
+      <a href="phase-2b/"><strong>Faz 2B · Tam carousel’ler</strong><span>Dört markalı gönderi ve üretim dosyaları</span></a>
+      <a href="phase-2c/"><strong>Faz 2C · Yeni görsel ritim</strong><span>24 yeni iç sayfa ve dört kapak</span></a>
+      <a href="creative-breakout/"><strong>Creative Breakout</strong><span>Üç Instagram yaratıcı yönü</span></a>
+      <a href="discovery-01/"><strong>Keşif Defteri</strong><span>İlk konsept ve carousel keşfi</span></a>
+      <a href="carousel-01/"><strong>Carousel 01</strong><span>“Üniversite için başka bir dünya var”</span></a>
+      <a href="carousel-01-v2/"><strong>Carousel 01 · v2</strong><span>İkinci tasarım iterasyonu</span></a>
+      <a href="carousel-01-v3/"><strong>Carousel 01 · v3</strong><span>Üçüncü tasarım iterasyonu</span></a>
+      <a href="carousel-02/"><strong>Carousel 02</strong><span>“Sınırların dışında düşün”</span></a>
+      <a href="profile-photo/"><strong>Profil fotoğrafı</strong><span>Dairesel amblem · önizleme ve PNG/SVG indirme</span></a>
+    </div>
+  </section>
 
   <section id="canvas">
     <div class="kicker">ZEMİN</div><h2>1080 &times; 1350, her şey bu dikdörtgende</h2>
