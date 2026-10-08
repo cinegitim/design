@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Instagram Studio — Faz 1C: Saf Yaratıcı Keşif</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120;--line:#d9d1bf;--muted:#65625a;--card:#fffdf7}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px 100px}
+.topbar{display:flex;align-items:center;gap:14px;padding:22px 0;border-bottom:1px solid var(--ink)}
+.topbar img{width:44px;height:auto}
+.topbar .t{font-size:13px;letter-spacing:.14em;font-weight:500}
+.topbar nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.topbar nav a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 16px;background:var(--card)}
+.topbar nav a:hover{border-color:var(--ink)}
+h1{font-size:clamp(36px,6vw,68px);letter-spacing:-.04em;line-height:1.03;margin:40px 0 8px}
+.lede{font-size:18px;max-width:68ch}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.badge{font-size:12px;letter-spacing:.08em;font-weight:500;border-radius:999px;padding:8px 18px;border:1px solid var(--red);color:var(--red)}
+section{margin-top:64px}
+.kicker{font-size:12px;letter-spacing:.16em;color:var(--muted);font-weight:500}
+h2{font-size:clamp(24px,3.5vw,38px);letter-spacing:-.025em;margin:6px 0}
+.sub{color:#3d3a34;max-width:78ch}
+a{color:inherit}
+.board3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}
+.board3 figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+.board3 img{width:100%;height:auto;display:block;border-radius:8px}
+.board3 figcaption{font-size:13px;margin-top:10px}
+.board3 figcaption b{display:block;font-size:15px}
+.board3 .sealrow{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:12px;color:var(--muted)}
+.board3 .sealrow img{width:30px;height:auto}
+.concept{border-top:1px solid var(--ink);margin-top:48px;padding-top:24px;display:grid;grid-template-columns:minmax(0,480px) 1fr;gap:32px;align-items:start}
+.concept .big img{width:100%;height:auto;display:block;border-radius:14px;box-shadow:0 2px 14px rgba(29,32,39,.16)}
+.concept h3{font-size:26px;letter-spacing:-.01em}
+.concept .dir{font-size:12px;letter-spacing:.12em;color:var(--red);font-weight:600}
+.concept dl{margin-top:14px;display:grid;gap:10px;font-size:14px}
+.concept dt{font-size:11px;letter-spacing:.12em;color:var(--muted);font-weight:600}
+.concept dd{margin:0}
+footer{margin-top:70px;border-top:1px solid var(--line);padding-top:22px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.note{font-size:13px;color:var(--muted)}
+.spec code{font-size:12px;overflow-wrap:anywhere}
+@media(max-width:900px){.concept{grid-template-columns:1fr}.board3{grid-template-columns:1fr 1fr}.wrap{padding:0 18px 70px}}
+@media(max-width:560px){.board3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <img src="../../asyada-seal/assets/v01-canonical.svg" alt="Mühür">
+    <span class="t">ASYA'DA EĞİTİM &middot; BRAND STUDIO</span>
+    <nav><a href="../../">Panel</a><a href="../../identity/">Kimlik</a><a href="../">Instagram</a><a href="../../archive/">Arşiv</a></nav>
+  </div>
+
+  <p class="kicker" style="margin-top:36px">INSTAGRAM STUDIO &middot; PHASE 1C — IMAGE-FIRST CREATIVE EXPLORATION</p>
+  <h1>Dokuz konsept.<br>Sıfır şablon.</h1>
+  <p class="lede">ChatGPT Image (image_generate, gpt-image-2, bağlı ChatGPT aboneliği) yaratıcı tasarımcı olarak çalıştı: 9 bağımsız, bitmiş görünümlü kompozisyon. Başka sağlayıcı ikamesi yok. Logo modele hiç istenmedi — mühür yalnızca galeri çerçevesinde, kompozisyona dokunmadan gösteriliyor. Bu fazda yeniden çizim, seçim ve şablon yok.</p>
+  <div class="badges"><span class="badge">HUMAN CREATIVE DIRECTION SELECTION PENDING</span><span class="badge">10 IMAGE CALLS · 9 CONCEPTS · 0 REBUILDS</span></div>
+
+  <section id="board">
+    <div class="kicker">3×3 KARŞILAŞTIRMA PANOSU</div>
+    <h2>Üç yön, üçer kompozisyon</h2>
+    <div class="board3">
+      <figure><img loading="lazy" src="assets/e1-countdown.png" alt="E1"><figcaption><b>E1 · Dev 30</b>Editoryal tipografi<a href="#c-e1">Eleştiri &darr;</a></figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı sunulur</div></figure>
+      <figure><img loading="lazy" src="assets/e2-typewall.png" alt="E2"><figcaption><b>E2 · Tipografi duvarı</b>Editoryal tipografi<a href="#c-e2">Eleştiri &darr;</a></figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı sunulur</div></figure>
+      <figure><img loading="lazy" src="assets/e3-deadline.png" alt="E3"><figcaption><b>E3 · SON posteri</b>Editoryal tipografi<a href="#c-e3">Eleştiri &darr;</a></figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı sunulur</div></figure>
+      <figure><img loading="lazy" src="assets/p1-library-night.png" alt="P1"><figcaption><b>P1 · Gece vardiyası</b>Fotoğraf anlatısı (referanslı)<a href="#c-p1">Eleştiri &darr;</a></figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı sunulur</div></figure>
+      <figure><img loading="lazy" src="assets/p2-canteen.png" alt="P2"><figcaption><b>P2 · Yemekhane</b>Fotoğraf anlatısı<a href="#c-p2">Eleştiri &darr;</a></figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı sunulur</div></figure>
+      <figure><img loading="lazy" src="assets/p3-street-type.png" alt="P3"><figcaption><b>P3 · Senin sokağın</b>Fotoğraf anlatısı<a href="#c-p3">Eleştiri &darr;</a></figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı sunulur</div></figure>
+      <figure><img loading="lazy" src="assets/i1-city-vs.png" alt="I1"><figcaption><b>I1 · Şehir düellosu</b>Bilgi tasarımı<a href="#c-i1">Eleştiri &darr;</a></figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı sunulur</div></figure>
+      <figure><img loading="lazy" src="assets/i2-budget-bars.png" alt="I2"><figcaption><b>I2 · 82/64 barları</b>Bilgi tasarımı<a href="#c-i2">Eleştiri &darr;</a></figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı sunulur</div></figure>
+      <figure><img loading="lazy" src="assets/i3-steps-spiral.png" alt="I3"><figcaption><b>I3 · Şerit merdiven</b>Bilgi tasarımı<a href="#c-i3">Eleştiri &darr;</a></figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı sunulur</div></figure>
+    </div>
+  </section>
+
+  <section id="critiques">
+    <div class="kicker">BÜYÜTÜLMÜŞ GÖRÜNÜM + KISA ELEŞTİRİ</div>
+    <h2>Her konsept ne söylüyor?</h2>
+
+    <div class="concept" id="c-e1"><div class="big"><img loading="lazy" src="assets/e1-countdown.png" alt="E1 büyük"></div>
+      <div><div class="dir">E1 · EDİTORYAL / 1024×1536 HIGH</div><h3>Dev "30" geri sayımı</h3>
+      <dl><dt>YÖN</dt><dd>Ultra-kalın rakam + diyagonal mürekkep şeritleri; asimetri cesur.</dd>
+      <dt>ÜRETİM</dt><dd>ChatGPT Image, salt metin istem. Logo istenmedi, çıkmadı.</dd>
+      <dt>ELEŞTİRİ</dt><dd>Türkçe doğru, kompozisyon ajans seviyesi. Kremler metinle şerit arasında kalıyor ama okunurluk korunuyor. Güçlü kapak adayı.</dd></dl></div></div>
+
+    <div class="concept" id="c-e2"><div class="big"><img loading="lazy" src="assets/e2-typewall.png" alt="E2 büyük"></div>
+      <div><div class="dir">E2 · EDİTORYAL / 1024×1536 HIGH</div><h3>Tipografi duvarı</h3>
+      <dl><dt>YÖN</dt><dd>Kırpılmış dev grotesk + dönmüş kenar metni + takvim ızgarası; İsviçre disiplini.</dd>
+      <dt>ÜRETİM</dt><dd>ChatGPT Image, salt metin istem.</dd>
+      <dt>ELEŞTİRİ</dt><dd>"Vize dosyası" doğru; ızgara motifi sisteme taşınabilir. En disiplinli iş.</dd></dl></div></div>
+
+    <div class="concept" id="c-e3"><div class="big"><img loading="lazy" src="assets/e3-deadline.png" alt="E3 büyük"></div>
+      <div><div class="dir">E3 · EDİTORYAL / 1024×1536 HIGH</div><h3>"SON" posteri</h3>
+      <dl><dt>YÖN</dt><dd>Tek agresif jest + 3D basamaklar; minimalizm.</dd>
+      <dt>ÜRETİM</dt><dd>ChatGPT Image, salt metin istem.</dd>
+      <dt>ELEŞTİRİ</dt><dd>Çarpıcı; alt satırın son glifinde küçük bozukluk — keşif artefaktı, üretimde yeniden dizilir.</dd></dl></div></div>
+
+    <div class="concept" id="c-p1"><div class="big"><img loading="lazy" src="assets/p1-library-night.png" alt="P1 büyük"></div>
+      <div><div class="dir">P1 · FOTOĞRAF / 1024×1536 HIGH + 1 REFERANS</div><h3>Gece vardiyası</h3>
+      <dl><dt>YÖN</dt><dd>Gerçek referans fotoğrafla (jp-library.jpg) yönlendirilen sinematik kapak; dev "Gece vardiyası".</dd>
+      <dt>ÜRETİM</dt><dd>ChatGPT Image + 1 referans görsel; kompozisyon serbestçe yeniden kuruldu.</dd>
+      <dt>ELEŞTİRİ</dt><dd>Referans sadakati yüksek, tipografi temiz. Foto-yönün en güçlü kapağı.</dd></dl></div></div>
+
+    <div class="concept" id="c-p2"><div class="big"><img loading="lazy" src="assets/p2-canteen.png" alt="P2 büyük"></div>
+      <div><div class="dir">P2 · FOTOĞRAF / 1024×1536 HIGH</div><h3>Yemekhane anı</h3>
+      <dl><dt>YÖN</dt><dd>Samimi kampüs anı + diyagonal bantta "İlk arkadaşlıklar tepside kurulur".</dd>
+      <dt>ÜRETİM</dt><dd>ChatGPT Image, salt metin istem. Logo/amblem çıkmadı.</dd>
+      <dt>ELEŞTİRİ</dt><dd>Neşe dozu yüksek; bant açısı akışı kesmiyor. Gençlik çekiciliği en yüksek kare.</dd></dl></div></div>
+
+    <div class="concept" id="c-p3"><div class="big"><img loading="lazy" src="assets/p3-street-type.png" alt="P3 büyük"></div>
+      <div><div class="dir">P3 · FOTOĞRAF / 1024×1536 HIGH</div><h3>Senin sokağın</h3>
+      <dl><dt>YÖN</dt><dd>Kontur dev tip + gri sabah sokağı; poster-belgesel karışımı.</dd>
+      <dt>ÜRETİM</dt><dd>ChatGPT Image, salt metin istem.</dd>
+      <dt>ELEŞTİRİ</dt><dd><b>Coğrafya uyarısı:</b> sokak İstanbul çıktı, Tokyo değil — şehir iddiasız sunulur. Tipografik kurgu ausgezeichnet; yeniden üretim gerekmez, etiket düzeltmesi yeter.</dd></dl></div></div>
+
+    <div class="concept" id="c-i1"><div class="big"><img loading="lazy" src="assets/i1-city-vs.png" alt="I1 büyük"></div>
+      <div><div class="dir">I1 · BİLGİ / 1024×1536 HIGH</div><h3>Şehir düellosu</h3>
+      <dl><dt>YÖN</dt><dd>Bölünmüş diptik + VS halkası + "iki şehir, iki bütçe".</dd>
+      <dt>ÜRETİM</dt><dd>ChatGPT Image, salt metin istem. Tabela metni çıkmadı.</dd>
+      <dt>ELEŞTİRİ</dt><dd>Halka motifi Faz 1B diliyle akraba — sistem köprüsü kurulabilir. En güçlü bilgi kapağı.</dd></dl></div></div>
+
+    <div class="concept" id="c-i2"><div class="big"><img loading="lazy" src="assets/i2-budget-bars.png" alt="I2 büyük"></div>
+      <div><div class="dir">I2 · BİLGİ / 1024×1536 HIGH</div><h3>82/64 barları</h3>
+      <dl><dt>YÖN</dt><dd>Serif dev rakam + eksenli bar + yan ray; müze-grafik estetiği.</dd>
+      <dt>ÜRETİM</dt><dd>ChatGPT Image, salt metin istem.</dd>
+      <dt>ELEŞTİRİ</dt><dd>Rakamlar keşif amaçlı, gerçek veri değil. Tipografik olgunluk en yüksek işlerden.</dd></dl></div></div>
+
+    <div class="concept" id="c-i3"><div class="big"><img loading="lazy" src="assets/i3-steps-spiral.png" alt="I3 büyük"></div>
+      <div><div class="dir">I3 · BİLGİ / 1024×1536 HIGH</div><h3>Şerit merdiven</h3>
+      <dl><dt>YÖN</dt><dd>Beş basamaklı şerit spiral: portal/dil/vize/yurt/kayıt.</dd>
+      <dt>ÜRETİM</dt><dd>ChatGPT Image, salt metin istem.</dd>
+      <dt>ELEŞTİRİ</dt><dd>Basamak sözcükleri doğru ("kayıt" noktasında küçük iz — artefakt). En oyuncu bilgi işi; vektöre dökümü en zorlu olan.</dd></dl></div></div>
+  </section>
+
+  <section id="technical">
+    <div class="kicker">ÜRETİM NOTLARI</div>
+    <h2>Ne yapılmadı?</h2>
+    <p class="sub">Yeniden çizim, seçim, şablon ve mühendislik yok — insan seçimi bekleniyor. 10 görüntü çağrısı = 9 konsept + 1 yol-düzeltme tekrarı; sessiz ikame yok (Pollinations bu fazda kullanılmadı). Metinler keşif amaçlı yaklaşık; kesin metin seçim sonrası yeniden dizilir.</p>
+    <p style="margin-top:12px"><a href="assets/manifest.json">Faz-1C üretim manifestosu &rarr;</a> &middot; <a href="../../asyada-seal/canonical-lockups/assets/canonical-lockups.json">Kanonik manifest &rarr;</a></p>
+    <p class="spec">Mühür SHA-256: <code>8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a</code></p>
+  </section>
+
+  <footer><span>Instagram Studio · Phase 1C — saf keşif galerisi, seçim yok, şablon yok</span><span><a href="../">Faz 0</a> &middot; <a href="../phase-1/">Faz 1</a> &middot; <a href="../phase-1b/">Faz 1B</a> &middot; <a href="../../">Panel</a> &middot; <a href="../../archive/">Arşiv</a></span></footer>
+</div>
+</body>
+</html>
