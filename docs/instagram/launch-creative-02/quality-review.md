@@ -1,31 +1,40 @@
-# Visual QA — Launch Carousel Experiment 02
+# Placement revision 02 — critical review
 
-**Stage:** exploratory campaign review; no canonicalization or Instagram publishing.
+**Human experimental campaign review pending.** The first implementation was rejected by the user for weak logo/copy integration; the initial optimistic scores were not a reliable aesthetic gate. Its PNGs, sources, manifest and review are preserved under `history/v1/`.
 
-## Source-to-reconstruction fidelity
+## What was actually corrected
 
-| Slide | Fidelity | Review |
-|---|---:|---|
-| 01 — The Hook | 9/10 | The generated campus/student collage, paper aperture, grain, architecture and red sweep remain the full-bleed base. Exact three-scale headline is typeset directly into the original torn-paper field; logo sits in the original ink aperture. |
-| 02 — Perspective | 9/10 | The corridor vanishing point, shoulder-level student, light horizon and red path remain unchanged. Copy follows the left paper edge; the stacked mark is on the backpack silhouette, not a standard footer. |
-| 03 — Five Worlds | 8/10 | All five distinct city-image fragments, asymmetrical cuts and overprint remain. Exact thesis occupies the existing large paper aperture; labels vary in size, angle and contrast. Copy and the smaller lockup make this the densest / least quiet slide, intentionally. |
-| 04 — Experience | 8/10 | Study and friendship imagery remain dominant and unflattened. A newly reconstructed jagged vellum note carries exact supporting copy; this is the largest intentional intervention beyond typography/logo, and slightly reduces some lower-right photo detail. |
-| 05 — Invitation | 9/10 | Ink-dominant cinematic base and central paper wave remain intact. The CTA follows the existing red diagonal. The prominent bilingual lockup is centered on the wave at 632 px (approved minimum 528 px). One targeted edit removed an unintended temple silhouette; first generation is preserved. |
+| Slide | Previous problem | Revised placement |
+|---|---|---|
+| 01 | Small edge-hugging signature; headline/body did not follow the narrowing paper shape. | Larger D-04 at a 62px top inset, natural Jost 550/720 weights, stepped headline and indented support wholly inside the cream sweep. |
+| 02 | Printed strokes crossed letterforms; large seal sat on the student/backpack. | Strokes are removed by a separate original-paper-texture cleanup layer. Narrower headline clears the passage; compact D-04 moves entirely off the person into the lower-right architectural floor, protected by a soft ink shade. |
+| 03 | Added note rectangle and scattered labels competed with the atlas. | Extra rectangle removed. Logo and headline are separated within the original paper crest; supporting line moves away from the ink blot. Country captions use original annotation fields, not new tags. |
+| 04 | Upper-right bilingual mark was cramped; added body card covered academic/social imagery. | D-04 sits within the ink aperture with larger edge clearance. Body returns to the main paper panel; program names fill the original annotations. No new lower card. |
+| 05 | Headline and red accent competed with city lights; bilingual mark overlapped the silhouette; destinations crossed red print. | Headline is Paper and clears the skyline. Whole H-02 sits to the right of the person, fully inside the cream wave at 560px (minimum 528px). A separate textured cleanup layer protects destinations. CTA/contact are grouped on the existing dark diagonal; redundant button removed. |
 
-## Self-critique (1–10)
+## Self-critique, based on full-size and reduced-image inspection
 
-- **Hierarchy: 8** — the opening phrase, the single perspective shift, the abundance of slide 03, human connection on 04, then the central bilingual lockup / CTA on 05 create a clear reading sequence.
-- **Consistency: 8** — the same Jost family, paper/ink/red palette, collage grain and red print interventions link the slides; image scale and type placement change deliberately.
-- **Aesthetics: 8** — the specific recurring visual bridge is the red translucent paper sweep, not a repeated template. Slide 03’s bottom-center mark is less integrated than the cover/CTA signature; its small-use approved lockup still holds above minimum size.
-- **Usability: 8** — exports are 1080×1350; type and lockup size are checked again at 324×405; exact copy is editable in SVG. Small destination labels are secondary at mobile scale but readable in full-size output.
+| Slide | Hierarchy | Consistency | Aesthetics | Usability |
+|---|---:|---:|---:|---:|
+| 01 | 8 | 9 | 8 | 8 |
+| 02 | 8 | 9 | 8 | 8 |
+| 03 | 8 | 9 | 8 | 7.5 |
+| 04 | 8 | 9 | 8 | 8 |
+| 05 | 9 | 9 | 8 | 8 |
 
-## Severity-ranked issues / fixes
+- **Closed Critical:** unreliable font rendering. PNGs are now exported through actual Chromium with embedded Jost, variable weights, no text stretching and no synthetic font substitutions. Font readiness and metrics are recorded in `render-validation.json`.
+- **Closed High:** copy/mark collisions and edge constraints. Glyph-ink bounds—not a generic font line box—and complete SVG mark viewports are checked for collision and clipping. All five exports pass.
+- **Closed High:** slide-05 brand/person collision. H-02 is wholly to the right of the figure; its embedded clearspace remains intact.
+- **Closed High:** low-contrast support on print strokes. Slide-02 title-area strokes and slide-05 destination-area branches are cleaned using texture sampled from their own original paper. These are separately editable transparent layers; original generation bytes are untouched.
+- **Remaining Medium:** the Japan/Korea labels occupy narrow, source-native annotation fields. They are clearly read at full export size but secondary at phone size. The fine approved English line on H-02 is likewise secondary at 375px; no retyping/enlarging individual logo parts is permitted.
+- **Remaining Low:** the slide-04 support block uses a stepped last line to follow the torn-paper edge. This is deliberate rather than a mechanical shared alignment.
 
-- **High —** AI image generation can imply documentary accuracy. **Fix:** disclosure in gallery and manifest states that all people/places are illustrative and no specific institution or exact landmark is claimed.
-- **Medium —** Slide 03 has five country labels plus a thesis, making its density materially higher. **Fix:** each label is independently positioned on its relevant photo fragment; no identical five-card system was introduced.
-- **Medium —** The first slide’s illustration contains several generic campus buildings. **Fix:** copy frames these as an imagined study-world; no university name/signage or factual claim is added.
-- **Low —** Slide 04’s new vellum text patch masks a small part of its photographic collage. **Accepted** to keep the full exact support line readable without flattening the frame into a uniform text card.
+## Fidelity
 
-## Novelty gate
+No new image generation was performed. All original composition hashes stay identical to v1. Faces, campus perspective, atlas fragments, cut-paper density and red interventions remain; only copy, lockup placement, tiny paper cleanups and local contrast shading change. New transparent layers slightly suppress print detail behind copy, consciously trading incidental texture for actual readability. Pixel-difference percentage is a technical diagnostic, not an aesthetic approval.
 
-The campaign uses full-bleed imagery, irregular photo layers and variable typographic axes; it does not reuse the previous top-headline/bottom-logo poster, fixed footer, dossier registers, or separated photo-window compositions from `carousel-01-v3`, `carousel-02`, or `discovery-01`. No previous photography, CSS, template, or layout assets were reused.
+The campaign remains an irregular photographic/editorial series, not a five-card template, uniform photo strip or empty corporate brochure. The original-vs-current and v1-vs-v2 contact sheets expose any loss instead of hiding it. Final judgement remains with the human.
+
+## Delivery checks
+
+The gallery was exercised at 375 / 768 / 1440px in Chromium: five images, five comparisons, archive/current switching, next/previous navigation, no page overflow or JavaScript errors. The ZIP was extracted outside the repository and rebuilt using only its supplied sources/assets plus documented dependencies: all five rebuilt PNG SHA-256 hashes match the reviewed exports exactly. Archived v1 PNGs and all original generated-image hashes also match the first delivered manifest.

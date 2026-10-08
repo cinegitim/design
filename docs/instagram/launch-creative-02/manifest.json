@@ -1,12 +1,13 @@
 {
-  "title": "Asya’da Eğitim — Launch Carousel Experiment 02",
+  "title": "Asya’da Eğitim — Launch Carousel Experiment 02 / Placement revision 02",
   "campaign": "Üniversite için başka bir dünya var.",
+  "revision": 2,
   "status": "HUMAN EXPERIMENTAL CAMPAIGN REVIEW PENDING",
   "dimensions": [
     1080,
     1350
   ],
-  "production_method": "Five full editorial compositions generated first with gpt-image-2. Original images are preserved; accurate copy is editable SVG text, and exact canonical SVG lockups are externally linked and composited in the reconstruction.",
+  "production_method": "Original image-first artwork preserved. Revision 02 individually typesets Jost using Chromium, with no stretching. Exact manifest-listed canonical SVGs are linked as complete artwork.",
   "font": {
     "family": "Jost",
     "file": "assets/Jost-VF.ttf",
@@ -50,22 +51,31 @@
       "Profildeki bağlantıdan bize ulaş."
     ]
   },
-  "imagery_disclosure": "All generated people and places are illustrative campaign imagery, not documentary photographs. Destination imagery on slide 03 uses broad city cues; it is not a claim of exact landmark photography or a specific university.",
+  "imagery_disclosure": "All people/places are illustrative AI imagery; destination images use city cues, not documentary landmark or named-university claims.",
   "gpt_image_2": {
     "generation_count": 5,
     "edit_count": 1,
-    "backend": "gpt-image-2 via connected ChatGPT subscription",
-    "edited_slide": "05-invitation: one targeted correction replaced an unintended temple-like silhouette with contemporary city architecture; first generation retained as provenance."
+    "revision_02_new_image_calls": 0,
+    "backend": "gpt-image-2 via connected ChatGPT subscription"
   },
+  "previous_revision": "history/v1/index.html",
+  "alternate_generations": [
+    {
+      "slide": "05-invitation",
+      "file": "originals/05-invitation-first.png",
+      "sha256": "415a9f4cf1090a69a1a87e486532edc51f46a97838dc8a1575cc511111106fec"
+    }
+  ],
   "slides": [
     {
       "id": "01-cover",
       "final_file": "final/01-cover.png",
-      "final_sha256": "427eedc4443d2f8c2a2ffcfafd5fc8f33a92b0eacdccd6990718296365e9b08d",
+      "final_sha256": "30ad204a0d61ea411a5ec7e6da20c963805317f5eb0e85651b28c1e3718bb8b4",
       "original_file": "originals/01-cover.png",
       "original_sha256": "f61f758a15862e199be46ffa2b792fd420f63424d3e7d991dcdfb264dd8ca14a",
       "source_file": "source/01-cover.svg",
-      "source_sha256": "efd96bb9d622c3d753ed894ef5e995ed42b8cf2b16f66cd97f580747f5dfb6b2",
+      "source_sha256": "fda36c618ad1afc855b5f7c5f1ad4c56af2ca05c2ae9c0ad6f856f241e200e20",
+      "editable_html_file": "source/01-cover.html",
       "dimensions": [
         1080,
         1350
@@ -74,27 +84,120 @@
         "Üniversite için başka bir dünya var.",
         "Yurtdışı eğitime başka bir yerden bak."
       ],
-      "creative_fidelity_review": "The 1122×1402 generated collage is retained as the complete base; only campaign copy and the approved small-use lockup are added. The photographic focal face, red paper arcs, grain and irregular montage remain unchanged.",
       "canonical_lockup_id": "D-04/dark",
       "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "logo_width_px": 220,
-      "minimum_supported_display_width_px": 200,
+      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-dark.svg",
+      "logo_width_px": 300,
+      "logo_height_px": 114.84710889442547,
       "logo_x_y_px": [
-        842,
-        30
+        720,
+        62
       ],
-      "composition_note": "Collage takes the image from a close student portrait through architectural layers into the campus vista; exact copy occupies the torn-paper sweep, not a poster header/footer."
+      "minimum_supported_display_width_px": 200,
+      "composition_note": "Compact signature is inset inside the upper-right ink aperture. Headline steps along the cream sweep, while support retreats from the lower red edge.",
+      "render_validation": {
+        "jostLoaded": true,
+        "textBounds": [
+          {
+            "copy": "Üniversite için",
+            "x": 74,
+            "y": 805.1962509155273,
+            "width": 299.109375,
+            "height": 55.63350296020508,
+            "weight": "550",
+            "family": "Jost",
+            "fontBox": {
+              "x": 74,
+              "y": 798,
+              "width": 299.109375,
+              "height": 69
+            }
+          },
+          {
+            "copy": "başka bir",
+            "x": 86,
+            "y": 867.120002746582,
+            "width": 406.0514221191406,
+            "height": 100.489501953125,
+            "weight": "720",
+            "family": "Jost",
+            "fontBox": {
+              "x": 86,
+              "y": 839,
+              "width": 406.0514221191406,
+              "height": 139
+            }
+          },
+          {
+            "copy": "dünya var.",
+            "x": 156,
+            "y": 983.120002746582,
+            "width": 454.5625,
+            "height": 96,
+            "weight": "720",
+            "family": "Jost",
+            "fontBox": {
+              "x": 156,
+              "y": 955,
+              "width": 454.5625,
+              "height": 139
+            }
+          },
+          {
+            "copy": "Yurtdışı eğitime",
+            "x": 210,
+            "y": 1105.3800010681152,
+            "width": 190.234375,
+            "height": 29.344375610351562,
+            "weight": "450",
+            "family": "Jost",
+            "fontBox": {
+              "x": 210,
+              "y": 1097,
+              "width": 190.234375,
+              "height": 42
+            }
+          },
+          {
+            "copy": "başka bir yerden bak.",
+            "x": 210,
+            "y": 1143.3800010681152,
+            "width": 267.96875,
+            "height": 29.257373809814453,
+            "weight": "450",
+            "family": "Jost",
+            "fontBox": {
+              "x": 210,
+              "y": 1135,
+              "width": 267.96875,
+              "height": 42
+            }
+          }
+        ],
+        "logoBounds": {
+          "x": 720,
+          "y": 62,
+          "width": 300,
+          "height": 114.84710693359375
+        },
+        "viewport": [
+          1080,
+          1350
+        ],
+        "issues": []
+      }
     },
     {
       "id": "02-perspective",
       "final_file": "final/02-perspective.png",
-      "final_sha256": "8fa23138f14f936683499b2e8c5143c48c0c549e81bc0340bc46a57b33191aa7",
+      "final_sha256": "3ae16ab5ede8170d6c3e83f2811825b49934f839cf6566e1f30590fb3d6f3f96",
       "original_file": "originals/02-perspective.png",
       "original_sha256": "25253793ed1d15f30c384079d816886dd935c2006a40e86dbadc906d4acd4720",
       "source_file": "source/02-perspective.svg",
-      "source_sha256": "044bb1b94fb92be87db0732048a81664c47acba74da5b4eafb26b987b29c101e",
+      "source_sha256": "f574a545f3c03d2f5914bef0af6c846282d33f985f3d5d533898b2353f7859dd",
+      "editable_html_file": "source/02-perspective.html",
       "dimensions": [
         1080,
         1350
@@ -103,27 +206,150 @@
         "Yurtdışı eğitimin tek yönü yok.",
         "Amerika ve Avrupa, seçeneklerin tamamı değil."
       ],
-      "creative_fidelity_review": "Perspective, passerby, red vanishing-axis sweep and cream collage margin are retained intact. The four-line headline follows the reserved paper field; the lockup is placed on a separate dark photographic region.",
-      "canonical_lockup_id": "P-01/dark",
-      "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "logo_width_px": 352,
-      "minimum_supported_display_width_px": 352,
+      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-dark.svg",
+      "logo_width_px": 318,
+      "logo_height_px": 121.737935428091,
       "logo_x_y_px": [
-        26,
-        968
+        698,
+        1126
       ],
-      "composition_note": "The student-height passage moves from dark foreground to a bright campus horizon. A differently scaled, stacked lockup sits against the backpack silhouette rather than a recurring corner zone."
+      "minimum_supported_display_width_px": 200,
+      "composition_note": "Headline is narrower and clears the threshold. Small Turkish-only signature moves completely off the student into a shaded, empty architectural ground plane at lower-right.",
+      "render_validation": {
+        "jostLoaded": true,
+        "textBounds": [
+          {
+            "copy": "Yurtdışı",
+            "x": 73.87059020996094,
+            "y": 83.04000091552734,
+            "width": 277.91064453125,
+            "height": 85.83478546142578,
+            "weight": "720",
+            "family": "Jost",
+            "fontBox": {
+              "x": 73.87059020996094,
+              "y": 59,
+              "width": 277.91064453125,
+              "height": 119
+            }
+          },
+          {
+            "copy": "eğitimin",
+            "x": 74,
+            "y": 180.38025283813477,
+            "width": 295,
+            "height": 78.28949737548828,
+            "weight": "720",
+            "family": "Jost",
+            "fontBox": {
+              "x": 74,
+              "y": 151,
+              "width": 295,
+              "height": 119
+            }
+          },
+          {
+            "copy": "tek yönü",
+            "x": 74,
+            "y": 267.60000228881836,
+            "width": 311.390625,
+            "height": 80.00000762939453,
+            "weight": "720",
+            "family": "Jost",
+            "fontBox": {
+              "x": 74,
+              "y": 244,
+              "width": 311.390625,
+              "height": 116
+            }
+          },
+          {
+            "copy": "yok.",
+            "x": 70.85187530517578,
+            "y": 357.2000045776367,
+            "width": 221.55438232421875,
+            "height": 110,
+            "weight": "740",
+            "family": "Jost",
+            "fontBox": {
+              "x": 70.85187530517578,
+              "y": 325,
+              "width": 221.55438232421875,
+              "height": 159
+            }
+          },
+          {
+            "copy": "Amerika ve Avrupa,",
+            "x": 76,
+            "y": 479.38000106811523,
+            "width": 242.8125,
+            "height": 29,
+            "weight": "450",
+            "family": "Jost",
+            "fontBox": {
+              "x": 76,
+              "y": 471,
+              "width": 242.8125,
+              "height": 42
+            }
+          },
+          {
+            "copy": "seçeneklerin tamamı",
+            "x": 76,
+            "y": 518.3800010681152,
+            "width": 250.765625,
+            "height": 29.30087661743164,
+            "weight": "450",
+            "family": "Jost",
+            "fontBox": {
+              "x": 76,
+              "y": 510,
+              "width": 250.765625,
+              "height": 42
+            }
+          },
+          {
+            "copy": "değil.",
+            "x": 76,
+            "y": 557.3800010681152,
+            "width": 71.015625,
+            "height": 29.344375610351562,
+            "weight": "450",
+            "family": "Jost",
+            "fontBox": {
+              "x": 76,
+              "y": 549,
+              "width": 71.015625,
+              "height": 42
+            }
+          }
+        ],
+        "logoBounds": {
+          "x": 698,
+          "y": 1126,
+          "width": 318,
+          "height": 121.7379379272461
+        },
+        "viewport": [
+          1080,
+          1350
+        ],
+        "issues": []
+      }
     },
     {
       "id": "03-five-worlds",
       "final_file": "final/03-five-worlds.png",
-      "final_sha256": "cf8e61bc857e291fa8b4ca0b8393252564492e3125e3c305e5763da732509050",
+      "final_sha256": "8f6f0789124e1204578701d1f1a50540a3c9640ba0846332b59f3cff87eb42a0",
       "original_file": "originals/03-five-worlds.png",
       "original_sha256": "2d1809cf410697bc2aa3ceedd1ac33a08a32b31a0a47244c99dadeb713d6a42e",
       "source_file": "source/03-five-worlds.svg",
-      "source_sha256": "20c45c7406d518750f7d81ad7173b26d6bcf80f8e551dfdccd746b139be7b413",
+      "source_sha256": "023ea2644255dee3504c64b387cb343ef27f43049f75dec3f86941c948246770",
+      "editable_html_file": "source/03-five-worlds.html",
       "dimensions": [
         1080,
         1350
@@ -137,27 +363,180 @@
         "Singapur",
         "Hong Kong"
       ],
-      "creative_fidelity_review": "The five-city collage, edge crops, overprinted red, ink and torn-paper geometry are retained. Type is set into the original central aperture and city windows without converting the composition into a grid.",
       "canonical_lockup_id": "D-04/light",
       "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "logo_width_px": 220,
-      "minimum_supported_display_width_px": 200,
+      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-light.svg",
+      "logo_width_px": 240,
+      "logo_height_px": 91.87768711554038,
       "logo_x_y_px": [
-        397,
-        842
+        53,
+        414
       ],
-      "composition_note": "One paper aperture anchors the thesis while five intentionally varied editorial labels pin five visually distinct city fragments; there are no uniform destination tiles."
+      "minimum_supported_display_width_px": 200,
+      "composition_note": "The central headline uses the original paper aperture, without the generic extra note box. Country labels occupy the original photo annotations; one dark-field label sits on the Hong Kong fragment.",
+      "render_validation": {
+        "jostLoaded": true,
+        "textBounds": [
+          {
+            "copy": "Tek bir",
+            "x": 165,
+            "y": 527.6800003051758,
+            "width": 131.65625,
+            "height": 34.76000213623047,
+            "weight": "550",
+            "family": "Jost",
+            "fontBox": {
+              "x": 165,
+              "y": 515,
+              "width": 131.65625,
+              "height": 64
+            }
+          },
+          {
+            "copy": "Asya yok.",
+            "x": 164.84375,
+            "y": 587.6000022888184,
+            "width": 357.46875,
+            "height": 80.00000762939453,
+            "weight": "740",
+            "family": "Jost",
+            "fontBox": {
+              "x": 164.84375,
+              "y": 564,
+              "width": 357.46875,
+              "height": 116
+            }
+          },
+          {
+            "copy": "Beş rota.",
+            "x": 242,
+            "y": 674.3999996185303,
+            "width": 108.4375,
+            "height": 26.434627532958984,
+            "weight": "550",
+            "family": "Jost",
+            "fontBox": {
+              "x": 242,
+              "y": 664,
+              "width": 108.4375,
+              "height": 41
+            }
+          },
+          {
+            "copy": "Birbirinden farklı dünyalar.",
+            "x": 242,
+            "y": 716.4274997711182,
+            "width": 292.859375,
+            "height": 26.29250144958496,
+            "weight": "450",
+            "family": "Jost",
+            "fontBox": {
+              "x": 242,
+              "y": 709,
+              "width": 292.859375,
+              "height": 38
+            }
+          },
+          {
+            "copy": "Çin",
+            "x": 61,
+            "y": 115.54249954223633,
+            "width": 45.578125,
+            "height": 29.58375358581543,
+            "weight": "650",
+            "family": "Jost",
+            "fontBox": {
+              "x": 61,
+              "y": 105,
+              "width": 45.578125,
+              "height": 43
+            }
+          },
+          {
+            "copy": "Japonya",
+            "x": 945.2650146484375,
+            "y": 315.20000076293945,
+            "width": 89.6568603515625,
+            "height": 22.4580020904541,
+            "weight": "650",
+            "family": "Jost",
+            "fontBox": {
+              "x": 945.2650146484375,
+              "y": 306,
+              "width": 89.6568603515625,
+              "height": 35
+            }
+          },
+          {
+            "copy": "Güney Kore",
+            "x": 889,
+            "y": 810.1187496185303,
+            "width": 135.03125,
+            "height": 23.381250381469727,
+            "weight": "650",
+            "family": "Jost",
+            "fontBox": {
+              "x": 889,
+              "y": 801,
+              "width": 135.03125,
+              "height": 36
+            }
+          },
+          {
+            "copy": "Singapur",
+            "x": 59,
+            "y": 1200.8272495269775,
+            "width": 127.55496215820312,
+            "height": 29.546876907348633,
+            "weight": "650",
+            "family": "Jost",
+            "fontBox": {
+              "x": 59,
+              "y": 1190,
+              "width": 127.55496215820312,
+              "height": 45
+            }
+          },
+          {
+            "copy": "Hong Kong",
+            "x": 658,
+            "y": 1091.5,
+            "width": 181.3125,
+            "height": 32.82563018798828,
+            "weight": "650",
+            "family": "Jost",
+            "fontBox": {
+              "x": 658,
+              "y": 1079,
+              "width": 181.3125,
+              "height": 50
+            }
+          }
+        ],
+        "logoBounds": {
+          "x": 53,
+          "y": 414,
+          "width": 240,
+          "height": 91.877685546875
+        },
+        "viewport": [
+          1080,
+          1350
+        ],
+        "issues": []
+      }
     },
     {
       "id": "04-experience",
       "final_file": "final/04-experience.png",
-      "final_sha256": "27cbcf8c8ed6c1851d736d4d4c484025c74dd4929b04056c3a460a161be42b40",
+      "final_sha256": "b3a83f8d8d2273a35efcad59a26be4555d4cbd8b44d96f5c811bf4c302c4da6f",
       "original_file": "originals/04-experience.png",
       "original_sha256": "cfe42248f261fcf583ee1761f1982ebb15a5e713271e2856041d1c0e3bfc32f8",
       "source_file": "source/04-experience.svg",
-      "source_sha256": "2f04c2458670a05c795524a774cba734da85f3e9dcceec5d7edab62f4d8124a4",
+      "source_sha256": "77dc28a63db67acd0176930b1bd5ac13c383432ec447b1229dacd5c414a87071",
+      "editable_html_file": "source/04-experience.html",
       "dimensions": [
         1080,
         1350
@@ -170,27 +549,210 @@
         "Dil Programları",
         "Yaz Okulları"
       ],
-      "creative_fidelity_review": "Portrait, study action, friends, city dusk, red print marks and collage edges remain intact. The only newly reconstructed shape is an irregular vellum note that follows the original layered-paper language and protects the exact supporting line.",
-      "canonical_lockup_id": "C-03/dark",
-      "canonical_lockup_sha256": "7a164350c572b41ce32259206293e44c72fa6b0b76ae7f12ced8a689144c0b5d",
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "logo_width_px": 448,
-      "minimum_supported_display_width_px": 448,
+      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-dark.svg",
+      "logo_width_px": 300,
+      "logo_height_px": 114.84710889442547,
       "logo_x_y_px": [
-        616,
-        20
+        623,
+        54
       ],
-      "composition_note": "Study and friendship remain the main photographic subjects; a diagonal torn-paper annotation crosses the lower collage, while four pathways are dispersed around separate image fragments."
+      "minimum_supported_display_width_px": 200,
+      "composition_note": "All four pathways follow real annotation apertures instead of floating tags. The large intrusive lower copy card is removed; supporting copy stays with the headline, and the signature clears the edge and the study portrait.",
+      "render_validation": {
+        "jostLoaded": true,
+        "textBounds": [
+          {
+            "copy": "Sadece bir",
+            "x": 66,
+            "y": 74.46000289916992,
+            "width": 205.390625,
+            "height": 34.261592864990234,
+            "weight": "550",
+            "family": "Jost",
+            "fontBox": {
+              "x": 66,
+              "y": 62,
+              "width": 205.390625,
+              "height": 62
+            }
+          },
+          {
+            "copy": "üniversite",
+            "x": 63,
+            "y": 124.24800109863281,
+            "width": 277.953125,
+            "height": 49.256004333496094,
+            "weight": "720",
+            "family": "Jost",
+            "fontBox": {
+              "x": 63,
+              "y": 102,
+              "width": 277.953125,
+              "height": 92
+            }
+          },
+          {
+            "copy": "seçmiyorsun.",
+            "x": 64,
+            "y": 189.25212478637695,
+            "width": 344.53125,
+            "height": 56.16014099121094,
+            "weight": "720",
+            "family": "Jost",
+            "fontBox": {
+              "x": 64,
+              "y": 169,
+              "width": 344.53125,
+              "height": 82
+            }
+          },
+          {
+            "copy": "Yeni bir şehir, yeni insanlar,",
+            "x": 105,
+            "y": 249.72000122070312,
+            "width": 303.28125,
+            "height": 26.230751037597656,
+            "weight": "450",
+            "family": "Jost",
+            "fontBox": {
+              "x": 105,
+              "y": 242,
+              "width": 303.28125,
+              "height": 38
+            }
+          },
+          {
+            "copy": "yeni bir dil ve dünyaya başka",
+            "x": 104.953125,
+            "y": 284.5,
+            "width": 306.71875,
+            "height": 25.221878051757812,
+            "weight": "450",
+            "family": "Jost",
+            "fontBox": {
+              "x": 104.953125,
+              "y": 277,
+              "width": 306.71875,
+              "height": 36
+            }
+          },
+          {
+            "copy": "bir bakış açısı.",
+            "x": 165,
+            "y": 317.7200012207031,
+            "width": 158.890625,
+            "height": 26.269750595092773,
+            "weight": "450",
+            "family": "Jost",
+            "fontBox": {
+              "x": 165,
+              "y": 310,
+              "width": 158.890625,
+              "height": 38
+            }
+          },
+          {
+            "copy": "Lisans",
+            "x": 61,
+            "y": 540.1879997253418,
+            "width": 87.8125,
+            "height": 23.384000778198242,
+            "weight": "650",
+            "family": "Jost",
+            "fontBox": {
+              "x": 61,
+              "y": 529,
+              "width": 87.8125,
+              "height": 46
+            }
+          },
+          {
+            "copy": "Yüksek",
+            "x": 819.9929809570312,
+            "y": 875.1599998474121,
+            "width": 92.22503662109375,
+            "height": 22.340499877929688,
+            "weight": "650",
+            "family": "Jost",
+            "fontBox": {
+              "x": 819.9929809570312,
+              "y": 867,
+              "width": 92.22503662109375,
+              "height": 41
+            }
+          },
+          {
+            "copy": "Lisans",
+            "x": 820,
+            "y": 913.0394992828369,
+            "width": 76.6875,
+            "height": 20.461002349853516,
+            "weight": "650",
+            "family": "Jost",
+            "fontBox": {
+              "x": 820,
+              "y": 903,
+              "width": 76.6875,
+              "height": 41
+            }
+          },
+          {
+            "copy": "Dil Programları",
+            "x": 430,
+            "y": 961.3800010681152,
+            "width": 198.234375,
+            "height": 29.518375396728516,
+            "weight": "650",
+            "family": "Jost",
+            "fontBox": {
+              "x": 430,
+              "y": 953,
+              "width": 198.234375,
+              "height": 42
+            }
+          },
+          {
+            "copy": "Yaz Okulları",
+            "x": 707.9922485351562,
+            "y": 1213.8200016021729,
+            "width": 169.60150146484375,
+            "height": 24.815500259399414,
+            "weight": "650",
+            "family": "Jost",
+            "fontBox": {
+              "x": 707.9922485351562,
+              "y": 1205,
+              "width": 169.60150146484375,
+              "height": 45
+            }
+          }
+        ],
+        "logoBounds": {
+          "x": 623,
+          "y": 54,
+          "width": 300,
+          "height": 114.84710693359375
+        },
+        "viewport": [
+          1080,
+          1350
+        ],
+        "issues": []
+      }
     },
     {
       "id": "05-invitation",
       "final_file": "final/05-invitation.png",
-      "final_sha256": "3c4a5ec61833ccc16a8f9dcf77a6e1a567c672101247e0ac02d14d1d2dab816c",
+      "final_sha256": "45bff6bc9edd29be64cadb9397133eb9d4286a88f49e66340125e3f228151559",
       "original_file": "originals/05-invitation.png",
       "original_sha256": "8a6c1485c5d3f24d952ef7e78366dc071a7ae9f8218c92f61620de258f2d8c20",
       "source_file": "source/05-invitation.svg",
-      "source_sha256": "e98a59eac6d47cbeca104064f52218dd7b337bcd7f6e24bd143d7c2d481ea4dd",
+      "source_sha256": "510a1ea7530425a943c2063f3a55bb695374954fe51236bc3f67eba48fb7b5ff",
+      "editable_html_file": "source/05-invitation.html",
       "dimensions": [
         1080,
         1350
@@ -201,68 +763,168 @@
         "Ücretsiz ön görüşme",
         "Profildeki bağlantıdan bize ulaş."
       ],
-      "creative_fidelity_review": "The dark atmospheric image, student silhouette, cream central sweep, red diagonals and grain are retained. One targeted edit replaced a temple-like roof with modern city architecture; the first generation is retained as provenance. The bilingual SVG is prominent at 632px, above its 528px minimum.",
       "canonical_lockup_id": "H-02/light",
       "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "logo_width_px": 632,
-      "minimum_supported_display_width_px": 528,
+      "canonical_lockup_file": "assets/lockups/h-02-primary-horizontal-light.svg",
+      "logo_width_px": 560,
+      "logo_height_px": 210.04116986418418,
       "logo_x_y_px": [
-        224,
-        565
+        405,
+        580
       ],
-      "composition_note": "The campaign closes with a dark cinematic field and an oversized bilingual lockup centered on the original cream vellum wave; CTA follows the red diagonal rather than a standard ad button/footer."
+      "minimum_supported_display_width_px": 528,
+      "composition_note": "Headline clears the skyline and remains Paper, not low-contrast red-on-night. Bilingual mark now sits wholly on the cream aperture, clear of the student silhouette. Destination line follows it; CTA and contact instruction are grouped on the dark sweep without a redundant button.",
+      "render_validation": {
+        "jostLoaded": true,
+        "textBounds": [
+          {
+            "copy": "Senin rotan",
+            "x": 473,
+            "y": 68.65449905395508,
+            "width": 309.390625,
+            "height": 45.61650466918945,
+            "weight": "650",
+            "family": "Jost",
+            "fontBox": {
+              "x": 473,
+              "y": 47,
+              "width": 309.390625,
+              "height": 89
+            }
+          },
+          {
+            "copy": "nerede başlıyor?",
+            "x": 470,
+            "y": 140.6400032043457,
+            "width": 457.890625,
+            "height": 64.31143188476562,
+            "weight": "650",
+            "family": "Jost",
+            "fontBox": {
+              "x": 470,
+              "y": 123,
+              "width": 457.890625,
+              "height": 89
+            }
+          },
+          {
+            "copy": "Çin · Japonya · Güney Kore ·",
+            "x": 630,
+            "y": 816.5074996948242,
+            "width": 316.015625,
+            "height": 24.547252655029297,
+            "weight": "450",
+            "family": "Jost",
+            "fontBox": {
+              "x": 630,
+              "y": 807,
+              "width": 316.015625,
+              "height": 38
+            }
+          },
+          {
+            "copy": "Singapur · Hong Kong",
+            "x": 630,
+            "y": 853.5074996948242,
+            "width": 249.125,
+            "height": 24.52125358581543,
+            "weight": "450",
+            "family": "Jost",
+            "fontBox": {
+              "x": 630,
+              "y": 844,
+              "width": 249.125,
+              "height": 38
+            }
+          },
+          {
+            "copy": "Ücretsiz ön görüşme",
+            "x": 474,
+            "y": 983.9925308227539,
+            "width": 400.40625,
+            "height": 51.07056427001953,
+            "weight": "650",
+            "family": "Jost",
+            "fontBox": {
+              "x": 474,
+              "y": 978,
+              "width": 400.40625,
+              "height": 62
+            }
+          },
+          {
+            "copy": "Profildeki bağlantıdan bize ulaş.",
+            "x": 476,
+            "y": 1047.8450012207031,
+            "width": 380.59375,
+            "height": 28.647499084472656,
+            "weight": "450",
+            "family": "Jost",
+            "fontBox": {
+              "x": 476,
+              "y": 1040,
+              "width": 380.59375,
+              "height": 41
+            }
+          }
+        ],
+        "logoBounds": {
+          "x": 405,
+          "y": 580,
+          "width": 560,
+          "height": 210.04116821289062
+        },
+        "viewport": [
+          1080,
+          1350
+        ],
+        "issues": []
+      }
     }
   ],
   "pixel_integrity_review": [
     {
       "slide": "01-cover",
-      "source_to_final_changed_area_percent": 2.34,
-      "logo_region_changed_pixels": 3669,
+      "source_to_final_changed_area_percent": 3.05,
+      "logo_region_changed_pixels": 7851,
       "status": "PASS"
     },
     {
       "slide": "02-perspective",
-      "source_to_final_changed_area_percent": 7.35,
-      "logo_region_changed_pixels": 26767,
+      "source_to_final_changed_area_percent": 9.05,
+      "logo_region_changed_pixels": 33261,
       "status": "PASS"
     },
     {
       "slide": "03-five-worlds",
-      "source_to_final_changed_area_percent": 11.86,
-      "logo_region_changed_pixels": 16861,
+      "source_to_final_changed_area_percent": 2.94,
+      "logo_region_changed_pixels": 4857,
       "status": "PASS"
     },
     {
       "slide": "04-experience",
-      "source_to_final_changed_area_percent": 10.75,
-      "logo_region_changed_pixels": 14706,
+      "source_to_final_changed_area_percent": 2.97,
+      "logo_region_changed_pixels": 7854,
       "status": "PASS"
     },
     {
       "slide": "05-invitation",
-      "source_to_final_changed_area_percent": 7.5,
-      "logo_region_changed_pixels": 45605,
+      "source_to_final_changed_area_percent": 5.1,
+      "logo_region_changed_pixels": 33475,
       "status": "PASS"
     }
   ],
   "package_file": "package/launch-carousel-5slides.zip",
   "mobile_preview_files": [
-    "mobile/01-cover-324x405.png",
-    "mobile/02-perspective-324x405.png",
-    "mobile/03-five-worlds-324x405.png",
-    "mobile/04-experience-324x405.png",
-    "mobile/05-invitation-324x405.png"
+    "mobile/01-cover-375x469.png",
+    "mobile/02-perspective-375x469.png",
+    "mobile/03-five-worlds-375x469.png",
+    "mobile/04-experience-375x469.png",
+    "mobile/05-invitation-375x469.png"
   ],
   "contact_sheet_file": "contact-sheet.png",
   "source_vs_final_contact_sheet_file": "original-to-final-contact-sheet.jpg",
-  "alternate_generations": [
-    {
-      "slide": "05-invitation",
-      "file": "originals/05-invitation-first.png",
-      "sha256": "415a9f4cf1090a69a1a87e486532edc51f46a97838dc8a1575cc511111106fec",
-      "note": "Initial gpt-image-2 composition before the single targeted roofline correction."
-    }
-  ]
+  "revision_comparison_file": "placement-v1-v2-contact-sheet.jpg"
 }

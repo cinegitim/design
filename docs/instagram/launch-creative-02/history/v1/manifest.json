@@ -1,0 +1,268 @@
+{
+  "title": "Asya’da Eğitim — Launch Carousel Experiment 02",
+  "campaign": "Üniversite için başka bir dünya var.",
+  "status": "HUMAN EXPERIMENTAL CAMPAIGN REVIEW PENDING",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "production_method": "Five full editorial compositions generated first with gpt-image-2. Original images are preserved; accurate copy is editable SVG text, and exact canonical SVG lockups are externally linked and composited in the reconstruction.",
+  "font": {
+    "family": "Jost",
+    "file": "assets/Jost-VF.ttf",
+    "sha256": "6343b70971000b04c5d401c96ae08ce371086135e999d5e1e1413039c0213076"
+  },
+  "palette": {
+    "paper": "#F7F3E9",
+    "ink": "#1D2027",
+    "red": "#BD2120"
+  },
+  "exact_copy": {
+    "01-cover": [
+      "Üniversite için başka bir dünya var.",
+      "Yurtdışı eğitime başka bir yerden bak."
+    ],
+    "02-perspective": [
+      "Yurtdışı eğitimin tek yönü yok.",
+      "Amerika ve Avrupa, seçeneklerin tamamı değil."
+    ],
+    "03-five-worlds": [
+      "Tek bir Asya yok.",
+      "Beş rota. Birbirinden farklı dünyalar.",
+      "Çin",
+      "Japonya",
+      "Güney Kore",
+      "Singapur",
+      "Hong Kong"
+    ],
+    "04-experience": [
+      "Sadece bir üniversite seçmiyorsun.",
+      "Yeni bir şehir, yeni insanlar, yeni bir dil ve dünyaya başka bir bakış açısı.",
+      "Lisans",
+      "Yüksek Lisans",
+      "Dil Programları",
+      "Yaz Okulları"
+    ],
+    "05-invitation": [
+      "Senin rotan nerede başlıyor?",
+      "Çin · Japonya · Güney Kore · Singapur · Hong Kong",
+      "Ücretsiz ön görüşme",
+      "Profildeki bağlantıdan bize ulaş."
+    ]
+  },
+  "imagery_disclosure": "All generated people and places are illustrative campaign imagery, not documentary photographs. Destination imagery on slide 03 uses broad city cues; it is not a claim of exact landmark photography or a specific university.",
+  "gpt_image_2": {
+    "generation_count": 5,
+    "edit_count": 1,
+    "backend": "gpt-image-2 via connected ChatGPT subscription",
+    "edited_slide": "05-invitation: one targeted correction replaced an unintended temple-like silhouette with contemporary city architecture; first generation retained as provenance."
+  },
+  "slides": [
+    {
+      "id": "01-cover",
+      "final_file": "final/01-cover.png",
+      "final_sha256": "427eedc4443d2f8c2a2ffcfafd5fc8f33a92b0eacdccd6990718296365e9b08d",
+      "original_file": "originals/01-cover.png",
+      "original_sha256": "f61f758a15862e199be46ffa2b792fd420f63424d3e7d991dcdfb264dd8ca14a",
+      "source_file": "source/01-cover.svg",
+      "source_sha256": "efd96bb9d622c3d753ed894ef5e995ed42b8cf2b16f66cd97f580747f5dfb6b2",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "copy": [
+        "Üniversite için başka bir dünya var.",
+        "Yurtdışı eğitime başka bir yerden bak."
+      ],
+      "creative_fidelity_review": "The 1122×1402 generated collage is retained as the complete base; only campaign copy and the approved small-use lockup are added. The photographic focal face, red paper arcs, grain and irregular montage remain unchanged.",
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_width_px": 220,
+      "minimum_supported_display_width_px": 200,
+      "logo_x_y_px": [
+        842,
+        30
+      ],
+      "composition_note": "Collage takes the image from a close student portrait through architectural layers into the campus vista; exact copy occupies the torn-paper sweep, not a poster header/footer."
+    },
+    {
+      "id": "02-perspective",
+      "final_file": "final/02-perspective.png",
+      "final_sha256": "8fa23138f14f936683499b2e8c5143c48c0c549e81bc0340bc46a57b33191aa7",
+      "original_file": "originals/02-perspective.png",
+      "original_sha256": "25253793ed1d15f30c384079d816886dd935c2006a40e86dbadc906d4acd4720",
+      "source_file": "source/02-perspective.svg",
+      "source_sha256": "044bb1b94fb92be87db0732048a81664c47acba74da5b4eafb26b987b29c101e",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "copy": [
+        "Yurtdışı eğitimin tek yönü yok.",
+        "Amerika ve Avrupa, seçeneklerin tamamı değil."
+      ],
+      "creative_fidelity_review": "Perspective, passerby, red vanishing-axis sweep and cream collage margin are retained intact. The four-line headline follows the reserved paper field; the lockup is placed on a separate dark photographic region.",
+      "canonical_lockup_id": "P-01/dark",
+      "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_width_px": 352,
+      "minimum_supported_display_width_px": 352,
+      "logo_x_y_px": [
+        26,
+        968
+      ],
+      "composition_note": "The student-height passage moves from dark foreground to a bright campus horizon. A differently scaled, stacked lockup sits against the backpack silhouette rather than a recurring corner zone."
+    },
+    {
+      "id": "03-five-worlds",
+      "final_file": "final/03-five-worlds.png",
+      "final_sha256": "cf8e61bc857e291fa8b4ca0b8393252564492e3125e3c305e5763da732509050",
+      "original_file": "originals/03-five-worlds.png",
+      "original_sha256": "2d1809cf410697bc2aa3ceedd1ac33a08a32b31a0a47244c99dadeb713d6a42e",
+      "source_file": "source/03-five-worlds.svg",
+      "source_sha256": "20c45c7406d518750f7d81ad7173b26d6bcf80f8e551dfdccd746b139be7b413",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "copy": [
+        "Tek bir Asya yok.",
+        "Beş rota. Birbirinden farklı dünyalar.",
+        "Çin",
+        "Japonya",
+        "Güney Kore",
+        "Singapur",
+        "Hong Kong"
+      ],
+      "creative_fidelity_review": "The five-city collage, edge crops, overprinted red, ink and torn-paper geometry are retained. Type is set into the original central aperture and city windows without converting the composition into a grid.",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_width_px": 220,
+      "minimum_supported_display_width_px": 200,
+      "logo_x_y_px": [
+        397,
+        842
+      ],
+      "composition_note": "One paper aperture anchors the thesis while five intentionally varied editorial labels pin five visually distinct city fragments; there are no uniform destination tiles."
+    },
+    {
+      "id": "04-experience",
+      "final_file": "final/04-experience.png",
+      "final_sha256": "27cbcf8c8ed6c1851d736d4d4c484025c74dd4929b04056c3a460a161be42b40",
+      "original_file": "originals/04-experience.png",
+      "original_sha256": "cfe42248f261fcf583ee1761f1982ebb15a5e713271e2856041d1c0e3bfc32f8",
+      "source_file": "source/04-experience.svg",
+      "source_sha256": "2f04c2458670a05c795524a774cba734da85f3e9dcceec5d7edab62f4d8124a4",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "copy": [
+        "Sadece bir üniversite seçmiyorsun.",
+        "Yeni bir şehir, yeni insanlar, yeni bir dil ve dünyaya başka bir bakış açısı.",
+        "Lisans",
+        "Yüksek Lisans",
+        "Dil Programları",
+        "Yaz Okulları"
+      ],
+      "creative_fidelity_review": "Portrait, study action, friends, city dusk, red print marks and collage edges remain intact. The only newly reconstructed shape is an irregular vellum note that follows the original layered-paper language and protects the exact supporting line.",
+      "canonical_lockup_id": "C-03/dark",
+      "canonical_lockup_sha256": "7a164350c572b41ce32259206293e44c72fa6b0b76ae7f12ced8a689144c0b5d",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_width_px": 448,
+      "minimum_supported_display_width_px": 448,
+      "logo_x_y_px": [
+        616,
+        20
+      ],
+      "composition_note": "Study and friendship remain the main photographic subjects; a diagonal torn-paper annotation crosses the lower collage, while four pathways are dispersed around separate image fragments."
+    },
+    {
+      "id": "05-invitation",
+      "final_file": "final/05-invitation.png",
+      "final_sha256": "3c4a5ec61833ccc16a8f9dcf77a6e1a567c672101247e0ac02d14d1d2dab816c",
+      "original_file": "originals/05-invitation.png",
+      "original_sha256": "8a6c1485c5d3f24d952ef7e78366dc071a7ae9f8218c92f61620de258f2d8c20",
+      "source_file": "source/05-invitation.svg",
+      "source_sha256": "e98a59eac6d47cbeca104064f52218dd7b337bcd7f6e24bd143d7c2d481ea4dd",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "copy": [
+        "Senin rotan nerede başlıyor?",
+        "Çin · Japonya · Güney Kore · Singapur · Hong Kong",
+        "Ücretsiz ön görüşme",
+        "Profildeki bağlantıdan bize ulaş."
+      ],
+      "creative_fidelity_review": "The dark atmospheric image, student silhouette, cream central sweep, red diagonals and grain are retained. One targeted edit replaced a temple-like roof with modern city architecture; the first generation is retained as provenance. The bilingual SVG is prominent at 632px, above its 528px minimum.",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_width_px": 632,
+      "minimum_supported_display_width_px": 528,
+      "logo_x_y_px": [
+        224,
+        565
+      ],
+      "composition_note": "The campaign closes with a dark cinematic field and an oversized bilingual lockup centered on the original cream vellum wave; CTA follows the red diagonal rather than a standard ad button/footer."
+    }
+  ],
+  "pixel_integrity_review": [
+    {
+      "slide": "01-cover",
+      "source_to_final_changed_area_percent": 2.34,
+      "logo_region_changed_pixels": 3669,
+      "status": "PASS"
+    },
+    {
+      "slide": "02-perspective",
+      "source_to_final_changed_area_percent": 7.35,
+      "logo_region_changed_pixels": 26767,
+      "status": "PASS"
+    },
+    {
+      "slide": "03-five-worlds",
+      "source_to_final_changed_area_percent": 11.86,
+      "logo_region_changed_pixels": 16861,
+      "status": "PASS"
+    },
+    {
+      "slide": "04-experience",
+      "source_to_final_changed_area_percent": 10.75,
+      "logo_region_changed_pixels": 14706,
+      "status": "PASS"
+    },
+    {
+      "slide": "05-invitation",
+      "source_to_final_changed_area_percent": 7.5,
+      "logo_region_changed_pixels": 45605,
+      "status": "PASS"
+    }
+  ],
+  "package_file": "package/launch-carousel-5slides.zip",
+  "mobile_preview_files": [
+    "mobile/01-cover-324x405.png",
+    "mobile/02-perspective-324x405.png",
+    "mobile/03-five-worlds-324x405.png",
+    "mobile/04-experience-324x405.png",
+    "mobile/05-invitation-324x405.png"
+  ],
+  "contact_sheet_file": "contact-sheet.png",
+  "source_vs_final_contact_sheet_file": "original-to-final-contact-sheet.jpg",
+  "alternate_generations": [
+    {
+      "slide": "05-invitation",
+      "file": "originals/05-invitation-first.png",
+      "sha256": "415a9f4cf1090a69a1a87e486532edc51f46a97838dc8a1575cc511111106fec",
+      "note": "Initial gpt-image-2 composition before the single targeted roofline correction."
+    }
+  ]
+}
