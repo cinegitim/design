@@ -22,6 +22,17 @@ Check `brands/<slug>/brand.json` for `canonicalLogo.locked`. If it is locked:
 6. Logo on a perspective or physical surface → do not regenerate. Flag it for the perspective/mockup workflow, which warps the same canonical asset.
 7. Write `canonical_logo_sha256` into the output's manifest before reporting completion.
 
+## Canonical lockup gate — Asya'da Eğitim
+
+If `brands/<slug>/brand.json` has `canonicalLockups.locked`:
+
+1. Run `python3 studio/tools/verify_asyada_canonical_lockups.py`. If it fails, stop publishing.
+2. Use only complete SVGs listed in `brands/<slug>/assets/lockups/canonical-lockups.json`, or the existing locked seal when seal-only use is appropriate.
+3. Do **not** reconstruct a lockup from separate seal and wordmark geometry. Do **not** typeset the brand name, substitute fonts, recolour outside approved variants, crop, distort or perspective-transform.
+4. For Asya'da Eğitim, D-04 is Turkish-only. Never add English to it.
+5. If the layout cannot accommodate an approved lockup at minimum size and clearspace, flag the constraint or use a different approved variant; do not modify the design.
+6. Every final branded output manifest must record `canonical_lockup_id`, `canonical_lockup_sha256`, and `canonical_seal_sha256`.
+
 If the logo is not locked, follow references/image-production.md normally.
 
 Finish via the standing GitHub delivery workflow in AGENTS.md (procedure: studio/workflow/PUBLISHING.md) and verify the affected live Pages URL before reporting completion.

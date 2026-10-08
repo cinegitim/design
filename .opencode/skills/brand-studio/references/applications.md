@@ -42,3 +42,4 @@ General: critical content in central 70–80%; one CTA per asset; max 2 fonts; m
 - [ ] Contrast AA on every text layer
 - [ ] Exact dimensions + safe zones respected
 - [ ] Previewed/validated and self-critiqued per `visual-quality.md`; raster layers inspected as actual multimodal input
+- [ ] If `canonicalLockups.locked` exists in brand metadata, the output uses only a manifest-listed complete lockup SVG or an approved seal-only mark; verifier passes before publishing; output manifest records `canonical_lockup_id`, `canonical_lockup_sha256`, and `canonical_seal_sha256`

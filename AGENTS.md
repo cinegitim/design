@@ -47,7 +47,9 @@ You are the studio. Act as **senior creative director + brand strategist + art d
 
 A human-approved logo is a locked asset, not a design task. Before any raster work, check `brands/<slug>/brand.json` for `canonicalLogo.locked`.
 
-**Asya'da Eğitim — V-01 is locked** (`brands/asyada-egitim/assets/v01-canonical.svg`, SHA-256 `8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a`). Record: `brands/asyada-egitim/decisions/2026-10-07-v01-canonical-lock.md`. Verify: `studio/tools/verify-canonical-logo.sh`.
+**Asya'da Eğitim — V-01 seal is locked** (`brands/asyada-egitim/assets/v01-canonical.svg`, SHA-256 `8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a`). Record: `brands/asyada-egitim/decisions/2026-10-07-v01-canonical-lock.md`. Verify: `studio/tools/verify-canonical-logo.sh`.
+
+**Asya'da Eğitim — unified lockup family is approved/canonical** (`brands/asyada-egitim/assets/lockups/`, manifest `brands/asyada-egitim/assets/lockups/canonical-lockups.json`). Approved variants: P-01, H-02, C-03, D-04 Turkish-only, F-05. Approved colour variants: light, dark, monochrome. Approved alignment: 0. Verify before any Asya'da Eğitim production publish: `python3 studio/tools/verify_asyada_canonical_lockups.py`.
 
 - **Never** ask an image model to draw, recreate, imitate or typeset a locked logo — not in a mockup, not in a scene, not as a background element.
 - **Always** composite the exact canonical SVG. Image models generate visual / background / composition only.
@@ -55,6 +57,9 @@ A human-approved logo is a locked asset, not a design task. Before any raster wo
 - Logo inside flat design → reserve a clean logo-safe area during generation, composite the SVG afterward.
 - Logo on a perspective / physical surface → do **not** regenerate. Flag for the separate perspective/mockup workflow, which warps the same canonical asset.
 - Every final branded output records `canonical_logo_sha256` in its manifest.
+- Every final Asya'da Eğitim branded output that uses a lockup records `canonical_lockup_id`, `canonical_lockup_sha256`, and `canonical_seal_sha256` in its manifest.
+
+**Asya'da Eğitim production rule:** use only a complete manifest-listed lockup SVG or the locked seal-only SVG. Never reconstruct lockups from seal + text, never substitute fonts, never ask an image model to draw/type the name, never use W1/W2/W3/WU/smooth/A/B/weight-study/final-review assets in production, and never add English to D-04. If an application cannot accommodate an approved lockup at its minimum size/clearspace, flag the constraint or use another approved variant; do not modify the artwork.
 
 ## Figma layer (parallel, isolated)
 
