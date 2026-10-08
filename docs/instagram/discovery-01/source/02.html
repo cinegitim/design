@@ -1,0 +1,53 @@
+<!doctype html><html lang="tr"><meta charset="utf-8"><style>
+@font-face{font-family:Jost;src:url(../assets/Jost-VF.ttf);font-weight:100 900}
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1350px;overflow:hidden}
+body{font-family:Jost,Arial,sans-serif}.page{position:relative;width:1080px;height:1350px;overflow:hidden;padding:56px 64px}
+.paper{background:#F7F3E9;color:#1D2027}.ink{background:#1D2027;color:#F7F3E9}.red{background:#BD2120;color:#F7F3E9}.s3:before{content:"";position:absolute;z-index:4;top:30px;right:52px;width:374px;height:374px;background:#1D2027}
+.logo{position:absolute;z-index:10;top:46px;right:64px;width:352px;height:auto}
+.kicker{font-size:23px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;line-height:1.2}
+.redink{color:#BD2120}.paper .redink{color:#BD2120}.ink .redink,.red .redink{color:#BD2120}
+.rule{height:2px;background:#1D2027}.paper .rule{background:#1D2027}.ink .rule{background:#F7F3E9}.red .rule{background:#F7F3E9}
+.folio{position:absolute;right:64px;bottom:38px;font-size:22px;font-weight:700;letter-spacing:.12em}
+.headline{font-weight:700;letter-spacing:-.055em;line-height:.93;text-wrap:balance;margin:0}
+.photo{position:absolute;object-fit:cover;filter:saturate(.78) contrast(1.02)}
+.stamp{display:inline-block;border:2px solid currentColor;padding:8px 12px;font-size:18px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;transform:rotate(-2deg)}
+.index{font-size:19px;font-weight:700;letter-spacing:.12em}.annotation{font-size:22px;line-height:1.35;font-weight:500}
+.hatch{background-image:repeating-linear-gradient(135deg,transparent 0 9px,#1D20271a 9px 11px)}
+/* 01 / cover */
+.s1 .kicker{position:absolute;left:64px;top:62px;width:450px}.s1 .section{position:absolute;left:64px;top:540px;color:#BD2120}
+.s1 .headline{position:absolute;left:64px;top:592px;width:650px;font-size:112px}.s1 .headline em{font-style:normal;color:#BD2120}
+.s1 .sub{position:absolute;left:68px;top:865px;width:560px;font-size:30px;line-height:1.22;font-weight:550}
+.s1 .photo{left:650px;top:500px;width:430px;height:470px;object-position:center 48%;border-left:12px solid #BD2120}
+.s1 .sidecode{position:absolute;right:66px;top:1000px;writing-mode:vertical-rl;font-size:17px;letter-spacing:.15em;font-weight:650}
+/* 02 / range */
+.s2 .kicker{position:absolute;left:64px;top:462px;color:#BD2120}
+.s2 .headline{position:absolute;left:64px;top:510px;width:770px;font-size:91px}
+.s2 .country-list{position:absolute;left:64px;top:815px;width:670px;display:grid;grid-template-columns:1fr 1fr;column-gap:28px}
+.s2 .country{height:72px;border-top:2px solid #F7F3E9;display:flex;align-items:center;gap:20px;font-size:33px;font-weight:600}
+.s2 .country small{font-size:17px;color:#BD2120;letter-spacing:.1em;font-weight:700}
+.s2 .photo{right:0;top:740px;width:300px;height:340px;object-position:center;opacity:.8;border:8px solid #F7F3E9}
+.s2 .note{position:absolute;left:64px;top:1190px;width:650px;font-size:23px;color:#F7F3E9b8}
+/* 03 / goals */
+.s3 .kicker{position:absolute;left:64px;top:475px;color:#F7F3E9}
+.s3 .headline{position:absolute;left:64px;top:525px;width:580px;font-size:72px}
+.s3 .target-list{position:absolute;left:64px;right:64px;top:850px;display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+.s3 .target{min-height:80px;border-top:2px solid #F7F3E9;display:flex;align-items:center;gap:18px;font-size:30px;font-weight:600}
+.s3 .target b{font-size:19px;font-weight:700;letter-spacing:.1em;color:#F7F3E9}
+.s3 .note{position:absolute;left:64px;top:1085px;font-size:23px;max-width:730px;line-height:1.35}
+/* 04 / method */
+.s4 .kicker{position:absolute;left:64px;top:475px;color:#BD2120}
+.s4 .headline{position:absolute;left:64px;top:525px;width:640px;font-size:84px}
+.s4 .photo{right:0;top:690px;width:425px;height:400px;object-position:center 56%;border-left:10px solid #BD2120}
+.s4 .steps{position:absolute;left:64px;top:795px;width:535px}
+.s4 .step{display:grid;grid-template-columns:58px 1fr;align-items:start;padding:17px 0;border-top:2px solid #1D2027}
+.s4 .step b{font-size:23px;color:#BD2120}.s4 .step span{font-size:28px;line-height:1.12;font-weight:600}
+.s4 .annotation{position:absolute;left:64px;top:1115px;width:560px;font-size:21px}
+/* 05 / invitation */
+.s5 .kicker{position:absolute;left:64px;top:470px;color:#BD2120}
+.s5 .headline{position:absolute;left:64px;top:525px;width:820px;font-size:104px}
+.s5 .headline em{font-style:normal;color:#BD2120}
+.s5 .cta{position:absolute;left:64px;top:895px;border:2px solid #BD2120;color:#F7F3E9;padding:18px 24px;font-size:30px;font-weight:650}
+.s5 .annotation{position:absolute;left:64px;top:1000px;width:700px;font-size:25px}
+.s5 .photo{right:0;bottom:135px;width:360px;height:220px;opacity:.6;object-position:center}
+@media print{*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style><body><main class="page ink s2"><img class="logo" src="../assets/p01-dark.svg"><div class="kicker">DOSYA 01　/　OLASILIKLAR</div><h1 class="headline">Beş ülke.<br><span class="redink">Birçok</span><br>başlangıç.</h1><div class="country-list"><div class="country"><small>01</small>Çin</div><div class="country"><small>02</small>Japonya</div><div class="country"><small>03</small>Güney Kore</div><div class="country"><small>04</small>Singapur</div><div class="country"><small>05</small>Hong Kong</div></div><img class="photo" src="../assets/study-worlds.png"><div class="note">Aynı rota herkese uymaz. Seçenekleri hedefinle birlikte düşün.</div><div class="folio">02　/　05</div></main></body></html>
