@@ -1,0 +1,563 @@
+{
+  "status": "Technical verification only; HUMAN TYPOGRAPHY REVIEW PENDING",
+  "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "canonical_geometry_comparisons": 48,
+  "relative_wordmark_offset_alternatives_checked": 192,
+  "reference_bytes_unchanged": true,
+  "rendered_final_pairings": {
+    "tr400-en200-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr400-en250-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr400-en300-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr400-en350-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr450-en200-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr450-en250-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr450-en300-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr450-en350-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr500-en200-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr500-en250-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr500-en300-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr500-en350-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr550-en200-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr550-en250-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr550-en300-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr550-en350-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr600-en200-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr600-en250-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr600-en300-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr600-en350-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr650-en200-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr650-en250-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr650-en300-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    },
+    "tr650-en350-wordmark.svg": {
+      "tr1": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 7,
+        "counters": 4,
+        "edge_error": 0
+      },
+      "tr2": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 9,
+        "counters": 0,
+        "edge_error": 0
+      },
+      "en": {
+        "left_at_1000": 0,
+        "right_at_1000": 999,
+        "components": 15,
+        "counters": 5,
+        "edge_error": 0
+      }
+    }
+  },
+  "worst_edge_error": 0,
+  "limits": "Does not establish glyph-shape fidelity, curvature quality, legibility approval, or a winner. Visual differences remain explicitly documented."
+}

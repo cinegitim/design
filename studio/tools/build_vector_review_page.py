@@ -140,10 +140,13 @@ a{color:var(--verm)}
 </style></head>
 <body><div class="wrap">
 
+<div class="pending">TARİHSEL ÇALIŞMA — B REDDEDİLDİ. A / JOST 700 ONAYLANMADI.</div>
+<div class="note"><b>Bu sayfa artık geliştirme kaynağı değildir.</b> Önceki düğüm ve raster eğri sayımları tipografik doğruluğu veya görsel kaliteyi kanıtlamaz. Güncel çalışma özgün referansa göre ayrı Türkçe/İngilizce ağırlıklarını karşılaştırır. <a href="../typography-weights/">Referans öncelikli tipografi incelemesini aç →</a></div>
+
 <h1>Kelime Markası — Vektör Kalite İncelemesi</h1>
 <p class="sub">Raster izleme → kübik uydurma → yumuşatma hattı <b>durduruldu</b>. Onaylı referansın aynısı, iki yeni vektör yöntemle yeniden kuruldu.</p>
 
-<div class="pending">İNSAN VEKTÖR KALİTESİ İNCELEMESİ BEKLENİYOR — hiçbir aday seçilmedi, hiçbir şey kanonikleştirilmedi, hizalama seçilmedi</div>
+<div class="pending">A ONAYLANMADI · B REDDEDİLDİ · HİZALAMA SEÇİLMEDİ · KANONİKLEŞTİRME YOK</div>
 
 <div class="note">
 <b>Neden yeniden yapıldı.</b> "Pürüzsüz" sürüm 1460 kübik, 0 düz çizgi üretiyordu. Otomatik raster→Bézier dönüşümü, ölçtüğümüz her şeyi daha iyi yaptı ama <i>görsel olarak daha kötü</i>. Aşağıdaki ölçüm bunu doğruluyor: aşırı uydurulmuş sürüm, düğüm sayısında ve eğri salınımında çokgen sürümden daha kötüdür. Sıfır düz çizgi bir kalite hedefi değildir.

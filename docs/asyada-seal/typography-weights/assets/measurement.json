@@ -1,0 +1,4766 @@
+{
+  "status": "HUMAN TYPOGRAPHY REVIEW PENDING",
+  "candidate_B": "REJECTED; not regenerated",
+  "winner": null,
+  "alignment_selected": null,
+  "reference": {
+    "method": "Original JPEG; neutral-ink threshold L<140 (roughly 50% edge coverage), red excluded; +/-1 native pixel uncertainty. No upscaling for measurements.",
+    "lines": {
+      "tr1": {
+        "cap": 140,
+        "cap_top": 69,
+        "baseline": 209,
+        "bbox_width": 880,
+        "components": [
+          {
+            "x": 42,
+            "y": 69,
+            "w": 139,
+            "h": 140,
+            "area": 7913,
+            "width": 139.0,
+            "height": 140.0,
+            "width_cap_ratio": 0.9929,
+            "width_height_ratio": 0.9929,
+            "ink_fraction": 0.4066,
+            "v_stem": null,
+            "h_stem": 24.0,
+            "counters": [
+              {
+                "w": 34.0,
+                "h": 39.0,
+                "area": 713.0
+              }
+            ],
+            "char": "A",
+            "index": 0
+          },
+          {
+            "x": 208,
+            "y": 68,
+            "w": 95,
+            "h": 142,
+            "area": 7253,
+            "width": 95.0,
+            "height": 142.0,
+            "width_cap_ratio": 0.6786,
+            "width_height_ratio": 0.669,
+            "ink_fraction": 0.5377,
+            "v_stem": null,
+            "h_stem": null,
+            "counters": [],
+            "char": "S",
+            "index": 1
+          },
+          {
+            "x": 325,
+            "y": 69,
+            "w": 120,
+            "h": 140,
+            "area": 5933,
+            "width": 120.0,
+            "height": 140.0,
+            "width_cap_ratio": 0.8571,
+            "width_height_ratio": 0.8571,
+            "ink_fraction": 0.3546,
+            "v_stem": null,
+            "h_stem": null,
+            "counters": [],
+            "char": "Y",
+            "index": 2
+          },
+          {
+            "x": 441,
+            "y": 69,
+            "w": 138,
+            "h": 140,
+            "area": 7813,
+            "width": 138.0,
+            "height": 140.0,
+            "width_cap_ratio": 0.9857,
+            "width_height_ratio": 0.9857,
+            "ink_fraction": 0.4056,
+            "v_stem": null,
+            "h_stem": 24.0,
+            "counters": [
+              {
+                "w": 34.0,
+                "h": 39.0,
+                "area": 702.0
+              }
+            ],
+            "char": "A",
+            "index": 3
+          },
+          {
+            "x": 644,
+            "y": 69,
+            "w": 113,
+            "h": 140,
+            "area": 9568,
+            "width": 113.0,
+            "height": 140.0,
+            "width_cap_ratio": 0.8071,
+            "width_height_ratio": 0.8071,
+            "ink_fraction": 0.6048,
+            "v_stem": 28.0,
+            "h_stem": null,
+            "counters": [
+              {
+                "w": 57.0,
+                "h": 87.0,
+                "area": 4218.0
+              }
+            ],
+            "char": "D",
+            "index": 4
+          },
+          {
+            "x": 783,
+            "y": 68,
+            "w": 139,
+            "h": 141,
+            "area": 7937,
+            "width": 139.0,
+            "height": 141.0,
+            "width_cap_ratio": 0.9929,
+            "width_height_ratio": 0.9858,
+            "ink_fraction": 0.405,
+            "v_stem": null,
+            "h_stem": 24.0,
+            "counters": [
+              {
+                "w": 35.0,
+                "h": 40.0,
+                "area": 716.0
+              }
+            ],
+            "char": "A",
+            "index": 5
+          }
+        ],
+        "visible_gaps": [
+          27,
+          22,
+          -4,
+          65,
+          26
+        ],
+        "v_stem_median": 28.0,
+        "h_stem_median": 24.0,
+        "v_ratio": 0.2,
+        "h_ratio": 0.17142857142857143,
+        "glyph_ink_fraction_mean": 0.45238333333333336
+      },
+      "tr2": {
+        "cap": 139,
+        "cap_top": 270,
+        "baseline": 409,
+        "bbox_width": 865,
+        "components": [
+          {
+            "x": 45,
+            "y": 270,
+            "w": 102,
+            "h": 139,
+            "area": 8120,
+            "width": 102.0,
+            "height": 139.0,
+            "width_cap_ratio": 0.7338,
+            "width_height_ratio": 0.7338,
+            "ink_fraction": 0.5727,
+            "v_stem": 23.0,
+            "h_stem": 22.0,
+            "counters": [],
+            "char": "E",
+            "index": 0
+          },
+          {
+            "x": 205,
+            "y": 268,
+            "w": 128,
+            "h": 143,
+            "area": 8706,
+            "width": 128.0,
+            "height": 143.0,
+            "width_cap_ratio": 0.9209,
+            "width_height_ratio": 0.8951,
+            "ink_fraction": 0.4756,
+            "v_stem": null,
+            "h_stem": null,
+            "counters": [],
+            "char": "G",
+            "index": 1
+          },
+          {
+            "x": 413,
+            "y": 270,
+            "w": 22,
+            "h": 139,
+            "area": 3051,
+            "width": 22.0,
+            "height": 139.0,
+            "width_cap_ratio": 0.1583,
+            "width_height_ratio": 0.1583,
+            "ink_fraction": 0.9977,
+            "v_stem": 22.0,
+            "h_stem": null,
+            "counters": [],
+            "char": "I",
+            "index": 2
+          },
+          {
+            "x": 499,
+            "y": 270,
+            "w": 108,
+            "h": 139,
+            "area": 5028,
+            "width": 108.0,
+            "height": 139.0,
+            "width_cap_ratio": 0.777,
+            "width_height_ratio": 0.777,
+            "ink_fraction": 0.3349,
+            "v_stem": 23.0,
+            "h_stem": 22.0,
+            "counters": [],
+            "char": "T",
+            "index": 3
+          },
+          {
+            "x": 669,
+            "y": 270,
+            "w": 23,
+            "h": 139,
+            "area": 3194,
+            "width": 23.0,
+            "height": 139.0,
+            "width_cap_ratio": 0.1655,
+            "width_height_ratio": 0.1655,
+            "ink_fraction": 0.9991,
+            "v_stem": 23.0,
+            "h_stem": null,
+            "counters": [],
+            "char": "I",
+            "index": 4
+          },
+          {
+            "x": 772,
+            "y": 270,
+            "w": 138,
+            "h": 139,
+            "area": 9739,
+            "width": 138.0,
+            "height": 139.0,
+            "width_cap_ratio": 0.9928,
+            "width_height_ratio": 0.9928,
+            "ink_fraction": 0.5077,
+            "v_stem": 23.0,
+            "h_stem": null,
+            "counters": [],
+            "char": "M",
+            "index": 5
+          }
+        ],
+        "visible_gaps": [
+          58,
+          80,
+          64,
+          62,
+          80
+        ],
+        "v_stem_median": 23.0,
+        "h_stem_median": 22.0,
+        "v_ratio": 0.16546762589928057,
+        "h_ratio": 0.15827338129496402,
+        "glyph_ink_fraction_mean": 0.472725
+      },
+      "en": {
+        "cap": 35,
+        "cap_top": 460,
+        "baseline": 495,
+        "bbox_width": 855,
+        "components": [
+          {
+            "x": 53,
+            "y": 460,
+            "w": 24,
+            "h": 35,
+            "area": 426,
+            "width": 24.0,
+            "height": 35.0,
+            "width_cap_ratio": 0.6857,
+            "width_height_ratio": 0.6857,
+            "ink_fraction": 0.5071,
+            "v_stem": 5.0,
+            "h_stem": 5.0,
+            "counters": [],
+            "char": "E",
+            "index": 0
+          },
+          {
+            "x": 108,
+            "y": 460,
+            "w": 30,
+            "h": 35,
+            "area": 483,
+            "width": 30.0,
+            "height": 35.0,
+            "width_cap_ratio": 0.8571,
+            "width_height_ratio": 0.8571,
+            "ink_fraction": 0.46,
+            "v_stem": 5.0,
+            "h_stem": null,
+            "counters": [
+              {
+                "w": 20.0,
+                "h": 26.0,
+                "area": 444.0
+              }
+            ],
+            "char": "D",
+            "index": 1
+          },
+          {
+            "x": 169,
+            "y": 460,
+            "w": 27,
+            "h": 35,
+            "area": 368,
+            "width": 27.0,
+            "height": 35.0,
+            "width_cap_ratio": 0.7714,
+            "width_height_ratio": 0.7714,
+            "ink_fraction": 0.3894,
+            "v_stem": 5.0,
+            "h_stem": null,
+            "counters": [],
+            "char": "U",
+            "index": 2
+          },
+          {
+            "x": 227,
+            "y": 460,
+            "w": 29,
+            "h": 35,
+            "area": 346,
+            "width": 29.0,
+            "height": 35.0,
+            "width_cap_ratio": 0.8286,
+            "width_height_ratio": 0.8286,
+            "ink_fraction": 0.3409,
+            "v_stem": null,
+            "h_stem": null,
+            "counters": [],
+            "char": "C",
+            "index": 3
+          },
+          {
+            "x": 284,
+            "y": 460,
+            "w": 33,
+            "h": 35,
+            "area": 384,
+            "width": 33.0,
+            "height": 35.0,
+            "width_cap_ratio": 0.9429,
+            "width_height_ratio": 0.9429,
+            "ink_fraction": 0.3325,
+            "v_stem": null,
+            "h_stem": 4.0,
+            "counters": [
+              {
+                "w": 11.0,
+                "h": 15.0,
+                "area": 100.0
+              }
+            ],
+            "char": "A",
+            "index": 4
+          },
+          {
+            "x": 340,
+            "y": 460,
+            "w": 27,
+            "h": 35,
+            "area": 279,
+            "width": 27.0,
+            "height": 35.0,
+            "width_cap_ratio": 0.7714,
+            "width_height_ratio": 0.7714,
+            "ink_fraction": 0.2952,
+            "v_stem": 5.0,
+            "h_stem": 5.0,
+            "counters": [],
+            "char": "T",
+            "index": 5
+          },
+          {
+            "x": 396,
+            "y": 460,
+            "w": 5,
+            "h": 35,
+            "area": 173,
+            "width": 5.0,
+            "height": 35.0,
+            "width_cap_ratio": 0.1429,
+            "width_height_ratio": 0.1429,
+            "ink_fraction": 0.9886,
+            "v_stem": 5.0,
+            "h_stem": null,
+            "counters": [],
+            "char": "I",
+            "index": 6
+          },
+          {
+            "x": 432,
+            "y": 460,
+            "w": 35,
+            "h": 35,
+            "area": 458,
+            "width": 35.0,
+            "height": 35.0,
+            "width_cap_ratio": 1.0,
+            "width_height_ratio": 1.0,
+            "ink_fraction": 0.3739,
+            "v_stem": null,
+            "h_stem": null,
+            "counters": [
+              {
+                "w": 25.0,
+                "h": 27.0,
+                "area": 515.0
+              }
+            ],
+            "char": "O",
+            "index": 7
+          },
+          {
+            "x": 497,
+            "y": 460,
+            "w": 29,
+            "h": 35,
+            "area": 494,
+            "width": 29.0,
+            "height": 35.0,
+            "width_cap_ratio": 0.8286,
+            "width_height_ratio": 0.8286,
+            "ink_fraction": 0.4867,
+            "v_stem": 5.0,
+            "h_stem": null,
+            "counters": [],
+            "char": "N",
+            "index": 8
+          },
+          {
+            "x": 594,
+            "y": 460,
+            "w": 5,
+            "h": 35,
+            "area": 174,
+            "width": 5.0,
+            "height": 35.0,
+            "width_cap_ratio": 0.1429,
+            "width_height_ratio": 0.1429,
+            "ink_fraction": 0.9943,
+            "v_stem": 5.0,
+            "h_stem": null,
+            "counters": [],
+            "char": "I",
+            "index": 9
+          },
+          {
+            "x": 632,
+            "y": 460,
+            "w": 28,
+            "h": 35,
+            "area": 475,
+            "width": 28.0,
+            "height": 35.0,
+            "width_cap_ratio": 0.8,
+            "width_height_ratio": 0.8,
+            "ink_fraction": 0.4847,
+            "v_stem": 5.0,
+            "h_stem": null,
+            "counters": [],
+            "char": "N",
+            "index": 10
+          },
+          {
+            "x": 726,
+            "y": 460,
+            "w": 33,
+            "h": 35,
+            "area": 400,
+            "width": 33.0,
+            "height": 35.0,
+            "width_cap_ratio": 0.9429,
+            "width_height_ratio": 0.9429,
+            "ink_fraction": 0.3463,
+            "v_stem": null,
+            "h_stem": 4.0,
+            "counters": [
+              {
+                "w": 11.0,
+                "h": 15.0,
+                "area": 101.0
+              }
+            ],
+            "char": "A",
+            "index": 11
+          },
+          {
+            "x": 787,
+            "y": 460,
+            "w": 24,
+            "h": 35,
+            "area": 361,
+            "width": 24.0,
+            "height": 35.0,
+            "width_cap_ratio": 0.6857,
+            "width_height_ratio": 0.6857,
+            "ink_fraction": 0.4298,
+            "v_stem": null,
+            "h_stem": null,
+            "counters": [],
+            "char": "S",
+            "index": 12
+          },
+          {
+            "x": 842,
+            "y": 460,
+            "w": 5,
+            "h": 35,
+            "area": 167,
+            "width": 5.0,
+            "height": 35.0,
+            "width_cap_ratio": 0.1429,
+            "width_height_ratio": 0.1429,
+            "ink_fraction": 0.9543,
+            "v_stem": 5.0,
+            "h_stem": null,
+            "counters": [],
+            "char": "I",
+            "index": 13
+          },
+          {
+            "x": 876,
+            "y": 460,
+            "w": 32,
+            "h": 35,
+            "area": 388,
+            "width": 32.0,
+            "height": 35.0,
+            "width_cap_ratio": 0.9143,
+            "width_height_ratio": 0.9143,
+            "ink_fraction": 0.3464,
+            "v_stem": null,
+            "h_stem": 4.0,
+            "counters": [
+              {
+                "w": 12.0,
+                "h": 15.0,
+                "area": 101.0
+              }
+            ],
+            "char": "A",
+            "index": 14
+          }
+        ],
+        "visible_gaps": [
+          31,
+          31,
+          31,
+          28,
+          23,
+          29,
+          31,
+          30,
+          68,
+          33,
+          66,
+          28,
+          31,
+          29
+        ],
+        "v_stem_median": 5.0,
+        "h_stem_median": 4.0,
+        "v_ratio": 0.14285714285714285,
+        "h_ratio": 0.11428571428571428,
+        "glyph_ink_fraction_mean": 0.39940833333333337
+      }
+    },
+    "glyphs": {
+      "tr1-0": {
+        "x": 42,
+        "y": 69,
+        "w": 139,
+        "h": 140,
+        "area": 7913,
+        "width": 139.0,
+        "height": 140.0,
+        "width_cap_ratio": 0.9929,
+        "width_height_ratio": 0.9929,
+        "ink_fraction": 0.4066,
+        "v_stem": null,
+        "h_stem": 24.0,
+        "counters": [
+          {
+            "w": 34.0,
+            "h": 39.0,
+            "area": 713.0
+          }
+        ],
+        "char": "A",
+        "index": 0
+      },
+      "tr1-1": {
+        "x": 208,
+        "y": 68,
+        "w": 95,
+        "h": 142,
+        "area": 7253,
+        "width": 95.0,
+        "height": 142.0,
+        "width_cap_ratio": 0.6786,
+        "width_height_ratio": 0.669,
+        "ink_fraction": 0.5377,
+        "v_stem": null,
+        "h_stem": null,
+        "counters": [],
+        "char": "S",
+        "index": 1
+      },
+      "tr1-2": {
+        "x": 325,
+        "y": 69,
+        "w": 120,
+        "h": 140,
+        "area": 5933,
+        "width": 120.0,
+        "height": 140.0,
+        "width_cap_ratio": 0.8571,
+        "width_height_ratio": 0.8571,
+        "ink_fraction": 0.3546,
+        "v_stem": null,
+        "h_stem": null,
+        "counters": [],
+        "char": "Y",
+        "index": 2
+      },
+      "tr1-3": {
+        "x": 441,
+        "y": 69,
+        "w": 138,
+        "h": 140,
+        "area": 7813,
+        "width": 138.0,
+        "height": 140.0,
+        "width_cap_ratio": 0.9857,
+        "width_height_ratio": 0.9857,
+        "ink_fraction": 0.4056,
+        "v_stem": null,
+        "h_stem": 24.0,
+        "counters": [
+          {
+            "w": 34.0,
+            "h": 39.0,
+            "area": 702.0
+          }
+        ],
+        "char": "A",
+        "index": 3
+      },
+      "tr1-4": {
+        "x": 644,
+        "y": 69,
+        "w": 113,
+        "h": 140,
+        "area": 9568,
+        "width": 113.0,
+        "height": 140.0,
+        "width_cap_ratio": 0.8071,
+        "width_height_ratio": 0.8071,
+        "ink_fraction": 0.6048,
+        "v_stem": 28.0,
+        "h_stem": null,
+        "counters": [
+          {
+            "w": 57.0,
+            "h": 87.0,
+            "area": 4218.0
+          }
+        ],
+        "char": "D",
+        "index": 4
+      },
+      "tr1-5": {
+        "x": 783,
+        "y": 68,
+        "w": 139,
+        "h": 141,
+        "area": 7937,
+        "width": 139.0,
+        "height": 141.0,
+        "width_cap_ratio": 0.9929,
+        "width_height_ratio": 0.9858,
+        "ink_fraction": 0.405,
+        "v_stem": null,
+        "h_stem": 24.0,
+        "counters": [
+          {
+            "w": 35.0,
+            "h": 40.0,
+            "area": 716.0
+          }
+        ],
+        "char": "A",
+        "index": 5
+      },
+      "tr2-0": {
+        "x": 45,
+        "y": 270,
+        "w": 102,
+        "h": 139,
+        "area": 8120,
+        "width": 102.0,
+        "height": 139.0,
+        "width_cap_ratio": 0.7338,
+        "width_height_ratio": 0.7338,
+        "ink_fraction": 0.5727,
+        "v_stem": 23.0,
+        "h_stem": 22.0,
+        "counters": [],
+        "char": "E",
+        "index": 0
+      },
+      "tr2-1": {
+        "x": 205,
+        "y": 268,
+        "w": 128,
+        "h": 143,
+        "area": 8706,
+        "width": 128.0,
+        "height": 143.0,
+        "width_cap_ratio": 0.9209,
+        "width_height_ratio": 0.8951,
+        "ink_fraction": 0.4756,
+        "v_stem": null,
+        "h_stem": null,
+        "counters": [],
+        "char": "G",
+        "index": 1
+      },
+      "tr2-2": {
+        "x": 413,
+        "y": 270,
+        "w": 22,
+        "h": 139,
+        "area": 3051,
+        "width": 22.0,
+        "height": 139.0,
+        "width_cap_ratio": 0.1583,
+        "width_height_ratio": 0.1583,
+        "ink_fraction": 0.9977,
+        "v_stem": 22.0,
+        "h_stem": null,
+        "counters": [],
+        "char": "I",
+        "index": 2
+      },
+      "tr2-3": {
+        "x": 499,
+        "y": 270,
+        "w": 108,
+        "h": 139,
+        "area": 5028,
+        "width": 108.0,
+        "height": 139.0,
+        "width_cap_ratio": 0.777,
+        "width_height_ratio": 0.777,
+        "ink_fraction": 0.3349,
+        "v_stem": 23.0,
+        "h_stem": 22.0,
+        "counters": [],
+        "char": "T",
+        "index": 3
+      },
+      "tr2-4": {
+        "x": 669,
+        "y": 270,
+        "w": 23,
+        "h": 139,
+        "area": 3194,
+        "width": 23.0,
+        "height": 139.0,
+        "width_cap_ratio": 0.1655,
+        "width_height_ratio": 0.1655,
+        "ink_fraction": 0.9991,
+        "v_stem": 23.0,
+        "h_stem": null,
+        "counters": [],
+        "char": "I",
+        "index": 4
+      },
+      "tr2-5": {
+        "x": 772,
+        "y": 270,
+        "w": 138,
+        "h": 139,
+        "area": 9739,
+        "width": 138.0,
+        "height": 139.0,
+        "width_cap_ratio": 0.9928,
+        "width_height_ratio": 0.9928,
+        "ink_fraction": 0.5077,
+        "v_stem": 23.0,
+        "h_stem": null,
+        "counters": [],
+        "char": "M",
+        "index": 5
+      },
+      "en-0": {
+        "x": 53,
+        "y": 460,
+        "w": 24,
+        "h": 35,
+        "area": 426,
+        "width": 24.0,
+        "height": 35.0,
+        "width_cap_ratio": 0.6857,
+        "width_height_ratio": 0.6857,
+        "ink_fraction": 0.5071,
+        "v_stem": 5.0,
+        "h_stem": 5.0,
+        "counters": [],
+        "char": "E",
+        "index": 0
+      },
+      "en-1": {
+        "x": 108,
+        "y": 460,
+        "w": 30,
+        "h": 35,
+        "area": 483,
+        "width": 30.0,
+        "height": 35.0,
+        "width_cap_ratio": 0.8571,
+        "width_height_ratio": 0.8571,
+        "ink_fraction": 0.46,
+        "v_stem": 5.0,
+        "h_stem": null,
+        "counters": [
+          {
+            "w": 20.0,
+            "h": 26.0,
+            "area": 444.0
+          }
+        ],
+        "char": "D",
+        "index": 1
+      },
+      "en-2": {
+        "x": 169,
+        "y": 460,
+        "w": 27,
+        "h": 35,
+        "area": 368,
+        "width": 27.0,
+        "height": 35.0,
+        "width_cap_ratio": 0.7714,
+        "width_height_ratio": 0.7714,
+        "ink_fraction": 0.3894,
+        "v_stem": 5.0,
+        "h_stem": null,
+        "counters": [],
+        "char": "U",
+        "index": 2
+      },
+      "en-3": {
+        "x": 227,
+        "y": 460,
+        "w": 29,
+        "h": 35,
+        "area": 346,
+        "width": 29.0,
+        "height": 35.0,
+        "width_cap_ratio": 0.8286,
+        "width_height_ratio": 0.8286,
+        "ink_fraction": 0.3409,
+        "v_stem": null,
+        "h_stem": null,
+        "counters": [],
+        "char": "C",
+        "index": 3
+      },
+      "en-4": {
+        "x": 284,
+        "y": 460,
+        "w": 33,
+        "h": 35,
+        "area": 384,
+        "width": 33.0,
+        "height": 35.0,
+        "width_cap_ratio": 0.9429,
+        "width_height_ratio": 0.9429,
+        "ink_fraction": 0.3325,
+        "v_stem": null,
+        "h_stem": 4.0,
+        "counters": [
+          {
+            "w": 11.0,
+            "h": 15.0,
+            "area": 100.0
+          }
+        ],
+        "char": "A",
+        "index": 4
+      },
+      "en-5": {
+        "x": 340,
+        "y": 460,
+        "w": 27,
+        "h": 35,
+        "area": 279,
+        "width": 27.0,
+        "height": 35.0,
+        "width_cap_ratio": 0.7714,
+        "width_height_ratio": 0.7714,
+        "ink_fraction": 0.2952,
+        "v_stem": 5.0,
+        "h_stem": 5.0,
+        "counters": [],
+        "char": "T",
+        "index": 5
+      },
+      "en-6": {
+        "x": 396,
+        "y": 460,
+        "w": 5,
+        "h": 35,
+        "area": 173,
+        "width": 5.0,
+        "height": 35.0,
+        "width_cap_ratio": 0.1429,
+        "width_height_ratio": 0.1429,
+        "ink_fraction": 0.9886,
+        "v_stem": 5.0,
+        "h_stem": null,
+        "counters": [],
+        "char": "I",
+        "index": 6
+      },
+      "en-7": {
+        "x": 432,
+        "y": 460,
+        "w": 35,
+        "h": 35,
+        "area": 458,
+        "width": 35.0,
+        "height": 35.0,
+        "width_cap_ratio": 1.0,
+        "width_height_ratio": 1.0,
+        "ink_fraction": 0.3739,
+        "v_stem": null,
+        "h_stem": null,
+        "counters": [
+          {
+            "w": 25.0,
+            "h": 27.0,
+            "area": 515.0
+          }
+        ],
+        "char": "O",
+        "index": 7
+      },
+      "en-8": {
+        "x": 497,
+        "y": 460,
+        "w": 29,
+        "h": 35,
+        "area": 494,
+        "width": 29.0,
+        "height": 35.0,
+        "width_cap_ratio": 0.8286,
+        "width_height_ratio": 0.8286,
+        "ink_fraction": 0.4867,
+        "v_stem": 5.0,
+        "h_stem": null,
+        "counters": [],
+        "char": "N",
+        "index": 8
+      },
+      "en-9": {
+        "x": 594,
+        "y": 460,
+        "w": 5,
+        "h": 35,
+        "area": 174,
+        "width": 5.0,
+        "height": 35.0,
+        "width_cap_ratio": 0.1429,
+        "width_height_ratio": 0.1429,
+        "ink_fraction": 0.9943,
+        "v_stem": 5.0,
+        "h_stem": null,
+        "counters": [],
+        "char": "I",
+        "index": 9
+      },
+      "en-10": {
+        "x": 632,
+        "y": 460,
+        "w": 28,
+        "h": 35,
+        "area": 475,
+        "width": 28.0,
+        "height": 35.0,
+        "width_cap_ratio": 0.8,
+        "width_height_ratio": 0.8,
+        "ink_fraction": 0.4847,
+        "v_stem": 5.0,
+        "h_stem": null,
+        "counters": [],
+        "char": "N",
+        "index": 10
+      },
+      "en-11": {
+        "x": 726,
+        "y": 460,
+        "w": 33,
+        "h": 35,
+        "area": 400,
+        "width": 33.0,
+        "height": 35.0,
+        "width_cap_ratio": 0.9429,
+        "width_height_ratio": 0.9429,
+        "ink_fraction": 0.3463,
+        "v_stem": null,
+        "h_stem": 4.0,
+        "counters": [
+          {
+            "w": 11.0,
+            "h": 15.0,
+            "area": 101.0
+          }
+        ],
+        "char": "A",
+        "index": 11
+      },
+      "en-12": {
+        "x": 787,
+        "y": 460,
+        "w": 24,
+        "h": 35,
+        "area": 361,
+        "width": 24.0,
+        "height": 35.0,
+        "width_cap_ratio": 0.6857,
+        "width_height_ratio": 0.6857,
+        "ink_fraction": 0.4298,
+        "v_stem": null,
+        "h_stem": null,
+        "counters": [],
+        "char": "S",
+        "index": 12
+      },
+      "en-13": {
+        "x": 842,
+        "y": 460,
+        "w": 5,
+        "h": 35,
+        "area": 167,
+        "width": 5.0,
+        "height": 35.0,
+        "width_cap_ratio": 0.1429,
+        "width_height_ratio": 0.1429,
+        "ink_fraction": 0.9543,
+        "v_stem": 5.0,
+        "h_stem": null,
+        "counters": [],
+        "char": "I",
+        "index": 13
+      },
+      "en-14": {
+        "x": 876,
+        "y": 460,
+        "w": 32,
+        "h": 35,
+        "area": 388,
+        "width": 32.0,
+        "height": 35.0,
+        "width_cap_ratio": 0.9143,
+        "width_height_ratio": 0.9143,
+        "ink_fraction": 0.3464,
+        "v_stem": null,
+        "h_stem": 4.0,
+        "counters": [
+          {
+            "w": 12.0,
+            "h": 15.0,
+            "area": 101.0
+          }
+        ],
+        "char": "A",
+        "index": 14
+      }
+    },
+    "diacritics": [
+      {
+        "x": 242,
+        "y": 236,
+        "w": 66,
+        "h": 22,
+        "area": 941
+      },
+      {
+        "x": 412,
+        "y": 235,
+        "w": 24,
+        "h": 24,
+        "area": 456
+      },
+      {
+        "x": 669,
+        "y": 235,
+        "w": 23,
+        "h": 24,
+        "area": 446
+      }
+    ],
+    "source_sha256": "ff9344d9f2c752c307e1a80f8da8edfc288f76be56e042d5df3a9578545f64b1",
+    "apostrophe": {
+      "x": 578,
+      "y": 68,
+      "w": 30,
+      "h": 49,
+      "area": 948
+    },
+    "threshold_sensitivity": {
+      "110": [
+        22.0,
+        23.0
+      ],
+      "140": [
+        22.0,
+        23.0
+      ],
+      "170": [
+        22.0,
+        23.0
+      ]
+    }
+  },
+  "experiments": {
+    "tr1-400": {
+      "weight": 400,
+      "cap": 140,
+      "v_stem": 17.0,
+      "h_stem": 16.0,
+      "v_ratio": 0.12142857142857143,
+      "h_ratio": 0.11428571428571428,
+      "glyph_ink_fraction_mean": 0.31548333333333334,
+      "v_error": -11.0,
+      "h_error": -8.0,
+      "glyphs": [
+        {
+          "width": 130.0,
+          "height": 146.75,
+          "width_cap_ratio": 0.9286,
+          "width_height_ratio": 0.8859,
+          "ink_fraction": 0.281,
+          "v_stem": null,
+          "h_stem": 16.0,
+          "counters": [
+            {
+              "w": 42.75,
+              "h": 50.0,
+              "area": 1079.125
+            }
+          ]
+        },
+        {
+          "width": 93.0,
+          "height": 144.0,
+          "width_cap_ratio": 0.6643,
+          "width_height_ratio": 0.6458,
+          "ink_fraction": 0.3875,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 110.25,
+          "height": 140.0,
+          "width_cap_ratio": 0.7875,
+          "width_height_ratio": 0.7875,
+          "ink_fraction": 0.2444,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 130.0,
+          "height": 146.75,
+          "width_cap_ratio": 0.9286,
+          "width_height_ratio": 0.8859,
+          "ink_fraction": 0.281,
+          "v_stem": null,
+          "h_stem": 16.0,
+          "counters": [
+            {
+              "w": 42.75,
+              "h": 50.0,
+              "area": 1079.125
+            }
+          ]
+        },
+        {
+          "width": 112.0,
+          "height": 140.0,
+          "width_cap_ratio": 0.8,
+          "width_height_ratio": 0.8,
+          "ink_fraction": 0.418,
+          "v_stem": 17.0,
+          "h_stem": null,
+          "counters": [
+            {
+              "w": 78.0,
+              "h": 106.0,
+              "area": 7191.75
+            }
+          ]
+        },
+        {
+          "width": 130.0,
+          "height": 146.75,
+          "width_cap_ratio": 0.9286,
+          "width_height_ratio": 0.8859,
+          "ink_fraction": 0.281,
+          "v_stem": null,
+          "h_stem": 16.0,
+          "counters": [
+            {
+              "w": 42.75,
+              "h": 50.0,
+              "area": 1079.125
+            }
+          ]
+        }
+      ]
+    },
+    "tr1-450": {
+      "weight": 450,
+      "cap": 140,
+      "v_stem": 20.5,
+      "h_stem": 18.0,
+      "v_ratio": 0.14642857142857144,
+      "h_ratio": 0.12857142857142856,
+      "glyph_ink_fraction_mean": 0.3546166666666667,
+      "v_error": -7.5,
+      "h_error": -6.0,
+      "glyphs": [
+        {
+          "width": 133.5,
+          "height": 147.25,
+          "width_cap_ratio": 0.9536,
+          "width_height_ratio": 0.9066,
+          "ink_fraction": 0.3115,
+          "v_stem": null,
+          "h_stem": 18.0,
+          "counters": [
+            {
+              "w": 40.25,
+              "h": 47.25,
+              "area": 963.75
+            }
+          ]
+        },
+        {
+          "width": 96.5,
+          "height": 144.75,
+          "width_cap_ratio": 0.6893,
+          "width_height_ratio": 0.6667,
+          "ink_fraction": 0.4342,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 114.75,
+          "height": 140.0,
+          "width_cap_ratio": 0.8196,
+          "width_height_ratio": 0.8196,
+          "ink_fraction": 0.2812,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 133.5,
+          "height": 147.25,
+          "width_cap_ratio": 0.9536,
+          "width_height_ratio": 0.9066,
+          "ink_fraction": 0.3115,
+          "v_stem": null,
+          "h_stem": 18.0,
+          "counters": [
+            {
+              "w": 40.25,
+              "h": 47.25,
+              "area": 963.75
+            }
+          ]
+        },
+        {
+          "width": 114.5,
+          "height": 139.75,
+          "width_cap_ratio": 0.8179,
+          "width_height_ratio": 0.8193,
+          "ink_fraction": 0.4778,
+          "v_stem": 20.5,
+          "h_stem": null,
+          "counters": [
+            {
+              "w": 73.5,
+              "h": 100.75,
+              "area": 6426.812
+            }
+          ]
+        },
+        {
+          "width": 133.5,
+          "height": 147.25,
+          "width_cap_ratio": 0.9536,
+          "width_height_ratio": 0.9066,
+          "ink_fraction": 0.3115,
+          "v_stem": null,
+          "h_stem": 18.0,
+          "counters": [
+            {
+              "w": 40.25,
+              "h": 47.25,
+              "area": 963.75
+            }
+          ]
+        }
+      ]
+    },
+    "tr1-500": {
+      "weight": 500,
+      "cap": 140,
+      "v_stem": 24.25,
+      "h_stem": 20.0,
+      "v_ratio": 0.1732142857142857,
+      "h_ratio": 0.14285714285714285,
+      "glyph_ink_fraction_mean": 0.39044999999999996,
+      "v_error": -3.75,
+      "h_error": -4.0,
+      "glyphs": [
+        {
+          "width": 137.0,
+          "height": 147.5,
+          "width_cap_ratio": 0.9786,
+          "width_height_ratio": 0.9288,
+          "ink_fraction": 0.3388,
+          "v_stem": null,
+          "h_stem": 20.0,
+          "counters": [
+            {
+              "w": 38.0,
+              "h": 44.0,
+              "area": 844.938
+            }
+          ]
+        },
+        {
+          "width": 100.0,
+          "height": 145.25,
+          "width_cap_ratio": 0.7143,
+          "width_height_ratio": 0.6885,
+          "ink_fraction": 0.4769,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 119.25,
+          "height": 140.0,
+          "width_cap_ratio": 0.8518,
+          "width_height_ratio": 0.8518,
+          "ink_fraction": 0.3158,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 137.0,
+          "height": 147.5,
+          "width_cap_ratio": 0.9786,
+          "width_height_ratio": 0.9288,
+          "ink_fraction": 0.3388,
+          "v_stem": null,
+          "h_stem": 20.0,
+          "counters": [
+            {
+              "w": 38.0,
+              "h": 44.0,
+              "area": 844.938
+            }
+          ]
+        },
+        {
+          "width": 117.25,
+          "height": 140.0,
+          "width_cap_ratio": 0.8375,
+          "width_height_ratio": 0.8375,
+          "ink_fraction": 0.5336,
+          "v_stem": 24.25,
+          "h_stem": null,
+          "counters": [
+            {
+              "w": 68.75,
+              "h": 95.5,
+              "area": 5705.375
+            }
+          ]
+        },
+        {
+          "width": 137.0,
+          "height": 147.5,
+          "width_cap_ratio": 0.9786,
+          "width_height_ratio": 0.9288,
+          "ink_fraction": 0.3388,
+          "v_stem": null,
+          "h_stem": 20.0,
+          "counters": [
+            {
+              "w": 38.0,
+              "h": 44.0,
+              "area": 844.938
+            }
+          ]
+        }
+      ]
+    },
+    "tr1-550": {
+      "weight": 550,
+      "cap": 140,
+      "v_stem": 26.75,
+      "h_stem": 21.5,
+      "v_ratio": 0.19107142857142856,
+      "h_ratio": 0.15357142857142858,
+      "glyph_ink_fraction_mean": 0.41365,
+      "v_error": -1.25,
+      "h_error": -2.5,
+      "glyphs": [
+        {
+          "width": 139.5,
+          "height": 147.75,
+          "width_cap_ratio": 0.9964,
+          "width_height_ratio": 0.9442,
+          "ink_fraction": 0.3568,
+          "v_stem": null,
+          "h_stem": 21.5,
+          "counters": [
+            {
+              "w": 36.25,
+              "h": 42.0,
+              "area": 768.875
+            }
+          ]
+        },
+        {
+          "width": 102.75,
+          "height": 146.25,
+          "width_cap_ratio": 0.7339,
+          "width_height_ratio": 0.7026,
+          "ink_fraction": 0.5037,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 122.25,
+          "height": 140.0,
+          "width_cap_ratio": 0.8732,
+          "width_height_ratio": 0.8732,
+          "ink_fraction": 0.3386,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 139.5,
+          "height": 147.75,
+          "width_cap_ratio": 0.9964,
+          "width_height_ratio": 0.9442,
+          "ink_fraction": 0.3568,
+          "v_stem": null,
+          "h_stem": 21.5,
+          "counters": [
+            {
+              "w": 36.25,
+              "h": 42.0,
+              "area": 768.875
+            }
+          ]
+        },
+        {
+          "width": 119.25,
+          "height": 140.25,
+          "width_cap_ratio": 0.8518,
+          "width_height_ratio": 0.8503,
+          "ink_fraction": 0.5692,
+          "v_stem": 26.75,
+          "h_stem": null,
+          "counters": [
+            {
+              "w": 65.5,
+              "h": 91.75,
+              "area": 5234.75
+            }
+          ]
+        },
+        {
+          "width": 139.5,
+          "height": 147.75,
+          "width_cap_ratio": 0.9964,
+          "width_height_ratio": 0.9442,
+          "ink_fraction": 0.3568,
+          "v_stem": null,
+          "h_stem": 21.5,
+          "counters": [
+            {
+              "w": 36.25,
+              "h": 42.0,
+              "area": 768.875
+            }
+          ]
+        }
+      ]
+    },
+    "tr1-600": {
+      "weight": 600,
+      "cap": 140,
+      "v_stem": 29.25,
+      "h_stem": 22.5,
+      "v_ratio": 0.20892857142857144,
+      "h_ratio": 0.16071428571428573,
+      "glyph_ink_fraction_mean": 0.43495,
+      "v_error": 1.25,
+      "h_error": -1.5,
+      "glyphs": [
+        {
+          "width": 142.0,
+          "height": 148.0,
+          "width_cap_ratio": 1.0143,
+          "width_height_ratio": 0.9595,
+          "ink_fraction": 0.3725,
+          "v_stem": null,
+          "h_stem": 22.5,
+          "counters": [
+            {
+              "w": 34.5,
+              "h": 40.0,
+              "area": 704.75
+            }
+          ]
+        },
+        {
+          "width": 105.25,
+          "height": 146.75,
+          "width_cap_ratio": 0.7518,
+          "width_height_ratio": 0.7172,
+          "ink_fraction": 0.5294,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 125.5,
+          "height": 140.0,
+          "width_cap_ratio": 0.8964,
+          "width_height_ratio": 0.8964,
+          "ink_fraction": 0.36,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 142.0,
+          "height": 148.0,
+          "width_cap_ratio": 1.0143,
+          "width_height_ratio": 0.9595,
+          "ink_fraction": 0.3725,
+          "v_stem": null,
+          "h_stem": 22.5,
+          "counters": [
+            {
+              "w": 34.5,
+              "h": 40.0,
+              "area": 704.75
+            }
+          ]
+        },
+        {
+          "width": 121.0,
+          "height": 140.0,
+          "width_cap_ratio": 0.8643,
+          "width_height_ratio": 0.8643,
+          "ink_fraction": 0.6028,
+          "v_stem": 29.25,
+          "h_stem": null,
+          "counters": [
+            {
+              "w": 62.25,
+              "h": 88.0,
+              "area": 4765.812
+            }
+          ]
+        },
+        {
+          "width": 142.0,
+          "height": 148.0,
+          "width_cap_ratio": 1.0143,
+          "width_height_ratio": 0.9595,
+          "ink_fraction": 0.3725,
+          "v_stem": null,
+          "h_stem": 22.5,
+          "counters": [
+            {
+              "w": 34.5,
+              "h": 40.0,
+              "area": 704.75
+            }
+          ]
+        }
+      ]
+    },
+    "tr1-650": {
+      "weight": 650,
+      "cap": 140,
+      "v_stem": 32.0,
+      "h_stem": 24.25,
+      "v_ratio": 0.22857142857142856,
+      "h_ratio": 0.1732142857142857,
+      "glyph_ink_fraction_mean": 0.4569333333333333,
+      "v_error": 4.0,
+      "h_error": 0.25,
+      "glyphs": [
+        {
+          "width": 144.75,
+          "height": 148.25,
+          "width_cap_ratio": 1.0339,
+          "width_height_ratio": 0.9764,
+          "ink_fraction": 0.3892,
+          "v_stem": null,
+          "h_stem": 24.25,
+          "counters": [
+            {
+              "w": 32.75,
+              "h": 37.75,
+              "area": 626.375
+            }
+          ]
+        },
+        {
+          "width": 108.0,
+          "height": 147.25,
+          "width_cap_ratio": 0.7714,
+          "width_height_ratio": 0.7334,
+          "ink_fraction": 0.5556,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 129.0,
+          "height": 140.0,
+          "width_cap_ratio": 0.9214,
+          "width_height_ratio": 0.9214,
+          "ink_fraction": 0.3818,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 144.75,
+          "height": 148.25,
+          "width_cap_ratio": 1.0339,
+          "width_height_ratio": 0.9764,
+          "ink_fraction": 0.3892,
+          "v_stem": null,
+          "h_stem": 24.25,
+          "counters": [
+            {
+              "w": 32.75,
+              "h": 37.75,
+              "area": 626.375
+            }
+          ]
+        },
+        {
+          "width": 123.0,
+          "height": 140.0,
+          "width_cap_ratio": 0.8786,
+          "width_height_ratio": 0.8786,
+          "ink_fraction": 0.6366,
+          "v_stem": 32.0,
+          "h_stem": null,
+          "counters": [
+            {
+              "w": 58.75,
+              "h": 84.0,
+              "area": 4289.062
+            }
+          ]
+        },
+        {
+          "width": 144.75,
+          "height": 148.25,
+          "width_cap_ratio": 1.0339,
+          "width_height_ratio": 0.9764,
+          "ink_fraction": 0.3892,
+          "v_stem": null,
+          "h_stem": 24.25,
+          "counters": [
+            {
+              "w": 32.75,
+              "h": 37.75,
+              "area": 626.375
+            }
+          ]
+        }
+      ]
+    },
+    "tr2-400": {
+      "weight": 400,
+      "cap": 139,
+      "v_stem": 17.0,
+      "h_stem": 15.8125,
+      "v_ratio": 0.1223021582733813,
+      "h_ratio": 0.1137589928057554,
+      "glyph_ink_fraction_mean": 0.363275,
+      "v_error": -6.0,
+      "h_error": -6.1875,
+      "glyphs": [
+        {
+          "width": 79.5,
+          "height": 139.0,
+          "width_cap_ratio": 0.5719,
+          "width_height_ratio": 0.5719,
+          "ink_fraction": 0.4768,
+          "v_stem": 17.0,
+          "h_stem": 15.875,
+          "counters": []
+        },
+        {
+          "width": 137.0,
+          "height": 143.0,
+          "width_cap_ratio": 0.9856,
+          "width_height_ratio": 0.958,
+          "ink_fraction": 0.3493,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 17.0,
+          "height": 139.5,
+          "width_cap_ratio": 0.1223,
+          "width_height_ratio": 0.1219,
+          "ink_fraction": 1.0,
+          "v_stem": 17.0,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 88.25,
+          "height": 138.75,
+          "width_cap_ratio": 0.6349,
+          "width_height_ratio": 0.636,
+          "ink_fraction": 0.2818,
+          "v_stem": 16.75,
+          "h_stem": 15.75,
+          "counters": []
+        },
+        {
+          "width": 17.0,
+          "height": 139.5,
+          "width_cap_ratio": 0.1223,
+          "width_height_ratio": 0.1219,
+          "ink_fraction": 1.0,
+          "v_stem": 17.0,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 145.0,
+          "height": 145.75,
+          "width_cap_ratio": 1.0432,
+          "width_height_ratio": 0.9949,
+          "ink_fraction": 0.3452,
+          "v_stem": 16.75,
+          "h_stem": null,
+          "counters": []
+        }
+      ]
+    },
+    "tr2-450": {
+      "weight": 450,
+      "cap": 139,
+      "v_stem": 20.25,
+      "h_stem": 18.5,
+      "v_ratio": 0.14568345323741008,
+      "h_ratio": 0.13309352517985612,
+      "glyph_ink_fraction_mean": 0.40802499999999997,
+      "v_error": -2.75,
+      "h_error": -3.5,
+      "glyphs": [
+        {
+          "width": 82.0,
+          "height": 139.0,
+          "width_cap_ratio": 0.5899,
+          "width_height_ratio": 0.5899,
+          "ink_fraction": 0.534,
+          "v_stem": 20.0,
+          "h_stem": 18.25,
+          "counters": []
+        },
+        {
+          "width": 139.0,
+          "height": 143.75,
+          "width_cap_ratio": 1.0,
+          "width_height_ratio": 0.967,
+          "ink_fraction": 0.3948,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 20.25,
+          "height": 138.75,
+          "width_cap_ratio": 0.1457,
+          "width_height_ratio": 0.1459,
+          "ink_fraction": 1.0,
+          "v_stem": 20.25,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 92.75,
+          "height": 139.0,
+          "width_cap_ratio": 0.6673,
+          "width_height_ratio": 0.6673,
+          "ink_fraction": 0.3238,
+          "v_stem": 20.25,
+          "h_stem": 18.75,
+          "counters": []
+        },
+        {
+          "width": 20.25,
+          "height": 138.75,
+          "width_cap_ratio": 0.1457,
+          "width_height_ratio": 0.1459,
+          "ink_fraction": 1.0,
+          "v_stem": 20.25,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 148.75,
+          "height": 145.75,
+          "width_cap_ratio": 1.0701,
+          "width_height_ratio": 1.0206,
+          "ink_fraction": 0.3795,
+          "v_stem": 20.0,
+          "h_stem": null,
+          "counters": []
+        }
+      ]
+    },
+    "tr2-500": {
+      "weight": 500,
+      "cap": 139,
+      "v_stem": 23.5,
+      "h_stem": 21.125,
+      "v_ratio": 0.16906474820143885,
+      "h_ratio": 0.15197841726618705,
+      "glyph_ink_fraction_mean": 0.448725,
+      "v_error": 0.5,
+      "h_error": -0.875,
+      "glyphs": [
+        {
+          "width": 84.75,
+          "height": 139.25,
+          "width_cap_ratio": 0.6097,
+          "width_height_ratio": 0.6086,
+          "ink_fraction": 0.5876,
+          "v_stem": 23.0,
+          "h_stem": 20.75,
+          "counters": []
+        },
+        {
+          "width": 141.0,
+          "height": 144.25,
+          "width_cap_ratio": 1.0144,
+          "width_height_ratio": 0.9775,
+          "ink_fraction": 0.4364,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 23.75,
+          "height": 138.75,
+          "width_cap_ratio": 0.1709,
+          "width_height_ratio": 0.1712,
+          "ink_fraction": 1.0,
+          "v_stem": 23.75,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 97.0,
+          "height": 139.0,
+          "width_cap_ratio": 0.6978,
+          "width_height_ratio": 0.6978,
+          "ink_fraction": 0.3595,
+          "v_stem": 23.5,
+          "h_stem": 21.5,
+          "counters": []
+        },
+        {
+          "width": 23.75,
+          "height": 138.75,
+          "width_cap_ratio": 0.1709,
+          "width_height_ratio": 0.1712,
+          "ink_fraction": 1.0,
+          "v_stem": 23.75,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 152.5,
+          "height": 145.75,
+          "width_cap_ratio": 1.0971,
+          "width_height_ratio": 1.0463,
+          "ink_fraction": 0.4114,
+          "v_stem": 23.5,
+          "h_stem": null,
+          "counters": []
+        }
+      ]
+    },
+    "tr2-550": {
+      "weight": 550,
+      "cap": 139,
+      "v_stem": 26.25,
+      "h_stem": 23.0,
+      "v_ratio": 0.18884892086330934,
+      "h_ratio": 0.16546762589928057,
+      "glyph_ink_fraction_mean": 0.47695,
+      "v_error": 3.25,
+      "h_error": 1.0,
+      "glyphs": [
+        {
+          "width": 86.5,
+          "height": 139.0,
+          "width_cap_ratio": 0.6223,
+          "width_height_ratio": 0.6223,
+          "ink_fraction": 0.6222,
+          "v_stem": 25.25,
+          "h_stem": 22.25,
+          "counters": []
+        },
+        {
+          "width": 142.5,
+          "height": 145.0,
+          "width_cap_ratio": 1.0252,
+          "width_height_ratio": 0.9828,
+          "ink_fraction": 0.4646,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 26.25,
+          "height": 138.75,
+          "width_cap_ratio": 0.1888,
+          "width_height_ratio": 0.1892,
+          "ink_fraction": 1.0,
+          "v_stem": 26.25,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 100.25,
+          "height": 139.0,
+          "width_cap_ratio": 0.7212,
+          "width_height_ratio": 0.7212,
+          "ink_fraction": 0.388,
+          "v_stem": 26.25,
+          "h_stem": 23.75,
+          "counters": []
+        },
+        {
+          "width": 26.25,
+          "height": 138.75,
+          "width_cap_ratio": 0.1888,
+          "width_height_ratio": 0.1892,
+          "ink_fraction": 1.0,
+          "v_stem": 26.25,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 155.0,
+          "height": 145.75,
+          "width_cap_ratio": 1.1151,
+          "width_height_ratio": 1.0635,
+          "ink_fraction": 0.433,
+          "v_stem": 26.0,
+          "h_stem": null,
+          "counters": []
+        }
+      ]
+    },
+    "tr2-600": {
+      "weight": 600,
+      "cap": 139,
+      "v_stem": 28.5,
+      "h_stem": 24.8125,
+      "v_ratio": 0.20503597122302158,
+      "h_ratio": 0.17850719424460432,
+      "glyph_ink_fraction_mean": 0.502675,
+      "v_error": 5.5,
+      "h_error": 2.8125,
+      "glyphs": [
+        {
+          "width": 88.25,
+          "height": 138.75,
+          "width_cap_ratio": 0.6349,
+          "width_height_ratio": 0.636,
+          "ink_fraction": 0.6574,
+          "v_stem": 27.5,
+          "h_stem": 23.875,
+          "counters": []
+        },
+        {
+          "width": 144.0,
+          "height": 145.5,
+          "width_cap_ratio": 1.036,
+          "width_height_ratio": 0.9897,
+          "ink_fraction": 0.4915,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 28.75,
+          "height": 139.0,
+          "width_cap_ratio": 0.2068,
+          "width_height_ratio": 0.2068,
+          "ink_fraction": 1.0,
+          "v_stem": 28.75,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 103.25,
+          "height": 139.0,
+          "width_cap_ratio": 0.7428,
+          "width_height_ratio": 0.7428,
+          "ink_fraction": 0.4082,
+          "v_stem": 28.25,
+          "h_stem": 25.75,
+          "counters": []
+        },
+        {
+          "width": 28.75,
+          "height": 139.0,
+          "width_cap_ratio": 0.2068,
+          "width_height_ratio": 0.2068,
+          "ink_fraction": 1.0,
+          "v_stem": 28.75,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 157.75,
+          "height": 145.75,
+          "width_cap_ratio": 1.1349,
+          "width_height_ratio": 1.0823,
+          "ink_fraction": 0.4536,
+          "v_stem": 28.5,
+          "h_stem": null,
+          "counters": []
+        }
+      ]
+    },
+    "tr2-650": {
+      "weight": 650,
+      "cap": 139,
+      "v_stem": 31.0,
+      "h_stem": 26.8125,
+      "v_ratio": 0.22302158273381295,
+      "h_ratio": 0.1928956834532374,
+      "glyph_ink_fraction_mean": 0.52985,
+      "v_error": 8.0,
+      "h_error": 4.8125,
+      "glyphs": [
+        {
+          "width": 90.5,
+          "height": 139.25,
+          "width_cap_ratio": 0.6511,
+          "width_height_ratio": 0.6499,
+          "ink_fraction": 0.6931,
+          "v_stem": 30.0,
+          "h_stem": 25.875,
+          "counters": []
+        },
+        {
+          "width": 145.75,
+          "height": 146.25,
+          "width_cap_ratio": 1.0486,
+          "width_height_ratio": 0.9966,
+          "ink_fraction": 0.5188,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 31.5,
+          "height": 139.0,
+          "width_cap_ratio": 0.2266,
+          "width_height_ratio": 0.2266,
+          "ink_fraction": 1.0,
+          "v_stem": 31.5,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 106.5,
+          "height": 139.0,
+          "width_cap_ratio": 0.7662,
+          "width_height_ratio": 0.7662,
+          "ink_fraction": 0.4326,
+          "v_stem": 31.0,
+          "h_stem": 27.75,
+          "counters": []
+        },
+        {
+          "width": 31.5,
+          "height": 139.0,
+          "width_cap_ratio": 0.2266,
+          "width_height_ratio": 0.2266,
+          "ink_fraction": 1.0,
+          "v_stem": 31.5,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 160.5,
+          "height": 145.5,
+          "width_cap_ratio": 1.1547,
+          "width_height_ratio": 1.1031,
+          "ink_fraction": 0.4749,
+          "v_stem": 31.0,
+          "h_stem": null,
+          "counters": []
+        }
+      ]
+    },
+    "en-200": {
+      "weight": 200,
+      "cap": 35,
+      "v_stem": 1.75,
+      "h_stem": 1.75,
+      "v_ratio": 0.05,
+      "h_ratio": 0.05,
+      "glyph_ink_fraction_mean": 0.15789166666666665,
+      "v_error": -3.25,
+      "h_error": -2.25,
+      "glyphs": [
+        {
+          "width": 18.0,
+          "height": 35.25,
+          "width_cap_ratio": 0.5143,
+          "width_height_ratio": 0.5106,
+          "ink_fraction": 0.2163,
+          "v_stem": 1.75,
+          "h_stem": 1.625,
+          "counters": []
+        },
+        {
+          "width": 25.75,
+          "height": 35.0,
+          "width_cap_ratio": 0.7357,
+          "width_height_ratio": 0.7357,
+          "ink_fraction": 0.1889,
+          "v_stem": 1.75,
+          "h_stem": null,
+          "counters": [
+            {
+              "w": 22.25,
+              "h": 31.75,
+              "area": 616.25
+            }
+          ]
+        },
+        {
+          "width": 21.25,
+          "height": 35.5,
+          "width_cap_ratio": 0.6071,
+          "width_height_ratio": 0.5986,
+          "ink_fraction": 0.1664,
+          "v_stem": 1.75,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 28.0,
+          "height": 35.75,
+          "width_cap_ratio": 0.8,
+          "width_height_ratio": 0.7832,
+          "ink_fraction": 0.1311,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 29.75,
+          "height": 35.75,
+          "width_cap_ratio": 0.85,
+          "width_height_ratio": 0.8322,
+          "ink_fraction": 0.1329,
+          "v_stem": null,
+          "h_stem": 1.75,
+          "counters": [
+            {
+              "w": 14.25,
+              "h": 17.75,
+              "area": 130.188
+            }
+          ]
+        },
+        {
+          "width": 20.25,
+          "height": 35.0,
+          "width_cap_ratio": 0.5786,
+          "width_height_ratio": 0.5786,
+          "ink_fraction": 0.1254,
+          "v_stem": 1.75,
+          "h_stem": 1.5,
+          "counters": []
+        },
+        {
+          "width": 1.5,
+          "height": 34.75,
+          "width_cap_ratio": 0.0429,
+          "width_height_ratio": 0.0432,
+          "ink_fraction": 1.0,
+          "v_stem": 1.5,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 34.25,
+          "height": 36.0,
+          "width_cap_ratio": 0.9786,
+          "width_height_ratio": 0.9514,
+          "ink_fraction": 0.1431,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": [
+            {
+              "w": 30.75,
+              "h": 32.5,
+              "area": 801.812
+            }
+          ]
+        },
+        {
+          "width": 28.25,
+          "height": 36.75,
+          "width_cap_ratio": 0.8071,
+          "width_height_ratio": 0.7687,
+          "ink_fraction": 0.1739,
+          "v_stem": 1.75,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 1.5,
+          "height": 34.75,
+          "width_cap_ratio": 0.0429,
+          "width_height_ratio": 0.0432,
+          "ink_fraction": 1.0,
+          "v_stem": 1.5,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 28.25,
+          "height": 36.75,
+          "width_cap_ratio": 0.8071,
+          "width_height_ratio": 0.7687,
+          "ink_fraction": 0.1739,
+          "v_stem": 1.75,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 29.75,
+          "height": 35.75,
+          "width_cap_ratio": 0.85,
+          "width_height_ratio": 0.8322,
+          "ink_fraction": 0.1329,
+          "v_stem": null,
+          "h_stem": 1.75,
+          "counters": [
+            {
+              "w": 14.25,
+              "h": 17.75,
+              "area": 130.188
+            }
+          ]
+        },
+        {
+          "width": 20.5,
+          "height": 35.75,
+          "width_cap_ratio": 0.5857,
+          "width_height_ratio": 0.5734,
+          "ink_fraction": 0.177,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 1.5,
+          "height": 34.75,
+          "width_cap_ratio": 0.0429,
+          "width_height_ratio": 0.0432,
+          "ink_fraction": 1.0,
+          "v_stem": 1.5,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 29.75,
+          "height": 35.75,
+          "width_cap_ratio": 0.85,
+          "width_height_ratio": 0.8322,
+          "ink_fraction": 0.1329,
+          "v_stem": null,
+          "h_stem": 1.75,
+          "counters": [
+            {
+              "w": 14.25,
+              "h": 17.75,
+              "area": 130.188
+            }
+          ]
+        }
+      ]
+    },
+    "en-250": {
+      "weight": 250,
+      "cap": 35,
+      "v_stem": 2.25,
+      "h_stem": 2.0,
+      "v_ratio": 0.06428571428571428,
+      "h_ratio": 0.05714285714285714,
+      "glyph_ink_fraction_mean": 0.20318333333333333,
+      "v_error": -2.75,
+      "h_error": -2.0,
+      "glyphs": [
+        {
+          "width": 18.25,
+          "height": 35.0,
+          "width_cap_ratio": 0.5214,
+          "width_height_ratio": 0.5214,
+          "ink_fraction": 0.2767,
+          "v_stem": 2.25,
+          "h_stem": 2.125,
+          "counters": []
+        },
+        {
+          "width": 26.25,
+          "height": 35.0,
+          "width_cap_ratio": 0.75,
+          "width_height_ratio": 0.75,
+          "ink_fraction": 0.2432,
+          "v_stem": 2.25,
+          "h_stem": null,
+          "counters": [
+            {
+              "w": 21.75,
+              "h": 30.5,
+              "area": 578.875
+            }
+          ]
+        },
+        {
+          "width": 21.75,
+          "height": 35.5,
+          "width_cap_ratio": 0.6214,
+          "width_height_ratio": 0.6127,
+          "ink_fraction": 0.2294,
+          "v_stem": 2.25,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 28.25,
+          "height": 36.0,
+          "width_cap_ratio": 0.8071,
+          "width_height_ratio": 0.7847,
+          "ink_fraction": 0.1723,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 30.25,
+          "height": 36.0,
+          "width_cap_ratio": 0.8643,
+          "width_height_ratio": 0.8403,
+          "ink_fraction": 0.1676,
+          "v_stem": null,
+          "h_stem": 2.0,
+          "counters": [
+            {
+              "w": 13.75,
+              "h": 16.75,
+              "area": 117.312
+            }
+          ]
+        },
+        {
+          "width": 20.75,
+          "height": 35.0,
+          "width_cap_ratio": 0.5929,
+          "width_height_ratio": 0.5929,
+          "ink_fraction": 0.1594,
+          "v_stem": 2.25,
+          "h_stem": 2.0,
+          "counters": []
+        },
+        {
+          "width": 2.25,
+          "height": 35.25,
+          "width_cap_ratio": 0.0643,
+          "width_height_ratio": 0.0638,
+          "ink_fraction": 0.9984,
+          "v_stem": 2.25,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 34.5,
+          "height": 36.0,
+          "width_cap_ratio": 0.9857,
+          "width_height_ratio": 0.9583,
+          "ink_fraction": 0.1895,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": [
+            {
+              "w": 30.0,
+              "h": 31.5,
+              "area": 750.312
+            }
+          ]
+        },
+        {
+          "width": 28.75,
+          "height": 37.0,
+          "width_cap_ratio": 0.8214,
+          "width_height_ratio": 0.777,
+          "ink_fraction": 0.2183,
+          "v_stem": 2.25,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 2.25,
+          "height": 35.25,
+          "width_cap_ratio": 0.0643,
+          "width_height_ratio": 0.0638,
+          "ink_fraction": 0.9984,
+          "v_stem": 2.25,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 28.75,
+          "height": 37.0,
+          "width_cap_ratio": 0.8214,
+          "width_height_ratio": 0.777,
+          "ink_fraction": 0.2183,
+          "v_stem": 2.25,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 30.25,
+          "height": 36.0,
+          "width_cap_ratio": 0.8643,
+          "width_height_ratio": 0.8403,
+          "ink_fraction": 0.1676,
+          "v_stem": null,
+          "h_stem": 2.0,
+          "counters": [
+            {
+              "w": 13.75,
+              "h": 16.75,
+              "area": 117.312
+            }
+          ]
+        },
+        {
+          "width": 21.25,
+          "height": 36.0,
+          "width_cap_ratio": 0.6071,
+          "width_height_ratio": 0.5903,
+          "ink_fraction": 0.2283,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 2.25,
+          "height": 35.25,
+          "width_cap_ratio": 0.0643,
+          "width_height_ratio": 0.0638,
+          "ink_fraction": 0.9984,
+          "v_stem": 2.25,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 30.25,
+          "height": 36.0,
+          "width_cap_ratio": 0.8643,
+          "width_height_ratio": 0.8403,
+          "ink_fraction": 0.1676,
+          "v_stem": null,
+          "h_stem": 2.0,
+          "counters": [
+            {
+              "w": 13.75,
+              "h": 16.75,
+              "area": 117.312
+            }
+          ]
+        }
+      ]
+    },
+    "en-300": {
+      "weight": 300,
+      "cap": 35,
+      "v_stem": 2.75,
+      "h_stem": 2.75,
+      "v_ratio": 0.07857142857142857,
+      "h_ratio": 0.07857142857142857,
+      "glyph_ink_fraction_mean": 0.24654166666666666,
+      "v_error": -2.25,
+      "h_error": -1.25,
+      "glyphs": [
+        {
+          "width": 18.75,
+          "height": 35.0,
+          "width_cap_ratio": 0.5357,
+          "width_height_ratio": 0.5357,
+          "ink_fraction": 0.3318,
+          "v_stem": 2.75,
+          "h_stem": 2.625,
+          "counters": []
+        },
+        {
+          "width": 26.75,
+          "height": 35.0,
+          "width_cap_ratio": 0.7643,
+          "width_height_ratio": 0.7643,
+          "ink_fraction": 0.2936,
+          "v_stem": 2.75,
+          "h_stem": null,
+          "counters": [
+            {
+              "w": 21.25,
+              "h": 29.5,
+              "area": 543.812
+            }
+          ]
+        },
+        {
+          "width": 22.5,
+          "height": 35.5,
+          "width_cap_ratio": 0.6429,
+          "width_height_ratio": 0.6338,
+          "ink_fraction": 0.2739,
+          "v_stem": 2.75,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 28.25,
+          "height": 35.75,
+          "width_cap_ratio": 0.8071,
+          "width_height_ratio": 0.7902,
+          "ink_fraction": 0.2141,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 31.0,
+          "height": 36.25,
+          "width_cap_ratio": 0.8857,
+          "width_height_ratio": 0.8552,
+          "ink_fraction": 0.2048,
+          "v_stem": null,
+          "h_stem": 2.75,
+          "counters": [
+            {
+              "w": 13.0,
+              "h": 15.25,
+              "area": 100.688
+            }
+          ]
+        },
+        {
+          "width": 21.25,
+          "height": 35.0,
+          "width_cap_ratio": 0.6071,
+          "width_height_ratio": 0.6071,
+          "ink_fraction": 0.1978,
+          "v_stem": 2.75,
+          "h_stem": 2.75,
+          "counters": []
+        },
+        {
+          "width": 2.75,
+          "height": 35.0,
+          "width_cap_ratio": 0.0786,
+          "width_height_ratio": 0.0786,
+          "ink_fraction": 1.0,
+          "v_stem": 2.75,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 34.75,
+          "height": 36.0,
+          "width_cap_ratio": 0.9929,
+          "width_height_ratio": 0.9653,
+          "ink_fraction": 0.2348,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": [
+            {
+              "w": 28.75,
+              "h": 30.25,
+              "area": 699.5
+            }
+          ]
+        },
+        {
+          "width": 29.25,
+          "height": 37.25,
+          "width_cap_ratio": 0.8357,
+          "width_height_ratio": 0.7852,
+          "ink_fraction": 0.2607,
+          "v_stem": 2.75,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 2.75,
+          "height": 35.0,
+          "width_cap_ratio": 0.0786,
+          "width_height_ratio": 0.0786,
+          "ink_fraction": 1.0,
+          "v_stem": 2.75,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 29.25,
+          "height": 37.25,
+          "width_cap_ratio": 0.8357,
+          "width_height_ratio": 0.7852,
+          "ink_fraction": 0.2607,
+          "v_stem": 2.75,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 31.0,
+          "height": 36.25,
+          "width_cap_ratio": 0.8857,
+          "width_height_ratio": 0.8552,
+          "ink_fraction": 0.2048,
+          "v_stem": null,
+          "h_stem": 2.75,
+          "counters": [
+            {
+              "w": 13.0,
+              "h": 15.25,
+              "area": 100.688
+            }
+          ]
+        },
+        {
+          "width": 21.75,
+          "height": 36.0,
+          "width_cap_ratio": 0.6214,
+          "width_height_ratio": 0.6042,
+          "ink_fraction": 0.2767,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 2.75,
+          "height": 35.0,
+          "width_cap_ratio": 0.0786,
+          "width_height_ratio": 0.0786,
+          "ink_fraction": 1.0,
+          "v_stem": 2.75,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 31.0,
+          "height": 36.25,
+          "width_cap_ratio": 0.8857,
+          "width_height_ratio": 0.8552,
+          "ink_fraction": 0.2048,
+          "v_stem": null,
+          "h_stem": 2.75,
+          "counters": [
+            {
+              "w": 13.0,
+              "h": 15.25,
+              "area": 100.688
+            }
+          ]
+        }
+      ]
+    },
+    "en-350": {
+      "weight": 350,
+      "cap": 35,
+      "v_stem": 3.5,
+      "h_stem": 3.25,
+      "v_ratio": 0.1,
+      "h_ratio": 0.09285714285714286,
+      "glyph_ink_fraction_mean": 0.3006083333333333,
+      "v_error": -1.5,
+      "h_error": -0.75,
+      "glyphs": [
+        {
+          "width": 19.5,
+          "height": 35.0,
+          "width_cap_ratio": 0.5571,
+          "width_height_ratio": 0.5571,
+          "ink_fraction": 0.4087,
+          "v_stem": 3.5,
+          "h_stem": 3.25,
+          "counters": []
+        },
+        {
+          "width": 27.25,
+          "height": 35.0,
+          "width_cap_ratio": 0.7786,
+          "width_height_ratio": 0.7786,
+          "ink_fraction": 0.3588,
+          "v_stem": 3.5,
+          "h_stem": null,
+          "counters": [
+            {
+              "w": 20.25,
+              "h": 28.0,
+              "area": 492.312
+            }
+          ]
+        },
+        {
+          "width": 23.0,
+          "height": 35.5,
+          "width_cap_ratio": 0.6571,
+          "width_height_ratio": 0.6479,
+          "ink_fraction": 0.3347,
+          "v_stem": 3.5,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 28.5,
+          "height": 36.0,
+          "width_cap_ratio": 0.8143,
+          "width_height_ratio": 0.7917,
+          "ink_fraction": 0.2638,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 31.75,
+          "height": 36.25,
+          "width_cap_ratio": 0.9071,
+          "width_height_ratio": 0.8759,
+          "ink_fraction": 0.2447,
+          "v_stem": null,
+          "h_stem": 3.25,
+          "counters": [
+            {
+              "w": 11.75,
+              "h": 14.0,
+              "area": 84.75
+            }
+          ]
+        },
+        {
+          "width": 21.75,
+          "height": 35.0,
+          "width_cap_ratio": 0.6214,
+          "width_height_ratio": 0.6214,
+          "ink_fraction": 0.2493,
+          "v_stem": 3.75,
+          "h_stem": 3.25,
+          "counters": []
+        },
+        {
+          "width": 3.5,
+          "height": 35.0,
+          "width_cap_ratio": 0.1,
+          "width_height_ratio": 0.1,
+          "ink_fraction": 1.0,
+          "v_stem": 3.5,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 35.25,
+          "height": 36.0,
+          "width_cap_ratio": 1.0071,
+          "width_height_ratio": 0.9792,
+          "ink_fraction": 0.2894,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": [
+            {
+              "w": 27.75,
+              "h": 29.0,
+              "area": 640.812
+            }
+          ]
+        },
+        {
+          "width": 30.0,
+          "height": 37.75,
+          "width_cap_ratio": 0.8571,
+          "width_height_ratio": 0.7947,
+          "ink_fraction": 0.3163,
+          "v_stem": 3.5,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 3.5,
+          "height": 35.0,
+          "width_cap_ratio": 0.1,
+          "width_height_ratio": 0.1,
+          "ink_fraction": 1.0,
+          "v_stem": 3.5,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 30.0,
+          "height": 37.75,
+          "width_cap_ratio": 0.8571,
+          "width_height_ratio": 0.7947,
+          "ink_fraction": 0.3163,
+          "v_stem": 3.5,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 31.75,
+          "height": 36.25,
+          "width_cap_ratio": 0.9071,
+          "width_height_ratio": 0.8759,
+          "ink_fraction": 0.2447,
+          "v_stem": null,
+          "h_stem": 3.25,
+          "counters": [
+            {
+              "w": 11.75,
+              "h": 14.0,
+              "area": 84.75
+            }
+          ]
+        },
+        {
+          "width": 22.5,
+          "height": 36.0,
+          "width_cap_ratio": 0.6429,
+          "width_height_ratio": 0.625,
+          "ink_fraction": 0.3359,
+          "v_stem": null,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 3.5,
+          "height": 35.0,
+          "width_cap_ratio": 0.1,
+          "width_height_ratio": 0.1,
+          "ink_fraction": 1.0,
+          "v_stem": 3.5,
+          "h_stem": null,
+          "counters": []
+        },
+        {
+          "width": 31.75,
+          "height": 36.25,
+          "width_cap_ratio": 0.9071,
+          "width_height_ratio": 0.8759,
+          "ink_fraction": 0.2447,
+          "v_stem": null,
+          "h_stem": 3.25,
+          "counters": [
+            {
+              "w": 11.75,
+              "h": 14.0,
+              "area": 84.75
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "placement": {
+    "tr1-400": {
+      "left": 42.0,
+      "right": 923.0,
+      "visible_width": 881.0,
+      "tracking_delta": 6.633333333333326,
+      "visible_gaps": [
+        33.633333333333326,
+        28.633333333333326,
+        2.6333333333333258,
+        5.633333333333326,
+        42.633333333333326,
+        32.633333333333326
+      ],
+      "glyphs": [
+        {
+          "char": "A",
+          "x": 42.0,
+          "width": 130.0,
+          "y": 209,
+          "top": 62.0,
+          "bottom": 209.0
+        },
+        {
+          "char": "S",
+          "x": 205.63333333333333,
+          "width": 93.0,
+          "y": 209,
+          "top": 67.0,
+          "bottom": 211.0
+        },
+        {
+          "char": "Y",
+          "x": 327.26666666666665,
+          "width": 110.2,
+          "y": 209,
+          "top": 69.0,
+          "bottom": 209.0
+        },
+        {
+          "char": "A",
+          "x": 440.09999999999997,
+          "width": 130.0,
+          "y": 209,
+          "top": 62.0,
+          "bottom": 209.0
+        },
+        {
+          "char": "’",
+          "x": 575.7333333333333,
+          "width": 30,
+          "y": 68,
+          "top": 68,
+          "bottom": 117
+        },
+        {
+          "char": "D",
+          "x": 648.3666666666667,
+          "width": 112.0,
+          "y": 209,
+          "top": 69.0,
+          "bottom": 209.0
+        },
+        {
+          "char": "A",
+          "x": 793.0,
+          "width": 130.0,
+          "y": 209,
+          "top": 62.0,
+          "bottom": 209.0
+        }
+      ]
+    },
+    "tr1-450": {
+      "left": 42.0,
+      "right": 923.0,
+      "visible_width": 881.0,
+      "tracking_delta": 3.1083333333333294,
+      "visible_gaps": [
+        30.10833333333333,
+        25.10833333333333,
+        -0.8916666666666706,
+        2.1083333333333294,
+        39.10833333333333,
+        29.10833333333333
+      ],
+      "glyphs": [
+        {
+          "char": "A",
+          "x": 42.0,
+          "width": 133.5,
+          "y": 209,
+          "top": 61.625,
+          "bottom": 209.0
+        },
+        {
+          "char": "S",
+          "x": 205.60833333333332,
+          "width": 96.55000000000001,
+          "y": 209,
+          "top": 66.75,
+          "bottom": 211.5
+        },
+        {
+          "char": "Y",
+          "x": 327.26666666666665,
+          "width": 114.67500000000001,
+          "y": 209,
+          "top": 69.0,
+          "bottom": 209.0
+        },
+        {
+          "char": "A",
+          "x": 441.05,
+          "width": 133.5,
+          "y": 209,
+          "top": 61.625,
+          "bottom": 209.0
+        },
+        {
+          "char": "’",
+          "x": 576.6583333333333,
+          "width": 30,
+          "y": 68,
+          "top": 68,
+          "bottom": 117
+        },
+        {
+          "char": "D",
+          "x": 645.7666666666667,
+          "width": 114.625,
+          "y": 209,
+          "top": 69.0,
+          "bottom": 209.0
+        },
+        {
+          "char": "A",
+          "x": 789.5,
+          "width": 133.5,
+          "y": 209,
+          "top": 61.625,
+          "bottom": 209.0
+        }
+      ]
+    },
+    "tr1-500": {
+      "left": 42.0,
+      "right": 923.0000000000001,
+      "visible_width": 881.0000000000001,
+      "tracking_delta": -0.4166666666666667,
+      "visible_gaps": [
+        26.583333333333332,
+        21.583333333333332,
+        -4.416666666666667,
+        -1.4166666666666667,
+        35.583333333333336,
+        25.583333333333332
+      ],
+      "glyphs": [
+        {
+          "char": "A",
+          "x": 42.0,
+          "width": 137.0,
+          "y": 209,
+          "top": 61.25,
+          "bottom": 209.0
+        },
+        {
+          "char": "S",
+          "x": 205.58333333333334,
+          "width": 100.10000000000001,
+          "y": 209,
+          "top": 66.5,
+          "bottom": 212.0
+        },
+        {
+          "char": "Y",
+          "x": 327.26666666666665,
+          "width": 119.15,
+          "y": 209,
+          "top": 69.0,
+          "bottom": 209.0
+        },
+        {
+          "char": "A",
+          "x": 442.0,
+          "width": 137.0,
+          "y": 209,
+          "top": 61.25,
+          "bottom": 209.0
+        },
+        {
+          "char": "’",
+          "x": 577.5833333333334,
+          "width": 30,
+          "y": 68,
+          "top": 68,
+          "bottom": 117
+        },
+        {
+          "char": "D",
+          "x": 643.1666666666667,
+          "width": 117.25,
+          "y": 209,
+          "top": 69.0,
+          "bottom": 209.0
+        },
+        {
+          "char": "A",
+          "x": 786.0000000000001,
+          "width": 137.0,
+          "y": 209,
+          "top": 61.25,
+          "bottom": 209.0
+        }
+      ]
+    },
+    "tr1-550": {
+      "left": 42.0,
+      "right": 923.0,
+      "visible_width": 881.0,
+      "tracking_delta": -2.934769694010413,
+      "visible_gaps": [
+        24.065230305989587,
+        19.065230305989587,
+        -6.934769694010413,
+        -3.934769694010413,
+        33.06523030598959,
+        23.065230305989587
+      ],
+      "glyphs": [
+        {
+          "char": "A",
+          "x": 42.0,
+          "width": 139.500244140625,
+          "y": 209,
+          "top": 60.98211669921875,
+          "bottom": 209.0
+        },
+        {
+          "char": "S",
+          "x": 205.5654744466146,
+          "width": 102.6359619140625,
+          "y": 209,
+          "top": 66.3214111328125,
+          "bottom": 212.357177734375
+        },
+        {
+          "char": "Y",
+          "x": 327.26666666666665,
+          "width": 122.34674072265625,
+          "y": 209,
+          "top": 69.0,
+          "bottom": 209.0
+        },
+        {
+          "char": "A",
+          "x": 442.6786376953125,
+          "width": 139.500244140625,
+          "y": 209,
+          "top": 60.98211669921875,
+          "bottom": 209.0
+        },
+        {
+          "char": "’",
+          "x": 578.2441121419271,
+          "width": 30,
+          "y": 68,
+          "top": 68,
+          "bottom": 117
+        },
+        {
+          "char": "D",
+          "x": 641.3093424479166,
+          "width": 119.12518310546875,
+          "y": 209,
+          "top": 69.0,
+          "bottom": 209.0
+        },
+        {
+          "char": "A",
+          "x": 783.499755859375,
+          "width": 139.500244140625,
+          "y": 209,
+          "top": 60.98211669921875,
+          "bottom": 209.0
+        }
+      ]
+    },
+    "tr1-600": {
+      "left": 42.0,
+      "right": 922.9999999999999,
+      "visible_width": 880.9999999999999,
+      "tracking_delta": -5.452872721354159,
+      "visible_gaps": [
+        21.547127278645842,
+        16.547127278645842,
+        -9.452872721354158,
+        -6.452872721354159,
+        30.547127278645842,
+        20.547127278645842
+      ],
+      "glyphs": [
+        {
+          "char": "A",
+          "x": 42.0,
+          "width": 142.00048828125,
+          "y": 209,
+          "top": 60.7142333984375,
+          "bottom": 209.0
+        },
+        {
+          "char": "S",
+          "x": 205.54761555989583,
+          "width": 105.171923828125,
+          "y": 209,
+          "top": 66.142822265625,
+          "bottom": 212.71435546875
+        },
+        {
+          "char": "Y",
+          "x": 327.26666666666665,
+          "width": 125.54348144531251,
+          "y": 209,
+          "top": 69.0,
+          "bottom": 209.0
+        },
+        {
+          "char": "A",
+          "x": 443.357275390625,
+          "width": 142.00048828125,
+          "y": 209,
+          "top": 60.7142333984375,
+          "bottom": 209.0
+        },
+        {
+          "char": "’",
+          "x": 578.9048909505208,
+          "width": 30,
+          "y": 68,
+          "top": 68,
+          "bottom": 117
+        },
+        {
+          "char": "D",
+          "x": 639.4520182291666,
+          "width": 121.0003662109375,
+          "y": 209,
+          "top": 69.0,
+          "bottom": 209.0
+        },
+        {
+          "char": "A",
+          "x": 780.9995117187499,
+          "width": 142.00048828125,
+          "y": 209,
+          "top": 60.7142333984375,
+          "bottom": 209.0
+        }
+      ]
+    },
+    "tr1-650": {
+      "left": 42.0,
+      "right": 922.9999999999999,
+      "visible_width": 880.9999999999999,
+      "tracking_delta": -8.17235514322916,
+      "visible_gaps": [
+        18.82764485677084,
+        13.82764485677084,
+        -12.17235514322916,
+        -9.17235514322916,
+        27.82764485677084,
+        17.82764485677084
+      ],
+      "glyphs": [
+        {
+          "char": "A",
+          "x": 42.0,
+          "width": 144.70068359375,
+          "y": 209,
+          "top": 60.4249267578125,
+          "bottom": 209.0
+        },
+        {
+          "char": "S",
+          "x": 205.52832845052083,
+          "width": 107.910693359375,
+          "y": 209,
+          "top": 65.949951171875,
+          "bottom": 213.10009765625
+        },
+        {
+          "char": "Y",
+          "x": 327.26666666666665,
+          "width": 128.9958740234375,
+          "y": 209,
+          "top": 69.0,
+          "bottom": 209.0
+        },
+        {
+          "char": "A",
+          "x": 444.090185546875,
+          "width": 144.70068359375,
+          "y": 209,
+          "top": 60.4249267578125,
+          "bottom": 209.0
+        },
+        {
+          "char": "’",
+          "x": 579.6185139973958,
+          "width": 30,
+          "y": 68,
+          "top": 68,
+          "bottom": 117
+        },
+        {
+          "char": "D",
+          "x": 637.4461588541666,
+          "width": 123.0255126953125,
+          "y": 209,
+          "top": 69.0,
+          "bottom": 209.0
+        },
+        {
+          "char": "A",
+          "x": 778.2993164062499,
+          "width": 144.70068359375,
+          "y": 209,
+          "top": 60.4249267578125,
+          "bottom": 209.0
+        }
+      ]
+    },
+    "tr2-400": {
+      "left": 42.0,
+      "right": 923.0,
+      "visible_width": 881.0,
+      "tracking_delta": 8.710000000000003,
+      "visible_gaps": [
+        66.71000000000001,
+        88.71000000000001,
+        72.71000000000001,
+        70.71000000000001,
+        88.71000000000001
+      ],
+      "glyphs": [
+        {
+          "char": "E",
+          "x": 42.0,
+          "width": 79.42857142857143,
+          "y": 409,
+          "top": 270.0,
+          "bottom": 409.0
+        },
+        {
+          "char": "Ğ",
+          "x": 188.13857142857142,
+          "width": 137.0142857142857,
+          "y": 409,
+          "top": 228.3,
+          "bottom": 410.98571428571427
+        },
+        {
+          "char": "İ",
+          "x": 413.86285714285714,
+          "width": 21.84285714285714,
+          "y": 409,
+          "top": 234.25714285714287,
+          "bottom": 409.0
+        },
+        {
+          "char": "T",
+          "x": 508.4157142857143,
+          "width": 88.36428571428571,
+          "y": 409,
+          "top": 270.0,
+          "bottom": 409.0
+        },
+        {
+          "char": "İ",
+          "x": 667.49,
+          "width": 21.84285714285714,
+          "y": 409,
+          "top": 234.25714285714287,
+          "bottom": 409.0
+        },
+        {
+          "char": "M",
+          "x": 778.0428571428572,
+          "width": 144.95714285714286,
+          "y": 409,
+          "top": 263.05,
+          "bottom": 409.0
+        }
+      ]
+    },
+    "tr2-450": {
+      "left": 42.0,
+      "right": 923.0000000000001,
+      "visible_width": 881.0000000000001,
+      "tracking_delta": 5.114125729855982,
+      "visible_gaps": [
+        63.114125729855985,
+        85.11412572985599,
+        69.11412572985599,
+        67.11412572985599,
+        85.11412572985599
+      ],
+      "glyphs": [
+        {
+          "char": "E",
+          "x": 42.0,
+          "width": 82.03482142857142,
+          "y": 409,
+          "top": 270.0,
+          "bottom": 409.0
+        },
+        {
+          "char": "Ğ",
+          "x": 187.1489471584274,
+          "width": 139.05829992214868,
+          "y": 409,
+          "top": 227.80357142857144,
+          "bottom": 411.48214285714283
+        },
+        {
+          "char": "İ",
+          "x": 411.3213728104321,
+          "width": 24.47392857142857,
+          "y": 409,
+          "top": 231.87428571428572,
+          "bottom": 409.0
+        },
+        {
+          "char": "T",
+          "x": 504.90942711171664,
+          "width": 92.70803571428571,
+          "y": 409,
+          "top": 270.0,
+          "bottom": 409.0
+        },
+        {
+          "char": "İ",
+          "x": 664.7315885558584,
+          "width": 24.47392857142857,
+          "y": 409,
+          "top": 231.87428571428572,
+          "bottom": 409.0
+        },
+        {
+          "char": "M",
+          "x": 774.319642857143,
+          "width": 148.68035714285713,
+          "y": 409,
+          "top": 263.05,
+          "bottom": 409.0
+        }
+      ]
+    },
+    "tr2-500": {
+      "left": 42.0,
+      "right": 923.0,
+      "visible_width": 881.0,
+      "tracking_delta": 1.515060583395666,
+      "visible_gaps": [
+        59.515060583395666,
+        81.51506058339567,
+        65.51506058339567,
+        63.515060583395666,
+        81.51506058339567
+      ],
+      "glyphs": [
+        {
+          "char": "E",
+          "x": 42.0,
+          "width": 84.64107142857142,
+          "y": 409,
+          "top": 270.0,
+          "bottom": 409.0
+        },
+        {
+          "char": "Ğ",
+          "x": 186.1561320119671,
+          "width": 141.11826851159313,
+          "y": 409,
+          "top": 227.30714285714285,
+          "bottom": 411.97857142857146
+        },
+        {
+          "char": "İ",
+          "x": 408.78946110695586,
+          "width": 27.105,
+          "y": 409,
+          "top": 229.49142857142857,
+          "bottom": 409.0
+        },
+        {
+          "char": "T",
+          "x": 501.40952169035154,
+          "width": 97.05178571428571,
+          "y": 409,
+          "top": 270.0,
+          "bottom": 409.0
+        },
+        {
+          "char": "İ",
+          "x": 661.976367988033,
+          "width": 27.105,
+          "y": 409,
+          "top": 229.49142857142857,
+          "bottom": 409.0
+        },
+        {
+          "char": "M",
+          "x": 770.5964285714286,
+          "width": 152.4035714285714,
+          "y": 409,
+          "top": 263.05,
+          "bottom": 409.0
+        }
+      ]
+    },
+    "tr2-550": {
+      "left": 42.0,
+      "right": 923.0,
+      "visible_width": 881.0,
+      "tracking_delta": -1.0577025842879493,
+      "visible_gaps": [
+        56.94229741571205,
+        78.94229741571205,
+        62.94229741571205,
+        60.94229741571205,
+        78.94229741571205
+      ],
+      "glyphs": [
+        {
+          "char": "E",
+          "x": 42.0,
+          "width": 86.50286036900111,
+          "y": 409,
+          "top": 270.0,
+          "bottom": 409.0
+        },
+        {
+          "char": "Ğ",
+          "x": 185.44515778471316,
+          "width": 142.59857482852686,
+          "y": 409,
+          "top": 226.95251639229912,
+          "bottom": 412.33319789341516
+        },
+        {
+          "char": "İ",
+          "x": 406.9860300289521,
+          "width": 28.984520263671875,
+          "y": 409,
+          "top": 227.78922154017857,
+          "bottom": 409.0
+        },
+        {
+          "char": "T",
+          "x": 498.912847708336,
+          "width": 100.15476728166853,
+          "y": 409,
+          "top": 270.0,
+          "bottom": 409.0
+        },
+        {
+          "char": "İ",
+          "x": 660.0099124057166,
+          "width": 28.984520263671875,
+          "y": 409,
+          "top": 227.78922154017857,
+          "bottom": 409.0
+        },
+        {
+          "char": "M",
+          "x": 767.9367300851005,
+          "width": 155.06326991489954,
+          "y": 409,
+          "top": 263.05,
+          "bottom": 409.0
+        }
+      ]
+    },
+    "tr2-600": {
+      "left": 42.0,
+      "right": 923.0,
+      "visible_width": 881.0,
+      "tracking_delta": -3.6317934541991006,
+      "visible_gaps": [
+        54.3682065458009,
+        76.3682065458009,
+        60.3682065458009,
+        58.3682065458009,
+        76.3682065458009
+      ],
+      "glyphs": [
+        {
+          "char": "E",
+          "x": 42.0,
+          "width": 88.3646493094308,
+          "y": 409,
+          "top": 270.0,
+          "bottom": 409.0
+        },
+        {
+          "char": "Ğ",
+          "x": 184.73285585523172,
+          "width": 144.08551965659825,
+          "y": 409,
+          "top": 226.59788992745536,
+          "bottom": 412.6878243582589
+        },
+        {
+          "char": "İ",
+          "x": 405.18658205763086,
+          "width": 30.86404052734375,
+          "y": 409,
+          "top": 226.08701450892858,
+          "bottom": 409.0
+        },
+        {
+          "char": "T",
+          "x": 496.4188291307755,
+          "width": 103.25774884905134,
+          "y": 409,
+          "top": 270.0,
+          "bottom": 409.0
+        },
+        {
+          "char": "İ",
+          "x": 658.0447845256277,
+          "width": 30.86404052734375,
+          "y": 409,
+          "top": 226.08701450892858,
+          "bottom": 409.0
+        },
+        {
+          "char": "M",
+          "x": 765.2770315987724,
+          "width": 157.72296840122766,
+          "y": 409,
+          "top": 263.05,
+          "bottom": 409.0
+        }
+      ]
+    },
+    "tr2-650": {
+      "left": 42.0,
+      "right": 923.0,
+      "visible_width": 881.0,
+      "tracking_delta": -6.413113844612144,
+      "visible_gaps": [
+        51.58688615538786,
+        73.58688615538786,
+        57.58688615538786,
+        55.58688615538786,
+        73.58688615538786
+      ],
+      "glyphs": [
+        {
+          "char": "E",
+          "x": 42.0,
+          "width": 90.37533046177455,
+          "y": 409,
+          "top": 270.0,
+          "bottom": 409.0
+        },
+        {
+          "char": "Ğ",
+          "x": 183.96221661716243,
+          "width": 145.69824256290443,
+          "y": 409,
+          "top": 226.21490304129466,
+          "bottom": 413.07081124441964
+        },
+        {
+          "char": "İ",
+          "x": 403.2473453354547,
+          "width": 32.89387102399554,
+          "y": 409,
+          "top": 224.24867745535715,
+          "bottom": 409.0
+        },
+        {
+          "char": "T",
+          "x": 493.72810251483816,
+          "width": 106.60888410295759,
+          "y": 409,
+          "top": 270.0,
+          "bottom": 409.0
+        },
+        {
+          "char": "İ",
+          "x": 655.9238727731836,
+          "width": 32.89387102399554,
+          "y": 409,
+          "top": 224.24867745535715,
+          "bottom": 409.0
+        },
+        {
+          "char": "M",
+          "x": 762.404629952567,
+          "width": 160.59537004743302,
+          "y": 409,
+          "top": 263.05,
+          "bottom": 409.0
+        }
+      ]
+    },
+    "en-200": {
+      "left": 42.0,
+      "right": 923.0000000000001,
+      "visible_width": 881.0000000000001,
+      "tracking_delta": 5.250232369559155,
+      "visible_gaps": [
+        36.25023236955916,
+        36.25023236955916,
+        36.25023236955916,
+        33.25023236955916,
+        28.250232369559157,
+        34.25023236955916,
+        36.25023236955916,
+        35.25023236955916,
+        73.25023236955916,
+        38.25023236955916,
+        71.25023236955916,
+        33.25023236955916,
+        36.25023236955916,
+        34.25023236955916
+      ],
+      "glyphs": [
+        {
+          "char": "E",
+          "x": 42.0,
+          "width": 17.8800048828125,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "D",
+          "x": 96.13023725237166,
+          "width": 25.703338623046875,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "U",
+          "x": 158.0838082449777,
+          "width": 21.32667236328125,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.5
+        },
+        {
+          "char": "C",
+          "x": 215.6607129778181,
+          "width": 28.0433349609375,
+          "y": 495,
+          "top": 459.57066650390624,
+          "bottom": 495.42933349609376
+        },
+        {
+          "char": "A",
+          "x": 276.95428030831476,
+          "width": 29.67333984375,
+          "y": 495,
+          "top": 458.9566650390625,
+          "bottom": 495.0
+        },
+        {
+          "char": "T",
+          "x": 334.87785252162394,
+          "width": 20.34200439453125,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "I",
+          "x": 389.4700892857143,
+          "width": 1.600006103515625,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "O",
+          "x": 427.3203277587891,
+          "width": 34.2280029296875,
+          "y": 495,
+          "top": 459.57066650390624,
+          "bottom": 495.42933349609376
+        },
+        {
+          "char": "N",
+          "x": 496.79856305803577,
+          "width": 28.27667236328125,
+          "y": 495,
+          "top": 458.9566650390625,
+          "bottom": 496.0433349609375
+        },
+        {
+          "char": "I",
+          "x": 598.3254677908761,
+          "width": 1.600006103515625,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "N",
+          "x": 638.1757062639509,
+          "width": 28.27667236328125,
+          "y": 495,
+          "top": 458.9566650390625,
+          "bottom": 496.0433349609375
+        },
+        {
+          "char": "A",
+          "x": 737.7026109967913,
+          "width": 29.67333984375,
+          "y": 495,
+          "top": 458.9566650390625,
+          "bottom": 495.0
+        },
+        {
+          "char": "S",
+          "x": 800.6261832101005,
+          "width": 20.600006103515625,
+          "y": 495,
+          "top": 459.57066650390624,
+          "bottom": 495.42933349609376
+        },
+        {
+          "char": "I",
+          "x": 857.4764216831753,
+          "width": 1.600006103515625,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "A",
+          "x": 893.3266601562501,
+          "width": 29.67333984375,
+          "y": 495,
+          "top": 458.9566650390625,
+          "bottom": 495.0
+        }
+      ]
+    },
+    "en-250": {
+      "left": 42.0,
+      "right": 922.9999999999999,
+      "visible_width": 880.9999999999999,
+      "tracking_delta": 4.710873413085941,
+      "visible_gaps": [
+        35.71087341308594,
+        35.71087341308594,
+        35.71087341308594,
+        32.71087341308594,
+        27.71087341308594,
+        33.71087341308594,
+        35.71087341308594,
+        34.71087341308594,
+        72.71087341308593,
+        37.71087341308594,
+        70.71087341308593,
+        32.71087341308594,
+        35.71087341308594,
+        33.71087341308594
+      ],
+      "glyphs": [
+        {
+          "char": "E",
+          "x": 42.0,
+          "width": 18.3399658203125,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "D",
+          "x": 96.05083923339845,
+          "width": 26.201629638671875,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "U",
+          "x": 157.96334228515627,
+          "width": 21.86329345703125,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.5
+        },
+        {
+          "char": "C",
+          "x": 215.53750915527348,
+          "width": 28.1966552734375,
+          "y": 495,
+          "top": 459.5553344726562,
+          "bottom": 495.4446655273438
+        },
+        {
+          "char": "A",
+          "x": 276.44503784179693,
+          "width": 30.28662109375,
+          "y": 495,
+          "top": 458.8033447265625,
+          "bottom": 495.0
+        },
+        {
+          "char": "T",
+          "x": 334.4425323486329,
+          "width": 20.755969238281253,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "I",
+          "x": 388.90937500000007,
+          "width": 2.174957275390625,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "O",
+          "x": 426.79520568847664,
+          "width": 34.503979492187504,
+          "y": 495,
+          "top": 459.5553344726562,
+          "bottom": 495.4446655273438
+        },
+        {
+          "char": "N",
+          "x": 496.0100585937501,
+          "width": 28.81329345703125,
+          "y": 495,
+          "top": 458.8033447265625,
+          "bottom": 496.1966552734375
+        },
+        {
+          "char": "I",
+          "x": 597.5342254638673,
+          "width": 2.174957275390625,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "N",
+          "x": 637.4200561523438,
+          "width": 28.81329345703125,
+          "y": 495,
+          "top": 458.8033447265625,
+          "bottom": 496.1966552734375
+        },
+        {
+          "char": "A",
+          "x": 736.944223022461,
+          "width": 30.28662109375,
+          "y": 495,
+          "top": 458.8033447265625,
+          "bottom": 495.0
+        },
+        {
+          "char": "S",
+          "x": 799.9417175292969,
+          "width": 21.174957275390625,
+          "y": 495,
+          "top": 459.5553344726562,
+          "bottom": 495.4446655273438
+        },
+        {
+          "char": "I",
+          "x": 856.8275482177734,
+          "width": 2.174957275390625,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "A",
+          "x": 892.7133789062499,
+          "width": 30.28662109375,
+          "y": 495,
+          "top": 458.8033447265625,
+          "bottom": 495.0
+        }
+      ]
+    },
+    "en-300": {
+      "left": 42.0,
+      "right": 923.0000000000001,
+      "visible_width": 881.0000000000001,
+      "tracking_delta": 4.1715144566127265,
+      "visible_gaps": [
+        35.17151445661273,
+        35.17151445661273,
+        35.17151445661273,
+        32.17151445661273,
+        27.171514456612726,
+        33.17151445661273,
+        35.17151445661273,
+        34.17151445661273,
+        72.17151445661273,
+        37.17151445661273,
+        70.17151445661273,
+        32.17151445661273,
+        35.17151445661273,
+        33.17151445661273
+      ],
+      "glyphs": [
+        {
+          "char": "E",
+          "x": 42.0,
+          "width": 18.7999267578125,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "D",
+          "x": 95.97144121442523,
+          "width": 26.699920654296875,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "U",
+          "x": 157.84287632533483,
+          "width": 22.39991455078125,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.5
+        },
+        {
+          "char": "C",
+          "x": 215.41430533272882,
+          "width": 28.3499755859375,
+          "y": 495,
+          "top": 459.5400024414063,
+          "bottom": 495.4599975585937
+        },
+        {
+          "char": "A",
+          "x": 275.93579537527904,
+          "width": 30.89990234375,
+          "y": 495,
+          "top": 458.6500244140625,
+          "bottom": 495.0
+        },
+        {
+          "char": "T",
+          "x": 334.00721217564177,
+          "width": 21.16993408203125,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "I",
+          "x": 388.34866071428576,
+          "width": 2.749908447265625,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "O",
+          "x": 426.2700836181641,
+          "width": 34.7799560546875,
+          "y": 495,
+          "top": 459.5400024414063,
+          "bottom": 495.4599975585937
+        },
+        {
+          "char": "N",
+          "x": 495.2215541294643,
+          "width": 29.34991455078125,
+          "y": 495,
+          "top": 458.6500244140625,
+          "bottom": 496.3499755859375
+        },
+        {
+          "char": "I",
+          "x": 596.7429831368584,
+          "width": 2.749908447265625,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "N",
+          "x": 636.6644060407367,
+          "width": 29.34991455078125,
+          "y": 495,
+          "top": 458.6500244140625,
+          "bottom": 496.3499755859375
+        },
+        {
+          "char": "A",
+          "x": 736.1858350481307,
+          "width": 30.89990234375,
+          "y": 495,
+          "top": 458.6500244140625,
+          "bottom": 495.0
+        },
+        {
+          "char": "S",
+          "x": 799.2572518484934,
+          "width": 21.749908447265625,
+          "y": 495,
+          "top": 459.5400024414063,
+          "bottom": 495.4599975585937
+        },
+        {
+          "char": "I",
+          "x": 856.1786747523718,
+          "width": 2.749908447265625,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "A",
+          "x": 892.1000976562501,
+          "width": 30.89990234375,
+          "y": 495,
+          "top": 458.6500244140625,
+          "bottom": 495.0
+        }
+      ]
+    },
+    "en-350": {
+      "left": 42.0,
+      "right": 922.9999999999998,
+      "visible_width": 880.9999999999998,
+      "tracking_delta": 3.467900085449222,
+      "visible_gaps": [
+        34.46790008544922,
+        34.46790008544922,
+        34.46790008544922,
+        31.467900085449223,
+        26.467900085449223,
+        32.46790008544922,
+        34.46790008544922,
+        33.46790008544922,
+        71.46790008544922,
+        36.46790008544922,
+        69.46790008544922,
+        31.467900085449223,
+        34.46790008544922,
+        32.46790008544922
+      ],
+      "glyphs": [
+        {
+          "char": "E",
+          "x": 42.0,
+          "width": 19.39996337890625,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "D",
+          "x": 95.86786346435548,
+          "width": 27.349960327148438,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "U",
+          "x": 157.68572387695315,
+          "width": 23.099957275390626,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.5
+        },
+        {
+          "char": "C",
+          "x": 215.25358123779301,
+          "width": 28.54998779296875,
+          "y": 495,
+          "top": 459.52000122070314,
+          "bottom": 495.47999877929686
+        },
+        {
+          "char": "A",
+          "x": 275.271469116211,
+          "width": 31.699951171875,
+          "y": 495,
+          "top": 458.45001220703125,
+          "bottom": 495.0
+        },
+        {
+          "char": "T",
+          "x": 333.4393203735352,
+          "width": 21.709967041015627,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "I",
+          "x": 387.61718750000006,
+          "width": 3.4999542236328125,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "O",
+          "x": 425.5850418090821,
+          "width": 35.13997802734375,
+          "y": 495,
+          "top": 459.52000122070314,
+          "bottom": 495.47999877929686
+        },
+        {
+          "char": "N",
+          "x": 494.19291992187505,
+          "width": 30.049957275390625,
+          "y": 495,
+          "top": 458.45001220703125,
+          "bottom": 496.54998779296875
+        },
+        {
+          "char": "I",
+          "x": 595.7107772827148,
+          "width": 3.4999542236328125,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "N",
+          "x": 635.6786315917968,
+          "width": 30.049957275390625,
+          "y": 495,
+          "top": 458.45001220703125,
+          "bottom": 496.54998779296875
+        },
+        {
+          "char": "A",
+          "x": 735.1964889526366,
+          "width": 31.699951171875,
+          "y": 495,
+          "top": 458.45001220703125,
+          "bottom": 495.0
+        },
+        {
+          "char": "S",
+          "x": 798.3643402099608,
+          "width": 22.499954223632812,
+          "y": 495,
+          "top": 459.52000122070314,
+          "bottom": 495.47999877929686
+        },
+        {
+          "char": "I",
+          "x": 855.3321945190428,
+          "width": 3.4999542236328125,
+          "y": 495,
+          "top": 460.0,
+          "bottom": 495.0
+        },
+        {
+          "char": "A",
+          "x": 891.3000488281248,
+          "width": 31.699951171875,
+          "y": 495,
+          "top": 458.45001220703125,
+          "bottom": 495.0
+        }
+      ]
+    }
+  },
+  "advisory_review_subset": {
+    "turkish": [
+      500,
+      550
+    ],
+    "english": [
+      300,
+      350
+    ],
+    "basis": "Two closest flat-stem matches among requested values. Advisory only; all values visible. Not approval."
+  },
+  "render_checks": {
+    "tr400-en200": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr400-en250": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr400-en300": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr400-en350": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr450-en200": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr450-en250": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr450-en300": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr450-en350": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr500-en200": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr500-en250": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr500-en300": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr500-en350": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr550-en200": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr550-en250": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr550-en300": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr550-en350": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr600-en200": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr600-en250": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr600-en300": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr600-en350": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr650-en200": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr650-en250": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr650-en300": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    },
+    "tr650-en350": {
+      "tr1": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "tr2": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      },
+      "en": {
+        "left_at_1000": 0.0,
+        "right_at_1000": 999.0,
+        "max_edge_error": 0.0
+      }
+    }
+  },
+  "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "font_sha256": "6343b70971000b04c5d401c96ae08ce371086135e999d5e1e1413039c0213076",
+  "font_source": "https://github.com/google/fonts/tree/main/ofl/jost",
+  "apostrophe": "One independent punctuation correction, drawn with five intentional cubic segments to the original measured envelope. Shared unchanged across all weights. Not Candidate B geometry; no custom alphabet.",
+  "limitations": [
+    "JPEG edge uncertainty approximately +/-1 px.",
+    "Weight match does not establish glyph-shape fidelity.",
+    "No raster curvature-sign-flip or IoU score used as approval criterion.",
+    "Full overlays expose required common-width spacing changes as well as shape differences."
+  ]
+}
