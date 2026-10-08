@@ -10,3 +10,7 @@ asya-egitim-site.zip
 # to keep the repo lean; explorations/ originals ARE tracked.
 **/share/
 node_modules/
+
+# Python bytecode caches
+__pycache__/
+*.pyc
