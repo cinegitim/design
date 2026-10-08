@@ -89,6 +89,48 @@
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "lockup_scale_relative_to_original_trio": 1.05,
       "png_sha256": "ba88008e6b202c8e17465ee5b339935e19a2cd2791e764df426d85dcab7ca4bc"
+    },
+    {
+      "variant": "red-x10",
+      "label": "Tam kırmızı · lockup %10 büyük",
+      "background": "#BD2120",
+      "canonical_lockup_id": "F-05/dark",
+      "canonical_lockup_sha256": "1433f54445157ef60eec10327b6408da5675d85cfe22e158f34fe6760534fec9",
+      "svg": "profile-circle-type-red-x10.svg",
+      "svg_sha256": "f15f93e0db41e0a967b137c61670649c09b94f17d03afe5536cf3c911006f4ef",
+      "png": "profile-circle-type-red-x10-1080.png",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_scale_relative_to_original_trio": 1.1,
+      "png_sha256": "eceb914b005f27acba2a392eb3f238710d4ae2dd460132d49d5b0085902eab8f"
+    },
+    {
+      "variant": "negative-x10",
+      "label": "Negatif · koyu · lockup %10 büyük",
+      "background": "#1D2027",
+      "canonical_lockup_id": "F-05/dark",
+      "canonical_lockup_sha256": "1433f54445157ef60eec10327b6408da5675d85cfe22e158f34fe6760534fec9",
+      "svg": "profile-circle-type-negative-x10.svg",
+      "svg_sha256": "72961447f9109670d1f5fdd701c25da24e2cbbc3c9ab09b87180206c764d16ce",
+      "png": "profile-circle-type-negative-x10-1080.png",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_scale_relative_to_original_trio": 1.1,
+      "png_sha256": "221489b2022a2e3b4e5f43c14efb73a4de21a207b969c0be43987c1220e0eac6"
+    },
+    {
+      "variant": "white-x10",
+      "label": "Beyaz · lockup %10 büyük",
+      "background": "#FFFFFF",
+      "canonical_lockup_id": "F-05/light",
+      "canonical_lockup_sha256": "e1892f677d491f6e0e2491d6c8f3ad1b0d269ed9f1a16df98ea0b6329ceff810",
+      "svg": "profile-circle-type-white-x10.svg",
+      "svg_sha256": "9a530f368d6ae6877d5eaeee0ce529c7353f56fbaac94eabdcfe8d774114a916",
+      "png": "profile-circle-type-white-x10-1080.png",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_scale_relative_to_original_trio": 1.1,
+      "png_sha256": "8ff9889eaf8e4037e5ee3d22040a00c8209e976af4bf17a6aac33c40f99df062"
     }
   ],
   "source_lockups": {
@@ -105,7 +147,8 @@
   },
   "design_sizes": {
     "original_trio_lockup_width_px": 820,
-    "larger_trio_lockup_width_px": 860,
-    "larger_trio_scale": 1.05
+    "larger_trio_5pct_lockup_width_px": 860,
+    "larger_trio_10pct_lockup_width_px": 902,
+    "larger_trio_10pct_scale": 1.1
   }
 }
