@@ -1,16 +1,21 @@
 <!doctype html>
 <html lang="tr">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Çin Eğitim — 6× PNG karşılaştırması</title>
-<style>*{box-sizing:border-box}body{margin:0;background:#f6f4ee;color:#242424;font:16px/1.6 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:40px 24px}h1{font-size:30px;line-height:1.2}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}figure{margin:0;background:white;border:1px solid #ddd;padding:24px;text-align:center}.art{aspect-ratio:229/231;display:grid;place-items:center}img{width:100%;height:auto;display:block}figcaption{margin-top:20px;font-size:14px;color:#555}.status{margin:24px 0;padding:16px;border-left:3px solid #b30d26;background:white}a{color:inherit}small{display:block;color:#666;margin-top:24px}.download{display:inline-block;margin:24px 0;padding:12px 18px;border:1px solid #242424;background:white}@media(max-width:680px){.grid{grid-template-columns:1fr}main{padding:24px 16px}}</style></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Çin Eğitim — Süper çözünürlük</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#f6f4ee;color:#242424;font:16px/1.6 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:40px 24px}h1{font-size:30px;line-height:1.2}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}figure{margin:0;background:white;border:1px solid #ddd;padding:24px;text-align:center}.art{aspect-ratio:229/231;display:grid;place-items:center}img{width:100%;height:auto;display:block}figcaption{margin-top:20px;font-size:14px;color:#555}.status{margin:24px 0;padding:16px;border-left:3px solid #b30d26;background:white}a{color:inherit}small{display:block;color:#666;margin-top:24px}.download{display:inline-block;margin:24px 0;padding:12px 18px;border:1px solid #242424;background:white}h2{font-size:20px;margin-top:38px}.wide{padding:0}details{margin-top:24px}@media(max-width:680px){.grid{grid-template-columns:1fr}main{padding:24px 16px}}</style></head>
 <body><main>
 <a href="../">Ana sayfa</a>
-<h1>Aynı hedef. 6× büyütülmüş PNG.</h1>
-<p>Kilitli orijinal aynen korundu. Yalnız ayrı bir raster büyütme ve hafif netleştirme yapıldı; SVG, tipografi veya yeniden çizim yok.</p>
+<h1>Yalnız büyütme değil: süper çözünürlük.</h1>
+<p>Real-ESRGAN modeliyle gürültü/artefakt azaltma ve kenar-detay iyileştirmesi uygulandı. Yeni PNG ayrı bir kalite adayıdır; kilitli orijinal değişmedi. SVG veya tipografi çalışması yok.</p>
 <div class="grid">
 <figure><div class="art"><img src="reference/target-symbol.png" alt="Kilitli orijinal sembol"></div><figcaption>Orijinal · 229×231 px · değiştirilmedi</figcaption></figure>
-<figure><div class="art"><img src="enhancements/target-symbol-6x.png" alt="Aynı sembolün 6 kat büyütülmüş, hafif netleştirilmiş PNG türevi"></div><figcaption>6× PNG · 1374×1386 px · inceleme türevi</figcaption></figure>
+<figure><div class="art"><img src="enhancements/target-symbol-super-resolution-4x.png" alt="Model temelli süper çözünürlük adayı"></div><figcaption>Süper çözünürlük · 916×924 px · Real-ESRGAN x4plus</figcaption></figure>
 </div>
-<a class="download" href="enhancements/target-symbol-6x.png" download="cin-egitim-hedef-6x.png">6× PNG'yi indir</a>
-<div class="status"><strong>Kalite sınırı</strong><br>LANCZOS büyütme ve hafif netleştirme büyük boyutta sunumu iyileştirir; kaynakta olmayan gerçek ayrıntıları geri getirmez. Yapay zekâyla detay üretilmedi. Bu dosya yeni kanonik logo değildir.</div>
-<small><a href="reference/target-lock.json">Değişmeyen hedef kilidi</a> · <a href="enhancements/manifest.json">Büyütme kaydı</a></small>
+<a class="download" href="enhancements/target-symbol-super-resolution-4x.png" download="cin-egitim-super-resolution.png">Yeni PNG'yi indir</a>
+<h2>Önceki yöntemle fark — aynı detay, aynı ölçek</h2>
+<figure class="wide"><img src="enhancements/super-resolution-detail.png" alt="Solda önceki interpolasyon, sağda yeni süper çözünürlük: aynı pagoda detayının karşılaştırması"></figure>
+<h2>Tam işaret karşılaştırması</h2>
+<figure class="wide"><img src="enhancements/super-resolution-comparison.png" alt="Kilitli kaynak, önceki LANCZOS büyütme ve yeni Real-ESRGAN sonucu aynı ölçekte"></figure>
+<div class="status"><strong>Detay tahmini, onay bekliyor.</strong><br>Model belirsiz ayrıntıları tahmin eder; ince fırça dokusu bir miktar yumuşayabilir ve kenarlarda küçük değişiklikler olabilir. Sonuç birebir kaynak-detay garantisi değildir; yeni hedef veya onaylı üretim logosu olarak kilitlenmedi.</div>
+<details><summary>Önceki büyütme</summary><p><a href="enhancements/target-symbol-6x.png">6× LANCZOS PNG</a> — yalnız interpolasyon ve hafif netleştirme; yeni süper çözünürlükten farklıdır.</p></details>
+<small><a href="reference/target-lock.json">Değişmeyen hedef kilidi</a> · <a href="enhancements/super-resolution-manifest.json">Yeni yöntemin kaydı</a></small>
 </main></body></html>
