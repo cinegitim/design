@@ -51,7 +51,13 @@ SRC = Path("/private/var/folders/3j/ffljsl_s66n94xjq7zdv8hb80000gn/T/opencode/ci
 # uydurmasıyla hesaplanır: kutu ortası bir KIRIK çemberde yanlıştır, çünkü
 # boşluk kutuyu bir yana kaydırır (ölçüldü: 31.4 piksel yatay sapma).
 CX0, CY0 = 303.5, 417.0
-ARC0 = (57.0, 313.0)          # ilk geçişte taranan yay aralığı
+# Yay, kaynaktaki GERÇEK kırmızı sınırından türetildi; elle seçilmedi.
+# Önceki 57°-313° yayının büyük kısmında kırmızı YOKTUR ve o 82 derece
+# interpolasyonlanıyordu (tahmin). Işın taraması 65°-288° arasında kırmızı
+# bulur, 288°'den sonra bulmaz. Bu düzeltme, kuru fırça dokusunu düşürme
+# kararıyla da tutarlı: uçlardaki ibrisimler doku, jest değil.
+ARC0 = (65.0, 288.0)
+# Yay: 256° -> 223°. Gerçek ölçüm, 223°.
 RED = "#A72820"
 INK = "#292929"
 
@@ -82,6 +88,7 @@ def measure(step_deg: float = 1.0, cx: float | None = None,
     isred = load_red_mask()
     a0, a1 = arc
     samples = []
+    prev_mid = None
     deg = a0
     while deg <= a1 + 1e-9:
         th = math.radians(deg)
@@ -105,11 +112,15 @@ def measure(step_deg: float = 1.0, cx: float | None = None,
                 else:
                     cur.append(hits[i])
             runs_l.append(cur)
-            main = max(runs_l, key=len)
+            main = (max(runs_l, key=len) if prev_mid is None else
+                    min(runs_l, key=lambda r: abs((r[0] + r[-1]) / 2.0 - prev_mid)))
             lo, hi = main[0], main[-1]
             w = hi - lo
-            rec.update({"runs": len(runs_l), "mid": (lo + hi) / 2.0, "width": w,
+            prev_mid = (lo + hi) / 2.0
+            rec.update({"runs": len(runs_l), "mid": prev_mid, "width": w,
                         "ok": MIN_RUN <= len(runs_l) <= MAX_RUN and W_LO <= w <= W_HI})
+        else:
+            prev_mid = None
         samples.append(rec)
         deg += step_deg
     return samples
@@ -216,14 +227,22 @@ def interpolate_gaps(samples):
     return samples
 
 
-def smooth_series(values, passes: int = 3):
-    """Yerel medyan yumuşatma: ölçüm gürültüsünü alır, karakteri korur."""
+def smooth_series(values, passes: int = 3, window: int = 3):
+    """Yerel medyan yumuşatma: ölçüm gürültüsünü alır, karakteri korur.
+
+    Pencere/GEÇİŞ DENEMESİ YAPILDI VE GERİ ALINDI. Varsayım, 800px'de sol altta
+    görülen testere dişinin kuru fırça dokusu olduğuydu; daha geniş pencere onu
+    silecek diye 6 kombinasyon ölçüldü (w3p3 … w9p13). Hiçbiri 59.5 piksellik
+    sıçramayı kaldırmadı ve hepsi IoU'yu DÜŞÜRDÜ (0.8758 -> 0.8709).
+    Yani sıçrama gürültü değil, kaynakta gerçekten var olan kalıcı bir özellik.
+    w3 p3 korundu — ölçümle kazanan seçenek.
+    """
     out = list(values)
+    half = window // 2
     for _ in range(passes):
         nxt = list(out)
-        for i in range(1, len(out) - 1):
-            trio = sorted(out[i - 1:i + 2])
-            nxt[i] = trio[1]
+        for i in range(half, len(out) - half):
+            nxt[i] = sorted(out[i - half:i + half + 1])[half]
         out = nxt
     return out
 
@@ -234,17 +253,20 @@ def build_profile(samples, arc):
     mids = smooth_series([s["mid"] for s in samples])
     widths = smooth_series([max(3.0, s["width"]) for s in samples])
 
-    # Uçlarda genişliği sıfıra indirerek gerçek bir sivrilme kur. Sivrilme
-    # yalnız en dış %8'de uygulanır; gövde ölçülen değerinde kalır.
+    # Sivrilme sıfıra İNMEZ. Ölçülen gövde kalınlığının bir oranına iner ve uç
+    # düz/açılı bir kesmeyle kapanır. Sıfıra inen sivrilme + yumuşatma, uçları
+    # kıvrık iğne teli hâline getiriyordu (800px denetiminde görüldü) ve
+    # 16px'te leke oluyordu. Taban = medyanın %22'si.
     a0, a1 = arc
     span = a1 - a0
-    fade = span * 0.08
+    fade = span * 0.10
+    w_min = 0.22 * sorted(widths)[len(widths) // 2]
     prof = []
     for d, m, w in zip(degs, mids, widths):
         e = min((d - a0) / fade, (a1 - d) / fade, 1.0)
         e = max(0.0, e)
         k = e * e * (3 - 2 * e)                      # smoothstep
-        prof.append({"deg": d, "mid": m, "width": max(2.5, w * k)})
+        prof.append({"deg": d, "mid": m, "width": w_min + (w - w_min) * k})
 
     measured = sum(1 for s in samples if not s.get("filled"))
     return {"arc": arc, "centre": None,
@@ -279,6 +301,27 @@ def catmull_path(points, tension: float = 1.0):
     return "".join(d)
 
 
+def catmull_open(points, tension: float = 1.0):
+    """AÇIK nokta dizisi üzerinden yumuşak kübik Bézier (uçlar sabitlenir)."""
+    n = len(points)
+    if n < 3:
+        return "".join(f"L{p[0]:.2f} {p[1]:.2f}" for p in points[1:])
+
+    def at(i):
+        return points[min(max(i, 0), n - 1)]
+
+    d = []
+    for i in range(n - 1):
+        p0, p1, p2, p3 = at(i - 1), at(i), at(i + 1), at(i + 2)
+        c1 = (p1[0] + (p2[0] - p0[0]) / 6.0 * tension,
+              p1[1] + (p2[1] - p0[1]) / 6.0 * tension)
+        c2 = (p2[0] - (p3[0] - p1[0]) / 6.0 * tension,
+              p2[1] - (p3[1] - p1[1]) / 6.0 * tension)
+        d.append(f"C{c1[0]:.2f} {c1[1]:.2f} {c2[0]:.2f} {c2[1]:.2f} "
+                 f"{p2[0]:.2f} {p2[1]:.2f}")
+    return "".join(d)
+
+
 def polar_to_path(prof):
     cx, cy = prof["centre"]
     outer, inner = [], []
@@ -290,12 +333,19 @@ def polar_to_path(prof):
         outer.append((cx + ro * math.cos(th), cy + ro * math.sin(th)))
         inner.append((cx + ri * math.cos(th), cy + ri * math.sin(th)))
 
-    # Tek KAPALI döngü kurulur: dış kenar ileri → uç kapağı → iç kenar geri →
-    # başlangıç kapağı. İki ayrı alt yol + örtük kapanış YANLIŞTIR: dış
-    # kontorun Z'si atılırsa renderer 313°'den 57°'ye halkanın GÖVDESİNDEN
-    # geçen bir kordon kapatır ve gap'i ince bir dikene çevirir (görüldü).
-    loop = outer + list(reversed(inner))
-    return catmull_path(loop)
+    # Uçlar KESKİN KALIR. Kapalı Catmull ile kurulmuş sürümde yumuşatma iki uç
+    # kapağını da kapsıyordu; köşeler yuvarlayınca kapakları ince, kıvrık bir
+    # tele dönüştürüyordu (800px'de görüldü: sağ üstte ve sağ altta iğne).
+    # O yüzden dış kenar ileri yumuşatılır, düz çizgiyle kapatılır, iç kenar
+    # geri yumuşatılır ve düz çizgiyle kapanır.
+    # (İki ayrı alt yol + örtük kapanış da YANLIŞTIR: dış kontorun Z'si
+    #  atılırsa renderer halkanın GÖVDESİNDEN geçen bir kordon kapatır.)
+    d = [f"M{outer[0][0]:.2f} {outer[0][1]:.2f}"]
+    d.append(catmull_open(outer[1:]))
+    d.append(f"L{inner[-1][0]:.2f} {inner[-1][1]:.2f}")
+    d.append(catmull_open(list(reversed(inner[1:-1])) or inner[-2::-1]))
+    d.append("Z")
+    return "".join(d)
 
 
 def svg(path_d, colour, title, w=862, h=834):
