@@ -1,0 +1,90 @@
+{
+  "id": "b-waseda",
+  "title": "Waseda · Gerçek başvuru takvimi",
+  "slides": [
+    {
+      "index": 1,
+      "file": "b-waseda/png/01.png",
+      "editable": null,
+      "layout": "Phase 2B cover retained unchanged",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "WASEDA"
+      ],
+      "ai_imagery": false,
+      "sha256": "e7b3cce23d584272836b6ccdc7381753539257325fa3a7df0c3a8d4c60c43986"
+    },
+    {
+      "index": 2,
+      "file": "b-waseda/png/02.png",
+      "editable": "b-waseda/editable/02.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "WASEDA"
+      ],
+      "ai_imagery": false,
+      "sha256": "d18e24f9a546db0cd78c542ffb0ac27bb0cee080efdea800399b54e21cf4bbc6"
+    },
+    {
+      "index": 3,
+      "file": "b-waseda/png/03.png",
+      "editable": "b-waseda/editable/03.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "WASEDA"
+      ],
+      "ai_imagery": true,
+      "sha256": "08cf4907e87f970b34a580bdc0db732769a21b7aa5370b41a87ae77199402cf8"
+    },
+    {
+      "index": 4,
+      "file": "b-waseda/png/04.png",
+      "editable": "b-waseda/editable/04.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "WASEDA"
+      ],
+      "ai_imagery": false,
+      "sha256": "a6314a0ff77c4fa634485377412dc38cd34fed1cfa5219866b380695802d2bf6"
+    },
+    {
+      "index": 5,
+      "file": "b-waseda/png/05.png",
+      "editable": "b-waseda/editable/05.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "WASEDA"
+      ],
+      "ai_imagery": false,
+      "sha256": "bacd005a459e08ae8f5241d69ebc753ac34b158014f1e7430ca2f0b544bafbe8"
+    },
+    {
+      "index": 6,
+      "file": "b-waseda/png/06.png",
+      "editable": "b-waseda/editable/06.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "WASEDA"
+      ],
+      "ai_imagery": false,
+      "sha256": "cf3e266ffb78580fb3e3ee263f95bec30201a54169aea434a1fd0d069f8dfbe3"
+    }
+  ]
+}
