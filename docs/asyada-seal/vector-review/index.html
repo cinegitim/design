@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="tr"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Asya'da Eğitim — Vektör Kalite İncelemesi · İNCELEME</title>
+<style>
+:root{--paper:#F7F3E9;--ink:#141210;--verm:#BD2120;--mute:#6b635a;--line:#ddd5c4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1240px;margin:0 auto;padding:40px 22px 90px}
+h1{font-size:34px;line-height:1.2;margin:0 0 6px}
+h2{font-size:23px;margin:56px 0 4px;padding-top:22px;border-top:1px solid var(--line)}
+h3{font-size:16px;margin:26px 0 6px}
+p{margin:9px 0}
+.sub{color:var(--mute);font-size:15px;margin-bottom:24px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:14px 0}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--mute);font-weight:600}
+td.n,th.n{text-align:right;font-family:ui-monospace,Menlo,monospace}
+.pending{background:var(--verm);color:#fff;padding:16px 20px;margin:26px 0;font-weight:600;letter-spacing:.04em}
+.note{background:#fff;border:1px solid var(--line);border-left:5px solid var(--verm);padding:15px 19px;margin:20px 0}
+.note.ok{border-left-color:#2f7a4a}
+.small,.sm{font-size:14px;color:var(--mute)}
+.sm{font-size:12.5px}
+img{max-width:100%;display:block}
+figure{margin:0}
+figcaption{font-size:13px;color:var(--mute);margin-top:7px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:2px;padding:10px;margin:0}
+.good{color:#2f7a4a;font-weight:700}
+.bad{color:var(--verm);font-weight:700}
+a{color:var(--verm)}
+</style></head>
+<body><div class="wrap">
+
+<h1>Kelime Markası — Vektör Kalite İncelemesi</h1>
+<p class="sub">Raster izleme → kübik uydurma → yumuşatma hattı <b>durduruldu</b>. Onaylı referansın aynısı, iki yeni vektör yöntemle yeniden kuruldu.</p>
+
+<div class="pending">İNSAN VEKTÖR KALİTESİ İNCELEMESİ BEKLENİYOR — hiçbir aday seçilmedi, hiçbir şey kanonikleştirilmedi, hizalama seçilmedi</div>
+
+<div class="note">
+<b>Neden yeniden yapıldı.</b> "Pürüzsüz" sürüm 1460 kübik, 0 düz çizgi üretiyordu. Otomatik raster→Bézier dönüşümü, ölçtüğümüz her şeyi daha iyi yaptı ama <i>görsel olarak daha kötü</i>. Aşağıdaki ölçüm bunu doğruluyor: aşırı uydurulmuş sürüm, düğüm sayısında ve eğri salınımında çokgen sürümden daha kötüdür. Sıfır düz çizgi bir kalite hedefi değildir.
+</div>
+
+<h2>1 · Beşli karşılaştırma</h2>
+<figure class="card"><img src="assets/reference.jpg" alt="approved typography reference">
+<figcaption>0 · Onaylı tipografi referansı (raster, 1012&times;558)</figcaption></figure>
+<div class="grid2">
+<figure class="card"><img src="assets/full-poly.png" alt="1 · WU polygonal"><figcaption>1 · WU polygonal<br><span class=sm>552 straight segments &middot; 0 curves</span></figcaption></figure>
+<figure class="card"><img src="assets/full-smooth.png" alt="2 · WU smooth (overfitted)"><figcaption>2 · WU smooth (overfitted)<br><span class=sm>1460 cubics &middot; 0 straight segments</span></figcaption></figure>
+<figure class="card"><img src="assets/full-A.png" alt="3 · Candidate A &mdash; typeface"><figcaption>3 · Candidate A &mdash; typeface<br><span class=sm>genuine Jost outlines, SIL OFL, wght 700</span></figcaption></figure>
+<figure class="card"><img src="assets/full-B.png" alt="4 · Candidate B &mdash; custom"><figcaption>4 · Candidate B &mdash; custom<br><span class=sm>hand-drafted &middot; straight edges exact, curves circular arcs</span></figcaption></figure>
+</div>
+
+<h2>2 · Geometri ölçümü &mdash; son SVG konturlarından</h2>
+<p class="small">Sayımlar <b>nihai SVG dosyasının</b> <span class=sm>path d</span> verisinden okundu; girdi konturlarından veya yeniden oluşturulmuş vekillerden değil.</p>
+<table>
+<tr><th>Sürüm</th><th>Kaynak</th><th class=n>Düğüm</th><th class=n>Eğri</th><th class=n>Düz çizgi</th><th class=n>Alt yol</th><th class=n>Eğri işaret değişimi</th><th class=n>Ölçü farkı</th></tr>
+<tr><td><b>1 · WU polygonal</b></td><td>552 straight segments &middot; 0 curves</td><td class=n>592</td><td class=n>0</td><td class=n>552</td><td class=n>40</td><td class=n>113</td><td class=n>5.9</td></tr>
+<tr><td><b>2 · WU smooth (overfitted)</b></td><td>1460 cubics &middot; 0 straight segments</td><td class=n>1500</td><td class=n>1460</td><td class=n>0</td><td class=n>40</td><td class=n>110</td><td class=n>6.4</td></tr>
+<tr><td><b>3 · Candidate A &mdash; typeface</b></td><td>genuine Jost outlines, SIL OFL, wght 700</td><td class=n>313</td><td class=n>224</td><td class=n>43</td><td class=n>46</td><td class=n>72</td><td class=n>3.7</td></tr>
+<tr><td><b>4 · Candidate B &mdash; custom</b></td><td>hand-drafted &middot; straight edges exact, curves circular arcs</td><td class=n>196</td><td class=n>31</td><td class=n>104</td><td class=n>61</td><td class=n>52</td><td class=n>3.8</td></tr>
+</table>
+<p class="small"><b>Eğri işaret değişimi</b>, kontur normalinin yön değiştirdiği yer sayısıdır &mdash; salınım ve kıpırdamanın ölçüsü. Düşük iyidir. Aday B en düşük değere sahiptir; aşırı uydurulmuş sürüm çokgen sürümden <i>daha kötüdür</i>.</p>
+
+<h3>Üç satır ortak ölçü (aday A / aday B)</h3>
+<table>
+<tr><th>Satır</th><th class=n>A: sol</th><th class=n>A: sağ</th><th class=n>A: genişlik</th><th class=n>B: genişlik</th></tr>
+<tr><td>TR1</td><td class=n>0.00</td><td class=n>880.90</td><td class=n>880.90</td><td class=n>880.90</td></tr>
+<tr><td>TR2</td><td class=n>0.00</td><td class=n>880.90</td><td class=n>880.90</td><td class=n>880.90</td></tr>
+<tr><td>EN</td><td class=n>0.00</td><td class=n>880.90</td><td class=n>880.90</td><td class=n>880.90</td></tr>
+</table>
+<p class="small">Her iki adayda da üç satır da 880.90 px ile ölçüyü tamamen doldurur; yalnızca harfler arası boşluk değiştirilir, hiçbir harf esnetilmez.</p>
+
+<h2>3 · Harf bazında &mdash; 100 / 400 / 800 %</h2>
+<p class="small">A S G D M &middot; İ noktası &middot; kırmızı tırnak &middot; Ğ breve. Üç panel: çokgen, aşırı uydurulmuş, aday A, aday B.</p>
+<figure class="card"><img src="assets/glyphs-poly.png" alt="glyphs poly"><figcaption>A S G D M I-dot apostrophe breve &middot; 100 / 400 / 800 %</figcaption></figure>
+<figure class="card"><img src="assets/glyphs-smooth.png" alt="glyphs smooth"><figcaption>A S G D M I-dot apostrophe breve &middot; 100 / 400 / 800 %</figcaption></figure>
+<figure class="card"><img src="assets/glyphs-A.png" alt="glyphs A"><figcaption>A S G D M I-dot apostrophe breve &middot; 100 / 400 / 800 %</figcaption></figure>
+<figure class="card"><img src="assets/glyphs-B.png" alt="glyphs B"><figcaption>A S G D M I-dot apostrophe breve &middot; 100 / 400 / 800 %</figcaption></figure>
+
+<h2>4 · Gerçek kullanım boyutları</h2>
+<figure class="card"><img src="assets/usage-poly.png" alt="poly usage"><figcaption>candidate poly &middot; 1000 / 600 / 320 / 200 / 120 px</figcaption></figure>
+<figure class="card"><img src="assets/usage-smooth.png" alt="smooth usage"><figcaption>candidate smooth &middot; 1000 / 600 / 320 / 200 / 120 px</figcaption></figure>
+<figure class="card"><img src="assets/usage-A.png" alt="A usage"><figcaption>candidate A &middot; 1000 / 600 / 320 / 200 / 120 px</figcaption></figure>
+<figure class="card"><img src="assets/usage-B.png" alt="B usage"><figcaption>candidate B &middot; 1000 / 600 / 320 / 200 / 120 px</figcaption></figure>
+
+<h2>5 · Kilitler &mdash; gerçek kanonik mühür</h2>
+<p class="small">Her ikilide kanonik mühür dosyası olduğu gibi kullanıldı: SHA-256 <span class=sm>8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a</span>. Mühür hiçbir aday tarafından değiştirilmedi.</p>
+<div class="grid2">
+<figure class="card"><img src="assets/A-lockup-stacked.png"><figcaption>candidate A &middot; stacked &middot; canonical seal SHA-256 8f5d46f0302c&hellip;</figcaption></figure>
+<figure class="card"><img src="assets/A-lockup-horizontal.png"><figcaption>candidate A &middot; horizontal &middot; canonical seal SHA-256 8f5d46f0302c&hellip;</figcaption></figure>
+<figure class="card"><img src="assets/B-lockup-stacked.png"><figcaption>candidate B &middot; stacked &middot; canonical seal SHA-256 8f5d46f0302c&hellip;</figcaption></figure>
+<figure class="card"><img src="assets/B-lockup-horizontal.png"><figcaption>candidate B &middot; horizontal &middot; canonical seal SHA-256 8f5d46f0302c&hellip;</figcaption></figure>
+</div>
+
+<h2>6 · Optik hizalama alternatifleri</h2>
+<p class="small">Mühür yalnızca dikeyde kaydırıldı; ölçek veya bozulma yok. <b>Seçim yapılmadı.</b> Ölçülen referanslar: kap→taban ortası 58.62 px, kutu merkezi 200.95 px, mürekkep ağırlık merkezi 162.14 px.</p>
+<div class="grid4">
+<figure class="card"><img src="assets/A-align-4.png"><figcaption>candidate A &middot; seal offset -4 px</figcaption></figure>
+<figure class="card"><img src="assets/A-align+0.png"><figcaption>candidate A &middot; seal offset +0 px</figcaption></figure>
+<figure class="card"><img src="assets/A-align+4.png"><figcaption>candidate A &middot; seal offset +4 px</figcaption></figure>
+<figure class="card"><img src="assets/A-align+8.png"><figcaption>candidate A &middot; seal offset +8 px</figcaption></figure>
+<figure class="card"><img src="assets/B-align-4.png"><figcaption>candidate B &middot; seal offset -4 px</figcaption></figure>
+<figure class="card"><img src="assets/B-align+0.png"><figcaption>candidate B &middot; seal offset +0 px</figcaption></figure>
+<figure class="card"><img src="assets/B-align+4.png"><figcaption>candidate B &middot; seal offset +4 px</figcaption></figure>
+<figure class="card"><img src="assets/B-align+8.png"><figcaption>candidate B &middot; seal offset +8 px</figcaption></figure>
+</div>
+
+<h2>7 · Yöntem</h2>
+<div class="note ok">
+<b>Aday A &mdash; yazıtipi tabanlı.</b> Referansın belirleyici özellikleri: eğik kesimli S terminalleri, yuvarlak G ve D kâsiteleri, sivri A apeksi. Bu, Futura soyundan gelen <b>Jost</b>'u (SIL OFL) işaret eder. Poppins ikinci sırada geldi (0.420 IoU'ya karşı 0.386) ama S terminalleri yatay olduğu için en görünür uyumsuzluğu oluşturuyordu. Gerçek konturlar fonttan gelir; hiçbir izleme yok.
+</div>
+<div class="note ok">
+<b>Aday B &mdash; özel vektör harfleme.</b> 1000 birimlik em üzerinde, tek bir gövde ağırlığı parametresiyle harf harf çizildi. Düz kenarlar tam olarak düzdür (<span class=sm>H</span>/<span class=sm>V</span> komutları), eğriler gerçek dairelerdir (<span class=sm>A</span> yayları) &mdash; bu yüzden merdiven basamağı, çıkıntı, sivri uç veya salınım <i>oluşamaz</i>. Gövde ağırlığı tüm alfabe boyunca yapısal olarak tutarlıdır. Ğ breve, İ noktaları ve kırmızı tırnak çizilmiştir; ödünç alınmamıştır.
+</div>
+
+<h2>8 · Bilinen açık kusurlar</h2>
+<div class="note">
+<ul style="margin:0;padding-left:20px">
+<li><b>Aday B:</b> M'in orta tepesi hâlâ hafif bir çentik bırakıyor; G'nin barı ağız açısına göre ayarlanabilir. Bunlar eleyici değil, insanın düzeltmesi için notlar.</li>
+<li><b>Aday A:</b> Jost'un kendi M genişliği referanstan biraz daha geniş; A'nın apoks açıklığı da referanstan farklı. Optik düzeltme önerilir.</li>
+<li>Hiçbir aday otomatik olarak seçilmedi. Ölçümler karşılaştırma içindir, onay değildir.</li>
+</ul>
+</div>
+
+<div class="note">
+<b>Ne yapılmadı.</b> Hizalama seçilmedi. Kilitler kanonikleştirilmedi. Mühür dosyası değiştirilmedi — SHA-256 her ikilide doğrulandı. Görsel üretim yok, ölçek büyütme yok, <span class=sm>approxPolyDP</span> yok, otomatik raster→Bézier dönüşümü yok.
+</div>
+
+<p class="small"><a href="../">← Asya'da Eğitim mühür galerisi</a></p>
+</div></body></html>
