@@ -1,0 +1,130 @@
+{
+  "phase": "Instagram Studio — Phase 2A: Practical Content Variations",
+  "status": "HUMAN CONTENT-SYSTEM SELECTION PENDING",
+  "adapter": "ChatGPT Image (image_generate, gpt-image-2)",
+  "generations": 18,
+  "concepts": [
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f1-profile-v1.png",
+      "sha256": "0b002508c17bfa592b4cbafdbfcd5de5db0262054f9590b6128cb024baa98fd2"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f1-profile-v2.png",
+      "sha256": "70f2bb88667794df25fe0025da44729f62b0000b40306b38f64bf7509bd4286a"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f1-profile-v3.png",
+      "sha256": "7ace747490d7434e0dd21b32a4bc90bb0e694ab11f28e0b153a5d8d98a4f0067"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f2-ranking-v1.png",
+      "sha256": "4d0353726ac3c1fd55afa2abc3a6a032663c37a4bd6d556fe01bc0bace6cb452"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f2-ranking-v2.png",
+      "sha256": "389eebfef116f9cf210c6510dd9c2e982658647ff4706d3cabc790b4898fb040"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f2-ranking-v3.png",
+      "sha256": "f4e4f56d890626073813bf39f9218ac27c73bb0d47789379d597ac337655d29c"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f3-city-v1.png",
+      "sha256": "436e4b28d71ce26ae616780aa2c323d99b36d0863f2e6c8d7d01d0d6fca57333"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f3-city-v2.png",
+      "sha256": "8e65c5eb8ef2807f63cb8e3e406e797a9bc9d80324cc973f1953c9dd51e8ff6c"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f3-city-v3.png",
+      "sha256": "54d183278f9eb4178f8f93f6e25aa47f3d1ad21dff00106501b2ae6700e6c72a"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f4-deadline-v1.png",
+      "sha256": "173e6e786ed3f47ec5ee3ab3569f876ff426ded2165414b63f211980e70dc879"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f4-deadline-v2.png",
+      "sha256": "9799281222e6bc9ee130a63b0664a1dcd223b5609518a2359a3bd633851f8f29"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f4-deadline-v3.png",
+      "sha256": "a0392e68d604d66d653e0e7c785ad55d359b1ddf04db9648fa0bf664ecadf24e"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f5-steps-v1.png",
+      "sha256": "7645aab652bb69a3eb8aae4fd9548e859554951109573050fc24baa9934d2eea"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f5-steps-v2.png",
+      "sha256": "c43ca4691f43404ba0e91b29cabc9d7aa287ddda33a1a27db5ccb34962962100"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f5-steps-v3.png",
+      "sha256": "0d64e7c62fee9bb66a53db7a8c02b8cab92a2f44c083370e2cf12bbc13eb1e8b"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f6-counsel-v1.png",
+      "sha256": "35f9b019ef71e2aceb02b8720d831270d2791fd3a09ea419f78cd7e89d53c65a"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f6-counsel-v2.png",
+      "sha256": "8160d9586162f0d80d86034cfa3a762722b64255a097de1259fc36ca48a1f5d9"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2a/f6-counsel-v3.png",
+      "sha256": "b5cf6ede35483f08ab1212c9557626a3438c2486a69a3711858d23baeda50507"
+    }
+  ],
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "families": [
+    {
+      "university-profile": {
+        "title": "University Profile",
+        "grounding": "SNU Seul; strengths engineering+business per US News/snu.ac.kr",
+        "notes": "V1 dev SEUL; V2 campus band; V3 verified-facts card"
+      }
+    },
+    {
+      "ranking-comparison": {
+        "title": "Ranking / Comparison",
+        "grounding": "QS Asia 2026 topuniversities.com Oct 2026: 1 HKU, 2 Peking, 3= NUS/NTU, 5 Fudan",
+        "notes": "V1 correct list (NUS/NTU tie linearized — note); V2 photo+table; V3 BARS ORDER WRONG — model-invented, flagged, redesign from V1 order in production"
+      }
+    },
+    {
+      "city-life": {
+        "title": "City Life",
+        "grounding": "Atmospheric, no hard data; budget card marked ornek",
+        "notes": "V1 outline TOKYO; V2 dusk street energy; V3 soft index (weakest, borderline generic)"
+      }
+    },
+    {
+      "application-deadline": {
+        "title": "Application Deadline",
+        "grounding": "Countdown style; all dates marked ornek takvim — no fabricated dates",
+        "notes": "V1 clock-zero 30 strongest; V2 cinematic Son hafta; V3 calendar nodes illustrative months"
+      }
+    },
+    {
+      "application-steps": {
+        "title": "Application Steps",
+        "grounding": "Generic process, no invented requirements",
+        "notes": "V1 cascading numerals superb; V2 milestone pins lovely; V3 clean checklist"
+      }
+    },
+    {
+      "counseling-value": {
+        "title": "Right Counseling",
+        "grounding": "Process competence, no ad language",
+        "notes": "V1 statement type glorious; V2 mentorship photo trustworthy; V3 nodes charming but airy"
+      }
+    }
+  ],
+  "rules": [
+    "No templates canonicalized; no decomposition.",
+    "Logo never requested; seal shown beside art only.",
+    "Ranking/deadline values verified or marked; F2-V3 order flagged wrong."
+  ]
+}
