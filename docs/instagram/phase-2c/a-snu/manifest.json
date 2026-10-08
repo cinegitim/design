@@ -1,0 +1,105 @@
+{
+  "id": "a-snu",
+  "title": "Seul Ulusal Üniversitesi",
+  "slides": [
+    {
+      "index": 1,
+      "file": "a-snu/png/01.png",
+      "editable": null,
+      "layout": "Phase 2B cover retained unchanged",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "SNU"
+      ],
+      "ai_imagery": true,
+      "sha256": "58abbe7f95d9a742f4154dc0a4e364e27aefbbc52cd7812e7715d7892daab2b4"
+    },
+    {
+      "index": 2,
+      "file": "a-snu/png/02.png",
+      "editable": "a-snu/editable/02.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "SNU"
+      ],
+      "ai_imagery": true,
+      "sha256": "472f159fe8693a8190c9e9fc621b03501904d0bbf764e62d3f218a4bb0174b02"
+    },
+    {
+      "index": 3,
+      "file": "a-snu/png/03.png",
+      "editable": "a-snu/editable/03.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "QS"
+      ],
+      "ai_imagery": false,
+      "sha256": "0cd5d8c689a3b00d48ab94e1ce1f15110a51be0bd7a180aed319252ef41fbaec"
+    },
+    {
+      "index": 4,
+      "file": "a-snu/png/04.png",
+      "editable": "a-snu/editable/04.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "SNU",
+        "LIFE"
+      ],
+      "ai_imagery": true,
+      "sha256": "1ddca373f0d09ccad9451b93efbb96c0ed0f8e4cb2f4972886bb4879e3dcf9c6"
+    },
+    {
+      "index": 5,
+      "file": "a-snu/png/05.png",
+      "editable": "a-snu/editable/05.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "LIFE"
+      ],
+      "ai_imagery": true,
+      "sha256": "46ac0f36d1da569a96f0d54d6e78ec3fe970561e44ecf12c0fab047c4756cbaa"
+    },
+    {
+      "index": 6,
+      "file": "a-snu/png/06.png",
+      "editable": "a-snu/editable/06.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "EDITORIAL"
+      ],
+      "ai_imagery": false,
+      "sha256": "0448a275c6785e4c2919fd8c3abc693ce2ba7ab4baed510f33b693a260631039"
+    },
+    {
+      "index": 7,
+      "file": "a-snu/png/07.png",
+      "editable": "a-snu/editable/07.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "EDITORIAL"
+      ],
+      "ai_imagery": false,
+      "sha256": "d5e000c190e587d2888dc81276858232151025635a031445ce51dc0d0fbc044a"
+    }
+  ]
+}
