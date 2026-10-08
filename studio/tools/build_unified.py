@@ -35,6 +35,7 @@ import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build_wordmark as B
+import curves
 
 ROOT = "/Users/serdaryurt/Documents/OpenCode/Design"
 RUN = os.path.join(ROOT, "brands/asyada-egitim/explorations/wordmark-ref")
@@ -46,7 +47,9 @@ PAPER = B.PAPER
 
 # W3 frame: reference pixels minus the W3 origin (tr1_x0, tr1 cap line).
 X0, Y0 = 42, 80
-EPS = 0.9              # same contour epsilon as W3
+EPS = 0.4              # dense trace before resampling
+CURVE_TOL = 0.18        # max Bézier deviation, native px
+SMOOTH = 6              # endpoint-pinned binomial passes over each span        # max Bézier deviation, native px (~0.18 px at 1000 px wide)
 
 # Line bands in REFERENCE coordinates. TR2's band starts high enough to
 # include the breve and the İ dots as their own components.
@@ -74,7 +77,7 @@ def trace_components(mask):
         if w < 3 or h < 3 or area < 12:
             continue
         sub = ((lab[y:y + h, x:x + w] == i) * 255).astype(np.uint8)
-        cnts, hier = cv2.findContours(sub, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_SIMPLE)
+        cnts, hier = cv2.findContours(sub, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
         rings = []
         if cnts is not None:
             hier = hier[0]
@@ -83,14 +86,20 @@ def trace_components(mask):
                     continue                      # hole: handled with its parent
                 if len(c) < 3 or cv2.contourArea(c) < 6:
                     continue
-                ap = cv2.approxPolyDP(c, EPS, True)
-                group = [[(int(p[0][0]) + x, int(p[0][1]) + y) for p in ap]]
+                # Resample to even spacing before curve fitting: CHAIN_APPROX_NONE
+                # gives uneven density, and multi-scale corner detection needs
+                # several points per edge to distinguish an edge junction from
+                # sampling density. Coordinates are kept in float reference px.
+                ring = curves.resample(
+                    np.array([[p[0][0] + x, p[0][1] + y] for p in c], float), 0.7)
+                group = [[(float(q[0]), float(q[1])) for q in ring]]
                 k = hier[j][2]                     # first child
                 while k != -1:
                     hc = cnts[k]
                     if len(hc) >= 3 and cv2.contourArea(hc) >= 6:
-                        ap2 = cv2.approxPolyDP(hc, EPS, True)
-                        group.append([(int(p[0][0]) + x, int(p[0][1]) + y) for p in ap2])
+                        ring2 = curves.resample(
+                            np.array([[p[0][0] + x, p[0][1] + y] for p in hc], float), 0.7)
+                        group.append([(float(q[0]), float(q[1])) for q in ring2])
                     k = hier[k][0]                 # next sibling
                 rings.append(group)
         if rings:
@@ -208,20 +217,31 @@ def main():
     red_dx = -(extent(lines["tr1"]["groups"][0])[0] - X0)
     log["red_dx"] = red_dx
 
-    # ---- emit: one path element per ring-group, evenodd cuts the holes ----
-    def path_of(ring, dx):
-        return "".join("M" + " L".join("%.2f %.2f" % (p[0] - X0 + dx, p[1] - Y0)
-                                       for p in sub) + " Z" for sub in ring)
+    # ---- emit: corner-aware cubic Bézier contours ----
+    # One path element per ring-group; outer ring + holes in one `d` with
+    # evenodd fill, so counters stay open.
+    def path_of(groups, dx):
+        # groups is a list of ring-groups; each group is [outer, hole, ...]
+        outp = []
+        for group in groups:
+            d = curves.bezier_path(group, tol=CURVE_TOL, smooth_passes=SMOOTH)
+            if not d:
+                continue
+            # shift from reference px into WU coordinates
+            outp.append(curves.shift_path(d, -X0 + dx, -Y0))
+        return "".join(outp)
 
     parts = []
     for key in ("tr1", "tr2", "en"):
         for g, dx in placed[key]:
             for c in [g["base"]] + g["extra"]:
-                for ring in c["rings"]:
-                    parts.append('<path d="%s" fill="%s" fill-rule="evenodd"/>' % (path_of(ring, dx), INK))
+                d = path_of(c["rings"], dx)
+                if d:
+                    parts.append('<path d="%s" fill="%s" fill-rule="evenodd"/>' % (d, INK))
     for c in reds:
-        for ring in c["rings"]:
-            parts.append('<path d="%s" fill="%s"/>' % (path_of(ring, red_dx), VERM))
+        d = path_of(c["rings"], red_dx)
+        if d:
+            parts.append('<path d="%s" fill="%s"/>' % (d, VERM))
 
     # viewBox spans the true ink: x [0, W], y from the apostrophe top to EN baseline
     ys = [c["y0"] for L in lines.values() for g in L["groups"]

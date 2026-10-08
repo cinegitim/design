@@ -2,7 +2,7 @@
  "rows": [
   {
    "check": "text line TR1 within common measure W",
-   "value": "devL 0.00 devR 0.32 px",
+   "value": "devL 0.00 devR 0.76 px",
    "pass": true
   },
   {
@@ -17,7 +17,7 @@
   },
   {
    "check": "three lines share one measure W",
-   "value": "widths [880.12, 880.12, 880.12] (spread 0.00 px)",
+   "value": "widths [879.68, 880.12, 880.12] (spread 0.44 px)",
    "pass": true
   },
   {

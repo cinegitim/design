@@ -3,7 +3,7 @@
   42,
   80
  ],
- "epsilon": 0.9,
+ "epsilon": 0.4,
  "tr1": {
   "components": 6,
   "letters": 6,
