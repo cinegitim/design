@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Instagram Studio — Faz 0 Sistem Mimarisi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120;--line:#d9d1bf;--muted:#65625a;--card:#fffdf7}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px 100px}
+.topbar{display:flex;align-items:center;gap:14px;padding:22px 0;border-bottom:1px solid var(--ink)}
+.topbar img{width:44px;height:auto}
+.topbar .t{font-size:13px;letter-spacing:.14em;font-weight:500}
+.topbar nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.topbar nav a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 16px;background:var(--card)}
+.topbar nav a.here,.topbar nav a:hover{border-color:var(--ink)}
+h1{font-size:clamp(38px,6vw,72px);letter-spacing:-.04em;line-height:1.02;margin:40px 0 8px}
+.lede{font-size:18px;max-width:64ch}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.badge{font-size:12px;letter-spacing:.08em;font-weight:500;border-radius:999px;padding:8px 18px;border:1px solid var(--red);color:var(--red)}
+section{margin-top:64px}
+.kicker{font-size:12px;letter-spacing:.16em;color:var(--muted);font-weight:500}
+h2{font-size:clamp(24px,3.5vw,38px);letter-spacing:-.025em;margin:6px 0}
+.sub{color:#3d3a34;max-width:74ch}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
+.cell{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.cell b{display:block;font-size:17px}
+.cell .id{font-size:11px;letter-spacing:.12em;color:var(--red);font-weight:600}
+.cell p{font-size:14px;color:#3d3a34;margin-top:6px}
+.workbench{margin-top:22px;background:var(--ink);color:var(--paper);border-radius:16px;padding:28px}
+.workbench h3{font-size:22px;letter-spacing:-.01em}
+.controls{display:flex;gap:14px;flex-wrap:wrap;margin:18px 0 6px}
+.controls label{font-size:12px;letter-spacing:.1em;color:#cfc8b9;display:grid;gap:6px}
+.controls select{font:inherit;font-size:15px;padding:12px 14px;min-height:48px;border-radius:10px;border:1px solid #cfc8b9;background:var(--paper);color:var(--ink);min-width:210px}
+.stage{display:grid;grid-template-columns:340px 1fr;gap:28px;margin-top:20px;align-items:start}
+.phone{width:340px;max-width:100%;aspect-ratio:1080/1350;background:var(--paper);color:var(--ink);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden}
+.phone .fam{font-size:11px;letter-spacing:.18em;color:var(--red);font-weight:600}
+.phone .cov{font-size:30px;font-weight:600;line-height:1.1;letter-spacing:-.02em}
+.phone .sk{border-radius:8px;background:#e3dccb}
+.phone .cta-row{margin-top:auto;display:flex;gap:10px;align-items:center}
+.phone .cta{background:var(--red);color:#fff;border-radius:999px;padding:10px 22px;font-size:15px;font-weight:500}
+.phone .dots{display:flex;gap:6px;margin-top:4px}
+.phone .dots i{width:22px;height:5px;border-radius:99px;background:#c9c2b2}
+.phone .dots i.on{background:var(--ink)}
+.readout{font-size:14px}
+.readout .row{border-bottom:1px solid #3a3f47;padding:10px 0;display:grid;grid-template-columns:150px 1fr;gap:12px}
+.readout .row span:first-child{color:#cfc8b9;font-size:12px;letter-spacing:.1em}
+.stepper{display:flex;gap:10px;margin-top:14px}
+.stepper button{font:inherit;font-size:14px;padding:10px 20px;border-radius:999px;border:1px solid #cfc8b9;background:transparent;color:var(--paper);cursor:pointer;min-height:44px}
+.stepper button:hover{background:#2a2f37}
+.strip{display:flex;gap:10px;overflow-x:auto;padding:16px;background:#ece7dc;border:1px solid var(--line);border-radius:12px;margin-top:16px}
+.mini{flex:none;width:150px;aspect-ratio:1080/1350;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.mini .n{font-size:10px;letter-spacing:.12em;color:var(--red);font-weight:600}
+.mini .t{font-size:14px;font-weight:600;line-height:1.2}
+.mini .sk{border-radius:6px;background:#e3dccb;flex:none}
+.mini .c{margin-top:auto;background:var(--red);color:#fff;border-radius:99px;font-size:11px;text-align:center;padding:6px}
+.feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:18px;max-width:520px}
+.feed div{aspect-ratio:1;background:#e3dccb;border-radius:8px;display:grid;place-items:center;font-size:12px;font-weight:600;letter-spacing:.06em;color:#6a645a;border:2px solid transparent}
+.feed div.alt{background:#d8e2ea}
+.feed div.fix{border-color:var(--red)}
+.rules{margin-top:18px;display:grid;gap:10px}
+.rules li{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;font-size:15px}
+.rules li b{color:var(--red)}
+a{color:inherit}
+.note{font-size:13px;color:var(--muted)}
+footer{margin-top:70px;border-top:1px solid var(--line);padding-top:22px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:900px){.stage{grid-template-columns:1fr}.grid2,.grid3{grid-template-columns:1fr}.wrap{padding:0 18px 70px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <img src="../asyada-seal/assets/v01-canonical.svg" alt="Mühür">
+    <span class="t">ASYA'DA EĞİTİM &middot; BRAND STUDIO</span>
+    <nav><a href="../">Panel</a><a href="../identity/">Kimlik</a><a class="here" href="./">Instagram</a><a href="../archive/">Arşiv</a></nav>
+  </div>
+
+  <p class="kicker" style="margin-top:36px">INSTAGRAM STUDIO &middot; PHASE 0 — SYSTEM ARCHITECTURE</p>
+  <h1>Carousel-first<br>Instagram sistemi</h1>
+  <p class="lede">Tanınır, gençlere dönük ama kurumsal güven veren bir akış dili. Zemin her zaman 1080&times;1350 (4:5). Bu sayfa mimari ve tel-kare demolar içerir — nihai gönderi ve kanonik şablon yok.</p>
+  <div class="badges"><span class="badge">ACTIVE DEVELOPMENT — PHASE 0</span><span class="badge">NO CANONICAL TEMPLATES YET</span></div>
+
+  <section id="canvas">
+    <div class="kicker">ZEMİN</div><h2>1080 &times; 1350, her şey bu dikdörtgende</h2>
+    <p class="sub">Kapak ilk 3 saniye, gövde öğretir, son slayt tek eylem söyler. Güvenli alan: kritik içerik merkezi %80'de; logo ve kurumsal imza yalnızca kapakta ve kapanışta.</p>
+  </section>
+
+  <section id="families">
+    <div class="kicker">6 İÇERİK AİLESİ</div><h2>Ne anlatıyoruz?</h2>
+    <div class="grid3">
+      <div class="cell"><span class="id">F1 · GUIDE</span><b>Rehber</b><p>Başvuru adımları, vize evrakları, burs takvimi. Yapı: Teach veya Checklist.</p></div>
+      <div class="cell"><span class="id">F2 · DEADLINE</span><b>Son tarih</b><p>Kontenjan ve tarih duyuruları. Yapı: Teach (kısa) + güçlü CTA.</p></div>
+      <div class="cell"><span class="id">F3 · UNIVERSITY</span><b>Üniversite</b><p>Tek üniversite dosyası: gerçekler, rakamlar, alıntı. Yapı: Dossier veya Compare.</p></div>
+      <div class="cell"><span class="id">F4 · COUNTRY</span><b>Ülke</b><p>Seul, Tokyo ve ötesi: yaşam maliyeti, kampüs kültürü. Yapı: Compare veya Dossier.</p></div>
+      <div class="cell"><span class="id">F5 · STUDENT STORY</span><b>Öğrenci hikâyesi</b><p>Gerçek öğrenci anlatısı: an, dönüm, sonuç. Yapı: Story.</p></div>
+      <div class="cell"><span class="id">F6 · EVENT</span><b>Etkinlik</b><p>Fuar, webinar, kampüs turu. Yapı: Checklist + kayıt CTA'sı.</p></div>
+    </div>
+  </section>
+
+  <section id="structures">
+    <div class="kicker">5 CAROUSEL YAPISI</div><h2>Slaytlar nasıl dizilir?</h2>
+    <div class="grid3">
+      <div class="cell"><span class="id">S1 · TEACH — 5 SLAYT</span><b>Öğret</b><p>Kapak → Sorun → Adım 1 → Adım 2 → CTA. Bilgi yoğun aileler için.</p></div>
+      <div class="cell"><span class="id">S2 · COMPARE — 4 SLAYT</span><b>Karşılaştır</b><p>Kapak → A / B → Hüküm → CTA. Üniversite ve ülke için.</p></div>
+      <div class="cell"><span class="id">S3 · CHECKLIST — 6 SLAYT</span><b>Kontrol listesi</b><p>Kapak → 4 madde → CTA. Kaydet-paylaş davranışını tetikler.</p></div>
+      <div class="cell"><span class="id">S4 · DOSSIER — 5 SLAYT</span><b>Dosya</b><p>Kapak → Olgular → Rakamlar → Alıntı → CTA. Kurumsal güvenin yapısı.</p></div>
+      <div class="cell"><span class="id">S5 · STORY — 4 SLAYT</span><b>Hikâye</b><p>Kapak → An → Dönüm → CTA. Yalnızca gerçek öğrenci anlatısı.</p></div>
+    </div>
+  </section>
+
+  <section id="modes">
+    <div class="kicker">4 GÖRSEL MOD + 3 CTA MODU</div><h2>Nasıl görünür, ne ister?</h2>
+    <div class="grid2">
+      <div class="cell"><span class="id">M1 · PHOTO-LED</span><b>Fotoğraf önde</b><p>Tam sayfa kampüs karesi, üzerine başlık. Duygu taşır; F5 ve F3 kapakları.</p></div>
+      <div class="cell"><span class="id">M2 · TYPE-LED</span><b>Tipografi önde</b><p>Kâğıt zemin, büyük Jost başlık. Hızlı okunur; F1 ve F2 gövdesi.</p></div>
+      <div class="cell"><span class="id">M3 · GRID-LED</span><b>Izgara önde</b><p>Karşılaştırma tabloları ve kartlar. F4 ve Dossier rakamları.</p></div>
+      <div class="cell"><span class="id">M4 · DATA-LED</span><b>Veri önde</b><p>Barlar, takvim çizgileri, sayaçlar. Maliyet, tarih, kontenjan.</p></div>
+    </div>
+    <div class="grid3" style="margin-top:14px">
+      <div class="cell"><span class="id">C1 · APPLY</span><b>Başvur</b><p>Kırmızı hap: F2 ve F6 kapanışları.</p></div>
+      <div class="cell"><span class="id">C2 · CONSULTATION</span><b>Görüşme</b><p>Birebir çağrı: F1 ve F3 kapanışları.</p></div>
+      <div class="cell"><span class="id">C3 · SAVE / SHARE</span><b>Kaydet / Paylaş</b><p>Yumuşak eylem: Checklist ve Story kapanışları.</p></div>
+    </div>
+  </section>
+
+  <section id="workbench">
+    <div class="kicker">İNTERAKTİF ÇALIŞMA ALANI</div><h2>Storyboard workbench</h2>
+    <p class="sub">Aile, yapı ve modu değiştir; kapak kuralı, slayt dizisi ve CTA'nın nasıl yeniden kurulduğunu izle. Bunlar tel-kare — bitmiş tasarım değil.</p>
+    <div class="workbench">
+      <h3>Kombinasyon dene</h3>
+      <div class="controls">
+        <label>İÇERİK AİLESİ<select id="wb-family">
+          <option value="guide">F1 · Guide — Rehber</option>
+          <option value="deadline">F2 · Deadline — Son tarih</option>
+          <option value="university">F3 · University — Üniversite</option>
+          <option value="country">F4 · Country — Ülke</option>
+          <option value="story">F5 · Student Story — Hikâye</option>
+          <option value="event">F6 · Event — Etkinlik</option>
+        </select></label>
+        <label>CAROUSEL YAPISI<select id="wb-structure">
+          <option value="teach">S1 · Teach — 5 slayt</option>
+          <option value="compare">S2 · Compare — 4 slayt</option>
+          <option value="checklist">S3 · Checklist — 6 slayt</option>
+          <option value="dossier">S4 · Dossier — 5 slayt</option>
+          <option value="story">S5 · Story — 4 slayt</option>
+        </select></label>
+        <label>GÖRSEL MOD<select id="wb-mode">
+          <option value="photo">M1 · Photo-led</option>
+          <option value="type">M2 · Type-led</option>
+          <option value="grid">M3 · Grid-led</option>
+          <option value="data">M4 · Data-led</option>
+        </select></label>
+      </div>
+      <div class="stage">
+        <div class="phone" id="wb-phone" aria-live="polite"></div>
+        <div>
+          <div class="readout" id="wb-readout"></div>
+          <div class="stepper">
+            <button id="wb-prev" type="button">&larr; Önceki slayt</button>
+            <button id="wb-next" type="button">Sonraki slayt &rarr;</button>
+          </div>
+          <p class="note" id="wb-count" style="color:#cfc8b9;margin-top:10px"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="demos">
+    <div class="kicker">3 TEL-KARE DEMO</div><h2>Yapılar çalışıyor mu?</h2>
+    <p class="sub">Üç farklı aile × yapı × mod kesişimi, minyatür şeritler halinde. Kaydırarak karşılaştır.</p>
+    <p class="note" style="margin-top:14px"><b>Demo A — Teach × Guide × Type-led:</b> vize evrakları, 5 slayt.</p>
+    <div class="strip" id="demo-a"></div>
+    <p class="note" style="margin-top:14px"><b>Demo B — Compare × University × Grid-led:</b> iki üniversite, 4 slayt.</p>
+    <div class="strip" id="demo-b"></div>
+    <p class="note" style="margin-top:14px"><b>Demo C — Story × Student Story × Photo-led:</b> öğrenci anlatısı, 4 slayt.</p>
+    <div class="strip" id="demo-c"></div>
+  </section>
+
+  <section id="feed">
+    <div class="kicker">AKIŞ DÜZEYİ</div><h2>Izgarada tekrar yok</h2>
+    <div class="grid2">
+      <div>
+        <div class="feed" id="feed-grid"></div>
+        <p class="note" style="margin-top:10px">Kırmızı çerçeveli kare kural ihlali demek: aynı aile yan yana gelemez. Akışta modlar dönüşümlü (foto → tipo → ızgara), kapak renkleri en fazla 3 karede bir tekrar eder.</p>
+      </div>
+      <div class="rules">
+        <li><b>Kapak kuralı:</b> tek söz + tek görsel fikir; kurumsal imza yalnızca kapak ve kapanışta.</li>
+        <li><b>Ritim:</b> kapak 3 sn, gövde slayt başına 1 fikir, kapanış tek CTA — asla iki eylem.</li>
+        <li><b>Gençlik × güven:</b> gövde dili genç ve doğrudan; rakamlar, tarihler ve koşullar her zaman kurumsal kesinlikte.</li>
+        <li><b>Tekrar önleme:</b> art arda aynı aile yok; aynı CTA en fazla iki gönderide bir.</li>
+      </div>
+    </div>
+  </section>
+
+  <section id="ref">
+    <div class="kicker">TARİHSEL REFERANS</div><h2>Faz 1 ne öğretti?</h2>
+    <p class="sub">Kare post, dikey kampanya ve fuar el ilanı prototipleri — fotoğraf + kâğıt panel + kırmızı CTA dilinin çalıştığını kanıtladı. Instagram sistemi bu dili carousel ritmine taşıyor. <a href="../asyada-seal/visual-system-phase-1/">Faz 1 galerisi &rarr;</a></p>
+  </section>
+
+  <footer><span>Instagram Studio · Phase 0 — mimari, şablon yok, kanonikleşme yok</span><span><a href="../">Panel</a> &middot; <a href="../identity/">Kimlik</a> &middot; <a href="../archive/">Arşiv</a></span></footer>
+</div>
+<script>
+(function(){
+  var FAM={guide:{n:"F1 · Guide",ex:"Vize evrakları",cta:"C2 · Consultation"},deadline:{n:"F2 · Deadline",ex:"Güz kontenjanı",cta:"C1 · Apply"},university:{n:"F3 · University",ex:"Üniversite dosyası",cta:"C2 · Consultation"},country:{n:"F4 · Country",ex:"Seul'de yaşam",cta:"C1 · Apply"},story:{n:"F5 · Student Story",ex:"Elif'in ilk dönemi",cta:"C3 · Save / Share"},event:{n:"F6 · Event",ex:"Ekim fuarı",cta:"C1 · Apply"}};
+  var STR={teach:{n:"S1 · Teach",slides:["Kapak","Sorun","Adım 1","Adım 2","CTA"]},compare:{n:"S2 · Compare",slides:["Kapak","A / B","Hüküm","CTA"]},checklist:{n:"S3 · Checklist",slides:["Kapak","Madde 1","Madde 2","Madde 3","Madde 4","CTA"]},dossier:{n:"S4 · Dossier",slides:["Kapak","Olgular","Rakamlar","Alıntı","CTA"]},story:{n:"S5 · Story",slides:["Kapak","An","Dönüm","CTA"]}};
+  var MOD={photo:{n:"M1 · Photo-led",rule:"Tam sayfa foto; başlık fotoğraf üstünde, kâğıt panel yok."},type:{n:"M2 · Type-led",rule:"Kâğıt zemin; 64px+ Jost başlık, tek fikir."},grid:{n:"M3 · Grid-led",rule:"Kart ızgarası; karşılaştırma 2 sütunda."},data:{n:"M4 · Data-led",rule:"Bar/takvim görseli; rakam 3× gövde boyu."}};
+  var fam=document.getElementById("wb-family"),str=document.getElementById("wb-structure"),mod=document.getElementById("wb-mode");
+  var phone=document.getElementById("wb-phone"),out=document.getElementById("wb-readout"),count=document.getElementById("wb-count");
+  var idx=0;
+  function slides(){return STR[str.value].slides;}
+  function render(){
+    var s=slides(); if(idx>=s.length)idx=0;
+    var name=s[idx],isCover=idx===0,isCTA=name==="CTA";
+    var h='<div class="fam">'+FAM[fam.value].n+' · '+MOD[mod.value].n+'</div>';
+    h+='<div class="cov">'+(isCover?FAM[fam.value].ex:isCTA?FAM[fam.value].cta:name)+'</div>';
+    if(mod.value==="photo"){h+='<div class="sk" style="height:150px;background:linear-gradient(135deg,#b9c8d4,#7d94a8)">[foto]</div><div class="sk" style="height:14px;width:80%"></div><div class="sk" style="height:14px;width:60%"></div>';}
+    else if(mod.value==="type"){h+='<div class="sk" style="height:26px;width:90%"></div><div class="sk" style="height:14px"></div><div class="sk" style="height:14px"></div><div class="sk" style="height:14px;width:70%"></div>';}
+    else if(mod.value==="grid"){h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div class="sk" style="height:90px"></div><div class="sk" style="height:90px"></div></div><div class="sk" style="height:14px;width:75%"></div>';}
+    else{h+='<div class="sk" style="height:20px;width:40%;background:#BD2120"></div><div class="sk" style="height:20px;width:65%;background:#BD2120;opacity:.7"></div><div class="sk" style="height:20px;width:55%;background:#BD2120;opacity:.45"></div><div class="sk" style="height:14px;width:70%"></div>';}
+    h+='<div class="cta-row"><span class="cta">'+(isCTA?"Eylem":"Devam")+'</span><span class="dots">';
+    for(var i=0;i<s.length;i++)h+='<i class="'+(i===idx?"on":"")+'"></i>';
+    h+='</span></div>';
+    phone.innerHTML=h;
+    out.innerHTML='<div class="row"><span>AİLE</span><span>'+FAM[fam.value].n+' — örnek: '+FAM[fam.value].ex+'</span></div>'
+      +'<div class="row"><span>YAPI</span><span>'+STR[str.value].n+' — '+s.join(" → ")+'</span></div>'
+      +'<div class="row"><span>MOD</span><span>'+MOD[mod.value].n+' — '+MOD[mod.value].rule+'</span></div>'
+      +'<div class="row"><span>KAPAK</span><span>Tek söz + tek görsel; imza yalnızca kapak ve kapanışta.</span></div>'
+      +'<div class="row"><span>CTA</span><span>'+FAM[fam.value].cta+' — kapanışta tek eylem.</span></div>';
+    count.textContent="Slayt "+(idx+1)+" / "+s.length+" — "+name;
+  }
+  function reset(){idx=0;render();}
+  fam.addEventListener("change",reset);str.addEventListener("change",reset);mod.addEventListener("change",reset);
+  document.getElementById("wb-prev").addEventListener("click",function(){idx=(idx-1+slides().length)%slides().length;render();});
+  document.getElementById("wb-next").addEventListener("click",function(){idx=(idx+1)%slides().length;render();});
+  function strip(el,titles){el.innerHTML=titles.map(function(t,i){var body=i===titles.length-1?'<span class="c">CTA</span>':'<div class="sk" style="height:60px"></div><div class="sk" style="height:10px;width:80%"></div><div class="sk" style="height:10px;width:60%"></div>';return '<div class="mini"><span class="n">SLAYT '+(i+1)+'</span><span class="t">'+t+'</span>'+body+'</div>';}).join("");}
+  strip(document.getElementById("demo-a"),["Kapak: 4 evrak","Sorun: ret nedeni","Adım 1","Adım 2","CTA: Görüşme"]);
+  strip(document.getElementById("demo-b"),["Kapak: A vs B","Tablo: harç/yurt","Hüküm","CTA: Başvur"]);
+  strip(document.getElementById("demo-c"),["Kapak: Elif","An: ilk gün","Dönüm: burs","CTA: Kaydet"]);
+  var feed=document.getElementById("feed-grid");
+  var tiles=[["F1 · REHBER",""],["F3 · ÜNİ","alt"],["F5 · HİKÂYE",""],["F2 · TARİH",""],["F1 · REHBER","fix"],["F4 · ÜLKE","alt"],["F6 · ETKİNLİK",""],["F3 · ÜNİ",""],["F5 · HİKÂYE","alt"]];
+  feed.innerHTML=tiles.map(function(t){return '<div class="'+t[1]+'">'+t[0]+'</div>';}).join("");
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,28 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brand Studio — İnceleme Siteleri</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Asya'da Eğitim — Brand Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#F7F3E9;color:#141210;font-family:Georgia,serif;line-height:1.6}
-  .wrap{max-width:760px;margin:0 auto;padding:64px 32px 90px}
-  .mono{font-family:Menlo,monospace;font-size:12px;color:#6F6A5E}
-  h1{font-size:36px;font-weight:600;margin:10px 0 4px}
-  a{display:block;background:#fff;border:2px solid #141210;border-radius:8px;padding:22px;margin-top:14px;color:#141210;text-decoration:none}
-  a:hover{border-color:#A8875B}
-  a b{font-size:21px}
-  a span{font-family:Menlo,monospace;font-size:12px;color:#6F6A5E;display:block;margin-top:4px}
+:root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120;--line:#d9d1bf;--muted:#65625a;--card:#fffdf7}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px 100px}
+.topbar{display:flex;align-items:center;gap:14px;padding:22px 0;border-bottom:1px solid var(--ink)}
+.topbar img{width:44px;height:auto}
+.topbar .t{font-size:13px;letter-spacing:.14em;font-weight:500}
+.topbar nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.topbar nav a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 16px;background:var(--card)}
+.topbar nav a.here,.topbar nav a:hover{border-color:var(--ink)}
+.hero{display:grid;grid-template-columns:200px 1fr;gap:44px;align-items:center;padding:64px 0 20px}
+.hero img.seal{width:200px;height:auto}
+.hero img.word{width:min(520px,100%);height:auto;display:block;margin-top:18px}
+h1{font-size:clamp(44px,7vw,88px);line-height:1.0;letter-spacing:-.045em;font-weight:600}
+.lede{font-size:19px;max-width:56ch;margin-top:16px;color:#33302a}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.badge{font-size:12px;letter-spacing:.08em;font-weight:500;border-radius:999px;padding:8px 18px;border:1px solid var(--ink)}
+.badge.ok{background:var(--ink);color:var(--paper)}
+.badge.live{border-color:var(--red);color:var(--red)}
+.badge.old{border-color:var(--line);color:var(--muted)}
+section.block{margin-top:72px}
+.kicker{font-size:12px;letter-spacing:.16em;color:var(--muted);font-weight:500}
+h2{font-size:clamp(28px,4vw,46px);letter-spacing:-.03em;margin:8px 0 6px}
+.sub{color:#3d3a34;max-width:70ch}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:26px}
+.card{display:block;background:var(--card);border:1px solid var(--ink);border-radius:14px;padding:26px 24px;text-decoration:none;color:var(--ink)}
+.card:hover{box-shadow:6px 6px 0 var(--ink)}
+.card.first{grid-column:1/-1;display:grid;grid-template-columns:1fr 220px;gap:24px;align-items:center;background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.card.first:hover{box-shadow:6px 6px 0 var(--red)}
+.card.first img{width:220px;max-width:100%;height:auto}
+.card .tag{font-size:11px;letter-spacing:.14em;color:var(--red);font-weight:600}
+.card.first .tag{color:#ff8f8d}
+.card b.t{font-size:24px;display:block;margin:8px 0 4px;letter-spacing:-.01em}
+.card p{font-size:15px;opacity:.85}
+.card .go{font-size:13px;margin-top:14px;display:inline-block;border-bottom:2px solid var(--red);padding-bottom:2px}
+footer{margin-top:90px;border-top:1px solid var(--line);padding-top:22px;font-size:13px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+code{font-size:12px;overflow-wrap:anywhere}
+@media(max-width:760px){.hero{grid-template-columns:1fr;gap:20px}.hero img.seal{width:140px}.card.first{grid-template-columns:1fr}.card.first img{width:170px}.wrap{padding:0 18px 70px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <p class="mono">BRAND STUDIO · REVIEW SITES</p>
-  <h1>İnceleme siteleri</h1>
-  <a href="asya-egitim/"><b>Asya Eğitim — galeri</b><span>12 territory denemesi</span></a>
-  <a href="asyada-egitim/"><b>Asya'da Eğitim — galeri</b><span>32 görsel · ülkeler, mühür, enerji</span></a>
-  <a href="asyada-seal/"><b>Asya'da Eğitim — mühür varyantları</b><span>10 logo çeşitlemesi</span></a>
+  <div class="topbar">
+    <img src="asyada-seal/assets/v01-canonical.svg" alt="Asya'da Eğitim mührü">
+    <span class="t">ASYA'DA EĞİTİM &middot; BRAND STUDIO</span>
+    <nav><a class="here" href="./">Panel</a><a href="identity/">Kimlik</a><a href="instagram/">Instagram</a><a href="archive/">Arşiv</a></nav>
+  </div>
+
+  <div class="hero">
+    <img class="seal" src="asyada-seal/assets/v01-canonical.svg" alt="Onaylı kanonik mühür V-01">
+    <div>
+      <h1>Brand Studio</h1>
+      <img class="word" src="asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg" alt="ASYA'DA EĞİTİM — EDUCATION IN ASIA onaylı wordmark">
+      <p class="lede">Onaylı kimlik, aktif üretim ve tam arşiv tek çatıda. Logo ailesi kanonik ve kilitli; Instagram sistemi aktif geliştirmede; tüm tarihsel çalışmalar korunuyor.</p>
+      <div class="badges">
+        <span class="badge ok">IDENTITY — APPROVED / CANONICAL</span>
+        <span class="badge live">INSTAGRAM SYSTEM — ACTIVE DEVELOPMENT</span>
+        <span class="badge old">HISTORICAL WORK — ARCHIVED / PRESERVED</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="block" id="identity">
+    <div class="kicker">01 &middot; LOGO &amp; TYPOGRAPHY — ÖNCE KİMLİK</div>
+    <h2>Onaylı kimlik</h2>
+    <p class="sub">Mühür, wordmark ve beş kilit — hepsi tek sayfada, manifest ve doğrulama ile birlikte.</p>
+    <div class="cards">
+      <a class="card first" href="identity/">
+        <div><span class="tag">APPROVED / CANONICAL &middot; 2026-10-08</span>
+        <b class="t">Kimlik: mühür + wordmark + 5 kilit</b>
+        <p>P-01, H-02, C-03, D-04, F-05 — light / dark / monochrome. Minimum boyut, clearspace, SHA listesi ve hazırlık sürecinin kronolojisi.</p>
+        <span class="go">Kimlik sayfasını aç &rarr;</span></div>
+        <img src="asyada-seal/canonical-lockups/assets/p-01-primary-stacked-light.svg" alt="P-01 birincil dikey kilit">
+      </a>
+    </div>
+  </section>
+
+  <section class="block" id="studio">
+    <div class="kicker">02 &middot; INSTAGRAM STUDIO — AKTİF ÜRETİM</div>
+    <h2>Instagram çalışma alanı</h2>
+    <p class="sub">Gençlere dönük ama kurumsal güven veren, carousel odaklı tasarım sistemi. Faz 0 mimariden başlıyor; şablonlar kanonik değil.</p>
+    <div class="cards">
+      <a class="card" href="instagram/">
+        <span class="tag">ACTIVE DEVELOPMENT &middot; PHASE 0</span>
+        <b class="t">Instagram Studio</b>
+        <p>1080&times;1350 zemin, 6 içerik ailesi, 5 carousel yapısı, 4 görsel mod. İnteraktif storyboard ve tel-kare demolar.</p>
+        <span class="go">Stüdyoyu aç &rarr;</span>
+      </a>
+      <a class="card" href="asyada-seal/visual-system-phase-1/">
+        <span class="tag">HISTORICAL REFERENCE</span>
+        <b class="t">Görsel Sistem Faz 1</b>
+        <p>Kare post, dikey kampanya ve fuar el ilanı prototipleri — Instagram öncesi referans.</p>
+        <span class="go">Referansı aç &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="block" id="archive">
+    <div class="kicker">03 &middot; ARCHIVE — DENEYSEL GEÇMİŞ</div>
+    <h2>Arşiv</h2>
+    <p class="sub">İlk yön denemelerinden tipografi ağırlık çalışmalarına kadar tüm yayınlanmış sayfalar, oldukları gibi korunuyor. Deneysel içerik üretimde kullanılamaz.</p>
+    <div class="cards">
+      <a class="card" href="archive/">
+        <span class="tag">PRESERVED &middot; NOT FOR PRODUCTION</span>
+        <b class="t">Tüm arşiv envanteri</b>
+        <p>Kategorilere ayrılmış 28 sayfa: yönler, mühür deneyleri, wordmark, kilitler, tutarlılık testleri, mockup'lar.</p>
+        <span class="go">Arşivi aç &rarr;</span>
+      </a>
+      <a class="card" href="asyada-seal/">
+        <span class="tag">SEAL GALLERY</span>
+        <b class="t">Mühür galerisi</b>
+        <p>V-01 seçim süreci, 10 mühür varyantı ve uygulama setleri.</p>
+        <span class="go">Galeriyi aç &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Asya'da Eğitim Brand Studio &middot; Mühür SHA <code>8f5d46f0&hellip;</code> &middot; Kilit manifest <code>60fb1f6d&hellip;</code></span>
+    <span><a href="identity/">Kimlik</a> &middot; <a href="instagram/">Instagram</a> &middot; <a href="archive/">Arşiv</a></span>
+  </footer>
 </div>
 </body>
 </html>
