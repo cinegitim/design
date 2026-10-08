@@ -1,0 +1,14 @@
+{
+  "usage": {
+    "poly": "usage-poly.png",
+    "smooth": "usage-smooth.png",
+    "A": "usage-A.png",
+    "B": "usage-B.png"
+  },
+  "glyphs": {
+    "poly": "glyphs-poly.png",
+    "smooth": "glyphs-smooth.png",
+    "A": "glyphs-A.png",
+    "B": "glyphs-B.png"
+  }
+}
