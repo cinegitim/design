@@ -1,0 +1,30 @@
+{
+  "brand_id": "asyada-egitim",
+  "asset_id": "IG-PROFILE-TYPE-CANDIDATE",
+  "status": "DESIGN CANDIDATE — NOT CANONICAL",
+  "use": "Instagram profile avatar, square 1080x1080 source, circular platform crop",
+  "canonical_lockup_id": "P-01/light",
+  "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+  "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "composition": "Exact complete canonical P-01/light SVG is embedded as an image, proportionally scaled and positioned within a red circular field and light inset disc. No logo geometry or lettering changed.",
+  "colors": {
+    "outer_circle": "#BD2120",
+    "inset_disc": "#F7F3E9",
+    "lockup": "P-01/light approved colors"
+  },
+  "files": {
+    "svg": {
+      "path": "profile-circle-typography.svg",
+      "sha256": "46ffdbdeaeea8952b85cc070bb3880027977551594b677a2c08904bdd348f285"
+    },
+    "png": {
+      "path": "profile-circle-typography-1080.png",
+      "sha256": "e541a7eddaeacfa24af6c7bda8a6a43189e84fdb8bd15ee623324a96e847fa76"
+    },
+    "embedded_lockup_copy": {
+      "path": "assets/p-01-primary-stacked-light.svg",
+      "sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2"
+    }
+  }
+}
