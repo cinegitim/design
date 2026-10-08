@@ -17,7 +17,7 @@
   "slides": [
     {
       "file": "01-cover.png",
-      "sha256": "4e1b1edadea62b8d5c32edb139c7b3c2e75ff41d45939684a8eb263442687929",
+      "sha256": "74f62a4aef201158e37bfc892432334b4b1043b3be3565421bd99759c3841a62",
       "source_html": "source/01.html",
       "canonical_lockup_id": "P-01/dark",
       "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
@@ -25,7 +25,7 @@
     },
     {
       "file": "02-question.png",
-      "sha256": "1c3269504ae2ad3cf9126e6c12920289b3ed49136600800101a61ca7c367df4c",
+      "sha256": "684009725ad0fe4e1f644dafd5eff893b263baca80c06961f504f8aad5b804a3",
       "source_html": "source/02.html",
       "canonical_lockup_id": "P-01/dark",
       "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
@@ -33,7 +33,7 @@
     },
     {
       "file": "03-countries.png",
-      "sha256": "a499a5f2fb579ce6f5bd498b4da6e6d2cb2ad3d949cd3a31f9c8813be30e892e",
+      "sha256": "4bd699fcb766e153c382afbbb15a3055b86f85fe2974150bfc2fc568603ca45e",
       "source_html": "source/03.html",
       "canonical_lockup_id": "P-01/light",
       "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
@@ -41,7 +41,7 @@
     },
     {
       "file": "04-pathways.png",
-      "sha256": "585ffc9a0d3880010c71cb7cc9d00a69ff998960e10ace53a1f7b712896eaa6d",
+      "sha256": "8328b8a569b61056047fdf2050cb50fcc44470c162785f75bef03e0ea051649a",
       "source_html": "source/04.html",
       "canonical_lockup_id": "P-01/dark",
       "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
@@ -49,7 +49,7 @@
     },
     {
       "file": "05-cta.png",
-      "sha256": "d85ba891e388733a70e92d0b70f134bbd0d24d61e3563f0be6ed982ca8f82887",
+      "sha256": "00e0af7f8438ec1dea64709dcd411ddc7ec4ee5c72f98e5d3ae72a6062c310ba",
       "source_html": "source/05.html",
       "canonical_lockup_id": "P-01/light",
       "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",

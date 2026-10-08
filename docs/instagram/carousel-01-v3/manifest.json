@@ -17,7 +17,7 @@
   "slides": [
     {
       "file": "01-cover.png",
-      "sha256": "a5f299988a1ab40ded377845ac5cb06e21bb2670ff3d0d3c74d75abef6b9d53a",
+      "sha256": "fbb3e10707bfe88f0074601b5a5a142a1604713481c6635bc5a4a75998250af0",
       "source_html": "source/01.html",
       "canonical_lockup_id": "P-01/dark",
       "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
@@ -25,7 +25,7 @@
     },
     {
       "file": "02-shift.png",
-      "sha256": "7d3d3a57404d257e8248382e0b4cdfbfd6ca467dbfcb4db4e176baa615317247",
+      "sha256": "cd7a423af62e242dd4fb915e37752f2a1a5099d011a42aa0b7039c81b2065df0",
       "source_html": "source/02.html",
       "canonical_lockup_id": "P-01/light",
       "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
@@ -33,7 +33,7 @@
     },
     {
       "file": "03-routes.png",
-      "sha256": "ae54938c6b9e3afb3c24b582a47eeb620f22dc7def2c3519c3d7d3c420e178da",
+      "sha256": "e56e60edcd1b194672b3ecaeedf93c9bd847fa1b6cc32ee94807b82bfbe1f549",
       "source_html": "source/03.html",
       "canonical_lockup_id": "P-01/dark",
       "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
@@ -41,7 +41,7 @@
     },
     {
       "file": "04-pathways.png",
-      "sha256": "e862950ae0faf4202054d7cfa2652726953bbb9843de575bfeca182bc2a518a0",
+      "sha256": "fd6d6001bafd6fa6286e438b5a5b21e432ffb3d5bbe349ad77ce33578d77ef40",
       "source_html": "source/04.html",
       "canonical_lockup_id": "P-01/light",
       "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
@@ -49,7 +49,7 @@
     },
     {
       "file": "05-cta.png",
-      "sha256": "659531fc1734c6356d7b687ba824202c89da09ab00da753266f1041232edc33f",
+      "sha256": "eb354793769c696ad2371ebdc3f268d2492b0a735650450dfe28b2b61af9eacf",
       "source_html": "source/05.html",
       "canonical_lockup_id": "P-01/dark",
       "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
