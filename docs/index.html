@@ -44,11 +44,40 @@ h2{font-size:clamp(28px,4vw,46px);letter-spacing:-.03em;margin:8px 0 6px}
 .card .go{font-size:13px;margin-top:14px;display:inline-block;border-bottom:2px solid var(--red);padding-bottom:2px}
 footer{margin-top:90px;border-top:1px solid var(--line);padding-top:22px;font-size:13px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
 code{font-size:12px;overflow-wrap:anywhere}
+.brandbar{border-bottom:1px solid var(--ink);padding:16px 0 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.brandbar .blab{font:11px/1.4 ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.brandbar .opts{display:flex;gap:10px;flex-wrap:wrap}
+.opt{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);
+  border:1px solid var(--line);border-radius:10px;padding:9px 16px 9px 11px;background:var(--card);min-height:56px}
+.opt:hover{border-color:var(--ink)}
+.opt.here{border-color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.opt img,.opt .pending{width:38px;height:38px;flex:none;border-radius:7px}
+.opt .pending{border:1.5px dashed var(--line);display:grid;place-items:center;
+  font:10px/1.1 ui-monospace,Menlo,monospace;color:var(--muted);letter-spacing:.04em;text-align:center}
+.opt .txt{display:flex;flex-direction:column;gap:2px}
+.opt .on{font-size:16px;font-weight:500;letter-spacing:-.01em}
+.opt .sub{font:11px/1.2 ui-monospace,Menlo,monospace;color:var(--muted);letter-spacing:.05em}
+.opt.here .sub{color:var(--red)}
+@media(max-width:760px){.brandbar{gap:10px}.opt{padding:8px 12px 8px 9px}.opt .sub{display:none}}
 @media(max-width:760px){.hero{grid-template-columns:1fr;gap:20px}.hero img.seal{width:140px}.card.first{grid-template-columns:1fr}.card.first img{width:170px}.wrap{padding:0 18px 70px}}
 </style>
 </head>
 <body>
 <div class="wrap">
+  <div class="brandbar" role="navigation" aria-label="Marka seçimi">
+    <span class="blab">Marka</span>
+    <div class="opts">
+      <a class="opt here" href="./" aria-current="true">
+        <img src="asyada-seal/assets/v01-canonical.svg" alt="">
+        <span class="txt"><span class="on">Asya'da Eğitim</span><span class="sub">Education in Asia · APPROVED / CANONICAL</span></span>
+      </a>
+      <a class="opt" href="cin-egitim/">
+        <span class="pending" aria-hidden="true">YÖN<br>PANOSU</span>
+        <span class="txt"><span class="on">Çin Eğitim</span><span class="sub">Education in China · YÖN SEÇİMİ BEKLENİYOR</span></span>
+      </a>
+    </div>
+  </div>
+
   <div class="topbar">
     <img src="asyada-seal/assets/v01-canonical.svg" alt="Asya'da Eğitim mührü">
     <span class="t">ASYA'DA EĞİTİM &middot; BRAND STUDIO</span>
