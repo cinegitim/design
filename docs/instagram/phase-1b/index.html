@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Instagram Studio — Faz 1B: Art Direction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120;--amber:#D9A441;--line:#d9d1bf;--muted:#65625a;--card:#fffdf7}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px 100px}
+.topbar{display:flex;align-items:center;gap:14px;padding:22px 0;border-bottom:1px solid var(--ink)}
+.topbar img{width:44px;height:auto}
+.topbar .t{font-size:13px;letter-spacing:.14em;font-weight:500}
+.topbar nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.topbar nav a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 16px;background:var(--card)}
+.topbar nav a:hover{border-color:var(--ink)}
+h1{font-size:clamp(36px,6vw,68px);letter-spacing:-.04em;line-height:1.03;margin:40px 0 8px}
+.lede{font-size:18px;max-width:66ch}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.badge{font-size:12px;letter-spacing:.08em;font-weight:500;border-radius:999px;padding:8px 18px;border:1px solid var(--red);color:var(--red)}
+section{margin-top:64px}
+.kicker{font-size:12px;letter-spacing:.16em;color:var(--muted);font-weight:500}
+h2{font-size:clamp(24px,3.5vw,38px);letter-spacing:-.025em;margin:6px 0}
+.sub{color:#3d3a34;max-width:76ch}
+a{color:inherit}
+.refs{margin-top:18px;display:grid;gap:10px}
+.refs li{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;font-size:14px}
+.refs li b{color:var(--red)}
+.board{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.bcell{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.bcell .id{font-size:11px;letter-spacing:.12em;color:var(--red);font-weight:600}
+.bcell b{font-size:17px;display:block;margin-top:2px}
+.bcell p{font-size:14px;color:#3d3a34;margin-top:6px}
+.bcell img{width:100%;height:220px;object-fit:cover;border-radius:8px;margin-top:12px;display:block}
+.swatches{display:flex;gap:10px;margin-top:12px}
+.sw{flex:1;border-radius:8px;padding:14px 10px;font-size:12px;font-weight:600;text-align:center}
+.mini{border-top:1px solid var(--ink);margin-top:44px;padding-top:24px}
+.mini h3{font-size:24px;letter-spacing:-.01em}
+.mini .rule{font-size:14px;color:var(--muted);margin:4px 0 16px}
+.viewer{display:grid;grid-template-columns:minmax(0,460px) 1fr;gap:28px;align-items:start}
+.viewer .stage{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 2px 14px rgba(29,32,39,.16)}
+.viewer .stage img{display:block;width:100%;height:auto}
+.viewer .nav{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:10px;align-items:center}
+.viewer .nav button{font:inherit;font-size:15px;min-height:44px;min-width:52px;border-radius:999px;border:1px solid #fff;background:rgba(29,32,39,.72);color:#fff;cursor:pointer}
+.viewer .cnt{font-size:13px;letter-spacing:.1em;color:#fff;background:rgba(29,32,39,.72);border-radius:999px;padding:10px 18px}
+.viewer .slides-list{display:grid;gap:10px}
+.viewer .slides-list button{font:inherit;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;font-size:15px;cursor:pointer;color:var(--ink)}
+.viewer .slides-list button.on{border-color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.viewer .slides-list small{color:var(--muted);display:block;font-size:13px}
+.feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:20px;max-width:860px}
+.feed img{width:100%;height:auto;display:block;border-radius:8px}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.swot div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;font-size:14px}
+.swot h3{font-size:17px;margin-bottom:8px}
+.note{font-size:13px;color:var(--muted)}
+.spec{font-size:13px;color:var(--muted)}
+.spec code{font-size:12px;overflow-wrap:anywhere}
+footer{margin-top:70px;border-top:1px solid var(--line);padding-top:22px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:900px){.viewer{grid-template-columns:1fr}.board,.swot{grid-template-columns:1fr}.wrap{padding:0 18px 70px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <img src="../../asyada-seal/assets/v01-canonical.svg" alt="Mühür">
+    <span class="t">ASYA'DA EĞİTİM &middot; BRAND STUDIO</span>
+    <nav><a href="../../">Panel</a><a href="../../identity/">Kimlik</a><a href="../">Instagram</a><a href="../../archive/">Arşiv</a></nav>
+  </div>
+
+  <p class="kicker" style="margin-top:36px">INSTAGRAM STUDIO &middot; PHASE 1B — ART DIRECTION &amp; VISUAL QUALITY</p>
+  <h1>Ajans kalitesinde<br>dokuz kare.</h1>
+  <p class="lede">Faz 1 tel-kareydi; burası bitmiş iş. Üç mini-carousel (kapak + içerik + kapanış), 1080&times;1350 gerçek PNG çıktılar. Aynı marka, üç farklı kompozisyon — ortalanmış başlık, tekrar kartlar, hap butonlar ve düz zeminler yok. <a href="../">Faz 0</a> ve <a href="../phase-1/">Faz 1</a> tarihsel araştırma olarak duruyor.</p>
+  <div class="badges"><span class="badge">HUMAN ART-DIRECTION APPROVAL PENDING</span><span class="badge">NO CANONICAL TEMPLATES</span></div>
+
+  <section id="research">
+    <div class="kicker">01 &middot; GÖRSEL REFERANS ARAŞTIRMASI — 12 KAYNAK</div>
+    <h2>Kimden ne öğrendik?</h2>
+    <p class="sub">Düzen kopyalanmadı; ilkeler çıkarıldı. İstatistik blogları değil, gerçek tasarım işleri.</p>
+    <ol class="refs">
+      <li><b>V1 · RISD × Gretel</b> — modüler grid + katmanlı ifade, soru-odaklı dil. İlke: tipografi imzası tamamdan eksik uca esner.</li>
+      <li><b>V2 · Parsons / The New School × Pentagram (Paula Scher)</b> — ısmarlama font, kilitleri asla yeniden çizme kuralı. Bizim kanonik disiplinle birebir.</li>
+      <li><b>V3 · UAL × Kind Studio (2024 mezuniyet)</b> — stabil kimlik üstüne kampanya katmanı; 3D çiçekler gibi tekil, geçici jestler.</li>
+      <li><b>V4 · Spotify Wrapped (şirket içi ekip)</b> — veri hikâyeye dönüşür; "ham, oyuncu, kaotik enerji"; paylaşılabilir kartlar, mixtape kurgusu.</li>
+      <li><b>V5 · Tate × Wolff Olins / North</b> — dinamik logotipler; posterler aile gibi durur ama her sergi farklıdır. Akış tutarlılığının modeli.</li>
+      <li><b>V6 · Barbican × North / In-Col</b> — brütalist tipografinin dijital-izleyici için kinetik hale gelişi; marka bekçiliği pratiği.</li>
+      <li><b>V7 · Tate Teens</b> — gençlere yaklaşılabilirlik, yaratıcı özgüven inşası; didaktik değil katılımcı dil.</li>
+      <li><b>V8 · DAAD USA (@daad.usa)</b> — elçi devralmaları + ipuçları; kurum ciddiyeti öğrenci sesiyle yumuşar.</li>
+      <li><b>V9 · NUS Singapore (@nus_singapore)</b> — kampüs günleri, hareket vaat eden kapaklar.</li>
+      <li><b>V10 · Behance carousel topluluğu</b> — yüksek beğenili minimal tipografik carousel'ler; boşluk cesareti.</li>
+      <li><b>V11 · Canva 2025 trendleri (Meaningful Creations)</b> — scrapbook etkisi, el yazısı, cesur tip, görüntü üstüne kalın sans; "yazına güven" ilkesi.</li>
+      <li><b>V12 · Adpicto/Socialinsider 2026 ölçütleri</b> — kapak sonucun %80'i; kaydetme odaklı dağıtım; tek fikir/slayt (Faz 1'den taşınan teknik zemin).</li>
+    </ol>
+  </section>
+
+  <section id="board">
+    <div class="kicker">02 &middot; ART-DIRECTION PANOSU</div>
+    <h2>Üç mod, tek marka</h2>
+    <div class="board">
+      <div class="bcell"><span class="id">MOD A · İFADECİ EDİTORYAL TİPOGRAFİ</span><b>Dev rakam, diyagonal akış</b><p>470px Jost numerals, dönmüş folio, mürekkep şeridi üstünde krem söz. Ritim: kapak şoku → numaralı hamleler → tek kelimelik kapanış.</p><img src="assets/abstract-ribbon.jpg" alt="Mod A zemin sanatı"></div>
+      <div class="bcell"><span class="id">MOD B · FOTOĞRAF ANLATISI</span><b>Dikey tip + duotone + drop-cap</b><p>Belgesel kampüs karesi, mürekkep yıkama, dikey KYOTO, amber göz etiketi. Ritim: atmosfer kapağı → bölünmüş an → panelli kapanış.</p><img src="assets/jp-library.jpg" alt="Mod B fotoğraf dili"></div>
+      <div class="bcell"><span class="id">MOD C · GRAFİK BİLGİ</span><b>Halka-motif + bar + yan ray</b><p>Gece ızgara üstünde VS halkası; indekste renk kodlu barlar (kırmızı HK, amber SG); dikey yan lejant. Ritim: düello kapağı → veri → hüküm kapanışı.</p><img src="assets/aerial-grid.jpg" alt="Mod C zemin dokusu"></div>
+      <div class="bcell"><span class="id">RENK · KANONİK + KEŞİFSEL AMBER</span><b>Kâğıt / mürekkep / kırmızı + #D9A441</b><p>Amber yalnızca rakam, halka çizgisi ve vurgularda — onay bekliyor. Kırmızı her slaytta tek vuruş.
+        <span class="swatches"><span class="sw" style="background:#F7F3E9;border:1px solid #d9d1bf">KÂĞIT</span><span class="sw" style="background:#1D2027;color:#F7F3E9">MÜREKKEP</span><span class="sw" style="background:#BD2120;color:#fff">KIRMIZI</span><span class="sw" style="background:#D9A441;color:#1D2027">AMBER*</span></span></p></div>
+    </div>
+  </section>
+
+  <section id="carousels">
+    <div class="kicker">03 &middot; DOKUZ BİTMİŞ KARE — GERÇEK PNG</div>
+    <h2>Üç mini-carousel</h2>
+    <p class="sub">Her izleyicide kapak + içerik + kapanış. Mühür yalnızca kapaklarda (96px); kapanışlarda D-04 (220px, min 200px). Örnek veriler rozetli; C hikâyesi kurgusal-örnek işaretli.</p>
+
+    <div class="mini"><h3>A — Son 30 gün: Çin başvurusu <span class="note">· editoryal tipografi · CTA: Görüşme</span></h3>
+    <div class="viewer" data-viewer="a1-cover.png,a2-content.png,a3-cta.png" data-labels="Kapak: dev 30|İçerik: 3 hamle|Kapanış: Başla.">
+      <div class="stage"><img alt="A carousel slaytı"><div class="nav"><button data-p>&larr;</button><span class="cnt" data-c></span><button data-n>&rarr;</button></div></div>
+      <div class="slides-list" data-list></div>
+    </div></div>
+
+    <div class="mini"><h3>B — Kyoto'da bir dönem <span class="note">· fotoğraf anlatısı · kurgusal örnek senaryo · CTA: Kaydet</span></h3>
+    <div class="viewer" data-viewer="b1-cover.png,b2-content.png,b3-cta.png" data-labels="Kapak: dikey KYOTO|İçerik: ilk hafta|Kapanış: panel">
+      <div class="stage"><img alt="B carousel slaytı"><div class="nav"><button data-p>&larr;</button><span class="cnt" data-c></span><button data-n>&rarr;</button></div></div>
+      <div class="slides-list" data-list></div>
+    </div></div>
+
+    <div class="mini"><h3>C — İki şehir, iki bütçe <span class="note">· grafik bilgi · rakamlar örnek · CTA: Başvur</span></h3>
+    <div class="viewer" data-viewer="c1-cover.png,c2-content.png,c3-cta.png" data-labels="Kapak: VS halkası|İçerik: barlar|Kapanış: raylı hüküm">
+      <div class="stage"><img alt="C carousel slaytı"><div class="nav"><button data-p>&larr;</button><span class="cnt" data-c></span><button data-n>&rarr;</button></div></div>
+      <div class="slides-list" data-list></div>
+    </div></div>
+  </section>
+
+  <section id="feed">
+    <div class="kicker">04 &middot; 3×3 PROFİL ÖNİZLEME</div>
+    <h2>Dokuz kapak, tek akış</h2>
+    <p class="sub">Üç carousel kapağı + aynı gramerle altı yeni kapak. Tanınma mühür + renk + Jost'tan; tekrar yok: foto/tipo/grafik modlar dönüşümlü, kırmızı her karede tek vuruş.</p>
+    <div class="feed">
+      <img loading="lazy" src="assets/a1-cover.png" alt="A kapak">
+      <img loading="lazy" src="assets/b1-cover.png" alt="B kapak">
+      <img loading="lazy" src="assets/c1-cover.png" alt="C kapak">
+      <img loading="lazy" src="assets/f1-deadline.png" alt="Burs kapağı">
+      <img loading="lazy" src="assets/f2-country.png" alt="Ülke kapağı">
+      <img loading="lazy" src="assets/f3-event.png" alt="Fuar kapağı">
+      <img loading="lazy" src="assets/f4-data.png" alt="Veri kapağı">
+      <img loading="lazy" src="assets/f5-dossier.png" alt="Dosya kapağı">
+      <img loading="lazy" src="assets/f6-night.png" alt="Gece kapağı">
+    </div>
+  </section>
+
+  <section id="critique">
+    <div class="kicker">05 &middot; ELEŞTİREL DEĞERLENDİRME</div>
+    <h2>Ne tuttu, ne riskli?</h2>
+    <div class="swot">
+      <div><h3>Özgünlük</h3><p>Dev "30", dikey KYOTO, VS halkası ve yan raylar birbirine benzemiyor; üç mod da Kanva şablon dilinin dışında. Skor değil, kanıt: hiçbiri ortalanmış başlık + hap buton formülünü kullanmıyor.</p></div>
+      <div><h3>Mobil etki</h3><p>Kapak başlıkları 390px telefonda ~35px etkili; folio ve rozetler okunur aralıkta. D-04 kapanışlarda 220px (min 200px) — telefonda ~80px; mühür kadar değil, imza kadar okunur.</p></div>
+      <div><h3>Riskler</h3><p>C'nin tüm rakamları örnek — gerçek veri girilmeden yayınlanamaz. B'deki yapay zekâ yüzleri "kurgusal örnek" rozetine bağımlı. Amber onay bekliyor; kırmızıya dönüş planı hazır.</p></div>
+      <div><h3>Sonraki adım önerisi</h3><p>Gerçek veri girişi (C), beşinci fotoğraf anı (B), kapaklara 90 karakter sınırı. 12 gönderilik deneye geçmeden önce veri teyit süreci tanımlanmalı.</p></div>
+    </div>
+  </section>
+
+  <section id="technical">
+    <div class="kicker">06 &middot; ÜRETİM NOTLARI</div>
+    <h2>Ne değişmedi?</h2>
+    <p class="sub">Mühür ve D-04 manifestteki tam SVG'ler (yerleşim/boyut dışında değişiklik yok). Görüntü modeli yalnızca 2 zemin sanatı üretti (şerit + ızgara); diğer 6 kare Faz 1 rasterleri. Tipografi ve kilitler deterministik HTML/SVG; çıktılar gerçek 1080&times;1350 PNG. Doğrulayıcı PASS (15 kayıt). Yeni stil kanonikleşmedi.</p>
+    <p style="margin-top:12px"><a href="assets/manifest.json">Faz-1B üretim manifestosu &rarr;</a> &middot; <a href="../../asyada-seal/canonical-lockups/assets/canonical-lockups.json">Kanonik manifest &rarr;</a></p>
+    <p class="spec">Mühür SHA-256: <code>8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a</code></p>
+  </section>
+
+  <footer><span>Instagram Studio · Phase 1B — bitmiş kareler, şablon yok, kanonikleşme yok</span><span><a href="../">Faz 0</a> &middot; <a href="../phase-1/">Faz 1</a> &middot; <a href="../../">Panel</a> &middot; <a href="../../archive/">Arşiv</a></span></footer>
+</div>
+<script>
+(function(){
+  document.querySelectorAll('.viewer').forEach(function(v){
+    var files=v.getAttribute('data-viewer').split(','),labels=v.getAttribute('data-labels').split('|'),i=0;
+    var img=v.querySelector('.stage img'),cnt=v.querySelector('[data-c]'),list=v.querySelector('[data-list]');
+    list.innerHTML=labels.map(function(l,n){var p=l.split(':');return '<button data-i="'+n+'"><b>'+(n+1)+' · '+p[0]+'</b><small>'+(p[1]||'')+'</small></button>';}).join('');
+    var btns=Array.prototype.slice.call(list.querySelectorAll('button'));
+    function show(n){i=(n+files.length)%files.length;img.src='assets/'+files[i];img.alt=labels[i];cnt.textContent=(i+1)+' / '+files.length;btns.forEach(function(b,m){b.classList.toggle('on',m===i);});}
+    v.querySelector('[data-p]').addEventListener('click',function(){show(i-1);});
+    v.querySelector('[data-n]').addEventListener('click',function(){show(i+1);});
+    btns.forEach(function(b){b.addEventListener('click',function(){show(+b.getAttribute('data-i'));});});
+    show(0);
+  });
+})();
+</script>
+</body>
+</html>
