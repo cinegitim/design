@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Instagram Studio — Faz 2A: Pratik İçerik Varyasyonları</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120;--line:#d9d1bf;--muted:#65625a;--card:#fffdf7}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px 100px}
+.topbar{display:flex;align-items:center;gap:14px;padding:22px 0;border-bottom:1px solid var(--ink)}
+.topbar img{width:44px;height:auto}
+.topbar .t{font-size:13px;letter-spacing:.14em;font-weight:500}
+.topbar nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.topbar nav a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 16px;background:var(--card)}
+.topbar nav a:hover{border-color:var(--ink)}
+h1{font-size:clamp(36px,6vw,68px);letter-spacing:-.04em;line-height:1.03;margin:40px 0 8px}
+.lede{font-size:18px;max-width:68ch}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.badge{font-size:12px;letter-spacing:.08em;font-weight:500;border-radius:999px;padding:8px 18px;border:1px solid var(--red);color:var(--red)}
+section.family{margin-top:60px;border-top:1px solid var(--ink);padding-top:24px}
+.kicker{font-size:12px;letter-spacing:.16em;color:var(--muted);font-weight:500}
+h2{font-size:clamp(24px,3.5vw,38px);letter-spacing:-.025em;margin:6px 0}
+.grounding{font-size:14px;color:var(--muted);max-width:80ch;margin-top:6px}
+.grounding b{color:var(--red)}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.trio figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
+.trio img{width:100%;height:auto;display:block;border-radius:8px}
+.trio figcaption{font-size:13px;margin-top:8px}
+.trio figcaption b{display:block;font-size:14px}
+.trio .sealrow{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:11px;color:var(--muted)}
+.trio .sealrow img{width:26px}
+.verdict{margin-top:14px;background:#f3e9dc;border-left:4px solid var(--red);border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;max-width:90ch}
+.synth{background:var(--ink);color:var(--paper);border-radius:14px;padding:28px;margin-top:60px}
+.synth h2{color:var(--paper)}
+.synth ol{margin:14px 0 0 20px;display:grid;gap:10px;font-size:15px}
+.synth .deps{margin-top:16px;font-size:14px;color:#cfc8b9}
+a{color:inherit}
+footer{margin-top:70px;border-top:1px solid var(--line);padding-top:22px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.spec code{font-size:12px;overflow-wrap:anywhere}
+@media(max-width:900px){.trio{grid-template-columns:1fr}.trio img{max-width:420px}.wrap{padding:0 18px 70px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <img src="../../asyada-seal/assets/v01-canonical.svg" alt="Mühür">
+    <span class="t">ASYA'DA EĞİTİM &middot; BRAND STUDIO</span>
+    <nav><a href="../../">Panel</a><a href="../../identity/">Kimlik</a><a href="../">Instagram</a><a href="../../archive/">Arşiv</a></nav>
+  </div>
+
+  <p class="kicker" style="margin-top:36px">INSTAGRAM STUDIO &middot; PHASE 2A — PRACTICAL CONTENT VARIATIONS</p>
+  <h1>Altı aile.<br>On sekiz varyasyon.</h1>
+  <p class="lede">ChatGPT Image (image_generate, gpt-image-2) ile 18 bitmiş konsept: her ailede V1 editoryal / V2 fotoğraf / V3 bilgi. Logo modele hiç istenmedi — mühür her karenin yanında, kompozisyona dokunmadan sunuluyor. Şablon ve seçim yok.</p>
+  <div class="badges"><span class="badge">HUMAN CONTENT-SYSTEM SELECTION PENDING</span><span class="badge">18 IMAGE CALLS · 18 CONCEPTS · 0 REBUILDS</span></div>
+
+  <section class="family" id="f-profile">
+    <div class="kicker">AİLE 1 · UNIVERSITY PROFILE</div><h2>Seul Ulusal Üniversitesi</h2>
+    <p class="grounding">Zemin: SNU 1946 / Gwanak-Seul / mühendislik+işletme (US News, snu.ac.kr). <b>Hepsi doğrulandı.</b></p>
+    <div class="trio">
+      <figure><img loading="lazy" src="assets/f1-profile-v1.png" alt="F1 V1"><figcaption><b>V1 · Editoryal</b>Dev SEUL + kırmızı blok. En güçlü kapak dili.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+      <figure><img loading="lazy" src="assets/f1-profile-v2.png" alt="F1 V2"><figcaption><b>V2 · Fotoğraf</b>Eğri cephe + mürekkep bant. Kurumsal ve sıcak.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+      <figure><img loading="lazy" src="assets/f1-profile-v3.png" alt="F1 V3"><figcaption><b>V3 · Bilgi</b>Doğrulanmış 3 satır. Sade ama dürüst.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+    </div>
+    <div class="verdict"><b>Aile kararı:</b> V1 kapak + V2 atmosfer + V3 kartvizit slaytı birlikte tam profil carousel'i kurar.</div>
+  </section>
+
+  <section class="family" id="f-ranking">
+    <div class="kicker">AİLE 2 · RANKING / COMPARISON</div><h2>Asya ilk 5</h2>
+    <p class="grounding">Kaynak: <b>QS Asia University Rankings 2026</b> (topuniversities.com, Ekim 2026): <b>1 HKU · 2 Pekin · 3= NUS/NTU · 5 Fudan.</b> V1 bu sırayı doğru verir (NUS/NTU beraberliği modelde 3-4 diye dizildi — not edildi).</p>
+    <div class="trio">
+      <figure><img loading="lazy" src="assets/f2-ranking-v1.png" alt="F2 V1"><figcaption><b>V1 · Editoryal</b>Dev "1" + doğru liste. Yayın adayı.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+      <figure><img loading="lazy" src="assets/f2-ranking-v2.png" alt="F2 V2"><figcaption><b>V2 · Fotoğraf</b>Merdiven + "Asya ilk 5". Temiz, iddialı.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+      <figure><img loading="lazy" src="assets/f2-ranking-v3.png" alt="F2 V3"><figcaption><b>V3 · Bilgi — SIRA HATALI</b>Tasarım dili doğru, verisi uydurma (Pekin 1., skorlar hayali). <b>Yayınlanamaz; V1 sırasıyla yeniden dizilir.</b></figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+    </div>
+    <div class="verdict"><b>Aile kararı:</b> resmi-sıra / örnek-karşılaştırma / editoryal-tavsiye ayrımı bu ailede kanıtlandı — V3 vakası kuralın neden gerekli olduğunu gösteriyor.</div>
+  </section>
+
+  <section class="family" id="f-city">
+    <div class="kicker">AİLE 3 · CITY LIFE</div><h2>Tokyo öğrenci ritmi</h2>
+    <p class="grounding">Atmosferik aile; sert veri yok. Bütçe kartındaki değerler <b>örnek endeks — teyit bekliyor.</b></p>
+    <div class="trio">
+      <figure><img loading="lazy" src="assets/f3-city-v1.png" alt="F3 V1"><figcaption><b>V1 · Editoryal</b>Kontur TOKYO + kırmızı güneş. Poster gibi.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+      <figure><img loading="lazy" src="assets/f3-city-v2.png" alt="F3 V2"><figcaption><b>V2 · Fotoğraf</b>Alacakaranlık sokak + bant. Enerji en yüksek karelerden.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+      <figure><img loading="lazy" src="assets/f3-city-v3.png" alt="F3 V3"><figcaption><b>V3 · Bilgi</b>Yuvarlak barlar, örnek rozetli. Sevimli ama setin en yumuşağı — sınırda jenerik.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+    </div>
+    <div class="verdict"><b>Aile kararı:</b> V1+V2 taşınır; V3 daha keskin bir veri fikriyle yenilenmeli.</div>
+  </section>
+
+  <section class="family" id="f-deadline">
+    <div class="kicker">AİLE 4 · APPLICATION DEADLINE</div><h2>Son 30 gün</h2>
+    <p class="grounding">Geri sayım dili; tüm tarihler <b>örnek takvim</b> — gerçek tarih girilmeden yayınlanamaz. En yeniden kullanılabilir aile.</p>
+    <div class="trio">
+      <figure><img loading="lazy" src="assets/f4-deadline-v1.png" alt="F4 V1"><figcaption><b>V1 · Editoryal</b>Saat-sıfırlı "30". Setin en güçlü karesi.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+      <figure><img loading="lazy" src="assets/f4-deadline-v2.png" alt="F4 V2"><figcaption><b>V2 · Fotoğraf</b>"Son hafta" + örnek rozeti. Sinematik gerilim.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+      <figure><img loading="lazy" src="assets/f4-deadline-v3.png" alt="F4 V3"><figcaption><b>V3 · Bilgi</b>Ay düğümlü takvim — aylar illüstratif, rozet şart.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+    </div>
+    <div class="verdict"><b>Aile kararı:</b> üç mod da çalışıyor; şablonlaşmaya en uygun aile.</div>
+  </section>
+
+  <section class="family" id="f-steps">
+    <div class="kicker">AİLE 5 · APPLICATION STEPS</div><h2>5 adımda başvuru</h2>
+    <p class="grounding">Genel süreç adımları; kuruma özel şart uydurulmuyor. Güven veren en net aile.</p>
+    <div class="trio">
+      <figure><img loading="lazy" src="assets/f5-steps-v1.png" alt="F5 V1"><figcaption><b>V1 · Editoryal</b>Çağlayan rakamlar. Olağanüstü.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+      <figure><img loading="lazy" src="assets/f5-steps-v2.png" alt="F5 V2"><figcaption><b>V2 · Fotoğraf</b>Kilometre taşlı yol. Yol-bulma zekâsı.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+      <figure><img loading="lazy" src="assets/f5-steps-v3.png" alt="F5 V3"><figcaption><b>V3 · Bilgi</b>Kırmızı tik listesi, amber vurgu. Tertemiz.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+    </div>
+    <div class="verdict"><b>Aile kararı:</b> üçü de yayınlanabilir nitelikte — en dengeli aile.</div>
+  </section>
+
+  <section class="family" id="f-counsel">
+    <div class="kicker">AİLE 6 · RIGHT COUNSELING</div><h2>Doğru eşleşme</h2>
+    <p class="grounding">Süreç yetkinliği dili; reklam klişesi yok. Kişiler gerçek değil — stok-benzeri keşif kareleri.</p>
+    <div class="trio">
+      <figure><img loading="lazy" src="assets/f6-counsel-v1.png" alt="F6 V1"><figcaption><b>V1 · Editoryal</b>"Doğru eşleşme." + yumruk-nokta. İkonik.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+      <figure><img loading="lazy" src="assets/f6-counsel-v2.png" alt="F6 V2"><figcaption><b>V2 · Fotoğraf</b>Danışman-öğrenci anı + şerit. Güven veriyor.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+      <figure><img loading="lazy" src="assets/f6-counsel-v3.png" alt="F6 V3"><figcaption><b>V3 · Bilgi</b>dinle-eşleştir-planla-başvur düğümleri. Sevimli ama hava boşluğu fazla.</figcaption><div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="">kanonik mühür — ayrı</div></figure>
+    </div>
+    <div class="verdict"><b>Aile kararı:</b> V1+V2 taşınır; V3'e başlık satırı gerekir.</div>
+  </section>
+
+  <section class="synth" id="synthesis">
+    <div class="kicker" style="color:#cfc8b9">SENTEZ — HANGİ MOD, HANGİ AİLEYE?</div>
+    <h2>Ne öğrendik?</h2>
+    <ol>
+      <li><b>Editoryal (V1)</b> deadline, steps ve counseling'de zirvede — rakam + tek kelime formülü akışta en tanınır imza.</li>
+      <li><b>Fotoğraf (V2)</b> profile, city ve counseling'de taşıyıcı; ranking ve steps'te destek rolünde güçlü.</li>
+      <li><b>Bilgi (V3)</b> ranking ve steps'te vazgeçilmez; city ve counseling'de daha keskin veri fikirleri istiyor.</li>
+      <li><b>En güçlü aileler:</b> Deadline (F4), Steps (F5), Profile (F1). <b>En çok işe ihtiyaç duyan:</b> City V3, Counsel V3.</li>
+    </ol>
+    <p class="deps"><b>Çözülmemiş olgusal bağımlılıklar:</b> gerçek başvuru/burs tarihleri (üniversite sitelerinden teyit), şehir yaşam-maliyeti rakamları, F2-V3'ün V1 sırasıyla yeniden dizimi. Bunlar girilmeden hiçbir tarih/rakam içeren kare yayınlanamaz.</p>
+    <p style="margin-top:12px"><a href="assets/manifest.json" style="color:#ffd9d8">Faz-2A üretim manifestosu &rarr;</a></p>
+    <p class="spec" style="color:#cfc8b9">Mühür SHA-256: <code>8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a</code></p>
+  </section>
+
+  <footer><span>Instagram Studio · Phase 2A — keşif, seçim yok, şablon yok</span><span><a href="../">Faz 0</a> &middot; <a href="../phase-1/">Faz 1</a> &middot; <a href="../phase-1b/">Faz 1B</a> &middot; <a href="../phase-1c/">Faz 1C</a> &middot; <a href="../../">Panel</a> &middot; <a href="../../archive/">Arşiv</a></span></footer>
+</div>
+</body>
+</html>
