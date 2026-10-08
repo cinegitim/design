@@ -15,12 +15,16 @@
     .preview{display:grid;grid-template-columns:minmax(0,380px) 1fr;gap:40px;align-items:center;margin:38px 0}
     .avatar{display:block;width:100%;aspect-ratio:1;border-radius:50%;background:var(--red);box-shadow:0 14px 38px #211b1726}
     .type-section{margin-top:54px;padding-top:34px;border-top:1px solid #d9d1bf}
-    .type-sizes{display:flex;align-items:center;gap:18px;margin-top:18px}
-    .type-sizes img{display:block;width:80px;height:80px;border-radius:50%;background:var(--red)}
-    .type-sizes .avatar{width:260px;height:260px}
+    .variants-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:26px}
+    .variant-card{padding:16px;background:#fffdf7;border:1px solid #d9d1bf;border-radius:14px}
+    .variant-card h3{font-size:17px;margin:14px 0 3px}
+    .variant-card p{min-height:42px;font-size:13px;color:var(--muted)}
+    .variant-avatar{display:block;width:100%;max-width:250px;aspect-ratio:1;margin:auto;border-radius:50%;box-shadow:0 10px 26px #211b1720}
+    .variant-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .variant-actions .button{padding:9px 13px;font-size:13px}
     .downloads{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.button{display:inline-block;padding:12px 18px;border-radius:999px;background:var(--red);color:white;text-decoration:none;font-weight:650}.button.secondary{background:transparent;color:var(--ink);border:1px solid #b7afa2}
     .small{font-size:13px;color:var(--muted)}.spec{border-top:1px solid #d9d1bf;padding-top:16px;margin-top:24px}
-    @media(max-width:700px){.preview{grid-template-columns:1fr;gap:20px}.avatar{max-width:340px;margin:auto}.preview aside{text-align:center}}
+    @media(max-width:760px){.preview{grid-template-columns:1fr;gap:20px}.avatar{max-width:340px;margin:auto}.preview aside{text-align:center}.variants-grid{grid-template-columns:1fr}.variant-card{max-width:390px;width:100%;margin:auto}.variant-card p{min-height:0}}
   </style>
 </head>
 <body>
@@ -42,22 +46,27 @@
       </aside>
     </section>
     <section class="type-section" aria-labelledby="type-heading">
-      <span class="status">YENİ TASARIM ADAYI · TİPOGRAFİLİ</span>
-      <h2 id="type-heading">Dairesel profil + marka adı</h2>
-      <p class="lede">Kırmızı dış halka ve açık renk daire içinde, mühürle birlikte onaylı P-01 dikey lockup’ı. “ASYA’DA EĞİTİM” adı yuvarlak kırpımda da görünür; İngilizce alt satır lockup’ın parçası olarak korunur.</p>
-      <div class="preview" aria-label="Tipografili profil fotoğrafı">
-        <img class="avatar" src="profile-circle-typography.svg" alt="Kırmızı çerçeveli daire içinde Asya'da Eğitim mühür ve marka yazısı">
-        <aside>
-          <h3>İki ölçekli kontrol</h3>
-          <p>Büyük önizlemede tipografi rahatça okunur; 80 px örneği Instagram’ın küçük avatar görünümünü kontrol etmek içindir. En küçük arayüz boyutlarında yazı, sembolden daha az okunaklı olabilir.</p>
-          <div class="type-sizes"><img src="profile-circle-typography-1080.png" alt="80 piksel avatar boyutunda tipografili dairesel amblem"><span class="small">80 px<br>küçük avatar testi</span></div>
-          <div class="downloads">
-            <a class="button" href="profile-circle-typography-1080.png" download>PNG indir · 1080 × 1080</a>
-            <a class="button secondary" href="profile-circle-typography.svg" download>SVG indir</a>
-          </div>
-          <p class="spec small">Yerleşim yalnızca orantılı ölçekleme ve konumlandırmadır. Kaynak: onaylı P-01/light lockup. Kilitli set değiştirilmedi.</p>
-        </aside>
+      <span class="status">YENİ TASARIM ADAYI · BÜYÜK MÜHÜR + TİPOGRAFİ</span>
+      <h2 id="type-heading">Dairesel profil · üç zemin seçeneği</h2>
+      <p class="lede">Mühürün marka adına göre daha büyük olduğu onaylı F-05 lockup’ı kullanıldı; marka adının harf biçimleri ve tipografik düzen aynı kaldı. Tam lockup yalnızca orantılı olarak ölçeklenip daire içine yerleştirildi.</p>
+      <div class="variants-grid" aria-label="Tipografili dairesel profil varyasyonları">
+        <article class="variant-card">
+          <img class="variant-avatar" src="variants/profile-circle-type-red-1080.png" alt="Tam kırmızı daire içinde beyaz mühür sembolü ve açık renk Asya'da Eğitim yazısı">
+          <h3>Tam kırmızı</h3><p>Full kırmızı zemin; onaylı F-05 dark lockup. Beyaz sembol ve yazı öne çıkar.</p>
+          <div class="variant-actions"><a class="button" href="variants/profile-circle-type-red-1080.png" download>PNG · 1080</a><a class="button secondary" href="variants/profile-circle-type-red.svg" download>SVG</a></div>
+        </article>
+        <article class="variant-card">
+          <img class="variant-avatar" src="variants/profile-circle-type-negative-1080.png" alt="Koyu daire üzerinde kırmızı mühür ve açık renk Asya'da Eğitim yazısı">
+          <h3>Negatif · koyu</h3><p>Koyu zemin; kırmızı mühür ve açık tipografi yüksek kontrastla ayrışır.</p>
+          <div class="variant-actions"><a class="button" href="variants/profile-circle-type-negative-1080.png" download>PNG · 1080</a><a class="button secondary" href="variants/profile-circle-type-negative.svg" download>SVG</a></div>
+        </article>
+        <article class="variant-card">
+          <img class="variant-avatar" src="variants/profile-circle-type-white-1080.png" alt="Beyaz daire üzerinde kırmızı mühür ve koyu Asya'da Eğitim yazısı">
+          <h3>Beyaz</h3><p>Beyaz zemin; kırmızı mühür ve koyu tipografiyle sade, aydınlık seçenek.</p>
+          <div class="variant-actions"><a class="button" href="variants/profile-circle-type-white-1080.png" download>PNG · 1080</a><a class="button secondary" href="variants/profile-circle-type-white.svg" download>SVG</a></div>
+        </article>
       </div>
+      <p class="spec small">Varyasyonlar tasarım adayıdır, canonical sete henüz eklenmedi. F-05/light ve F-05/dark SVG’leri değiştirilmeden kullanıldı; mevcut kilitli set aynı kaldı.</p>
     </section>
     <p class="small">Not: Bu sayfa ve indirme dosyaları kullanım adayıdır. Mevcut kilitli logo ve canonical lockup ailesi değiştirilmemiştir.</p>
   </main>
