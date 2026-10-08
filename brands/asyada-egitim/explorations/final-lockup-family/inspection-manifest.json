@@ -1,0 +1,100 @@
+{
+  "application-screenshots/C-03.png": {
+    "sha256": "917eef6b17710f774814b2b1b99f4fd1456f20a43edc93ec734befab4d2e7654",
+    "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+    "method": "Deterministic SVG rasterization or headless Chrome screenshot; no image generation.",
+    "status": "HUMAN FINAL LOCKUP APPROVAL PENDING"
+  },
+  "application-screenshots/D-04.png": {
+    "sha256": "f5375443fa0fae2e50ec59571731c5895a1b3b14a04d3e530bcfba2374b1986d",
+    "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+    "method": "Deterministic SVG rasterization or headless Chrome screenshot; no image generation.",
+    "status": "HUMAN FINAL LOCKUP APPROVAL PENDING"
+  },
+  "application-screenshots/F-05.png": {
+    "sha256": "91370d569ae2ca6e43b6f279db0ea18b80639a9a5b014e3742c949d561175755",
+    "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+    "method": "Deterministic SVG rasterization or headless Chrome screenshot; no image generation.",
+    "status": "HUMAN FINAL LOCKUP APPROVAL PENDING"
+  },
+  "application-screenshots/H-02.png": {
+    "sha256": "f3544385b70fa5db38f3da3dff6ffe58903447e28a9b4ccc7b72eb8a73993ac5",
+    "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+    "method": "Deterministic SVG rasterization or headless Chrome screenshot; no image generation.",
+    "status": "HUMAN FINAL LOCKUP APPROVAL PENDING"
+  },
+  "application-screenshots/P-01.png": {
+    "sha256": "f19651bd3658957aba1bdaabe52531ed4d00eb498b494923f4013240f4e2b35f",
+    "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+    "method": "Deterministic SVG rasterization or headless Chrome screenshot; no image generation.",
+    "status": "HUMAN FINAL LOCKUP APPROVAL PENDING"
+  },
+  "family-inspection.png": {
+    "sha256": "ddb13a19f459a950c3d5e7d8483b231e8ce5165175073ad5e6d713ae5973f381",
+    "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+    "method": "Deterministic SVG rasterization or headless Chrome screenshot; no image generation.",
+    "status": "HUMAN FINAL LOCKUP APPROVAL PENDING"
+  },
+  "minimum-C-03.png": {
+    "sha256": "9a903f502693e5112d0403bc9efeee2af637ddf1f6313020c313794277137f1a",
+    "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+    "method": "Deterministic SVG rasterization or headless Chrome screenshot; no image generation.",
+    "status": "HUMAN FINAL LOCKUP APPROVAL PENDING"
+  },
+  "minimum-D-04.png": {
+    "sha256": "71aaf20a66d1ccd4cc5ae9c5536725e070c276fe7b2fc9f1b118acbfb082da66",
+    "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+    "method": "Deterministic SVG rasterization or headless Chrome screenshot; no image generation.",
+    "status": "HUMAN FINAL LOCKUP APPROVAL PENDING"
+  },
+  "minimum-F-05.png": {
+    "sha256": "e8daac4d7f0329a9652081a53cab1cc100c7286ee3f5ef5b5bb93ee757014af0",
+    "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+    "method": "Deterministic SVG rasterization or headless Chrome screenshot; no image generation.",
+    "status": "HUMAN FINAL LOCKUP APPROVAL PENDING"
+  },
+  "minimum-H-02.png": {
+    "sha256": "4f9d0c5f3119a9af1d70f710512f6a71496329e6e3d34617957b73fa5fc2d24b",
+    "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+    "method": "Deterministic SVG rasterization or headless Chrome screenshot; no image generation.",
+    "status": "HUMAN FINAL LOCKUP APPROVAL PENDING"
+  },
+  "minimum-P-01.png": {
+    "sha256": "ae0f1f376ec5b458b802a2436a5215e34feba50aadbd42a6bc3a8daa251090a6",
+    "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+    "method": "Deterministic SVG rasterization or headless Chrome screenshot; no image generation.",
+    "status": "HUMAN FINAL LOCKUP APPROVAL PENDING"
+  },
+  "minimum-inspection.png": {
+    "sha256": "dbf4d4982ea5af0f7b35edc1b38855481b854784d2ad022369b5eeda15d1bb27",
+    "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+    "method": "Deterministic SVG rasterization or headless Chrome screenshot; no image generation.",
+    "status": "HUMAN FINAL LOCKUP APPROVAL PENDING"
+  },
+  "review-top.png": {
+    "sha256": "f4be59af4786fc5d1e6403df319d15b540029b7d9dab12faa8f88014061c6288",
+    "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+    "method": "Deterministic SVG rasterization or headless Chrome screenshot; no image generation.",
+    "status": "HUMAN FINAL LOCKUP APPROVAL PENDING"
+  },
+  "seal-only-minimum.png": {
+    "sha256": "5c5d3af7f20486611bc81ff2f110e6654f2d416b7bb0d642b2f2ddf78f477710",
+    "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+    "method": "Deterministic SVG rasterization or headless Chrome screenshot; no image generation.",
+    "status": "HUMAN FINAL LOCKUP APPROVAL PENDING"
+  }
+}

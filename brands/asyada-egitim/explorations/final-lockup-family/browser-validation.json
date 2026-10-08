@@ -1,0 +1,25 @@
+{
+  "status": "HUMAN FINAL LOCKUP APPROVAL PENDING",
+  "scope": "Local browser DOM/layout validation of the completed review",
+  "responsive_viewports": [
+    {"viewport": 375, "document_width": 375, "application_content_overflow": []},
+    {"viewport": 768, "document_width": 768, "application_content_overflow": []},
+    {"viewport": 1440, "document_width": 1440, "application_content_overflow": []}
+  ],
+  "variant_ids": ["P-01", "H-02", "C-03", "D-04", "F-05"],
+  "relative_alignment_comparisons": 20,
+  "duplicate_inline_svg_ids": [],
+  "svg_text_elements": 0,
+  "svg_image_elements": 0,
+  "actual_minimum_css_widths": [352, 528, 448, 200, 352],
+  "application_dimensions_css_px": [
+    {"variant": "P-01", "width": 559.3671875, "height": 793.6953125, "print_mm": [148, 210]},
+    {"variant": "H-02", "width": 1100, "height": 240},
+    {"variant": "C-03", "width": 600, "height": 256},
+    {"variant": "D-04", "width": 375, "height": 112},
+    {"variant": "F-05", "width": 1122.515625, "height": 793.6953125, "print_mm": [297, 210]}
+  ],
+  "screenshots": "Headless Chrome screenshots captured and read for the overview and all five application proofs.",
+  "alignment_selected": null,
+  "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+}
