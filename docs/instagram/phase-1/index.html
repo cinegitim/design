@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Instagram Studio — Faz 1: Görsel Gramer ve Carousel Aileleri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120;--line:#d9d1bf;--muted:#65625a;--card:#fffdf7;--slate:#5b6b7a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px 100px}
+.topbar{display:flex;align-items:center;gap:14px;padding:22px 0;border-bottom:1px solid var(--ink)}
+.topbar img{width:44px;height:auto}
+.topbar .t{font-size:13px;letter-spacing:.14em;font-weight:500}
+.topbar nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.topbar nav a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 16px;background:var(--card)}
+.topbar nav a:hover{border-color:var(--ink)}
+h1{font-size:clamp(36px,6vw,68px);letter-spacing:-.04em;line-height:1.03;margin:40px 0 8px}
+.lede{font-size:18px;max-width:66ch}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.badge{font-size:12px;letter-spacing:.08em;font-weight:500;border-radius:999px;padding:8px 18px;border:1px solid var(--red);color:var(--red)}
+section{margin-top:64px}
+.kicker{font-size:12px;letter-spacing:.16em;color:var(--muted);font-weight:500}
+h2{font-size:clamp(24px,3.5vw,38px);letter-spacing:-.025em;margin:6px 0}
+.sub{color:#3d3a34;max-width:76ch}
+a{color:inherit}
+/* ---------- slide system (authored at 1080x1350, scaled by JS) ---------- */
+.frame{position:relative;overflow:hidden;flex:none;background:#e8e3d7}
+.zoomer{width:1080px;height:1350px;transform-origin:top left}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;padding:84px 84px 72px;font-family:"Jost",system-ui,sans-serif}
+.slide.dark{background:var(--ink);color:var(--paper)}
+.slide .sealrow{display:flex;align-items:flex-start;justify-content:space-between}
+.slide .sealrow img{width:96px;height:auto;display:block}
+.slide .pagenum{font-size:28px;letter-spacing:.14em;opacity:.65;font-weight:500}
+.slide .eyebrow{font-size:30px;font-weight:600;letter-spacing:.24em;color:var(--red);margin-top:44px}
+.slide .display{font-size:102px;line-height:1.02;font-weight:600;letter-spacing:-.025em;margin-top:26px;text-wrap:balance}
+.slide .h2{font-size:66px;line-height:1.08;font-weight:600;letter-spacing:-.02em;margin-top:26px;text-wrap:balance}
+.slide .body{font-size:44px;line-height:1.5;margin-top:26px;max-width:20ch}
+.slide .body.small{font-size:36px}
+.slide ul.tight{list-style:none;margin-top:30px;display:grid;gap:22px}
+.slide ul.tight li{font-size:42px;line-height:1.35;padding-left:56px;position:relative}
+.slide ul.tight li::before{content:"";position:absolute;left:0;top:18px;width:26px;height:26px;border-radius:50%;background:var(--red)}
+.slide .stepgrid{display:grid;gap:0;margin-top:34px;border-top:3px solid var(--ink)}
+.slide.dark .stepgrid{border-color:var(--paper)}
+.slide .step{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line)}
+.slide.dark .step{border-color:#3a3f47}
+.slide .step .n{font-size:72px;font-weight:600;color:var(--red);line-height:1}
+.slide .step .t b{display:block;font-size:40px}
+.slide .step .t span{font-size:34px;opacity:.75}
+.slide .photo-full{position:absolute;inset:0}
+.slide .photo-full img{width:100%;height:100%;object-fit:cover;display:block}
+.slide .scrim{position:absolute;inset:auto 0 0 0;height:760px;background:linear-gradient(to bottom,rgba(29,32,39,0),rgba(29,32,39,.62) 45%,rgba(29,32,39,.92))}
+.slide .over{position:absolute;inset:auto 0 0 0;padding:0 84px 72px;color:#fff}
+.slide .stat-num{font-size:170px;font-weight:600;color:var(--red);line-height:1;letter-spacing:-.03em}
+.slide .tagrow{display:flex;gap:16px;margin-top:28px;flex-wrap:wrap}
+.slide .tag{font-size:26px;letter-spacing:.1em;border:2px solid var(--red);color:var(--red);border-radius:999px;padding:10px 28px;font-weight:500}
+.slide.dark .tag{border-color:#ff8f8d;color:#ff8f8d}
+.slide table.cmp{width:100%;border-collapse:collapse;margin-top:30px;font-size:34px}
+.slide table.cmp th,.slide table.cmp td{border:2px solid var(--line);padding:20px 24px;text-align:left}
+.slide table.cmp th{background:var(--ink);color:var(--paper);font-size:30px;letter-spacing:.06em}
+.slide table.cmp td.hl{background:#f3e3df}
+.slide .sample{font-size:24px;letter-spacing:.08em;opacity:.6;margin-top:18px}
+.slide .cta-pill{display:inline-block;background:var(--red);color:#fff;font-size:40px;font-weight:500;padding:26px 70px;border-radius:999px;margin-top:34px}
+.slide .cta-sub{font-size:30px;opacity:.75;margin-top:22px}
+.slide .redbar{width:120px;height:10px;background:var(--red);margin-top:30px}
+.slide .foot{margin-top:auto;padding-top:30px;display:flex;align-items:center;justify-content:space-between}
+.slide .saveme{font-size:28px;opacity:.7}
+/* ---------- viewers / feed ---------- */
+.viewer{margin-top:22px}
+.vp-head{display:flex;align-items:baseline;gap:16px;margin-bottom:12px}
+.vp-head .count{font-size:14px;letter-spacing:.1em;color:var(--muted)}
+.vp-head .btns{margin-left:auto;display:flex;gap:10px}
+.vp-head button{font:inherit;font-size:14px;padding:10px 22px;min-height:44px;border-radius:999px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.vp-head button:hover{background:var(--ink);color:var(--paper)}
+.track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px}
+.track .frame{scroll-snap-align:center;border-radius:14px;box-shadow:0 2px 14px rgba(29,32,39,.14)}
+.feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}
+.feed .frame{border-radius:10px}
+.grammar{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.gcell{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.gcell b{font-size:17px}.gcell .id{font-size:11px;letter-spacing:.12em;color:var(--red);font-weight:600}
+.gcell p{font-size:14px;color:#3d3a34;margin-top:6px}
+.gcell .swatches{display:flex;gap:10px;margin-top:12px}
+.gcell .sw{flex:1;border-radius:8px;padding:14px 10px;font-size:12px;font-weight:600}
+.type-spec{background:var(--ink);color:var(--paper);border-radius:12px;padding:28px;margin-top:14px}
+.type-spec .d1{font-size:54px;font-weight:600;letter-spacing:-.02em}
+.type-spec .d2{font-size:30px;font-weight:600;margin-top:14px}
+.type-spec .d3{font-size:19px;margin-top:10px;opacity:.85;max-width:60ch}
+.type-spec .d4{font-size:14px;letter-spacing:.16em;color:#ff8f8d;margin-top:10px}
+.type-spec .d5{font-size:26px;color:#ff8f8d;font-weight:600;margin-top:6px}
+.refs{margin-top:18px;display:grid;gap:10px}
+.refs li{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;font-size:14px}
+.refs li b{color:var(--red)}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.swot div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;font-size:14px}
+.swot h3{font-size:17px;margin-bottom:8px}
+footer{margin-top:70px;border-top:1px solid var(--line);padding-top:22px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.note{font-size:13px;color:var(--muted)}
+.spec{font-size:13px;color:var(--muted)}
+.spec code{font-size:12px;overflow-wrap:anywhere}
+@media(max-width:900px){.grammar,.swot{grid-template-columns:1fr}.wrap{padding:0 18px 70px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <img src="../../asyada-seal/assets/v01-canonical.svg" alt="Mühür">
+    <span class="t">ASYA'DA EĞİTİM &middot; BRAND STUDIO</span>
+    <nav><a href="../../">Panel</a><a href="../../identity/">Kimlik</a><a href="../">Instagram</a><a href="../../archive/">Arşiv</a></nav>
+  </div>
+
+  <p class="kicker" style="margin-top:36px">INSTAGRAM STUDIO &middot; PHASE 1 — VISUAL GRAMMAR &amp; CAROUSEL FAMILIES</p>
+  <h1>Üç carousel.<br>Tek dil, üç lehçe.</h1>
+  <p class="lede">Editoryal enerji + kurumsal güven + akışta tanınma. 21 slayt, 1080&times;1350, tamamı deterministik HTML/SVG — fotoğraflar metinsiz üretildi, kilitler sonradan birebir yerleştirildi. <a href="../">Faz 0 mimarisi burada duruyor &rarr;</a></p>
+  <div class="badges"><span class="badge">HUMAN INSTAGRAM DESIGN REVIEW PENDING</span><span class="badge">NO CANONICAL TEMPLATES</span></div>
+
+  <section id="research">
+    <div class="kicker">01 &middot; REFERANS ARAŞTIRMASI — 8 GERÇEK KAYNAK</div>
+    <h2>Kim neyi iyi yapıyor?</h2>
+    <p class="sub">Düzenler kopyalanmadı; yalnızca yeniden kullanılabilir ilkeler çıkarıldı.</p>
+    <ol class="refs">
+      <li><b>R1 · DAAD USA (@daad.usa)</b> — değişim elçisi devralmaları + "Tips" öne çıkanları. İlke: yüz + kısa ipucu + tek bağlantı; kurum ciddiyeti, öğrenci sesiyle yumuşar.</li>
+      <li><b>R2 · NUS Singapore (@nus_singapore)</b> — kampüs günleri ve öğrenci devralmaları. İlke: kapakta hareket vaadi, gövdede fakülte/bölüm etiketi.</li>
+      <li><b>R3 · Adpicto 2026 carousel ölçütleri</b> — kapak sonucun %80'i; 6–10 slaytlık hikâyeler; kaydetme odaklı dağıtım, %25–40 tamamlama sağlıklı.</li>
+      <li><b>R4 · Socialinsider/CreatorFlow 2026</b> — carousel'ler en yüksek etkileşim (%0.50); 8–10 slayt, 1080&times;1350; tek fikir/slayt; kapanışta tek CTA.</li>
+      <li><b>R5 · ContentDrips / WaveGen</b> — dikey 4:5; özet slaytı kaydetmeyi tetikler; spesifik CTA ("DM gönder" değil, "planlama seansın için kaydet").</li>
+      <li><b>R6 · Krumzi 2026</b> — 3 kat etkileşim; yeniden-sunim mekanizması; veri içerikleri en çok kaydedilen; kaynak göster.</li>
+      <li><b>R7 · Japonya görsel hikâye kültürü (Humble Bunny / ELLE Japan vakası)</b> — fotoğraf-ağırlıklı anlatı Japonya bağlamında rezonans yaratır; C carousel'in foto-öncelikli kurgusunun gerekçesi.</li>
+      <li><b>R8 · BrandGhost carousel rehberi</b> — 6–10 slayt eğitim içeriği; sayı doldurmak için boş slayt yasak; her slayt değer katmalı.</li>
+    </ol>
+  </section>
+
+  <section id="grammar">
+    <div class="kicker">02 &middot; ÖN GÖRSEL GRAMER (inceleme amaçlı, kanonik değil)</div>
+    <h2>Sistemin kuralları</h2>
+    <div class="type-spec">
+      <div class="d4">CONTENT TYPOGRAPHY · JOST (METİN DİZİMİ — KİLİT TİPOGRAFİSİNDEN AYRI SİSTEM)</div>
+      <div class="d1">Display 96–102 · kapak kancası</div>
+      <div class="d2">Heading 64–66 · slayt başlığı</div>
+      <div class="d3">Body 38/1.5 · en fazla 3 satır düşüncesi; caption 28–32; rakam 150–170 yalnızca tek istatistik/slayt.</div>
+      <div class="d5">1234567890 · numerals tabular hissi verir</div>
+    </div>
+    <div class="grammar">
+      <div class="gcell"><span class="id">G1 · GRID &amp; GÜVENLİ ALAN</span><b>84px kenar, %80 merkez</b><p>Kritik içerik merkezi %80'de; kapak kancası üst üçte birde; sayfa numarası sağ üstte 28px.</p></div>
+      <div class="gcell"><span class="id">G2 · RENK &amp; VURGU</span><b>Kâğıt zemin, mürekkep söz, kırmızı tek vuruş</b><p>Kırmızı slayt başına bir öğede: göz etiketi, rakam veya CTA. Fotoğraf üstünde kâğıt söz + mürekkep gradyan.
+        <span class="swatches"><span class="sw" style="background:#F7F3E9;border:1px solid #d9d1bf">KAĞIT</span><span class="sw" style="background:#1D2027;color:#F7F3E9">MÜREKKEP</span><span class="sw" style="background:#BD2120;color:#fff">KIRMIZI</span></span></p></div>
+      <div class="gcell"><span class="id">G3 · FOTOĞRAF DİLİ</span><b>Belgesel kampüs, klipaj yok</b><p>Arkası dönük öğrenciler, boş tahta, flu raf sırtları. Kep, tapınak, kiraz çiçeği kartpostalı, tabela metni yasak.</p></div>
+      <div class="gcell"><span class="id">G4 · VERİ &amp; BİLGİ KARTI</span><b>Tek rakam, kaynaklı</b><p>Slayt başına bir istatistik; karşılaştırma 2 sütun; örnek değerler "örnek — teyit bekliyor" rozeti taşır.</p></div>
+      <div class="gcell"><span class="id">G5 · GEZİNME &amp; NUMARA</span><b>Kapak kanca, özet kaydetir</b><p>Sondan bir önceki slayt özet (kaydetme tetikler); kapanış tek CTA. Nokta + sayaç ("3/7") her slaytta.</p></div>
+      <div class="gcell"><span class="id">G6 · KANCA, ÖZET, CTA</span><b>Spesifik vaat, tek eylem</b><p>"5 şey" değil, "5 adımda başvuru". CTA'lar: Görüşme (A), Başvur (B), Kaydet/Paylaş (C).</p></div>
+    </div>
+  </section>
+
+  <section id="carousel-a">
+    <div class="kicker">03 &middot; CAROUSEL A — EDİTORYAL / TYPE-LED · TEACH × GUIDE · 7 SLAYT</div>
+    <h2>Çin'de lisans başvurusu: 5 adım</h2>
+    <p class="spec">Kilit: iç slaytlarda yok; kapakta mühür-tek 96px; kapanışta <b>D-04/light 220px</b> (min 200px) &middot; Fotoğraf yok — saf tipografi &middot; CTA: Görüşme</p>
+    <div class="viewer"><div class="vp-head"><span class="count" data-count></span><span class="btns"><button data-prev>&larr;</button><button data-next>&rarr;</button></span></div>
+    <div class="track" data-track>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide dark" id="cover-a">
+        <div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="Mühür"><span class="pagenum">01 / 07</span></div>
+        <div class="eyebrow">ÇİN · REHBER</div>
+        <div class="display">Çin'de üniversite: 5 adımda başvuru</div>
+        <div class="body small">Kaydet — lazım olacak.</div>
+        <div class="foot"><span class="saveme">Kaydır &rarr;</span><span class="pagenum">TEACH</span></div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><span class="pagenum">SORUN</span><span class="pagenum">02 / 07</span></div>
+        <div class="h2">Nereden başlanır?</div>
+        <ul class="tight"><li>Yüzlerce program, üç ayrı takvim</li><li>Dil belgesi her üniversitede farklı</li><li>Vize evrakı en sonda akla geliyor</li></ul>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><span class="pagenum">ADIM 1</span><span class="pagenum">03 / 07</span></div>
+        <div class="h2">Programını seç</div>
+        <div class="body">İngilizce ve Çince programları ayrı listele. Burs kontenjanı programa göre değişir — genellemelere güvenme.</div>
+        <div class="redbar"></div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><span class="pagenum">ADIM 2–3</span><span class="pagenum">04 / 07</span></div>
+        <div class="stepgrid">
+          <div class="step"><span class="n">2</span><div class="t"><b>Dil belgeni hazırla</b><span>HSK / IELTS — eşik üniversiteye göre değişir, siteden teyit et.</span></div></div>
+          <div class="step"><span class="n">3</span><div class="t"><b>Portala yükle</b><span>Transkript, pasaport, niyet mektubu — tek PDF paketi.</span></div></div>
+        </div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><span class="pagenum">ADIM 4–5</span><span class="pagenum">05 / 07</span></div>
+        <div class="stepgrid">
+          <div class="step"><span class="n">4</span><div class="t"><b>Kabul + vize</b><span>Kabul mektubu çıkar çıkmaz X vizesi evrakına başla.</span></div></div>
+          <div class="step"><span class="n">5</span><div class="t"><b>Konaklama + kayıt</b><span>Yurt başvurusu kayıttan önce kapanır — öne al.</span></div></div>
+        </div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide dark">
+        <div class="sealrow"><span class="pagenum">ÖZET</span><span class="pagenum">06 / 07</span></div>
+        <div class="h2">5 adım, tek ekran</div>
+        <div class="body">Program → Dil → Portal → Vize → Kayıt.<br>Bu slaytı kaydet — başvuru zamanı lazım olacak.</div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><span class="pagenum">07 / 07</span><span class="pagenum">CTA</span></div>
+        <div style="margin-top:40px"><img src="../../asyada-seal/canonical-lockups/assets/d-04-small-use-digital-light.svg" width="220" alt="D-04 small-use lockup"></div>
+        <div class="h2">Hangi program sana uygun?</div>
+        <div class="body">15 dakikalık ücretsiz ön görüşmede netleştir.</div>
+        <div><span class="cta-pill">Görüşme planla</span></div>
+        <div class="cta-sub">Kaydet &middot; ihtiyacı olanla paylaş</div>
+      </div></div></div>
+    </div></div>
+  </section>
+  <section id="carousel-b">
+    <div class="kicker">04 &middot; CAROUSEL B — INFORMATION / GRID-LED · COMPARE × UNIVERSITY · 7 SLAYT</div>
+    <h2>Hong Kong mu, Singapur mu?</h2>
+    <p class="spec">Kapakta bölünmüş foto (HK + SG); içte mühür yok, sayfa no var; kapanışta <b>D-04/light 220px</b> &middot; Rakamların tamamı <b>örnek — teyit bekliyor</b> &middot; CTA: Başvur</p>
+    <div class="viewer"><div class="vp-head"><span class="count" data-count></span><span class="btns"><button data-prev>&larr;</button><button data-next>&rarr;</button></span></div>
+    <div class="track" data-track>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="Mühür"><span class="pagenum">01 / 07</span></div>
+        <div class="eyebrow">KARŞILAŞTIRMA</div>
+        <div class="display">Hong Kong mu, Singapur mu?</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px">
+          <div style="border-radius:14px;overflow:hidden;height:330px"><img src="assets/hk-campus.jpg" width="100%" height="100%" style="object-fit:cover;display:block" alt="Hong Kong kampüsü"></div>
+          <div style="border-radius:14px;overflow:hidden;height:330px"><img src="assets/sg-campus.jpg" width="100%" height="100%" style="object-fit:cover;display:block" alt="Singapur kampüsü"></div>
+        </div>
+        <div class="foot"><span class="saveme">Kaydır &rarr;</span><span class="pagenum">COMPARE</span></div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><span class="pagenum">KRİTER</span><span class="pagenum">02 / 07</span></div>
+        <div class="h2">Üç soruda karar</div>
+        <table class="cmp"><tr><th></th><th>Hong Kong</th><th>Singapur</th></tr>
+        <tr><td>Eğitim dili</td><td class="hl">İngilizce ağırlık</td><td class="hl">İngilizce</td></tr>
+        <tr><td>Yaşam ritmi</td><td>Yoğun metropol</td><td>Kampüs + şehir</td></tr>
+        <tr><td>Örnek bütçe</td><td colspan="2">Aşağıda — örnek değerler</td></tr></table>
+        <div class="sample">TABLO ÖRNEKTİR — TEYİT BEKLİYOR</div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><span class="pagenum">HK</span><span class="pagenum">03 / 07</span></div>
+        <div style="border-radius:14px;overflow:hidden;height:420px"><img src="assets/hk-campus.jpg" width="100%" height="100%" style="object-fit:cover;display:block" alt="Hong Kong kampüsü"></div>
+        <div class="h2">Hong Kong: dikey şehir, dikey tempo</div>
+        <div class="body small">Kampüsler tepelere yaslanır; staj ve finans ekosistemi kapı komşusu.</div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><span class="pagenum">SG</span><span class="pagenum">04 / 07</span></div>
+        <div style="border-radius:14px;overflow:hidden;height:420px"><img src="assets/sg-campus.jpg" width="100%" height="100%" style="object-fit:cover;display:block" alt="Singapur kampüsü"></div>
+        <div class="h2">Singapur: kampüs bir bahçe</div>
+        <div class="body small">Tropik yeşillik içinde yürünen, bisikletli bir kampüs günü.</div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><span class="pagenum">HÜKÜM</span><span class="pagenum">05 / 07</span></div>
+        <div class="h2">Hız mı, nefes mi?</div>
+        <div class="body">Metropol temposu istiyorsan Hong Kong; kampüs hayatı öncelikliyse Singapur. İkisi de İngilizce — karar yaşam tarzında.</div>
+        <div class="redbar"></div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide dark">
+        <div class="sealrow"><span class="pagenum">ÖZET</span><span class="pagenum">06 / 07</span></div>
+        <div class="stat-num">2 şehir</div>
+        <div class="body">1 tablo, 2 kampüs, 1 hüküm.<br>Kararsız arkadaşına gönder.</div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><span class="pagenum">07 / 07</span><span class="pagenum">CTA</span></div>
+        <div style="margin-top:40px"><img src="../../asyada-seal/canonical-lockups/assets/d-04-small-use-digital-light.svg" width="220" alt="D-04 small-use lockup"></div>
+        <div class="h2">2026 güz başvurusu açık</div>
+        <div class="body">Şehir eşleştirmeni ücretsiz ön başvuruda netleştir.</div>
+        <div><span class="cta-pill">Ön başvurunu oluştur</span></div>
+        <div class="cta-sub">Kaydet &middot; sonra karşılaştır</div>
+      </div></div></div>
+    </div></div>
+  </section>
+
+  <section id="carousel-c">
+    <div class="kicker">05 &middot; CAROUSEL C — PHOTOGRAPHY / STORY-LED · STORY × STUDENT STORY · 7 SLAYT</div>
+    <h2>Tokyo'da ilk ay <span style="font-size:22px;letter-spacing:0;color:var(--red)">— kurgusal örnek senaryo</span></h2>
+    <p class="spec">Gerçek kişi, alıntı ve burs iddiası yok — anlatı illüstratif senaryodur &middot; Kapakta mühür-tek 96px; kapanışta <b>D-04/light 220px</b> &middot; CTA: Kaydet / Paylaş</p>
+    <div class="viewer"><div class="vp-head"><span class="count" data-count></span><span class="btns"><button data-prev>&larr;</button><button data-next>&rarr;</button></span></div>
+    <div class="track" data-track>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="photo-full"><img src="assets/jp-street.jpg" alt="Tokyo sokağı"></div>
+        <div class="scrim"></div>
+        <div class="over">
+          <div class="sealrow"><img src="../../asyada-seal/assets/v01-canonical.svg" alt="Mühür" style="filter:brightness(0) invert(1)"><span class="pagenum">01 / 07</span></div>
+          <div class="eyebrow" style="color:#ffb3b1">ÖĞRENCİ HİKÂYESİ · ÖRNEK</div>
+          <div class="display" style="color:#fff">Tokyo'da ilk ay</div>
+          <div class="body small" style="color:#fff">Sıradan bir sokak, sıradan bir sabah. Kurgusal örnek senaryo.</div>
+        </div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="photo-full"><img src="assets/jp-lecture.jpg" alt="Derslik"></div>
+        <div class="scrim" style="height:560px"></div>
+        <div class="over">
+          <div class="pagenum">02 / 07 · AN</div>
+          <div class="h2" style="color:#fff">İlk ders: boş tahta sendromu</div>
+          <div class="body small" style="color:#fff">Herkes seni izliyormuş gibi gelir. İzlemiyor — herkes aynı şeyi hissediyor.</div>
+        </div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="photo-full"><img src="assets/jp-friends.jpg" alt="Yemekhane"></div>
+        <div class="scrim" style="height:560px"></div>
+        <div class="over">
+          <div class="pagenum">03 / 07 · AN</div>
+          <div class="h2" style="color:#fff">Öğle yemeği her şeyi çözer</div>
+          <div class="body small" style="color:#fff">İlk arkadaşlıklar tepsilerin üstünde kurulur.</div>
+        </div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="photo-full"><img src="assets/jp-library.jpg" alt="Kütüphane"></div>
+        <div class="scrim" style="height:560px"></div>
+        <div class="over">
+          <div class="pagenum">04 / 07 · DÖNÜM</div>
+          <div class="h2" style="color:#fff">Kütüphane vardiyası</div>
+          <div class="body small" style="color:#fff">Akşam lambaları yandığında şehir susar, ders başlar.</div>
+        </div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><span class="pagenum">DÖNÜM</span><span class="pagenum">05 / 07</span></div>
+        <div class="h2">Ay sonunda ne değişti?</div>
+        <ul class="tight"><li>Tren hattını ezbere biliyor</li><li>İlk sunumunu yaptı</li><li>Evi artık iki şehirli</li></ul>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide dark">
+        <div class="sealrow"><span class="pagenum">ÖZET</span><span class="pagenum">06 / 07</span></div>
+        <div class="h2">Uyum bir ay sürer</div>
+        <div class="body">Sokak → derslik → yemekhane → kütüphane.<br>Bu hikâyeyi gidecek birine gönder.</div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><span class="pagenum">07 / 07</span><span class="pagenum">CTA</span></div>
+        <div style="margin-top:40px"><img src="../../asyada-seal/canonical-lockups/assets/d-04-small-use-digital-light.svg" width="220" alt="D-04 small-use lockup"></div>
+        <div class="h2">Senin hikâyen nerede başlıyor?</div>
+        <div class="body">Kaydet — karar zamanı geri dön.</div>
+        <div><span class="cta-pill">Kaydet ve paylaş</span></div>
+        <div class="cta-sub">Kurgusal örnek senaryo &middot; gerçek başvuru için görüşme planla</div>
+      </div></div></div>
+    </div></div>
+  </section>
+  <section id="feed">
+    <div class="kicker">06 &middot; AKIŞ TUTARLILIK TESTİ — 3×3 PROFİL ÖNİZLEME</div>
+    <h2>Dokuz kapak, tek marka</h2>
+    <p class="sub">İlk üç kare yukarıdaki carousel kapaklarının birebir klonları; diğer altısı aynı gramerle yazılmış yeni kapak kompozisyonları. Test: anında tanınma, gençlik çekiciliği, kurumsal güven, parçalanmadan çeşitlilik.</p>
+    <div class="feed" id="feed-grid">
+      <div class="frame" data-zoom data-clone-track="0" data-clone-index="0"></div>
+      <div class="frame" data-zoom data-clone-track="1" data-clone-index="0"></div>
+      <div class="frame" data-zoom data-clone-track="2" data-clone-index="0"></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide" style="background:var(--red);color:#fff">
+        <div class="sealrow"><span class="pagenum">F2</span><span class="pagenum">SON 12 GÜN</span></div>
+        <div class="display" style="color:#fff">Burs başvurusu kapanıyor</div>
+        <div class="body small" style="color:#fff">Tarihler örnektir — teyit bekliyor.</div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><span class="pagenum">F4</span><span class="pagenum">ÜLKE</span></div>
+        <div class="eyebrow">SEUL'DE YAŞAM</div>
+        <div class="h2">Bir ay ne kadara mal olur?</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px">
+          <div style="border:2px solid var(--line);border-radius:12px;padding:22px"><div class="stat-num" style="font-size:90px">Yurt</div><div class="body small">Kampüs içi</div></div>
+          <div style="border:2px solid var(--line);border-radius:12px;padding:22px"><div class="stat-num" style="font-size:90px">Ev</div><div class="body small">Paylaşımlı</div></div>
+        </div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide dark">
+        <div class="sealrow"><span class="pagenum">F6</span><span class="pagenum">ETKİNLİK</span></div>
+        <div class="eyebrow" style="color:#ff8f8d">EKİM FUARI</div>
+        <div class="h2" style="color:#fff">Çantanda bunlar olsun</div>
+        <ul class="tight"><li>Transkript fotokopisi</li><li>Sormak istediğin 3 soru</li><li>Boş bir sabah</li></ul>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="sealrow"><span class="pagenum">F1</span><span class="pagenum">VERİ</span></div>
+        <div class="eyebrow">BURS TAKVİMİ</div>
+        <div class="h2">Hangi ay ne yapılır?</div>
+        <div class="sk" style="height:34px;width:85%;background:var(--red);border-radius:8px;margin-top:26px"></div>
+        <div class="sk" style="height:34px;width:60%;background:var(--red);opacity:.65;border-radius:8px;margin-top:14px"></div>
+        <div class="sk" style="height:34px;width:72%;background:var(--red);opacity:.4;border-radius:8px;margin-top:14px"></div>
+        <div class="body small">Takvim şeması örnektir — teyit bekliyor.</div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide dark">
+        <div class="sealrow"><span class="pagenum">F3</span><span class="pagenum">DOSYA</span></div>
+        <div class="eyebrow" style="color:#ff8f8d">DOSYA OKUMA KILAVUZU</div>
+        <div class="h2" style="color:#fff">Bir üniversite dosyasını 2 dakikada tara</div>
+        <div class="body" style="color:#fff">Dil → kontenjan → tarihler. Sıra hep aynı.</div>
+      </div></div></div>
+      <div class="frame" data-zoom><div class="zoomer"><div class="slide">
+        <div class="photo-full"><img src="assets/jp-library.jpg" alt="Kütüphane"></div>
+        <div class="scrim" style="height:620px"></div>
+        <div class="over">
+          <div class="pagenum">F5 · GECE</div>
+          <div class="display" style="color:#fff">Gece vardiyası</div>
+          <div class="body small" style="color:#fff">Kütüphane lambaları sönmeden dönme.</div>
+        </div>
+      </div></div></div>
+    </div>
+    <p class="note" style="margin-top:14px"><b>Okuma:</b> kapakların tamamı kâğıt/mürekkep/kırmızı üçlüsünde; başlıklar Jost 600; kırmızı her kapakta tek vuruş. Fotoğraflı kapaklar (2, 3, 9) tipografik kapaklarla (1, 4–8) dönüşümlü — akışta aynı mod yan yana gelmiyor. Tanınma mühür + renk + tipografiden geliyor, tekrardan değil.</p>
+  </section>
+
+  <section id="mobile">
+    <div class="kicker">07 &middot; MOBİL BOYUT ÖNİZLEME — 300PX GERÇEK ÖLÇEK</div>
+    <h2>Telefonda okunuyor mu?</h2>
+    <p class="sub">Aynı slaytlar, 300px genişlikte birebir küçültme. Gövde 44px → ~12px etkili; başlıklar ve sayfa numaraları okunur aralıkta.</p>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:18px">
+      <div class="frame" data-zoom data-clone-track="0" data-clone-index="3" style="width:300px"></div>
+      <div class="frame" data-zoom data-clone-track="1" data-clone-index="1" style="width:300px"></div>
+      <div class="frame" data-zoom data-clone-track="2" data-clone-index="4" style="width:300px"></div>
+    </div>
+  </section>
+
+  <section id="review">
+    <div class="kicker">08 &middot; ÖZ ELEŞTİRİ — GÜÇLÜ / ZAYIF / SONRAKİ</div>
+    <h2>Ne çalışıyor, ne eksik?</h2>
+    <div class="swot">
+      <div><h3>Güçlü</h3><p>Hiyerarşi net (kapak kanca → tek fikir → tek CTA); üç carousel birbirinden ayrışıyor ama aynı aileden okunuyor; mühür yalnızca kapak/kapanışta ve minimum üstünde; fotoğraflar metinsiz, klişesiz.</p></div>
+      <div><h3>Zayıf</h3><p>B'deki tüm rakamlar örnek — gerçek veri girilmeden yayınlanamaz. C'nin "dönüm" slaytı tipografik, bir fotoğraf anı daha taşıyabilirdi. Kapak başlıkları 390px telefonda ~37px etkili: güçlü ama uzun başlıklar 3 satırı geçmemeli.</p></div>
+      <div><h3>Önerilen iyileştirme</h3><p>B'ye gerçek, kaynaklı rakamlar; C'ye beşinci fotoğraf (sınav haftası); kapaklara 90 karakter sınırı. Kaydetme tetikleyen özet slaytları A/B'de var, C'de özet tipografik — foto-özet varyantı denenebilir.</p></div>
+      <div><h3>Risk</h3><p>Yapay zekâ yüzleri: C'deki kişiler gerçek değil — hikâye "kurgusal örnek" rozeti olmadan asla yayınlanmamalı. 12 gönderilik deneyden önce veri teyit süreci tanımlanmalı.</p></div>
+    </div>
+  </section>
+
+  <section id="technical">
+    <div class="kicker">09 &middot; ÜRETİM KANITI</div>
+    <h2>Ne değişmedi?</h2>
+    <p class="sub">Mühür ve D-04 kilitleri manifestteki tam SVG dosyaları (yerleşim/boyut dışında değişiklik yok). Görüntü modeli yalnızca arka plan üretti; tipografi ve kilitler deterministik HTML/SVG. Doğrulayıcı PASS (15 kayıt). Üretim: 8 görüntü çağrısı (6 kare + 2 hedefli düzeltme). Yeni stil kanonikleşmedi.</p>
+    <p style="margin-top:12px"><a href="assets/manifest.json">Faz-1 üretim manifestosu (kilit + raster SHA) &rarr;</a> &middot; <a href="../../asyada-seal/canonical-lockups/assets/canonical-lockups.json">Kanonik manifest &rarr;</a></p>
+    <p class="spec">Mühür SHA-256: <code>8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a</code></p>
+  </section>
+
+  <footer><span>Instagram Studio · Phase 1 — inceleme alanı, şablon yok, kanonikleşme yok</span><span><a href="../">Faz 0</a> &middot; <a href="../../">Panel</a> &middot; <a href="../../archive/">Arşiv</a></span></footer>
+</div>
+<script>
+(function(){
+  function fit(scope){
+    (scope||document).querySelectorAll('[data-zoom]').forEach(function(f){
+      var w=f.clientWidth||f.parentElement.clientWidth;
+      var track=f.closest('[data-track]');
+      if(track) w=track.clientWidth;
+      if(!w)return;
+      var s=w/1080, old=f.firstElementChild;
+      if(old&&old.classList.contains('zoomer')){old.style.transform='scale('+s+')';f.style.width=(1080*s)+'px';f.style.height=(1350*s)+'px';}
+    });
+  }
+  document.querySelectorAll('[data-clone-track]').forEach(function(f){
+    var t=document.querySelectorAll('[data-track]')[+f.getAttribute('data-clone-track')];
+    var slide=t.querySelectorAll('.slide')[+f.getAttribute('data-clone-index')];
+    if(slide){var wrap=document.createElement('div');wrap.className=slide.className;wrap.innerHTML=slide.innerHTML;
+      var zz=document.createElement('div');zz.className='zoomer';zz.appendChild(wrap);f.appendChild(zz);}
+  });
+  function counters(scope){
+    (scope||document).querySelectorAll('.viewer').forEach(function(v){
+      var track=v.querySelector('[data-track]'),frames=track.querySelectorAll('.frame'),c=v.querySelector('[data-count]');
+      function upd(){var i=Math.round(track.scrollLeft/Math.max(1,frames[0].getBoundingClientRect().width+24));i=Math.max(0,Math.min(frames.length-1,i));c.textContent='Slayt '+(i+1)+' / '+frames.length;}
+      track.addEventListener('scroll',upd,{passive:true});upd();
+      function step(){return frames[0].getBoundingClientRect().width+24;}
+      v.querySelector('[data-prev]').addEventListener('click',function(){track.scrollLeft-=step();setTimeout(upd,120);});
+      v.querySelector('[data-next]').addEventListener('click',function(){track.scrollLeft+=step();setTimeout(upd,120);});
+    });
+  }
+  window.addEventListener('resize',function(){fit();});
+  counters();fit();
+})();
+</script>
+
+</div>
+</body>
+</html>
