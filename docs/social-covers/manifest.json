@@ -1,0 +1,113 @@
+{
+  "brand_id": "asyada-egitim",
+  "purpose": "Platform-specific evergreen profile/brand covers",
+  "source_tokens": "Approved identity records and existing Instagram applications; no brand-system.md currently exists.",
+  "status": "APPLICATION CANDIDATES — NOT NEW CANONICAL TEMPLATES",
+  "created": "2026-10-08",
+  "platform_specs": {
+    "instagram": {
+      "dimensions_px": "1080x1440",
+      "use": "portrait feed cover; Instagram has no profile header"
+    },
+    "x": {
+      "dimensions_px": "1500x500",
+      "use": "profile header; left avatar-overlap region intentionally quiet"
+    },
+    "linkedin": {
+      "dimensions_px": "1128x376",
+      "use": "LinkedIn Page cover image"
+    }
+  },
+  "assets": [
+    {
+      "platform": "INSTAGRAM",
+      "id": "instagram-feed-cover",
+      "title": "Instagram feed cover — Asya'da Eğitim",
+      "dimensions_px": {
+        "width": 1080,
+        "height": 1440
+      },
+      "format": [
+        "PNG",
+        "SVG"
+      ],
+      "png": "assets/instagram-feed-cover.png",
+      "png_sha256": "3c174362633ca70b62850f5e2b806b71b1a4eee556b66606b82e82be5c5edef4",
+      "svg": "assets/instagram-feed-cover.svg",
+      "svg_sha256": "1eb7b440f05204f47e4f269051c0b2730ede42d86009c86f36101da1fbd74c33",
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-light.svg",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "minimum_lockup_width_px": 352,
+      "lockup_width_px": 352,
+      "tokens": {
+        "paper": "#F7F3E9",
+        "ink": "#1D2027",
+        "red": "#BD2120",
+        "typeface": "Jost"
+      },
+      "status": "APPLICATION CANDIDATE — NOT A NEW CANONICAL TEMPLATE"
+    },
+    {
+      "platform": "X",
+      "id": "x-profile-header",
+      "title": "X profile header — Asya'da Eğitim",
+      "dimensions_px": {
+        "width": 1500,
+        "height": 500
+      },
+      "format": [
+        "PNG",
+        "SVG"
+      ],
+      "png": "assets/x-profile-header.png",
+      "png_sha256": "6b740ae6305288a79276c7e915740f061bbd9086947a4aff54bfcbb5884fc777",
+      "svg": "assets/x-profile-header.svg",
+      "svg_sha256": "7b8fe8bf3ed2372374980d3ec56c406db37675ee2f1b1a4c6fceea112cfe64bf",
+      "canonical_lockup_id": "H-02/dark",
+      "canonical_lockup_path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-dark.svg",
+      "canonical_lockup_sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "minimum_lockup_width_px": 528,
+      "lockup_width_px": 540,
+      "tokens": {
+        "paper": "#F7F3E9",
+        "ink": "#1D2027",
+        "red": "#BD2120",
+        "typeface": "Jost"
+      },
+      "status": "APPLICATION CANDIDATE — NOT A NEW CANONICAL TEMPLATE"
+    },
+    {
+      "platform": "LINKEDIN",
+      "id": "linkedin-page-cover",
+      "title": "LinkedIn Page cover — Asya'da Eğitim",
+      "dimensions_px": {
+        "width": 1128,
+        "height": 376
+      },
+      "format": [
+        "PNG",
+        "SVG"
+      ],
+      "png": "assets/linkedin-page-cover.png",
+      "png_sha256": "43a43112ccd07ca20a9b276d74be76e8cd95ea398be68dc3708f27ba88cd5583",
+      "svg": "assets/linkedin-page-cover.svg",
+      "svg_sha256": "1b21fb8349e6088ed329a546c247dc4b4df8b9070aa32eba8ee6b0f14ac5f497",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "minimum_lockup_width_px": 528,
+      "lockup_width_px": 528,
+      "tokens": {
+        "paper": "#F7F3E9",
+        "ink": "#1D2027",
+        "red": "#BD2120",
+        "typeface": "Jost"
+      },
+      "status": "APPLICATION CANDIDATE — NOT A NEW CANONICAL TEMPLATE"
+    }
+  ]
+}
