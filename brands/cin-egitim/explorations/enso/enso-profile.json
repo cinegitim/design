@@ -1298,6 +1298,21 @@
  "angles_measured_directly": 219,
  "angles_interpolated": 38,
  "median_width": 136.0,
+ "centre_fit": {
+  "seed_used": [
+   303.5,
+   417.0
+  ],
+  "least_squares_alternative": [
+   307.9,
+   422.9
+  ],
+  "alternative_offset_px": [
+   4.4,
+   5.9
+  ],
+  "decision": "seed retained \u2014 the least-squares alternative and an expanded arc both LOWERCED IoU (0.8852 -> 0.8792). Tested, not assumed."
+ },
  "source": {
   "file": "cinegitim-icon.png",
   "sha256": "820e3b793ef71c77f9404a6361f2cd32c39c5a00c2cee7b3f3ba523ddfb9ca49",

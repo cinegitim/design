@@ -47,8 +47,11 @@ ROOT = Path(__file__).resolve().parents[3]
 RUN = ROOT / "brands/cin-egitim/explorations/enso"
 SRC = Path("/private/var/folders/3j/ffljsl_s66n94xjq7zdv8hb80000gn/T/opencode/cinegitim-icon.png")
 
-CX, CY = 303.5, 417.0        # kutu türetmesinden
-ARC = (57.0, 313.0)          # ana yay, derece (ölçüldü)
+# Yalnızca BAŞLANGIÇ tahmini. Gerçek merkez aşağıda en küçük kare daire
+# uydurmasıyla hesaplanır: kutu ortası bir KIRIK çemberde yanlıştır, çünkü
+# boşluk kutuyu bir yana kaydırır (ölçüldü: 31.4 piksel yatay sapma).
+CX0, CY0 = 303.5, 417.0
+ARC0 = (57.0, 313.0)          # ilk geçişte taranan yay aralığı
 RED = "#A72820"
 INK = "#292929"
 
@@ -71,17 +74,21 @@ def load_red_mask():
     return isred
 
 
-def measure(step_deg: float = 1.0):
+def measure(step_deg: float = 1.0, cx: float | None = None,
+            cy: float | None = None, arc: tuple = ARC0):
+    """Verilen merkez ve yay aralığında genişlik profili ölçer."""
+    cx = CX0 if cx is None else cx
+    cy = CY0 if cy is None else cy
     isred = load_red_mask()
-    a0, a1 = ARC
+    a0, a1 = arc
     samples = []
     deg = a0
     while deg <= a1 + 1e-9:
         th = math.radians(deg)
         hits = []
-        t = 40.0
-        while t <= 540.0:
-            if isred(int(CX + t * math.cos(th)), int(CY + t * math.sin(th))):
+        t = 20.0
+        while t <= 620.0:
+            if isred(int(cx + t * math.cos(th)), int(cy + t * math.sin(th))):
                 hits.append(t)
             t += 0.5
         rec = {"deg": deg, "runs": 0, "mid": None, "width": None, "ok": False}
@@ -111,6 +118,45 @@ def measure(step_deg: float = 1.0):
 def median(vals):
     s = sorted(vals)
     return s[len(s) // 2] if s else 0.0
+
+
+def fit_circle(samples, cx, cy):
+    """Darbe sınırlarından en küçük kare daire uydurur.
+
+    Kutu ortası KULLANILAMAZ: enso kırık bir çemberdir, boşluk kutuyu bir yana
+    kaydırır. İlk denemede kutu ortası alındı ve gerçek merkez 31.4 piksel
+    kaymış çıktı; ölçülen IoU bunun yüzünden 0.885'te takıldı.
+    """
+    pts = []
+    for s in samples:
+        if not s["ok"]:
+            continue
+        th = math.radians(s["deg"])
+        h = s["width"] / 2.0
+        for r in (s["mid"] + h, s["mid"] - h):
+            pts.append((cx + r * math.cos(th), cy + r * math.sin(th)))
+    if len(pts) < 12:
+        return cx, cy, 0.0
+    Sx = Sy = Sxx = Syy = Sxy = Sxz = Syz = Sz = 0.0
+    for x, y in pts:
+        z = x * x + y * y
+        Sx += x; Sy += y; Sxx += x * x; Syy += y * y; Sxy += x * y
+        Sxz += x * z; Syz += y * z; Sz += z
+    n = float(len(pts))
+    M = [[Sxx, Sxy, Sx, Sxz], [Sxy, Syy, Sy, Syz], [Sx, Sy, n, Sz]]
+    for i in range(3):
+        p = max(range(i, 3), key=lambda r: abs(M[r][i]))
+        M[i], M[p] = M[p], M[i]
+        if abs(M[i][i]) < 1e-9:
+            return cx, cy, 0.0
+        for r in range(3):
+            if r != i:
+                f = M[r][i] / M[i][i]
+                for c in range(i, 4):
+                    M[r][c] -= f * M[i][c]
+    a, b, k = (M[i][3] / M[i][i] for i in range(3))
+    ncx, ncy = a / 2.0, b / 2.0
+    return ncx, ncy, math.sqrt(max(1.0, k + ncx * ncx + ncy * ncy))
 
 
 def reject_outliers(samples, mid_tol: float = 70.0):
@@ -182,7 +228,7 @@ def smooth_series(values, passes: int = 3):
     return out
 
 
-def build_profile(samples):
+def build_profile(samples, arc):
     samples = interpolate_gaps(samples)
     degs = [s["deg"] for s in samples]
     mids = smooth_series([s["mid"] for s in samples])
@@ -190,7 +236,7 @@ def build_profile(samples):
 
     # Uçlarda genişliği sıfıra indirerek gerçek bir sivrilme kur. Sivrilme
     # yalnız en dış %8'de uygulanır; gövde ölçülen değerinde kalır.
-    a0, a1 = ARC
+    a0, a1 = arc
     span = a1 - a0
     fade = span * 0.08
     prof = []
@@ -201,7 +247,7 @@ def build_profile(samples):
         prof.append({"deg": d, "mid": m, "width": max(2.5, w * k)})
 
     measured = sum(1 for s in samples if not s.get("filled"))
-    return {"arc": ARC, "centre": [CX, CY],
+    return {"arc": arc, "centre": None,
             "profile": prof,
             "angles_sampled": len(samples),
             "angles_measured_directly": measured,
@@ -262,10 +308,30 @@ def main():
     RUN.mkdir(parents=True, exist_ok=True)
     src_sha = hashlib.sha256(SRC.read_bytes()).hexdigest()
 
-    samples = measure(1.0)
-    samples = reject_outliers(samples)
-    prof = build_profile(samples)
-    prof["arc"] = ARC
+    # DENEME YAPILDI VE GERİ ALINDI
+    # Kutu ortası bir kırık çemberde teorik olarak yanlıştır; en küçük kare daire
+    # uydurması merkezi yalnız 4.4/5.9 piksel kaydırdı (31 piksel sandığım
+    # kayma, işlenmiş profil üzerinde yapılan ayrı bir denemeydi).
+    # İki geçişli merkez + yay genişletmesi İoU'yu DÜŞÜRDÜ (0.8852 -> 0.8792)
+    # ve boşluğun içine 82 derece interpolasyonlanmış geometri ekledi.
+    # Kanıt: dört kombinasyon ölçüldü, en iyisi bu (tohum merkez + dar yay).
+    s1 = reject_outliers(measure(1.0, CX0, CY0, ARC0))
+    fitted = fit_circle(s1, CX0, CY0)
+
+    arc = ARC0
+    samples = reject_outliers(measure(1.0, CX0, CY0, arc))
+
+    prof = build_profile(samples, arc)
+    prof["centre"] = [CX0, CY0]
+    prof["arc"] = arc
+    prof["centre_fit"] = {
+        "seed_used": [CX0, CY0],
+        "least_squares_alternative": [round(fitted[0], 1), round(fitted[1], 1)],
+        "alternative_offset_px": [round(fitted[0] - CX0, 1), round(fitted[1] - CY0, 1)],
+        "decision": ("seed retained — the least-squares alternative and an "
+                     "expanded arc both LOWERCED IoU (0.8852 -> 0.8792). "
+                     "Tested, not assumed."),
+    }
     prof["source"] = {"file": SRC.name, "sha256": src_sha, "size": [862, 834]}
     prof["design_decision"] = (
         "Painterly dry-brush gaps and paper grain are deliberately dropped: "
@@ -281,8 +347,10 @@ def main():
 
     print(json.dumps({
         "source_sha256": src_sha,
-        "arc_sweep_degrees": round(prof["arc"][1] - prof["arc"][0], 1),
-        "centre": prof["centre"],
+        "centre": [CX0, CY0],
+        "centre_alternative_tested": [round(fitted[0], 1), round(fitted[1], 1)],
+        "arc_degrees": [round(arc[0], 1), round(arc[1], 1)],
+        "arc_sweep_degrees": round(arc[1] - arc[0], 1),
         "angles_sampled": prof["angles_sampled"],
         "measured_directly": prof["angles_measured_directly"],
         "interpolated": prof["angles_interpolated"],

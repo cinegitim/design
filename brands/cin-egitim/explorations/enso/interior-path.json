@@ -1,0 +1,19 @@
+{
+ "source_sha256": "820e3b793ef71c77f9404a6361f2cd32c39c5a00c2cee7b3f3ba523ddfb9ca49",
+ "region": [
+  150,
+  300,
+  740,
+  780
+ ],
+ "dark_pixels_in_region": 67893,
+ "contours": 5,
+ "path_vertices": 292,
+ "method": "Moore-neighbourhood boundary trace + Douglas-Peucker (eps 1.10 px). Light-grey distant ridges and red birds are excluded by the mask itself, so the board's simplification is applied by the data, not by hand.",
+ "excluded_automatically": [
+  "uzak dağ silsilesi (açık gri)",
+  "kuş sürüsü (kırmızı)"
+ ],
+ "image_generation_calls": 0,
+ "canonicalised": 0
+}
