@@ -47,6 +47,48 @@
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "png_sha256": "15dd3047a5398ef6952067802bf4c1013c4c74216847b4fb8096001fef5066b3"
+    },
+    {
+      "variant": "red-large",
+      "label": "Tam kırmızı · logo %5 büyük",
+      "background": "#BD2120",
+      "canonical_lockup_id": "F-05/dark",
+      "canonical_lockup_sha256": "1433f54445157ef60eec10327b6408da5675d85cfe22e158f34fe6760534fec9",
+      "svg": "profile-circle-type-red-large.svg",
+      "svg_sha256": "a426943ae58aa9d7d412c302b62a6dc1ba3254b8e551af8bbf1fa1638a6d8c9c",
+      "png": "profile-circle-type-red-large-1080.png",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_scale_relative_to_original_trio": 1.05,
+      "png_sha256": "ff3829b74562b5f0cb7360ef5c12fcd7e9ba421a539dd7ec38ec4b1c256cb502"
+    },
+    {
+      "variant": "negative-large",
+      "label": "Negatif · koyu · logo %5 büyük",
+      "background": "#1D2027",
+      "canonical_lockup_id": "F-05/dark",
+      "canonical_lockup_sha256": "1433f54445157ef60eec10327b6408da5675d85cfe22e158f34fe6760534fec9",
+      "svg": "profile-circle-type-negative-large.svg",
+      "svg_sha256": "83dd7d38e854743815bc0435d8826f63a86fd17da080292e525bfcfda26914f9",
+      "png": "profile-circle-type-negative-large-1080.png",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_scale_relative_to_original_trio": 1.05,
+      "png_sha256": "d9b2bf9b4ce7a7b0dd1fdd77937fac98f5171cf3fde7fe42bf5f313c864756ec"
+    },
+    {
+      "variant": "white-large",
+      "label": "Beyaz · logo %5 büyük",
+      "background": "#FFFFFF",
+      "canonical_lockup_id": "F-05/light",
+      "canonical_lockup_sha256": "e1892f677d491f6e0e2491d6c8f3ad1b0d269ed9f1a16df98ea0b6329ceff810",
+      "svg": "profile-circle-type-white-large.svg",
+      "svg_sha256": "d94a5912f61c1d846f47ae140ee728b34f0688f51f79553b9f0e95a8a693e588",
+      "png": "profile-circle-type-white-large-1080.png",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_scale_relative_to_original_trio": 1.05,
+      "png_sha256": "ba88008e6b202c8e17465ee5b339935e19a2cd2791e764df426d85dcab7ca4bc"
     }
   ],
   "source_lockups": {
@@ -60,5 +102,10 @@
       "sha256": "1433f54445157ef60eec10327b6408da5675d85cfe22e158f34fe6760534fec9",
       "copy": "docs/instagram/profile-photo/variants/assets/f-05-formal-bilingual-dark.svg"
     }
+  },
+  "design_sizes": {
+    "original_trio_lockup_width_px": 820,
+    "larger_trio_lockup_width_px": 860,
+    "larger_trio_scale": 1.05
   }
 }
