@@ -60,6 +60,16 @@ Read `references/identity-development.md` (fidelity pipeline). The selected dire
 4. **Human logo/identity approval** (gate): AI review advisory only. Nothing is LOCKED/CANONICAL/APPROVED without it.
 5. Never skip selection, DNA, reconstruction, comparison, or approval.
 
+### Locked approved lockup assets
+
+When `brands/<slug>/brand.json` contains `canonicalLockups.locked`, the approved lockup family is a locked production asset, not a design task. Before producing or publishing any branded application:
+
+1. Run the verifier named in brand metadata (for Asya'da Eğitim: `python3 studio/tools/verify_asyada_canonical_lockups.py`). A failure stops publishing.
+2. Use only complete SVG lockups listed in the manifest, or the locked seal-only mark if the manifest permits seal-only use.
+3. Never reconstruct from separate seal/text geometry, retype the brand name, substitute fonts, ask an image model to draw/type the wordmark, recolour outside approved variants, crop, distort, smooth, or perspective-transform.
+4. If the layout cannot hold an approved lockup at its minimum size and clearspace, flag the constraint or choose another approved variant. Do not modify the asset.
+5. Every final output manifest records `canonical_lockup_id`, `canonical_lockup_sha256`, and `canonical_seal_sha256`.
+
 ## §5 — Develop the selected direction
 
 Read `references/identity-development.md`.

@@ -1,0 +1,206 @@
+{
+  "status": "PASS",
+  "canonical_status": "APPROVED / CANONICAL",
+  "checked_records": 15,
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "manifest_sha256": "60fb1f6d105fa7c3d47e349ee75b191c023491967b75412a0323ba003b7ed351",
+  "minimum_size_and_contrast_caveats_recorded": true,
+  "experimental_assets_in_production": false,
+  "records": [
+    {
+      "canonical_lockup_id": "P-01/light",
+      "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-light.svg",
+      "sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "render_width_px": 352,
+      "render_height_px": 347,
+      "alpha_bbox": [
+        24,
+        24,
+        328,
+        320
+      ]
+    },
+    {
+      "canonical_lockup_id": "P-01/dark",
+      "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-dark.svg",
+      "sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "render_width_px": 352,
+      "render_height_px": 347,
+      "alpha_bbox": [
+        24,
+        24,
+        328,
+        320
+      ]
+    },
+    {
+      "canonical_lockup_id": "P-01/monochrome",
+      "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-monochrome.svg",
+      "sha256": "12ffb27f509e02e18628670379a65caabf3b5515bc8508ef69a3704e99789db1",
+      "render_width_px": 352,
+      "render_height_px": 347,
+      "alpha_bbox": [
+        24,
+        24,
+        328,
+        320
+      ]
+    },
+    {
+      "canonical_lockup_id": "H-02/light",
+      "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
+      "sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "render_width_px": 528,
+      "render_height_px": 199,
+      "alpha_bbox": [
+        23,
+        25,
+        505,
+        172
+      ]
+    },
+    {
+      "canonical_lockup_id": "H-02/dark",
+      "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-dark.svg",
+      "sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7",
+      "render_width_px": 528,
+      "render_height_px": 199,
+      "alpha_bbox": [
+        23,
+        25,
+        505,
+        172
+      ]
+    },
+    {
+      "canonical_lockup_id": "H-02/monochrome",
+      "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-monochrome.svg",
+      "sha256": "6d551532099e8d948570a2c76275f388bbef7db32635fb20c9c83cab8cd1e92b",
+      "render_width_px": 528,
+      "render_height_px": 199,
+      "alpha_bbox": [
+        23,
+        25,
+        505,
+        172
+      ]
+    },
+    {
+      "canonical_lockup_id": "C-03/light",
+      "path": "brands/asyada-egitim/assets/lockups/c-03-compact-light.svg",
+      "sha256": "b23e01c233093cd132ea79a7332a75390bff8fd35b909db05694f2ba441c0a76",
+      "render_width_px": 448,
+      "render_height_px": 194,
+      "alpha_bbox": [
+        23,
+        24,
+        425,
+        169
+      ]
+    },
+    {
+      "canonical_lockup_id": "C-03/dark",
+      "path": "brands/asyada-egitim/assets/lockups/c-03-compact-dark.svg",
+      "sha256": "7a164350c572b41ce32259206293e44c72fa6b0b76ae7f12ced8a689144c0b5d",
+      "render_width_px": 448,
+      "render_height_px": 194,
+      "alpha_bbox": [
+        23,
+        24,
+        425,
+        169
+      ]
+    },
+    {
+      "canonical_lockup_id": "C-03/monochrome",
+      "path": "brands/asyada-egitim/assets/lockups/c-03-compact-monochrome.svg",
+      "sha256": "a9b6d67cb8b473c90d48010baa64173c9c97f23e15fd64dabd0496a1972ef582",
+      "render_width_px": 448,
+      "render_height_px": 194,
+      "alpha_bbox": [
+        23,
+        24,
+        425,
+        169
+      ]
+    },
+    {
+      "canonical_lockup_id": "D-04/light",
+      "path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-light.svg",
+      "sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "render_width_px": 200,
+      "render_height_px": 77,
+      "alpha_bbox": [
+        10,
+        11,
+        190,
+        65
+      ]
+    },
+    {
+      "canonical_lockup_id": "D-04/dark",
+      "path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-dark.svg",
+      "sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "render_width_px": 200,
+      "render_height_px": 77,
+      "alpha_bbox": [
+        10,
+        11,
+        190,
+        65
+      ]
+    },
+    {
+      "canonical_lockup_id": "D-04/monochrome",
+      "path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-monochrome.svg",
+      "sha256": "662bd107264ec2e658313ab6de781b38476d2b5dccb5cca611d84b6cb2ea1352",
+      "render_width_px": 200,
+      "render_height_px": 77,
+      "alpha_bbox": [
+        10,
+        11,
+        190,
+        65
+      ]
+    },
+    {
+      "canonical_lockup_id": "F-05/light",
+      "path": "brands/asyada-egitim/assets/lockups/f-05-formal-bilingual-light.svg",
+      "sha256": "e1892f677d491f6e0e2491d6c8f3ad1b0d269ed9f1a16df98ea0b6329ceff810",
+      "render_width_px": 352,
+      "render_height_px": 407,
+      "alpha_bbox": [
+        24,
+        24,
+        328,
+        380
+      ]
+    },
+    {
+      "canonical_lockup_id": "F-05/dark",
+      "path": "brands/asyada-egitim/assets/lockups/f-05-formal-bilingual-dark.svg",
+      "sha256": "1433f54445157ef60eec10327b6408da5675d85cfe22e158f34fe6760534fec9",
+      "render_width_px": 352,
+      "render_height_px": 407,
+      "alpha_bbox": [
+        24,
+        24,
+        328,
+        380
+      ]
+    },
+    {
+      "canonical_lockup_id": "F-05/monochrome",
+      "path": "brands/asyada-egitim/assets/lockups/f-05-formal-bilingual-monochrome.svg",
+      "sha256": "5a7b2a17459da2545045409fd6791eeec36578f487ffb074b8d059ebb2df3cc0",
+      "render_width_px": 352,
+      "render_height_px": 407,
+      "alpha_bbox": [
+        24,
+        24,
+        328,
+        380
+      ]
+    }
+  ]
+}
