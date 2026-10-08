@@ -1,0 +1,59 @@
+{
+  "campaign": "Sınırların dışında düşün",
+  "concept": "Yeni beşli: büyük ölçekli editoryal sorular ve karşıt marka renkleriyle, keşiften danışma çağrısına ilerleyen bir rota.",
+  "status": "HUMAN APPROVAL PENDING",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "brand_tokens": {
+    "paper": "#F7F3E9",
+    "ink": "#1D2027",
+    "red": "#BD2120",
+    "type": "Jost",
+    "lockup": "P-01 primary stacked, 380px wide on all five slides"
+  },
+  "imagery": "Previously generated campaign imagery reused as illustrative photography; not documentary evidence of named campuses. AI imagery disclosed on review page.",
+  "slides": [
+    {
+      "file": "01-cover.png",
+      "sha256": "4e1b1edadea62b8d5c32edb139c7b3c2e75ff41d45939684a8eb263442687929",
+      "source_html": "source/01.html",
+      "canonical_lockup_id": "P-01/dark",
+      "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "02-question.png",
+      "sha256": "1c3269504ae2ad3cf9126e6c12920289b3ed49136600800101a61ca7c367df4c",
+      "source_html": "source/02.html",
+      "canonical_lockup_id": "P-01/dark",
+      "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "03-countries.png",
+      "sha256": "a499a5f2fb579ce6f5bd498b4da6e6d2cb2ad3d949cd3a31f9c8813be30e892e",
+      "source_html": "source/03.html",
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "04-pathways.png",
+      "sha256": "585ffc9a0d3880010c71cb7cc9d00a69ff998960e10ace53a1f7b712896eaa6d",
+      "source_html": "source/04.html",
+      "canonical_lockup_id": "P-01/dark",
+      "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "05-cta.png",
+      "sha256": "d85ba891e388733a70e92d0b70f134bbd0d24d61e3563f0be6ed982ca8f82887",
+      "source_html": "source/05.html",
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    }
+  ]
+}
