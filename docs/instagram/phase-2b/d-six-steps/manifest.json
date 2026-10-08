@@ -1,0 +1,132 @@
+{
+  "id": "d-six-steps",
+  "title": "Üniversite başvurusu · 6 adım",
+  "character": "Monumental step numerals, red application thread, photographic diptychs and dossier typography.",
+  "slides": [
+    {
+      "index": 1,
+      "file": "d-six-steps/png/01.png",
+      "editable": "d-six-steps/editable/01.html",
+      "layout": "cover-d",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 600,
+      "sources": [
+        "EDITORIAL"
+      ],
+      "ai_imagery": false,
+      "sha256": "189e6b5a0d77ddc79791cba4bac21f02864977c6f549da05906719a6b89aac36"
+    },
+    {
+      "index": 2,
+      "file": "d-six-steps/png/02.png",
+      "editable": "d-six-steps/editable/02.html",
+      "layout": "step-photo",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "EDITORIAL"
+      ],
+      "ai_imagery": true,
+      "sha256": "38cfe6beba54e1981543e3e71bb80c3eaf6d2d75b04acb2b49f51390695fbd87"
+    },
+    {
+      "index": 3,
+      "file": "d-six-steps/png/03.png",
+      "editable": "d-six-steps/editable/03.html",
+      "layout": "step-type",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "EDITORIAL",
+        "WASEDA"
+      ],
+      "ai_imagery": false,
+      "sha256": "6ff304d5d0268886c1ffbc99030c7b5a83ef07c38aaa9ddd9d537a1ef4bf94a8"
+    },
+    {
+      "index": 4,
+      "file": "d-six-steps/png/04.png",
+      "editable": "d-six-steps/editable/04.html",
+      "layout": "step-photo",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "WASEDA",
+        "EDITORIAL"
+      ],
+      "ai_imagery": true,
+      "sha256": "621e4b880d1219f6be49d082e1c73faddf8daa31343c77a817b7b1b760673418"
+    },
+    {
+      "index": 5,
+      "file": "d-six-steps/png/05.png",
+      "editable": "d-six-steps/editable/05.html",
+      "layout": "step-type",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "WASEDA",
+        "EDITORIAL"
+      ],
+      "ai_imagery": false,
+      "sha256": "d94f3fe63e7d70c709ed731d87c1a5763f8f11b015430c7612b0f432aa251048"
+    },
+    {
+      "index": 6,
+      "file": "d-six-steps/png/06.png",
+      "editable": "d-six-steps/editable/06.html",
+      "layout": "step-photo",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "WASEDA",
+        "EDITORIAL"
+      ],
+      "ai_imagery": true,
+      "sha256": "cc8ccb248bf8e0573f0f3ca779d5820d6baa544ec6722df1f981e253ff582013"
+    },
+    {
+      "index": 7,
+      "file": "d-six-steps/png/07.png",
+      "editable": "d-six-steps/editable/07.html",
+      "layout": "step-type",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "EDITORIAL",
+        "HOUSING"
+      ],
+      "ai_imagery": false,
+      "sha256": "12316b99765e6386be043dcb28bb686ab4e0375a6f9bbf6a22c5d2e7cfaa8561"
+    },
+    {
+      "index": 8,
+      "file": "d-six-steps/png/08.png",
+      "editable": "d-six-steps/editable/08.html",
+      "layout": "cta",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 600,
+      "sources": [
+        "EDITORIAL"
+      ],
+      "ai_imagery": false,
+      "sha256": "3785fa48f19d3f15790f06942da5784a051453b2c5dd2ecda55773c5099e3be3"
+    }
+  ]
+}

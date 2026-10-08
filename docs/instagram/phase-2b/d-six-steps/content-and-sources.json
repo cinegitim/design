@@ -1,0 +1,152 @@
+{
+  "checked_on": "2026-10-08",
+  "sources": [
+    {
+      "id": "QS",
+      "url": "https://www.topuniversities.com/universities/seoul-national-university",
+      "publisher": "QS",
+      "evidence": "Rankings & Ratings: #38 in QS World University Rankings 2027. Historical table: 2026 =38; 2027 38.",
+      "qualification": "World ranking, not Asia or subject ranking; latest edition explicitly named."
+    },
+    {
+      "id": "SNU",
+      "url": "https://en.snu.ac.kr/about/overview/fact",
+      "publisher": "Seoul National University",
+      "evidence": "Gwanak Main Campus address in Seoul; official college directory includes engineering, business administration, social sciences, natural sciences.",
+      "qualification": "Academic breadth is not a subject-ranking or English-medium guarantee. SNU facts page gives 2026 QS result; carousel uses 2027 from QS."
+    },
+    {
+      "id": "LIFE",
+      "url": "https://www.topuniversities.com/universities/seoul-national-university",
+      "publisher": "QS / university profile",
+      "evidence": "Library, group study rooms, cafeterias, clubs, shuttles and dormitories in overview.",
+      "qualification": "Availability or dormitory allocation not guaranteed."
+    },
+    {
+      "id": "WASEDA",
+      "url": "https://www.waseda.jp/fsci/en/admissions_us/",
+      "publisher": "Waseda Faculty of Science and Engineering",
+      "evidence": "September 2027 English-based Undergraduate AO: 10:00 AM January 7 to 5:00 PM January 28, 2027; screening April 9; interview April 17 or 18; final results April 23. Document screening and interview. TAO portal, education-system document list and recommendation form linked.",
+      "qualification": "Only this English-based FSE AO cycle, not all Waseda. Japanese local times. Not open on 8 October 2026. Linked PDF download returned HTML; PDF contents NOT verified. No unverified score thresholds or scholarships used."
+    },
+    {
+      "id": "METRO",
+      "url": "https://www.tokyometro.jp/lang_en/ticket/types/pass/commuter/index.html",
+      "publisher": "Tokyo Metro",
+      "evidence": "Student/Commuter Railway Pass: unlimited rides on specified route; school certificate required.",
+      "qualification": "Not a city-wide unlimited student pass. Eligibility must be checked."
+    },
+    {
+      "id": "HOUSING",
+      "url": "https://www.studyinjapan.go.jp/en/life/accomodation/",
+      "publisher": "JASSO / Study in Japan",
+      "evidence": "Dormitory and apartment options; apartment initial fees and joint guarantor discussion.",
+      "qualification": "No rent quotes used; fees depend on contract; dormitory places not guaranteed."
+    },
+    {
+      "id": "CLUBS",
+      "url": "https://www.u-tokyo.ac.jp/adm/inbound/en/life-interact-sc.html",
+      "publisher": "The University of Tokyo",
+      "evidence": "Sports and cultural clubs/circles; fee, Japanese proficiency, eligibility and commitment vary by group.",
+      "qualification": "UTokyo example, not every Tokyo institution."
+    },
+    {
+      "id": "EDITORIAL",
+      "url": null,
+      "publisher": "Asya’da Eğitim editorial guidance",
+      "evidence": "Planning advice and six-step synthesis, not numerical factual claims.",
+      "qualification": "Not a mandatory universal process. No admission, visa or scholarship guarantee. Everyday routine advice is not a testimonial."
+    }
+  ],
+  "carousel": {
+    "id": "d-six-steps",
+    "title": "Üniversite başvurusu · 6 adım",
+    "character": "Monumental step numerals, red application thread, photographic diptychs and dossier typography.",
+    "slides": [
+      {
+        "layout": "cover-d",
+        "title": "6",
+        "subtitle": "ADIMDA\nBAŞVURU",
+        "body": "Doğru hedef. Eksiksiz dosya.\nGerçekçi plan.",
+        "note": "Genel yol haritası · Kuruma özel kılavuz esas.",
+        "sources": [
+          "EDITORIAL"
+        ]
+      },
+      {
+        "layout": "step-photo",
+        "step": "01",
+        "title": "Hedefini\nnetleştir.",
+        "body": "Bölüm, eğitim düzeyi, ülke ve bütçeyi birlikte düşün. Danışmanlığın katkısı: hedefini gerekçeli bir kısa listeye dönüştürmek.",
+        "image": "d2-program.png",
+        "sources": [
+          "EDITORIAL"
+        ]
+      },
+      {
+        "layout": "step-type",
+        "step": "02",
+        "title": "Koşulları\ndoğrula.",
+        "body": "Akademik uygunluk, dil, sınav ve dönem koşullarını resmî kılavuzdan kontrol et. Danışmanlığın katkısı: eksikleri ve gerçekçi hazırlık süresini belirlemek.",
+        "note": "Şartlar program ve başvuru dönemine göre değişir.",
+        "sources": [
+          "EDITORIAL",
+          "WASEDA"
+        ]
+      },
+      {
+        "layout": "step-photo",
+        "step": "03",
+        "title": "Belgelerini\nhazırla.",
+        "body": "İstenen belge listesini çıkar; gerekiyorsa çeviri ve referans sürecini başlat. Danışmanlığın katkısı: dosyanın tutarlılığını ve eksiklerini kontrol etmek.",
+        "image": "b3-docs.png",
+        "sources": [
+          "WASEDA",
+          "EDITORIAL"
+        ]
+      },
+      {
+        "layout": "step-type",
+        "step": "04",
+        "title": "Başvurunu\ntamamla.",
+        "body": "Doğru portalda, doğru döneme başvur. Gönderim onayını sakla. Danışmanlığın katkısı: tarih, saat dilimi ve son kontrol takibini yapmak.",
+        "note": "Taslak kaydı, tamamlanmış başvuru değildir.",
+        "sources": [
+          "WASEDA",
+          "EDITORIAL"
+        ]
+      },
+      {
+        "layout": "step-photo",
+        "step": "05",
+        "title": "Süreci\ntakip et.",
+        "body": "Portal mesajlarını, ek belge taleplerini ve varsa mülakat takvimini izle. Danışmanlığın katkısı: sonraki adımları kaçırmadan hazırlık yapmak.",
+        "image": "d3-portal.png",
+        "sources": [
+          "WASEDA",
+          "EDITORIAL"
+        ]
+      },
+      {
+        "layout": "step-type",
+        "step": "06",
+        "title": "Kabul sonrası\nplanı kur.",
+        "body": "Teklif koşulları, kayıt, vize ve barınmayı ayrı ayrı doğrula. Danışmanlığın katkısı: birbirine bağlı işleri bir zaman planında toplamak.",
+        "note": "Kabul, vize ve burs kararı ilgili kuruma aittir; garanti verilemez.",
+        "sources": [
+          "EDITORIAL",
+          "HOUSING"
+        ]
+      },
+      {
+        "layout": "cta",
+        "title": "Nerede olduğunu\nbirlikte netleştirelim.",
+        "body": "DM’den hedef bölümünü, eğitim düzeyini ve altı adımın hangisinde olduğunu paylaş. İlk görüşmeyi somut bir sonraki adıma dönüştürelim.",
+        "note": "Danışmanlık, kararın yerine geçmez; süreci daha açık ve kontrollü kılar.",
+        "sources": [
+          "EDITORIAL"
+        ]
+      }
+    ]
+  }
+}

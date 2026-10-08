@@ -1,0 +1,113 @@
+{
+  "id": "a-snu",
+  "title": "Seul Ulusal Üniversitesi",
+  "character": "Warm architectural editorial, red display type and monumental ranking.",
+  "slides": [
+    {
+      "index": 1,
+      "file": "a-snu/png/01.png",
+      "editable": "a-snu/editable/01.html",
+      "layout": "cover-a",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 600,
+      "sources": [
+        "SNU"
+      ],
+      "ai_imagery": true,
+      "sha256": "58abbe7f95d9a742f4154dc0a4e364e27aefbbc52cd7812e7715d7892daab2b4"
+    },
+    {
+      "index": 2,
+      "file": "a-snu/png/02.png",
+      "editable": "a-snu/editable/02.html",
+      "layout": "collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "SNU"
+      ],
+      "ai_imagery": true,
+      "sha256": "c2d48319f8d886a9ff847f63fe6c724e5c65bce7fd7cd93bdf83b34a25801550"
+    },
+    {
+      "index": 3,
+      "file": "a-snu/png/03.png",
+      "editable": "a-snu/editable/03.html",
+      "layout": "rank",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "QS"
+      ],
+      "ai_imagery": false,
+      "sha256": "1acdd3320af5ed1a4cb794089706d1d62f7fb2219f895f211276eea656ae2f0f"
+    },
+    {
+      "index": 4,
+      "file": "a-snu/png/04.png",
+      "editable": "a-snu/editable/04.html",
+      "layout": "photo-top",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "SNU",
+        "LIFE"
+      ],
+      "ai_imagery": true,
+      "sha256": "116533b20b785e4be01ad006f76d22aec50aaa0421d8302710c37f7433d74d6b"
+    },
+    {
+      "index": 5,
+      "file": "a-snu/png/05.png",
+      "editable": "a-snu/editable/05.html",
+      "layout": "photo-side",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "LIFE"
+      ],
+      "ai_imagery": true,
+      "sha256": "2fdb16e68484e29812d3537b991ad518dff8c631904676230b63baae6f2bf3e0"
+    },
+    {
+      "index": 6,
+      "file": "a-snu/png/06.png",
+      "editable": "a-snu/editable/06.html",
+      "layout": "summary",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "EDITORIAL"
+      ],
+      "ai_imagery": false,
+      "sha256": "973e5f7c14e20c632d1718e8667df0d7e0635f988549c4184b23f34dcb1b9179"
+    },
+    {
+      "index": 7,
+      "file": "a-snu/png/07.png",
+      "editable": "a-snu/editable/07.html",
+      "layout": "cta",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 600,
+      "sources": [
+        "EDITORIAL"
+      ],
+      "ai_imagery": false,
+      "sha256": "cca26c46fe265d048bec13d344d4eafe6404fcc8d998d44b052eebaeeb5431be"
+    }
+  ]
+}

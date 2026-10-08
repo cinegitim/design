@@ -1,0 +1,97 @@
+{
+  "id": "b-waseda",
+  "title": "Waseda · Gerçek başvuru takvimi",
+  "character": "Serif numerals, red registration rules and precise time-zone bulletin.",
+  "slides": [
+    {
+      "index": 1,
+      "file": "b-waseda/png/01.png",
+      "editable": "b-waseda/editable/01.html",
+      "layout": "cover-b",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 600,
+      "sources": [
+        "WASEDA"
+      ],
+      "ai_imagery": false,
+      "sha256": "e7b3cce23d584272836b6ccdc7381753539257325fa3a7df0c3a8d4c60c43986"
+    },
+    {
+      "index": 2,
+      "file": "b-waseda/png/02.png",
+      "editable": "b-waseda/editable/02.html",
+      "layout": "window",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "WASEDA"
+      ],
+      "ai_imagery": false,
+      "sha256": "df47589a12a8a8a99905fb5e381db63cf0b6f8bd048553db1583e6ab4dfa1eb8"
+    },
+    {
+      "index": 3,
+      "file": "b-waseda/png/03.png",
+      "editable": "b-waseda/editable/03.html",
+      "layout": "photo-side",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "WASEDA"
+      ],
+      "ai_imagery": true,
+      "sha256": "6a32c7af7ae0c3f80d7a2fe0a024b0a8c09695ce545ee399fafb972b9a1b81e7"
+    },
+    {
+      "index": 4,
+      "file": "b-waseda/png/04.png",
+      "editable": "b-waseda/editable/04.html",
+      "layout": "dossier",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "WASEDA"
+      ],
+      "ai_imagery": false,
+      "sha256": "fd779742377143575e291b524926a9b906dcd846e2f6804ad3e0f01ec842ad0c"
+    },
+    {
+      "index": 5,
+      "file": "b-waseda/png/05.png",
+      "editable": "b-waseda/editable/05.html",
+      "layout": "timeline",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "WASEDA"
+      ],
+      "ai_imagery": false,
+      "sha256": "6181a82be8483928596ce1469f0c2f7761e8426be9a02ec1d1dced5300681528"
+    },
+    {
+      "index": 6,
+      "file": "b-waseda/png/06.png",
+      "editable": "b-waseda/editable/06.html",
+      "layout": "cta",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 600,
+      "sources": [
+        "WASEDA"
+      ],
+      "ai_imagery": false,
+      "sha256": "09c693c5c31d0543003b50f179bda2924bf4754a63dd4169725bd38e39d7bd7c"
+    }
+  ]
+}
