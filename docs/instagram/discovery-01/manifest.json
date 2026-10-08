@@ -1,0 +1,65 @@
+{
+  "campaign": "Keşif Defteri — Asya’da Eğitim",
+  "concept": "Field-dossier / annotated editorial discovery series; visually distinct from earlier photo-led, headline-block carousels.",
+  "status": "EXPLORATORY — HUMAN APPROVAL PENDING",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "visual_tokens": {
+    "paper": "#F7F3E9",
+    "ink": "#1D2027",
+    "red": "#BD2120",
+    "type": "Jost",
+    "grid": "64px editorial margin; numbered dossier sections; ruled data tables; crop apertures",
+    "logo": "Exact P-01 primary lockup at 352px (approved minimum), stable upper-right position."
+  },
+  "imagery_note": "Illustrative AI-generated campaign photography reused from prior inspected plates; not documentary imagery of named campuses or destinations.",
+  "slides": [
+    {
+      "file": "01-cover.png",
+      "sha256": "888fd28e78495e4f6bb0843e50c22b5054c02cd9a8d60b7d924d511203a1059c",
+      "source_html": "source/01.html",
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "02-worlds.png",
+      "sha256": "b819abe912ab515c6539bf507ae579f5f0f08e55a06e361b819f61683f35b554",
+      "source_html": "source/02.html",
+      "canonical_lockup_id": "P-01/dark",
+      "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "03-goals.png",
+      "sha256": "07a8e18001be29077c80dae6cdee0ee19ba39aad675219890c850ba12c3ff783",
+      "source_html": "source/03.html",
+      "canonical_lockup_id": "P-01/dark",
+      "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "04-route.png",
+      "sha256": "9d037ac9ed4ce8eda7a202dc272619e291d7c5c89d420687d50b30cc999b5d35",
+      "source_html": "source/04.html",
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "05-cta.png",
+      "sha256": "eb3a806800d5accdbaae531bbee3802e015b791113750dabf5a1ee9814262007",
+      "source_html": "source/05.html",
+      "canonical_lockup_id": "P-01/dark",
+      "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    }
+  ]
+}
