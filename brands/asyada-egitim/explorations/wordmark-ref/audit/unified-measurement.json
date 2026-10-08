@@ -3,10 +3,10 @@
   "lines": {
    "tr1": {
     "x0_native": 0.0,
-    "x1_native": 879.678,
-    "width_native": 880.119,
+    "x1_native": 879.238,
+    "width_native": 879.678,
     "dev_left_px": 0.0,
-    "dev_right_px": 0.322
+    "dev_right_px": 0.762
    },
    "tr2": {
     "x0_native": 0.0,
@@ -23,7 +23,7 @@
     "dev_right_px": 0.322
    }
   },
-  "worst_deviation_px": 0.322,
+  "worst_deviation_px": 0.762,
   "tolerance_px": 1.0,
   "gate_pass": true,
   "W_native": 881.0

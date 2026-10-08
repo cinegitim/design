@@ -1,0 +1,73 @@
+{
+  "checks": [
+    {
+      "check": "contour is cubic Bezier, not polygonal",
+      "ok": true,
+      "detail": "1460 cubic segments, 0 straight segments"
+    },
+    {
+      "check": "contour continuity (tangent break in spans)",
+      "ok": true,
+      "detail": "worst join 0.00 deg (limit 6.0) at (np.float64(309.0), np.float64(376.3013673033979))"
+    },
+    {
+      "check": "letter counters retained (open, not filled)",
+      "ok": true,
+      "detail": "9 open counters vs 9 in the polygonal build; largest areas (native px2): [4257.4, 742.4, 741.0, 732.5, 518.6, 444.7]"
+    },
+    {
+      "check": "red apostrophe present",
+      "ok": true,
+      "detail": "977 px of red ink (30x49 native)"
+    },
+    {
+      "check": "G breve present",
+      "ok": true,
+      "detail": "3 breve component(s) at x=[242, 411, 668]"
+    },
+    {
+      "check": "both I dots present",
+      "ok": true,
+      "detail": "2 dot components at x=[411, 668]"
+    },
+    {
+      "check": "no unwanted curvature extrema (bumps)",
+      "ok": true,
+      "detail": "0 sign flips across 31 rings"
+    },
+    {
+      "check": "three text lines share one measure",
+      "ok": true,
+      "detail": "TR1 879.50  TR2 879.90  EN 879.90  spread 0.40 px"
+    },
+    {
+      "check": "three text lines share one left/right edge",
+      "ok": true,
+      "detail": "left spread 0.00 px, right spread 0.40 px"
+    },
+    {
+      "check": "canonical seal SHA-256 unchanged",
+      "ok": true,
+      "detail": "8f5d46f0302c4cc7"
+    }
+  ],
+  "pass": 10,
+  "fail": 0,
+  "cubic_segments": 1460,
+  "straight_segments": 0,
+  "lines": {
+    "tr1": [
+      0.0,
+      879.5
+    ],
+    "tr2": [
+      0.0,
+      879.9
+    ],
+    "en": [
+      0.0,
+      879.9
+    ]
+  },
+  "worst_tangent_break_deg": 0.0
+}
