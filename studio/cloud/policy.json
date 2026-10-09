@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "canonical": {
+    "seal": "brands/asyada-egitim/assets/v01-canonical.svg",
+    "seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "manifest": "brands/asyada-egitim/assets/lockups/canonical-lockups.json",
+    "manifest_sha256": "60fb1f6d105fa7c3d47e349ee75b191c023491967b75412a0323ba003b7ed351"
+  },
+  "preservation": {
+    "manifest": "studio/archive/local-preservation.json",
+    "sha256": "ded71c28dde62220655c3308c1cc40a51ba54ea31af326e68af9d3420e787aff"
+  },
+  "bundles": [
+    {
+      "path": "docs/instagram/launch-creative-02",
+      "format": "carousel",
+      "manifest": "manifest.json",
+      "dimensions": [1080, 1350],
+      "slide_ids": ["01-cover", "02-perspective", "03-five-worlds", "04-experience", "05-invitation"],
+      "required_files": ["index.html", "build.py", "render.mjs", "verify_and_package.py", "render-validation.json", "generation-notes.md", "quality-review.md", "assets/Jost-OFL.txt"]
+    }
+  ]
+}
