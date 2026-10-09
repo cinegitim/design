@@ -27,3 +27,12 @@ rebuild. Its run/check links are visible from the PR and workflow page. Passing 
 does not prove the Codex account install, native image tools, Linux raster fidelity,
 actual OCR or aesthetic acceptance. Complete ACTIVATION.md and save a real cloud
 test PR before declaring cutover or removing any local working folder.
+
+First independent GitHub Linux audit passed (all 14 tests and submitted-file checks):
+https://github.com/cinegitim/design/actions/runs/37949686740
+
+`main` protection was configured and read back: GitHub Actions `submitted-files`
+required, strict/up-to-date, applies to admins, PR required, force push/deletion
+disabled. Human creative acceptance is procedural, not a mandatory second reviewer
+in this single-owner repo. Actions pins updated to current v6 releases to avoid
+the legacy Node 20 runner warning observed in the first bootstrap run.

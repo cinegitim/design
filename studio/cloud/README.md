@@ -73,3 +73,12 @@ GitHub kalıcı kaynaktır. Cloud task state ve CI artifact'leri geçicidir. Ben
 orijinal, editable source ve teslimi commit edin; büyük dağıtım paketlerinde Release
 ve checksum indeksini birlikte kullanın. Arşivlenen eski yerel çalışma bir üretim
 onayı veya yeni kanonik sistem değildir. Yerel dosyalar cutover kanıtlanmadan silinmez.
+
+## GitHub merge kapısı
+
+`main` korumasında GitHub Actions uygulamasının `submitted-files` kontrolü zorunlu,
+branch'in güncel olması gerekir; adminlere de uygulanır. Force-push ve branch silme
+kapalıdır; değişiklikler PR üzerinden geçer. Bu ayarlar GitHub'da ayrıca doğrulandı.
+Tek sahipli repoda kullanıcı kendi PR'ını approve edemediği için zorunlu reviewer
+sayısı 0'dır. **İnsan görsel kabulü süreç/talimat kapısıdır**, GitHub'ın estetik
+denetimi veya zorunlu bir ikinci kişinin review'u olarak sunulmaz.
