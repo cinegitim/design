@@ -1,0 +1,8 @@
+{
+  "name": "brand-studio-cloud-production",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Installed only in Codex Cloud. GitHub CI never renders.",
+  "engines": {"node": "22.x"},
+  "dependencies": {"playwright-core": "1.56.1"}
+}

@@ -1,0 +1,60 @@
+name: audit
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: audit-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  submitted-files:
+    name: submitted-files
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Read submitted repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Select Python for stdlib-only audit
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - name: Select trusted base checker (never producer code)
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before || github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          TRUSTED="$RUNNER_TEMP/brand-studio-audit"
+          mkdir -p "$TRUSTED"
+          if [[ "$BASE_SHA" =~ ^[a-f0-9]{40}$ ]] && git cat-file -e "$BASE_SHA:studio/cloud/audit.py" 2>/dev/null; then
+            git show "$BASE_SHA:studio/cloud/audit.py" > "$TRUSTED/audit.py"
+            git show "$BASE_SHA:studio/cloud/policy.json" > "$TRUSTED/policy.json"
+            git archive "$BASE_SHA" studio/cloud/tests | tar -x -C "$TRUSTED"
+            echo 'Checker and existing contracts loaded from base commit.'
+          else
+            echo '::notice::First-install bootstrap: base has no checker; using submitted checker. Review this infrastructure PR explicitly.'
+            cp studio/cloud/audit.py studio/cloud/policy.json "$TRUSTED/"
+            mkdir -p "$TRUSTED/studio/cloud"
+            cp -R studio/cloud/tests "$TRUSTED/studio/cloud/"
+          fi
+          echo "TRUSTED_AUDIT=$TRUSTED" >> "$GITHUB_ENV"
+      - name: Test trusted checker rejection cases
+        env:
+          AUDIT_REPO: ${{ github.workspace }}
+        run: python -I -B -m unittest discover -s "$TRUSTED_AUDIT/studio/cloud/tests" -v
+      - name: Audit submitted sources and existing exports — no build/render
+        run: python -I -B "$TRUSTED_AUDIT/audit.py" --policy "$TRUSTED_AUDIT/policy.json" --root "$GITHUB_WORKSPACE" --report "$RUNNER_TEMP/submitted-files-audit.json"
+      - name: Save technical report (temporary evidence, not an archive)
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: submitted-files-audit
+          path: ${{ runner.temp }}/submitted-files-audit.json
+          if-no-files-found: warn
+          retention-days: 14

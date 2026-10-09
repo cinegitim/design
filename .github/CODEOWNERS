@@ -1,0 +1,9 @@
+# Human review routing; does not by itself impose a branch protection rule.
+# This single-owner repository cannot self-approve its own PRs.
+/AGENTS.md @cinegitim
+/.agents/ @cinegitim
+/.github/ @cinegitim
+/studio/cloud/ @cinegitim
+/studio/archive/ @cinegitim
+/brands/asyada-egitim/assets/lockups/ @cinegitim
+/brands/asyada-egitim/assets/v01-canonical.svg @cinegitim

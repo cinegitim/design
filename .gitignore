@@ -1,4 +1,5 @@
-# Brand Studio — git exclusions (kept local-only, never pushed)
+# Brand Studio — reproducible runtime/cache exclusions, not a creative archive
+# Legacy _archive remains excluded; reviewed unique material is preserved in archives/.
 _archive/
 asya-egitim-site.zip
 **/share-runtime/
@@ -14,3 +15,12 @@ node_modules/
 # Python bytecode caches
 __pycache__/
 *.pyc
+
+# Cloud environments recreate these; secrets belong in the cloud vault.
+.venv/
+.cloud-runtime/
+.env
+.env.*
+!.env.example
+*.pem
+*.key

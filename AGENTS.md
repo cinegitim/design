@@ -1,6 +1,17 @@
-# AI Brand Studio — OpenCode Workspace
+# AI Brand Studio — GitHub source of truth / Codex Cloud production
 
 This workspace is a reusable **AI Brand Studio** for vibe-designing complete visual identities from natural-language briefs.
+
+## Cloud operating contract (current)
+
+- **Production happens in Codex Cloud, not on the user's computer.** GitHub stores instructions, recipes, originals, editable sources, exports, manifests and review history. A cloud VM/cache is temporary, not an archive.
+- Read `studio/cloud/README.md` and `.agents/skills/cloud-delivery/SKILL.md` before delivery. Codex discovers `.agents/skills/`; the Brand Studio adapter points to the existing `.opencode/skills/brand-studio/` methodology without duplicating it.
+- Codex installs the pinned environment with `bash studio/cloud/setup.sh`, builds with `bash studio/cloud/build.sh launch-creative-02`, and audits with `python3 studio/cloud/audit.py --root .`. Build only when requested; never regenerate approved imagery as part of setup.
+- GitHub Actions **audits submitted files only**. It does not build/render, call image/LLM APIs or approve aesthetics. Existing Pages deployment serves committed outputs.
+- Register new deliverable bundles in `studio/cloud/policy.json` in the same PR. Existing experiments remain review-only; do not auto-approve an identity or publish to Instagram.
+- No automatic merge of creative work: open a PR with visual comparisons, disclose remaining compromises, and wait for human acceptance. Passing CI is not visual acceptance. Administrative/setup changes may be merged when explicitly requested.
+- Do not commit credentials, browser profiles, caches, installed dependencies or ephemeral preview servers. Save important outputs before a task ends. Legacy local files are retained until preservation and the actual cloud cutover are verified; never delete them merely because this contract exists.
+- OpenCode commands/config/plugins below are retained as legacy adapters. Their tool names and model routing do not establish capabilities in Codex. Use available tools; report missing image/browser integration honestly rather than silently switching backends.
 
 ## How to work here
 
