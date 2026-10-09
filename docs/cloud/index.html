@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="tr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brand Studio — Codex Cloud + GitHub denetimi</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f6f5f1;color:#23262c;font:17px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}main{width:min(920px,100% - 40px);margin:60px auto}h1{font-size:clamp(32px,6vw,52px);line-height:1.1;letter-spacing:-.04em}h2{margin-top:38px;font-size:25px}p,li{max-width:78ch}a{color:#1f527a}.status{border-left:4px solid #ab6615;background:#fff2d9;padding:18px 22px;border-radius:0 8px 8px 0}.flow{display:flex;flex-wrap:wrap;gap:12px;padding:22px 0}.flow span{background:#fff;border:1px solid #d5d5cc;padding:10px 15px;border-radius:7px}.checks{padding:0;list-style:none}.checks li{padding:11px 0;border-bottom:1px solid #d5d5cc}code{background:#e8e9e3;padding:2px 5px;font-size:14px;overflow-wrap:anywhere}.small{font-size:14px;color:#5b6067}footer{margin-top:45px;padding-top:20px;border-top:1px solid #d5d5cc}
+</style></head>
+<body><main>
+<p class="small">AI BRAND STUDIO · BULUT DEVİR REHBERİ · v1</p>
+<h1>Codex üretir.<br>GitHub korur ve denetler.</h1>
+<p>Üretim tarifleri, talimatlar, düzenlenebilir kaynaklar, orijinaller ve teslimler repoda. Build/render Codex Cloud’da; GitHub Actions yalnızca gönderilen dosyaları denetler.</p>
+<div class="status"><strong>Repo altyapısı hazır; hesap tarafında etkinleştirme bekliyor.</strong><br>Bu sayfa bir Cloud ortamının oluşturulduğunu veya görsel üretim bağlantısının çalıştığını iddia etmez. İlk gerçek bulut testi tamamlanana kadar yerel dosyalar silinmez.</div>
+<div class="flow" aria-label="Çalışma akışı"><span>Codex Cloud üretim</span><span>GitHub PR</span><span>Dosya denetimi</span><span>İnsan görsel onayı</span><span>Pages yayını</span></div>
+<h2>Ne kuruldu?</h2>
+<ul class="checks">
+<li>Codex’e uygun repo skill’leri; mevcut Brand Studio metodolojisine tek kaynaktan erişim.</li>
+<li>Python 3.12 / Node 22 kurulum tarifi; sabit Python paketleri ve Playwright lockfile.</li>
+<li>İlk taşınabilir üretim tarifi: beş slaytlı <a href="../instagram/launch-creative-02/">Launch Creative 02</a>. Mevcut teslim bu altyapı değişikliğinde yeniden üretilmedi.</li>
+<li>Bağımsız denetim: kanonik logo hash’leri, PNG yapısı/boyutu, kaynak metni, asset bağlantıları, paket bütünlüğü ve bilinen credential örüntüleri.</li>
+<li>Yerelde benzersiz 12 yaratıcı/tarihsel dosya korundu. Toplam 253 dosyanın checksum/sınıflandırma kaydı tutuldu; kopyalar ve runtime logları tekrar yüklenmedi.</li>
+</ul>
+<h2>Hesapta yapılacak tek seferlik kurulum</h2>
+<ol><li>ChatGPT Work/Codex → <strong>Work in → Cloud → Create environment</strong>.</li><li><code>cinegitim/design</code> reposunu bağlayın; Python 3.12 ve Node 22 isteyin.</li><li>Install script: <code>bash studio/cloud/setup.sh</code>.</li><li>Başarılı doctor testi sonrası ortamı Publish edin; yeni task’ta ilk gerçek bulut testini çalıştırın.</li></ol>
+<p><a href="https://github.com/cinegitim/design/blob/main/studio/cloud/ACTIVATION.md">Tam etkinleştirme adımları ve hazır test promptu →</a></p>
+<h2>Üretim ve denetim komutları</h2>
+<p>Codex’te build: <code>bash studio/cloud/build.sh launch-creative-02</code><br>Salt okunur denetim: <code>python3 studio/cloud/audit.py --root .</code></p>
+<p class="small">Actions build/render yapmaz; LLM veya image API çağırmaz. Teknik denetim estetik onay değildir. Denetim kaynak/dosya tutarlılığını kontrol eder; raster OCR/gerçek logo pikseli veya birebir üretim kanıtı yerine geçmez. OpenCode görsel plugin’leri otomatik Codex bağlantısı sayılmaz.</p>
+<footer><a href="https://github.com/cinegitim/design/blob/main/studio/cloud/README.md">Mimari ve sınırlar</a> · <a href="https://github.com/cinegitim/design/blob/main/studio/archive/README.md">Yerel koruma kaydı</a> · <a href="https://github.com/cinegitim/design/actions/workflows/audit.yml">GitHub denetim çalışmaları</a><p class="small">İncelemelik görselleri yayımlamak, marka onayı veya Instagram yayını değildir. Bulut önbelleği kalıcı arşiv değildir.</p></footer>
+</main></body></html>
