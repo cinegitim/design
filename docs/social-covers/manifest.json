@@ -1,6 +1,6 @@
 {
   "brand_id": "asyada-egitim",
-  "version": "02 — slogan and destination set",
+  "version": "03 — LinkedIn editorial style carried into X and Facebook",
   "slogan": "Üniversite için başka bir dünya var.",
   "countries": [
     "Çin",
@@ -47,22 +47,22 @@
   "assets": [
     {
       "platform": "X",
-      "id": "x-profile-header-v2",
+      "id": "x-profile-header-v3",
       "dimensions_px": {
         "width": 1500,
         "height": 500
       },
-      "png": "assets/x-profile-header-v2.png",
-      "png_sha256": "c8525af092bc2c4435063c1f5cb14e2bfd6010db6eda724c00761aab4a526efc",
-      "svg": "assets/x-profile-header-v2.svg",
-      "svg_sha256": "02741092aa3209353863b273899faa445fcc67e8a3cbf2f4af5b10cd8c527cfc",
+      "png": "assets/x-profile-header-v3.png",
+      "png_sha256": "96aadc6190ad147b4e58d33ad665b31003591269a86dee28a52eca84d1448678",
+      "svg": "assets/x-profile-header-v3.svg",
+      "svg_sha256": "7e396aa4919396f3ba42f3be37089844ec1d5b70bba00c743704f571abb7655d",
       "formats": [
         "PNG",
         "SVG (editable source)"
       ],
-      "canonical_lockup_id": "H-02/dark",
-      "canonical_lockup_path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-dark.svg",
-      "canonical_lockup_sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "minimum_lockup_width_px": 528,
@@ -95,27 +95,28 @@
     },
     {
       "platform": "FACEBOOK",
-      "id": "facebook-page-cover-v2",
+      "id": "facebook-page-cover-v3",
       "dimensions_px": {
         "width": 851,
         "height": 315
       },
-      "png": "assets/facebook-page-cover-v2.png",
-      "png_sha256": "3fcf0ae3d0144e332464918691ae160ceb028e59ab01599c8a16aa48a66f3630",
-      "svg": "assets/facebook-page-cover-v2.svg",
-      "svg_sha256": "39c3c1a29f178767b8997ac4760d055546384e0b98712c32d94a41c4b5258ddf",
+      "png": "assets/facebook-page-cover-v3.png",
+      "png_sha256": "e40657285bce3e1f1f0000f016005fb4fc65def9a8494120eb8039e64077f455",
+      "svg": "assets/facebook-page-cover-v3.svg",
+      "svg_sha256": "30789165887f6f5b0603a39d40605c766449fac8b164f5054b9745b30c6183a8",
       "formats": [
         "PNG",
         "SVG (editable source)"
       ],
-      "canonical_lockup_id": "D-04/dark",
-      "canonical_lockup_path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-dark.svg",
-      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-light.svg",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "minimum_lockup_width_px": 200,
       "lockup_width_px": 210,
       "status": "APPLICATION CANDIDATE — NOT A NEW CANONICAL TEMPLATE"
     }
-  ]
+  ],
+  "country_treatment": "Uniform ink typography with small red separators; no country-specific colored backgrounds."
 }
