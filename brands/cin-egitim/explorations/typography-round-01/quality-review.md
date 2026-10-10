@@ -1,22 +1,21 @@
-# Visual quality review — typography round 01
+# Görsel kalite incelemesi — tipografi turu 01
 
-## Scope / fidelity
+## Genişletme kararı
 
-- Three real HTML wordmark renderings use the same canonical logo asset by path. No logo shapes, colors, or dimensions inside the source SVG are changed; no raster was generated.
-- The typographic grammars differ beyond font choice: A is left-aligned horizontal serif / two lines; B is centered vertical sans / one line; C is horizontal condensed uppercase / ruled type block.
-- Palette, paper field, test copy, and exact symbol remain constant across directions. Swapping color cannot erase their distinction.
-- The A/B/C preview is not production-ready logo art. Spacing, optical correction, small-size survival, licensing, dark-field variants, and full wordmark approval remain unresolved until one direction is selected.
+- Önceki üç örnek aynı dar karşılaştırma alanında kalıyordu. Bu tur 12 yazı ailesini, sembolün yazıya göre üç konumunu (solda, üstte, sağda), tek/çift satırı, büyük harf, italik ve farklı harf aralıklarını kapsayacak biçimde genişletildi.
+- A–L yalnız font adıyla ayrılmıyor: hizalama, satır sayısı, ağırlık, case ve lockup silueti de değişiyor. Ortak kâğıt/mürekkep/kırmızı rolleri renk değişiminin tipografik ayrımları maskelemesini önlüyor.
+- Tüm 12 örnek kanonik sembol dosyasını kullanır; sembol geometrisi ve rengiyle oynanmadı. Hiçbirinde görüntü modeli veya raster kullanılmadı.
 
-## Risks / fixes
+## Riskler
 
-- **High if treated as final:** HTML text is not outlined production artwork and hosted fonts may fail offline. Keep all three labelled exploratory; only outline/type-test the human-selected direction later.
-- **Medium:** C's uppercase/condensed form may feel too institutional or reduce warmth. Evaluate after actual browser inspection at 16–24 px; do not assume from font name alone.
-- **Medium:** A's serif + wordmark may be too bookish for a service identity. Compare the narrow horizontal header specimen against B before selecting.
-- **Low:** Google Fonts network dependence and system fallbacks can shift line breaks. Verify selected font file/licence and approved production renderer later.
+- **Yüksek — üretim kimliği değil:** Hepsi HTML/CSS yazısıdır; henüz harf aralığı/kerning optik olarak düzeltilmedi ve fontlar web'den gelir. Bir seçimden sonra yalnız o yönü özel olarak geliştirmek gerekir.
+- **Orta — görünürlük:** Condensed (C/H), mono (F) ve geniş tracking (J) küçük kullanımda okunurluk kaybedebilir. Seçilen yön 16–24 px ve gerçek uygulamalarda sınanmalı.
+- **Orta — ton:** A/D/I/K/L serif yönleri birbirinden ağırlık/kontrast/italik ile ayrılsa da marka için en uygun duygusal ton kullanıcı seçimiyle belirlenmeli; hiçbir stil kanonik sayılmaz.
+- **Düşük — font teslimi:** Google Fonts bağlantısı çevrimdışı çalışmayabilir ve fallback ölçüleri değiştirir. Nihai lisans, subset ve statik/variable font dosyası seçilen yön için tekrar kontrol edilmeli.
 
-## Actual checks / limits
+## Gerçek kontroller / sınırlar
 
-- Opened the comparison board and all three detail pages in the available browser at 1000 px viewport width. All board/detail mark images and Google Fonts reported loaded; no horizontal document overflow was reported. Accessible names, card headings, Turkish glyph specimen and local page links appeared in the browser accessibility snapshot.
-- Browser screenshot capture failed because the desktop tab was not available to the screenshot tool. Therefore **visual screenshot inspection is unavailable**; DOM/render checks are not a substitute for human visual approval.
-- No mobile device emulation or 16–24 px legibility review was performed. Mobile CSS exists but needs a real narrow viewport check.
-- Exact canonical logo SHA is independently verified by `verify.py`.
+- Karşılaştırma panosu ve A–L'nin 12 detay sayfası tarayıcıda açıldı. 1000 px genişlikte her sayfada kanonik SVG ve ilgili Google Font yüklendi; yatay document taşması olmadı. Pano 12 kart/13 sembol görselini yükledi, kartlardaki lockup'ların tamamı önizleme kutularına sığdı.
+- Tarayıcı screenshot aracı masaüstü sekmesini yakalayamadı. Görsel ekran görüntüsü incelemesi bu nedenle **tamamlanmadı**; gerçek tarayıcı render ölçümleri insanın estetik değerlendirmesinin yerini tutmaz.
+- Mobil cihaz emülasyonu ve küçük boyut optik kontrolü yapılmadı.
+- `verify.py` sembolün tam SHA-256 hash'ini ve 12 sayfanın kaynak hash'lerini denetler; estetik kaliteyi onaylamaz.

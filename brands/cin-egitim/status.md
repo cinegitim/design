@@ -9,5 +9,5 @@
 - Kaynak/kilit değişmedi. `explorations/svg-round-01/` son SR PNG'den üretilen, kullanıcı tarafından onaylanıp kilitlenen path-only semboldür.
 - Kanonik sembol: `assets/symbol.svg` — kullanıcı 2026-10-10'da SVG'yi onaylayıp kilitlememi istedi. SHA-256 ve karar `brand.json` / `decisions/2026-10-10-symbol-svg-lock.md` içinde kayıtlıdır.
 - Sembol onayı tam brand-system veya identity approval değildir. PR #73 merge edildi; sembol site ana sayfası ve Çin Eğitim bölümünde yayında.
-- Yeni kapsam: `explorations/typography-round-01/` içinde kilitli SVG ile birlikte üç tipografik/yerleşim denemesi; A/B/C kullanıcı seçimi bekleniyor. Hiçbiri wordmark olarak kilitlenmedi ve `brand-system.md` oluşturulmadı.
+- Yeni kapsam: `explorations/typography-round-01/` içinde kilitli SVG ile birlikte 12 ayrı tipografik/yerleşim denemesi (A–L); kullanıcı seçimi bekleniyor. Hiçbiri wordmark olarak kilitlenmedi ve `brand-system.md` oluşturulmadı.
 - Asya'da Eğitim'in ayrı, onaylı varlıkları değiştirilmedi.

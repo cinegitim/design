@@ -1,30 +1,39 @@
 # Çin Eğitim · Tipografi turu 01
 
-Kullanıcının onayladığı sembol SVG'si değiştirilmeden, üç tipografi ve wordmark yerleşimi denemesiyle birlikte gösteriliyor. Bu tur kanonik wordmark, tam kimlik veya tipografi sistemi onayı değildir.
+Kullanıcının onayladığı sembol SVG'sini değiştirmeden, **12 ayrı yazı ailesi ve tipografik yerleşim** inceleniyor. Bunlar wordmark taslaklarıdır; hiçbiri kanonik logo, lockup ailesi, tam kimlik veya tipografi sistemi onayı değildir.
 
-## Review
+## Karşılaştırma panosu
 
-- `docs/cin-egitim/typography-round-01/index.html` — all three directions on one comparison board.
-- `direction-a.html` — **Sessiz Kütüphane**, Source Serif 4 + Manrope; yatay, iki satırlı serif imza.
-- `direction-b.html` — **Açık Rehber**, Manrope; sembol üstte, tek satır iki ağırlıklı isim.
-- `direction-c.html` — **Program İndeksi**, Barlow Condensed + Manrope; yatay, kompakt büyük harfli imza.
-- `manifest.json` records exact output hashes and the canonical logo hash.
+`docs/cin-egitim/typography-round-01/index.html` on iki seçeneği aynı sayfada gösterir. Her biri için detay kartı da vardır:
 
-Pano tarayıcıda yazı tiplerini Google Fonts üzerinden yükler; font ve ağırlık seçimi denemedir. Tipografiyi renkten bağımsız karşılaştırmak için üç yönde aynı kâğıt/mürekkep/kırmızı paleti kullanılır.
+| Yön | Ad | Yazı ailesi | Ana kurgu |
+|---|---|---|---|
+| A | Sessiz Kütüphane | Source Serif 4 | Yatay sembol, iki satırlı serif |
+| B | Açık Rehber | Manrope | Ortalı dikey imza, tek satır sans |
+| C | Program İndeksi | Barlow Condensed | Yatay, çizgiyle başlayan büyük harf bloğu |
+| D | İnce Klasik | Cormorant Garamond | Yatay, tek satırlı yüksek kontrast serif |
+| E | Yeni Nesil | IBM Plex Sans | İki ağırlıklı, iki satırlı grotesk |
+| F | Arşiv Kaydı | IBM Plex Mono | İki satırlı monospaced kayıt düzeni |
+| G | Yumuşak Karşılama | Nunito Sans | Sağda sembol, sağ hizalı yuvarlak sans |
+| H | Dikey Vurgu | Oswald | Ortalı dikey, condensed büyük harf |
+| I | Kültür Defteri | DM Serif Display | Üstte sembol, merkezî display serif |
+| J | Açık Ufuk | Space Grotesk | Sembol sağda, açık aralıklı tek satır |
+| K | Mektup Tonu | Lora | Sağda sembol, italik iki satır |
+| L | Sağlam Rehber | Roboto Slab | Yatay, kalın slab-serif blok |
 
 ## Kilitli sembolün sınırı
 
-Her sembol görseli `brands/cin-egitim/assets/symbol.svg` dosyasını (SHA-256 `1cc1808947d8f7f759ebb9956a715d535bb4fcc985d3f85194d4eaf1a85c7381`) yolları, kırpımı, oranı ve renkleri değişmeden kullanır. Kilitli dosyaya tipografi eklenmez. Wordmark eskizleri yalnız HTML/CSS içindedir. Türkçe dışında dil eklenmemiştir.
+Her lockup, `brands/cin-egitim/assets/symbol.svg` dosyasını (SHA-256 `1cc1808947d8f7f759ebb9956a715d535bb4fcc985d3f85194d4eaf1a85c7381`) aynen kullanır. Sembolün yolları, kırpımı, oranı veya rengi değiştirilmedi; sembole yazı eklenmedi. Türkçe marka adı dışında İngilizce veya Çince metin kullanılmadı.
 
-## Regeneration / validation
+## Yeniden üretim / doğrulama
 
 ```sh
 python3 brands/cin-egitim/explorations/typography-round-01/build.py
 python3 brands/cin-egitim/explorations/typography-round-01/verify.py
 ```
 
-Sayfalar standart HTML/CSS ve Google Fonts kullanır. Görsel model çağrısı veya raster üretimi yapılmadı. `research.md`, `quality-review.md`, `handoff.md` dosyalarına bakın.
+HTML/CSS panosu Google Fonts üzerinden tipografi yükler. Görsel model çağrısı veya raster üretimi yapılmadı. Araştırma, risk ve tarayıcı testlerinin durumu `research.md`, `quality-review.md`, `handoff.md` dosyalarında.
 
-## Gate
+## İnsan kararı
 
-İnsan A/B/C seçimi bekleniyor. Seçimden sonra yalnız seçilen yön geliştirilecek. Bu turda `brand-system.md`, kanonik wordmark/lockup veya site gezinmesine bağlantı eklenmedi.
+A–L arasından bir yön seçilecek; ardından yalnız seçilen yön optik boşluk, ağırlık, kerning ve uygulama testleriyle geliştirilecek. Seçimden önce kanonik wordmark veya `brand-system.md` oluşturulmayacak.
