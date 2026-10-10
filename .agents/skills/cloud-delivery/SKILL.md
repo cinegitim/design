@@ -1,14 +1,18 @@
 ---
 name: cloud-delivery
-description: Build and deliver Brand Studio assets in ChatGPT Work or Codex Cloud. Preserve recipes, outputs and history on GitHub with audit-only CI. Use for cloud setup, export, packaging, isolated branch delivery and handoffs to OpenCode.
+description: Build and deliver Brand Studio assets in OpenCode or ChatGPT Work/Codex. Preserve shared recipes, outputs and history on GitHub with audit-only CI. Use for remote/cloud setup, export, packaging, isolated branch delivery and executor handoffs.
 ---
 
-# Work / Codex builds; GitHub audits
+# OpenCode or Work/Codex produces; GitHub audits
 
 1. Read `AGENTS.md`, `studio/work/README.md`, `studio/cloud/README.md`, `studio/cloud/policy.json`.
 2. Start from current main in a separate checkout/worktree and a new
    `publish/<topic>` branch. Preserve other branches/PRs and use the handoff template.
    Run `python3 studio/work/preflight.py --root . --brand <slug>` before production.
+   Either executor may produce; no automatic handoff to Codex is required. For a
+   no-user-machine-project-checkout requirement, the tool server and workspace
+   must be remote. Read `studio/cloud/REMOTE-OPENCODE.md`; disclose actual execution
+   location rather than treating GitHub connectivity as cloud execution.
 3. For requested rendering, install with `bash studio/cloud/setup.sh`; inspect capabilities with
    `bash studio/cloud/doctor.sh`. Installation **does not build or generate images**.
 4. Run the registered recipe only when the task requests output changes:
