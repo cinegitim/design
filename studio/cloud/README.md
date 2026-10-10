@@ -3,21 +3,22 @@
 ChatGPT Work/Codex ve OpenCode aynı kaynakları ayrı branch/checkout'larda kullanır:
 [Work adapter ve yetenek haritası](../work/README.md). Bu dosya sabit sürümlü
 render tarifini açıklar; Work'te repo okuma/düzenleme için bu kurulum gerekmez.
-Her değişiklik önce açık PR olarak teslim edilir; merge için o PR'a açık kullanıcı
-izni gerekir. Mevcut Pages yayını değişmez.
+Her değişiklik önce PR olarak teslim edilir. Tamamlanan işte exact-head zorunlu
+denetimler geçip teknik çakışmalar ve esaslı review engelleri giderilince ek merge
+onayı istenmeden merge edilir; ardından yayın doğrulanır. Açık PR hold talimatına uyulur.
 
 ## Mimari
 
 **GitHub kaynaklar → OpenCode veya Work/Codex üretim → kaynak/çıktı PR'ı
 → bağımsız dosya denetimi → insan görsel kabulü (tasarımda)
-→ o PR için açık merge izni → main → mevcut GitHub Pages yayını.**
+→ exact-head zorunlu denetimler / çözülen teknik çakışmalar → main → doğrulanan Pages yayını.**
 
 | Görev | Nerede? |
 |---|---|
 | Brief, skill, marka sistemi, tarifler, fontlar, orijinaller ve tarihçe | GitHub repo |
 | Tasarım, görsel araçlar, build/render, PNG/SVG/ZIP üretimi | OpenCode veya Work/Codex; gerçekten mevcut araçlarla |
 | SHA-256, kaynak/manifest, boyut, kanonik logo, paket, olası secret kontrolleri | GitHub Actions |
-| Estetik/fidelity onayı, yeni kanonik logo kararı ve PR merge izni | İnsan; ayrı kararlar |
+| Estetik/fidelity onayı, yeni kanonik logo kararı, esaslı kreatif değişiklikler | İnsan; CI ve repo merge bunların yerine geçmez |
 | Onaylı/incelemelik çıktıların web sunumu | Mevcut Pages; Instagram'a otomatik gönderim yok |
 
 Actions **render/build yapmaz**, üretici scriptleri import etmez, LLM/image API
@@ -57,7 +58,9 @@ Chromium veya görsel araçların yerine geçmez. Basit dosya okuma/düzenleme/P
 GitHub API üzerinden checkout olmadan yapılabilir. Tam üretimde çalışma alanı gerekir;
 seçilen modelde OpenCode için geçici yerel disk alanında, Work/Codex için kendi
 bulut alanında bulunur. Kalıcı proje arşivi GitHub'dır. İş bitiminde doğrulanan
-manager-owned task clone ve Git object store temizlenir; PR merge edilmez.
+manager-owned task clone ve Git object store temizlenir. Cleanup merge yapmaz;
+normal sıra checked merge → yayın doğrulama → cleanup'tır. Held OPEN PR da güvenle
+arşivlendiyse temizlenebilir. MERGED PR desteği EPHEMERAL.md'de açıklanır.
 Uzak sunucu zorunlu değildir. Her oturum gerçek execution host'unu belirtir;
 sohbet hafızası paylaşılmaz. Geçici klasör gerçek RAM disk veya sıfır yerel veri değildir.
 

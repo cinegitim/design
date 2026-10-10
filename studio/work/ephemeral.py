@@ -266,7 +266,7 @@ class Manager:
             rec.update(state='pushed', pushed_sha=sha)
             atomic(record, rec)
             return {'status': 'pushed', 'branch': rec['branch'], 'sha': sha,
-                    'next': 'Open an unmerged PR and inspect CI; no files deleted'}
+                    'next': 'Open PR and follow the checked-delivery policy; no files deleted'}
 
     def proof(self, path, rec, discard_runtime=False):
         tree, inventory, runtime = self.inspect(path, rec, discard_runtime)
@@ -335,7 +335,7 @@ class Manager:
             shutil.rmtree(path)  # Only owned task clone; never delete root/records/legacy repos.
             rec['state'] = 'cleaned'
             atomic(record, rec)
-            return dict(status='cleaned; PR still unmerged', task=task, **result)
+            return dict(status='cleaned; GitHub branch/PR preserved', task=task, **result)
 
 
 def pr_gate(manager, task, number):
@@ -344,10 +344,10 @@ def pr_gate(manager, task, number):
         _, path, rec = manager.record(task)
         repository = rec['repo'].removeprefix('https://github.com/').removesuffix('.git')
         data = json.loads(run(['gh', 'pr', 'view', str(number), '--repo', repository,
-                               '--json', 'state,headRefName,headRefOid,baseRefName,isCrossRepository,statusCheckRollup']))
-        if (data['state'] != 'OPEN' or data['baseRefName'] != 'main' or data['isCrossRepository']
+                               '--json', 'state,headRefName,headRefOid,baseRefName,isCrossRepository,statusCheckRollup,mergeCommit']))
+        if (data['state'] not in ('OPEN', 'MERGED') or data['baseRefName'] != 'main' or data['isCrossRepository']
                 or data['headRefName'] != rec['branch'] or data['headRefOid'] != git(path, 'rev-parse', 'HEAD')):
-            raise Stop('PR is not the exact open task branch/head targeting main')
+            raise Stop('PR is not the exact OPEN/MERGED task branch/head targeting main')
         checks = data['statusCheckRollup'] or []
         passed = any(c.get('name') == 'submitted-files' and c.get('status') == 'COMPLETED'
                      and c.get('conclusion') == 'SUCCESS' for c in checks)
@@ -355,6 +355,14 @@ def pr_gate(manager, task, number):
                              or c.get('status') in ('QUEUED', 'IN_PROGRESS', 'PENDING')
                              or c.get('state') not in (None, 'SUCCESS') for c in checks):
             raise Stop('Exact-head submitted-files CI has not passed; files retained')
+        if data['state'] == 'MERGED':
+            merge_sha = (data.get('mergeCommit') or {}).get('oid', '')
+            if not re.fullmatch('[a-f0-9]{40}', merge_sha):
+                raise Stop('MERGED PR has no valid merge commit; files retained')
+            comparison = json.loads(run(['gh', 'api',
+                                         f'repos/{repository}/compare/{merge_sha}...main']))
+            if comparison.get('status') not in ('ahead', 'identical'):
+                raise Stop('PR merge commit is not in current main history; files retained')
         return data['headRefOid']
 
 
@@ -379,7 +387,7 @@ def main():
         sub.add_argument('--discard-runtime', action='store_true', help='Exclude ignored dependency/cache directories; consent to discard them on cleanup')
         if command == 'cleanup':
             sub.add_argument('--apply', action='store_true', help='Delete ONLY after verification; default is dry run')
-            sub.add_argument('--pr', type=int, help='Exact open PR number; required for --apply')
+            sub.add_argument('--pr', type=int, help='Exact OPEN/MERGED PR number; required for --apply')
     args = vars(parser.parse_args())
     root = args.pop('root')
     command = args.pop('command')
