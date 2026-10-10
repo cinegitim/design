@@ -1,0 +1,33 @@
+{
+  "brand": "cin-egitim",
+  "round": "typography-round-01",
+  "status": "EXPLORATION / HUMAN A-L SELECTION PENDING",
+  "scope": "Twelve typography and wordmark-placement explorations; each uses the exact canonical symbol unchanged. No wordmark or full identity approval.",
+  "canonical_logo": "brands/cin-egitim/assets/symbol.svg",
+  "canonical_logo_sha256": "1cc1808947d8f7f759ebb9956a715d535bb4fcc985d3f85194d4eaf1a85c7381",
+  "decision_record": "brands/cin-egitim/decisions/2026-10-10-symbol-svg-lock.md",
+  "brand_name": "Çin Eğitim",
+  "language": "Turkish-first; no English or Chinese writing added in these lockup studies.",
+  "palette": {
+    "locked_symbol": "Exact canonical SVG; no geometry, colour, crop, or path edits.",
+    "wordmark_ink": "#202020",
+    "paper": "#F5F0E7",
+    "annotation_red": "#BF0C1A"
+  },
+  "directions": [
+    {"id":"A","slug":"direction-a","name":"Sessiz Kütüphane","promise":"Akademik ağırlık, sakin editoryal ritim.","font_display":"Source Serif 4","font_support":"Manrope","case":"Baş harfleri büyük","lines":["Çin","Eğitim"],"arrangement":"Yatay sembol + iki satırlı serif wordmark","logic":"Sol hizalı iki satır ve sıkı serif ritmi; sembol solda, tipografi sağda.","mood":"Editoryal · ölçülü · kültürlü"},
+    {"id":"B","slug":"direction-b","name":"Açık Rehber","promise":"İlk bakışta anlaşılır, dijitalde doğrudan.","font_display":"Manrope","font_support":"Manrope","case":"Baş harfleri büyük","lines":["Çin Eğitim"],"arrangement":"Ortalanmış dikey sembol + tek satır sans","logic":"Sembol üstte, temiz tek satırlı isim altta; kısa ve merkezî imza.","mood":"Açık · çağdaş · güven veren"},
+    {"id":"C","slug":"direction-c","name":"Program İndeksi","promise":"Sıkı, modüler ve kurumsal bir bilgi imzası.","font_display":"Barlow Condensed","font_support":"Manrope","case":"Tümü büyük harf","lines":["ÇİN","EĞİTİM"],"arrangement":"Yatay sembol + çizgiyle başlayan condensed blok","logic":"Sembol solda; çizgi ve dar büyük harfli blok yalnız tipografiyi yapılandırır.","mood":"Kompakt · sistematik · kurumsal"},
+    {"id":"D","slug":"direction-d","name":"İnce Klasik","promise":"Zarif kontrast, gösterişsiz bir kültür tonu.","font_display":"Cormorant Garamond","font_support":"Manrope","case":"Baş harfleri büyük","lines":["Çin Eğitim"],"arrangement":"Yatay sembol + tek satır yüksek kontrastlı serif","logic":"Uzun ve ince serifler tek satırda akış kurar; sembol sol başta ağırlık noktasıdır.","mood":"Zarif · kültürel · rafine"},
+    {"id":"E","slug":"direction-e","name":"Yeni Nesil","promise":"Çağdaş sans, kontrollü ve insani bir ses.","font_display":"IBM Plex Sans","font_support":"Manrope","case":"Baş harfleri büyük","lines":["Çin","Eğitim"],"arrangement":"Yatay sembol + iki ağırlıklı grotesk satır","logic":"İlk satır daha güçlü, ikinci satır daha sakin; net, işlevsel ve teknikleşmeyen ritim.","mood":"Çağdaş · akılcı · insani"},
+    {"id":"F","slug":"direction-f","name":"Arşiv Kaydı","promise":"Düzenli, ölçülü, belge gibi okunaklı.","font_display":"IBM Plex Mono","font_support":"IBM Plex Sans","case":"Tümü büyük harf","lines":["ÇİN","EĞİTİM"],"arrangement":"Yatay sembol + monospaced kayıt bloğu","logic":"Eş aralıklı harfler iki satırlı kayıt hissi verir; ince üst-alt çizgiler yalnız yazıyı çerçeveler.","mood":"Arşivsel · kesin · düzenli"},
+    {"id":"G","slug":"direction-g","name":"Yumuşak Karşılama","promise":"Yakın, sıcak ve kolay yaklaşılır.","font_display":"Nunito Sans","font_support":"Manrope","case":"Baş harfleri büyük","lines":["Çin","Eğitim"],"arrangement":"Sembol sağda + sağ hizalı, yuvarlak sans wordmark","logic":"Tipografi soldan başlar, sembol sağda denge kurar; yumuşak biçimler sert kurumsallığı azaltır.","mood":"Sıcak · erişilebilir · samimi"},
+    {"id":"H","slug":"direction-h","name":"Dikey Vurgu","promise":"Dar alanda güçlü, dikey bir imza.","font_display":"Oswald","font_support":"Manrope","case":"Tümü büyük harf","lines":["ÇİN","EĞİTİM"],"arrangement":"Ortalanmış sembol üstte + dikey condensed wordmark","logic":"Dar karakterli harfler sembol altındaki kompakt bloğa oturur; küçük yüzeylerde dikey kullanım için.","mood":"Güçlü · dar · yüksek enerjili"},
+    {"id":"I","slug":"direction-i","name":"Kültür Defteri","promise":"Edebî karakter, belirgin ve hatırlanır serif.","font_display":"DM Serif Display","font_support":"Manrope","case":"Baş harfleri büyük","lines":["Çin","Eğitim"],"arrangement":"Sembol üstte + merkezî display-serif wordmark","logic":"Sembol üstte, geniş ve heykelsi serif harfler iki merkezî satırda; yüksek kontrastlı dikey imza.","mood":"Edebî · karakterli · seçkin"},
+    {"id":"J","slug":"direction-j","name":"Açık Ufuk","promise":"Geniş nefes, geometrik ve çağdaş duruş.","font_display":"Space Grotesk","font_support":"Manrope","case":"Tümü büyük harf","lines":["ÇİN EĞİTİM"],"arrangement":"Tek satır wordmark + sembol sağda","logic":"Açık harf aralığı yatay akışı uzatır; sembol sağ uçta kapanış noktası olur.","mood":"Geometrik · özgün · ferah"},
+    {"id":"K","slug":"direction-k","name":"Mektup Tonu","promise":"Daha kişisel, düşünceli ve edebî bir yakınlık.","font_display":"Lora","font_support":"Manrope","case":"Baş harfleri büyük, italik","lines":["Çin","Eğitim"],"arrangement":"İtalik iki satırlı wordmark solda + sembol sağda","logic":"Hafif italik hareket tipografiyi kişiselleştirir; sağdaki değişmeyen sembol denge sağlar.","mood":"Kişisel · düşünceli · sıcak"},
+    {"id":"L","slug":"direction-l","name":"Sağlam Rehber","promise":"Ağırlıklı, güven veren ve net bir bitiş.","font_display":"Roboto Slab","font_support":"Manrope","case":"Tümü büyük harf","lines":["ÇİN","EĞİTİM"],"arrangement":"Yatay sembol + kalın slab-serif iki satır","logic":"Karemsi slab serifler sağlam bir blok kurar; kısa kırmızı çizgi yalnız yazı bloğunu işaretler.","mood":"Sağlam · kararlı · görünür"}
+  ],
+  "distinction_test": "A-L varyasyonu yalnız font adı değildir: 12 ayrı font karakteri, sembolün yazıya göre üç konumu (solda, üstte, sağda), 1 veya 2 satır, büyük harf/italik biçimler ve farklı çizgi/harf aralığı kurguları birlikte karşılaştırılır.",
+  "selection_gate": "Kullanıcı A-L arasından yön seçecek; seçimden önce hiçbir wordmark veya brand-system kanonikleşmez."
+}
