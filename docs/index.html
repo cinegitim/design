@@ -4,35 +4,38 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Asya'da Eğitim — Brand Studio</title>
+<meta name="description" content="Asya'da Eğitim marka kimliği, Çin Eğitim sembolü, aktif tasarım çalışmaları ve arşiv. Onaylı logolar ve proje durumları tek yerde.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120;--line:#d9d1bf;--muted:#65625a;--card:#fffdf7}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--paper);color:var(--ink);font-family:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
-.wrap{max-width:1180px;margin:0 auto;padding:0 28px 100px}
-.topbar{display:flex;align-items:center;gap:14px;padding:22px 0;border-bottom:1px solid var(--ink)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px 80px}
+.skip-link{position:absolute;top:8px;left:8px;z-index:5;transform:translateY(-160%);padding:10px 14px;background:var(--ink);color:var(--paper);border-radius:6px}
+.skip-link:focus{transform:translateY(0)}
+.topbar{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--ink)}
 .topbar img{width:44px;height:auto}
 .topbar .t{font-size:13px;letter-spacing:.14em;font-weight:500}
-.topbar nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
-.topbar nav a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 16px;background:var(--card)}
+.topbar nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.topbar nav a{min-height:40px;display:inline-flex;align-items:center;font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:var(--card)}
 .topbar nav a.here,.topbar nav a:hover{border-color:var(--ink)}
-.hero{display:grid;grid-template-columns:200px 1fr;gap:44px;align-items:center;padding:64px 0 20px}
-.hero img.seal{width:200px;height:auto}
-.hero img.word{width:min(520px,100%);height:auto;display:block;margin-top:18px}
-h1{font-size:clamp(44px,7vw,88px);line-height:1.0;letter-spacing:-.045em;font-weight:600}
-.lede{font-size:19px;max-width:56ch;margin-top:16px;color:#33302a}
-.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.badge{font-size:12px;letter-spacing:.08em;font-weight:500;border-radius:999px;padding:8px 18px;border:1px solid var(--ink)}
+.hero{display:grid;grid-template-columns:112px 1fr;gap:26px;align-items:center;padding:30px 0 14px}
+.hero img.seal{width:108px;height:auto}
+.hero img.word{width:min(300px,100%);height:auto;display:block;margin-top:10px}
+h1{font-size:clamp(34px,4.5vw,56px);line-height:1.04;letter-spacing:-.04em;font-weight:600}
+.lede{font-size:16px;max-width:64ch;margin-top:12px;color:#33302a}
+.badges{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.badge{font-size:11px;letter-spacing:.06em;font-weight:500;border-radius:999px;padding:6px 11px;border:1px solid var(--ink)}
 .badge.ok{background:var(--ink);color:var(--paper)}
 .badge.live{border-color:var(--red);color:var(--red)}
 .badge.old{border-color:var(--line);color:var(--muted)}
-section.block{margin-top:72px}
+section.block{margin-top:54px}
 .kicker{font-size:12px;letter-spacing:.16em;color:var(--muted);font-weight:500}
 h2{font-size:clamp(28px,4vw,46px);letter-spacing:-.03em;margin:8px 0 6px}
 .sub{color:#3d3a34;max-width:70ch}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:26px}
-.card{display:block;background:var(--card);border:1px solid var(--ink);border-radius:14px;padding:26px 24px;text-decoration:none;color:var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:20px}
+.card{display:block;background:var(--card);border:1px solid var(--ink);border-radius:14px;padding:22px 20px;text-decoration:none;color:var(--ink)}
 .card:hover{box-shadow:6px 6px 0 var(--ink)}
 .card.first{grid-column:1/-1;display:grid;grid-template-columns:1fr 220px;gap:24px;align-items:center;background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .card.first:hover{box-shadow:6px 6px 0 var(--red)}
@@ -42,28 +45,37 @@ h2{font-size:clamp(28px,4vw,46px);letter-spacing:-.03em;margin:8px 0 6px}
 .card b.t{font-size:24px;display:block;margin:8px 0 4px;letter-spacing:-.01em}
 .card p{font-size:15px;opacity:.85}
 .card .go{font-size:13px;margin-top:14px;display:inline-block;border-bottom:2px solid var(--red);padding-bottom:2px}
-footer{margin-top:90px;border-top:1px solid var(--line);padding-top:22px;font-size:13px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+footer{margin-top:68px;border-top:1px solid var(--line);padding-top:20px;font-size:13px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
 code{font-size:12px;overflow-wrap:anywhere}
-.brandbar{border-bottom:1px solid var(--ink);padding:16px 0 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.brandbar{border-bottom:1px solid var(--ink);padding:10px 0 12px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .brandbar .blab{font:11px/1.4 ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
-.brandbar .opts{display:flex;gap:10px;flex-wrap:wrap}
+.brandbar .opts{display:flex;gap:8px;flex-wrap:wrap}
 .opt{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);
-  border:1px solid var(--line);border-radius:10px;padding:9px 16px 9px 11px;background:var(--card);min-height:56px}
+  border:1px solid var(--line);border-radius:10px;padding:7px 13px 7px 9px;background:var(--card);min-height:52px}
 .opt:hover{border-color:var(--ink)}
 .opt.here{border-color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
-.opt img,.opt .pending{width:38px;height:38px;flex:none;border-radius:7px}
+.opt img,.opt .pending{width:34px;height:34px;flex:none;border-radius:7px}
 .opt .pending{border:1.5px dashed var(--line);display:grid;place-items:center;
   font:10px/1.1 ui-monospace,Menlo,monospace;color:var(--muted);letter-spacing:.04em;text-align:center}
 .opt .txt{display:flex;flex-direction:column;gap:2px}
-.opt .on{font-size:16px;font-weight:500;letter-spacing:-.01em}
-.opt .sub{font:11px/1.2 ui-monospace,Menlo,monospace;color:var(--muted);letter-spacing:.05em}
+.opt .on{font-size:15px;font-weight:500;letter-spacing:-.01em}
+.opt .sub{font:10px/1.2 ui-monospace,Menlo,monospace;color:var(--muted);letter-spacing:.035em}
 .opt.here .sub{color:var(--red)}
-@media(max-width:760px){.brandbar{gap:10px}.opt{padding:8px 12px 8px 9px}.opt .sub{display:none}}
-@media(max-width:760px){.hero{grid-template-columns:1fr;gap:20px}.hero img.seal{width:140px}.card.first{grid-template-columns:1fr}.card.first img{width:170px}.wrap{padding:0 18px 70px}}
+.china-feature{display:grid;grid-template-columns:1fr 148px;gap:22px;align-items:center;margin-top:26px;padding:20px 24px;border:1px solid var(--line);border-radius:14px;background:var(--card);text-decoration:none;color:var(--ink)}
+.china-feature:hover{border-color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.china-feature img{width:132px;height:132px;object-fit:contain;justify-self:center}
+.china-feature .tag{font-size:11px;letter-spacing:.14em;color:#bf0c1a;font-weight:600}
+.china-feature h2{font-size:clamp(26px,4vw,38px);margin:6px 0}
+.china-feature p{font-size:15px;max-width:60ch;color:#3d3a34}
+.china-feature .go{display:inline-block;margin-top:10px;font-size:13px;border-bottom:2px solid #bf0c1a;padding-bottom:2px}
+a:focus-visible{outline:3px solid #bf0c1a;outline-offset:3px}
+@media(max-width:760px){.brandbar{gap:8px}.brandbar .opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));flex:1;min-width:0}.opt{min-width:0;padding:7px 8px;gap:8px}.opt .txt{min-width:0}.opt .on{font-size:13px}.opt .sub{font-size:9px;overflow-wrap:anywhere}}
+@media(max-width:760px){.topbar{flex-wrap:wrap}.topbar .t{font-size:11px}.topbar nav{width:100%;margin-left:0}.topbar nav a{padding:6px 11px;font-size:12px}.hero{grid-template-columns:82px 1fr;gap:16px;padding:22px 0 10px}.hero img.seal{width:78px}.hero img.word{width:min(300px,100%);margin-top:8px}h1{font-size:clamp(32px,8vw,44px)}.lede{font-size:15px;margin-top:9px}.badges{margin-top:11px;gap:6px}.badge{font-size:10px;padding:5px 8px}.card.first{grid-template-columns:1fr}.card.first img{width:150px}.china-feature{grid-template-columns:1fr 100px;gap:12px;padding:16px}.china-feature img{width:96px;height:96px;grid-column:2;grid-row:1;align-self:center}.china-feature .tag{font-size:9px}.china-feature h2{font-size:26px}.china-feature p{font-size:14px}.wrap{padding:0 16px 56px}section.block{margin-top:42px}.cards{grid-template-columns:1fr;gap:12px;margin-top:16px}footer{margin-top:52px}}
 </style>
 </head>
 <body>
 <div class="wrap">
+  <a class="skip-link" href="#main-content">İçeriğe geç</a>
   <div class="brandbar" role="navigation" aria-label="Marka seçimi">
     <span class="blab">Marka</span>
     <div class="opts">
@@ -72,8 +84,8 @@ code{font-size:12px;overflow-wrap:anywhere}
         <span class="txt"><span class="on">Asya'da Eğitim</span><span class="sub">Education in Asia · APPROVED / CANONICAL</span></span>
       </a>
       <a class="opt" href="cin-egitim/">
-        <span class="pending" aria-hidden="true">YÖN<br>PANOSU</span>
-        <span class="txt"><span class="on">Çin Eğitim</span><span class="sub">Education in China · YÖN SEÇİMİ BEKLENİYOR</span></span>
+        <img src="cin-egitim/assets/symbol.svg" alt="">
+        <span class="txt"><span class="on">Çin Eğitim</span><span class="sub">Education in China · SYMBOL APPROVED / LOCKED</span></span>
       </a>
     </div>
   </div>
@@ -81,13 +93,14 @@ code{font-size:12px;overflow-wrap:anywhere}
   <div class="topbar">
     <img src="asyada-seal/assets/v01-canonical.svg" alt="Asya'da Eğitim mührü">
     <span class="t">ASYA'DA EĞİTİM &middot; BRAND STUDIO</span>
-    <nav><a class="here" href="./">Panel</a><a href="identity/">Kimlik</a><a href="instagram/">Instagram</a><a href="social-covers/">Sosyal kapaklar</a><a href="archive/">Arşiv</a></nav>
+    <nav aria-label="Ana gezinme"><a class="here" href="./" aria-current="page">Panel</a><a href="identity/">Kimlik</a><a href="instagram/">Instagram</a><a href="social-covers/">Sosyal kapaklar</a><a href="archive/">Arşiv</a></nav>
   </div>
 
-  <div class="hero">
+  <main id="main-content">
+  <div class="hero" aria-labelledby="page-title">
     <img class="seal" src="asyada-seal/assets/v01-canonical.svg" alt="Onaylı kanonik mühür V-01">
     <div>
-      <h1>Brand Studio</h1>
+      <h1 id="page-title">Brand Studio</h1>
       <img class="word" src="asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg" alt="ASYA'DA EĞİTİM — EDUCATION IN ASIA onaylı wordmark">
       <p class="lede">Onaylı kimlik, aktif üretim ve tam arşiv tek çatıda. Logo ailesi kanonik ve kilitli; Instagram sistemi aktif geliştirmede; tüm tarihsel çalışmalar korunuyor.</p>
       <div class="badges">
@@ -97,6 +110,15 @@ code{font-size:12px;overflow-wrap:anywhere}
       </div>
     </div>
   </div>
+
+  <a class="china-feature" href="cin-egitim/">
+    <div><span class="tag">ÇİN EĞİTİM · SYMBOL APPROVED / CANONICAL</span>
+      <h2>Çin Eğitim</h2>
+      <p>Kırmızı fırça halkası ve pagoda sembolü onaylandı ve kilitlendi. Bu, sembol onayıdır; tam marka sistemi ve wordmark henüz geliştirilmedi.</p>
+      <span class="go">Sembolü ve çalışma durumunu gör &rarr;</span>
+    </div>
+    <img src="cin-egitim/assets/symbol.svg" alt="Çin Eğitim'in kırmızı fırça halkası, siyah pagoda ve mürekkep zemini sembolü">
+  </a>
 
   <section class="block" id="identity">
     <div class="kicker">01 &middot; LOGO &amp; TYPOGRAPHY — ÖNCE KİMLİK</div>
@@ -158,6 +180,8 @@ code{font-size:12px;overflow-wrap:anywhere}
       </a>
     </div>
   </section>
+
+  </main>
 
   <footer>
     <span>Asya'da Eğitim Brand Studio &middot; Mühür SHA <code>8f5d46f0&hellip;</code> &middot; Kilit manifest <code>60fb1f6d&hellip;</code></span>
