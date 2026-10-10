@@ -5,6 +5,10 @@ alanında üretir. Ücretli VM yok. Her host'ta bir ana geçici alan; her aktif 
 küçük, izole bir alt alan ve yeni branch. Gerçek RAM disk değildir; klasör sayısı
 token tasarrufu sağlamaz. Script rutin işlemleri ve uzun logları azaltır.
 
+**Kalıcı küçük istisna:** ortak talimat/araç kaynakları [BASELINE.md](BASELINE.md)
+uyarınca geçici kökün dışında bir kez saklanır. Marka dosyaları ve teslimler bu
+temele alınmaz; değişmeyen kaynak blob'ları yeni işte tekrar indirilmez.
+
 ```text
 OpenCode: geçici kök/tasks/iş-a ──────┐
                                     ├─ GitHub kaynak + branch/PR + kısa handoff
@@ -34,12 +38,19 @@ export BS="$BRAND_STUDIO_TEMP_ROOT/control/ephemeral.py"
 Sonraki işlemler: `python3 "$BS" ...`. `--root /seçilen/geçici/alan` ile tek bir
 özel kök seçilebilir. Alan mevcut ve doluysa manager onu sahiplenmez. Root özel
 izinli (700) ve ownership marker'lıdır. Küçük launcher, task kayıtları ve hash
-özetleri tutulur; proje kaynakları yalnız `tasks/` içinde bulunur. Bu küçük kontrol
+özetleri tutulur; üretim kaynakları `tasks/` içinde bulunur, ortak temel ayrı kalıcı
+baseline'da saklanır. Bu küçük kontrol
 dosyaları veya OpenCode'un global oturum/cache'leri için “sıfır yerel byte” iddiası yok.
 Temp alan OS tarafından da silinebilir; bu yüzden çalışırken düzenli commit/push gerekir.
 Kurulu control/ launcher, override verilmezse kendi kökünü kullanır. Scriptin yeni
 sürümüne geçmek için task'lar duruyorken control/ kopyasını açıkça güncelleyin; init
 eski launcher'ın üstüne sessizce yazmaz.
+
+Bir kez `python3 "$BS" calibrate` çalıştırın; bundan sonra sürümü kayıtlı kalıcı
+launcher `~/.local/share/brand-studio/baseline/ephemeral.py` kullanılabilir.
+`BRAND_STUDIO_TEMP_ROOT` seçiminizi koruyun veya her çağrıya `--root` verin.
+`start` artık varsayılan olarak baseline'ı kullanır; `--no-baseline` bu yolu
+bilinçli olarak kapatır. `BRAND_STUDIO_BASELINE_ROOT` kalıcı yol override'ıdır.
 
 Codex kendi cloud workspace'inde aynı scripti kullanabilir. Mevcut platform checkout'u
 manager tarafından silinmez; çalışma manager-owned ayrı clone'a alınır. Platformun
@@ -63,6 +74,10 @@ fetch eder. Bu bant genişliği ve geçici disk kullanır; sıfır indirme deği
 Her task bağımsız clone'dur; ortak bare repo/worktree cache'i kullanılmaz. Böylece
 task silinince `.git` object store'u da silinir. Legacy worktree'leri kullanmak,
 kaynakları eski ortak Git object store'unda bırakacağı için yeni modelin parçası değil.
+Baseline'dan doğrulanmış blob'lar clone'un **kendi** object store'una yazılır;
+ortak alternates, hardlink veya çalışma dosyası symlink'i yoktur. Her iş başlangıcı
+yeni main commit/tree metadatasını alır; yalnız değişen ortak kaynak içeriği yüklenir.
+Marka kaynaklarının alınması ve son bağımsız koruma fetch'i bu optimizasyonun dışındadır.
 
 Üretim sonrası:
 

@@ -11,6 +11,13 @@ root. Important bytes and handoff records go to GitHub, then verified task clone
 can be removed without merging. No paid remote VM is required. Cleanup is only
 for new manager-owned clones, never the platform's existing checkout or legacy files.
 
+Shared instructions and tool sources can persist in a private, hash-verified
+[local baseline](BASELINE.md), outside the temporary task root. Startup calibrates
+against its committed main tree and imports unchanged blobs locally into the
+independent clone. After merging shared-source changes, run `calibrate`; brand
+assets, outputs and credentials never belong in this baseline. Work/Codex uses
+its own host's available storage, not the user's local disk or auth.
+
 ## Start a Work request
 
 1. Read root `AGENTS.md`, `.agents/skills/brand-studio/SKILL.md`, the shared

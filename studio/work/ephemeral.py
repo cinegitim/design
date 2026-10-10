@@ -17,6 +17,21 @@ import uuid
 
 VERSION = 1
 RUNTIME = {'.venv', 'node_modules', '.cache', 'studio/cloud/node_modules'}
+BASELINE_FILES = {'AGENTS.md', 'README.md', '.gitignore', 'opencode.json', 'opencode.jsonc'}
+BASELINE_DIRS = ('.opencode', '.agents', '.github', 'studio/work', 'studio/cloud',
+                 'studio/templates', 'studio/references', 'studio/workflow', 'studio/tools')
+BASELINE_EXT = {'.md', '.py', '.sh', '.json', '.jsonc', '.ts', '.js', '.mjs', '.txt', '.yml', '.yaml'}
+
+
+def baseline_path(name):
+    p = Path(name)
+    if p.is_absolute() or '..' in p.parts or '\\' in name:
+        return False
+    if any(part in {'.git', '.venv', 'node_modules', '__pycache__', '.cache'}
+           or part.startswith('.env') for part in p.parts):
+        return False
+    return name in BASELINE_FILES or (p.suffix in BASELINE_EXT or name == '.github/CODEOWNERS') and any(
+        name.startswith(directory + '/') for directory in BASELINE_DIRS)
 
 
 class Stop(RuntimeError):
@@ -61,6 +76,155 @@ def safe_ref(value):
         raise Stop('Base must be main or an explicitly selected publish/ branch')
     run(['git', 'check-ref-format', 'refs/heads/' + value])
     return value
+
+
+class Baseline:
+    """Persistent immutable source snapshots, not a shared Git object store."""
+    def __init__(self, root, repo):
+        raw = Path(root).expanduser().absolute()
+        if raw.is_symlink():
+            raise Stop('Baseline root symlinks refused')
+        self.root = raw.resolve()
+        self.repo = repo
+
+    @contextlib.contextmanager
+    def lock(self):
+        if not self.root.exists():
+            self.root.mkdir(parents=True, mode=0o700)
+        if self.root.stat().st_uid != os.getuid() or self.root.stat().st_mode & 0o077:
+            raise Stop('Baseline must be owned and private (mode 700)')
+        marker = self.root/'owner.json'
+        if not marker.exists():
+            if any(self.root.iterdir()):
+                raise Stop('Will not adopt a nonempty baseline directory')
+            atomic(marker, {'version': VERSION, 'uid': os.getuid(), 'repo': self.repo})
+            (self.root/'snapshots').mkdir(mode=0o700)
+        for name in ('owner.json', 'snapshots', '.lock', 'active.json', 'ephemeral.py'):
+            if (self.root/name).is_symlink():
+                raise Stop('Baseline control symlink refused')
+        if json.loads(marker.read_text()) != {'version': VERSION, 'uid': os.getuid(), 'repo': self.repo}:
+            raise Stop('Baseline repository/ownership mismatch')
+        with (self.root/'.lock').open('a') as f:
+            fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            yield
+
+    def current(self, rec=None, check_launcher=True):
+        if rec is None:
+            active = self.root/'active.json'
+            if not active.exists():
+                return None, {}
+            rec = json.loads(active.read_text())
+        digest = rec['digest']
+        if not re.fullmatch('[a-f0-9]{64}', digest):
+            raise Stop('Invalid baseline digest')
+        snapshot = self.root/'snapshots'/digest
+        if snapshot.is_symlink() or not snapshot.is_dir():
+            raise Stop('Invalid baseline snapshot')
+        entries = rec['files']
+        if hashlib.sha256(json.dumps(entries, sort_keys=True).encode()).hexdigest() != digest:
+            raise Stop('Baseline inventory changed')
+        actual = set()
+        for parent, dirs, files in os.walk(snapshot, followlinks=False):
+            if any((Path(parent)/name).is_symlink() for name in dirs):
+                raise Stop('Baseline directory symlink refused')
+            for name in files:
+                relative = (Path(parent)/name).relative_to(snapshot).as_posix()
+                if relative not in entries or not baseline_path(relative):
+                    raise Stop('Unrecorded baseline file; files retained')
+                file = Path(parent)/name
+                meta = entries[relative]
+                if (file.is_symlink() or not file.is_file() or
+                        bool(file.stat().st_mode & 0o111) != (meta['mode'] == '100755')):
+                    raise Stop('Baseline file mode/type changed')
+                data = file.read_bytes()
+                oid = hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+                if oid != meta['oid'] or hashlib.sha256(data).hexdigest() != meta['sha256']:
+                    raise Stop('Baseline bytes changed; preserve edits before recalibrating')
+                actual.add(relative)
+        if actual != set(entries):
+            raise Stop('Baseline files missing')
+        if check_launcher and rec.get('launcher_sha256'):
+            launcher = self.root/'ephemeral.py'
+            if not launcher.is_file() or hashlib.sha256(launcher.read_bytes()).hexdigest() != rec['launcher_sha256']:
+                raise Stop('Installed launcher changed; preserve edits before recalibrating')
+        return snapshot, rec
+
+    def calibrate(self, source, sha):
+        """Read only committed main tree, never dirty worktree bytes or PR sources."""
+        with self.lock():
+            old, rec = self.current()
+            available = {meta['oid']: old/name for name, meta in rec.get('files', {}).items()}
+            tree = {}
+            for entry in git(source, 'ls-tree', '-r', '-z', sha, binary=True).split(b'\0'):
+                if not entry:
+                    continue
+                fields, rawname = entry.split(b'\t', 1)
+                mode, kind, oid = fields.decode().split()
+                name = os.fsdecode(rawname)
+                if baseline_path(name):
+                    if kind != 'blob' or mode not in ('100644', '100755'):
+                        raise Stop('Baseline sources must be regular committed files')
+                    tree[name] = (mode, oid)
+            if not tree or 'AGENTS.md' not in tree:
+                raise Stop('Baseline requires committed AGENTS.md')
+            missing = sorted({oid for _, oid in tree.values()} - set(available))
+            if missing:
+                # Prefetch only selected source blobs, not brand imagery or outputs.
+                git(source, '-c', 'fetch.negotiationAlgorithm=noop', 'fetch', '--no-tags',
+                    '--no-write-fetch-head', 'origin', *missing)
+            entries, contents = {}, {}
+            for name, (mode, oid) in tree.items():
+                data = available[oid].read_bytes() if oid in available else git(source, 'cat-file', 'blob', oid, binary=True)
+                if hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest() != oid:
+                    raise Stop('Source blob mismatch')
+                entries[name] = {'oid': oid, 'mode': mode, 'sha256': hashlib.sha256(data).hexdigest()}
+                contents[name] = data
+            digest = hashlib.sha256(json.dumps(entries, sort_keys=True).encode()).hexdigest()
+            snapshot = self.root/'snapshots'/digest
+            if not snapshot.exists():
+                with tempfile.TemporaryDirectory(prefix='prepare-', dir=self.root) as tmp:
+                    prepared = Path(tmp)/'source'
+                    prepared.mkdir()
+                    for name, data in contents.items():
+                        file = prepared/name
+                        file.parent.mkdir(parents=True, exist_ok=True)
+                        file.write_bytes(data)
+                        file.chmod(0o555 if entries[name]['mode'] == '100755' else 0o444)
+                    os.rename(prepared, snapshot)
+            elif old != snapshot:
+                self.current({'digest': digest, 'files': entries}, check_launcher=False)
+            launcher_sha = None
+            if 'studio/work/ephemeral.py' in contents:
+                launcher = self.root/'ephemeral.py'
+                if launcher.exists() and not rec.get('launcher_sha256'):
+                    raise Stop('Unrecorded installed launcher; files retained')
+                data = contents['studio/work/ephemeral.py']
+                launcher_sha = hashlib.sha256(data).hexdigest()
+                if launcher_sha != rec.get('launcher_sha256'):
+                    with tempfile.NamedTemporaryFile(dir=self.root, delete=False) as f:
+                        f.write(data)
+                        temporary = Path(f.name)
+                    temporary.chmod(0o444)
+                    os.replace(temporary, launcher)
+            atomic(self.root/'active.json', {'source_sha': sha, 'digest': digest, 'files': entries,
+                                           'launcher_sha256': launcher_sha})
+            self.current()
+            return {'status': 'calibrated' if digest != rec.get('digest') else 'unchanged',
+                    'source_sha': sha, 'digest': digest, 'path': str(snapshot),
+                    'files': len(entries), 'loaded_blobs': len(missing),
+                    'reused_blobs': len({oid for _, oid in tree.values()}) - len(missing),
+                    'launcher': str(self.root/'ephemeral.py') if launcher_sha else None}
+
+    def seed(self, destination):
+        with self.lock():
+            snapshot, rec = self.current()
+            if snapshot is None:
+                return 0
+            for name, meta in rec['files'].items():
+                # Independent objects: no alternates, hardlinks, or worktree symlinks.
+                if git(destination, 'hash-object', '-w', '--no-filters', '--', str(snapshot/name)) != meta['oid']:
+                    raise Stop('Baseline import mismatch')
+            return len(rec['files'])
 
 
 class Manager:
@@ -124,11 +288,13 @@ class Manager:
             raise Stop('Task symlink refused')
         return p, path, rec
 
-    def start(self, task, repo, base='main', executor='opencode', paths=()):
+    def start(self, task, repo, base='main', executor='opencode', paths=(), baseline_root=None):
         slug(task)
         safe_ref(base)
         repo = repo_url(repo)
         branch = f'publish/{executor}-{task}'
+        if baseline_root and Path(baseline_root).expanduser().resolve().is_relative_to(self.root):
+            raise Stop('Persistent baseline must be outside the temporary manager root')
         with self.lock():
             record = self.root / 'records' / (task + '.json')
             path = self.root / 'tasks' / task
@@ -146,14 +312,30 @@ class Manager:
             # Independent clone: its objects disappear too. Never use legacy worktree stores.
             run(['git', '-c', 'core.autocrlf=false', 'clone', '--depth=1', '--single-branch', '--filter=blob:none',
                  '--no-checkout', '--branch', base, '--', repo, str(path)])
+            baseline = None
+            if baseline_root:
+                cache = Baseline(baseline_root, repo)
+                if base == 'main':
+                    baseline = cache.calibrate(path, git(path, 'rev-parse', 'refs/remotes/origin/main'))
+                cache.seed(path)
             if paths:
                 git(path, 'sparse-checkout', 'set', '--cone', '--', *paths)
             git(path, 'checkout', '-b', branch, 'refs/remotes/origin/'+base)
             _, _, rec = self.record(task)
-            rec.update(state='active', base_sha=git(path, 'rev-parse', 'HEAD'), sparse_paths=list(paths))
+            rec.update(state='active', base_sha=git(path, 'rev-parse', 'HEAD'), sparse_paths=list(paths), baseline=baseline)
             atomic(record, rec)
             return {'status': 'active', 'task': task, 'path': str(path), 'branch': branch,
-                    'base_sha': rec['base_sha']}
+                    'base_sha': rec['base_sha'], 'baseline': baseline}
+
+    def calibrate(self, repo, baseline_root):
+        repo = repo_url(repo)
+        if Path(baseline_root).expanduser().resolve().is_relative_to(self.root):
+            raise Stop('Persistent baseline must be outside the temporary manager root')
+        with self.lock(), tempfile.TemporaryDirectory(prefix='baseline-sync-', dir=self.root) as tmp:
+            run(['git', 'clone', '--depth=1', '--single-branch', '--filter=blob:none',
+                 '--no-checkout', '--branch', 'main', '--', repo, tmp])
+            sha = git(tmp, 'rev-parse', 'refs/remotes/origin/main')
+            return Baseline(baseline_root, repo).calibrate(tmp, sha)
 
     def inspect(self, path, rec, discard_runtime=False):
         if not path.is_dir() or not (path/'.git').is_dir() or (path/'.git').is_symlink():
@@ -381,6 +563,13 @@ def main():
     start.add_argument('--base', default='main')
     start.add_argument('--executor', choices=['opencode', 'codex', 'work'], default='opencode')
     start.add_argument('--paths', nargs='*', default=[])
+    baseline_default = os.environ.get('BRAND_STUDIO_BASELINE_ROOT',
+                                     str(Path.home()/'.local/share/brand-studio/baseline'))
+    start.add_argument('--baseline-root', default=baseline_default)
+    start.add_argument('--no-baseline', action='store_true', help='Use independent remote sources without local source reuse')
+    calibrate = commands.add_parser('calibrate', help='Refresh persistent source baseline from current main')
+    calibrate.add_argument('--repo', default='https://github.com/cinegitim/design.git')
+    calibrate.add_argument('--baseline-root', default=baseline_default)
     for command in ('publish', 'check', 'cleanup'):
         sub = commands.add_parser(command)
         sub.add_argument('task')
@@ -393,6 +582,8 @@ def main():
     command = args.pop('command')
     try:
         manager = Manager(root)
+        if command == 'start' and args.pop('no_baseline'):
+            args['baseline_root'] = None
         if command == 'cleanup':
             pr = args.pop('pr')
             if args['apply'] and not pr:
