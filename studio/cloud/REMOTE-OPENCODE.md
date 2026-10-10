@@ -1,5 +1,9 @@
 # OpenCode + Work/Codex — proje bilgisayara indirilmeden çalışma
 
+> **Güncel seçim (2026-10-10): uzak VM değil, geçici yerel OpenCode + bulut Work/Codex.**
+> [EPHEMERAL.md](../work/EPHEMERAL.md) bu modeli uygular. Aşağıdaki uzak sunucu
+> mimarisi yalnız isteğe bağlı alternatiftir; bu görev sunucu kurmaz.
+
 ## Kısa cevap
 
 **GitHub repo'su tek başına bir çalışma/üretim sunucusu değildir.** Standart

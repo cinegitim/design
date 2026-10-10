@@ -15,10 +15,11 @@ class DualProducerDocs(unittest.TestCase):
     def test_public_guide_matches_shared_contract(self):
         text=(ROOT/'docs/cloud/index.html').read_text()
         self.assertIn('OpenCode veya Work/Codex üretir',text)
-        self.assertIn('uzakta çalışırsa',text)
+        self.assertIn('geçici yerel',text)
         self.assertIn('sıfır yerel veri garantisi verilmez',text)
         self.assertNotIn('<h1>Codex üretir.',text)
         self.assertNotIn('Build/render Codex Cloud’da;',text)
+        self.assertIn('ücretli VM',text)
 
     def test_remote_guide_distinguishes_goal_from_activation(self):
         text=(ROOT/'studio/cloud/REMOTE-OPENCODE.md').read_text()

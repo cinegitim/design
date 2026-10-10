@@ -9,10 +9,11 @@ description: Build and deliver Brand Studio assets in OpenCode or ChatGPT Work/C
 2. Start from current main in a separate checkout/worktree and a new
    `publish/<topic>` branch. Preserve other branches/PRs and use the handoff template.
    Run `python3 studio/work/preflight.py --root . --brand <slug>` before production.
-   Either executor may produce; no automatic handoff to Codex is required. For a
-   no-user-machine-project-checkout requirement, the tool server and workspace
-   must be remote. Read `studio/cloud/REMOTE-OPENCODE.md`; disclose actual execution
-   location rather than treating GitHub connectivity as cloud execution.
+   Either executor may produce; no automatic handoff to Codex is required.
+   Current choice is ephemeral local OpenCode + cloud Work/Codex, no paid VM.
+   Read `studio/work/EPHEMERAL.md`: use a single temporary root per host, with
+   isolated disposable clones inside it. State actual execution location.
+   Never delete legacy checkouts or claim a temporary disk directory is RAM.
 3. For requested rendering, install with `bash studio/cloud/setup.sh`; inspect capabilities with
    `bash studio/cloud/doctor.sh`. Installation **does not build or generate images**.
 4. Run the registered recipe only when the task requests output changes:
@@ -34,6 +35,13 @@ description: Build and deliver Brand Studio assets in OpenCode or ChatGPT Work/C
 10. After an authorized merge, verify Pages and live export hashes. CI artifacts
     expire and cloud task state is temporary: commit important results or use a
     durable release with a checksum index. Never end with unique files only in the VM.
+11. At task completion, stop writers/preview servers, leave the task directory and
+    run the owned workspace cleanup dry-run, then `cleanup <task> --pr <number> --apply`.
+    It verifies independent remote bytes and exact-head passing CI before removing
+    ONLY that task clone, including its Git objects. Merge is not required.
+    Any dirty/untracked/ignored unique file, stash, branch mismatch, unpushed work,
+    network failure or failed CI stops cleanup. Dependencies/caches require the
+    explicit `--discard-runtime` option; originals/exports must never go there.
 
 Cloud selection/account consent cannot be provisioned by adding repo files.
 Follow `studio/cloud/ACTIVATION.md`; mark cloud activation and raster connectors

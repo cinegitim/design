@@ -5,6 +5,12 @@ commands and plugins. Work reads the same sources and uses tools exposed in its
 current conversation. This adapter neither installs a plugin nor changes models.
 The existing `docs/` panel and GitHub Pages deployment remain intact.
 
+Current workspace choice: [EPHEMERAL.md](EPHEMERAL.md). OpenCode produces locally
+in a single owned temporary root; Work/Codex produces in its own cloud temporary
+root. Important bytes and handoff records go to GitHub, then verified task clones
+can be removed without merging. No paid remote VM is required. Cleanup is only
+for new manager-owned clones, never the platform's existing checkout or legacy files.
+
 ## Start a Work request
 
 1. Read root `AGENTS.md`, `.agents/skills/brand-studio/SKILL.md`, the shared

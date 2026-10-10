@@ -28,7 +28,8 @@ dosyalarını okur. Pages'in mevcut deployment mekanizması değişmez.
 
 Hesap bağlantısı için [ACTIVATION.md](ACTIVATION.md). Ortamın yayımlanması ve gerçek
 Codex Cloud testleri hesap sahibi tarafından yapılmalıdır; repo hazırlığı bunu kanıtlamaz.
-Yerel proje kopyası olmadan OpenCode için [REMOTE-OPENCODE.md](REMOTE-OPENCODE.md).
+Seçilen ücretsiz çalışma modeli: [geçici OpenCode + bulut Work/Codex](../work/EPHEMERAL.md).
+Uzak OpenCode yalnız alternatif: [REMOTE-OPENCODE.md](REMOTE-OPENCODE.md).
 Bu Linux tarifini iki executor da kullanabilir; özel OpenCode pluginleri veya Work
 görsel araçları ortamın gerçek yeteneklerine bağlıdır.
 
@@ -54,9 +55,11 @@ Eski OpenCode pluginleri/model isimleri Codex'e kurulu connector sayılmaz.
 GitHub ortak kalıcı kaynaktır; bir repo bağlantısı çalışan dosya sistemi, fontlar,
 Chromium veya görsel araçların yerine geçmez. Basit dosya okuma/düzenleme/PR işlemleri
 GitHub API üzerinden checkout olmadan yapılabilir. Tam üretimde çalışma alanı gerekir;
-bu çalışma alanı kullanıcının bilgisayarında değil, uzak OpenCode sunucusunda veya
-Work/Codex bulutunda bulunabilir. Repo/oturum/tarayıcı bağlantısı bu göçü kendiliğinden
-yapmaz. Her oturum gerçek execution host'unu belirtir; sohbet hafızası paylaşılmaz.
+seçilen modelde OpenCode için geçici yerel disk alanında, Work/Codex için kendi
+bulut alanında bulunur. Kalıcı proje arşivi GitHub'dır. İş bitiminde doğrulanan
+manager-owned task clone ve Git object store temizlenir; PR merge edilmez.
+Uzak sunucu zorunlu değildir. Her oturum gerçek execution host'unu belirtir;
+sohbet hafızası paylaşılmaz. Geçici klasör gerçek RAM disk veya sıfır yerel veri değildir.
 
 ## Denetim kapsamı / yeni teslim kaydı
 
@@ -91,7 +94,8 @@ W/smooth/weight-study çalışmaları korunur ama üretimde kullanılmaz.
 GitHub kalıcı kaynaktır. Cloud task state ve CI artifact'leri geçicidir. Benzersiz
 orijinal, editable source ve teslimi commit edin; büyük dağıtım paketlerinde Release
 ve checksum indeksini birlikte kullanın. Arşivlenen eski yerel çalışma bir üretim
-onayı veya yeni kanonik sistem değildir. Yerel dosyalar cutover kanıtlanmadan silinmez.
+onayı veya yeni kanonik sistem değildir. Eski yerel arşivler ayrıca açık silme izni
+gerektirir; yeni geçici iş alanları EPHEMERAL.md'deki gönderim/doğrulama kapısıyla temizlenir.
 
 ## GitHub merge kapısı
 

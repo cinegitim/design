@@ -12,9 +12,10 @@ ChatGPT hesabına/Cloud ayarlarına yönetim erişimi yoktur. Aşağıdaki adım
 hesap sahibi tarafından yapılır; ortamda başarılı test olmadan “buluta geçildi” denmez.
 
 Bu checklist Work/Codex içindir; **OpenCode üretim yapmak için Codex'in açılmasını
-beklemek zorunda değildir**. Yerel proje kopyası istemeyen OpenCode kullanımı için
-[REMOTE-OPENCODE.md](REMOTE-OPENCODE.md)teki uzak execution host ayrıca kurulup test
-edilir. Her iki ortam aynı GitHub kaynaklarına ve PR/merge izni kurallarına bağlıdır.
+beklemek zorunda değildir**. Seçilen OpenCode modeli için
+[EPHEMERAL.md](../work/EPHEMERAL.md): geçici yerel üretim, doğrulama sonrası temizlik;
+ücretli uzak sunucu gerekmez. Uzak execution host yalnız isteğe bağlı alternatiftir.
+Her iki ortam aynı GitHub kaynaklarına ve PR/merge izni kurallarına bağlıdır.
 
 1. ChatGPT Work/Codex'te **Work in → Cloud → Create environment** seçin.
 2. GitHub bağlantısına `cinegitim/design` erişimi verin; güncel `main`i kullanın.

@@ -6,10 +6,10 @@
 :root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f6f5f1;color:#23262c;font:17px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}main{width:min(920px,100% - 40px);margin:60px auto}h1{font-size:clamp(32px,6vw,52px);line-height:1.1;letter-spacing:-.04em}h2{margin-top:38px;font-size:25px}p,li{max-width:78ch}a{color:#1f527a}.status{border-left:4px solid #ab6615;background:#fff2d9;padding:18px 22px;border-radius:0 8px 8px 0}.flow{display:flex;flex-wrap:wrap;gap:12px;padding:22px 0}.flow span{background:#fff;border:1px solid #d5d5cc;padding:10px 15px;border-radius:7px}.checks{padding:0;list-style:none}.checks li{padding:11px 0;border-bottom:1px solid #d5d5cc}code{background:#e8e9e3;padding:2px 5px;font-size:14px;overflow-wrap:anywhere}.small{font-size:14px;color:#5b6067}footer{margin-top:45px;padding-top:20px;border-top:1px solid #d5d5cc}
 </style></head>
 <body><main>
-<p class="small">AI BRAND STUDIO · ORTAK KAYNAK / İKİ ÜRETİM ORTAMI · v2</p>
+<p class="small">AI BRAND STUDIO · GEÇİCİ ÜRETİM / KALICI GITHUB · v3</p>
 <h1>OpenCode veya Work/Codex üretir.<br>GitHub korur ve denetler.</h1>
 <p>İki ortam da tasarım ve üretim yapabilir. Aynı marka kaynakları, onaylı logolar, tarifler ve kaydedilmiş kararlar GitHub’da; her görev ayrı branch/checkout’ta. Sohbet hafızası, araçlar ve giriş bilgileri otomatik paylaşılmaz.</p>
-<div class="status"><strong>Ortak repo hazır; uzak çalışma ortamları ayrıca doğrulanmalı.</strong><br>GitHub bağlantısı tek başına bu yerel OpenCode oturumunu buluta taşımaz. Uzak OpenCode host’u veya Work/Codex Cloud kurulumu yapılmış gibi sunulmaz. Yerel proje klasörlerini kaldırmak ayrı izin ve doğrulama gerektirir.</div>
+<div class="status"><strong>Seçilen model: geçici yerel OpenCode + bulut Work/Codex.</strong><br>Ücretli sunucu zorunlu değil. Tek geçici alan içinde her aktif iş ayrı clone/branch kullanır. Kaynak ve çıktıların GitHub’da doğrulanmasından sonra yalnız ilgili iş alanı temizlenir. Eski yerel arşivler silinmez; Codex hesap aktivasyonu ayrıca doğrulanmalıdır.</div>
 <div class="flow" aria-label="Çalışma akışı"><span>OpenCode veya Work/Codex üretim</span><span>Ayrı branch + açık PR</span><span>Dosya denetimi</span><span>İnsan kabulü / merge izni</span><span>İzin sonrası Pages</span></div>
 <h2>Ne kuruldu?</h2>
 <ul class="checks">
@@ -19,10 +19,11 @@
 <li>Bağımsız denetim: kanonik logo hash’leri, PNG yapısı/boyutu, kaynak metni, asset bağlantıları, paket bütünlüğü ve bilinen credential örüntüleri.</li>
 <li>Yerelde benzersiz 12 yaratıcı/tarihsel dosya korundu. Toplam 253 dosyanın checksum/sınıflandırma kaydı tutuldu; kopyalar ve runtime logları tekrar yüklenmedi.</li>
 </ul>
-<h2>Hiç proje dosyası bilgisayara indirmeden?</h2>
-<p><strong>Uzak çalışma alanıyla evet; yalnız GitHub repo bağlantısıyla tam üretim hayır.</strong> GitHub depolar ve sürümler; font, Python, Chromium, görsel araçlar ve ZIP üretimi için bir çalışma ortamı gerekir. OpenCode sunucusu ve dosyaları uzakta çalışırsa bilgisayarınızda proje checkout’u tutmanız gerekmez.</p>
-<p>Basit dosya düzenleme/PR işlemleri GitHub API ile checkout olmadan yapılabilir. Bu, tam render/görsel toolchain’i değildir. Yerel arayüzün önbellek veya oturum kaydı tutması da proje dosyası indirmekten ayrı bir konudur; sıfır yerel veri garantisi verilmez.</p>
-<p><a href="https://github.com/cinegitim/design/blob/main/studio/cloud/REMOTE-OPENCODE.md">Uzak OpenCode mimarisi, resmî V2 kaynakları ve doğrulama checklist’i →</a></p>
+<h2>Yerelde geçici çalış, GitHub’da koru</h2>
+<p><strong>Seçilen yöntem ücretli VM veya gerçek RAM disk gerektirmez.</strong> OpenCode dosyaları geçici disk alanında işler; Work/Codex kendi bulut alanını kullanır. GitHub’da aynı kaynaklar, onaylı kimlik ve iş kayıtları saklanır. Klasör sayısı değil, rutin işlemleri otomatikleştirmek token tasarrufuna yardımcı olur.</p>
+<p>İş bitiminde temizlik komutu exact remote commit’i, bağımsız indirilen dosya byte’larını, temiz çalışma ağacını ve aynı PR HEAD’inde başarılı denetimi kontrol eder. Gönderilmemiş, değiştirilmiş veya ignored özgün dosya varsa temizlik durur. Yalnız manager-owned yeni iş clone’u ve Git object store’u temizlenir; PR açık kalır, merge yapılmaz.</p>
+<p>Bu bir zamanlı silme servisi değil, açık tamamlanma komutudur. Geçici klasör, OpenCode oturum kaydı veya araç önbelleğiyle aynı şey değildir; sıfır yerel veri garantisi verilmez. Mevcut eski proje klasörlerini silmek ayrı izin gerektirir.</p>
+<p><a href="https://github.com/cinegitim/design/blob/main/studio/work/EPHEMERAL.md">Kurulum, iş açma, Codex’e devir ve güvenli temizlik →</a></p>
 <h2>Work/Codex için tek seferlik kurulum</h2>
 <ol><li>ChatGPT Work/Codex → <strong>Work in → Cloud → Create environment</strong>.</li><li><code>cinegitim/design</code> reposunu bağlayın; Python 3.12 ve Node 22 isteyin.</li><li>Install script: <code>bash studio/cloud/setup.sh</code>.</li><li>Başarılı doctor testi sonrası ortamı Publish edin; yeni task’ta ilk gerçek bulut testini çalıştırın.</li></ol>
 <p><a href="https://github.com/cinegitim/design/blob/main/studio/cloud/ACTIVATION.md">Tam etkinleştirme adımları ve hazır test promptu →</a></p>

@@ -7,6 +7,7 @@
 - [Cloud architecture and production commands](studio/cloud/README.md)
 - [One-time ChatGPT/Codex account activation](studio/cloud/ACTIVATION.md)
 - [OpenCode without a user-machine project checkout: remote execution boundary](studio/cloud/REMOTE-OPENCODE.md)
+- [Chosen setup: temporary OpenCode + cloud Codex, verified task cleanup](studio/work/EPHEMERAL.md)
 - [Live cloud handover guide](https://cinegitim.github.io/design/cloud/)
 - [Latest launch experiment — human review pending](https://cinegitim.github.io/design/instagram/launch-creative-02/)
 
@@ -19,11 +20,12 @@ image connector is available. Complete the activation checklist and first
 actual cloud test before retiring local working folders. No local files are
 deleted by this migration. Technical CI success is never creative approval.
 
-GitHub is not an execution host by itself. Avoiding a project checkout on the
-user's computer requires OpenCode's server/tools to run remotely. Direct GitHub
-API edits can avoid a checkout for simple changes, but do not provide the normal
-font/render/image/ZIP toolchain. A desktop client may still retain UI/auth caches;
-this is separate from downloading project files.
+GitHub is not an execution host by itself. The chosen setup uses one temporary
+disk root locally for OpenCode, with isolated disposable task clones; Work/Codex
+uses its own cloud workspace. Sources/exports remain on GitHub, then verified
+task clones (and their Git object stores) can be removed without merging the PR.
+This needs no paid VM, is not a RAM disk and does not erase legacy folders,
+OpenCode sessions or installed tool caches. Remote execution is optional.
 
 Every new production uses a separate branch/checkout and ends in an open PR.
 Merge only after explicit user authorization; existing GitHub Pages publication

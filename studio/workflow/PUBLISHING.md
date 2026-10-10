@@ -10,6 +10,7 @@ One user request = one clean logical publish cycle (not many tiny commits/PRs):
    - If the request touches Asya'da Eğitim branded production, run `python3 studio/tools/verify_asyada_canonical_lockups.py` before committing. A failure stops the publish.
 4. Open a PR against `main` (concise title/body, no identity claims beyond the change).
 5. Run the independent submitted-file audit and inspect CI for the exact PR head. Attach review evidence and handoff context. Leave the PR open and report **PR ready; publication pending**. This applies to infrastructure as well as creative work.
+   - For new manager-owned disposable clones, follow `studio/work/EPHEMERAL.md` after archiving: stop writers, leave/move the session out, dry-run `cleanup`, then `cleanup --pr <number> --apply`. Exact remote SHA, independent blob verification and passing exact-head CI gate deletion. This removes only the temporary task clone, not its GitHub branch/PR, and does not require or authorize merge. Do not clean legacy/platform checkouts.
 6. Only after the user explicitly authorizes merging this PR: recheck current main/head, resolve conflicts without losing others' work, rerun affected checks and merge. An approval of visuals does not itself authorize a merge.
 7. After authorized merge, wait for the existing GitHub Pages deployment; check its status via API.
 8. Verify the affected live Pages URL serves the change (HTTP 200 + content/hash check), then report published. Repository-only infrastructure has no new public URL; verify its merged files instead.
