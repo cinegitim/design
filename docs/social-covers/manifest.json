@@ -1,6 +1,6 @@
 {
   "brand_id": "asyada-egitim",
-  "version": "03 — LinkedIn editorial style carried into X and Facebook",
+  "version": "04 — Retina exports + Facebook device crops",
   "slogan": "Üniversite için başka bir dünya var.",
   "countries": [
     "Çin",
@@ -9,80 +9,98 @@
     "Singapur",
     "Hong Kong"
   ],
-  "country_accent_colors": [
-    "#BD2120",
-    "#D7A85B",
-    "#567B94",
-    "#548071",
-    "#C87966"
-  ],
-  "source_tokens": "Approved identity records and the existing country-world application; campaign accent colors are application-only, not canonical brand tokens.",
   "status": "APPLICATION CANDIDATES — NOT NEW CANONICAL TEMPLATES",
+  "country_treatment": "Uniform ink typography with small red separators; no country-specific colored backgrounds.",
+  "source_assets": [
+    "assets/x-profile-header-v3.svg (re-exported 2×)",
+    "assets/linkedin-page-cover-v2.svg (re-exported 2×; composition retained)",
+    "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-light.svg"
+  ],
   "dimensions_researched": {
     "X": {
-      "upload_px": [
+      "platform_design_px": [
         1500,
         500
       ],
+      "provided_export_px": [
+        3000,
+        1000
+      ],
       "source": "https://help.x.com/en/managing-your-account/how-to-customize-your-profile",
-      "safe_zone_note": "X notes possible 60px top/bottom crop; avatar overlaps lower-left. Key content inset."
+      "note": "2× raster export; scalable vector source included."
     },
     "LinkedIn Page": {
-      "upload_px": [
+      "platform_design_px": [
         1512,
         256
       ],
+      "provided_export_px": [
+        3024,
+        512
+      ],
       "source": "https://www.linkedin.com/help/linkedin/answer/a563309/image-specifications-for-your-linkedin-pages-and-career-pages",
-      "note": "Current official Page cover upload size; max 3MB. Older 1128×376 is a separate Life tab main image."
+      "note": "2× raster export; composition retained; scalable vector source included."
     },
     "Facebook Page": {
-      "upload_px": [
-        851,
-        315
+      "desktop_ratio": "16:9",
+      "desktop_export_px": [
+        1702,
+        958
+      ],
+      "mobile_ratio": "2.4:1",
+      "mobile_export_px": [
+        1704,
+        710
       ],
       "source": "https://www.facebook.com/help/125379114252045",
-      "note": "Meta recommended upload; visible crop can vary, profile picture overlaps left side."
+      "note": "Separate 2× crops. Meta also lists 851×315 sRGB JPG under 100KB as a fastest-loading example; that 2.7:1 example does not match its separately listed desktop/mobile aspect ratios. These text/logo PNGs prioritize sharpness and use crop-specific compositions."
     }
   },
   "assets": [
     {
       "platform": "X",
-      "id": "x-profile-header-v3",
+      "id": "x-profile-header-v4-2x",
       "dimensions_px": {
+        "width": 3000,
+        "height": 1000
+      },
+      "png": "assets/x-profile-header-v4-2x.png",
+      "png_sha256": "df0200a2d467bb89c20d033958ad66efcfc5337078b584662bb74ce5fb66e4bb",
+      "svg": "assets/x-profile-header-v4-2x.svg",
+      "svg_sha256": "92fafb17fecde679604ff91c27ee30595e24f76b1e9d7fe3adf2f656cad76de3",
+      "formats": [
+        "PNG 2×",
+        "SVG editable source"
+      ],
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "minimum_lockup_width_px": 528,
+      "lockup_width_px": 528,
+      "status": "APPLICATION CANDIDATE — NOT A NEW CANONICAL TEMPLATE",
+      "design_viewbox_px": {
         "width": 1500,
         "height": 500
       },
-      "png": "assets/x-profile-header-v3.png",
-      "png_sha256": "96aadc6190ad147b4e58d33ad665b31003591269a86dee28a52eca84d1448678",
-      "svg": "assets/x-profile-header-v3.svg",
-      "svg_sha256": "7e396aa4919396f3ba42f3be37089844ec1d5b70bba00c743704f571abb7655d",
-      "formats": [
-        "PNG",
-        "SVG (editable source)"
-      ],
-      "canonical_lockup_id": "H-02/light",
-      "canonical_lockup_path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
-      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
-      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "minimum_lockup_width_px": 528,
-      "lockup_width_px": 528,
-      "status": "APPLICATION CANDIDATE — NOT A NEW CANONICAL TEMPLATE"
+      "supersedes": "x-profile-header-v3",
+      "render_scale": 2
     },
     {
       "platform": "LINKEDIN",
-      "id": "linkedin-page-cover-v2",
+      "id": "linkedin-page-cover-v4-2x",
       "dimensions_px": {
-        "width": 1512,
-        "height": 256
+        "width": 3024,
+        "height": 512
       },
-      "png": "assets/linkedin-page-cover-v2.png",
-      "png_sha256": "f9e3a9ca671112d7202a44488fb90184465feebfd104c85cd164a542fc31bd04",
-      "svg": "assets/linkedin-page-cover-v2.svg",
-      "svg_sha256": "88f86f7863a770a5ac7cd74b708fcf828b1002352872d51c9d6196d92cdcbaf0",
+      "png": "assets/linkedin-page-cover-v4-2x.png",
+      "png_sha256": "f9d8b62fb9adf64cc3a97b89fc7a51b799ef86af28c95b1c91bc0b9dc91e5eb0",
+      "svg": "assets/linkedin-page-cover-v4-2x.svg",
+      "svg_sha256": "70a2f73f7566a8f18e4d5c1a5293d1f562ce37f6a41b4f9628545d98d70ed6eb",
       "formats": [
-        "PNG",
-        "SVG (editable source)"
+        "PNG 2×",
+        "SVG editable source"
       ],
       "canonical_lockup_id": "H-02/light",
       "canonical_lockup_path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
@@ -91,22 +109,33 @@
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "minimum_lockup_width_px": 528,
       "lockup_width_px": 528,
-      "status": "APPLICATION CANDIDATE — NOT A NEW CANONICAL TEMPLATE"
+      "status": "APPLICATION CANDIDATE — NOT A NEW CANONICAL TEMPLATE",
+      "design_viewbox_px": {
+        "width": 1512,
+        "height": 256
+      },
+      "supersedes": "linkedin-page-cover-v2",
+      "render_scale": 2
     },
     {
-      "platform": "FACEBOOK",
-      "id": "facebook-page-cover-v3",
+      "platform": "Facebook Page",
+      "id": "facebook-page-cover-desktop-v4-2x",
+      "crop": "Facebook desktop cover — 16:9",
       "dimensions_px": {
-        "width": 851,
-        "height": 315
+        "width": 1702,
+        "height": 958
       },
-      "png": "assets/facebook-page-cover-v3.png",
-      "png_sha256": "e40657285bce3e1f1f0000f016005fb4fc65def9a8494120eb8039e64077f455",
-      "svg": "assets/facebook-page-cover-v3.svg",
-      "svg_sha256": "30789165887f6f5b0603a39d40605c766449fac8b164f5054b9745b30c6183a8",
+      "design_viewbox_px": {
+        "width": 851,
+        "height": 479
+      },
+      "png": "assets/facebook-page-cover-desktop-v4-2x.png",
+      "png_sha256": "00222c86137a3f955a1b4251f768e811f9f629694adfd457cb953681b42149f0",
+      "svg": "assets/facebook-page-cover-desktop-v4-2x.svg",
+      "svg_sha256": "9acec69370fb6f51630c8c00c3d3d2e57b055c000f7e4785b39a2b37f514d3f9",
       "formats": [
-        "PNG",
-        "SVG (editable source)"
+        "PNG 2×",
+        "SVG editable source"
       ],
       "canonical_lockup_id": "D-04/light",
       "canonical_lockup_path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-light.svg",
@@ -114,9 +143,38 @@
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "minimum_lockup_width_px": 200,
-      "lockup_width_px": 210,
+      "lockup_width_design_px": 210,
+      "status": "APPLICATION CANDIDATE — NOT A NEW CANONICAL TEMPLATE"
+    },
+    {
+      "platform": "Facebook Page",
+      "id": "facebook-page-cover-mobile-v4-2x",
+      "crop": "Facebook mobile cover — 2.4:1",
+      "dimensions_px": {
+        "width": 1704,
+        "height": 710
+      },
+      "design_viewbox_px": {
+        "width": 852,
+        "height": 355
+      },
+      "png": "assets/facebook-page-cover-mobile-v4-2x.png",
+      "png_sha256": "2a177b26ea57acb55da3559a25b53d175667c1421c6b2e778ba114e7f2c0be91",
+      "svg": "assets/facebook-page-cover-mobile-v4-2x.svg",
+      "svg_sha256": "6a2a9630e700f9baebfa04edce3ee4231b4374d7eab39658764e1e5348a4cd37",
+      "formats": [
+        "PNG 2×",
+        "SVG editable source"
+      ],
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-light.svg",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "minimum_lockup_width_px": 200,
+      "lockup_width_design_px": 210,
       "status": "APPLICATION CANDIDATE — NOT A NEW CANONICAL TEMPLATE"
     }
   ],
-  "country_treatment": "Uniform ink typography with small red separators; no country-specific colored backgrounds."
+  "superseded_manifest": "manifest-v03.json"
 }
