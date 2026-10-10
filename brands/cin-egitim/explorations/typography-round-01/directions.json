@@ -1,0 +1,56 @@
+{
+  "brand": "cin-egitim",
+  "round": "typography-round-01",
+  "status": "EXPLORATION / HUMAN A-B-C SELECTION PENDING",
+  "scope": "Typography and wordmark placement experiments only; the exact canonical symbol is reused unchanged.",
+  "canonical_logo": "brands/cin-egitim/assets/symbol.svg",
+  "canonical_logo_sha256": "1cc1808947d8f7f759ebb9956a715d535bb4fcc985d3f85194d4eaf1a85c7381",
+  "decision_record": "brands/cin-egitim/decisions/2026-10-10-symbol-svg-lock.md",
+  "brand_name": "Çin Eğitim",
+  "language": "Turkish-first; no English or Chinese writing added in these lockup studies.",
+  "palette": {
+    "locked_symbol": "Exact canonical SVG; no geometry, colour, crop, or path edits.",
+    "wordmark_ink": "#202020",
+    "paper": "#F5F0E7",
+    "annotation_red": "#BF0C1A"
+  },
+  "directions": [
+    {
+      "id": "A",
+      "slug": "direction-a",
+      "name": "Sessiz Kütüphane",
+      "promise": "Akademik ağırlık; editoryal sakinlik.",
+      "font_display": "Source Serif 4",
+      "font_support": "Manrope",
+      "logic": "Sembol solda; baş harfleri büyük ad iki sakin, sol hizalı satırda.",
+      "wordmark_case": "Baş harfleri büyük",
+      "arrangement": "Yatay sembol + iki satırlı serif wordmark",
+      "research_effect": "Kategori örneklerindeki yoğun hizmet anlatımına, Çin veya akademi klişelerini ödünç almadan sakin bir editoryal sesle karşılık verir."
+    },
+    {
+      "id": "B",
+      "slug": "direction-b",
+      "name": "Açık Rehber",
+      "promise": "İlk bakışta anlaşılır; dijitalde doğrudan.",
+      "font_display": "Manrope",
+      "font_support": "Manrope",
+      "logic": "Ortalanmış dikey kurgu; sembol tek satırlı, iki ağırlıklı isim bloğunun üstünde.",
+      "wordmark_case": "Baş harfleri büyük, iki ağırlık",
+      "arrangement": "Ortalanmış sembol + tek satırlı sans wordmark",
+      "research_effect": "İnsancıl sans ve doğrudan hiyerarşi öğrenci ve aileler için netliği öne çıkarır; ek iddia veya slogan yoktur."
+    },
+    {
+      "id": "C",
+      "slug": "direction-c",
+      "name": "Program İndeksi",
+      "promise": "Sıkı, modüler ve kurumsal bir bilgi imzası.",
+      "font_display": "Barlow Condensed",
+      "font_support": "Manrope",
+      "logic": "Sembol dar, büyük harfli iki satırlı wordmark'ı dengeler; ince çizgi sembolü değil, yalnız tipografiyi ayırır.",
+      "wordmark_case": "Tümü büyük harf",
+      "arrangement": "Kompakt yatay sembol + condensed iki satırlı wordmark",
+      "research_effect": "İndeks benzeri düzen rehberliği ve sistematiği ima eder; harita, bayrak, fener, mühür ve sahte Çin yazısından kaçınır."
+    }
+  ],
+  "swap_test": "Üç yönde kâğıt/mürekkep/kırmızı rolleri ve sembol aynıdır. Palet değişse de A serif editoryal ritim ve iki satırlı baş harfleri büyük yazımıyla; B ortalanmış dikey kurgu ve tek satır iki ağırlıklı sans'ıyla; C condensed büyük harf ve indeks çizgisiyle ayrışır."
+}
