@@ -1,6 +1,6 @@
 {
   "title": "Tsinghua Üniversitesi — 2027 lisans başvuru carousel — V2",
-  "status": "HUMAN CREATIVE REVIEW PENDING — DESIGN-SITE REVIEW; NOT POSTED TO INSTAGRAM",
+  "status": "HUMAN CREATIVE REVIEW PENDING",
   "checked_on": "2026-10-10",
   "dimensions": [
     1080,
@@ -41,11 +41,11 @@
     {
       "id": "01-cover",
       "final_file": "png/01.png",
-      "final_sha256": "3e920fab1b8a9c3abaa17e4b785d14a6c45aa8c8e64cd6217bca5f5ab65e4e51",
+      "final_sha256": "4dd16ef065c96592b6959c2ae5ba3df7a7e2c3e4aef71d136ee976c661d20277",
       "original_file": "originals/01.png",
       "original_sha256": "da7707efac4638121176c1b46eafd3c7778aa005853b6be93c666e3d34f3613f",
       "source_file": "source/01.svg",
-      "source_sha256": "5de6ac9a60b63b994ce2241a00005f9070c83295c0ffd149496f29285854ce14",
+      "source_sha256": "1b63cbe28d61e64f8691698f3601a7621fa1f29d659742e79d78bd8947930fbf",
       "editable_html_file": "source/01.html",
       "dimensions": [
         1080,
@@ -59,8 +59,7 @@
         "2027 LİSANS BAŞVURU REHBERİ",
         "PEKİN’DE KÜRESEL ÖLÇEKTE BİR AKADEMİK EKOSİSTEM.",
         "SIRALAMALAR · PROGRAMLAR",
-        "BAŞVURU TAKVİMİ · ÜCRET · BURS",
-        "RESMÎ KAYNAKLARLA HAZIRLANDI"
+        "BAŞVURU TAKVİMİ · ÜCRET · BURS"
       ],
       "canonical_lockup_id": "P-01/light",
       "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
@@ -457,11 +456,11 @@
     {
       "id": "07-cta",
       "final_file": "png/07.png",
-      "final_sha256": "86639d7e3a64fa671c2aebbb89093bee6232e076e05a66e50b760740d2f8e42a",
+      "final_sha256": "7c9cc01651b81fbacefb5d11fb008257e3cc7c3740e0e3728f2b617ca33a7cc5",
       "original_file": "originals/07.png",
       "original_sha256": "58670df26d7b2fc84cfd5df687118476c351e0652f6a485bf61457ff9ad01c83",
       "source_file": "source/07.svg",
-      "source_sha256": "9c4e8e15648f6eeaebcf2372e0b317e01ec9e042ba753d8e46fccbeccb7ba79e",
+      "source_sha256": "739ee480813913ea1d3f8cd303a4c0791c477a4cff9ba502097fb436fc33b169",
       "editable_html_file": "source/07.html",
       "dimensions": [
         1080,
@@ -472,9 +471,7 @@
         "birlikte çizelim.",
         "Tsinghua 2027 lisans başvurusunu",
         "adım adım değerlendirelim.",
-        "ÖN GÖRÜŞMENİ PLANLA  ↗",
-        "BU BİLGİLENDİRME ASYA’DA EĞİTİM TARAFINDAN HAZIRLANDI.",
-        "TSINGHUA ÜNİVERSİTESİ İLE ORTAKLIK YA DA ONAY ANLAMI TAŞIMAZ."
+        "ÖN GÖRÜŞMENİ PLANLA  ↗"
       ],
       "canonical_lockup_id": "P-01/dark",
       "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
@@ -521,8 +518,7 @@
       "2027 LİSANS BAŞVURU REHBERİ",
       "PEKİN’DE KÜRESEL ÖLÇEKTE BİR AKADEMİK EKOSİSTEM.",
       "SIRALAMALAR · PROGRAMLAR",
-      "BAŞVURU TAKVİMİ · ÜCRET · BURS",
-      "RESMÎ KAYNAKLARLA HAZIRLANDI"
+      "BAŞVURU TAKVİMİ · ÜCRET · BURS"
     ],
     "02-subject-rankings": [
       "02 · QS ALAN SIRALAMALARI",
@@ -653,9 +649,7 @@
       "birlikte çizelim.",
       "Tsinghua 2027 lisans başvurusunu",
       "adım adım değerlendirelim.",
-      "ÖN GÖRÜŞMENİ PLANLA  ↗",
-      "BU BİLGİLENDİRME ASYA’DA EĞİTİM TARAFINDAN HAZIRLANDI.",
-      "TSINGHUA ÜNİVERSİTESİ İLE ORTAKLIK YA DA ONAY ANLAMI TAŞIMAZ."
+      "ÖN GÖRÜŞMENİ PLANLA  ↗"
     ]
   },
   "assets": {

@@ -1,6 +1,6 @@
 # Tsinghua Atlası 2027 · V2 — olgusal kaynak raporu
 
-**Kontrol tarihi:** 10 Ekim 2026 · **Durum:** tasarım incelemesi; insan yaratıcı kabulü bekliyor; Instagram’da yayımlanmadı.
+**Kontrol tarihi:** 10 Ekim 2026.
 
 ## Slaytlardaki iddialar
 
@@ -23,8 +23,8 @@
 
 ## Kanonik kimlik kapsamı
 
-Asya’da Eğitim’in onaylı kimliği ve özgün lockup ailesi kullanılmıştır; **tam bir `brand-system.md` onayı çıkarımı yapılmamıştır.** Her slayt için kullanılan eksiksiz lockup, kaynak SVG’deki `canonical-lockup` görselidir. Üretim kayıtları seal SHA-256 `8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a` ile lockup kimliği/hash’ini ayrıca taşır. V1’in kendi kanonik üretim ve kayıtları değiştirilmemiştir.
+Her slaytta kaynak SVG içindeki `canonical-lockup` görseli kullanılmıştır. Üretim kayıtları seal SHA-256 `8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a` ile lockup kimliği/hash’ini ayrıca taşır. V1’in kendi kanonik üretim ve kayıtları değiştirilmemiştir.
 
 ## Kontrol sınırları
 
-Kaynaklar 10 Ekim 2026 tarihinde kontrol edildi. Kabul kılavuzları, ücretler ve takvim değişebilir; başvuru öncesi güncel resmi sayfa ve program kılavuzu esas alınmalıdır. Bu rapor kaynak/iddia izlenebilirliği sağlar; kurumsal onay veya insan yaratıcı kabulü değildir.
+Kaynaklar 10 Ekim 2026 tarihinde kontrol edildi. Kabul kılavuzları, ücretler ve takvim değişebileceğinden başvuru öncesi güncel program kılavuzu kontrol edilmelidir.
