@@ -1,5 +1,11 @@
 # Brand Studio — Codex üretir, GitHub denetler
 
+ChatGPT Work ve OpenCode aynı kaynakları ayrı branch/checkout'larda kullanır:
+[Work adapter ve yetenek haritası](../work/README.md). Bu dosya sabit sürümlü
+render tarifini açıklar; Work'te repo okuma/düzenleme için bu kurulum gerekmez.
+Her değişiklik önce açık PR olarak teslim edilir; merge için o PR'a açık kullanıcı
+izni gerekir. Mevcut Pages yayını değişmez.
+
 ## Mimari
 
 **GitHub kaynaklar → Codex Cloud üretim → kaynak/çıktı PR'ı → bağımsız dosya denetimi

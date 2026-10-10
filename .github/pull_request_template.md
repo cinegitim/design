@@ -4,7 +4,8 @@ Describe the human's request. Infrastructure change or creative delivery?
 
 ## Production and durable files
 
-- [ ] Production ran in Codex Cloud (or explicitly mark migration/bootstrap, not cloud-verified).
+- [ ] Executor, brand, task branch/base SHA and changed paths recorded; isolated from concurrent OpenCode/Work tasks.
+- [ ] Production environment and actually available tools recorded (or mark infrastructure-only; no production build).
 - [ ] Originals, editable sources, recipe/dependency versions, exports and ZIP are committed / durably archived.
 - [ ] New bundles registered in `studio/cloud/policy.json`; prior work preserved.
 - [ ] Exact canonical SVGs used unchanged, required provenance hashes recorded.
@@ -24,7 +25,8 @@ Known limits / unresolved compromises:
 
 Technical checks do NOT approve aesthetics, a logo or Instagram publication.
 Creative work: leave PR open until the human accepts the shown visuals.
-Infrastructure: merge only when its implementation is authorized.
+All work: leave PR open until the user explicitly authorizes merging this PR.
+Implementation authorization, visual acceptance and merge authorization are separate.
 
 ## After authorized merge
 

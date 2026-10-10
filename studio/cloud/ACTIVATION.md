@@ -1,5 +1,12 @@
 # Hesap tarafında etkinleştirme — henüz doğrulanmadı
 
+Bu kontrol listesi özel Codex Cloud render ortamını etkinleştirmek içindir.
+ChatGPT Work'te bağlı GitHub araçlarıyla repo okuma, branch/PR hazırlama ve
+salt okunur denetim ayrı bir yoldur; [Work adapter](../work/README.md) ve
+[2026-10-10 gözlem kaydı](../work/2026-10-10-audit.md) ile ilerleyin.
+Native Work image aracı, yerel OpenCode ChatGPT credential adapter'ından ayrıdır;
+bu liste ikisini etkinleştirmiş veya kotasını doğrulamış sayılmaz.
+
 Repo dosyaları bir Codex Cloud ortamını kendiliğinden oluşturmaz. Bu oturumun
 ChatGPT hesabına/Cloud ayarlarına yönetim erişimi yoktur. Aşağıdaki adımlar
 hesap sahibi tarafından yapılır; ortamda başarılı test olmadan “buluta geçildi” denmez.

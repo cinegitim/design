@@ -1,9 +1,15 @@
 # Image Production — Hybrid Raster/Vector Policy
 
-Verified backends (do not re-derive; use as stated):
+OpenCode backends (not tool registrations in other environments):
 
 - **Default raster backend:** Pollinations `gen_edit_image_free` (project-local adapter `.opencode/plugins/pollinations/`). No key, no login; quota is dynamic per-IP — always read it live, never assume a fixed daily limit, never expose IP or quota metadata beyond remaining/max.
 - **Secondary backend:** local ChatGPT adapter (`image_generate` / `image_edit`). Its backend has repeatedly returned temporary overload errors. NEVER fall back to it automatically. Use only on explicit user request or explicit workflow authorization.
+
+ChatGPT Work / Codex: follow `studio/work/README.md` at the repository root.
+Use an exposed native image tool for an authorized image request/workflow, rather
+than importing these plugins or their credentials. Keep the same budget,
+inspection, exact typography, locked-logo and preservation rules. Do not promise
+the OpenCode quota, backend/model or pricing applies to a native Work tool.
 
 ## Hybrid split (quality + quota rule)
 
