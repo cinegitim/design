@@ -18,6 +18,14 @@
       "dimensions": [1080, 1350],
       "slide_ids": ["01-cover", "02-perspective", "03-five-worlds", "04-experience", "05-invitation"],
       "required_files": ["index.html", "build.py", "render.mjs", "verify_and_package.py", "render-validation.json", "generation-notes.md", "quality-review.md", "assets/Jost-OFL.txt"]
+    },
+    {
+      "path": "docs/instagram/tsinghua-atlas-2027/v2",
+      "format": "carousel",
+      "manifest": "manifest.json",
+      "dimensions": [1080, 1350],
+      "slide_ids": ["01-cover", "02-subject-rankings", "03-global-rankings", "04-english-hsk", "05-deadlines", "06-tuition-scholarships", "07-cta"],
+      "required_files": ["index.html", "build.py", "render.mjs", "verify_and_package.py", "manifest.json", "render-validation.json", "generation-notes.md", "quality-review.md", "factual-source-report.md", "caption-and-credits.md", "handoff.md", "contact-sheet.png", "mobile-324-contact-sheet.html", "mobile-324-contact-sheet.png", "source-vs-final-contact-sheet.png", "revision-comparison.png", "feed-cover-preview.png", "mobile-preview.html", "package/tsinghua-atlas-2027-v2.zip", "assets/Jost-OFL.txt"]
     }
   ]
 }
