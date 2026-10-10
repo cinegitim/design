@@ -1,0 +1,196 @@
+{
+  "title": "Tsinghua Üniversitesi — 2027 lisans başvuru carousel",
+  "status": "HUMAN REVIEW PENDING — DESIGN-SITE REVIEW; NOT POSTED TO INSTAGRAM",
+  "checked_on": "2026-10-10",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "color_space": "sRGB (Chrome PNG render)",
+  "brand": "asyada-egitim",
+  "brand_system_note": "Approved identity metadata and lockups used; no full brand-system approval inferred.",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "canonical_lockups": {
+    "P-01/light": {
+      "file": "assets/p-01-light.svg",
+      "canonical_file": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-light.svg",
+      "sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "minimum_display_width_px": 352
+    },
+    "D-04/light": {
+      "file": "assets/d-04-light.svg",
+      "canonical_file": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-light.svg",
+      "sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "minimum_display_width_px": 200
+    },
+    "D-04/dark": {
+      "file": "assets/d-04-dark.svg",
+      "canonical_file": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-dark.svg",
+      "sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "minimum_display_width_px": 200
+    }
+  },
+  "slides": [
+    {
+      "slide_id": "01",
+      "file": "png/01.png",
+      "editable": "source/01.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "sha256": "15757cc8549b6356574039ebe0ccef97b53b67cfbf0d2658e795214a79806041",
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "slide_id": "02",
+      "file": "png/02.png",
+      "editable": "source/02.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "sha256": "0002216018988f8761e705d7760231c5f679a8b7ad53556c2eb11e8e9dd28bee",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "slide_id": "03",
+      "file": "png/03.png",
+      "editable": "source/03.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "sha256": "bed790711825720731b1e5f03d843b557d3639d3bffaf3b8ffd2bfdaada016b7",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "slide_id": "04",
+      "file": "png/04.png",
+      "editable": "source/04.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "sha256": "a8499b788ea1a1f122c8259509313a69cde4645b3d409826d97cc43438f4a87e",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "slide_id": "05",
+      "file": "png/05.png",
+      "editable": "source/05.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "sha256": "5bb6ed081914b480bf0d688ddd6f65c2153e4c4ad0d19f3919c797a54f1948a0",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "slide_id": "06",
+      "file": "png/06.png",
+      "editable": "source/06.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "sha256": "d8fb65349f85ddfc571825aa7b02f504ea5558840851de34beae7e7ecf73ba5b",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "slide_id": "07",
+      "file": "png/07.png",
+      "editable": "source/07.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "sha256": "73e28883fbde5f10ea1fac10252c154360bb248e7c456b7b33024ac100ae94f5",
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    }
+  ],
+  "assets": {
+    "assets/Jost-VF.ttf": {
+      "sha256": "6343b70971000b04c5d401c96ae08ce371086135e999d5e1e1413039c0213076",
+      "bytes": 134996
+    },
+    "assets/Jost-OFL.txt": {
+      "sha256": "82b806b20fb9d8f2c64669c12a44efb87d27971e743f38a78365e83641626dd2",
+      "bytes": 4383
+    },
+    "assets/carousel.css": {
+      "sha256": "8acf0d1d7fe14dbebdcc7c4dabd726470b0cc81ad4ad43978fad30696191e73f",
+      "bytes": 7692
+    },
+    "assets/tsinghua-main-building.jpg": {
+      "sha256": "bd31e4dcac078887514cf749aa449e6820798d54dffcdcecaf3a79807ec3da1e",
+      "bytes": 2220720
+    },
+    "assets/tsinghua-old-library.jpg": {
+      "sha256": "131887bc6ccbc96071ecf14bc12dc62a4a31a4c295c5f1ab355c73ce11b2478e",
+      "bytes": 3214158
+    },
+    "contact-sheet.svg": {
+      "sha256": "630873b79bc59e7b1428f86ad08a40860aa34ea5cc2322282f168f9f09f90475",
+      "bytes": 1980
+    },
+    "contact-sheet.png": {
+      "sha256": "4061c4c28c961de0549cb9417acc0239652fd6d69e49120a2fc55b9029511b2d",
+      "bytes": 485580
+    },
+    "mobile-feed-preview.html": {
+      "sha256": "3e24e51fe477c05060b7a6f410f58ff32b3f6c4c13d377f4727ba145c5e3f4c5",
+      "bytes": 3104
+    },
+    "sources-and-verification.md": {
+      "sha256": "8f280b1cfb50e5e7ed336d5cb264e5bb36531fa30965632c49e49d246f05c39c",
+      "bytes": 6064
+    },
+    "production-notes.md": {
+      "sha256": "15811e22dede636957343b048471013223ab7e9aff2bc17d801679ecfb8795e5",
+      "bytes": 1281
+    },
+    "generation-notes.md": {
+      "sha256": "bd6258d4c716b1cd6cbd45256597cd6903a4afb10788d259a7f0d403cfa1db56",
+      "bytes": 1768
+    },
+    "quality-review.md": {
+      "sha256": "b201a0a3ec038218c6df7dba39cc7b219bb31472de53d6fe186d292118431ff9",
+      "bytes": 2031
+    },
+    "caption-and-credits.md": {
+      "sha256": "cc9f6966fe53ddbe10c10530ebca8160693e53ee90a051d6b56d44b84845c90b",
+      "bytes": 1504
+    }
+  },
+  "files": {
+    "contact_sheet": "contact-sheet.png",
+    "contact_sheet_editable": "contact-sheet.svg",
+    "mobile_preview": "mobile-feed-preview.html",
+    "gallery": "index.html",
+    "sources": "sources-and-verification.md",
+    "quality_review": "quality-review.md",
+    "caption": "caption-and-credits.md",
+    "font_license": "assets/Jost-OFL.txt"
+  },
+  "production": {
+    "image_generation": "none",
+    "render": "Chrome + Playwright; editable HTML per slide",
+    "design_site_review_page": true,
+    "instagram_published": false
+  }
+}
