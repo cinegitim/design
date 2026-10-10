@@ -1,8 +1,8 @@
 {
   "status": "CANONICAL SYMBOL / REVIEW RECORD",
   "package": "svg-round-01.zip",
-  "sha256": "7365ecf64df743d102f1e0085cedd88b58f2833eb62eda8684a0ecf2febd4d95",
-  "bytes": 1555409,
+  "sha256": "bed83b192ac872a6f08e68d460d4906b738f58c68a14d587267580dc8602da10",
+  "bytes": 1555549,
   "members": [
     "README.md",
     "build.py",
