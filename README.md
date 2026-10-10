@@ -1,11 +1,12 @@
 # AI Brand Studio
 
-**OpenCode and ChatGPT Work share one studio; GitHub preserves and independently audits.**
+**OpenCode and ChatGPT Work/Codex can both design and produce; GitHub is their shared source and independent audit layer.**
 
 - [Operating instructions](AGENTS.md)
 - [ChatGPT Work capability map, branch workflow and handoffs](studio/work/README.md)
 - [Cloud architecture and production commands](studio/cloud/README.md)
 - [One-time ChatGPT/Codex account activation](studio/cloud/ACTIVATION.md)
+- [OpenCode without a user-machine project checkout: remote execution boundary](studio/cloud/REMOTE-OPENCODE.md)
 - [Live cloud handover guide](https://cinegitim.github.io/design/cloud/)
 - [Latest launch experiment — human review pending](https://cinegitim.github.io/design/instagram/launch-creative-02/)
 
@@ -17,6 +18,12 @@ The repository configuration does not activate a cloud account or prove an
 image connector is available. Complete the activation checklist and first
 actual cloud test before retiring local working folders. No local files are
 deleted by this migration. Technical CI success is never creative approval.
+
+GitHub is not an execution host by itself. Avoiding a project checkout on the
+user's computer requires OpenCode's server/tools to run remotely. Direct GitHub
+API edits can avoid a checkout for simple changes, but do not provide the normal
+font/render/image/ZIP toolchain. A desktop client may still retain UI/auth caches;
+this is separate from downloading project files.
 
 Every new production uses a separate branch/checkout and ends in an open PR.
 Merge only after explicit user authorization; existing GitHub Pages publication
