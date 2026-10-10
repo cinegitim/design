@@ -92,7 +92,6 @@ def make_slide1():
     a.append(rule(72, 930, 1008, 930, RED, 8))
     a.append(tx(c, 532, 1060, "SIRALAMALAR · PROGRAMLAR", 24, INK, 700, spacing=1.0))
     a.append(tx(c, 532, 1110, "BAŞVURU TAKVİMİ · ÜCRET · BURS", 24, INK, 600, spacing=.3))
-    a.append(tx(c, 532, 1238, "RESMÎ KAYNAKLARLA HAZIRLANDI", 20, MUTED, 650, spacing=1.1))
     return svg_wrap(c, PAPER, "".join(a), "P-01/light", "p-01-light.svg", 72, 956, 376, 369.6658132676)
 
 
@@ -268,8 +267,6 @@ def make_slide7():
     a.append(tx(c, 72, 770, "adım adım değerlendirelim.", 28, PAPER, 500))
     a.append(rect(72, 838, 452, 86, RED, rx=2))
     a.append(tx(c, 298, 892, "ÖN GÖRÜŞMENİ PLANLA  ↗", 24, WHITE, 700, anchor="middle", spacing=.4))
-    a.append(tx(c, 72, 1162, "BU BİLGİLENDİRME ASYA’DA EĞİTİM TARAFINDAN HAZIRLANDI.", 18, PAPER, 700, spacing=.4))
-    a.append(tx(c, 72, 1202, "TSINGHUA ÜNİVERSİTESİ İLE ORTAKLIK YA DA ONAY ANLAMI TAŞIMAZ.", 18, PAPER, 500, spacing=.2))
     return svg_wrap(c, INK, "".join(a), "P-01/dark", "p-01-dark.svg", 72, 70, 360, 353.9353531285)
 
 

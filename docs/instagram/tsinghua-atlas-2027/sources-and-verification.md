@@ -18,10 +18,10 @@
 
 ## Photography and rights
 
-1. **Main building, cover:** Soramimi, “Main building of Tsinghua University 2.JPG,” photographed 30 Aug 2015; [Wikimedia Commons file page](https://commons.wikimedia.org/wiki/File:Main_building_of_Tsinghua_University_2.JPG); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Crop/gradient overlay applied; photo identifies the real Tsinghua main building. Attribution does not imply endorsement.
-2. **Old library, slide 04:** Soramimi, “Old library of Tsinghua University 2.JPG,” photographed 30 Aug 2015; [Wikimedia Commons file page](https://commons.wikimedia.org/wiki/File:Old_library_of_Tsinghua_University_2.JPG); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Crop applied; photo identifies the real Tsinghua old library. Attribution does not imply endorsement.
+1. **Main building, cover:** Soramimi, “Main building of Tsinghua University 2.JPG,” photographed 30 Aug 2015; [Wikimedia Commons file page](https://commons.wikimedia.org/wiki/File:Main_building_of_Tsinghua_University_2.JPG); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Crop/gradient overlay applied; photo identifies the real Tsinghua main building.
+2. **Old library, slide 04:** Soramimi, “Old library of Tsinghua University 2.JPG,” photographed 30 Aug 2015; [Wikimedia Commons file page](https://commons.wikimedia.org/wiki/File:Old_library_of_Tsinghua_University_2.JPG); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Crop applied; photo identifies the real Tsinghua old library.
 
-No AI-generated image was used. The classroom photograph explored during research was excluded from the final bundle. No implied Tsinghua partnership or endorsement is stated.
+No AI-generated image was used. The classroom photograph explored during research was excluded from the final bundle.
 
 ## Canonical identity check
 

@@ -1,6 +1,6 @@
 # Görsel öz değerlendirme
 
-**Durum:** yaratıcı öz değerlendirme tamamlandı; insan incelemesi ve kabulü bekleniyor. Yayın/kurumsal onay değildir.
+**Durum:** yaratıcı öz değerlendirme tamamlandı; insan incelemesi bekleniyor.
 
 | Slayt | Kontrol | Bulgular |
 |---|---|---|

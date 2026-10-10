@@ -1,6 +1,6 @@
 # Uygulama spesifikasyonu — Tsinghua Atlası 2027
 
-**İNSAN İNCELEMESİ BEKLİYOR — tasarım sitesi review sayfası; Instagram’da paylaşılmadı.** Bu kampanya dosyası Asya’da Eğitim için kanonik tasarım şablonu ya da tam marka sistemi değildir.
+**İNSAN İNCELEMESİ BEKLİYOR · V1 ARŞİV KAYDI**
 
 - Boyut: 1080×1350 px, RGB PNG.
 - Palet: `#F7F3E9` paper, `#1D2027` ink, `#BD2120` red; koyu kapanış için aynı onaylı palet.

@@ -4,8 +4,6 @@
 
 Tsinghua Üniversitesi’nde 2027 uluslararası lisans başvurusu: QS alan sıralamaları, küresel sıralamalar, tamamen İngilizce program örnekleri, dil koşulları, ücretler, burslar ve başvuru turları.
 
-Başvuru tarihleri, program uygunluğu ve ücretler programa/tura göre değişebilir. Başvurmadan önce Tsinghua’nın güncel resmi kabul sayfası ile ilgili program kılavuzunu kontrol edin. Bu bağımsız bilgilendirme Asya’da Eğitim tarafından hazırlanmıştır; Tsinghua Üniversitesi ile ortaklık veya kurumsal onay anlamına gelmez.
-
 ## Kampüs fotoğraflarının zorunlu atıfları
 
 Fotoğraflar gerçek Tsinghua kampüs görselleridir. V2’de altı farklı fotoğraf altı ayrı slaytta kullanılmıştır. Her görsele kırpma; bazılarına koyu ton/renk geçişi uygulanmıştır. Görsel modelleri ve AI fotoğrafları kullanılmamıştır.
@@ -17,4 +15,4 @@ Fotoğraflar gerçek Tsinghua kampüs görselleridir. V2’de altı farklı foto
 5. **Slayt 05 — Kuantum Bilgi Merkezi:** Soramimi, [“Quantum Information Center of Tsinghua University.JPG”](https://commons.wikimedia.org/wiki/File:Quantum_Information_Center_of_Tsinghua_University.JPG), 30 Ağustos 2015; [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Üst fotoğraf bandı için kırpıldı ve metin kontrastı için koyu ton geçişi uygulandı.
 6. **Slayt 07 — kampüs sporu:** Myheimu, [“SportForEveryoneInTsinghuaUniversity.jpg”](https://commons.wikimedia.org/wiki/File:SportForEveryoneInTsinghuaUniversity.jpg), 10 Haziran 2009; [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). Tam sayfa kompozisyon için kırpıldı ve solda okunabilirlik geçişi uygulandı.
 
-Atıflar ve lisanslar, ilgili fotoğraf eserlerine aittir; grafik tasarımın geri kalanı için Tsinghua onayı iddia edilmez. Wikimedia Commons kaynak dosyaları ve küçültülmüş kopyaları `assets/` altında saklanır.
+Wikimedia Commons kaynak dosyaları ve küçültülmüş kopyaları `assets/` altında saklanır.

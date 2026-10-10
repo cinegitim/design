@@ -192,7 +192,7 @@ def build_manifest(profile: bytes) -> dict:
     font_path = ROOT / "assets/Jost-VF.ttf"
     return {
         "title": "Tsinghua Üniversitesi — 2027 lisans başvuru carousel — V2",
-        "status": "HUMAN CREATIVE REVIEW PENDING — DESIGN-SITE REVIEW; NOT POSTED TO INSTAGRAM",
+        "status": "HUMAN CREATIVE REVIEW PENDING",
         "checked_on": "2026-10-10",
         "dimensions": [1080, 1350],
         "color_space": "sRGB (embedded ICC profile)",
