@@ -19,5 +19,17 @@
       "slide_ids": ["01-cover", "02-perspective", "03-five-worlds", "04-experience", "05-invitation"],
       "required_files": ["index.html", "build.py", "render.mjs", "verify_and_package.py", "render-validation.json", "generation-notes.md", "quality-review.md", "assets/Jost-OFL.txt"]
     }
+  ],
+  "review_only_bundles": [
+    {
+      "path": "docs/cin-egitim/svg-round-01",
+      "brand": "cin-egitim",
+      "format": "symbol-svg-review",
+      "manifest": "manifest.json",
+      "status": "REVIEW_ONLY / HUMAN_ACCEPTANCE_PENDING",
+      "local_verifier": "brands/cin-egitim/explorations/svg-round-01/verify.py",
+      "independent_bundle_ci_coverage": false,
+      "note": "Registered experiment only. Existing trusted-base production checker supports carousel, not SVG-review bundles; no production coverage claim."
+    }
   ]
 }

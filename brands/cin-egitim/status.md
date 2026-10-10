@@ -6,7 +6,7 @@
 - Kaynak pano ve SHA-256 kaydı: `reference/target-board.png`, `reference/target-lock.json`.
 - Önceki Çin Eğitim yönleri, SVG denemeleri, ölçümler ve üretici kodlar silindi. Git geçmişi yeniden yazılmadı.
 - Kullanıcı yalnız büyütmenin yetmediğini belirtti ve gerçek görüntü temizleme/süper çözünürlük istedi. Ayrı `realesrgan-x4plus` kalite adayı (`enhancements/target-symbol-super-resolution-4x.png`) 916×924 px olarak hazırlandı. Önceki 6× interpolasyon yalnız karşılaştırma içindir.
-- Kaynak/kilit değişmedi. Model detay tahmini yapar, ancak çıktı yeni hedef veya onaylı üretim logosu değildir. SVG izleme, logo yeniden tasarımı ve tipografi hâlâ kapsam dışı.
+- Kaynak/kilit değişmedi. Kullanıcı şimdi sembol SVG'sini istedi. `explorations/svg-round-01/` son SR PNG'den path-only inceleme adayıdır. Tipografi ve logo yeniden tasarımı kapsam dışı; aday kilitlenmedi.
 - Üretim logosu/kanonik SVG: yok. Referans kilidi, üretim logosu onayı değildir.
-- Sonraki eylem: yeni süper çözünürlük adayını önceki yöntemle karşılaştırmalı göster; yeni talimatı bekle.
+- Sonraki eylem: kaynak ↔ SVG karşılaştırmasını göster. SVG kabulü ve bu PR için açık merge izni bekle; otomatik yayın yok.
 - Asya'da Eğitim'in ayrı, onaylı varlıkları değiştirilmedi.

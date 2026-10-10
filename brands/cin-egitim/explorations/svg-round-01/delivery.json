@@ -1,0 +1,24 @@
+{
+  "status": "REVIEW_ONLY",
+  "package": "svg-round-01.zip",
+  "sha256": "deb2c719bf61d7ec8348f7a80d866518aad5b32a4cfba3a7637eabe9bfdf6ac9",
+  "bytes": 1554257,
+  "members": [
+    "README.md",
+    "build.py",
+    "detail-brush.png",
+    "detail-pagoda.png",
+    "handoff.md",
+    "index.html",
+    "manifest.json",
+    "package.py",
+    "quality-review.md",
+    "source-sr.png",
+    "source-vs-svg.png",
+    "symbol-2x.png",
+    "symbol-mono.svg",
+    "symbol-preview.png",
+    "symbol.svg",
+    "verify.py"
+  ]
+}

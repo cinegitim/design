@@ -1,0 +1,18 @@
+{
+  "slug": "cin-egitim",
+  "name": "Çin Eğitim",
+  "status": "REFERENCE_LOCKED / SVG_REVIEW_PENDING",
+  "canonicalIdentity": false,
+  "canonicalLogo": {"locked": false},
+  "targetReference": {
+    "locked": true,
+    "path": "brands/cin-egitim/reference/target-symbol.png",
+    "sha256": "6177f661a1971b985c2d2e0bb91b995d8df074f5ef9433caef5366f457a76b89",
+    "record": "brands/cin-egitim/reference/target-lock.json"
+  },
+  "svgInput": {
+    "path": "brands/cin-egitim/enhancements/target-symbol-super-resolution-4x.png",
+    "sha256": "56ad9bc59a50a53f44db2c91800a5470868002b70fb692107c4e8e115582bdc7"
+  },
+  "scope": "Symbol only. User authorized SVG tracing from the existing SR raster. No typography, no new canonical approval, no automatic merge."
+}

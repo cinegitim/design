@@ -1,0 +1,94 @@
+{
+  "brand": "cin-egitim",
+  "round": "svg-round-01",
+  "executor": "OpenCode",
+  "status": "REVIEW_ONLY / HUMAN_ACCEPTANCE_PENDING",
+  "canonical": false,
+  "typography": false,
+  "embedded_raster": false,
+  "source": "source-sr.png",
+  "source_sha256": "56ad9bc59a50a53f44db2c91800a5470868002b70fb692107c4e8e115582bdc7",
+  "locked_target_sha256": "6177f661a1971b985c2d2e0bb91b995d8df074f5ef9433caef5366f457a76b89",
+  "reference_lock_sha256": "f9a3652029660b2ce1cb4edd71908a001aff11b6ec30d880aff34bd49c69fd5c",
+  "input_dimensions": [
+    916,
+    924
+  ],
+  "method": "Separate pigment masks, Potrace cubic Bezier tracing, evenodd holes, sampled median pigment colours",
+  "parameters": {
+    "turdsize": 2,
+    "alphamax": 1.0,
+    "opttolerance": 0.12,
+    "unit": 100
+  },
+  "palette": {
+    "red": "#BF0C1A",
+    "ink": "#202020"
+  },
+  "tools": {
+    "potrace": "potrace 1.16. Copyright (C) 2001-2019 Peter Selinger.",
+    "pillow": "12.1.1",
+    "python": "3.14.7",
+    "rsvg": "rsvg-convert version 2.63.0\n\nlibraries used:\n  cairo 1.18.4\n  pango 1.58.2\n  harfbuzz 14.4.0\n  fontconfig 2.18.3"
+  },
+  "metrics": {
+    "red_mask_iou": 0.990676,
+    "ink_mask_iou": 0.988733,
+    "limits": "Masks measure flat-colour outline coverage, not shading, source detail authenticity or human approval."
+  },
+  "compromise": "Raster tonal shading is flattened to two sampled solid colours; outlines/holes traced from the SR candidate. No claim of pixel-identical recreation or new human approval.",
+  "files": {
+    "symbol.svg": {
+      "sha256": "1cc1808947d8f7f759ebb9956a715d535bb4fcc985d3f85194d4eaf1a85c7381",
+      "viewBox": "0 0 916 924",
+      "paths": 2
+    },
+    "symbol-mono.svg": {
+      "sha256": "1285ef8b8c0a5645abba3cfd76ed11fc4b6ae03ec51eacc78858b7bd0c34e4f4",
+      "viewBox": "0 0 916 924",
+      "paths": 2
+    },
+    "source-sr.png": {
+      "sha256": "56ad9bc59a50a53f44db2c91800a5470868002b70fb692107c4e8e115582bdc7",
+      "dimensions": [
+        916,
+        924
+      ]
+    },
+    "symbol-preview.png": {
+      "sha256": "04c01f6e19f0a511fe394c7eb746c951094216b9274c49b090a29f2ce59f0803",
+      "dimensions": [
+        916,
+        924
+      ]
+    },
+    "symbol-2x.png": {
+      "sha256": "7f460823bf75867a7c6231c7161dc5cb6e2037da303017c3ac289c386a43eae0",
+      "dimensions": [
+        1832,
+        1848
+      ]
+    },
+    "source-vs-svg.png": {
+      "sha256": "f544c7705fb944534b054dfd172fd8e2b96e29ede9c3fb6ff626cbcb80718cd7",
+      "dimensions": [
+        1872,
+        988
+      ]
+    },
+    "detail-brush.png": {
+      "sha256": "a6d16ece345b649559c3ca9017fc12218f7bc0be1e42113336f03cf948d02c48",
+      "dimensions": [
+        1356,
+        254
+      ]
+    },
+    "detail-pagoda.png": {
+      "sha256": "cca603d164fe30240be06d330de25eba8867fa8c4d1e3cc4f5e491d52eae4471",
+      "dimensions": [
+        792,
+        398
+      ]
+    }
+  }
+}
