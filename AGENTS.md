@@ -1,12 +1,13 @@
-# AI Brand Studio — shared GitHub source / OpenCode + ChatGPT Work
+# AI Brand Studio — shared GitHub source / OpenCode + Work/Codex
 
 This workspace is a reusable **AI Brand Studio** for vibe-designing complete visual identities from natural-language briefs.
 
 ## Cloud operating contract (current)
 
-- **OpenCode and ChatGPT Work share the repository, not a running session.** Use a separate checkout/worktree and a new `publish/<topic>` branch for each production request. Never switch or clean another executor's working directory. GitHub stores instructions, recipes, originals, editable sources, exports, manifests and review history; cloud caches are temporary.
+- **Both OpenCode and ChatGPT Work/Codex may design and produce.** Neither is the exclusive producer. They share the GitHub repository and recorded decisions, not a running session, chat memory, tools or credentials. Use a separate checkout/worktree and a new `publish/<topic>` branch for each production request. Never switch or clean another executor's working directory. GitHub stores instructions, recipes, originals, editable sources, exports, manifests and review history; cloud caches are temporary.
 - Read `studio/cloud/README.md` and `.agents/skills/cloud-delivery/SKILL.md` before delivery. Codex discovers `.agents/skills/`; the Brand Studio adapter points to the existing `.opencode/skills/brand-studio/` methodology without duplicating it.
-- Codex installs the pinned environment with `bash studio/cloud/setup.sh`, builds with `bash studio/cloud/build.sh launch-creative-02`, and audits with `python3 studio/cloud/audit.py --root .`. Build only when requested; never regenerate approved imagery as part of setup.
+- Either executor may use the pinned Linux environment: `bash studio/cloud/setup.sh`, `bash studio/cloud/build.sh launch-creative-02`, and `python3 studio/cloud/audit.py --root .`. Build only when requested; never regenerate approved imagery as part of setup. Existing platform-specific tools remain capability-dependent.
+- **No user-machine project checkout is a deployment goal, not a current capability claim.** GitHub is storage/version control, not an OpenCode filesystem or render host. For that goal, run OpenCode's server/tools/checkouts in a remote environment and use only a client/browser locally; Work/Codex uses its cloud workspace. See `studio/cloud/REMOTE-OPENCODE.md`. Until remote execution is actually verified, disclose a local session as local; do not claim a `session_move`, push or repo connection migrated execution to the cloud.
 - GitHub Actions **audits submitted files only**. It does not build/render, call image/LLM APIs or approve aesthetics. Existing Pages deployment serves committed outputs.
 - Register new deliverable bundles in `studio/cloud/policy.json` in the same PR. Existing experiments remain review-only; do not auto-approve an identity or publish to Instagram.
 - No automatic merge, including infrastructure/setup: open a PR and wait for the user's explicit authorization to merge that PR. Passing CI, approval of a logo, or a request to prepare production does not authorize merging or social publication.

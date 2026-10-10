@@ -1,6 +1,6 @@
-# Brand Studio — Codex üretir, GitHub denetler
+# Brand Studio — OpenCode veya Work/Codex üretir; GitHub denetler
 
-ChatGPT Work ve OpenCode aynı kaynakları ayrı branch/checkout'larda kullanır:
+ChatGPT Work/Codex ve OpenCode aynı kaynakları ayrı branch/checkout'larda kullanır:
 [Work adapter ve yetenek haritası](../work/README.md). Bu dosya sabit sürümlü
 render tarifini açıklar; Work'te repo okuma/düzenleme için bu kurulum gerekmez.
 Her değişiklik önce açık PR olarak teslim edilir; merge için o PR'a açık kullanıcı
@@ -8,15 +8,16 @@ izni gerekir. Mevcut Pages yayını değişmez.
 
 ## Mimari
 
-**GitHub kaynaklar → Codex Cloud üretim → kaynak/çıktı PR'ı → bağımsız dosya denetimi
-→ insan görsel onayı → main → mevcut GitHub Pages yayını.**
+**GitHub kaynaklar → OpenCode veya Work/Codex üretim → kaynak/çıktı PR'ı
+→ bağımsız dosya denetimi → insan görsel kabulü (tasarımda)
+→ o PR için açık merge izni → main → mevcut GitHub Pages yayını.**
 
 | Görev | Nerede? |
 |---|---|
 | Brief, skill, marka sistemi, tarifler, fontlar, orijinaller ve tarihçe | GitHub repo |
-| Tasarım, görsel araçlar, build/render, PNG/SVG/ZIP üretimi | Codex Cloud |
+| Tasarım, görsel araçlar, build/render, PNG/SVG/ZIP üretimi | OpenCode veya Work/Codex; gerçekten mevcut araçlarla |
 | SHA-256, kaynak/manifest, boyut, kanonik logo, paket, olası secret kontrolleri | GitHub Actions |
-| Estetik/fidelity onayı, yeni kanonik logo kararı | İnsan |
+| Estetik/fidelity onayı, yeni kanonik logo kararı ve PR merge izni | İnsan; ayrı kararlar |
 | Onaylı/incelemelik çıktıların web sunumu | Mevcut Pages; Instagram'a otomatik gönderim yok |
 
 Actions **render/build yapmaz**, üretici scriptleri import etmez, LLM/image API
@@ -27,10 +28,13 @@ dosyalarını okur. Pages'in mevcut deployment mekanizması değişmez.
 
 Hesap bağlantısı için [ACTIVATION.md](ACTIVATION.md). Ortamın yayımlanması ve gerçek
 Codex Cloud testleri hesap sahibi tarafından yapılmalıdır; repo hazırlığı bunu kanıtlamaz.
+Yerel proje kopyası olmadan OpenCode için [REMOTE-OPENCODE.md](REMOTE-OPENCODE.md).
+Bu Linux tarifini iki executor da kullanabilir; özel OpenCode pluginleri veya Work
+görsel araçları ortamın gerçek yeteneklerine bağlıdır.
 
 ```sh
 bash studio/cloud/setup.sh          # Kurulum; kampanya üretmez
-bash studio/cloud/doctor.sh         # Codex'te araç/headless browser smoke testi
+bash studio/cloud/doctor.sh         # Seçilen üretim ortamında araç/headless smoke testi
 bash studio/cloud/build.sh launch-creative-02  # Yalnız istenmiş çıktı revizyonunda
 python3 studio/cloud/audit.py --root .        # Salt okunur denetim; render yok
 python3 -m unittest discover -s studio/cloud/tests -v
@@ -44,6 +48,15 @@ byte-identical çıktı garantilemez. Eski Mac çıktıları bu göçte yeniden 
 İlk taşınabilir tarif: `launch-creative-02`. Diğer tarihsel build'ler repoda korunur;
 hepsinin Linux uyumluluğu bu kurulumla kendiliğinden kanıtlanmış değildir.
 Eski OpenCode pluginleri/model isimleri Codex'e kurulu connector sayılmaz.
+
+## “Doğrudan GitHub” ne demek?
+
+GitHub ortak kalıcı kaynaktır; bir repo bağlantısı çalışan dosya sistemi, fontlar,
+Chromium veya görsel araçların yerine geçmez. Basit dosya okuma/düzenleme/PR işlemleri
+GitHub API üzerinden checkout olmadan yapılabilir. Tam üretimde çalışma alanı gerekir;
+bu çalışma alanı kullanıcının bilgisayarında değil, uzak OpenCode sunucusunda veya
+Work/Codex bulutunda bulunabilir. Repo/oturum/tarayıcı bağlantısı bu göçü kendiliğinden
+yapmaz. Her oturum gerçek execution host'unu belirtir; sohbet hafızası paylaşılmaz.
 
 ## Denetim kapsamı / yeni teslim kaydı
 
