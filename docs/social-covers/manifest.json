@@ -1,6 +1,6 @@
 {
   "brand_id": "asyada-egitim",
-  "version": "04 — Retina exports + Facebook device crops",
+  "version": "06 — Facebook screenshot crop + LinkedIn avatar-safe placement",
   "slogan": "Üniversite için başka bir dünya var.",
   "countries": [
     "Çin",
@@ -13,8 +13,8 @@
   "country_treatment": "Uniform ink typography with small red separators; no country-specific colored backgrounds.",
   "source_assets": [
     "assets/x-profile-header-v3.svg (re-exported 2×)",
-    "assets/linkedin-page-cover-v2.svg (re-exported 2×; composition retained)",
-    "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-light.svg"
+    "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg (exact canonical source for LinkedIn)",
+    "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-light.svg (exact canonical source for Facebook)"
   ],
   "dimensions_researched": {
     "X": {
@@ -39,21 +39,22 @@
         512
       ],
       "source": "https://www.linkedin.com/help/linkedin/answer/a563309/image-specifications-for-your-linkedin-pages-and-career-pages",
-      "note": "2× raster export; composition retained; scalable vector source included."
+      "note": "2× raster export. Screenshot review showed the page avatar overlaps the lower-left cover area; canonical H-02 is moved to the right safe zone. Composition remains 1512×256."
     },
     "Facebook Page": {
-      "desktop_ratio": "16:9",
+      "desktop_observed_ratio": "approximately 2.76:1",
       "desktop_export_px": [
         1702,
-        958
+        617
       ],
+      "desktop_evidence": "User-provided live Facebook Page screenshot; rendered cover area approx. 1920×696, ratio ~2.76:1. This is observed UI behavior, not a universal platform guarantee.",
       "mobile_ratio": "2.4:1",
       "mobile_export_px": [
         1704,
         710
       ],
-      "source": "https://www.facebook.com/help/125379114252045",
-      "note": "Separate 2× crops. Meta also lists 851×315 sRGB JPG under 100KB as a fastest-loading example; that 2.7:1 example does not match its separately listed desktop/mobile aspect ratios. These text/logo PNGs prioritize sharpness and use crop-specific compositions."
+      "official_source": "https://www.facebook.com/help/125379114252045",
+      "official_source_note": "Meta help text lists 16:9 desktop, 2.4:1 mobile, and separately lists 851×315 as a fastest-loading JPG example. The supplied desktop screenshot instead renders at ~2.76:1; this export follows the observed page crop. Mobile export remains its own 2.4:1 version."
     }
   },
   "assets": [
@@ -88,16 +89,20 @@
       "render_scale": 2
     },
     {
-      "platform": "LINKEDIN",
-      "id": "linkedin-page-cover-v4-2x",
+      "platform": "LinkedIn Page",
+      "id": "linkedin-page-cover-v6-avatar-safe",
       "dimensions_px": {
         "width": 3024,
         "height": 512
       },
-      "png": "assets/linkedin-page-cover-v4-2x.png",
-      "png_sha256": "f9d8b62fb9adf64cc3a97b89fc7a51b799ef86af28c95b1c91bc0b9dc91e5eb0",
-      "svg": "assets/linkedin-page-cover-v4-2x.svg",
-      "svg_sha256": "70a2f73f7566a8f18e4d5c1a5293d1f562ce37f6a41b4f9628545d98d70ed6eb",
+      "design_viewbox_px": {
+        "width": 1512,
+        "height": 256
+      },
+      "png": "assets/linkedin-page-cover-v6-avatar-safe.png",
+      "png_sha256": "46860588a88b0adfbd17e60d804a0e367a0cfbc41369232e839ff10f7c127828",
+      "svg": "assets/linkedin-page-cover-v6-avatar-safe.svg",
+      "svg_sha256": "3d522d6cd4dd91cf415216b503315538790f88066d29fbebc19e25cfc5b381e8",
       "formats": [
         "PNG 2×",
         "SVG editable source"
@@ -109,30 +114,27 @@
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "minimum_lockup_width_px": 528,
       "lockup_width_px": 528,
-      "status": "APPLICATION CANDIDATE — NOT A NEW CANONICAL TEMPLATE",
-      "design_viewbox_px": {
-        "width": 1512,
-        "height": 256
-      },
-      "supersedes": "linkedin-page-cover-v2",
-      "render_scale": 2
+      "render_scale": 2,
+      "safe_zone_note": "The lower-left avatar overlap zone is intentionally empty; H-02 is in the right-hand safe area.",
+      "supersedes": "linkedin-page-cover-v4-2x",
+      "status": "APPLICATION CANDIDATE — NOT A NEW CANONICAL TEMPLATE"
     },
     {
       "platform": "Facebook Page",
-      "id": "facebook-page-cover-desktop-v4-2x",
-      "crop": "Facebook desktop cover — 16:9",
+      "id": "facebook-page-cover-desktop-v5-2x",
+      "crop": "desktop — matches supplied live-page screenshot",
       "dimensions_px": {
         "width": 1702,
-        "height": 958
+        "height": 617
       },
       "design_viewbox_px": {
         "width": 851,
-        "height": 479
+        "height": 308.5
       },
-      "png": "assets/facebook-page-cover-desktop-v4-2x.png",
-      "png_sha256": "00222c86137a3f955a1b4251f768e811f9f629694adfd457cb953681b42149f0",
-      "svg": "assets/facebook-page-cover-desktop-v4-2x.svg",
-      "svg_sha256": "9acec69370fb6f51630c8c00c3d3d2e57b055c000f7e4785b39a2b37f514d3f9",
+      "png": "assets/facebook-page-cover-desktop-v5-2x.png",
+      "png_sha256": "2089ea878409acfa0b4441323ea3c736adddb092ff0a9d44d2635bf2980a3cdc",
+      "svg": "assets/facebook-page-cover-desktop-v5-2x.svg",
+      "svg_sha256": "87ad377db9f97cfed32f01ba3b2993f3862b37407b76e6716c19357c90df1718",
       "formats": [
         "PNG 2×",
         "SVG editable source"
@@ -144,6 +146,8 @@
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "minimum_lockup_width_px": 200,
       "lockup_width_design_px": 210,
+      "render_scale": 2,
+      "supersedes": "facebook-page-cover-desktop-v4-2x",
       "status": "APPLICATION CANDIDATE — NOT A NEW CANONICAL TEMPLATE"
     },
     {
@@ -176,5 +180,5 @@
       "status": "APPLICATION CANDIDATE — NOT A NEW CANONICAL TEMPLATE"
     }
   ],
-  "superseded_manifest": "manifest-v03.json"
+  "superseded_manifest": "manifest-v04.json"
 }
