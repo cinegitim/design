@@ -25,7 +25,7 @@ def main():
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o100644 << 16
             archive.writestr(info, (BUNDLE / name).read_bytes())
-    record = {"status": "REVIEW_ONLY", "package": package.name,
+    record = {"status": "CANONICAL SYMBOL / REVIEW RECORD", "package": package.name,
               "sha256": hashlib.sha256(package.read_bytes()).hexdigest(),
               "bytes": package.stat().st_size, "members": names}
     for folder in (BUNDLE, PUBLIC):

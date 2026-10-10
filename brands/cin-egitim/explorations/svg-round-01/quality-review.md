@@ -8,7 +8,7 @@ Gerçek görsel olarak okunanlar: SR kaynak, `source-vs-svg.png`, `detail-brush.
 - **Düşük önem:** çok ince uçlarda ve kırmızı/siyah birleşim noktasında eşik kaynaklı küçük boşluk/şekil değişimleri olabilir.
 - **Yapılmayan:** 16 px kullanımı, tipografi, lockup ailesi, kanonik sistem veya üretim onayı.
 
-Maske IoU'su yardımcı kontur ölçümüdür; tonu, kaynak detayının gerçekliğini veya insan onayını kanıtlamaz. Teknik değerler manifesttedir.
+Maske IoU'su yardımcı kontur ölçümüdür; tonu veya kaynak detayının gerçekliğini kanıtlamaz. Kullanıcı SVG'yi 2026-10-10 tarihinde onaylayıp kilitlememi istedi; teknik değerler manifesttedir.
 
 ## HTML doğrulaması
 

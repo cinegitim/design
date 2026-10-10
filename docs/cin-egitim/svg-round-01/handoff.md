@@ -10,6 +10,6 @@
 - Canonical logo/lockups: yok. Hedef kilidi korundu; SVG kilitlenmedi.
 - Checks: task-branch preflight PASS (kanonik metadata kilidi yok; build/verifier hedef/SR hash'lerini ayrıca kontrol eder); round verifier PASS; genel audit PASS; cloud 14/work 10 test PASS. Browser 1000 px: tüm görseller yüklü, overflow yok, yedi link HTTP 200. Screenshot unavailable (görünür pencere şartı). Exact CI head/run PR'da. Pinned Cloud render çalıştırılmadı; yerel sürümler manifestte.
 - Inspected: SR kaynak, tam yan yana karşılaştırma, fırça ve pagoda detayları.
-- Human decisions: hedef onayı var; SVG üretimi yetkilendirildi. **SVG kabulü ve bu PR'ın merge izni verilmedi.**
-- Remaining: raster gölgelemesi iki düz renge indi, en ince uçlarda curve-fit farkları; SVG-format bağımsız CI kapsamı henüz yok, deney kaydı + yerel verifier var.
-- Delivery: açık PR, yayın/merge izni bekliyor. Pages yalnız main'i servis eder.
+- Human decisions: hedef onayı var; 2026-10-10'da kullanıcı SVG'yi “Güzel. Bu SVG'yi kitleyelim” diyerek açıkça onayladı ve kilitlenmesini istedi. SVG kabulü kaydedildi. Bu, PR #73'ü merge etme izni değildir.
+- Remaining: raster gölgelemesi iki düz renge indi, en ince uçlarda curve-fit farkları; SVG-format bağımsız CI kapsamı henüz yok. Canonical asset preflight hash'i ve round verifier ile korunuyor.
+- Delivery: açık PR; PR merge izni ayrıca bekliyor. Pages yalnız main'i servis eder.

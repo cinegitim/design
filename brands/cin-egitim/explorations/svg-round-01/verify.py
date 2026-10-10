@@ -55,8 +55,16 @@ def svg_check(path, record):
 
 def main():
     m = json.loads(bundle_file("manifest.json").read_text())
-    need(m["brand"] == "cin-egitim" and m["canonical"] is False, "Review status/brand")
+    need(m["brand"] == "cin-egitim" and m["canonical"] is True, "Canonical status/brand")
     need(m["embedded_raster"] is False and m["typography"] is False, "Symbol-only scope")
+    metadata = json.loads((ROOT / "brands/cin-egitim/brand.json").read_text())
+    decision = ROOT / "brands/cin-egitim/decisions/2026-10-10-symbol-svg-lock.md"
+    need(metadata["canonicalLogo"]["locked"] is True, "Brand metadata is not locked")
+    need(metadata["canonicalLogo"]["sha256"] == m["canonical_asset_sha256"], "Canonical hash mismatch")
+    need(digest(ROOT / metadata["canonicalLogo"]["path"]) == m["canonical_asset_sha256"], "Canonical asset mismatch")
+    need(digest(BUNDLE / "symbol.svg") == m["canonical_asset_sha256"], "Reviewed vector differs from locked canonical")
+    need(metadata["canonicalLogo"]["decisionRecord"] == "brands/cin-egitim/decisions/2026-10-10-symbol-svg-lock.md", "Decision record mismatch")
+    need(decision.is_file() and "kitleyelim" in decision.read_text().lower(), "Human lock decision record missing")
     for path, key in [
         ("brands/cin-egitim/enhancements/target-symbol-super-resolution-4x.png", "source_sha256"),
         ("brands/cin-egitim/reference/target-symbol.png", "locked_target_sha256"),

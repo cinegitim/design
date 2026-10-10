@@ -2,8 +2,12 @@
   "brand": "cin-egitim",
   "round": "svg-round-01",
   "executor": "OpenCode",
-  "status": "REVIEW_ONLY / HUMAN_ACCEPTANCE_PENDING",
-  "canonical": false,
+  "status": "HUMAN_APPROVED / CANONICAL SYMBOL",
+  "canonical": true,
+  "approved_on": "2026-10-10",
+  "decision_record": "brands/cin-egitim/decisions/2026-10-10-symbol-svg-lock.md",
+  "canonical_asset": "brands/cin-egitim/assets/symbol.svg",
+  "canonical_asset_sha256": "1cc1808947d8f7f759ebb9956a715d535bb4fcc985d3f85194d4eaf1a85c7381",
   "typography": false,
   "embedded_raster": false,
   "source": "source-sr.png",
@@ -36,7 +40,7 @@
     "ink_mask_iou": 0.988733,
     "limits": "Masks measure flat-colour outline coverage, not shading, source detail authenticity or human approval."
   },
-  "compromise": "Raster tonal shading is flattened to two sampled solid colours; outlines/holes traced from the SR candidate. No claim of pixel-identical recreation or new human approval.",
+  "compromise": "Raster tonal shading is flattened to two sampled solid colours; outlines/holes traced from the SR candidate. User approved this vector rendering as the canonical symbol on 2026-10-10; source remains a separate locked reference.",
   "files": {
     "symbol.svg": {
       "sha256": "1cc1808947d8f7f759ebb9956a715d535bb4fcc985d3f85194d4eaf1a85c7381",
