@@ -154,6 +154,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--potrace", default="potrace", help="Potrace 1.16 executable")
     args = parser.parse_args()
+    metadata = json.loads((ROOT / "brands/cin-egitim/brand.json").read_text())
+    if metadata.get("canonicalLogo", {}).get("locked"):
+        raise RuntimeError("This round's SVG is human-approved and locked; create a new round for any regeneration.")
     assert digest(INPUT) == EXPECTED_INPUT, "Unexpected raster source; stop"
     lock_before = digest(LOCK)
     locked = json.loads(LOCK.read_text())

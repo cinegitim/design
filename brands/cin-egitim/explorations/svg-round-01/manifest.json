@@ -8,6 +8,10 @@
   "decision_record": "brands/cin-egitim/decisions/2026-10-10-symbol-svg-lock.md",
   "canonical_asset": "brands/cin-egitim/assets/symbol.svg",
   "canonical_asset_sha256": "1cc1808947d8f7f759ebb9956a715d535bb4fcc985d3f85194d4eaf1a85c7381",
+  "published_site_asset": {
+    "path": "docs/cin-egitim/assets/symbol.svg",
+    "sha256": "1cc1808947d8f7f759ebb9956a715d535bb4fcc985d3f85194d4eaf1a85c7381"
+  },
   "typography": false,
   "embedded_raster": false,
   "source": "source-sr.png",

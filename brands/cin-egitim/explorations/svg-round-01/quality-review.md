@@ -13,3 +13,7 @@ Maske IoU'su yardımcı kontur ölçümüdür; tonu veya kaynak detayının ger�
 ## HTML doğrulaması
 
 Yerel HTTP önizlemesi gerçek browser sekmesinde açıldı. 1000 px viewport'ta yatay overflow yok; beş görselin tamamı yüklendi, yedi indirme/not linkinin tamamı HTTP 200 döndü. Browser screenshot aracı görünür desktop penceresi şartı nedeniyle başarısız oldu; HTML screenshot incelemesi veya 375/768/1440 responsive test iddiası yok. Sembol karşılaştırmaları yukarıdaki gerçek PNG girişleriyle incelendi.
+
+## Website application check
+
+Homepage (`docs/index.html`) ve Çin Eğitim detay sayfası gerçek browser'da 1000 px genişlikte açıldı. Ana sayfadaki marka seçici thumbnail ve ayrı feature kartı; detay sayfadaki 360 px vektör sembolü ve iki raster referans başarıyla yüklendi. Her iki sayfada yatay overflow görülmedi. Çin detay sayfasındaki altı linkin tamamı HTTP 200 döndü. Screenshot aracı görünür pencere şartı nedeniyle alınamadı; 375/768/1440 testleri yapılmadı.

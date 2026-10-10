@@ -58,8 +58,15 @@ code{font-size:12px;overflow-wrap:anywhere}
 .opt .on{font-size:16px;font-weight:500;letter-spacing:-.01em}
 .opt .sub{font:11px/1.2 ui-monospace,Menlo,monospace;color:var(--muted);letter-spacing:.05em}
 .opt.here .sub{color:var(--red)}
+.china-feature{display:grid;grid-template-columns:1fr 170px;gap:24px;align-items:center;margin-top:36px;padding:24px 28px;border:1px solid var(--line);border-radius:14px;background:var(--card);text-decoration:none;color:var(--ink)}
+.china-feature:hover{border-color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.china-feature img{width:150px;height:150px;object-fit:contain;justify-self:center}
+.china-feature .tag{font-size:11px;letter-spacing:.14em;color:#bf0c1a;font-weight:600}
+.china-feature h2{font-size:clamp(26px,4vw,38px);margin:6px 0}
+.china-feature p{font-size:15px;max-width:60ch;color:#3d3a34}
+.china-feature .go{display:inline-block;margin-top:12px;font-size:13px;border-bottom:2px solid #bf0c1a;padding-bottom:2px}
 @media(max-width:760px){.brandbar{gap:10px}.opt{padding:8px 12px 8px 9px}.opt .sub{display:none}}
-@media(max-width:760px){.hero{grid-template-columns:1fr;gap:20px}.hero img.seal{width:140px}.card.first{grid-template-columns:1fr}.card.first img{width:170px}.wrap{padding:0 18px 70px}}
+@media(max-width:760px){.hero{grid-template-columns:1fr;gap:20px}.hero img.seal{width:140px}.card.first{grid-template-columns:1fr}.card.first img{width:170px}.china-feature{grid-template-columns:1fr;gap:10px;padding:22px}.china-feature img{width:126px;height:126px;grid-row:1;justify-self:start}.wrap{padding:0 18px 70px}}
 </style>
 </head>
 <body>
@@ -72,8 +79,8 @@ code{font-size:12px;overflow-wrap:anywhere}
         <span class="txt"><span class="on">Asya'da Eğitim</span><span class="sub">Education in Asia · APPROVED / CANONICAL</span></span>
       </a>
       <a class="opt" href="cin-egitim/">
-        <span class="pending" aria-hidden="true">YÖN<br>PANOSU</span>
-        <span class="txt"><span class="on">Çin Eğitim</span><span class="sub">Education in China · YÖN SEÇİMİ BEKLENİYOR</span></span>
+        <img src="cin-egitim/assets/symbol.svg" alt="">
+        <span class="txt"><span class="on">Çin Eğitim</span><span class="sub">Education in China · SYMBOL APPROVED / LOCKED</span></span>
       </a>
     </div>
   </div>
@@ -97,6 +104,15 @@ code{font-size:12px;overflow-wrap:anywhere}
       </div>
     </div>
   </div>
+
+  <a class="china-feature" href="cin-egitim/" aria-label="Çin Eğitim kilitli sembolünü ve çalışma durumunu aç">
+    <div><span class="tag">ÇİN EĞİTİM · SYMBOL APPROVED / CANONICAL</span>
+      <h2>Çin Eğitim</h2>
+      <p>Kırmızı fırça halkası ve pagoda sembolü onaylandı ve kilitlendi. Bu, sembol onayıdır; tam marka sistemi ve wordmark henüz geliştirilmedi.</p>
+      <span class="go">Sembolü ve çalışma durumunu gör &rarr;</span>
+    </div>
+    <img src="cin-egitim/assets/symbol.svg" alt="Çin Eğitim'in kırmızı fırça halkası, siyah pagoda ve mürekkep zemini sembolü">
+  </a>
 
   <section class="block" id="identity">
     <div class="kicker">01 &middot; LOGO &amp; TYPOGRAPHY — ÖNCE KİMLİK</div>

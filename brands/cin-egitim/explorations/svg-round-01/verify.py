@@ -62,6 +62,8 @@ def main():
     need(metadata["canonicalLogo"]["locked"] is True, "Brand metadata is not locked")
     need(metadata["canonicalLogo"]["sha256"] == m["canonical_asset_sha256"], "Canonical hash mismatch")
     need(digest(ROOT / metadata["canonicalLogo"]["path"]) == m["canonical_asset_sha256"], "Canonical asset mismatch")
+    site_asset = ROOT / m["published_site_asset"]["path"]
+    need(digest(site_asset) == m["published_site_asset"]["sha256"] == m["canonical_asset_sha256"], "Site asset is not the exact locked SVG")
     need(digest(BUNDLE / "symbol.svg") == m["canonical_asset_sha256"], "Reviewed vector differs from locked canonical")
     need(metadata["canonicalLogo"]["decisionRecord"] == "brands/cin-egitim/decisions/2026-10-10-symbol-svg-lock.md", "Decision record mismatch")
     need(decision.is_file() and "kitleyelim" in decision.read_text().lower(), "Human lock decision record missing")

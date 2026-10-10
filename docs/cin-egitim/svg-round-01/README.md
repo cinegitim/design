@@ -9,6 +9,7 @@ Son SR PNG kullanıldı. Önceki silinmiş denemelerden geometri alınmadı; kil
 - `source-vs-svg.png`, `detail-brush.png`, `detail-pagoda.png`: gerçek render karşılaştırmaları.
 - `manifest.json`: kaynak/çıktı hash'leri, araç sürümleri, parametreler, maske kapsama ölçümleri ve sınırlamalar.
 - Kilit kaydı: `../../decisions/2026-10-10-symbol-svg-lock.md`; kanonik varlık: `../../assets/symbol.svg`.
+- Site kullanımı: `docs/index.html` ana sayfa kartı ve `docs/cin-egitim/index.html`; web kopyası `docs/cin-egitim/assets/symbol.svg` kanonik varlıkla birebir aynıdır ve hash'i manifesttedir.
 
 ## Tekrar üretim
 
