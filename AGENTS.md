@@ -1,16 +1,17 @@
-# AI Brand Studio — shared GitHub source / OpenCode + ChatGPT Work
+# AI Brand Studio — shared GitHub source / OpenCode + Work/Codex
 
 This workspace is a reusable **AI Brand Studio** for vibe-designing complete visual identities from natural-language briefs.
 
 ## Cloud operating contract (current)
 
-- **OpenCode and ChatGPT Work share the repository, not a running session.** Use a separate checkout/worktree and a new `publish/<topic>` branch for each production request. Never switch or clean another executor's working directory. GitHub stores instructions, recipes, originals, editable sources, exports, manifests and review history; cloud caches are temporary.
+- **Both OpenCode and ChatGPT Work/Codex may design and produce.** Neither is the exclusive producer. They share the GitHub repository and recorded decisions, not a running session, chat memory, tools or credentials. Use a separate checkout/worktree and a new `publish/<topic>` branch for each production request. Never switch or clean another executor's working directory. GitHub stores instructions, recipes, originals, editable sources, exports, manifests and review history; cloud caches are temporary.
 - Read `studio/cloud/README.md` and `.agents/skills/cloud-delivery/SKILL.md` before delivery. Codex discovers `.agents/skills/`; the Brand Studio adapter points to the existing `.opencode/skills/brand-studio/` methodology without duplicating it.
-- Codex installs the pinned environment with `bash studio/cloud/setup.sh`, builds with `bash studio/cloud/build.sh launch-creative-02`, and audits with `python3 studio/cloud/audit.py --root .`. Build only when requested; never regenerate approved imagery as part of setup.
+- Either executor may use the pinned Linux environment: `bash studio/cloud/setup.sh`, `bash studio/cloud/build.sh launch-creative-02`, and `python3 studio/cloud/audit.py --root .`. Build only when requested; never regenerate approved imagery as part of setup. Existing platform-specific tools remain capability-dependent.
+- **Current choice: temporary local OpenCode production + temporary Work/Codex cloud production; no paid VM required.** Use one owned temporary root per execution host and an isolated disposable clone per active task. See `studio/work/EPHEMERAL.md` and `studio/work/ephemeral.py`. It is a temporary disk directory, not a RAM disk or cloud migration; do not claim a `session_move`, push or repo connection migrated execution to the cloud. Remote OpenCode is an optional alternative, not the chosen setup.
 - GitHub Actions **audits submitted files only**. It does not build/render, call image/LLM APIs or approve aesthetics. Existing Pages deployment serves committed outputs.
 - Register new deliverable bundles in `studio/cloud/policy.json` in the same PR. Existing experiments remain review-only; do not auto-approve an identity or publish to Instagram.
 - No automatic merge, including infrastructure/setup: open a PR and wait for the user's explicit authorization to merge that PR. Passing CI, approval of a logo, or a request to prepare production does not authorize merging or social publication.
-- Do not commit credentials, browser profiles, caches, installed dependencies or ephemeral preview servers. Save important outputs before a task ends. Legacy local files are retained until preservation and the actual cloud cutover are verified; never delete them merely because this contract exists.
+- Do not commit credentials, browser profiles, caches, installed dependencies or ephemeral preview servers. Save important outputs before a task ends. Only manager-owned task clones may be cleaned, after exact remote HEAD, independently fetched blob hashes, no unarchived files and exact-head PR CI are verified. Cleanup is a separate explicit completion command, not auto-merge or a background timer. Legacy local files always require separate preservation verification and explicit deletion permission; this contract never deletes them.
 - OpenCode commands/config/plugins remain supported OpenCode adapters. Their tool names, credentials and model routing do not establish capabilities in Work/Codex. Do not copy local credentials, call undocumented adapter endpoints from Work, or silently switch backends.
 
 ## Executor routing and shared state

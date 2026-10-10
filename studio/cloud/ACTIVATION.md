@@ -1,4 +1,4 @@
-# Hesap tarafında etkinleştirme — henüz doğrulanmadı
+# Work/Codex etkinleştirme — uzak OpenCode ayrı kurulabilir
 
 Bu kontrol listesi özel Codex Cloud render ortamını etkinleştirmek içindir.
 ChatGPT Work'te bağlı GitHub araçlarıyla repo okuma, branch/PR hazırlama ve
@@ -10,6 +10,12 @@ bu liste ikisini etkinleştirmiş veya kotasını doğrulamış sayılmaz.
 Repo dosyaları bir Codex Cloud ortamını kendiliğinden oluşturmaz. Bu oturumun
 ChatGPT hesabına/Cloud ayarlarına yönetim erişimi yoktur. Aşağıdaki adımlar
 hesap sahibi tarafından yapılır; ortamda başarılı test olmadan “buluta geçildi” denmez.
+
+Bu checklist Work/Codex içindir; **OpenCode üretim yapmak için Codex'in açılmasını
+beklemek zorunda değildir**. Seçilen OpenCode modeli için
+[EPHEMERAL.md](../work/EPHEMERAL.md): geçici yerel üretim, doğrulama sonrası temizlik;
+ücretli uzak sunucu gerekmez. Uzak execution host yalnız isteğe bağlı alternatiftir.
+Her iki ortam aynı GitHub kaynaklarına ve PR/merge izni kurallarına bağlıdır.
 
 1. ChatGPT Work/Codex'te **Work in → Cloud → Create environment** seçin.
 2. GitHub bağlantısına `cinegitim/design` erişimi verin; güncel `main`i kullanın.

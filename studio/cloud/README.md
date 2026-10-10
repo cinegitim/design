@@ -1,6 +1,6 @@
-# Brand Studio — Codex üretir, GitHub denetler
+# Brand Studio — OpenCode veya Work/Codex üretir; GitHub denetler
 
-ChatGPT Work ve OpenCode aynı kaynakları ayrı branch/checkout'larda kullanır:
+ChatGPT Work/Codex ve OpenCode aynı kaynakları ayrı branch/checkout'larda kullanır:
 [Work adapter ve yetenek haritası](../work/README.md). Bu dosya sabit sürümlü
 render tarifini açıklar; Work'te repo okuma/düzenleme için bu kurulum gerekmez.
 Her değişiklik önce açık PR olarak teslim edilir; merge için o PR'a açık kullanıcı
@@ -8,15 +8,16 @@ izni gerekir. Mevcut Pages yayını değişmez.
 
 ## Mimari
 
-**GitHub kaynaklar → Codex Cloud üretim → kaynak/çıktı PR'ı → bağımsız dosya denetimi
-→ insan görsel onayı → main → mevcut GitHub Pages yayını.**
+**GitHub kaynaklar → OpenCode veya Work/Codex üretim → kaynak/çıktı PR'ı
+→ bağımsız dosya denetimi → insan görsel kabulü (tasarımda)
+→ o PR için açık merge izni → main → mevcut GitHub Pages yayını.**
 
 | Görev | Nerede? |
 |---|---|
 | Brief, skill, marka sistemi, tarifler, fontlar, orijinaller ve tarihçe | GitHub repo |
-| Tasarım, görsel araçlar, build/render, PNG/SVG/ZIP üretimi | Codex Cloud |
+| Tasarım, görsel araçlar, build/render, PNG/SVG/ZIP üretimi | OpenCode veya Work/Codex; gerçekten mevcut araçlarla |
 | SHA-256, kaynak/manifest, boyut, kanonik logo, paket, olası secret kontrolleri | GitHub Actions |
-| Estetik/fidelity onayı, yeni kanonik logo kararı | İnsan |
+| Estetik/fidelity onayı, yeni kanonik logo kararı ve PR merge izni | İnsan; ayrı kararlar |
 | Onaylı/incelemelik çıktıların web sunumu | Mevcut Pages; Instagram'a otomatik gönderim yok |
 
 Actions **render/build yapmaz**, üretici scriptleri import etmez, LLM/image API
@@ -27,10 +28,14 @@ dosyalarını okur. Pages'in mevcut deployment mekanizması değişmez.
 
 Hesap bağlantısı için [ACTIVATION.md](ACTIVATION.md). Ortamın yayımlanması ve gerçek
 Codex Cloud testleri hesap sahibi tarafından yapılmalıdır; repo hazırlığı bunu kanıtlamaz.
+Seçilen ücretsiz çalışma modeli: [geçici OpenCode + bulut Work/Codex](../work/EPHEMERAL.md).
+Uzak OpenCode yalnız alternatif: [REMOTE-OPENCODE.md](REMOTE-OPENCODE.md).
+Bu Linux tarifini iki executor da kullanabilir; özel OpenCode pluginleri veya Work
+görsel araçları ortamın gerçek yeteneklerine bağlıdır.
 
 ```sh
 bash studio/cloud/setup.sh          # Kurulum; kampanya üretmez
-bash studio/cloud/doctor.sh         # Codex'te araç/headless browser smoke testi
+bash studio/cloud/doctor.sh         # Seçilen üretim ortamında araç/headless smoke testi
 bash studio/cloud/build.sh launch-creative-02  # Yalnız istenmiş çıktı revizyonunda
 python3 studio/cloud/audit.py --root .        # Salt okunur denetim; render yok
 python3 -m unittest discover -s studio/cloud/tests -v
@@ -44,6 +49,17 @@ byte-identical çıktı garantilemez. Eski Mac çıktıları bu göçte yeniden 
 İlk taşınabilir tarif: `launch-creative-02`. Diğer tarihsel build'ler repoda korunur;
 hepsinin Linux uyumluluğu bu kurulumla kendiliğinden kanıtlanmış değildir.
 Eski OpenCode pluginleri/model isimleri Codex'e kurulu connector sayılmaz.
+
+## “Doğrudan GitHub” ne demek?
+
+GitHub ortak kalıcı kaynaktır; bir repo bağlantısı çalışan dosya sistemi, fontlar,
+Chromium veya görsel araçların yerine geçmez. Basit dosya okuma/düzenleme/PR işlemleri
+GitHub API üzerinden checkout olmadan yapılabilir. Tam üretimde çalışma alanı gerekir;
+seçilen modelde OpenCode için geçici yerel disk alanında, Work/Codex için kendi
+bulut alanında bulunur. Kalıcı proje arşivi GitHub'dır. İş bitiminde doğrulanan
+manager-owned task clone ve Git object store temizlenir; PR merge edilmez.
+Uzak sunucu zorunlu değildir. Her oturum gerçek execution host'unu belirtir;
+sohbet hafızası paylaşılmaz. Geçici klasör gerçek RAM disk veya sıfır yerel veri değildir.
 
 ## Denetim kapsamı / yeni teslim kaydı
 
@@ -78,7 +94,8 @@ W/smooth/weight-study çalışmaları korunur ama üretimde kullanılmaz.
 GitHub kalıcı kaynaktır. Cloud task state ve CI artifact'leri geçicidir. Benzersiz
 orijinal, editable source ve teslimi commit edin; büyük dağıtım paketlerinde Release
 ve checksum indeksini birlikte kullanın. Arşivlenen eski yerel çalışma bir üretim
-onayı veya yeni kanonik sistem değildir. Yerel dosyalar cutover kanıtlanmadan silinmez.
+onayı veya yeni kanonik sistem değildir. Eski yerel arşivler ayrıca açık silme izni
+gerektirir; yeni geçici iş alanları EPHEMERAL.md'deki gönderim/doğrulama kapısıyla temizlenir.
 
 ## GitHub merge kapısı
 
