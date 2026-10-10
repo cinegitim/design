@@ -8,7 +8,7 @@ Act as brand-director using the brand-studio skill. Propagate the ESTABLISHED id
 Requested applications:
 $ARGUMENTS
 
-Steps: read the canonical brands/*/brand-system.md (if none exists, say so and run /brand first; if multiple, pick the most recently modified and say which), derive every asset strictly from system tokens with correct sizes/safe zones per references/applications.md, build HTML/SVG outputs under brands/<slug>/applications/, self-critique, preview, and present. Never invent orphan colors, fonts, or devices. If the request is vague, choose the most valuable real touchpoints for the brand's category.
+Steps: resolve the exact brand from the user's brief and metadata/decisions, never modification time. Read its brand-system.md; if missing, disclose the gap and follow the identity-source exception in AGENTS.md, without borrowing a sibling system or declaring campaign templates canonical. Derive assets from these sources with correct sizes/safe zones per references/applications.md, build outputs in a unique brands/<slug>/applications/<task>/ directory, self-critique, preview, and present. Never invent orphan colors, fonts, or devices. If vague, choose valuable real touchpoints for that brand's category.
 
 ## Locked logo gate — run before any raster work
 
@@ -16,7 +16,7 @@ Check `brands/<slug>/brand.json` for `canonicalLogo.locked`. If it is locked:
 
 1. Run `studio/tools/verify-canonical-logo.sh`. If it fails, stop and restore from git — do not continue.
 2. **Never** ask an image model to draw the logo. Image models generate background / composition / texture only.
-3. Composite `brands/<slug>/assets/<canonicalLogo.filename>` onto every output that shows the logo.
+3. Composite the exact repo-root-relative `canonicalLogo.path` from `brand.json` onto every output that shows the logo.
 4. Only placement may change: position, size, clearspace, approved variant. Geometry never changes.
 5. Logo inside a flat design → reserve a clean logo-safe area during generation, composite the SVG after.
 6. Logo on a perspective or physical surface → do not regenerate. Flag it for the perspective/mockup workflow, which warps the same canonical asset.
@@ -35,4 +35,4 @@ If `brands/<slug>/brand.json` has `canonicalLockups.locked`:
 
 If the logo is not locked, follow references/image-production.md normally.
 
-Finish via the standing GitHub delivery workflow in AGENTS.md (procedure: studio/workflow/PUBLISHING.md) and verify the affected live Pages URL before reporting completion.
+Finish via `studio/workflow/PUBLISHING.md`: a new branch and open PR. Wait for explicit authorization to merge that PR; verify Pages only after an authorized publication.

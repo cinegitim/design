@@ -1,14 +1,15 @@
 ---
 name: cloud-delivery
-description: Build and deliver Brand Studio assets in Codex Cloud, preserving production recipes, outputs and history on GitHub with independent audit-only CI. Use for cloud setup, export, packaging, PR delivery and migration.
+description: Build and deliver Brand Studio assets in ChatGPT Work or Codex Cloud. Preserve recipes, outputs and history on GitHub with audit-only CI. Use for cloud setup, export, packaging, isolated branch delivery and handoffs to OpenCode.
 ---
 
-# Codex builds; GitHub audits
+# Work / Codex builds; GitHub audits
 
-1. Read `AGENTS.md`, `studio/cloud/README.md`, `studio/cloud/policy.json`.
-2. Work in the published cloud environment against the current main branch.
-   Use `publish/<topic>` and keep unrelated work separate.
-3. Install with `bash studio/cloud/setup.sh`; inspect capabilities with
+1. Read `AGENTS.md`, `studio/work/README.md`, `studio/cloud/README.md`, `studio/cloud/policy.json`.
+2. Start from current main in a separate checkout/worktree and a new
+   `publish/<topic>` branch. Preserve other branches/PRs and use the handoff template.
+   Run `python3 studio/work/preflight.py --root . --brand <slug>` before production.
+3. For requested rendering, install with `bash studio/cloud/setup.sh`; inspect capabilities with
    `bash studio/cloud/doctor.sh`. Installation **does not build or generate images**.
 4. Run the registered recipe only when the task requests output changes:
    `bash studio/cloud/build.sh launch-creative-02` is the first supported example.
@@ -24,7 +25,8 @@ description: Build and deliver Brand Studio assets in Codex Cloud, preserving pr
 8. Commit the relevant work and open a PR, describing image/model calls, changes,
    accepted limitations and human approval still needed. Passing audit is technical only.
 9. GitHub's `audit / submitted-files` checks actual committed inputs independently;
-   it never renders. Wait for human creative acceptance; do not auto-merge.
+   it never renders. Leave every PR open until explicit authorization to merge it;
+   human creative acceptance alone is not merge authorization.
 10. After an authorized merge, verify Pages and live export hashes. CI artifacts
     expire and cloud task state is temporary: commit important results or use a
     durable release with a checksum index. Never end with unique files only in the VM.

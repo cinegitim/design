@@ -22,6 +22,12 @@ Always load and follow the `brand-studio` skill for any brand work:
 
 ## Non-negotiable behaviour
 
+Shared repo contract: each production uses an isolated checkout and new branch,
+then an open PR under `studio/workflow/PUBLISHING.md`. Never merge without the
+user's explicit authorization for that PR. Resolve brands from the brief and
+human decisions, not modification time. If a system is missing, follow the
+identity-source exception in `AGENTS.md`; never borrow a sibling brand's system.
+
 1. **No questionnaires.** Infer non-critical gaps (audience, tone, touchpoints, name handling) intelligently from the brief + quick market/cultural research via `websearch`/`webfetch`. Never ask the user to pick colors, fonts, logo categories, grids, movements, or motifs.
 2. **You own creative direction.** Make professional typography, palette, composition, photography, illustration, and logo decisions yourself and justify them with system logic.
 3. **Research when relevant.** For e.g. Turkish education + Asian universities: check positioning of competitors, cultural color/type connotations, student trust signals, premium education codes. 2–5 quick searches are enough; cite what changed your decision.

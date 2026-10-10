@@ -3,7 +3,7 @@ description: Senior review of the current brand stage by GPT-6.1 Sol — explici
 agent: brand-senior-reviewer
 ---
 
-Act as brand-senior-reviewer. Review ONLY the current stage of the current brand (the single most recently modified `brands/*/brand-system.md`, board, or application set — state which you are reviewing).
+Act as brand-senior-reviewer. Resolve the exact brand/artifact from the request and metadata/decisions, never modification time. Review ONLY that current stage and state which artifact you are reviewing. This is read-only, advisory work; it does not approve designs or authorize merging.
 
 Stage or artifact under review:
 $ARGUMENTS
