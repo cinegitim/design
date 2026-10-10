@@ -23,7 +23,7 @@
 
 ## Kanonik kimlik kapsamı
 
-Her slaytta kaynak SVG içindeki `canonical-lockup` görseli kullanılmıştır. Üretim kayıtları seal SHA-256 `8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a` ile lockup kimliği/hash’ini ayrıca taşır. V1’in kendi kanonik üretim ve kayıtları değiştirilmemiştir.
+Her slaytta kaynak SVG içindeki `canonical-lockup` görseli kullanılmıştır. Üretim kayıtları seal SHA-256 `8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a` ile lockup kimliği/hash’ini ayrıca taşır. V1’in PNG çıktıları, slayt SVG/HTML kaynakları, görsel varlıkları ve manifesti değişmeden bırakılmıştır; V1 galerisi ile caption, üretim ve kaynak/doğrulama açıklamaları bu güncellemede ayrıca düzenlenmiştir.
 
 ## Kontrol sınırları
 
