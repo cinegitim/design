@@ -1,0 +1,25 @@
+{
+  "slug": "cin-egitim",
+  "name": "Çin Eğitim",
+  "status": "REFERENCE_LOCKED / CANONICAL_SYMBOL",
+  "canonicalIdentity": false,
+  "canonicalLogo": {
+    "locked": true,
+    "status": "HUMAN_APPROVED / CANONICAL SYMBOL",
+    "approvedOn": "2026-10-10",
+    "path": "brands/cin-egitim/assets/symbol.svg",
+    "sha256": "1cc1808947d8f7f759ebb9956a715d535bb4fcc985d3f85194d4eaf1a85c7381",
+    "decisionRecord": "brands/cin-egitim/decisions/2026-10-10-symbol-svg-lock.md"
+  },
+  "targetReference": {
+    "locked": true,
+    "path": "brands/cin-egitim/reference/target-symbol.png",
+    "sha256": "6177f661a1971b985c2d2e0bb91b995d8df074f5ef9433caef5366f457a76b89",
+    "record": "brands/cin-egitim/reference/target-lock.json"
+  },
+  "svgInput": {
+    "path": "brands/cin-egitim/enhancements/target-symbol-super-resolution-4x.png",
+    "sha256": "56ad9bc59a50a53f44db2c91800a5470868002b70fb692107c4e8e115582bdc7"
+  },
+  "scope": "Symbol only. User explicitly approved and requested locking the SVG. No typography or full brand-system approval. PR merge remains a separate gate."
+}
