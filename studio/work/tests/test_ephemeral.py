@@ -328,7 +328,7 @@ class EphemeralTests(unittest.TestCase):
         self.assertTrue(path.is_dir())
         self.assertEqual(self.record().read_bytes(), before)
         result = self.manager.cleanup('alpha', apply=True)
-        self.assertEqual(result['status'], 'cleaned; PR still unmerged')
+        self.assertEqual(result['status'], 'cleaned; GitHub branch/PR preserved')
         self.assertFalse(path.exists())
         record = json.loads(self.record().read_text())
         self.assertEqual(record['state'], 'cleaned')
@@ -604,6 +604,41 @@ class EphemeralTests(unittest.TestCase):
         self.assertFalse(source.exists())
         self.assertTrue(target.exists())
         self.assertEqual(self.manager.check('continuation')['sha'], target_sha)
+
+    def test_merged_pr_gate_requires_checked_head_and_main_ancestry(self):
+        path = self.published()
+        sha = self.git(path, 'rev-parse', 'HEAD')
+        data = {'state': 'MERGED', 'headRefName': 'publish/opencode-alpha',
+                'headRefOid': sha, 'baseRefName': 'main', 'isCrossRepository': False,
+                'mergeCommit': {'oid': 'a'*40},
+                'statusCheckRollup': [{'name': 'submitted-files', 'status': 'COMPLETED',
+                                       'conclusion': 'SUCCESS'}]}
+        real_run = E.run
+        def stub(payload, comparison):
+            def call(args, **kwargs):
+                if args[:3] == ['gh', 'pr', 'view']:
+                    return json.dumps(payload)
+                if args[:2] == ['gh', 'api']:
+                    self.assertTrue(args[2].endswith('/compare/'+'a'*40+'...main'))
+                    return json.dumps({'status': comparison})
+                return real_run(args, **kwargs)
+            return call
+        for state in ('ahead', 'identical'):
+            with self.subTest(state=state), patch.object(E, 'run', side_effect=stub(data, state)):
+                self.assertEqual(E.pr_gate(self.manager, 'alpha', 123), sha)
+        for state in ('behind', 'diverged', 'unknown'):
+            with self.subTest(state=state), patch.object(E, 'run', side_effect=stub(data, state)):
+                with self.assertRaisesRegex(E.Stop, 'not in current main'):
+                    E.pr_gate(self.manager, 'alpha', 123)
+        for commit in (None, {'oid': 'invalid'}):
+            with patch.object(E, 'run', side_effect=stub(dict(data, mergeCommit=commit), 'identical')):
+                with self.assertRaisesRegex(E.Stop, 'no valid merge commit'):
+                    E.pr_gate(self.manager, 'alpha', 123)
+        for update in ({'headRefOid': 'b'*40}, {'statusCheckRollup': []}, {'state': 'CLOSED'}):
+            with patch.object(E, 'run', side_effect=stub(dict(data, **update), 'identical')):
+                with self.assertRaises(E.Stop):
+                    E.pr_gate(self.manager, 'alpha', 123)
+        self.assertTrue(path.exists())
 
 
 if __name__ == '__main__':

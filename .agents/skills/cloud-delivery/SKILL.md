@@ -30,9 +30,12 @@ description: Build and deliver Brand Studio assets in OpenCode or ChatGPT Work/C
 8. Commit the relevant work and open a PR, describing image/model calls, changes,
    accepted limitations and human approval still needed. Passing audit is technical only.
 9. GitHub's `audit / submitted-files` checks actual committed inputs independently;
-   it never renders. Leave every PR open until explicit authorization to merge it;
-   human creative acceptance alone is not merge authorization.
-10. After an authorized merge, verify Pages and live export hashes. CI artifacts
+   it never renders. Follow the standing checked-merge policy in PUBLISHING.md:
+   resolve technical failures/conflicts, rerun checks on every changed head, and
+   merge the exact passing head without another confirmation when no substantive
+   blocker remains. Honor explicit PR holds. Do not bypass protection or treat CI
+   as creative/canonical approval or social-publication permission.
+10. After merge, verify Pages and live export hashes. CI artifacts
     expire and cloud task state is temporary: commit important results or use a
     durable release with a checksum index. Never end with unique files only in the VM.
 11. At task completion, stop writers/preview servers, leave the task directory and

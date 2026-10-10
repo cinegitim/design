@@ -32,15 +32,18 @@ for new manager-owned clones, never the platform's existing checkout or legacy f
 5. Translate the brief to the workflow below. Preserve originals in unique
    exploration/application folders. Maintain sources, exact-copy manifests,
    exports and evidence; register supported delivery bundles in cloud policy.
-6. Audit and open a PR. Leave it open until the user explicitly authorizes
-   merging that PR. Pages serves main, so unmerged branch work is not live there.
-   After authorized merge, verify deployment and live files. No social posting.
+6. Audit and open a PR. Follow PUBLISHING.md: inspect required checks on exact HEAD,
+   resolve technical conflicts/corrections, rerun checks and merge without another
+   confirmation when no substantive blocker remains. Honor an explicit user hold.
+   Pages serves main, so unmerged branch work is not live there. After checked merge,
+   verify deployment and live files; then verified task cleanup. No social posting.
 
 Example request (no OpenCode command installation needed):
 
 > Asya'da Eğitim için yeni bir carousel hazırla. AGENTS.md ve Work adapter'ını
 > oku; güncel onaylı kimlik ve belirttiğim uygulama referansını kullan. Ayrı bir
-> branch'te çalış, orijinalleri koru, denetle ve PR aç. Ben onaylamadan merge etme.
+> branch'te çalış, orijinalleri koru, denetle ve PR aç. PUBLISHING.md'deki exact-head
+> denetim ve teknik düzeltme kapılarından sonra ek onay istemeden merge et; yayını doğrula.
 
 ## Workflow mapping
 
@@ -49,11 +52,11 @@ Example request (no OpenCode command installation needed):
 | `/brand-new` | Scaffold an independent brand; no borrowed identity | Brief before design |
 | `/brand` | Three distinct territories/boards using the existing methodology | Human territory choice; no auto-development |
 | `/brand-explore` | Authorized native image exploration; untouched originals and comparison | Visual/direction selection |
-| `/brand-refine` | Update the selected system/spec, then derived applications | Locked logo remains untouched; PR merge authorization |
+| `/brand-refine` | Update the selected system/spec, then derived applications | Locked logo remains untouched; exact-head required checks |
 | `/brand-apply` | Exact approved identity + system/selected application spec → exact-size assets | New campaign output remains review-only |
 | `/brand-status` | Read metadata and actual decisions; no changes | No commit/PR for read-only status |
 | `/brand-review` | Explicit advisory review of the named stage/artifact | No automatic model switch or approval |
-| `/brand-share` | Prepare existing `docs/` gallery in a new branch and PR | Explicit merge authorization, then Pages verification |
+| `/brand-share` | Prepare existing `docs/` gallery in a new branch and PR | Exact-head checked merge, then Pages verification; not identity approval |
 | `/brand-preview` | Available temporary preview; source-only if browser unavailable | Preview is not publication |
 
 ## Capability and backend routing
@@ -133,7 +136,7 @@ Continue another executor's task only when explicitly requested: fetch its branc
 inspect its changes and record a handoff before editing. Otherwise start a fresh
 branch; unrelated outputs use unique directories. When target files overlap,
 re-read current branch/file SHAs and resolve the change without losing the other
-task. No force push, automatic reset/clean, broad staging or automatic merge.
+task. No force push, automatic reset/clean, broad staging or unconditional merge.
 
 New carousel bundles can use the existing checker schema. Other formats require
 an explicit checker/schema extension before claiming independent bundle coverage;

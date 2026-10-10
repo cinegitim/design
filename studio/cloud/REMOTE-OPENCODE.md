@@ -17,7 +17,7 @@ Hedef mimari:
 Kullanıcının arayüzü ──> Uzak OpenCode sunucusu + izole çalışma alanı ──┐
                                                                   ├─> GitHub branch/PR → audit
 ChatGPT Work/Codex ──> Kendi bulut çalışma alanı ────────────────────┘
-                           → İnsan kabulü / açık PR merge izni → Pages
+                           → İnsan kreatif kapıları / exact-head checked merge → Pages
 ```
 
 İki executor da üretim yapabilir. Biri diğerinin oturumunu, araçlarını, modelini
@@ -84,5 +84,5 @@ Kontrol edilen resmî V2 kaynaklar (2026-10-10):
   değildir. Yerel istemci oturum, auth veya UI cache'i tutabilir; görsel önizleme
   görüntü verisinin istemciye ulaşmasını gerektirir. Tam sıfır-local-byte garantisi
   bu mimariyle verilmez. Hedef: proje çalışma dosyalarının ve üretimin uzakta olması.
-- GitHub Actions aynı şekilde audit-only kalır. Bu altyapı/guide PR'ı da açık merge
-  izni bekler; branch'teki dosyalar Pages'te canlıymış gibi sunulmaz.
+- GitHub Actions aynı şekilde audit-only kalır. Altyapı/guide teslimi de PUBLISHING.md'nin
+  exact-head checked-merge politikasına uyar; branch dosyaları Pages'te canlı sayılmaz.
