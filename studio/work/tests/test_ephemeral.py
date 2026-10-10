@@ -194,6 +194,181 @@ class EphemeralTests(unittest.TestCase):
         self.assertEqual(self.record().read_bytes(), before)
         self.assertTrue(path.is_dir())
 
+    def prepare_baseline(self):
+        (self.seed/'AGENTS.md').write_text('Shared operational instructions\n')
+        (self.seed/'studio/work').mkdir(parents=True)
+        (self.seed/'studio/work/launcher.py').write_text('print("fixture")\n')
+        (self.seed/'studio/work/launcher.py').chmod(0o755)
+        (self.seed/'studio/work/ephemeral.py').write_text('# Committed launcher fixture\n')
+        (self.seed/'studio/work/.env').write_text('not a baseline source\n')
+        (self.seed/'studio/work/image.png').write_bytes(b'not cached')
+        self.commit(self.seed)
+        self.git(self.seed, 'push', str(self.remote), 'HEAD:refs/heads/main')
+        return E.Baseline(self.fixture/'baseline', self.remote_url)
+
+    def calibrate_baseline(self, cache):
+        with patch.object(E, 'repo_url', return_value=self.remote_url):
+            return self.manager.calibrate('https://github.com/fixture/repository', cache.root)
+
+    def test_baseline_keeps_only_selected_committed_sources(self):
+        cache = self.prepare_baseline()
+        (self.seed/'AGENTS.md').write_text('uncommitted local instructions')
+        result = self.calibrate_baseline(cache)
+        snapshot = Path(result['path'])
+        self.assertEqual((snapshot/'AGENTS.md').read_text(), 'Shared operational instructions\n')
+        self.assertTrue((snapshot/'studio/work/launcher.py').stat().st_mode & 0o111)
+        self.assertFalse((snapshot/'studio/work/.env').exists())
+        self.assertFalse((snapshot/'studio/work/image.png').exists())
+        self.assertFalse((snapshot/'included').exists())
+        self.assertFalse((snapshot/'.git').exists())
+        self.assertEqual(cache.root.stat().st_mode & 0o777, 0o700)
+
+    def test_baseline_reuses_unchanged_blobs_and_updates_only_changed_sources(self):
+        cache = self.prepare_baseline()
+        first = self.calibrate_baseline(cache)
+        second = self.calibrate_baseline(cache)
+        self.assertEqual(second['status'], 'unchanged')
+        self.assertEqual(second['loaded_blobs'], 0)
+        self.assertEqual(first['path'], second['path'])
+        (self.seed/'tracked.txt').write_text('brand-only change\n')
+        self.commit(self.seed)
+        self.git(self.seed, 'push', str(self.remote), 'HEAD:refs/heads/main')
+        unrelated = self.calibrate_baseline(cache)
+        self.assertEqual(unrelated['loaded_blobs'], 0)
+        self.assertEqual(first['digest'], unrelated['digest'])
+        (self.seed/'AGENTS.md').write_text('Updated shared instructions\n')
+        self.commit(self.seed)
+        self.git(self.seed, 'push', str(self.remote), 'HEAD:refs/heads/main')
+        updated = self.calibrate_baseline(cache)
+        self.assertEqual(updated['loaded_blobs'], 1)
+        self.assertNotEqual(first['digest'], updated['digest'])
+        self.assertEqual((Path(first['path'])/'AGENTS.md').read_text(), 'Shared operational instructions\n')
+
+    def test_start_seeds_independent_objects_and_cleanup_keeps_baseline(self):
+        cache = self.prepare_baseline()
+        with patch.object(E, 'repo_url', return_value=self.remote_url):
+            result = self.manager.start('cached', 'https://github.com/fixture/repository',
+                                        baseline_root=cache.root)
+        path = Path(result['path'])
+        snapshot = Path(result['baseline']['path'])
+        self.assertFalse((path/'.git/objects/info/alternates').exists())
+        self.assertNotEqual((path/'AGENTS.md').stat().st_ino, (snapshot/'AGENTS.md').stat().st_ino)
+        (path/'AGENTS.md').write_text('Task changes only\n')
+        self.commit(path)
+        self.manager.publish('cached')
+        self.manager.cleanup('cached', apply=True)
+        self.assertFalse(path.exists())
+        self.assertEqual((snapshot/'AGENTS.md').read_text(), 'Shared operational instructions\n')
+        cache.current()
+
+    def test_baseline_tampering_blocks_recalibration_without_overwriting(self):
+        cache = self.prepare_baseline()
+        result = self.calibrate_baseline(cache)
+        file = Path(result['path'])/'AGENTS.md'
+        file.chmod(0o644)
+        file.write_text('Unique local edits\n')
+        with self.assertRaisesRegex(E.Stop, 'bytes changed'):
+            self.calibrate_baseline(cache)
+        self.assertEqual(file.read_text(), 'Unique local edits\n')
+
+    def test_baseline_refuses_unowned_directory_repository_mismatch_and_symlinks(self):
+        cache = self.prepare_baseline()
+        cache.root.mkdir(mode=0o700)
+        (cache.root/'unique.txt').write_text('preserve')
+        with self.assertRaisesRegex(E.Stop, 'nonempty'):
+            self.calibrate_baseline(cache)
+        self.assertEqual((cache.root/'unique.txt').read_text(), 'preserve')
+        cache = E.Baseline(self.fixture/'good-baseline', self.remote_url)
+        result = self.calibrate_baseline(cache)
+        with self.assertRaisesRegex(E.Stop, 'mismatch'):
+            with E.Baseline(cache.root, 'https://github.com/other/repo.git').lock():
+                pass
+        file = Path(result['path'])/'AGENTS.md'
+        file.unlink()
+        file.symlink_to(self.seed/'AGENTS.md')
+        with self.assertRaisesRegex(E.Stop, 'mode/type'):
+            self.calibrate_baseline(cache)
+
+    def test_baseline_refuses_source_symlinks(self):
+        cache = self.prepare_baseline()
+        (self.seed/'AGENTS.md').unlink()
+        (self.seed/'AGENTS.md').symlink_to('tracked.txt')
+        self.commit(self.seed)
+        self.git(self.seed, 'push', str(self.remote), 'HEAD:refs/heads/main')
+        with self.assertRaisesRegex(E.Stop, 'regular committed'):
+            self.calibrate_baseline(cache)
+
+    def test_publish_branch_cannot_replace_main_baseline(self):
+        cache = self.prepare_baseline()
+        first = self.calibrate_baseline(cache)
+        self.git(self.seed, 'switch', '-c', 'publish/held')
+        (self.seed/'AGENTS.md').write_text('Unmerged alternative policy\n')
+        self.commit(self.seed)
+        self.git(self.seed, 'push', str(self.remote), 'HEAD:refs/heads/publish/held')
+        with patch.object(E, 'repo_url', return_value=self.remote_url):
+            result = self.manager.start('held', 'https://github.com/fixture/repository',
+                                        base='publish/held', baseline_root=cache.root)
+        self.assertIsNone(result['baseline'])
+        self.assertEqual((Path(result['path'])/'AGENTS.md').read_text(), 'Unmerged alternative policy\n')
+        self.assertEqual(cache.current()[1]['digest'], first['digest'])
+
+    def test_baseline_offline_does_not_silently_claim_fresh_sources(self):
+        cache = self.prepare_baseline()
+        first = self.calibrate_baseline(cache)
+        before = (cache.root/'active.json').read_bytes()
+        self.remote.rename(self.fixture/'offline.git')
+        with self.assertRaises(E.Stop):
+            self.calibrate_baseline(cache)
+        self.assertEqual((cache.root/'active.json').read_bytes(), before)
+        self.assertTrue(Path(first['path']).exists())
+
+    def test_calibration_refreshes_recorded_launcher_but_preserves_local_edits(self):
+        cache = self.prepare_baseline()
+        first = self.calibrate_baseline(cache)
+        launcher = Path(first['launcher'])
+        self.assertEqual(launcher.read_text(), '# Committed launcher fixture\n')
+        (self.seed/'studio/work/ephemeral.py').write_text('# Updated launcher fixture\n')
+        self.commit(self.seed)
+        self.git(self.seed, 'push', str(self.remote), 'HEAD:refs/heads/main')
+        self.calibrate_baseline(cache)
+        self.assertEqual(launcher.read_text(), '# Updated launcher fixture\n')
+        launcher.chmod(0o644)
+        launcher.write_text('# Unique local edit\n')
+        with self.assertRaisesRegex(E.Stop, 'launcher changed'):
+            self.calibrate_baseline(cache)
+        self.assertEqual(launcher.read_text(), '# Unique local edit\n')
+
+    def test_baseline_cannot_be_inside_temporary_root(self):
+        cache = self.prepare_baseline()
+        with patch.object(E, 'repo_url', return_value=self.remote_url):
+            with self.assertRaisesRegex(E.Stop, 'outside'):
+                self.manager.calibrate('https://github.com/fixture/repository', self.manager.root/'baseline')
+
+    def test_removed_sources_are_not_materialized_in_new_baseline(self):
+        cache = self.prepare_baseline()
+        first = self.calibrate_baseline(cache)
+        (self.seed/'studio/work/launcher.py').unlink()
+        self.commit(self.seed)
+        self.git(self.seed, 'push', str(self.remote), 'HEAD:refs/heads/main')
+        changed = self.calibrate_baseline(cache)
+        self.assertFalse((Path(changed['path'])/'studio/work/launcher.py').exists())
+        self.assertTrue((Path(first['path'])/'studio/work/launcher.py').exists())
+
+    def test_main_revert_can_reuse_verified_previous_snapshot(self):
+        cache = self.prepare_baseline()
+        first = self.calibrate_baseline(cache)
+        original = (self.seed/'AGENTS.md').read_bytes()
+        (self.seed/'AGENTS.md').write_text('Temporary committed change\n')
+        self.commit(self.seed)
+        self.git(self.seed, 'push', str(self.remote), 'HEAD:refs/heads/main')
+        self.calibrate_baseline(cache)
+        (self.seed/'AGENTS.md').write_bytes(original)
+        self.commit(self.seed)
+        self.git(self.seed, 'push', str(self.remote), 'HEAD:refs/heads/main')
+        reverted = self.calibrate_baseline(cache)
+        self.assertEqual(first['digest'], reverted['digest'])
+        self.assertEqual(first['path'], reverted['path'])
+
     def test_publish_requires_explicit_commit(self):
         path = self.start()
         with self.assertRaisesRegex(E.Stop, 'No task commit'):
