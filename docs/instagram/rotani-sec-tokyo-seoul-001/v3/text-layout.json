@@ -37,19 +37,19 @@
         "contractText": "TOKYO MU, SEUL MÜ?",
         "box": {
           "x": 58,
-          "y": 498.015625,
+          "y": 486.515625,
           "width": 964,
           "height": 174.71875,
           "right": 1022,
-          "bottom": 672.734375
+          "bottom": 661.234375
         },
         "parent": {
           "x": 58,
-          "y": 498.015625,
+          "y": 486.515625,
           "width": 964,
           "height": 325.96875,
           "right": 1022,
-          "bottom": 823.984375
+          "bottom": 812.484375
         },
         "paddingTop": 0,
         "fontSize": 104,
@@ -57,7 +57,7 @@
           {
             "text": "TOKYO MU,",
             "x": 58,
-            "top": 466.015625,
+            "top": 454.515625,
             "height": 150,
             "lineIndex": 0,
             "fontSize": 104,
@@ -69,7 +69,7 @@
           {
             "text": "SEUL MÜ?",
             "x": 58,
-            "top": 553.375,
+            "top": 541.875,
             "height": 150,
             "lineIndex": 1,
             "fontSize": 104,
@@ -86,19 +86,19 @@
         "contractText": "Kabul mektubun hangisinden gelsin?",
         "box": {
           "x": 58,
-          "y": 710.734375,
+          "y": 699.234375,
           "width": 660,
           "height": 93.25,
           "right": 718,
-          "bottom": 803.984375
+          "bottom": 792.484375
         },
         "parent": {
           "x": 58,
-          "y": 498.015625,
+          "y": 486.515625,
           "width": 964,
           "height": 325.96875,
           "right": 1022,
-          "bottom": 823.984375
+          "bottom": 812.484375
         },
         "paddingTop": 0,
         "fontSize": 44,
@@ -106,7 +106,7 @@
           {
             "text": "Kabul mektubun hangisinden ",
             "x": 58,
-            "top": 701.734375,
+            "top": 690.234375,
             "height": 64,
             "lineIndex": 0,
             "fontSize": 44,
@@ -118,7 +118,7 @@
           {
             "text": "gelsin?",
             "x": 58,
-            "top": 748.359375,
+            "top": 736.859375,
             "height": 64,
             "lineIndex": 1,
             "fontSize": 44,
@@ -135,9 +135,9 @@
         "contractText": "6 üniversite · İngilizce programlar · Öğrenci hayatı · Barınma",
         "box": {
           "x": 58,
-          "y": 1221,
+          "y": 1198,
           "width": 726,
-          "height": 41,
+          "height": 64,
           "right": 784,
           "bottom": 1262
         },
@@ -147,8 +147,8 @@
         "runs": [
           {
             "text": "6 üniversite ",
-            "x": 72,
-            "top": 1228,
+            "x": 76,
+            "top": 1216.5,
             "height": 27,
             "lineIndex": 0,
             "fontSize": 19,
@@ -159,8 +159,8 @@
           },
           {
             "text": "· ",
-            "x": 196.609375,
-            "top": 1228,
+            "x": 204.609375,
+            "top": 1216.5,
             "height": 27,
             "lineIndex": 0,
             "fontSize": 19,
@@ -171,8 +171,8 @@
           },
           {
             "text": "İngilizce programlar ",
-            "x": 219.25,
-            "top": 1228,
+            "x": 231.25,
+            "top": 1216.5,
             "height": 27,
             "lineIndex": 0,
             "fontSize": 19,
@@ -183,8 +183,8 @@
           },
           {
             "text": "· ",
-            "x": 420.484375,
-            "top": 1228,
+            "x": 436.484375,
+            "top": 1216.5,
             "height": 27,
             "lineIndex": 0,
             "fontSize": 19,
@@ -195,8 +195,8 @@
           },
           {
             "text": "Öğrenci hayatı ",
-            "x": 443.125,
-            "top": 1228,
+            "x": 463.125,
+            "top": 1216.5,
             "height": 27,
             "lineIndex": 0,
             "fontSize": 19,
@@ -207,8 +207,8 @@
           },
           {
             "text": "· ",
-            "x": 592.953125,
-            "top": 1228,
+            "x": 616.953125,
+            "top": 1216.5,
             "height": 27,
             "lineIndex": 0,
             "fontSize": 19,
@@ -219,8 +219,8 @@
           },
           {
             "text": "Barınma ",
-            "x": 615.59375,
-            "top": 1228,
+            "x": 643.59375,
+            "top": 1216.5,
             "height": 27,
             "lineIndex": 0,
             "fontSize": 19,
@@ -579,22 +579,22 @@
         "naturalHeight": 1014
       },
       {
-        "src": "../assets/photos/originals/songdo-central-park.jpg",
+        "src": "../assets/photos/originals/yonsei-main.jpg",
         "complete": true,
         "naturalWidth": 1920,
-        "naturalHeight": 1282
+        "naturalHeight": 519
       },
       {
-        "src": "../assets/photos/originals/nakano-broadway.jpg",
+        "src": "../assets/photos/originals/waseda-campus.jpg",
         "complete": true,
-        "naturalWidth": 930,
-        "naturalHeight": 523
+        "naturalWidth": 1500,
+        "naturalHeight": 981
       },
       {
-        "src": "../assets/photos/originals/shinjuku-night.jpg",
+        "src": "../assets/photos/originals/waseda-library.jpg",
         "complete": true,
         "naturalWidth": 1920,
-        "naturalHeight": 1379
+        "naturalHeight": 1280
       }
     ]
   },
@@ -1674,11 +1674,11 @@
         "contractText": "Farklı konaklama türlerine ait örneklerdir. Depozito, yemek ve diğer giderler ayrıca değerlendirilmelidir.",
         "box": {
           "x": 58,
-          "y": 747.09375,
+          "y": 867.09375,
           "width": 964,
           "height": 82.4375,
           "right": 1022,
-          "bottom": 829.53125
+          "bottom": 949.53125
         },
         "parent": null,
         "paddingTop": 15,
@@ -1687,7 +1687,7 @@
           {
             "text": "Farklı konaklama türlerine ait örneklerdir. Depozito, yemek ve diğer giderler ayrıca ",
             "x": 86,
-            "top": 758.09375,
+            "top": 878.09375,
             "height": 34,
             "lineIndex": 0,
             "fontSize": 23,
@@ -1699,7 +1699,7 @@
           {
             "text": "değerlendirilmelidir.",
             "x": 86,
-            "top": 784.3125,
+            "top": 904.3125,
             "height": 34,
             "lineIndex": 1,
             "fontSize": 23,
@@ -1716,11 +1716,11 @@
         "contractText": "* Avro karşılıkları 9 Ekim 2026 döviz kuruyla yaklaşık hesaplanmıştır; değişebilir.",
         "box": {
           "x": 58,
-          "y": 845.53125,
+          "y": 963.53125,
           "width": 964,
           "height": 56.21875,
           "right": 1022,
-          "bottom": 901.75
+          "bottom": 1019.75
         },
         "parent": null,
         "paddingTop": 15,
@@ -1729,7 +1729,7 @@
           {
             "text": "* Avro karşılıkları 9 Ekim 2026 döviz kuruyla yaklaşık hesaplanmıştır; değişebilir.",
             "x": 86,
-            "top": 856.53125,
+            "top": 974.53125,
             "height": 34,
             "lineIndex": 0,
             "fontSize": 23,
