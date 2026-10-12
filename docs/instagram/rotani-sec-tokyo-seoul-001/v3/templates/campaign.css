@@ -25,8 +25,8 @@ body{font-family:Jost,Arial,sans-serif;color:var(--ink);font-synthesis:none;-web
 
 /* ───── SLIDE 01 · admission-letter cinematic cover ───── */
 .s01{background:var(--tokyo-deep);color:var(--paper)}
-.s01 .ph-tokyo{left:-40px;top:-30px;width:1120px;height:900px;object-position:38% 46%;filter:saturate(.72) contrast(1.14) brightness(.94)}
-.s01 .ph-seoul{right:-60px;top:250px;width:1020px;height:960px;object-position:62% 44%;filter:saturate(1.05) contrast(1.02) brightness(1.38)}
+.s01 .ph-tokyo{left:0;top:0;width:540px;height:1350px;object-position:center;filter:saturate(.85) contrast(1.05) brightness(1.0)}
+.s01 .ph-seoul{left:540px;top:0;width:540px;height:1350px;object-position:center;filter:saturate(1.05) contrast(1.02) brightness(1.38)}
 .s01 .scrim{position:absolute;inset:0;z-index:10;
   background:linear-gradient(100deg,rgba(18,71,91,.30) 0%,rgba(18,71,91,.34) 34%,rgba(29,32,39,.72) 53%,rgba(29,32,39,.80) 100%),
              linear-gradient(0deg,rgba(29,32,39,.90),rgba(29,32,39,.30) 34%,transparent 60%,rgba(29,32,39,.45) 100%)}
@@ -39,12 +39,12 @@ body{font-family:Jost,Arial,sans-serif;color:var(--ink);font-synthesis:none;-web
 .s01 h1 .t{color:var(--paper)} .s01 h1 .s{color:var(--acid)}
 .s01 .q{margin-top:38px;font-size:44px;line-height:1.06;font-weight:520;max-width:660px;color:#EAF1F3;text-shadow:0 6px 26px rgba(0,0,0,.6)}
 .s01 .strip{display:flex;gap:0;flex-wrap:nowrap;align-items:center;margin-bottom:34px;max-width:726px;white-space:nowrap}
-.s01 .strip span{background:rgba(247,243,233,.92);color:var(--ink);padding:11px 14px;font-size:19px;line-height:1;font-weight:680;letter-spacing:.02em;white-space:nowrap}
+.s01 .strip span{background:rgba(247,243,233,.92);color:var(--ink);padding:11px 14px;font-size:19px;line-height:1;font-weight:680;letter-spacing:.02em;white-space:nowrap;display:grid;place-items:center;text-align:center}
 .s01 .strip .sep{background:none;color:var(--red);padding:11px 2px;font-weight:800}
 .s01 .tokyo-tag{position:absolute;z-index:30;left:52px;bottom:212px;font-size:86px;font-weight:820;letter-spacing:-.05em;color:var(--tokyo);text-transform:uppercase}
 .s01 .seoul-tag{position:absolute;z-index:30;right:52px;top:214px;font-size:86px;font-weight:820;letter-spacing:-.05em;color:var(--seoul);text-transform:uppercase;writing-mode:vertical-rl;transform:rotate(180deg)}
 .s01 .logo{right:52px;bottom:50px;width:238px}
-.s01 .slash{position:absolute;z-index:14;left:496px;top:-40px;width:11px;height:1470px;background:var(--red);transform:rotate(12.6deg);box-shadow:0 0 0 3px rgba(247,243,233,.14)}
+.s01 .slash{position:absolute;z-index:14;left:534px;top:0;width:12px;height:1350px;background:var(--red);transform:rotate(0deg);box-shadow:0 0 0 3px rgba(247,243,233,.14)}
 
 /* ───── SLIDE 02 · campus geography ───── */
 .s02{background:var(--sand);color:var(--ink);display:grid;grid-template-rows:auto 1fr auto;height:1350px}
@@ -123,8 +123,8 @@ body{font-family:Jost,Arial,sans-serif;color:var(--ink);font-synthesis:none;-web
 .s05 .price .type{margin-top:16px;padding-top:14px;border-top:3px solid rgba(247,243,233,.34);font-size:25px;line-height:1.05;font-weight:640}
 .s05 .ph{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:26px 58px 0}
 .s05 .ph img{display:block;width:100%;height:300px;object-fit:cover;border:3px solid var(--ink)}
-.s05 .ph img{display:block;width:100%;height:300px;object-fit:cover;border:3px solid var(--ink)}
-.s05 .notes{padding:26px 58px 40px;display:grid;gap:16px;align-content:end}
+.s05 .ph img{display:block;width:100%;height:340px;object-fit:cover;border:3px solid var(--ink)}
+.s05 .notes{padding:26px 58px 34px;display:grid;gap:16px;align-content:end}
 .s05 .notes .n{background:var(--paper);border-left:8px solid var(--red);padding:15px 20px;font-size:23px;line-height:1.14;font-weight:560}
 
 /* ───── SLIDE 06 · final decision ───── */

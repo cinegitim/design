@@ -585,10 +585,10 @@
         "naturalHeight": 1282
       },
       {
-        "src": "../assets/photos/originals/nakano-broadway.jpg",
+        "src": "../assets/photos/originals/waseda-campus.jpg",
         "complete": true,
-        "naturalWidth": 930,
-        "naturalHeight": 523
+        "naturalWidth": 1500,
+        "naturalHeight": 981
       },
       {
         "src": "../assets/photos/originals/shinjuku-night.jpg",
@@ -1674,11 +1674,11 @@
         "contractText": "Farklı konaklama türlerine ait örneklerdir. Depozito, yemek ve diğer giderler ayrıca değerlendirilmelidir.",
         "box": {
           "x": 58,
-          "y": 747.09375,
+          "y": 787.09375,
           "width": 964,
           "height": 82.4375,
           "right": 1022,
-          "bottom": 829.53125
+          "bottom": 869.53125
         },
         "parent": null,
         "paddingTop": 15,
@@ -1687,7 +1687,7 @@
           {
             "text": "Farklı konaklama türlerine ait örneklerdir. Depozito, yemek ve diğer giderler ayrıca ",
             "x": 86,
-            "top": 758.09375,
+            "top": 798.09375,
             "height": 34,
             "lineIndex": 0,
             "fontSize": 23,
@@ -1699,7 +1699,7 @@
           {
             "text": "değerlendirilmelidir.",
             "x": 86,
-            "top": 784.3125,
+            "top": 824.3125,
             "height": 34,
             "lineIndex": 1,
             "fontSize": 23,
@@ -1716,11 +1716,11 @@
         "contractText": "* Avro karşılıkları 9 Ekim 2026 döviz kuruyla yaklaşık hesaplanmıştır; değişebilir.",
         "box": {
           "x": 58,
-          "y": 845.53125,
+          "y": 885.53125,
           "width": 964,
           "height": 56.21875,
           "right": 1022,
-          "bottom": 901.75
+          "bottom": 941.75
         },
         "parent": null,
         "paddingTop": 15,
@@ -1729,7 +1729,7 @@
           {
             "text": "* Avro karşılıkları 9 Ekim 2026 döviz kuruyla yaklaşık hesaplanmıştır; değişebilir.",
             "x": 86,
-            "top": 856.53125,
+            "top": 896.53125,
             "height": 34,
             "lineIndex": 0,
             "fontSize": 23,
