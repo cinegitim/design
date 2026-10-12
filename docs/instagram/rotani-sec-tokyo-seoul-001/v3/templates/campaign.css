@@ -39,7 +39,7 @@ body{font-family:Jost,Arial,sans-serif;color:var(--ink);font-synthesis:none;-web
 .s01 h1 .t{color:var(--paper)} .s01 h1 .s{color:var(--acid)}
 .s01 .q{margin-top:38px;font-size:44px;line-height:1.06;font-weight:520;max-width:660px;color:#EAF1F3;text-shadow:0 6px 26px rgba(0,0,0,.6)}
 .s01 .strip{display:flex;gap:0;flex-wrap:nowrap;align-items:center;margin-bottom:34px;max-width:726px;white-space:nowrap}
-.s01 .strip span{background:rgba(247,243,233,.92);color:var(--ink);padding:14px 18px;font-size:19px;line-height:1;font-weight:680;letter-spacing:.02em;white-space:nowrap;display:flex;align-items:center;justify-content:center;min-height:56px}
+.s01 .strip span{background:rgba(247,243,233,.92);color:var(--ink);padding:14px 18px;font-size:19px;line-height:1;font-weight:680;letter-spacing:.02em;white-space:nowrap;display:flex;align-items:center;justify-content:center;min-height:64px;height:64px}
 .s01 .strip .sep{background:none;color:var(--red);padding:11px 2px;font-weight:800}
 .s01 .tokyo-tag{position:absolute;z-index:30;left:52px;bottom:212px;font-size:86px;font-weight:820;letter-spacing:-.05em;color:var(--tokyo);text-transform:uppercase}
 .s01 .seoul-tag{position:absolute;z-index:30;right:52px;top:214px;font-size:86px;font-weight:820;letter-spacing:-.05em;color:var(--seoul);text-transform:uppercase;writing-mode:vertical-rl;transform:rotate(180deg)}
@@ -123,8 +123,8 @@ body{font-family:Jost,Arial,sans-serif;color:var(--ink);font-synthesis:none;-web
 .s05 .price .type{margin-top:16px;padding-top:14px;border-top:3px solid rgba(247,243,233,.34);font-size:25px;line-height:1.05;font-weight:640}
 .s05 .ph{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:26px 58px 0}
 .s05 .ph img{display:block;width:100%;height:300px;object-fit:cover;border:3px solid var(--ink)}
-.s05 .ph img{display:block;width:100%;height:380px;object-fit:cover;border:3px solid var(--ink)}
-.s05 .notes{padding:26px 58px 28px;display:grid;gap:16px;align-content:end}
+.s05 .ph img{display:block;width:100%;height:420px;object-fit:cover;border:3px solid var(--ink)}
+.s05 .notes{padding:26px 58px 20px;display:grid;gap:14px;align-content:end}
 .s05 .notes .n{background:var(--paper);border-left:8px solid var(--red);padding:15px 20px;font-size:23px;line-height:1.14;font-weight:560}
 
 /* ───── SLIDE 06 · final decision ───── */
