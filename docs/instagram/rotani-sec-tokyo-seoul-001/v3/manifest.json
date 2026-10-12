@@ -89,11 +89,11 @@
     {
       "id": "01-admission-letter",
       "final_file": "final/01-admission-letter.png",
-      "final_sha256": "8d3a0e1234de0daa200bbaa407470cdbe5bdd05dbb72bb2ffafd8a44ab31615b",
+      "final_sha256": "afccb7d59a50955224212c74265a3bbac940278fd044d6e83bed6e56e3e825e3",
       "original_file": "originals/01-admission-letter.png",
       "original_sha256": "c5588f496c1db80c3d9df5d1f03ec786cbd3538f73391a941f16d2eac4a4ddaf",
       "source_file": "source/01-admission-letter.svg",
-      "source_sha256": "2ec3c334ac9c93f9d6fed10160637a3870ecff7848e79e5e0bcfe7a37a727471",
+      "source_sha256": "c2289ae8b1afd0c5231ce58049f88dcc91162cbdaa94d2178b5770dac938b0b5",
       "editable_html_file": "source/01-admission-letter.html",
       "dimensions": [
         1080,
@@ -131,11 +131,11 @@
     {
       "id": "02-campus-geography",
       "final_file": "final/02-campus-geography.png",
-      "final_sha256": "f12880fe2a95d33e0c1531f674b7a5e88c8255162a0aca9923dd9104b829a536",
+      "final_sha256": "a0470ad5138aec10232ccac75a620c69618872f0d21e565841bd846af88595de",
       "original_file": "originals/02-campus-geography.png",
-      "original_sha256": "5f7db9d86e0f2447b91f32f85292203e5aa8e4d6d0337b1c05796a14cac3e32b",
+      "original_sha256": "43c4436c9facdb09b4acb71cf1abccfe2a8db455fa64c6e7bab390fdbe887022",
       "source_file": "source/02-campus-geography.svg",
-      "source_sha256": "5e6943a5aade5616e2cb4dff892ca2243b3bee235c3c30d521aa465f8bff662e",
+      "source_sha256": "2826bf4474bfee334588ebea1b233e2385ccd86fa81489e92484e406631387b6",
       "editable_html_file": "source/02-campus-geography.html",
       "dimensions": [
         1080,
@@ -176,11 +176,11 @@
     {
       "id": "03-six-universities",
       "final_file": "final/03-six-universities.png",
-      "final_sha256": "66593c8ec1cde1e7870b7c6fc7dc8d96e5a7f9c30c603576e7593e798277c981",
+      "final_sha256": "25a43ce90510cf6ab5d6ee2c66e61a145240aae8082649045240aad5f5256e8f",
       "original_file": "originals/03-six-universities.png",
-      "original_sha256": "61df651d7c12a9a8c74a9277d4b73e120a0918ac2a9e50ff85347f22611e5c42",
+      "original_sha256": "aa75b6c0e96f911fa4db9e04686b79094980956d4c40edbed704c23c5b10c644",
       "source_file": "source/03-six-universities.svg",
-      "source_sha256": "370698587207137c743a9388737e1013a21faac99e25d2a83f5d1395b3111ef2",
+      "source_sha256": "fb042f62e6f4c9e9182d30153ca86db3b64dc2275a8e44c654b310bd53b3a418",
       "editable_html_file": "source/03-six-universities.html",
       "dimensions": [
         1080,
@@ -223,11 +223,11 @@
     {
       "id": "04-english-taught",
       "final_file": "final/04-english-taught.png",
-      "final_sha256": "cdcb1ae11a99fc5af90a1a26794f670555877cae32c5334acf587ed3dfda95c6",
+      "final_sha256": "1c2c7b740e5b03cc87eb3e7a0deb2126f230a8b0d17c99d193becdde0a685193",
       "original_file": "originals/04-english-taught.png",
       "original_sha256": "9db28774cfbde742b5bb77bb5091a068ad1ca8f3eeb8b76fb92bd0dd0cfe4d00",
       "source_file": "source/04-english-taught.svg",
-      "source_sha256": "1927ee64166bf1431d8bbdb993f6c255a303581a262374f0732f56c4ee6e815f",
+      "source_sha256": "21d3329b5e29925c74e73c7bfc0ab509805e6eca032a60268b42a3d6dfcc276e",
       "editable_html_file": "source/04-english-taught.html",
       "dimensions": [
         1080,
@@ -267,11 +267,11 @@
     {
       "id": "05-accommodation",
       "final_file": "final/05-accommodation.png",
-      "final_sha256": "dc155c13accce9c17f5eacf01a40414754d3fe0667f99921355eb92ce1778467",
+      "final_sha256": "5d2715c9c0289a44adb1633a4a664b52ea14d99d008e01e18953d977cb1d0109",
       "original_file": "originals/05-accommodation.png",
-      "original_sha256": "6855b650b6aa41d02caf46b921ebff907c39e1c73c7a6aa4c92f6a0a4fd17f2a",
+      "original_sha256": "f83f76dc64926cf65c94c03315938df741b92c0ccc7e43e61bfde9dba5e53069",
       "source_file": "source/05-accommodation.svg",
-      "source_sha256": "1ff54dea0d22cbe8531956a9a67dbb0af68e1eaf3b157217bb3d3ffe8ba53538",
+      "source_sha256": "505009cd5c7fd2057c921951bc09ddb24797d37f0a7ba3b4d2c255c9829457b0",
       "editable_html_file": "source/05-accommodation.html",
       "dimensions": [
         1080,
@@ -316,11 +316,11 @@
     {
       "id": "06-final-decision",
       "final_file": "final/06-final-decision.png",
-      "final_sha256": "344e969a985c468d7c2d358d4d2d3faf9a3cd06c3bd4d3927a6aafe6bf77807f",
+      "final_sha256": "db291ce394ca6289a228ba33fae3586bc0cbf1cda05b0ad0449f422f4e19e381",
       "original_file": "originals/06-final-decision.png",
       "original_sha256": "e58379199bb0ec8684ddf7e3495b60dcdd0c63f4fe53a3d36d02072ef8b27de9",
       "source_file": "source/06-final-decision.svg",
-      "source_sha256": "0e14ffe426fc0ea5f7487b6d202044658825677bde45a4d9716c37c35b0bd217",
+      "source_sha256": "345e1eba19a4fa09f9f33d115f382cc5dae63d88ae007b07b935e8648fd00875",
       "editable_html_file": "source/06-final-decision.html",
       "dimensions": [
         1080,

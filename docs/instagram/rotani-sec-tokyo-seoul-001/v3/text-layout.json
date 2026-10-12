@@ -23,11 +23,21 @@
             "top": 61,
             "height": 30,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 58,
+              "y": 52,
+              "width": 289.515625,
+              "height": 49,
+              "right": 347.515625,
+              "bottom": 101
+            },
             "fontSize": 21,
             "fontWeight": "760",
             "color": "#1d2027",
             "letterSpacing": 3.57,
-            "lineHeight": 21
+            "lineHeight": 21,
+            "ascentRatio": 1.0476190476190477,
+            "descentRatio": 0.38095238095238093
           }
         ]
       },
@@ -60,11 +70,14 @@
             "top": 454.515625,
             "height": 150,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 104,
             "fontWeight": "800",
             "color": "#f7f3e9",
             "letterSpacing": -4.68,
-            "lineHeight": 87.36
+            "lineHeight": 87.36,
+            "ascentRatio": 1.0673076923076923,
+            "descentRatio": 0.375
           },
           {
             "text": "SEUL MÜ?",
@@ -72,11 +85,14 @@
             "top": 541.875,
             "height": 150,
             "lineIndex": 1,
+            "chipBox": null,
             "fontSize": 104,
             "fontWeight": "800",
             "color": "#d8f457",
             "letterSpacing": -4.68,
-            "lineHeight": 87.36
+            "lineHeight": 87.36,
+            "ascentRatio": 1.0673076923076923,
+            "descentRatio": 0.375
           }
         ]
       },
@@ -109,11 +125,14 @@
             "top": 690.234375,
             "height": 64,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 44,
             "fontWeight": "520",
             "color": "#eaf1f3",
             "letterSpacing": 0,
-            "lineHeight": 46.64
+            "lineHeight": 46.64,
+            "ascentRatio": 1.0681818181818181,
+            "descentRatio": 0.38636363636363635
           },
           {
             "text": "gelsin?",
@@ -121,11 +140,14 @@
             "top": 736.859375,
             "height": 64,
             "lineIndex": 1,
+            "chipBox": null,
             "fontSize": 44,
             "fontWeight": "520",
             "color": "#eaf1f3",
             "letterSpacing": 0,
-            "lineHeight": 46.64
+            "lineHeight": 46.64,
+            "ascentRatio": 1.0681818181818181,
+            "descentRatio": 0.38636363636363635
           }
         ]
       },
@@ -151,11 +173,21 @@
             "top": 1216.5,
             "height": 27,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 58,
+              "y": 1198,
+              "width": 144.609375,
+              "height": 64,
+              "right": 202.609375,
+              "bottom": 1262
+            },
             "fontSize": 19,
             "fontWeight": "680",
             "color": "#1d2027",
             "letterSpacing": 0.38,
-            "lineHeight": 19
+            "lineHeight": 19,
+            "ascentRatio": 1.0526315789473684,
+            "descentRatio": 0.3684210526315789
           },
           {
             "text": "· ",
@@ -163,11 +195,14 @@
             "top": 1216.5,
             "height": 27,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 19,
             "fontWeight": "800",
             "color": "#bd2120",
             "letterSpacing": 0.38,
-            "lineHeight": 19
+            "lineHeight": 19,
+            "ascentRatio": 1.0526315789473684,
+            "descentRatio": 0.3684210526315789
           },
           {
             "text": "İngilizce programlar ",
@@ -175,11 +210,21 @@
             "top": 1216.5,
             "height": 27,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 213.25,
+              "y": 1198,
+              "width": 221.234375,
+              "height": 64,
+              "right": 434.484375,
+              "bottom": 1262
+            },
             "fontSize": 19,
             "fontWeight": "680",
             "color": "#1d2027",
             "letterSpacing": 0.38,
-            "lineHeight": 19
+            "lineHeight": 19,
+            "ascentRatio": 1.0526315789473684,
+            "descentRatio": 0.3684210526315789
           },
           {
             "text": "· ",
@@ -187,11 +232,14 @@
             "top": 1216.5,
             "height": 27,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 19,
             "fontWeight": "800",
             "color": "#bd2120",
             "letterSpacing": 0.38,
-            "lineHeight": 19
+            "lineHeight": 19,
+            "ascentRatio": 1.0526315789473684,
+            "descentRatio": 0.3684210526315789
           },
           {
             "text": "Öğrenci hayatı ",
@@ -199,11 +247,21 @@
             "top": 1216.5,
             "height": 27,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 445.125,
+              "y": 1198,
+              "width": 169.828125,
+              "height": 64,
+              "right": 614.953125,
+              "bottom": 1262
+            },
             "fontSize": 19,
             "fontWeight": "680",
             "color": "#1d2027",
             "letterSpacing": 0.38,
-            "lineHeight": 19
+            "lineHeight": 19,
+            "ascentRatio": 1.0526315789473684,
+            "descentRatio": 0.3684210526315789
           },
           {
             "text": "· ",
@@ -211,11 +269,14 @@
             "top": 1216.5,
             "height": 27,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 19,
             "fontWeight": "800",
             "color": "#bd2120",
             "letterSpacing": 0.38,
-            "lineHeight": 19
+            "lineHeight": 19,
+            "ascentRatio": 1.0526315789473684,
+            "descentRatio": 0.3684210526315789
           },
           {
             "text": "Barınma ",
@@ -223,11 +284,21 @@
             "top": 1216.5,
             "height": 27,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 625.59375,
+              "y": 1198,
+              "width": 110.859375,
+              "height": 64,
+              "right": 736.453125,
+              "bottom": 1262
+            },
             "fontSize": 19,
             "fontWeight": "680",
             "color": "#1d2027",
             "letterSpacing": 0.38,
-            "lineHeight": 19
+            "lineHeight": 19,
+            "ascentRatio": 1.0526315789473684,
+            "descentRatio": 0.3684210526315789
           }
         ]
       }
@@ -291,11 +362,14 @@
             "top": 41,
             "height": 69,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 48,
             "fontWeight": "760",
             "color": "#1d2027",
             "letterSpacing": -1.68,
-            "lineHeight": 48.96
+            "lineHeight": 48.96,
+            "ascentRatio": 1.0625,
+            "descentRatio": 0.375
           },
           {
             "text": "Songdo'da.",
@@ -303,11 +377,14 @@
             "top": 89.953125,
             "height": 69,
             "lineIndex": 1,
+            "chipBox": null,
             "fontSize": 48,
             "fontWeight": "760",
             "color": "#bd2120",
             "letterSpacing": -1.68,
-            "lineHeight": 48.96
+            "lineHeight": 48.96,
+            "ascentRatio": 1.0625,
+            "descentRatio": 0.375
           }
         ]
       },
@@ -317,18 +394,18 @@
         "contractText": "YONSEI UIC",
         "box": {
           "x": 46,
-          "y": 223.90625,
+          "y": 980.40625,
           "width": 192.171875,
           "height": 46,
           "right": 238.171875,
-          "bottom": 269.90625
+          "bottom": 1026.40625
         },
         "parent": {
           "x": 0,
-          "y": 179.90625,
-          "width": 572.390625,
-          "height": 1026.5,
-          "right": 572.390625,
+          "y": 950.40625,
+          "width": 540,
+          "height": 256,
+          "right": 540,
           "bottom": 1206.40625
         },
         "paddingTop": 12,
@@ -337,14 +414,24 @@
           {
             "text": "YONSEI UIC",
             "x": 66,
-            "top": 230.90625,
+            "top": 987.40625,
             "height": 32,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 46,
+              "y": 980.40625,
+              "width": 192.171875,
+              "height": 46,
+              "right": 238.171875,
+              "bottom": 1026.40625
+            },
             "fontSize": 22,
             "fontWeight": "780",
             "color": "#1d2027",
             "letterSpacing": 2.2,
-            "lineHeight": 22
+            "lineHeight": 22,
+            "ascentRatio": 1.0909090909090908,
+            "descentRatio": 0.36363636363636365
           }
         ]
       },
@@ -354,18 +441,18 @@
         "contractText": "1. yıl: Songdo, Incheon",
         "box": {
           "x": 46,
-          "y": 1126.453125,
-          "width": 430,
+          "y": 1044.40625,
+          "width": 322.953125,
           "height": 35.953125,
-          "right": 476,
-          "bottom": 1162.40625
+          "right": 368.953125,
+          "bottom": 1080.359375
         },
         "parent": {
           "x": 0,
-          "y": 179.90625,
-          "width": 572.390625,
-          "height": 1026.5,
-          "right": 572.390625,
+          "y": 950.40625,
+          "width": 540,
+          "height": 256,
+          "right": 540,
           "bottom": 1206.40625
         },
         "paddingTop": 0,
@@ -374,14 +461,17 @@
           {
             "text": "1. yıl: Songdo, Incheon",
             "x": 46,
-            "top": 1121.453125,
+            "top": 1039.40625,
             "height": 45,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 31,
             "fontWeight": "600",
             "color": "#f7f3e9",
             "letterSpacing": 0,
-            "lineHeight": 35.96
+            "lineHeight": 35.96,
+            "ascentRatio": 1.064516129032258,
+            "descentRatio": 0.3870967741935484
           }
         ]
       },
@@ -390,19 +480,19 @@
         "role": "label",
         "contractText": "WASEDA",
         "box": {
-          "x": 618.390625,
-          "y": 223.90625,
+          "x": 586,
+          "y": 980.40625,
           "width": 151.359375,
           "height": 46,
-          "right": 769.75,
-          "bottom": 269.90625
+          "right": 737.359375,
+          "bottom": 1026.40625
         },
         "parent": {
-          "x": 572.390625,
-          "y": 179.90625,
-          "width": 507.59375,
-          "height": 1026.5,
-          "right": 1079.984375,
+          "x": 540,
+          "y": 950.40625,
+          "width": 540,
+          "height": 256,
+          "right": 1080,
           "bottom": 1206.40625
         },
         "paddingTop": 12,
@@ -410,15 +500,25 @@
         "runs": [
           {
             "text": "WASEDA",
-            "x": 638.390625,
-            "top": 230.90625,
+            "x": 606,
+            "top": 987.40625,
             "height": 32,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 586,
+              "y": 980.40625,
+              "width": 151.359375,
+              "height": 46,
+              "right": 737.359375,
+              "bottom": 1026.40625
+            },
             "fontSize": 22,
             "fontWeight": "780",
             "color": "#1d2027",
             "letterSpacing": 2.2,
-            "lineHeight": 22
+            "lineHeight": 22,
+            "ascentRatio": 1.0909090909090908,
+            "descentRatio": 0.36363636363636365
           }
         ]
       },
@@ -427,19 +527,19 @@
         "role": "fact",
         "contractText": "Ana kampüs: Shinjuku, Tokyo",
         "box": {
-          "x": 618.390625,
-          "y": 1036.546875,
-          "width": 415.59375,
+          "x": 586,
+          "y": 1044.40625,
+          "width": 412.234375,
           "height": 35.953125,
-          "right": 1033.984375,
-          "bottom": 1072.5
+          "right": 998.234375,
+          "bottom": 1080.359375
         },
         "parent": {
-          "x": 572.390625,
-          "y": 179.90625,
-          "width": 507.59375,
-          "height": 1026.5,
-          "right": 1079.984375,
+          "x": 540,
+          "y": 950.40625,
+          "width": 540,
+          "height": 256,
+          "right": 1080,
           "bottom": 1206.40625
         },
         "paddingTop": 0,
@@ -447,15 +547,18 @@
         "runs": [
           {
             "text": "Ana kampüs: Shinjuku, Tokyo",
-            "x": 618.390625,
-            "top": 1031.546875,
+            "x": 586,
+            "top": 1039.40625,
             "height": 45,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 31,
             "fontWeight": "600",
             "color": "#f7f3e9",
             "letterSpacing": 0,
-            "lineHeight": 35.96
+            "lineHeight": 35.96,
+            "ascentRatio": 1.064516129032258,
+            "descentRatio": 0.3870967741935484
           }
         ]
       },
@@ -464,47 +567,53 @@
         "role": "fact",
         "contractText": "WISH öğrenci yurdu: Nakano, Tokyo",
         "box": {
-          "x": 618.390625,
-          "y": 1090.5,
-          "width": 415.59375,
+          "x": 586,
+          "y": 1098.359375,
+          "width": 440,
           "height": 71.90625,
-          "right": 1033.984375,
-          "bottom": 1162.40625
+          "right": 1026,
+          "bottom": 1170.265625
         },
         "parent": {
-          "x": 572.390625,
-          "y": 179.90625,
-          "width": 507.59375,
-          "height": 1026.5,
-          "right": 1079.984375,
+          "x": 540,
+          "y": 950.40625,
+          "width": 540,
+          "height": 256,
+          "right": 1080,
           "bottom": 1206.40625
         },
         "paddingTop": 0,
         "fontSize": 31,
         "runs": [
           {
-            "text": "WISH öğrenci yurdu: ",
-            "x": 618.390625,
-            "top": 1085.5,
+            "text": "WISH öğrenci yurdu: Nakano, ",
+            "x": 586,
+            "top": 1093.359375,
             "height": 45,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 31,
             "fontWeight": "600",
             "color": "#f7f3e9",
             "letterSpacing": 0,
-            "lineHeight": 35.96
+            "lineHeight": 35.96,
+            "ascentRatio": 1.064516129032258,
+            "descentRatio": 0.3870967741935484
           },
           {
-            "text": "Nakano, Tokyo",
-            "x": 618.390625,
-            "top": 1121.453125,
+            "text": "Tokyo",
+            "x": 586,
+            "top": 1129.3125,
             "height": 45,
             "lineIndex": 1,
+            "chipBox": null,
             "fontSize": 31,
             "fontWeight": "600",
             "color": "#f7f3e9",
             "letterSpacing": 0,
-            "lineHeight": 35.96
+            "lineHeight": 35.96,
+            "ascentRatio": 1.064516129032258,
+            "descentRatio": 0.3870967741935484
           }
         ]
       },
@@ -530,11 +639,14 @@
             "top": 1232.40625,
             "height": 42,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 29,
             "fontWeight": "540",
             "color": "#f7f3e9",
             "letterSpacing": 0,
-            "lineHeight": 34.8
+            "lineHeight": 34.8,
+            "ascentRatio": 1.0689655172413792,
+            "descentRatio": 0.3793103448275862
           },
           {
             "text": "konumuna da bak.",
@@ -542,11 +654,14 @@
             "top": 1267.203125,
             "height": 42,
             "lineIndex": 1,
+            "chipBox": null,
             "fontSize": 29,
             "fontWeight": "540",
             "color": "#f7f3e9",
             "letterSpacing": 0,
-            "lineHeight": 34.8
+            "lineHeight": 34.8,
+            "ascentRatio": 1.0689655172413792,
+            "descentRatio": 0.3793103448275862
           }
         ]
       }
@@ -622,11 +737,14 @@
             "top": 38,
             "height": 73,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 50,
             "fontWeight": "780",
             "color": "#1d2027",
             "letterSpacing": -2,
-            "lineHeight": 50
+            "lineHeight": 50,
+            "ascentRatio": 1.08,
+            "descentRatio": 0.38
           },
           {
             "text": "üniversitelere bakmalı?",
@@ -634,11 +752,14 @@
             "top": 88,
             "height": 73,
             "lineIndex": 1,
+            "chipBox": null,
             "fontSize": 50,
             "fontWeight": "780",
             "color": "#1d2027",
             "letterSpacing": -2,
-            "lineHeight": 50
+            "lineHeight": 50,
+            "ascentRatio": 1.08,
+            "descentRatio": 0.38
           }
         ]
       },
@@ -671,11 +792,21 @@
             "top": 178,
             "height": 30,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 58,
+              "y": 172,
+              "width": 125.53125,
+              "height": 43,
+              "right": 183.53125,
+              "bottom": 215
+            },
             "fontSize": 21,
             "fontWeight": "760",
             "color": "#f7f3e9",
             "letterSpacing": 2.94,
-            "lineHeight": 21
+            "lineHeight": 21,
+            "ascentRatio": 1.0476190476190477,
+            "descentRatio": 0.38095238095238093
           }
         ]
       },
@@ -708,11 +839,21 @@
             "top": 654,
             "height": 38,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 58,
+              "y": 646,
+              "width": 469,
+              "height": 58.296875,
+              "right": 527,
+              "bottom": 704.296875
+            },
             "fontSize": 26,
             "fontWeight": "620",
             "color": "#1d2027",
             "letterSpacing": -0.26,
-            "lineHeight": 27.3
+            "lineHeight": 27.3,
+            "ascentRatio": 1.0769230769230769,
+            "descentRatio": 0.38461538461538464
           }
         ]
       },
@@ -745,11 +886,21 @@
             "top": 956.296875,
             "height": 35,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 58,
+              "y": 949.296875,
+              "width": 469,
+              "height": 52.1875,
+              "right": 527,
+              "bottom": 1001.484375
+            },
             "fontSize": 24,
             "fontWeight": "580",
             "color": "#1d2027",
             "letterSpacing": -0.24,
-            "lineHeight": 25.2
+            "lineHeight": 25.2,
+            "ascentRatio": 1.0833333333333333,
+            "descentRatio": 0.375
           }
         ]
       },
@@ -782,11 +933,21 @@
             "top": 1246.484375,
             "height": 35,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 58,
+              "y": 1239.484375,
+              "width": 469,
+              "height": 52.1875,
+              "right": 527,
+              "bottom": 1291.671875
+            },
             "fontSize": 24,
             "fontWeight": "580",
             "color": "#1d2027",
             "letterSpacing": -0.24,
-            "lineHeight": 25.2
+            "lineHeight": 25.2,
+            "ascentRatio": 1.0833333333333333,
+            "descentRatio": 0.375
           }
         ]
       },
@@ -819,11 +980,21 @@
             "top": 178,
             "height": 30,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 553,
+              "y": 172,
+              "width": 100.40625,
+              "height": 43,
+              "right": 653.40625,
+              "bottom": 215
+            },
             "fontSize": 21,
             "fontWeight": "760",
             "color": "#f7f3e9",
             "letterSpacing": 2.94,
-            "lineHeight": 21
+            "lineHeight": 21,
+            "ascentRatio": 1.0476190476190477,
+            "descentRatio": 0.38095238095238093
           }
         ]
       },
@@ -856,11 +1027,21 @@
             "top": 654,
             "height": 38,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 553,
+              "y": 646,
+              "width": 469,
+              "height": 58.296875,
+              "right": 1022,
+              "bottom": 704.296875
+            },
             "fontSize": 26,
             "fontWeight": "620",
             "color": "#1d2027",
             "letterSpacing": -0.26,
-            "lineHeight": 27.3
+            "lineHeight": 27.3,
+            "ascentRatio": 1.0769230769230769,
+            "descentRatio": 0.38461538461538464
           }
         ]
       },
@@ -893,11 +1074,21 @@
             "top": 956.296875,
             "height": 35,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 553,
+              "y": 949.296875,
+              "width": 469,
+              "height": 52.1875,
+              "right": 1022,
+              "bottom": 1001.484375
+            },
             "fontSize": 24,
             "fontWeight": "580",
             "color": "#1d2027",
             "letterSpacing": -0.24,
-            "lineHeight": 25.2
+            "lineHeight": 25.2,
+            "ascentRatio": 1.0833333333333333,
+            "descentRatio": 0.375
           }
         ]
       },
@@ -930,11 +1121,21 @@
             "top": 1246.484375,
             "height": 35,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 553,
+              "y": 1239.484375,
+              "width": 469,
+              "height": 52.1875,
+              "right": 1022,
+              "bottom": 1291.671875
+            },
             "fontSize": 24,
             "fontWeight": "580",
             "color": "#1d2027",
             "letterSpacing": -0.24,
-            "lineHeight": 25.2
+            "lineHeight": 25.2,
+            "ascentRatio": 1.0833333333333333,
+            "descentRatio": 0.375
           }
         ]
       }
@@ -1022,11 +1223,14 @@
             "top": 38,
             "height": 76,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 52,
             "fontWeight": "780",
             "color": "#d8f457",
             "letterSpacing": -2.08,
-            "lineHeight": 52
+            "lineHeight": 52,
+            "ascentRatio": 1.0769230769230769,
+            "descentRatio": 0.38461538461538464
           },
           {
             "text": "lisans okuyabilir misin?",
@@ -1034,11 +1238,14 @@
             "top": 90,
             "height": 76,
             "lineIndex": 1,
+            "chipBox": null,
             "fontSize": 52,
             "fontWeight": "780",
             "color": "#f7f3e9",
             "letterSpacing": -2.08,
-            "lineHeight": 52
+            "lineHeight": 52,
+            "ascentRatio": 1.0769230769230769,
+            "descentRatio": 0.38461538461538464
           }
         ]
       },
@@ -1071,11 +1278,14 @@
             "top": 619.390625,
             "height": 34,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 23,
             "fontWeight": "800",
             "color": "#1d2027",
             "letterSpacing": 2.76,
-            "lineHeight": 23
+            "lineHeight": 23,
+            "ascentRatio": 1.0869565217391304,
+            "descentRatio": 0.391304347826087
           }
         ]
       },
@@ -1108,11 +1318,14 @@
             "top": 657.390625,
             "height": 49,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 34,
             "fontWeight": "900",
             "color": "#1d2027",
             "letterSpacing": -0.68,
-            "lineHeight": 36.04
+            "lineHeight": 36.04,
+            "ascentRatio": 1.0588235294117647,
+            "descentRatio": 0.38235294117647056
           },
           {
             "text": " İngilizce ",
@@ -1120,11 +1333,14 @@
             "top": 657.390625,
             "height": 49,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 34,
             "fontWeight": "720",
             "color": "#1d2027",
             "letterSpacing": -0.68,
-            "lineHeight": 36.04
+            "lineHeight": 36.04,
+            "ascentRatio": 1.0588235294117647,
+            "descentRatio": 0.38235294117647056
           },
           {
             "text": "lisans programları.",
@@ -1132,11 +1348,14 @@
             "top": 693.421875,
             "height": 49,
             "lineIndex": 1,
+            "chipBox": null,
             "fontSize": 34,
             "fontWeight": "720",
             "color": "#1d2027",
             "letterSpacing": -0.68,
-            "lineHeight": 36.04
+            "lineHeight": 36.04,
+            "ascentRatio": 1.0588235294117647,
+            "descentRatio": 0.38235294117647056
           }
         ]
       },
@@ -1169,11 +1388,14 @@
             "top": 619.390625,
             "height": 34,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 23,
             "fontWeight": "800",
             "color": "#1d2027",
             "letterSpacing": 2.76,
-            "lineHeight": 23
+            "lineHeight": 23,
+            "ascentRatio": 1.0869565217391304,
+            "descentRatio": 0.391304347826087
           }
         ]
       },
@@ -1206,11 +1428,14 @@
             "top": 657.390625,
             "height": 49,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 34,
             "fontWeight": "900",
             "color": "#1d2027",
             "letterSpacing": -0.68,
-            "lineHeight": 36.04
+            "lineHeight": 36.04,
+            "ascentRatio": 1.0588235294117647,
+            "descentRatio": 0.38235294117647056
           },
           {
             "text": " lisans ",
@@ -1218,11 +1443,14 @@
             "top": 657.390625,
             "height": 49,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 34,
             "fontWeight": "720",
             "color": "#1d2027",
             "letterSpacing": -0.68,
-            "lineHeight": 36.04
+            "lineHeight": 36.04,
+            "ascentRatio": 1.0588235294117647,
+            "descentRatio": 0.38235294117647056
           },
           {
             "text": "eğitimi.",
@@ -1230,11 +1458,14 @@
             "top": 693.421875,
             "height": 49,
             "lineIndex": 1,
+            "chipBox": null,
             "fontSize": 34,
             "fontWeight": "720",
             "color": "#1d2027",
             "letterSpacing": -0.68,
-            "lineHeight": 36.04
+            "lineHeight": 36.04,
+            "ascentRatio": 1.0588235294117647,
+            "descentRatio": 0.38235294117647056
           }
         ]
       },
@@ -1260,11 +1491,21 @@
             "top": 1249.84375,
             "height": 38,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 58,
+              "y": 1233.84375,
+              "width": 964,
+              "height": 70.15625,
+              "right": 1022,
+              "bottom": 1304
+            },
             "fontSize": 26,
             "fontWeight": "620",
             "color": "#f7f3e9",
             "letterSpacing": 0,
-            "lineHeight": 30.16
+            "lineHeight": 30.16,
+            "ascentRatio": 1.0769230769230769,
+            "descentRatio": 0.38461538461538464
           }
         ]
       }
@@ -1328,11 +1569,14 @@
             "top": 37,
             "height": 68,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 47,
             "fontWeight": "780",
             "color": "#1d2027",
             "letterSpacing": -1.739,
-            "lineHeight": 47.94
+            "lineHeight": 47.94,
+            "ascentRatio": 1.0638297872340425,
+            "descentRatio": 0.3829787234042553
           },
           {
             "text": "öğrenci ",
@@ -1340,11 +1584,14 @@
             "top": 37,
             "height": 68,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 47,
             "fontWeight": "780",
             "color": "#bd2120",
             "letterSpacing": -1.739,
-            "lineHeight": 47.94
+            "lineHeight": 47.94,
+            "ascentRatio": 1.0638297872340425,
+            "descentRatio": 0.3829787234042553
           },
           {
             "text": "konaklaması",
@@ -1352,11 +1599,14 @@
             "top": 84.9375,
             "height": 68,
             "lineIndex": 1,
+            "chipBox": null,
             "fontSize": 47,
             "fontWeight": "780",
             "color": "#bd2120",
             "letterSpacing": -1.739,
-            "lineHeight": 47.94
+            "lineHeight": 47.94,
+            "ascentRatio": 1.0638297872340425,
+            "descentRatio": 0.3829787234042553
           },
           {
             "text": " ne kadar?",
@@ -1364,11 +1614,14 @@
             "top": 84.9375,
             "height": 68,
             "lineIndex": 1,
+            "chipBox": null,
             "fontSize": 47,
             "fontWeight": "780",
             "color": "#1d2027",
             "letterSpacing": -1.739,
-            "lineHeight": 47.94
+            "lineHeight": 47.94,
+            "ascentRatio": 1.0638297872340425,
+            "descentRatio": 0.3829787234042553
           }
         ]
       },
@@ -1401,11 +1654,21 @@
             "top": 191.875,
             "height": 27,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 84,
+              "y": 185.875,
+              "width": 238.84375,
+              "height": 39,
+              "right": 322.84375,
+              "bottom": 224.875
+            },
             "fontSize": 19,
             "fontWeight": "760",
             "color": "#1d2027",
             "letterSpacing": 2.66,
-            "lineHeight": 19
+            "lineHeight": 19,
+            "ascentRatio": 1.0526315789473684,
+            "descentRatio": 0.3684210526315789
           }
         ]
       },
@@ -1438,11 +1701,14 @@
             "top": 235.875,
             "height": 47,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 33,
             "fontWeight": "790",
-            "color": "#1d2027",
+            "color": "#f7f3e9",
             "letterSpacing": -0.792,
-            "lineHeight": 34.98
+            "lineHeight": 34.98,
+            "ascentRatio": 1.0606060606060606,
+            "descentRatio": 0.36363636363636365
           }
         ]
       },
@@ -1475,11 +1741,14 @@
             "top": 283.84375,
             "height": 35,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 24,
             "fontWeight": "560",
             "color": "#e9edef",
             "letterSpacing": 0,
-            "lineHeight": 24
+            "lineHeight": 24,
+            "ascentRatio": 1.0833333333333333,
+            "descentRatio": 0.375
           }
         ]
       },
@@ -1512,11 +1781,14 @@
             "top": 341.84375,
             "height": 36,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 25,
             "fontWeight": "640",
-            "color": "#1d2027",
+            "color": "#f7f3e9",
             "letterSpacing": 0,
-            "lineHeight": 26.25
+            "lineHeight": 26.25,
+            "ascentRatio": 1.08,
+            "descentRatio": 0.36
           }
         ]
       },
@@ -1549,11 +1821,21 @@
             "top": 191.875,
             "height": 27,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 571.75,
+              "y": 185.875,
+              "width": 313.5625,
+              "height": 39,
+              "right": 885.3125,
+              "bottom": 224.875
+            },
             "fontSize": 19,
             "fontWeight": "760",
             "color": "#1d2027",
             "letterSpacing": 2.66,
-            "lineHeight": 19
+            "lineHeight": 19,
+            "ascentRatio": 1.0526315789473684,
+            "descentRatio": 0.3684210526315789
           }
         ]
       },
@@ -1586,11 +1868,14 @@
             "top": 235.875,
             "height": 47,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 33,
             "fontWeight": "790",
-            "color": "#1d2027",
+            "color": "#f7f3e9",
             "letterSpacing": -0.792,
-            "lineHeight": 34.98
+            "lineHeight": 34.98,
+            "ascentRatio": 1.0606060606060606,
+            "descentRatio": 0.36363636363636365
           }
         ]
       },
@@ -1623,11 +1908,14 @@
             "top": 283.84375,
             "height": 35,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 24,
             "fontWeight": "560",
             "color": "#e9edef",
             "letterSpacing": 0,
-            "lineHeight": 24
+            "lineHeight": 24,
+            "ascentRatio": 1.0833333333333333,
+            "descentRatio": 0.375
           }
         ]
       },
@@ -1660,11 +1948,14 @@
             "top": 341.84375,
             "height": 36,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 25,
             "fontWeight": "640",
-            "color": "#1d2027",
+            "color": "#f7f3e9",
             "letterSpacing": 0,
-            "lineHeight": 26.25
+            "lineHeight": 26.25,
+            "ascentRatio": 1.08,
+            "descentRatio": 0.36
           }
         ]
       },
@@ -1674,11 +1965,11 @@
         "contractText": "Farklı konaklama türlerine ait örneklerdir. Depozito, yemek ve diğer giderler ayrıca değerlendirilmelidir.",
         "box": {
           "x": 58,
-          "y": 867.09375,
+          "y": 1151.34375,
           "width": 964,
           "height": 82.4375,
           "right": 1022,
-          "bottom": 949.53125
+          "bottom": 1233.78125
         },
         "parent": null,
         "paddingTop": 15,
@@ -1687,26 +1978,46 @@
           {
             "text": "Farklı konaklama türlerine ait örneklerdir. Depozito, yemek ve diğer giderler ayrıca ",
             "x": 86,
-            "top": 878.09375,
+            "top": 1162.34375,
             "height": 34,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 58,
+              "y": 1151.34375,
+              "width": 964,
+              "height": 82.4375,
+              "right": 1022,
+              "bottom": 1233.78125
+            },
             "fontSize": 23,
             "fontWeight": "560",
             "color": "#1d2027",
             "letterSpacing": 0,
-            "lineHeight": 26.22
+            "lineHeight": 26.22,
+            "ascentRatio": 1.0869565217391304,
+            "descentRatio": 0.391304347826087
           },
           {
             "text": "değerlendirilmelidir.",
             "x": 86,
-            "top": 904.3125,
+            "top": 1188.5625,
             "height": 34,
             "lineIndex": 1,
+            "chipBox": {
+              "x": 58,
+              "y": 1151.34375,
+              "width": 964,
+              "height": 82.4375,
+              "right": 1022,
+              "bottom": 1233.78125
+            },
             "fontSize": 23,
             "fontWeight": "560",
             "color": "#1d2027",
             "letterSpacing": 0,
-            "lineHeight": 26.22
+            "lineHeight": 26.22,
+            "ascentRatio": 1.0869565217391304,
+            "descentRatio": 0.391304347826087
           }
         ]
       },
@@ -1716,11 +2027,11 @@
         "contractText": "* Avro karşılıkları 9 Ekim 2026 döviz kuruyla yaklaşık hesaplanmıştır; değişebilir.",
         "box": {
           "x": 58,
-          "y": 963.53125,
+          "y": 1247.78125,
           "width": 964,
           "height": 56.21875,
           "right": 1022,
-          "bottom": 1019.75
+          "bottom": 1304
         },
         "parent": null,
         "paddingTop": 15,
@@ -1729,14 +2040,24 @@
           {
             "text": "* Avro karşılıkları 9 Ekim 2026 döviz kuruyla yaklaşık hesaplanmıştır; değişebilir.",
             "x": 86,
-            "top": 974.53125,
+            "top": 1258.78125,
             "height": 34,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 58,
+              "y": 1247.78125,
+              "width": 964,
+              "height": 56.21875,
+              "right": 1022,
+              "bottom": 1304
+            },
             "fontSize": 23,
             "fontWeight": "560",
             "color": "#1d2027",
             "letterSpacing": 0,
-            "lineHeight": 26.22
+            "lineHeight": 26.22,
+            "ascentRatio": 1.0869565217391304,
+            "descentRatio": 0.391304347826087
           }
         ]
       }
@@ -1807,11 +2128,21 @@
             "top": 58,
             "height": 30,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 58,
+              "y": 50,
+              "width": 287.515625,
+              "height": 47,
+              "right": 345.515625,
+              "bottom": 97
+            },
             "fontSize": 21,
             "fontWeight": "760",
             "color": "#1d2027",
             "letterSpacing": 3.57,
-            "lineHeight": 21
+            "lineHeight": 21,
+            "ascentRatio": 1.0476190476190477,
+            "descentRatio": 0.38095238095238093
           }
         ]
       },
@@ -1837,11 +2168,14 @@
             "top": 83,
             "height": 84,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 58,
             "fontWeight": "790",
             "color": "#f7f3e9",
             "letterSpacing": -2.32,
-            "lineHeight": 56.84
+            "lineHeight": 56.84,
+            "ascentRatio": 1.0689655172413792,
+            "descentRatio": 0.3793103448275862
           },
           {
             "text": "başvururdun?",
@@ -1849,11 +2183,14 @@
             "top": 139.828125,
             "height": 84,
             "lineIndex": 1,
+            "chipBox": null,
             "fontSize": 58,
             "fontWeight": "790",
             "color": "#d8f457",
             "letterSpacing": -2.32,
-            "lineHeight": 56.84
+            "lineHeight": 56.84,
+            "ascentRatio": 1.0689655172413792,
+            "descentRatio": 0.3793103448275862
           }
         ]
       },
@@ -1886,11 +2223,14 @@
             "top": 574.390625,
             "height": 92,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 64,
             "fontWeight": "830",
             "color": "#3fa9c6",
             "letterSpacing": -2.88,
-            "lineHeight": 57.6
+            "lineHeight": 57.6,
+            "ascentRatio": 1.0625,
+            "descentRatio": 0.375
           }
         ]
       },
@@ -1923,11 +2263,14 @@
             "top": 574.390625,
             "height": 92,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 64,
             "fontWeight": "830",
             "color": "#e8558b",
             "letterSpacing": -2.88,
-            "lineHeight": 57.6
+            "lineHeight": 57.6,
+            "ascentRatio": 1.0625,
+            "descentRatio": 0.375
           }
         ]
       },
@@ -1953,11 +2296,21 @@
             "top": 1007.71875,
             "height": 55,
             "lineIndex": 0,
+            "chipBox": {
+              "x": 58,
+              "y": 994.71875,
+              "width": 964,
+              "height": 82.75,
+              "right": 1022,
+              "bottom": 1077.46875
+            },
             "fontSize": 38,
             "fontWeight": "760",
             "color": "#1d2027",
             "letterSpacing": -0.95,
-            "lineHeight": 38.76
+            "lineHeight": 38.76,
+            "ascentRatio": 1.0789473684210527,
+            "descentRatio": 0.3684210526315789
           }
         ]
       },
@@ -1990,11 +2343,14 @@
             "top": 1149.984375,
             "height": 39,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 27,
             "fontWeight": "700",
             "color": "#f7f3e9",
             "letterSpacing": 0.27,
-            "lineHeight": 30.78
+            "lineHeight": 30.78,
+            "ascentRatio": 1.0740740740740742,
+            "descentRatio": 0.37037037037037035
           }
         ]
       },
@@ -2027,11 +2383,14 @@
             "top": 1187.75,
             "height": 35,
             "lineIndex": 0,
+            "chipBox": null,
             "fontSize": 24,
             "fontWeight": "560",
             "color": "#f7f3e9",
             "letterSpacing": 0,
-            "lineHeight": 27.36
+            "lineHeight": 27.36,
+            "ascentRatio": 1.0833333333333333,
+            "descentRatio": 0.375
           },
           {
             "text": "ücretsiz ön görüşme.",
@@ -2039,11 +2398,14 @@
             "top": 1215.109375,
             "height": 35,
             "lineIndex": 1,
+            "chipBox": null,
             "fontSize": 24,
             "fontWeight": "560",
             "color": "#f7f3e9",
             "letterSpacing": 0,
-            "lineHeight": 27.36
+            "lineHeight": 27.36,
+            "ascentRatio": 1.0833333333333333,
+            "descentRatio": 0.375
           }
         ]
       }
@@ -2062,7 +2424,9 @@
         "fontSize": 19,
         "lineHeight": 22.8,
         "fontWeight": "700",
-        "color": "#f7f3e9"
+        "color": "#f7f3e9",
+        "ascentRatio": 1.0526315789473684,
+        "descentRatio": 0.3684210526315789
       },
       {
         "text": "SEUL",
@@ -2077,7 +2441,9 @@
         "fontSize": 19,
         "lineHeight": 22.8,
         "fontWeight": "700",
-        "color": "#f7f3e9"
+        "color": "#f7f3e9",
+        "ascentRatio": 1.0526315789473684,
+        "descentRatio": 0.3684210526315789
       }
     ],
     "logo": {
