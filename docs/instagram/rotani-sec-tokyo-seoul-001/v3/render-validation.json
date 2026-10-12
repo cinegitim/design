@@ -1,0 +1,62 @@
+{
+  "01-admission-letter": {
+    "jostLoaded": true,
+    "issues": [],
+    "canvas": [
+      1080,
+      1350
+    ],
+    "text_blocks": 4,
+    "logo_lockup_id": "D-04/dark"
+  },
+  "02-campus-geography": {
+    "jostLoaded": true,
+    "issues": [],
+    "canvas": [
+      1080,
+      1350
+    ],
+    "text_blocks": 7,
+    "logo_lockup_id": "D-04/light"
+  },
+  "03-six-universities": {
+    "jostLoaded": true,
+    "issues": [],
+    "canvas": [
+      1080,
+      1350
+    ],
+    "text_blocks": 9,
+    "logo_lockup_id": "D-04/light"
+  },
+  "04-english-taught": {
+    "jostLoaded": true,
+    "issues": [],
+    "canvas": [
+      1080,
+      1350
+    ],
+    "text_blocks": 6,
+    "logo_lockup_id": "D-04/dark"
+  },
+  "05-accommodation": {
+    "jostLoaded": true,
+    "issues": [],
+    "canvas": [
+      1080,
+      1350
+    ],
+    "text_blocks": 11,
+    "logo_lockup_id": "D-04/light"
+  },
+  "06-final-decision": {
+    "jostLoaded": true,
+    "issues": [],
+    "canvas": [
+      1080,
+      1350
+    ],
+    "text_blocks": 7,
+    "logo_lockup_id": "H-02/dark"
+  }
+}
