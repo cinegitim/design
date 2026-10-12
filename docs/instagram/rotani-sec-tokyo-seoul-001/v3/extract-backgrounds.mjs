@@ -19,6 +19,38 @@ try{
   const layout=await page.evaluate(()=>{
    const norm=s=>s.replace(/\s+/g,' ').trim();
    const rgbToHex=s=>{const m=s.match(/\d+(?:\.\d+)?/g)||[];return m.length>=3?'#'+m.slice(0,3).map(v=>Math.round(Number(v)).toString(16).padStart(2,'0')).join(''):'#1D2027'};
+   // Real font metrics, measured from the loaded face rather than assumed.
+   // The Range rect of a glyph run spans the inline box (ascent..descent), so the
+   // baseline sits ascent below its top. Guessing a ratio here is what pinned
+   // copy to the top of a vertically centred chip, so this is measured per style.
+   const metricsCache=new Map();
+   const probe=document.createElement('canvas').getContext('2d');
+   const metricsOf=cs=>{
+    const font=`${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+    let m=metricsCache.get(font);
+    if(!m){probe.font=font;m=probe.measureText('Hxlp');
+     m={ascentRatio:m.fontBoundingBoxAscent/parseFloat(cs.fontSize),
+        descentRatio:m.fontBoundingBoxDescent/parseFloat(cs.fontSize)};metricsCache.set(font,m);}
+    return m;};
+   // The chip a run sits in: nearest painted ancestor, so "is this copy
+   // centred in its box?" becomes a measurable question instead of an opinion.
+   // A chip is a badge dedicated to one copy block. Large painted regions (the
+   // slide, a full-bleed scrim) and composite cards that hold several copy
+   // blocks are excluded: a heading sitting at the top of a card is correct
+   // composition, not a centring defect, so it must not be gated.
+   const paintedBox=(el,copyEl)=>{
+    let e=el;
+    while(e&&e!==document.body){
+     const c=getComputedStyle(e);
+     if(c.backgroundColor&&c.backgroundColor!=='rgba(0, 0, 0, 0)'&&c.backgroundColor!=='transparent'){
+      const r=e.getBoundingClientRect();
+      const inner=[...e.querySelectorAll('[data-copy]')];
+      const dedicated=!e.querySelector('[data-decor]')
+       &&inner.length<=1&&(inner.length===0?copyEl.contains(e):inner[0]===copyEl);
+      if(dedicated&&r.width>=24&&r.height>=12&&r.height<=280&&r.width*r.height<=120000)
+       return{x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom};}
+     e=e.parentElement;}
+    return null;};
    // Immutable copy blocks. Decorative editorial type is excluded via data-decor.
    const copy=[...document.querySelectorAll('[data-copy]')].sort((a,b)=>Number(a.dataset.copy)-Number(b.dataset.copy)).map(el=>{
     const runs=[];const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);let node;
@@ -34,9 +66,9 @@ try{
       // so inline-span spacing survives (SVG default collapsing would eat it).
       if(!rect.width&&ch.trim()===''){if(run)run.text+=ch;else if(runs.length)runs[runs.length-1].text+=ch;continue}
       if(!rect.width&&!ch.trim())continue;
-      const style={fontSize:parseFloat(cs.fontSize),fontWeight:cs.fontWeight,color:rgbToHex(cs.color),letterSpacing:parseFloat(cs.letterSpacing)||0,lineHeight:parseFloat(cs.lineHeight)||parseFloat(cs.fontSize)*1.2};
+      const style={fontSize:parseFloat(cs.fontSize),fontWeight:cs.fontWeight,color:rgbToHex(cs.color),letterSpacing:parseFloat(cs.letterSpacing)||0,lineHeight:parseFloat(cs.lineHeight)||parseFloat(cs.fontSize)*1.2,...metricsOf(cs)};
       if(run&&rect.x<lastX-5){lineIndex++;run=null}
-      if(!run){run={text:'',x:rect.x,top:rect.top,height:rect.height,lineIndex,...style};runs.push(run)}
+      if(!run){run={text:'',x:rect.x,top:rect.top,height:rect.height,lineIndex,chipBox:paintedBox(parent,el),...style};runs.push(run)}
       run.text+=ch;run.height=Math.max(run.height,rect.height);lastX=rect.x;
      }
     }
@@ -55,7 +87,7 @@ try{
    const decor=[...document.querySelectorAll('[data-decor="1"]')].map(el=>{
     const r=el.getBoundingClientRect(),cs=getComputedStyle(el);
     return{text:norm(el.innerText),box:{x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom},
-     fontSize:parseFloat(cs.fontSize),lineHeight:parseFloat(cs.lineHeight)||parseFloat(cs.fontSize)*1.2,fontWeight:cs.fontWeight,color:rgbToHex(cs.color)};
+     fontSize:parseFloat(cs.fontSize),lineHeight:parseFloat(cs.lineHeight)||parseFloat(cs.fontSize)*1.2,fontWeight:cs.fontWeight,color:rgbToHex(cs.color),...metricsOf(cs)};
    });
    const logo=document.querySelector('.logo,img[data-lockup-id]');const r=logo.getBoundingClientRect();
    const lcs=getComputedStyle(logo);

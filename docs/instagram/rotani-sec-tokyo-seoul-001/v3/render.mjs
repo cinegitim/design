@@ -38,19 +38,56 @@ try{
      const ltop=isNaN(lt)?bb.y:Math.min(lt,lt+lh),lbot=isNaN(lt)?bb.y+bb.height:Math.max(lt,lt+lh);
      top=Math.min(top,ltop);bottom=Math.max(bottom,lbot);left=Math.min(left,bb.x);right=Math.max(right,bb.x+bb.width);
     });
+    // Ink extents from real glyph outlines, and the painted chip each line sits in.
+    let inkX=Infinity,inkY=Infinity,inkR=-Infinity,inkB=-Infinity;
+    const lines=[];
+    texts.forEach(t=>{
+     const bb=t.getBBox();
+     inkX=Math.min(inkX,bb.x);inkY=Math.min(inkY,bb.y);
+     inkR=Math.max(inkR,bb.x+bb.width);inkB=Math.max(inkB,bb.y+bb.height);
+     // Centring is per line: a multi-line block has its own chip per line, so
+     // unioning the group would measure line 2 against line 1's box.
+     if(t.dataset.chipX!==undefined)lines.push({y:bb.y,bottom:bb.y+bb.height,
+      chip:{x:Number(t.dataset.chipX),y:Number(t.dataset.chipY),
+            width:Number(t.dataset.chipW),height:Number(t.dataset.chipH)}});});
     return{index:Number(e.dataset.copy),role:e.getAttribute('data-role'),
      text:joined.replace(/\s+/g,' ').trim(),
      runCount:texts.length,
-     box:{x:left,y:top,width:right-left,height:bottom-top,right:right,bottom:bottom}};
+     box:{x:left,y:top,width:right-left,height:bottom-top,right:right,bottom:bottom},
+     ink:isFinite(inkX)?{x:inkX,y:inkY,width:inkR-inkX,height:inkB-inkY}:null,
+     lines};
    });
    const logo=document.querySelector('#canonical-lockup');
    const logoBox=logo?rect(logo):null;
-   return{viewport:[innerWidth,innerHeight],jostLoaded:document.fonts.check('700 60px Jost'),copy,
+   // How far down the canvas real content reaches. A slide whose content stops
+   // short leaves a dead band at the base, which no collision test would catch.
+   const mediaBottom=[...document.querySelectorAll('img')]
+    .reduce((m,i)=>Math.max(m,i.getBoundingClientRect().bottom),0);
+   return{viewport:[innerWidth,innerHeight],jostLoaded:document.fonts.check('700 60px Jost'),copy,mediaBottom,
     logo:logo?{box:logoBox,lockupId:logo.dataset.lockupId,href:logo.getAttribute('href')}:null,
     images:[...document.images].map(i=>({src:i.getAttribute('src')||i.getAttribute('href'),complete:i.complete}))};
   });
   const issues=[],expected=exact[id].map(norm),rendered=info.copy.map(x=>norm(x.text));
   if(!info.jostLoaded)issues.push('Jost failed to load');
+  // Centring gate: ink must sit inside its chip, never riding high. Measured from
+  // real glyph outlines against the painted chip rect, because a synthesised line
+  // top silently pins copy to the top of an otherwise centred box.
+  for(const x of info.copy){
+   // Group lines by the chip they share. A badge holding a wrapped paragraph is
+   // centred as a block; a row of separate chips is centred line by line.
+   const byChip=new Map();
+   for(const ln of x.lines||[]){
+    const c=ln.chip,k=[c.x,c.y,c.width,c.height].join(',');
+    if(!byChip.has(k))byChip.set(k,{chip:c,y:Infinity,bottom:-Infinity});
+    const e=byChip.get(k);if(ln.y<e.y)e.y=ln.y;if(ln.bottom>e.bottom)e.bottom=ln.bottom;}
+   for(const e of byChip.values()){
+    const topGap=e.y-e.chip.y;
+    const botGap=(e.chip.y+e.chip.height)-e.bottom;
+    const lift=botGap-topGap;
+    if(topGap<2)issues.push(`copy sits on the top edge of its chip: #${x.index} ${x.role} gap=${topGap.toFixed(1)}px`);
+    else if(lift>8)issues.push(`copy rides high in its chip: #${x.index} ${x.role} lift=${lift.toFixed(1)}px`);
+   }
+  }
   if(JSON.stringify(rendered)!==JSON.stringify(expected))
    issues.push(`exact-copy mismatch\nexpected=${JSON.stringify(expected)}\nrendered=${JSON.stringify(rendered)}`);
   if(info.copy.some((x,i)=>x.index!==i))issues.push('data-copy indexes are not contiguous');
@@ -74,13 +111,23 @@ try{
     if(ox>2&&oy>2)issues.push(`copy intersects logo: #${x.index} ${x.role}`);
    }
   }
+  // Base fill gate: content must reach the foot of the canvas. Without this, a
+  // slide can pass every collision test and still ship a large empty band.
+  // 1250 = a dead band no deeper than 100px; the design's own bottom margins run
+  // 46-78px, so this leaves slack for editorial variation but fails loudly on
+  // the real defect class (a slide that once ended 330px short).
+  const MIN_BASE_FILL=1250;
+  const fill=Math.max(info.mediaBottom||0,...info.copy.map(x=>x.box.bottom),info.logo?info.logo.box.bottom:0);
+  info.baseFill=Math.round(fill);
+  if(fill<MIN_BASE_FILL)issues.push(`dead band at the base: content ends at y=${Math.round(fill)}, expected >=${MIN_BASE_FILL}`);
+
   for(const img of info.images)if(!img.complete)issues.push(`image failed: ${img.src}`);
   info.expectedCopy=expected;info.geometryIssues=issues;
   if(issues.length&&!process.env.DRAFT_RENDER)throw Error(`${id}\n${issues.join('\n')}`);
   await page.screenshot({path:resolve(here,'final',id+'.png'),type:'png',fullPage:false});
   await page.setViewportSize({width:375,height:469});
   await page.screenshot({path:resolve(here,'mobile',id+'-375x469.png'),type:'png',fullPage:false});
-  report[id]={jostLoaded:info.jostLoaded,copy:info.copy,logo:info.logo,geometryIssues:issues,expectedCopy:expected};
+  report[id]={jostLoaded:info.jostLoaded,copy:info.copy,logo:info.logo,baseFill:info.baseFill,geometryIssues:issues,expectedCopy:expected};
   console.log(`Rendered ${id}: copy=${rendered.length}, collisions/geometry=${issues.length}, mobile preview exported`);
   await page.close();
  }

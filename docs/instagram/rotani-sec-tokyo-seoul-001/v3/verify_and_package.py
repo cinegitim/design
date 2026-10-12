@@ -103,6 +103,53 @@ def main():
             i, f'contrast mismatch: lockup {lock_id} on ground luminance {lum:.1f} ({ground})')
         print(f'  {i}: {lock_id} on {ground} luminance {lum:.0f} -> PASS')
 
+    print('== copy contrast on coloured cards ==')
+    # Body copy that inherits --ink onto a deep city panel renders at roughly
+    # 1.6:1, which is unreadable even though no collision test objects. Sample
+    # each copy block's own pixels: the most common tone is its ground, and the
+    # extreme tone deviating most from that ground is its glyph. Direction comes
+    # from the deviation rather than brightness, because the failing case is
+    # precisely dark ink on a dark panel.
+    from collections import Counter
+
+    def _lum(rgb):
+        def ch(v):
+            v /= 255.0
+            return v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
+        return 0.2126 * ch(rgb[0]) + 0.7152 * ch(rgb[1]) + 0.0722 * ch(rgb[2])
+
+    def _contrast(a, b):
+        hi, lo = sorted((_lum(a), _lum(b)), reverse=True)
+        return (hi + 0.05) / (lo + 0.05)
+
+    gated = 0
+    for i in IDS:
+        im = Image.open(HERE / 'final' / f'{i}.png').convert('RGB')
+        for item in audit[i]['copy']:
+            b = item['box']
+            crop = im.crop((int(b['x']), int(b['y']), int(b['right']), int(b['bottom'])))
+            if crop.width < 4 or crop.height < 4:
+                continue
+            pixels = list(crop.getdata())
+            counts = Counter(pixels)
+            ground, ground_share = counts.most_common(1)[0]
+            # A photographic ground has no dominant tone; gate flat panels only.
+            if ground_share < 0.45:
+                continue
+            tones = sorted(pixels, key=_lum)
+            dark, light = tones[0], tones[-1]
+            cand = (dark if abs(_lum(dark) - _lum(ground)) >= abs(_lum(light) - _lum(ground))
+                    else light)
+            # Ignore stray antialiased pixels: a glyph has real mass.
+            if counts[cand] / len(pixels) < 0.02:
+                continue
+            ratio = _contrast(cand, ground)
+            assert ratio >= 4.5, (
+                i, f'copy #{item["index"]} {item["role"]} contrast {ratio:.2f}:1 '
+                   f'ink {cand} on ground {ground}')
+            gated += 1
+    print(f'  {gated} copy blocks on flat panels meet WCAG AA 4.5:1')
+
     print('== dimensions and profile ==')
     srgb = ImageCms.ImageCmsProfile(ImageCms.createProfile('sRGB')).tobytes()
     for i in IDS:

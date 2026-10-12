@@ -51,19 +51,31 @@ body{font-family:Jost,Arial,sans-serif;color:var(--ink);font-synthesis:none;-web
 .s02 .band{position:relative;z-index:10;padding:52px 58px 30px;background:var(--paper)}
 .s02 h2{font-size:48px;line-height:1.02;letter-spacing:-.035em;font-weight:760;max-width:730px}
 .s02 h2 em{font-style:normal;color:var(--red)}
-.s02 .cols{position:relative;z-index:10;display:grid;grid-template-columns:1.06fr .94fr;gap:0}
-.s02 .city{position:relative;min-height:0;padding:0}
-.s02 .city.k{background:var(--seoul-deep);color:var(--paper)}
-.s02 .city.t{background:var(--tokyo-deep);color:var(--paper)}
-.s02 .city .ph{position:absolute;inset:0;z-index:0}
-.s02 .city .k-ph{inset:0 0 50% 0;opacity:.78;filter:saturate(1.02) contrast(1.02)}
-.s02 .city .t-ph{inset:0 0 50% 0;opacity:.78;filter:saturate(.82) contrast(1.04)}
-.s02 .city .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.42),rgba(0,0,0,.10) 30%,rgba(0,0,0,.28) 48%,rgba(0,0,0,.28) 52%,rgba(0,0,0,.10) 70%,rgba(0,0,0,.42))}
-.s02 .city .inner{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;padding:44px 46px}
+/* Photograph sits directly above the badge and facts that describe it. The
+   previous version gave each column two absolutely positioned images with no
+ /* One city per column: two landscape photographs on top, badge and facts on
+    the deep colour below. Each city is a single grid so its panel always meets
+    its own photos and neither column can leave a bare band. */
+.s02 .cols{position:relative;z-index:10;display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:0}
+/* Panels share one baseline so the seam between the two columns stays straight:
+   the badge sits on the same line in both, and each panel grows upward from it
+   with the facts below. A short column therefore ends in colour, not in a gap. */
+.s02 .stack{position:relative;min-height:0;overflow:hidden;display:grid;grid-template-rows:1fr 1fr auto;gap:0}
+/* Both panels are given the height of the taller one (two facts), so their top
+   edges meet and the horizontal seam between the columns stays straight. The
+   shorter column then ends in its own colour instead of a bare band. */
+.s02 .panel{position:relative;padding:30px 46px 34px;display:flex;flex-direction:column;align-items:flex-start;gap:18px;color:var(--paper);min-height:256px;justify-content:flex-start}
+.s02 .stack.k .panel{background:var(--seoul-deep)}
+.s02 .stack.t .panel{background:var(--tokyo-deep)}
+.s02 .shot{position:relative;min-height:0;overflow:hidden}
+.s02 .shot .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.s02 .stack.k .shot .photo{filter:saturate(1.02) contrast(1.03)}
+.s02 .stack.t .shot .photo{filter:saturate(.88) contrast(1.05)}
+.s02 .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(29,32,39,.34),rgba(29,32,39,0) 42%,rgba(29,32,39,.30))}
+/* Panel heights are equalised so the horizontal seam between the two columns
+   stays straight; the extra room becomes breathing space, not a bare band. */
 .s02 .badge{align-self:flex-start;background:var(--paper);color:var(--ink);padding:12px 20px;font-size:22px;line-height:1;font-weight:780;letter-spacing:.1em}
-.s02 .fact{margin-top:auto;font-size:31px;line-height:1.16;font-weight:600;max-width:430px;text-shadow:0 5px 22px rgba(0,0,0,.6)}
-.s02 .fact + .fact{margin-top:18px}
-.s02 .map{margin-top:26px;height:196px;width:100%}
+.s02 .fact{font-size:31px;line-height:1.16;font-weight:600;max-width:440px}
 .s02 .foot{position:relative;z-index:10;background:var(--ink);color:var(--paper);padding:30px 58px 44px}
 .s02 .foot p{font-size:29px;line-height:1.2;font-weight:540;max-width:900px;text-wrap:balance}
 .s02 .logo{right:54px;top:58px;z-index:40;width:214px}
@@ -113,18 +125,23 @@ body{font-family:Jost,Arial,sans-serif;color:var(--ink);font-synthesis:none;-web
 .s05 .top h2{max-width:660px}
 .s05 .logo{position:static;width:204px;flex:0 0 auto}
 .s05 h2{font-size:47px;line-height:1.02;letter-spacing:-.037em;font-weight:780;max-width:900px}
+/* Price cards sit on deep Tokyo/Seoul grounds, so the card supplies the light
+   text colour itself. Leaving it to inherit --ink put dark type on dark fill
+   (measured 1.6:1); the chip and the euro line override it explicitly. */
 .s05 .prices{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:0 58px}
-.s05 .price{padding:24px 26px 22px}
+.s05 .price{padding:24px 26px 22px;color:var(--paper)}
 .s05 .price.t{background:var(--tokyo-deep)} .s05 .price.k{background:var(--seoul-deep)}
 .s05 .price .h{display:flex;align-items:center;gap:12px}
 .s05 .price .h .copy-chip{background:var(--paper);color:var(--ink);font-size:19px;padding:10px 16px}
 .s05 .price .big{margin-top:18px;font-size:33px;line-height:1.06;font-weight:790;letter-spacing:-.024em;white-space:nowrap}
 .s05 .price .eur{margin-top:12px;font-size:24px;line-height:1;font-weight:560;color:#E9EDEF;white-space:nowrap}
 .s05 .price .type{margin-top:16px;padding-top:14px;border-top:3px solid rgba(247,243,233,.34);font-size:25px;line-height:1.05;font-weight:640}
-.s05 .ph{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:26px 58px 0}
-.s05 .ph img{display:block;width:100%;height:300px;object-fit:cover;border:3px solid var(--ink)}
-.s05 .ph img{display:block;width:100%;height:420px;object-fit:cover;border:3px solid var(--ink)}
-.s05 .notes{padding:26px 58px 20px;display:grid;gap:14px;align-content:end}
+/* The photograph row absorbs the slack, so the canvas has no dead band under
+   the footnotes. Rows: head, prices, photos (1fr), notes. */
+.s05{display:grid;grid-template-rows:auto auto 1fr auto;height:1350px}
+.s05 .ph{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:26px 58px 0;min-height:0}
+.s05 .ph img{display:block;width:100%;height:100%;min-height:0;object-fit:cover;border:3px solid var(--ink)}
+.s05 .notes{padding:26px 58px 46px;display:grid;gap:14px}
 .s05 .notes .n{background:var(--paper);border-left:8px solid var(--red);padding:15px 20px;font-size:23px;line-height:1.14;font-weight:560}
 
 /* ───── SLIDE 06 · final decision ───── */

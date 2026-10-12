@@ -43,21 +43,31 @@ def compose(ident, layout, copy):
             if not r['text']:
                 continue
             line_index = run_index if (ident, item['index']) in LINE_INDEX_EXCEPTIONS else r.get('lineIndex', 0)
-            line_top = item['box']['y'] + item.get('paddingTop', 0) + line_index * r['lineHeight']
-            # Real font metrics: the baseline sits inside the line box, plus the
-            # half-leading offset when line-height is tighter than the font size.
-            baseline = line_top + (r['lineHeight'] - r['fontSize']) / 2 + r['fontSize'] * 0.75
+            # The DOM already placed this line. Re-deriving the line top from
+            # box.y + paddingTop ignores flex centring, which paints copy against
+            # the top of its chip. Trust the measured run top; fall back to the
+            # derived value only if a run carries no measurement.
+            if r.get('top') is not None:
+                line_top = r['top']
+            else:
+                line_top = item['box']['y'] + item.get('paddingTop', 0) + line_index * r['lineHeight']
+            # Baseline = inline-box top + font ascent, both from real metrics.
+            baseline = line_top + r['fontSize'] * r.get('ascentRatio', 0.75)
+            chip = r.get('chipBox')
+            chip_attr = (f' data-chip-x="{chip["x"]:.3f}" data-chip-y="{chip["y"]:.3f}"'
+                         f' data-chip-w="{chip["width"]:.3f}" data-chip-h="{chip["height"]:.3f}"'
+                         if chip else '')
             runs.append(
                 f'<text x="{r["x"]:.3f}" y="{baseline:.3f}" font-size="{r["fontSize"]:.3f}" '
                 f'font-weight="{esc(str(r["fontWeight"]))}" letter-spacing="{r["letterSpacing"]:.3f}" '
                 f'fill="{r["color"]}" xml:space="preserve" '
-                f'data-linetop="{line_top:.3f}" data-lineheight="{r["lineHeight"]:.3f}">{esc(r["text"])}</text>')
+                f'data-linetop="{line_top:.3f}" data-lineheight="{r["lineHeight"]:.3f}"{chip_attr}>{esc(r["text"])}</text>')
         groups.append(f'<g data-copy="{item["index"]}" data-role="{esc(str(item.get("role", "")))}">{"".join(runs)}</g>')
 
     # Decorative editorial typography: rendered, audited, but outside the copy contract.
     decor = []
     for d in layout['decor']:
-        baseline = d['box']['y'] + d['fontSize'] * 0.75 + (d.get('lineHeight', d['fontSize']) - d['fontSize']) / 2
+        baseline = d['box']['y'] + d['fontSize'] * d.get('ascentRatio', 0.75)
         decor.append(f'<text x="{d["box"]["x"]:.3f}" y="{baseline:.3f}" font-size="{d["fontSize"]:.3f}" '
                      f'font-weight="{esc(str(d["fontWeight"]))}" fill="{d["color"]}" '
                      f'data-decor="1">{esc(d["text"])}</text>')
