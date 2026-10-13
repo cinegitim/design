@@ -1,0 +1,122 @@
+{
+  "campus-hero-ewha": {
+    "file": "campus-hero-ewha.jpg",
+    "commons_title": "File:Ewha Womans University Campus new.jpg",
+    "author": "Christian Bolz",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Campus der Ewha Woman's University.",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Ewha_Womans_University_Campus_new.jpg",
+    "pixel": "4160x2340",
+    "downloaded_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Ewha_Womans_University_Campus_new.jpg/3840px-Ewha_Womans_University_Campus_new.jpg",
+    "bytes": 1526559
+  },
+  "campus-skku": {
+    "file": "campus-skku.jpg",
+    "commons_title": "File:SKKU Main Gate Suwon Campus.jpg",
+    "author": "Christian Bolz",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "description": "The main gate of Sungkyunkwan University's campus in Suwon.",
+    "source_url": "https://commons.wikimedia.org/wiki/File:SKKU_Main_Gate_Suwon_Campus.jpg",
+    "pixel": "4288x2416",
+    "downloaded_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/SKKU_Main_Gate_Suwon_Campus.jpg/3840px-SKKU_Main_Gate_Suwon_Campus.jpg",
+    "bytes": 1993040
+  },
+  "koreatech-eng4": {
+    "file": "koreatech-eng4.jpg",
+    "commons_title": "File:한국기술교육대학교 공학 4관 B동 (2015년 4월).JPG",
+    "author": "Wodndb",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "2015년 4월 공학 4관 B동",
+    "source_url": "https://commons.wikimedia.org/wiki/File:%ED%95%9C%EA%B5%AD%EA%B8%B0%EC%88%A0%EA%B5%90%EC%9C%A1%EB%8C%80%ED%95%99%EA%B5%90_%EA%B3%B5%ED%95%99_4%EA%B4%80_B%EB%8F%99_(2015%EB%85%84_4%EC%9B%94).JPG",
+    "pixel": "2592x1944",
+    "downloaded_url": "https://upload.wikimedia.org/wikipedia/commons/f/f0/%ED%95%9C%EA%B5%AD%EA%B8%B0%EC%88%A0%EA%B5%90%EC%9C%A1%EB%8C%80%ED%95%99%EA%B5%90_%EA%B3%B5%ED%95%99_4%EA%B4%80_B%EB%8F%99_%282015%EB%85%84_4%EC%9B%94%29.JPG",
+    "bytes": 1218059
+  },
+  "koreatech-eng3": {
+    "file": "koreatech-eng3.jpg",
+    "commons_title": "File:한국기술교육대학교 공학 3관 (2015년 4월).JPG",
+    "author": "Wodndb",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "2015년 4월 공학 3관",
+    "source_url": "https://commons.wikimedia.org/wiki/File:%ED%95%9C%EA%B5%AD%EA%B8%B0%EC%88%A0%EA%B5%90%EC%9C%A1%EB%8C%80%ED%95%99%EA%B5%90_%EA%B3%B5%ED%95%99_3%EA%B4%80_(2015%EB%85%84_4%EC%9B%94).JPG",
+    "pixel": "2592x1944",
+    "downloaded_url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/%ED%95%9C%EA%B5%AD%EA%B8%B0%EC%88%A0%EA%B5%90%EC%9C%A1%EB%8C%80%ED%95%99%EA%B5%90_%EA%B3%B5%ED%95%99_3%EA%B4%80_%282015%EB%85%84_4%EC%9B%94%29.JPG",
+    "bytes": 1190600
+  },
+  "kyunghee-library": {
+    "file": "kyunghee-library.jpg",
+    "commons_title": "File:Kyung Hee Univ. Central Library and Museum.JPG",
+    "author": "Kys951",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "description": "Kyung Hee University Central Library and Museum (Seoul Campus)",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Kyung_Hee_Univ._Central_Library_and_Museum.JPG",
+    "pixel": "4000x3000",
+    "downloaded_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Kyung_Hee_Univ._Central_Library_and_Museum.JPG/3840px-Kyung_Hee_Univ._Central_Library_and_Museum.JPG",
+    "bytes": 3017843
+  },
+  "sanggyunkwan-hill": {
+    "file": "sanggyunkwan-hill.jpg",
+    "commons_title": "File:Sungkyunkwan University Suwon Hill 2.JPG",
+    "author": "Jpbarrass",
+    "license": "Public domain",
+    "license_url": "",
+    "description": "Campus Hill, SKKU, Suwon",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Sungkyunkwan_University_Suwon_Hill_2.JPG",
+    "pixel": "1920x2560",
+    "downloaded_url": "https://upload.wikimedia.org/wikipedia/commons/1/10/Sungkyunkwan_University_Suwon_Hill_2.JPG",
+    "bytes": 2342298
+  },
+  "koreatech-hum": {
+    "file": "koreatech-hum.jpg",
+    "commons_title": "File:한국기술교육대학교 인문경영관 (2015년 4월).JPG",
+    "author": "Wodndb",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "2015년 4월 인문경영관",
+    "source_url": "https://commons.wikimedia.org/wiki/File:%ED%95%9C%EA%B5%AD%EA%B8%B0%EC%88%A0%EA%B5%90%EC%9C%A1%EB%8C%80%ED%95%99%EA%B5%90_%EC%9D%B8%EB%AC%B8%EA%B2%BD%EC%98%81%EA%B4%80_(2015%EB%85%84_4%EC%9B%94).JPG",
+    "pixel": "2592x1944",
+    "downloaded_url": "https://upload.wikimedia.org/wikipedia/commons/4/48/%ED%95%9C%EA%B5%AD%EA%B8%B0%EC%88%A0%EA%B5%90%EC%9C%A1%EB%8C%80%ED%95%99%EA%B5%90_%EC%9D%B8%EB%AC%B8%EA%B2%BD%EC%98%81%EA%B4%80_%282015%EB%85%84_4%EC%9B%94%29.JPG",
+    "bytes": 1219560
+  },
+  "ajou-campus": {
+    "file": "ajou-campus.jpg",
+    "commons_title": "File:AjouUniv.jpg",
+    "author": "주전자",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "description": "아주대학교 원천관과 선구자상",
+    "source_url": "https://commons.wikimedia.org/wiki/File:AjouUniv.jpg",
+    "pixel": "2560x1440",
+    "downloaded_url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/AjouUniv.jpg",
+    "bytes": 1738746
+  },
+  "ajou-library": {
+    "file": "ajou-library.jpg",
+    "commons_title": "File:Ajou Library.jpg",
+    "author": "ko:User:주전자",
+    "license": "CC BY-SA 2.5",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+    "description": "벚꽃이 피어있는 아주대학교 도서관 야경(뒤에 보이는 건물은 팔달관)",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Ajou_Library.jpg",
+    "pixel": "2570x1430",
+    "downloaded_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Ajou_Library.jpg/1280px-Ajou_Library.jpg",
+    "bytes": 209304
+  },
+  "kookmain-10": {
+    "file": "kookmain-10.jpg",
+    "commons_title": "File:Kookmin Univ 10.JPG",
+    "author": "hyolee2",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "description": "서울특별시 성북구에 있는 국민대학교 정문",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Kookmin_Univ_10.JPG",
+    "pixel": "3264x2448",
+    "downloaded_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Kookmin_Univ_10.JPG/1280px-Kookmin_Univ_10.JPG",
+    "bytes": 230691
+  }
+}

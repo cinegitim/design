@@ -1,0 +1,74 @@
+[
+  {
+    "file": "01.png",
+    "sha256": "802b215e2b28ce732a5b62308a34a98ce4f4f67897aa902ea25bfa3b8c3922f4",
+    "source_html": "source/01.html",
+    "dimensions": [
+      1080,
+      1350
+    ],
+    "canonical_lockup_id": "P-01/dark",
+    "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+    "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+  },
+  {
+    "file": "02.png",
+    "sha256": "2b3b3108e57b8d247f4f4fd3b66b142cd248d0242d7d01656551c5de01b153d3",
+    "source_html": "source/02.html",
+    "dimensions": [
+      1080,
+      1350
+    ],
+    "canonical_lockup_id": "D-04/light",
+    "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+    "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+  },
+  {
+    "file": "03.png",
+    "sha256": "92612a2d3fac633021dd5b528c138036d13c568bb8003764b97fe8804a37cd49",
+    "source_html": "source/03.html",
+    "dimensions": [
+      1080,
+      1350
+    ],
+    "canonical_lockup_id": "P-01/light",
+    "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+    "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+  },
+  {
+    "file": "04.png",
+    "sha256": "6132e2ff64ee63526636d26363873c0999e02334173ecf379a73de60888549a5",
+    "source_html": "source/04.html",
+    "dimensions": [
+      1080,
+      1350
+    ],
+    "canonical_lockup_id": "P-01/light",
+    "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+    "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+  },
+  {
+    "file": "05.png",
+    "sha256": "8c6064aff2799cdd4d818d08ea7a9f5a61ec01bbf3e386cf424a1bbd5d540f25",
+    "source_html": "source/05.html",
+    "dimensions": [
+      1080,
+      1350
+    ],
+    "canonical_lockup_id": "P-01/dark",
+    "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+    "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+  },
+  {
+    "file": "06.png",
+    "sha256": "3f9e020d73df298bc7aee64c3e1f3a9250e1d3436239005fa4154de531a6b6fb",
+    "source_html": "source/06.html",
+    "dimensions": [
+      1080,
+      1350
+    ],
+    "canonical_lockup_id": "P-01/dark",
+    "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+    "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+  }
+]
