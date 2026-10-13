@@ -139,7 +139,7 @@
       "original_file": "original/01.png",
       "original_sha256": "315df3b6c99d405c3ab79b7b63aa458c732241afea2c6c8191045d36711f7158",
       "source_file": "source/01.svg",
-      "source_sha256": "2415dd1c97b9929b0fcc5ba847c37af1256921ff79d9b1013b2df9a57479b028",
+      "source_sha256": "e5de65b55895e8b5524089a40f75a9e5a0ceec9ca0aaed4ef5886503d864a43d",
       "editable_html_file": "source/01.html",
       "dimensions": [
         1080,
@@ -184,7 +184,7 @@
       "original_file": "original/02.png",
       "original_sha256": "43772b127aad799414170ee9ceadec8eb1dfb49bfaa096a49837344c55bae956",
       "source_file": "source/02.svg",
-      "source_sha256": "d888b5b3c683f73925a2594c758d923fe50784f5813e7b3ae775d60e34505043",
+      "source_sha256": "62c777ac9d40e1ec5d4f8fc786d4f762c546a2594cd1ffee167f7897f3fb434e",
       "editable_html_file": "source/02.html",
       "dimensions": [
         1080,
@@ -226,7 +226,7 @@
       "original_file": "original/03.png",
       "original_sha256": "545de3a57012ea13650bead6bf1fcf0e792232519ab8ce028eb5030bb7661717",
       "source_file": "source/03.svg",
-      "source_sha256": "42b053000f88cb65930b41983286878716ab2652a413096b2a891c059ad0ca47",
+      "source_sha256": "1c4e4ed45506bf7fa64826c5c014b8d87ab507f23ef6c2c1109e31dbe2f24eed",
       "editable_html_file": "source/03.html",
       "dimensions": [
         1080,
@@ -269,7 +269,7 @@
       "original_file": "original/04.png",
       "original_sha256": "f6e454e6bfe5d034052dd673a89d7eac5349633f9d0756c8882d381e292cbb08",
       "source_file": "source/04.svg",
-      "source_sha256": "97695a48d0c64e4e0321863a89cfd0a9b1493fb516a61c3115bf83124b3a20a9",
+      "source_sha256": "033baac5e3ef09a4bfa93ca2f4c15566fab041b9639e8df2fa4f1dac117eb1b8",
       "editable_html_file": "source/04.html",
       "dimensions": [
         1080,
@@ -312,7 +312,7 @@
       "original_file": "original/05.png",
       "original_sha256": "49a9b2fde235e11586be526f2482eacde73ebc01a9198c8a7847ddb880579570",
       "source_file": "source/05.svg",
-      "source_sha256": "5c28a0d2006d68afad87bf91026092a2d91bf2035f6ce4db8db4a526684eaa0d",
+      "source_sha256": "3d622ea3bf244ad034b50034abade40bca2b8d4df3738c017373dde565e9356d",
       "editable_html_file": "source/05.html",
       "dimensions": [
         1080,
@@ -352,7 +352,7 @@
       "original_file": "original/06.png",
       "original_sha256": "ca21275d6445a664c0f4d2de18b7faf82655f055eecb0be6d1be22c9b8036c5b",
       "source_file": "source/06.svg",
-      "source_sha256": "606437f64b8e200a2c2b2d8cecb6b2821a16b92b57467867e7edfc527e015a0d",
+      "source_sha256": "aa873bd4e12984e70ced2b965025d9015e2d6780ced217785f5cd6a4de365223",
       "editable_html_file": "source/06.html",
       "dimensions": [
         1080,
