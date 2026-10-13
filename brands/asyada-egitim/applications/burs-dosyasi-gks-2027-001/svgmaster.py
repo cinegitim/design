@@ -156,7 +156,7 @@ s.add(f'<rect x="72" y="{round(sid["y"]+sid["h"]+16,2)}" width="96" height="5" f
 s.copy_group('BURS DOSYASI / 001', [e for _,e in text_el('01','sid',30,600,'#F7F3E9',4.2)])
 # Line 1 ("Kore devlet bursunu") is cream on the darkened photo and already
 # separates cleanly; line 2 carries the #003478 accent and needs the shadow.
-s.copy_group('Kore devlet bursunu kaçırdın mı?',
+s.copy_group('Kore devlet bursunu kaçırdım diye üzülme.',
              [e for _,e in text_el('01','question',78,600,'#F7F3E9',-1.56,
                                    line_fill=['#F7F3E9','#003478'],
                                    line_extra=['', QS_ATTR])])
