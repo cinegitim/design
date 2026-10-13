@@ -13,6 +13,15 @@
 **Why original/ equals export/:** this pipeline has no post-render raster editing; the delivered PNG
 is the deterministic render of `source/NN.svg`. `original/` records that first (and only) render.
 
+**Single source of truth for colour:** `svgmaster.py`. The campaign accent is Korean blue `#003478`;
+brand red `#BD2120` survives only inside the linked canonical lockup SVGs under `assets/lockups/`,
+which are locked assets and were never edited. Slide 01's accent line additionally carries the
+`QS_SHADOW` drop shadow for legibility over photography — see `quality-review.md`.
+
+**Note on generated docs:** `quality-review.md` and `generation-notes.md` (this file) are themselves
+emitted by `deliver.py`. Edit the templates inside `deliver.py`, never these files — a hand edit
+here is silently overwritten on the next run.
+
 **Image generation:** none. Zero AI raster calls; all photography is real Wikimedia Commons imagery
 (`photo-credits.md`). No paid image or API usage.
 

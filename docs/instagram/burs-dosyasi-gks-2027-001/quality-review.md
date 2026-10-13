@@ -28,6 +28,43 @@ Contact sheet, mobile strip (375 px) and source-vs-final sheet were inspected as
 final render. Distinct backgrounds: 01 photo/ink, 02 paper editorial, 03 warm neutral, 04 deep paper,
  05 ink financial, 06 photo/ink — no repeated beige template.
 
+## Colour revision — Korean blue #003478
+The campaign replaces brand red `#BD2120` with Korean blue as its single accent. The colour is
+authored in exactly one place, `svgmaster.py`, and propagates through `source/NN.svg` →
+`export/NN.png` → `original/NN.png` → ZIP → published gallery.
+
+A first pass converted only a subset of the accent sites and left brand red on primary elements
+("kaçırdın mı?" and its rules on 01, "13 Ekim 2026 itibarıyla." on 02, the "100" numeral on 03, the
+TÜRK VATANDAŞLARI band on 04, the CTA band on 06). That partial state was incorrect and has been
+superseded by a full conversion of the remaining nine sites.
+
+`#BD2120` is retained **only** inside the linked canonical lockup SVGs under `assets/lockups/`.
+Those are locked, human-approved assets, linked by reference and never edited, recoloured,
+redrawn or re-typeset.
+
+Verified after the re-render, by inspecting each exported PNG as image input:
+- `#BD2120` occurs **zero** times in `source/01.svg`–`06.svg`.
+- On every export, all remaining red-family pixels fall inside that slide's canonical-lockup
+  bounding box from `manifest.json`. Red outside the logo is **0 on all six slides**.
+- `studio/tools/verify_asyada_canonical_lockups.py` passes — 15 records, seal `8f5d46f0…c77e11a`.
+- Copy, geometry and Jost gates re-ran clean (0 errors, all six slides, 1080×1350).
+
+## Slide 01 accent-line legibility (fixed at human request)
+With the accent applied, "kaçırdın mı?" in `#003478` sat over a darkened photograph and its glyph
+edge was lost against the mid-tone sky and buildings — the line read as disappearing. Fixed with a
+two-stage black drop shadow on **that line only** (`#04070C`, dy 6 / blur 9, plus a tight
+dy 1 / blur 1.5 contact pass), declared once in `svgmaster.py` as `QS_SHADOW` and applied per line
+through the `line_extra` argument added to `text_el()`. The cream line above it and every other
+slide are untouched; the filter appears in `source/01.svg` only.
+
+Measured on the exported PNG before and after, across the line's own bounding box:
+- median luminance of the 1 px ring immediately around the glyphs: **0.0571 → 0.0116**
+- brightest ring pixel (98th percentile): **0.1217 → 0.0520**
+- glyph-to-ring contrast: **1.22:1 → 1.43:1**
+
+Confirmed by inspecting the export as image input at 1080 px and again at the 375 px mobile
+preview: the accent line reads cleanly at both.
+
 ## Remaining constraints (disclosed, not blocking)
 - Photography is licensed Wikimedia Commons imagery; correct identification of KOREATECH, Ajou,
   Kookmin buildings and Korean campuses. Not a claim of partnership or admission.
