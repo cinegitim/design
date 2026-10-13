@@ -132,7 +132,7 @@ s.add('<rect x="0" y="0" width="1080" height="1350" fill="url(#gv1)"/>')
 d_top = 636; d_size = 212
 s.add(f'<text x="540" y="{round(d_top+asc("01",d_size),2)}" font-size="{d_size}" font-weight="650" '
       f'letter-spacing="4.24" fill="rgba(247,243,233,.13)" text-anchor="middle">30 EYLÜL</text>')
-s.add('<rect x="88" y="744" width="904" height="12" rx="6" fill="#BD2120" opacity=".85" transform="rotate(-1.6 540 750)"/>')
+s.add('<rect x="88" y="744" width="904" height="12" rx="6" fill="#003478" opacity=".85" transform="rotate(-1.6 540 750)"/>')
 sid = rects('01','sid')
 s.add(f'<rect x="72" y="{round(sid["y"]+sid["h"]+16,2)}" width="96" height="5" fill="#BD2120"/>')
 s.copy_group('BURS DOSYASI / 001', [e for _,e in text_el('01','sid',30,600,'#F7F3E9',4.2)])
@@ -155,17 +155,17 @@ SVG01 = s.render()
 # ---------------------------------------------------------------- slide 02
 s = Slide('02', '#F7F3E9')
 rail_top, rail_bot = 237, 929
-s.add(f'<line x1="77.5" y1="{rail_top}" x2="77.5" y2="{rail_bot}" stroke="rgba(29,32,39,.22)" stroke-width="3"/>')
+s.add(f'<line x1="77.5" y1="{rail_top}" x2="77.5" y2="{rail_bot}" stroke="#003478" stroke-width="3"/>')
 s.add('<circle cx="77.5" cy="237" r="13" fill="#BD2120"/><circle cx="77.5" cy="707" r="10" fill="#1D2027"/>'
       '<circle cx="77.5" cy="929" r="10" fill="#1D2027"/>')
 e1 = rects('02','entry-koreatech')
 photo = {'x': e1['x']+e1['w']-400, 'y': e1['y']+18}
 crop('koreatech-hum.jpg', 400, 400, 0.5, 0.38, '02-koreatech.jpg')
 s.add(f'<image href="../assets/photos-crop/02-koreatech.jpg" x="{photo["x"]}" y="{photo["y"]}" width="400" height="400" preserveAspectRatio="none"/>')
-s.add(f'<rect x="{photo["x"]}" y="{photo["y"]}" width="400" height="8" fill="#BD2120"/>')
+s.add(f'<rect x="{photo["x"]}" y="{photo["y"]}" width="400" height="8" fill="#003478"/>')
 s.copy_group('GKS-UIC’de üç üniversitenin başvurusu sürüyor.',
              [e for _,e in text_el('02','head',54,600,'#1D2027',-0.81)])
-s.copy_group('23 EKİM 2026', [e for _,e in text_el('02','date-1',58,650,'#BD2120',-0.58)])
+s.copy_group('23 EKİM 2026', [e for _,e in text_el('02','date-1',58,650,'#003478',-0.58)])
 s.copy_group('KOREATECH', [e for _,e in text_el('02','name-1',46,650,'#1D2027')])
 s.copy_group('Bilgisayar / Makine Mühendisliği',
              [e for _,e in text_el('02','prog-1',30,500,'rgba(29,32,39,.88)')])
@@ -207,12 +207,12 @@ s.add(f'<text x="58" y="{round(sub_top+asc("03",30),2)}" font-size="30" font-wei
 s.copy_group('100 burs kontenjanı. Dünya genelinden başvuru.',
              [e for _,e in text_el('03','headline',48,600,'#1D2027',-0.72)])
 s.copy_group('13 kurum · Lisans ve ön lisans',
-             [e for _,e in text_el('03','institutions',31,650,'#BD2120',0.31)])
+             [e for _,e in text_el('03','institutions',31,650,'#003478',0.31)])
 for fig, lab, att, cfig, catt in (
     ('fig-ajou','lab-ajou','att-ajou','7 KONTENJAN','Ajou — Yapay Zekâ ve Bilgisayar Mühendisliği'),
     ('fig-kookmin','lab-kookmin','att-kookmin','7 KONTENJAN','Kookmin — Yazılım'),
     ('fig-koreatech','lab-koreatech','att-koreatech','5 + 5 KONTENJAN','KOREATECH — Bilgisayar ve Makine Mühendisliği')):
-    els  = [e for _,e in text_el('03',fig,86,650,'#BD2120',-1.72)]
+    els  = [e for _,e in text_el('03',fig,86,650,'#003478',-1.72)]
     els += [e for _,e in text_el('03',lab,26,650,'#1D2027',2.08)]
     s.copy_group(cfig, els)
     s.copy_group(catt, [e for _,e in text_el('03',att,25,500,'rgba(29,32,39,.9)')])
@@ -242,7 +242,7 @@ for grp, num, gh, gb, ico, cgh, cgb in (
     s.add(f'<rect x="72" y="{g["y"]}" width="936" height="2" fill="rgba(29,32,39,.16)"/>')
     nr = rects('04', {'01':'num-1','02':'num-2','03':'num-3'}[num])
     nbase = nr['y'] + asc('04', 58)
-    s.add(f'<text x="72" y="{round(nbase,2)}" font-size="58" font-weight="650" fill="#BD2120">{num}</text>')
+    s.add(f'<text x="72" y="{round(nbase,2)}" font-size="58" font-weight="650" fill="#003478">{num}</text>')
     hr = rects('04', gh)
     s.add(icon(ico, round(hr['x']-58,2), round(hr['y']+(hr['h']-42)/2,2), 42, '#1D2027'))
     s.copy_group(cgh, [e for _,e in text_el('04',gh,33,650,'#1D2027',0.66)])
@@ -261,7 +261,7 @@ s.add(lg)
 s.copy_group('GKS 2027 bursu ne kadar?', [e for _,e in text_el('05','question',58,600,'#F7F3E9',-0.87)])
 krw = []
 krw += [e for _,e in text_el('05','krw-amount',122,650,'#F7F3E9',-3.05)]
-krw += [e for _,e in text_el('05','krw-cur',54,600,'#BD2120')]
+krw += [e for _,e in text_el('05','krw-cur',54,600,'#003478')]
 krw += [e for _,e in text_el('05','krw-yr',38,500,'rgba(247,243,233,.66)')]
 s.copy_group('14.400.000 KRW* / yıl', krw)
 s.copy_group('≈ 9.675 € / yıl', [e for _,e in text_el('05','eur',54,500,'rgba(247,243,233,.74)',-0.54)])
@@ -296,13 +296,13 @@ s.copy_group('BURS DOSYASI / 001', [e for _,e in text_el('06','sid',30,600,'#F7F
 s.copy_group('GKS-UIC’de ikinci üniversite tercihi yok.',
              [e for _,e in text_el('06','headline',64,650,'#F7F3E9',-1.28)])
 path = rects('06','path')
-s.add(f'<rect x="78" y="{path["y"]}" width="4" height="{round(path["h"],2)}" fill="#BD2120" opacity=".9"/>')
+s.add(f'<rect x="78" y="{path["y"]}" width="4" height="{round(path["h"],2)}" fill="#003478" opacity=".9"/>')
 node = rects('06','node')
-s.add(f'<circle cx="{round(node["x"]+node["w"]/2,2)}" cy="{round(node["y"]+node["h"]/2,2)}" r="11" fill="#BD2120"/>')
+s.add(f'<circle cx="{round(node["x"]+node["w"]/2,2)}" cy="{round(node["y"]+node["h"]/2,2)}" r="11" fill="#003478"/>')
 s.copy_group('1 ÜNİVERSİTE', [e for _,e in text_el('06','one-uni',92,650,'#F7F3E9',-0.92)])
 s.copy_group('1 BÖLÜM', [e for _,e in text_el('06','one-dept',92,650,'#F7F3E9',-0.92)])
 wr = rects('06','warning')
-s.add(f'<rect x="72" y="{wr["y"]}" width="8" height="{round(wr["h"],2)}" fill="#BD2120"/>')
+s.add(f'<rect x="72" y="{wr["y"]}" width="8" height="{round(wr["h"],2)}" fill="#003478"/>')
 s.copy_group('Birden fazla üniversiteye başvurmak GKS değerlendirmesinden çıkarılmana neden olabilir.',
              [e for _,e in text_el('06','warning',31,500,'rgba(247,243,233,.94)')])
 s.copy_group('Türkiye’den başvurabileceğin programları, gerekli belgeleri ve son tarihleri birlikte kontrol edelim.',
