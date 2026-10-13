@@ -20,6 +20,7 @@ from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageOps
 HERE = Path(__file__).resolve().parent
 ROOT = Path('/private/var/folders/3j/ffljsl_s66n94xjq7zdv8hb80000gn/T/opencode/basvuru-rehberi-001')
 NS = '{http://www.w3.org/2000/svg}'
+SEAL_SHA = '8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a'
 M = json.loads((HERE / 'manifest.json').read_text(encoding='utf-8'))
 JOST = HERE / 'assets/Jost-VF.ttf'
 OUT = HERE / 'mobile'
@@ -45,6 +46,66 @@ def normalise_photos():
 
 
 failures = []
+
+
+
+LOGUP_VARIANTS = {
+    'D-04/light':   {'for_light_background': True},
+    'D-04/dark':    {'for_light_background': False},
+    'H-02/light':   {'for_light_background': True},
+    'H-02/dark':    {'for_light_background': False},
+    'P-01/light':   {'for_light_background': True},
+    'P-01/dark':    {'for_light_background': False},
+    'C-03/light':   {'for_light_background': True},
+    'C-03/dark':    {'for_light_background': False},
+    'F-05/light':   {'for_light_background': True},
+    'F-05/dark':    {'for_light_background': False},
+}
+
+
+def _luma(c):
+    def f(v):
+        v = v / 255
+        return v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
+    return 0.2126 * f(c[0]) + 0.7152 * f(c[1]) + 0.0722 * f(c[2])
+
+
+def final_bg_luma(im, x, y, w, h):
+    """Mean luminance of the slide immediately surrounding the lockup box.
+
+    Samples thin strips on each side of the box so the background, not the
+    wordmark, is measured. Falls back to the full-slide mean.
+    """
+    W_, H_ = im.size
+    strips = [
+        (max(0, x - 22), y, x, min(H_, y + h)),                 # left
+        (x + w, y, min(W_, x + w + 22), min(H_, y + h)),        # right
+        (x, max(0, y - 22), x + w, y),                          # above
+        (x, y + h, x + w, min(H_, y + h + 22)),                 # below
+    ]
+    px = []
+    for a in strips:
+        if a[2] > a[0] and a[3] > a[1]:
+            px += list(im.crop(a).getdata())
+    if not px:
+        px = list(im.getdata())
+    return sum(_luma(c) for c in px) / len(px)
+
+
+def wordmark_contrast(region):
+    """Contrast ratio between the two dominant tonal clusters in the lockup box."""
+    data = list(region.getdata())
+    from collections import Counter
+    cnt = Counter(data)
+    bg = cnt.most_common(1)[0][0]
+    best, bestn = None, 0
+    for c, n in cnt.most_common(60):
+        if abs(c[0] - bg[0]) + abs(c[1] - bg[1]) + abs(c[2] - bg[2]) > 60 and n > bestn:
+            best, bestn = c, n
+    if best is None:
+        return 0.0
+    l1, l2 = max(_luma(best), _luma(bg)), min(_luma(best), _luma(bg))
+    return (l1 + 0.05) / (l2 + 0.05)
 
 
 def sha(p):
@@ -91,8 +152,14 @@ for slide in M['slides']:
     check(linked == (HERE / slide['canonical_lockup_file']).resolve(),
           slide['id'] + ' lockup link')
     check(sha(linked) == slide['canonical_lockup_sha256'], slide['id'] + ' lockup hash')
-    check(sha(linked) == slide['canonical_seal_sha256']
-          or slide['canonical_lockup_id'].startswith('D-04'), slide['id'] + ' seal hash')
+    check(slide['canonical_seal_sha256'] == SEAL_SHA, slide['id'] + ' seal provenance')
+    check(slide['canonical_logo_sha256'] == SEAL_SHA, slide['id'] + ' logo provenance')
+    # The lockup must carry the canonical seal anchor in its own metadata.
+    lockup_meta = ET.fromstring(linked.read_text(encoding='utf-8'))
+    meta_el = lockup_meta.find(NS + 'metadata')
+    if meta_el is not None and (meta_el.text or '').strip():
+        check(json.loads(meta_el.text).get('canonical_seal_sha256') == SEAL_SHA,
+              slide['id'] + ' embedded seal anchor')
     x, y, w, h = [float(mark.get(k)) for k in ('x', 'y', 'width', 'height')]
     check([x, y] == slide['logo_x_y_px'] and w == slide['logo_width_px'],
           slide['id'] + ' placement metadata')
@@ -112,6 +179,19 @@ for slide in M['slides']:
                 check(not overlap, f"06-dossier icon {i} overlaps label {tb['copy']}")
 
     rgb = im.convert('RGB')
+    # Brand-compliance guard: the lockup wordmark must be visible on the slide.
+    lv = LOGUP_VARIANTS[slide['canonical_lockup_id']]
+    bg_light = final_bg_luma(rgb, x, y, w, h) > 0.5
+    if bg_light and not lv['for_light_background']:
+        failures.append(f"{slide['id']}: {slide['canonical_lockup_id']} is not a light-background variant")
+    if (not bg_light) and lv['for_light_background']:
+        failures.append(f"{slide['id']}: {slide['canonical_lockup_id']} is not a dark-background variant")
+    # measured wordmark contrast
+    region = rgb.crop((x, y, min(1080, x + w), min(1350, y + h)))
+    contrast = wordmark_contrast(region)
+    check(contrast >= 4.5,
+          f"{slide['id']}: lockup wordmark contrast {contrast:.1f}:1 below 4.5:1")
+
     rgb.resize((324, 405), Image.Resampling.LANCZOS).save(OUT / f"{slide['id']}-324x405.png", optimize=True)
     rgb.resize((375, 469), Image.Resampling.LANCZOS).save(OUT / f"{slide['id']}-375x469.png", optimize=True)
     finals.append((slide, rgb))

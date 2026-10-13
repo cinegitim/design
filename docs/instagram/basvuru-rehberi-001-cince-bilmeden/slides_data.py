@@ -72,7 +72,7 @@ COPY = {
    'Küresel Yönetişim',
    'FUDAN UNIVERSITY',
    'Kamu Politikası',
-   'Ve çok daha fazlası.',
+   'Başka üniversitelerde de İngilizce programlar var.',
  ],
  '05-doctorate': [
    'DOKTORA / İNGİLİZCE EĞİTİM',
@@ -82,7 +82,7 @@ COPY = {
    'Küresel Çalışmalar · Finans · Malzeme Bilimi',
    'FUDAN UNIVERSITY',
    'Uluslararası Politika · Matematik',
-   'Ve çok daha fazlası.',
+   'Sunulan alanlar bununla sınırlı değil.',
    'Araştırma alanı, danışman ve kabul koşulları programa göre değişir.',
  ],
  '06-dossier': [
@@ -139,7 +139,17 @@ SUPPLIED = {
    'Kamu Politikası',
    'Ve çok daha fazlası.',
  ],
- '05-doctorate': None,
+ '05-doctorate': [
+   'DOKTORA / İNGİLİZCE EĞİTİM',
+   'Çince bilmeden doktora yapabilir misin?',
+   'Evet. İngilizce doktora programları da var.',
+   'SHANGHAI UNIVERSITY',
+   'Küresel Çalışmalar · Finans · Malzeme Bilimi',
+   'FUDAN UNIVERSITY',
+   'Uluslararası Politika · Matematik',
+   'Ve çok daha fazlası.',
+   'Araştırma alanı, danışman ve kabul koşulları programa göre değişir.',
+ ],
  '06-dossier': [
    'BAŞVURU REHBERİ / 001',
    "Çin'de üniversiteye başvurmak için diploma yetmiyor.",
@@ -156,13 +166,18 @@ SUPPLIED = {
 }
 
 # --------------------------------------------------------------- lockup plan
+# Canonical colour variants follow the approved naming:
+#   'light' -> #1D2027 letterforms  -> LIGHT backgrounds (ink wordmark)
+#   'dark'  -> #F7F3E9 letterforms  -> DARK  backgrounds (paper wordmark)
+# Slide 06 uses the primary horizontal lockup H-02 for a proper closing
+# signature (D-04 is the small-use digital variant and is too weak there).
 LOCKUP = {
- '01-cover':    ('D-04/light',  [66, 1188], 300),
- '02-fields':   ('D-04/dark',   [770, 48], 244),
- '03-atlas':    ('D-04/light',  [712, 1188], 300),
- '04-masters':  ('D-04/light',  [66, 1188], 300),
- '05-doctorate':('D-04/light',  [66, 1210], 260),
- '06-dossier':  ('D-04/dark',   [762, 1206], 264),
+ '01-cover':    ('D-04/dark',   [66, 1176], 340),
+ '02-fields':   ('D-04/light',  [714, 44], 300),
+ '03-atlas':    ('D-04/dark',   [674, 1176], 340),
+ '04-masters':  ('D-04/dark',   [66, 1176], 340),
+ '05-doctorate':('D-04/dark',   [674, 1176], 340),
+ '06-dossier':  ('H-02/light',  [276, 1108], 528),
 }
 
 

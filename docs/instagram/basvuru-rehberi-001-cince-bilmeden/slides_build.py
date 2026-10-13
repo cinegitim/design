@@ -251,7 +251,7 @@ S04_TEXTS = [
     (430, 992, 24, PAPER, 400, 'Küresel Yönetişim', ''),
     (790, 954, 21, GOLD_BRIGHT, 600, 'FUDAN UNIVERSITY', 'letter-spacing:.12em'),
     (790, 992, 24, PAPER, 400, 'Kamu Politikası', ''),
-    (66, 1100, 32, GOLD_BRIGHT, 500, 'Ve çok daha fazlası.', 'letter-spacing:-.01em'),
+    (66, 1100, 30, GOLD_BRIGHT, 500, 'Başka üniversitelerde de İngilizce programlar var.', 'letter-spacing:-.01em'),
 ]
 
 # ============================================================== SLIDE 05 — doctorate
@@ -295,7 +295,7 @@ S05_TEXTS = [
     (66, 902, 30, PAPER, 400, 'Küresel Çalışmalar · Finans · Malzeme Bilimi', ''),
     (650, 962, 22, GOLD_BRIGHT, 600, 'FUDAN UNIVERSITY', 'letter-spacing:.14em'),
     (650, 1006, 28, PAPER, 400, 'Uluslararası Politika · Matematik', ''),
-    (66, 1078, 30, GOLD_BRIGHT, 500, 'Ve çok daha fazlası.', 'letter-spacing:-.01em'),
+    (66, 1078, 30, GOLD_BRIGHT, 500, 'Sunulan alanlar bununla sınırlı değil.', 'letter-spacing:-.01em'),
     (66, 1160, 24, PAPER, 400, 'Araştırma alanı, danışman ve kabul', ''),
     (66, 1194, 24, PAPER, 400, 'koşulları programa göre değişir.', ''),
 ]
@@ -316,45 +316,44 @@ _COLS = [66, 303, 540, 777]
 _s06_icons, _s06_cells = [], []
 for i, (kind, _full, _lines) in enumerate(_DOSSIER):
     col, row = i % 4, i // 4
-    cx, cy = _COLS[col] + 34, 506 + row * 144
+    cx, cy = _COLS[col] + 34, 464 + row * 142
     _s06_icons.append(icon(kind, cx - 21, cy, 42, PAPER, 2.4))
     for j, line in enumerate(_lines):
-        _s06_cells.append((_COLS[col] + 22, 586 + row * 144 + j * 27, 22, PAPER, 500, line, ''))
+        _s06_cells.append((_COLS[col] + 22, 546 + row * 142 + j * 27, 22, PAPER, 500, line, ''))
 _s06_icons = ''.join(_s06_icons)
 
 S06_LAYERS = (
     f'<rect width="{W}" height="{H}" fill="{PAPER}"/>'
-    + _rule(66, 148, 948, 2, GOLD_IMP)
-    + _rule(66, 444, 948, 2, GOLD_IMP)
-    + _rule(66, 900, 948, 2, GOLD_IMP)
-    + _rule(66, 1186, 948, 2, GOLD_IMP)
+    + _rule(66, 108, 948, 2, GOLD_IMP)
+    + _rule(66, 404, 948, 2, GOLD_IMP)
+    + _rule(66, 856, 948, 2, GOLD_IMP)
     # prominent red archival-folder shape
-    + f'<path d="M66 466 h948 a26 26 0 0 1 26 26 v312 a26 26 0 0 1 -26 26 '
-      f'H66 a26 26 0 0 1 -26 -26 V492 a26 26 0 0 1 26 -26 Z" fill="{CHINA_RED}"/>'
-    + f'<path d="M66 466 h300 l42 46 h130" fill="none" stroke="{BRAND_RED}" '
+    + f'<path d="M66 424 h948 a26 26 0 0 1 26 26 v316 a26 26 0 0 1 -26 26 '
+      f'H66 a26 26 0 0 1 -26 -26 V450 a26 26 0 0 1 26 -26 Z" fill="{CHINA_RED}"/>'
+    + f'<path d="M66 424 h300 l42 46 h130" fill="none" stroke="{BRAND_RED}" '
       f'stroke-width="4" opacity=".5"/>'
-    + _rule(66, 488, 948, 3, GOLD_BRIGHT)
+    + _rule(66, 446, 948, 3, GOLD_BRIGHT)
     # seven coherent vector document icons inside the dossier
     + f'<g id="dossier-icons">{_s06_icons}</g>'
-    # red editorial underline for the call to action
-    + _rule(66, 1076, 108, 6, BRAND_RED)
+    # red editorial accent for the call to action
+    + _rule(66, 1024, 108, 6, BRAND_RED)
     # restrained seal-like and lattice accents (geometric, not official marks)
-    + seal_mark(946, 96, 46, CHINA_RED, opacity=.9)
-    + lattice(950, 900, 58, 58, 2, 2, GOLD_IMP, 1.6, opacity=.6, pattern='angular')
+    + seal_mark(946, 84, 46, CHINA_RED, opacity=.9)
+    + lattice(950, 856, 58, 58, 2, 2, GOLD_IMP, 1.6, opacity=.6, pattern='angular')
 )
 
 S06_TEXTS = [
-    (138, 118, 26, CHINA_RED, 500, 'BAŞVURU REHBERİ / 001', 'letter-spacing:.20em'),
-    (66, 218, 44, INK, 600, "Çin'de üniversiteye", 'letter-spacing:-.03em'),
-    (66, 270, 44, INK, 600, "başvurmak için", 'letter-spacing:-.03em'),
-    (66, 322, 44, INK, 600, "diploma yetmiyor.", 'letter-spacing:-.03em'),
-    (66, 420, 26, INK, 500, 'Başvuruda istenebilen belgeler:', ''),
+    (138, 110, 26, CHINA_RED, 500, 'BAŞVURU REHBERİ / 001', 'letter-spacing:.20em'),
+    (66, 200, 44, INK, 600, "Çin'de üniversiteye", 'letter-spacing:-.03em'),
+    (66, 248, 44, INK, 600, "başvurmak için", 'letter-spacing:-.03em'),
+    (66, 296, 44, INK, 600, "diploma yetmiyor.", 'letter-spacing:-.03em'),
+    (66, 384, 26, INK, 500, 'Başvuruda istenebilen belgeler:', ''),
 ] + _s06_cells + [
-    (66, 868, 32, INK, 600, 'Ve programa göre daha fazlası.', 'letter-spacing:-.02em'),
-    (66, 938, 25, INK, 400, 'Bazı üniversiteler mülakat, adli sicil belgesi ve resmî', ''),
-    (66, 972, 25, INK, 400, 'çeviri de istiyor.', ''),
-    (66, 1042, 30, INK, 500, 'Program seçimi ve başvuru dosyanı birlikte hazırlayalım.', ''),
-    (66, 1152, 46, BRAND_RED, 700, 'Ücretsiz ön görüşme', 'letter-spacing:-.025em'),
+    (66, 826, 32, INK, 600, 'Ve programa göre daha fazlası.', 'letter-spacing:-.02em'),
+    (66, 894, 25, INK, 400, 'Bazı üniversiteler mülakat, adli sicil belgesi ve resmî', ''),
+    (66, 928, 25, INK, 400, 'çeviri de istiyor.', ''),
+    (66, 990, 30, INK, 500, 'Program seçimi ve başvuru dosyanı birlikte hazırlayalım.', ''),
+    (66, 1076, 46, BRAND_RED, 700, 'Ücretsiz ön görüşme', 'letter-spacing:-.025em'),
 ]
 
 SLIDES = [

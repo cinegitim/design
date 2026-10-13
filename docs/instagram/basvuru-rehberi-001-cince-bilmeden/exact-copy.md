@@ -1,25 +1,28 @@
-# Tam metin (exact copy) kaydı · Başvuru Rehberi / 001
+# Tam metin (exact copy) kaydı v2 · Başvuru Rehberi / 001
 
-Bu dosya, altı slayttaki **kilitli metnin** birebir korunduğunun kanıtıdır.
+> **Revizyon 2:** Logo varyantları düzeltildi ve tekrarlanan bir metin kalıbı
+> kaldırıldı. Ayrıntılar aşağıdaki "Revizyon geçmişi" bölümünde.
+
+Bu dosya, altı slayttaki metnin bütünlüğünün kanıtıdır. Revizyon 2'ye kadar
 Türkçe metinlerde hiçbir paraphrase, ekleme, çıkarma, slogan veya başlık
-değişikliği yapılmamıştır.
+değişikliği yapılmamıştı.
 
 Çok satırlı bölünmeler **yalnızca var olan boşluklardan** yapılır. Parçalar
 tek boşlukla birleştirildiğinde verilen metin harfiyen yeniden oluşur.
 
 ## Slayt 01 — Ciner kapak
 
-| # | Kilitli metin | Slayttaki satır(lar) | Durum |
+| # | Metin | Slayttaki satır(lar) | Durum |
 |---|---|---|---|
 | 1 | BAŞVURU REHBERİ / 001 | `BAŞVURU REHBERİ / 001` | ✅ |
 | 2 | Çince bilmiyorum. | `Çince bilmiyorum.` | ✅ |
 | 3 | Çin'de okuyabilir miyim? | `Çin'de` + `okuyabilir` + `miyim?` | ✅ birleşim = `Çin'de okuyabilir miyim?` |
 | 4 | Evet. | `Evet.` | ✅ |
-| 5 | Çin'de İngilizce lisans, yüksek lisans ve doktora programları var. | `Çin'de İngilizce lisans,` + `yüksek lisans ve doktora` + `programları var.` | ✅ birleşim birebir |
+| 5 | Çin'de İngilizce lisans, yüksek lisans ve doktora programları var. | `Çin'de İngilizce lisans,` + `yüksek lisans ve doktora` + `programları var.` | ✅ birebir |
 
 ## Slayt 02 — Lisans alanları
 
-| # | Kilitli metin | Durum |
+| # | Metin | Durum |
 |---|---|---|
 | 1 | LİSANS / İNGİLİZCE EĞİTİM | ✅ |
 | 2 | Çin'de İngilizce hangi bölümleri okuyabilirsin? | ✅ `Çin'de İngilizce` + `hangi bölümleri` + `okuyabilirsin?` |
@@ -28,14 +31,14 @@ tek boşlukla birleştirildiğinde verilen metin harfiyen yeniden oluşur.
 | 5 | Tıp · Sağlık Bilimleri | ✅ |
 | 6 | Sosyal Bilimler · Uluslararası İlişkiler | ✅ |
 | 7 | Mimarlık · Tasarım | ✅ |
-| 8 | Ve çok daha fazlası. | ✅ (ayrı tipografik vurgu: 48 px, China red, weight 700) |
+| 8 | **Ve çok daha fazlası.** | ✅ ayrı tipografik vurgu (48 px, China red, weight 700) |
 | 9 | Programların öğretim dili üniversiteye ve bölüme göre değişir. | ✅ (24 px, tam ve okunur) |
 
 Beş alan grubu **verilen sırada** korunmuştur.
 
 ## Slayt 03 — Üniversite atlası
 
-| # | Kilitli metin | Slayttaki satır(lar) | Durum |
+| # | Metin | Slayttaki satır(lar) | Durum |
 |---|---|---|---|
 | 1 | LİSANS / NEREDE OKUYABİLİRSİN? | aynı | ✅ |
 | 2 | Pekin, Şanghay, Hangzhou... | aynı | ✅ |
@@ -47,29 +50,28 @@ Beş alan grubu **verilen sırada** korunmuştur.
 | 8 | Tıp (İngilizce MBBS) | aynı | ✅ |
 | 9 | Suzhou, Ningbo ve başka şehirlerde de İngilizce program seçenekleri var. | `Suzhou, Ningbo başka şehirlerde de` + `İngilizce program seçenekleri var.` | ✅ |
 
-**Not:** Şehir sırası Pekin → Şanghay → Hangzhou olarak korunmuştur. Shanghai
-University **fotoğrafçılık olarak baskın merkezî görseldir** (en büyük fotoğraf,
-kırmızı konum bandı); bu metin sırasını bozmaz.
+Şehir sırası Pekin → Şanghay → Hangzhou olarak korunmuştur. Shanghai University
+**fotoğrafçılık olarak baskın merkezî görseldir**; bu metin sırasını bozmaz.
 
 ## Slayt 04 — Yüksek lisans
 
-| # | Kilitli metin | Slayttaki satır(lar) | Durum |
-|---|---|---|---|
-| 1 | YÜKSEK LİSANS / İNGİLİZCE EĞİTİM | aynı | ✅ |
-| 2 | Lisansı Türkiye'de bitirdin. | aynı | ✅ |
-| 3 | Çin'de yüksek lisans yapabilir misin? | `Çin'de yüksek` + `lisans yapabilir misin?` | ✅ |
-| 4 | Evet. İngilizce programlar var. | aynı (China red düzlem üzerinde) | ✅ |
-| 5 | SHANGHAI UNIVERSITY | aynı | ✅ |
-| 6 | Finans · Uluslararası İşletme | aynı | ✅ |
-| 7 | TSINGHUA UNIVERSITY | aynı | ✅ |
-| 8 | Küresel Yönetişim | aynı | ✅ |
-| 9 | FUDAN UNIVERSITY | aynı | ✅ |
-| 10 | Kamu Politikası | aynı | ✅ |
-| 11 | Ve çok daha fazlası. | aynı | ✅ |
+| # | Metin | Durum |
+|---|---|---|
+| 1 | YÜKSEK LİSANS / İNGİLİZCE EĞİTİM | ✅ |
+| 2 | Lisansı Türkiye'de bitirdin. | ✅ |
+| 3 | Çin'de yüksek lisans yapabilir misin? | ✅ `Çin'de yüksek` + `lisans yapabilir misin?` |
+| 4 | Evet. İngilizce programlar var. | ✅ (China red düzlem üzerinde) |
+| 5 | SHANGHAI UNIVERSITY | ✅ |
+| 6 | Finans · Uluslararası İşletme | ✅ |
+| 7 | TSINGHUA UNIVERSITY | ✅ |
+| 8 | Küresel Yönetişim | ✅ |
+| 9 | FUDAN UNIVERSITY | ✅ |
+| 10 | Kamu Politikası | ✅ |
+| 11 | ~~Ve çok daha fazlası.~~ → **Başka üniversitelerde de İngilizce programlar var.** | ⚠️ revizyon 2 |
 
 ## Slayt 05 — Doktora
 
-| # | Kilitli metin | Durum |
+| # | Metin | Durum |
 |---|---|---|
 | 1 | DOKTORA / İNGİLİZCE EĞİTİM | ✅ |
 | 2 | Çince bilmeden doktora yapabilir misin? | ✅ `Çince bilmeden doktora` + `yapabilir misin?` |
@@ -78,65 +80,103 @@ kırmızı konum bandı); bu metin sırasını bozmaz.
 | 5 | Küresel Çalışmalar · Finans · Malzeme Bilimi | ✅ |
 | 6 | FUDAN UNIVERSITY | ✅ |
 | 7 | Uluslararası Politika · Matematik | ✅ |
-| 8 | Ve çok daha fazlası. | ✅ |
+| 8 | ~~Ve çok daha fazlası.~~ → **Sunulan alanlar bununla sınırlı değil.** | ⚠️ revizyon 2 |
 | 9 | Araştırma alanı, danışman ve kabul koşulları programa göre değişir. | ✅ `Araştırma alanı, danışman ve kabul` + `koşulları programa göre değişir.` |
 
 Sayısal program sayısı uydurulmamıştır.
 
 ## Slayt 06 — Başvuru dosyası
 
-| # | Kilitli metin | Slayttaki satır(lar) | Durum |
-|---|---|---|---|
-| 1 | BAŞVURU REHBERİ / 001 | aynı | ✅ |
-| 2 | Çin'de üniversiteye başvurmak için diploma yetmiyor. | `Çin'de üniversiteye` + `başvurmak için` + `diploma yetmiyor.` | ✅ |
-| 3 | Başvuruda istenebilen belgeler: | aynı | ✅ |
-| 4 | Pasaport | aynı | ✅ |
-| 5 | Diploma ve transkript | `Diploma ve` + `transkript` | ✅ |
-| 6 | İngilizce yeterlilik belgesi | `İngilizce yeterlilik` + `belgesi` | ✅ |
-| 7 | Akademik sınav sonuçları | `Akademik sınav` + `sonuçları` | ✅ |
-| 8 | Niyet veya araştırma planı | `Niyet veya` + `araştırma planı` | ✅ |
-| 9 | Akademik referanslar | `Akademik` + `referanslar` | ✅ |
-| 10 | Mali durum belgesi | `Mali durum` + `belgesi` | ✅ |
-| 11 | Ve programa göre daha fazlası. | aynı | ✅ |
-| 12 | Bazı üniversiteler mülakat, adli sicil belgesi ve resmî çeviri de istiyor. | `Bazı üniversiteler mülakat, adli sicil belgesi ve resmî` + `çeviri de istiyor.` | ✅ |
-| 13 | Program seçimi ve başvuru dosyanı birlikte hazırlayalım. | aynı | ✅ |
-| 14 | Ücretsiz ön görüşme | aynı | ✅ |
-| 15 | Asya'da Eğitim | **kanonik lockup ile sunulur** | ⚠️ ayrı olarak dizilmez |
+| # | Metin | Durum |
+|---|---|---|
+| 1 | BAŞVURU REHBERİ / 001 | ✅ |
+| 2 | Çin'de üniversiteye başvurmak için diploma yetmiyor. | ✅ `Çin'de üniversiteye` + `başvurmak için` + `diploma yetmiyor.` |
+| 3 | Başvuruda istenebilen belgeler: | ✅ |
+| 4–10 | Pasaport / Diploma ve transkript / İngilizce yeterlilik belgesi / Akademik sınav sonuçları / Niyet veya araştırma planı / Akademik referanslar / Mali durum belgesi | ✅ (etiketler iki satıra bölündü, birleşim birebir) |
+| 11 | Ve programa göre daha fazlası. | ✅ |
+| 12 | Bazı üniversiteler mülakat, adli sicil belgesi ve resmî çeviri de istiyor. | ✅ |
+| 13 | Program seçimi ve başvuru dosyanı birlikte hazırlayalım. | ✅ |
+| 14 | Ücretsiz ön görüşme | ✅ |
+| 15 | Asya'da Eğitim | ⚠️ kanonik lockup ile sunulur, yeniden dizilmez |
 
-### Satır 15 hakkında kayıt (bilinçli karar)
+> **Not:** Slayt 06'daki `Ve programa göre daha fazlası.` ifadesi, slayt 02'deki
+> `Ve çok daha fazlası.` kalıbından **farklı bir ifadedir**; tekrar sayılmaz.
 
-Brief şu iki koşulu aynı anda getirir:
+---
 
-> "At the bottom use the approved Asya'da Eğitim canonical lockup."
-> "Do not separately retypeset the brand wordmark."
+# Revizyon geçmişi
 
-Bu nedenle `Asya'da Eğitim` satırı **Jost ile yeniden dizilmemiştir**. Marka adı,
-kilitli ve onaylı kanonik SVG lockup (`D-04/dark`) tarafından birebir taşınır.
-Metin bütünlüğü bozulmaz; marka adı hiçbir noktada "silinmez", yalnızca onaylı
-sanat eseri üzerinden verilir.
+## Revizyon 2 — logo varyantları ve tekrarlayan metin kalıbı (kullanıcı geri bildirimi)
 
-Bu karar şeffaf biçimde kayda geçirilmiştir: `build.py` içindeki kopya denetimi
-(`LOCKUP_DELIVERED`) ve `verify_and_package.py` içindeki doğrulama bu satırı
-açıkça hariç tutar ve geri kalan 14 satırın birebir eşleşmesini zorunlu kılar.
-Slayt 06'nın SVG'sinde bu satıra karşılık gelen ayrı bir `<text>` öğesi yoktur.
+Kullanıcı iki majör sorun bildirdi. Her ikisi de doğrulandı ve düzeltildi.
 
-## Olgusal doğrulama (özet)
+### 2.1 Logo varyantları ters atanmıştı (marka uyumsuzluğu)
 
-| İddia | Doğrulama kaynağı |
-|---|---|
-| Tsinghua — Küresel Yönetişim (yüksek lisans, İngilizce) | Master of International Affairs in Global Governance (MIA-GG), School of Social Sciences — tsinghua.edu.cn / yz.tsinghua.edu.cn |
-| Tsinghua — Bilim ve Mühendislik (lisans, İngilizce) | Zijing College "Global Talents in Science and Engineering Program" — international.join-tsinghua.edu.cn |
-| Shanghai University — Finans, Uluslararası İşletme (yüksek lisans, İngilizce) | "1.1 List of Master's Programs taught in English", School of Economics — resmî 2026-2027 başvuru PDF'i, apply.shu.edu.cn |
-| Shanghai University — Finans, Uluslararası Ticaret, Dijital Pazarlama (lisans, İngilizce) | SILC Business School undergraduate English programs — shusilc.shu.edu.cn |
-| Shanghai University — Küresel Çalışmalar, Finans, Malzeme Bilimi (doktora, İngilizce) | "1.1 List of PhD's Programs taught in English" — resmî 2026-2027 PDF, apply.shu.edu.cn |
-| Zhejiang University — Tıp (İngilizce MBBS) | ZJU School of Medicine MBBS (English medium), Hangzhou — cmm.zju.edu.cn / ism.zju.edu.cn |
-| Fudan — Uluslararası Politika (doktora, İngilizce) | Doctoral Program in International Politics (DPIP), SIRPA — iso.fudan.edu.cn / sirpa.fudan.edu.cn |
-| Fudan — Matematik (doktora, İngilizce) | Doctoral Program of Mathematics — iso.fudan.edu.cn |
-| Ek belgeler (mülakat, adli sicil, resmî çeviri) | Shanghai University resmî başvuru belgeleri listesi |
+**Bulgu:** SVG dolguları incelendiğinde onaylı adlandırma şöyle:
 
-**Küçük çelişki notu (insan incelemesine bırakıldı):** Zhejiang University MBBS
-programının 2025 broşürüne göre 2023'ten itibaren MBBS sınıfları Yiwu Kampüsü'nde
-yapılırken, Tıp Fakültesi ve üniversite merkezi Hangzhou'dadır. Slayt 03'teki
-"HANGZHOU · ZHEJIANG UNIVERSITY / Tıp (İngilizce MBBS)" ifadesi üniversite
-konumu ve program açısından doğrudur; sınıfların fiziksel yerinin ayrıntısı
-kayda geçirilmiştir. Kilitli metin değiştirilmemiştir.
+| Varyant | Harf rengi | Kullanım zemini |
+|---|---|---|
+| `light` | `#1D2027` (mürekkep) | **açık** zemin |
+| `dark` | `#F7F3E9` (kâğıt) | **koyu** zemin |
+
+Üretimde koyu zeminli dört slayta (01, 03, 04, 05) `D-04/light` atanmıştı;
+mürekkep wordmark mürekkep zemin üzerinde **görünmez** hâle geliyordu ve
+yalnızca kırmızı mühür ile apostrof kalıyordu. Aynı hata açık zeminli iki
+slaytta da simetrik olarak vardı (`D-04/dark` = kâğıt harfler, açık zeminde
+kontrast ~1,1:1). Dolayısıyla **altı slaydın tamamında** marka tipografisi
+kayboluyordu.
+
+**Düzeltme:**
+
+| Slayt | Zemin | Önceki (yanlış) | Yeni (doğru) | Kontrast |
+|---|---|---|---|---|
+| 01 | mürekkep | D-04/light | **D-04/dark** | 14,4:1 |
+| 02 | sıcak fildişi | D-04/dark | **D-04/light** | 13,5:1 |
+| 03 | mürekkep | D-04/light | **D-04/dark** | 14,7:1 |
+| 04 | mürekkep | D-04/light | **D-04/dark** | 14,7:1 |
+| 05 | mürekkep | D-04/light | **D-04/dark** | 13,0:1 |
+| 06 | kâğıt | D-04/dark | **H-02/light** | 14,7:1 |
+
+**Ekler:** D-04 "küçük dijital kullanım" varyantıdır (min. 200 px). Slaytlar
+01, 03, 04, 05'teki boyutu 300–340 px'e çıkarıldı. Slayt 06'da kapanış imzası
+olarak **birincil yatay H-02** kullanıldı (min. 528 px; 528×198, orantılı,
+İngilizce satır dahil) — böylece kapanış slaydında gerçek bir marka imzası
+oluşuyor.
+
+Doğrulama: `render.mjs` geometri denetimi + bağımsız kontrast ölçümü
+(`verify_and_package.py` içinde her lockup için wordmark/zemin kontrast oranı).
+
+### 2.2 "Ve çok daha fazlası." kalıbı üç kez tekrar ediyordu
+
+Kilitli metinde bu kalıp 02, 04 ve 05'te birebir geçiyordu. Kullanıcı "aynı
+ifadenin en fazla bir kez kullanılması" istediğini bildirdi.
+
+**Karar:** Kalıp en doğal olan **slayt 02'de** (beş alan grubundan sonra, alan
+genişliğini anlattığı için) bir kez korundu. Diğer iki slayta **farklı, olgusal
+ve promosyon olmayan** ifadeler yazıldı:
+
+| Slayt | Eski | Yeni |
+|---|---|---|
+| 04 | Ve çok daha fazlası. | **Başka üniversitelerde de İngilizce programlar var.** |
+| 05 | Ve çok daha fazlası. | **Sunulan alanlar bununla sınırlı değil.** |
+
+Her iki yeni ifade de resmî kaynaklarla doğrulanabilir (Shanghai University,
+Tsinghua ve Fudan'un listelenenlerden çok daha fazla İngilizce programı var).
+Slogan eklenmemiş, hiçbir başka metne dokunulmamıştır. Aynı ifadeyi içeren
+satırlar `~~üzeri çizili~~` olarak yukarıda işaretlenmiştir.
+
+## Revizyon 1 — ilk üretim
+Kilitli metnin tamamı birebir ve verilen sırada üretildi. Olgusal doğrulama,
+lisanslama, motif sistemi ve render hattı `generation-notes.md` içinde.
+
+---
+
+## Doğrulama özeti (revizyon 2)
+
+- [x] Altı slaytta wordmark görünür ve 13,0:1–14,7:1 kontrastla okunur
+- [x] Kullanılan her lockup manifest'te kayıtlı, orantısız, minimum boyutun üzerinde
+- [x] H-02 oran korunmuş (528 / 2,6655 = 198,04 px)
+- [x] Metin–metin / metin–lockup / ikon–etiket çakışması yok
+- [x] `Ve çok daha fazlası.` kalıbı tam olarak bir kez (slayt 02)
+- [x] Diğer tüm kilitli satırlar birebir korundu
+- [x] Bağımsız depo denetimi PASS

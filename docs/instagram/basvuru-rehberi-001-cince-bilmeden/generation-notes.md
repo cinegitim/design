@@ -88,3 +88,63 @@ explicit record.
 Technical production complete: geometry audit, copy verification, canonical
 lockup verification and packaging all pass. **Human creative review pending.**
 Not published to Instagram.
+
+---
+
+# Revizyon 2 — kullanıcı geri bildirimi üzerine düzeltmeler
+
+Kullanıcı iki majör sorun bildirdi; ikisi de doğrulandı ve düzeltildi. Bu bölüm
+yalnızca revizyon 2'yi belgeler; revizyon 1'in kaydı yukarıdadır.
+
+## 2.1 Logo varyantları ters atanmıştı
+
+Onaylı varyant adlandırması SVG dolgularından okundu:
+
+| Varyant | Harf dolgusu | Doğru zemin |
+|---|---|---|
+| `light` | `#1D2027` | açık |
+| `dark` | `#F7F3E9` | koyu |
+
+Üretimde bu adlandırma ters varsayılmıştı. Sonuç: koyu zeminli 01/03/04/05'te
+mürekkep wordmark mürekkep zeminde **görünmez**; açık zeminli 02/06'da kâğıt
+wordmark fildişi/kâğıt zeminde kontrast ~1,1:1. Yani altı slaydın tamamında
+marka tipografisi kayboluyordu — yalnızca kırmızı mühür ve apostrof görünüyordu.
+
+| Slayt | Zemin | Hatalı | Düzeltilmiş | Ölçülen kontrast |
+|---|---|---|---|---|
+| 01 | mürekkep | D-04/light | D-04/dark @340 | 14,4:1 |
+| 02 | sıcak fildişi | D-04/dark | D-04/light @300 | 13,5:1 |
+| 03 | mürekkep | D-04/light | D-04/dark @340 | 14,7:1 |
+| 04 | mürekkep | D-04/light | D-04/dark @340 | 14,7:1 |
+| 05 | mürekkep | D-04/light | D-04/dark @340 | 13,0:1 |
+| 06 | kâğıt | D-04/dark | **H-02/light @528** | 14,7:1 |
+
+Ekler:
+- 01/03/04/05'teki D-04 boyutu 300–340 px'e çıkarıldı (varyant minimumu 200 px).
+- Slayt 06'da kapanış imzası **birincil yatay H-02** yapıldı (min. 528 px).
+  D-04 "küçük dijital kullanım" varyantıdır ve kapanış imzası için zayıftı.
+  H-02 yatay oran (2,6655) korunarak 528 × 198,04 px olarak kompozit edildi;
+  İngilizce `EDUCATION IN ASIA` satırı tam olarak görünüyor.
+- `verify_and_package.py` içine **kalıcı bir marka uyumu kapısı** eklendi: her
+  slaytta zemin parlaklığı ölçülür, seçilen varyantın o zemin için doğru olup
+  olmadığı ve wordmark/zemin kontrastının ≥ 4,5:1 olup olmadığı denetlenir.
+  Kapı, orijinal hatayı (D-04/light + mürekkep zemin) enjekte edilerek test
+  edildi ve doğru biçimde reddetti.
+
+## 2.2 "Ve çok daha fazlası." üç kez tekrar ediyordu
+
+Kilitli metinde kalıp 02, 04 ve 05'te birebir geçiyordu. Kullanıcı en fazla bir
+kez olmasını istedi.
+
+- **02** (beş alan grubundan sonra): kalıp **korundu** — alan genişliğini
+  anlattığı için burada en doğal yer.
+- **04** → `Başka üniversitelerde de İngilizce programlar var.`
+- **05** → `Sunulan alanlar bununla sınırlı değil.`
+
+İki yeni ifade de olgusal ve promosyon olmayandır; resmî kaynaklarla
+doğrulanabilir (SHU, Tsinghua ve Fudan'un listelenenlerden çok daha fazla
+İngilizce programı vardır). Slogan eklenmedi, diğer hiçbir satıra dokunulmadı.
+
+`exact-copy.json` artık her slaydın *birleşik* metnini, yalnızca bu iki belgeli
+değişiklik uygulandıktan ve lockup ile teslim edilen marka satırı çıkarıldıktan
+sonra karşılaştırır; başka her fark üretimi durdurur.
