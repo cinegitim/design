@@ -138,11 +138,11 @@
         "Türkiye’den başvuru mümkün."
       ],
       "final_file": "export/01.png",
-      "final_sha256": "8043dccd7578e25725d69781b32765ceed5195c09acd9deaafae38321dcfafe5",
+      "final_sha256": "2bfb2445fcc08507b766f624026ed06cadf382f3e57972a8c2a0b8d9d9ff7ffd",
       "original_file": "original/01.png",
-      "original_sha256": "8043dccd7578e25725d69781b32765ceed5195c09acd9deaafae38321dcfafe5",
+      "original_sha256": "2bfb2445fcc08507b766f624026ed06cadf382f3e57972a8c2a0b8d9d9ff7ffd",
       "source_file": "source/01.svg",
-      "source_sha256": "e757522496fccc44f23a8440886a2387d10612b825795a9dce42b4c6c918cc4e",
+      "source_sha256": "6e50cdb01c992725b5ee8c96edc4a649be0d407e74cd58b6a7c885e80c9b5395",
       "editable_html_file": "source/01.html",
       "dimensions": [
         1080,

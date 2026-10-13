@@ -52,18 +52,24 @@ def crop(photo, box_w, box_h, posx=0.5, posy=0.5, out=None):
     return im.size
 
 # ---------------------------------------------------------------- text helpers
-def text_el(slide, qid, size, weight, fill, ls=None, line_fill=None, lh=None, extra=''):
-    """One <text> element per measured line; returns list of (copy_text, svg)."""
+def text_el(slide, qid, size, weight, fill, ls=None, line_fill=None, lh=None, extra='', line_extra=None):
+    """One <text> element per measured line; returns list of (copy_text, svg).
+
+    line_fill / line_extra are parallel to the measured lines, so a single
+    multi-line copy group can carry a per-line colour or effect (e.g. a drop
+    shadow on the low-contrast line only).
+    """
     r = rects(slide, qid)
     out = []
     for i, ln in enumerate(r['lines']):
         a = asc(slide, size)
         y = round(ln['y'] + a, 2)
         f = line_fill[i] if line_fill and i < len(line_fill) else fill
+        x = line_extra[i] if line_extra and i < len(line_extra) else ''
         lsattr = f' letter-spacing="{ls}"' if ls else ''
         weightattr = f' font-weight="{weight}"' if weight != 400 else ''
         out.append((ln['text'],
-            f'<text x="{ln["x"]}" y="{y}" font-size="{size}"{weightattr} fill="{f}"{lsattr}{extra}>{esc(ln["text"])}</text>'))
+            f'<text x="{ln["x"]}" y="{y}" font-size="{size}"{weightattr} fill="{f}"{lsattr}{extra}{x}>{esc(ln["text"])}</text>'))
     return out
 
 class Slide:
@@ -107,6 +113,17 @@ def icon(name, x, y, size, stroke):
 VG = lambda stops: ('<linearGradient id="g{0}" x1="0" y1="0" x2="0" y2="1">'
     + ''.join(f'<stop offset="{o}" stop-color="{c}"/>' for o, c in stops) + '</linearGradient>')
 
+# Slide 01's accent line sits in #003478 over a darkened photograph. The blue
+# holds its hue but loses the edge against the mid-tone sky/buildings, so the
+# glyph separates by luminance instead of colour. A soft drop shadow restores
+# that edge without changing the colour, the copy or the lockup.
+QS_SHADOW = ('<filter id="qs-shadow" x="-15%" y="-40%" width="130%" height="190%" '
+             'color-interpolation-filters="sRGB">'
+             '<feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#04070C" flood-opacity="0.95"/>'
+             '<feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#04070C" flood-opacity="0.9"/>'
+             '</filter>')
+QS_ATTR = ' filter="url(#qs-shadow)"'
+
 def lockup(file, x, y, w, vb_w, vb_h, qa_slide=None, qa_id='logo'):
     h = round(w*vb_h/vb_w, 4)
     if qa_slide:
@@ -126,7 +143,8 @@ LOCKUPS = {  # file -> (viewBox w, h, min display width)
 s = Slide('01', '#101318')
 crop('campus-hero-ewha.jpg', 1080, 1350, 0.5, 0.62, '01-hero.jpg')
 s.add(f'<image href="../assets/photos-crop/01-hero.jpg" x="0" y="0" width="1080" height="1350" preserveAspectRatio="none"/>')
-s.add(f'<defs>{VG([(0,'rgba(13,15,20,.86)'),(.3,'rgba(13,15,20,.52)'),(.58,'rgba(13,15,20,.58)'),(1,'rgba(13,15,20,.93)')]).format("v1")}</defs>')
+s.add(f'<defs>{VG([(0,'rgba(13,15,20,.86)'),(.3,'rgba(13,15,20,.52)'),(.58,'rgba(13,15,20,.58)'),(1,'rgba(13,15,20,.93)')]).format("v1")}'
+      f'{QS_SHADOW}</defs>')
 s.add('<rect x="0" y="0" width="1080" height="1350" fill="url(#gv1)"/>')
 # deco date + strike
 d_top = 636; d_size = 212
@@ -136,9 +154,12 @@ s.add('<rect x="88" y="744" width="904" height="12" rx="6" fill="#003478" opacit
 sid = rects('01','sid')
 s.add(f'<rect x="72" y="{round(sid["y"]+sid["h"]+16,2)}" width="96" height="5" fill="#003478"/>')
 s.copy_group('BURS DOSYASI / 001', [e for _,e in text_el('01','sid',30,600,'#F7F3E9',4.2)])
+# Line 1 ("Kore devlet bursunu") is cream on the darkened photo and already
+# separates cleanly; line 2 carries the #003478 accent and needs the shadow.
 s.copy_group('Kore devlet bursunu kaçırdın mı?',
              [e for _,e in text_el('01','question',78,600,'#F7F3E9',-1.56,
-                                   line_fill=['#F7F3E9','#003478'])])
+                                   line_fill=['#F7F3E9','#003478'],
+                                   line_extra=['', QS_ATTR])])
 s.copy_group('30 Eylül’de büyükelçilik başvuruları kapandı.',
              [e for _,e in text_el('01','embassy-closed',35,500,'rgba(247,243,233,.92)')])
 p2 = rects('01','university-track')
