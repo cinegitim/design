@@ -105,9 +105,9 @@
     ],
     "logoBounds": {
       "x": 66,
-      "y": 1188,
-      "width": 300,
-      "height": 114.85
+      "y": 1176,
+      "width": 340,
+      "height": 130.16
     },
     "viewport": [
       1080,
@@ -233,10 +233,10 @@
     ],
     "cjkBounds": [],
     "logoBounds": {
-      "x": 770,
-      "y": 48,
-      "width": 244,
-      "height": 93.41
+      "x": 714,
+      "y": 44,
+      "width": 300,
+      "height": 114.85
     },
     "viewport": [
       1080,
@@ -404,10 +404,10 @@
       }
     ],
     "logoBounds": {
-      "x": 712,
-      "y": 1188,
-      "width": 300,
-      "height": 114.85
+      "x": 674,
+      "y": 1176,
+      "width": 340,
+      "height": 130.16
     },
     "viewport": [
       1080,
@@ -531,22 +531,22 @@
         "fontSize": "24px"
       },
       {
-        "copy": "Ve çok daha fazlası.",
+        "copy": "Başka üniversitelerde de İngilizce programlar var.",
         "x": 66,
-        "y": 1074.64,
-        "width": 280.95,
-        "height": 33.03,
+        "y": 1072.88,
+        "width": 654.81,
+        "height": 34.25,
         "weight": "500",
         "family": "Jost",
-        "fontSize": "32px"
+        "fontSize": "30px"
       }
     ],
     "cjkBounds": [],
     "logoBounds": {
       "x": 66,
-      "y": 1188,
-      "width": 300,
-      "height": 114.85
+      "y": 1176,
+      "width": 340,
+      "height": 130.16
     },
     "viewport": [
       1080,
@@ -640,11 +640,11 @@
         "fontSize": "28px"
       },
       {
-        "copy": "Ve çok daha fazlası.",
+        "copy": "Sunulan alanlar bununla sınırlı değil.",
         "x": 66,
-        "y": 1054.22,
-        "width": 263.41,
-        "height": 30.97,
+        "y": 1054.6,
+        "width": 482.11,
+        "height": 30.41,
         "weight": "500",
         "family": "Jost",
         "fontSize": "30px"
@@ -672,10 +672,10 @@
     ],
     "cjkBounds": [],
     "logoBounds": {
-      "x": 66,
-      "y": 1210,
-      "width": 260,
-      "height": 99.53
+      "x": 674,
+      "y": 1176,
+      "width": 340,
+      "height": 130.16
     },
     "viewport": [
       1080,
@@ -691,7 +691,7 @@
       {
         "copy": "BAŞVURU REHBERİ / 001",
         "x": 138,
-        "y": 94.5,
+        "y": 86.5,
         "width": 301.08,
         "height": 29.74,
         "weight": "500",
@@ -701,7 +701,7 @@
       {
         "copy": "Çin'de üniversiteye",
         "x": 66,
-        "y": 183.68,
+        "y": 165.68,
         "width": 380.8,
         "height": 45.84,
         "weight": "600",
@@ -711,7 +711,7 @@
       {
         "copy": "başvurmak için",
         "x": 66,
-        "y": 235.68,
+        "y": 213.68,
         "width": 297.67,
         "height": 45.46,
         "weight": "600",
@@ -721,7 +721,7 @@
       {
         "copy": "diploma yetmiyor.",
         "x": 66,
-        "y": 287.68,
+        "y": 261.68,
         "width": 354.16,
         "height": 44,
         "weight": "600",
@@ -731,7 +731,7 @@
       {
         "copy": "Başvuruda istenebilen belgeler:",
         "x": 66,
-        "y": 399.72,
+        "y": 363.72,
         "width": 361.13,
         "height": 26.46,
         "weight": "500",
@@ -741,7 +741,7 @@
       {
         "copy": "Pasaport",
         "x": 88,
-        "y": 570.6,
+        "y": 530.6,
         "width": 83.05,
         "height": 20.24,
         "weight": "500",
@@ -751,7 +751,7 @@
       {
         "copy": "Diploma ve",
         "x": 325,
-        "y": 568.84,
+        "y": 528.84,
         "width": 109.25,
         "height": 22,
         "weight": "500",
@@ -761,7 +761,7 @@
       {
         "copy": "transkript",
         "x": 325,
-        "y": 595.84,
+        "y": 555.84,
         "width": 90.38,
         "height": 22,
         "weight": "500",
@@ -771,7 +771,7 @@
       {
         "copy": "İngilizce yeterlilik",
         "x": 562,
-        "y": 566.11,
+        "y": 526.11,
         "width": 168.86,
         "height": 25.03,
         "weight": "500",
@@ -781,7 +781,7 @@
       {
         "copy": "belgesi",
         "x": 562,
-        "y": 595.84,
+        "y": 555.84,
         "width": 70.17,
         "height": 22.3,
         "weight": "500",
@@ -791,7 +791,7 @@
       {
         "copy": "Akademik sınav",
         "x": 799,
-        "y": 568.84,
+        "y": 528.84,
         "width": 151.48,
         "height": 18.1,
         "weight": "500",
@@ -801,7 +801,7 @@
       {
         "copy": "sonuçları",
         "x": 799,
-        "y": 595.84,
+        "y": 555.84,
         "width": 86.89,
         "height": 22.43,
         "weight": "500",
@@ -811,7 +811,7 @@
       {
         "copy": "Niyet veya",
         "x": 88,
-        "y": 713.83,
+        "y": 671.83,
         "width": 100.69,
         "height": 21.01,
         "weight": "500",
@@ -821,7 +821,7 @@
       {
         "copy": "araştırma planı",
         "x": 88,
-        "y": 739.84,
+        "y": 697.84,
         "width": 142.19,
         "height": 22.39,
         "weight": "500",
@@ -831,7 +831,7 @@
       {
         "copy": "Akademik",
         "x": 325,
-        "y": 712.84,
+        "y": 670.84,
         "width": 96.23,
         "height": 17.38,
         "weight": "500",
@@ -841,7 +841,7 @@
       {
         "copy": "referanslar",
         "x": 325,
-        "y": 739.56,
+        "y": 697.56,
         "width": 103.56,
         "height": 17.74,
         "weight": "500",
@@ -851,7 +851,7 @@
       {
         "copy": "Mali durum",
         "x": 562,
-        "y": 712.84,
+        "y": 670.84,
         "width": 110.13,
         "height": 17.39,
         "weight": "500",
@@ -861,7 +861,7 @@
       {
         "copy": "belgesi",
         "x": 562,
-        "y": 739.84,
+        "y": 697.84,
         "width": 70.17,
         "height": 22.3,
         "weight": "500",
@@ -871,7 +871,7 @@
       {
         "copy": "Ve programa göre daha fazlası.",
         "x": 66,
-        "y": 842.58,
+        "y": 800.58,
         "width": 455.53,
         "height": 32.98,
         "weight": "600",
@@ -881,7 +881,7 @@
       {
         "copy": "Bazı üniversiteler mülakat, adli sicil belgesi ve resmî",
         "x": 66,
-        "y": 918.5,
+        "y": 874.5,
         "width": 548.35,
         "height": 25.25,
         "weight": "400",
@@ -891,7 +891,7 @@
       {
         "copy": "çeviri de istiyor.",
         "x": 66,
-        "y": 952.5,
+        "y": 908.5,
         "width": 167.08,
         "height": 25.03,
         "weight": "400",
@@ -901,7 +901,7 @@
       {
         "copy": "Program seçimi ve başvuru dosyanı birlikte hazırlayalım.",
         "x": 66,
-        "y": 1018.6,
+        "y": 966.6,
         "width": 740.22,
         "height": 30.59,
         "weight": "500",
@@ -911,7 +911,7 @@
       {
         "copy": "Ücretsiz ön görüşme",
         "x": 66,
-        "y": 1108.78,
+        "y": 1032.78,
         "width": 438.64,
         "height": 55.37,
         "weight": "700",
@@ -921,10 +921,10 @@
     ],
     "cjkBounds": [],
     "logoBounds": {
-      "x": 762,
-      "y": 1206,
-      "width": 264,
-      "height": 101.07
+      "x": 276,
+      "y": 1108,
+      "width": 528,
+      "height": 198.04
     },
     "viewport": [
       1080,
@@ -934,43 +934,43 @@
     "iconBounds": [
       {
         "x": 79,
-        "y": 506,
+        "y": 464,
         "width": 42,
         "height": 53.76
       },
       {
         "x": 316,
-        "y": 508.52,
+        "y": 466.52,
         "width": 42,
         "height": 57.12
       },
       {
         "x": 553,
-        "y": 506,
+        "y": 464,
         "width": 42,
         "height": 52.08
       },
       {
         "x": 790,
-        "y": 506,
+        "y": 464,
         "width": 35.28,
         "height": 47.04
       },
       {
         "x": 79.84,
-        "y": 652.52,
+        "y": 608.52,
         "width": 42.84,
         "height": 50.4
       },
       {
         "x": 316,
-        "y": 650,
+        "y": 606,
         "width": 42,
         "height": 46.2
       },
       {
         "x": 553,
-        "y": 660.08,
+        "y": 616.08,
         "width": 42,
         "height": 26.04
       }

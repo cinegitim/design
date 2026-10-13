@@ -77,7 +77,7 @@
       "Küresel Yönetişim",
       "FUDAN UNIVERSITY",
       "Kamu Politikası",
-      "Ve çok daha fazlası."
+      "Başka üniversitelerde de İngilizce programlar var."
     ],
     "05-doctorate": [
       "DOKTORA / İNGİLİZCE EĞİTİM",
@@ -87,7 +87,7 @@
       "Küresel Çalışmalar · Finans · Malzeme Bilimi",
       "FUDAN UNIVERSITY",
       "Uluslararası Politika · Matematik",
-      "Ve çok daha fazlası.",
+      "Sunulan alanlar bununla sınırlı değil.",
       "Araştırma alanı, danışman ve kabul koşulları programa göre değişir."
     ],
     "06-dossier": [
@@ -148,11 +148,11 @@
     {
       "id": "01-cover",
       "final_file": "final/01-cover.png",
-      "final_sha256": "73be8eac4d6738ac67a87e26848e8c256dcca9a590c46d5ae6d2dfbaaf5fed7f",
+      "final_sha256": "e98e32fbed2def14063ad8cd44c1d2be7be33b9af765a8c6555b5f6d2d41ca7d",
       "original_file": "originals/01-cover.png",
-      "original_sha256": "8eeae64beec14b3aebe04d8a116a989120eac052ae9f9e2dda5bb65626222cea",
+      "original_sha256": "79ae83e1a2c0a298c8cfd27eca5a9ad754ac7fa5356a4fbe06a2cd01c0200a33",
       "source_file": "source/01-cover.svg",
-      "source_sha256": "7a34bf05adc74d6dacf1da85252db3bee0fb973b5166213d36d140b1762a1e51",
+      "source_sha256": "0eb38d9926a3ef3866e38edb8c51743caaa8f3e64708c20188247a5fa26ae554",
       "editable_html_file": "source/01-cover.html",
       "plate_source_file": "source/01-cover-plate.svg",
       "dimensions": [
@@ -166,16 +166,16 @@
         "Evet.",
         "Çin'de İngilizce lisans, yüksek lisans ve doktora programları var."
       ],
-      "canonical_lockup_id": "D-04/light",
-      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-light.svg",
-      "logo_width_px": 300,
-      "logo_height_px": 114.84710889442547,
+      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-dark.svg",
+      "logo_width_px": 340,
+      "logo_height_px": 130.16005674701555,
       "logo_x_y_px": [
         66,
-        1188
+        1176
       ],
       "minimum_supported_display_width_px": 200,
       "render_validation": {
@@ -284,9 +284,9 @@
         ],
         "logoBounds": {
           "x": 66,
-          "y": 1188,
-          "width": 300,
-          "height": 114.85
+          "y": 1176,
+          "width": 340,
+          "height": 130.16
         },
         "viewport": [
           1080,
@@ -299,11 +299,11 @@
     {
       "id": "02-fields",
       "final_file": "final/02-fields.png",
-      "final_sha256": "c6651a948d9562c89f9c1f10351413c35816efe12565918fc37d473a626ad1bb",
+      "final_sha256": "b431013d64cc4a7061726a164c309ea3b7a6361980c38656b9281fb117d2816d",
       "original_file": "originals/02-fields.png",
       "original_sha256": "112e2c81c526420d456e76c4766cdf0a83e38d5ae618880181cf8b88a37c463d",
       "source_file": "source/02-fields.svg",
-      "source_sha256": "c10c0c9685f452c039d935e9d3d3b06098a80854c981ca687d9116b9b8f68899",
+      "source_sha256": "d3b7105eea54467eb193da489ef8ea6c7449fdf3d4ae6fd06b5e99d8c79ca086",
       "editable_html_file": "source/02-fields.html",
       "plate_source_file": "source/02-fields-plate.svg",
       "dimensions": [
@@ -321,16 +321,16 @@
         "Ve çok daha fazlası.",
         "Programların öğretim dili üniversiteye ve bölüme göre değişir."
       ],
-      "canonical_lockup_id": "D-04/dark",
-      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-dark.svg",
-      "logo_width_px": 244,
-      "logo_height_px": 93.40898190079938,
+      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-light.svg",
+      "logo_width_px": 300,
+      "logo_height_px": 114.84710889442547,
       "logo_x_y_px": [
-        770,
-        48
+        714,
+        44
       ],
       "minimum_supported_display_width_px": 200,
       "render_validation": {
@@ -450,10 +450,10 @@
         ],
         "cjkBounds": [],
         "logoBounds": {
-          "x": 770,
-          "y": 48,
-          "width": 244,
-          "height": 93.41
+          "x": 714,
+          "y": 44,
+          "width": 300,
+          "height": 114.85
         },
         "viewport": [
           1080,
@@ -466,11 +466,11 @@
     {
       "id": "03-atlas",
       "final_file": "final/03-atlas.png",
-      "final_sha256": "4fac95bdfdfcab796ac7d43f8e1600d62ca3738e3746e5d482a1c2bae5754c4d",
+      "final_sha256": "ff1ccd8cb922308a2e500d2458e1010b7b064bcd28ae623b73ae8bb0449fae28",
       "original_file": "originals/03-atlas.png",
       "original_sha256": "5788bbfdf09cd4639b148f26d7899bf8cfc94517553b97b16dc48812219c2de8",
       "source_file": "source/03-atlas.svg",
-      "source_sha256": "2b9d545c8f92aaabf32addc51b2096e984d863ec6499ede62799320a7ce23de9",
+      "source_sha256": "0148205b47d117617f9a4fcc9cb8cdb7e8f79f604d72e310997bcfdee7db1480",
       "editable_html_file": "source/03-atlas.html",
       "plate_source_file": "source/03-atlas-plate.svg",
       "dimensions": [
@@ -492,16 +492,16 @@
         "Suzhou, Ningbo ve başka şehirlerde de",
         "İngilizce program seçenekleri var."
       ],
-      "canonical_lockup_id": "D-04/light",
-      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-light.svg",
-      "logo_width_px": 300,
-      "logo_height_px": 114.84710889442547,
+      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-dark.svg",
+      "logo_width_px": 340,
+      "logo_height_px": 130.16005674701555,
       "logo_x_y_px": [
-        712,
-        1188
+        674,
+        1176
       ],
       "minimum_supported_display_width_px": 200,
       "render_validation": {
@@ -663,10 +663,10 @@
           }
         ],
         "logoBounds": {
-          "x": 712,
-          "y": 1188,
-          "width": 300,
-          "height": 114.85
+          "x": 674,
+          "y": 1176,
+          "width": 340,
+          "height": 130.16
         },
         "viewport": [
           1080,
@@ -679,11 +679,11 @@
     {
       "id": "04-masters",
       "final_file": "final/04-masters.png",
-      "final_sha256": "98d40e0db573334978a55c75ddb59d2f6be1776cd7f95ddaa5ee0022f2040604",
+      "final_sha256": "d1f3aacf677bd632a16f5aeaf5dff25f05d26cc569bb70ac85c5272b375896ae",
       "original_file": "originals/04-masters.png",
       "original_sha256": "54779a74c20680e06963258b709722a97fc426e17390348bc21ad0cc45fd4314",
       "source_file": "source/04-masters.svg",
-      "source_sha256": "078f812584f8bab46922b592a77a4b3858f2bfa7c45f5025f1e8f32d9c11e51e",
+      "source_sha256": "e84edd1d184df8c08fc1509c11f95457626cd85ee06651597712c16eea62a925",
       "editable_html_file": "source/04-masters.html",
       "plate_source_file": "source/04-masters-plate.svg",
       "dimensions": [
@@ -701,18 +701,18 @@
         "Küresel Yönetişim",
         "FUDAN UNIVERSITY",
         "Kamu Politikası",
-        "Ve çok daha fazlası."
+        "Başka üniversitelerde de İngilizce programlar var."
       ],
-      "canonical_lockup_id": "D-04/light",
-      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-light.svg",
-      "logo_width_px": 300,
-      "logo_height_px": 114.84710889442547,
+      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-dark.svg",
+      "logo_width_px": 340,
+      "logo_height_px": 130.16005674701555,
       "logo_x_y_px": [
         66,
-        1188
+        1176
       ],
       "minimum_supported_display_width_px": 200,
       "render_validation": {
@@ -830,22 +830,22 @@
             "fontSize": "24px"
           },
           {
-            "copy": "Ve çok daha fazlası.",
+            "copy": "Başka üniversitelerde de İngilizce programlar var.",
             "x": 66,
-            "y": 1074.64,
-            "width": 280.95,
-            "height": 33.03,
+            "y": 1072.88,
+            "width": 654.81,
+            "height": 34.25,
             "weight": "500",
             "family": "Jost",
-            "fontSize": "32px"
+            "fontSize": "30px"
           }
         ],
         "cjkBounds": [],
         "logoBounds": {
           "x": 66,
-          "y": 1188,
-          "width": 300,
-          "height": 114.85
+          "y": 1176,
+          "width": 340,
+          "height": 130.16
         },
         "viewport": [
           1080,
@@ -858,11 +858,11 @@
     {
       "id": "05-doctorate",
       "final_file": "final/05-doctorate.png",
-      "final_sha256": "b25b161a51ef45a1ff1d081e72592a198088043210bb4aa24bc8b027cc001c69",
+      "final_sha256": "a6c7304d3c058d3c22e9c7479c05111e44a02b5b9fe80c1a7be2041e607b68c5",
       "original_file": "originals/05-doctorate.png",
       "original_sha256": "05cd8cce10f59fa8d6d7cebb8fcf801d3cf267406c756a13e8f65adb62cc16fa",
       "source_file": "source/05-doctorate.svg",
-      "source_sha256": "d63955904ca3db9c1949b50fda1c86bf29299eca2bb3a6aefc56ef4a436c0434",
+      "source_sha256": "f13fff893903e0d4ab3c16567788b34fad218a9f2508be4af9b3eccff961e3e2",
       "editable_html_file": "source/05-doctorate.html",
       "plate_source_file": "source/05-doctorate-plate.svg",
       "dimensions": [
@@ -877,19 +877,19 @@
         "Küresel Çalışmalar · Finans · Malzeme Bilimi",
         "FUDAN UNIVERSITY",
         "Uluslararası Politika · Matematik",
-        "Ve çok daha fazlası.",
+        "Sunulan alanlar bununla sınırlı değil.",
         "Araştırma alanı, danışman ve kabul koşulları programa göre değişir."
       ],
-      "canonical_lockup_id": "D-04/light",
-      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-light.svg",
-      "logo_width_px": 260,
-      "logo_height_px": 99.5341610418354,
+      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-dark.svg",
+      "logo_width_px": 340,
+      "logo_height_px": 130.16005674701555,
       "logo_x_y_px": [
-        66,
-        1210
+        674,
+        1176
       ],
       "minimum_supported_display_width_px": 200,
       "render_validation": {
@@ -977,11 +977,11 @@
             "fontSize": "28px"
           },
           {
-            "copy": "Ve çok daha fazlası.",
+            "copy": "Sunulan alanlar bununla sınırlı değil.",
             "x": 66,
-            "y": 1054.22,
-            "width": 263.41,
-            "height": 30.97,
+            "y": 1054.6,
+            "width": 482.11,
+            "height": 30.41,
             "weight": "500",
             "family": "Jost",
             "fontSize": "30px"
@@ -1009,10 +1009,10 @@
         ],
         "cjkBounds": [],
         "logoBounds": {
-          "x": 66,
-          "y": 1210,
-          "width": 260,
-          "height": 99.53
+          "x": 674,
+          "y": 1176,
+          "width": 340,
+          "height": 130.16
         },
         "viewport": [
           1080,
@@ -1025,11 +1025,11 @@
     {
       "id": "06-dossier",
       "final_file": "final/06-dossier.png",
-      "final_sha256": "ecb4a4f0ce3d073a8337d76020b779992e2a930da9727a62551a1aff1b5f23f5",
+      "final_sha256": "e7d2999b5b3cf2c2ec54ec7b0329ea0c42f2d3133bca7535953050cae41c8b8f",
       "original_file": "originals/06-dossier.png",
-      "original_sha256": "4fedfccff8221120f95cedba13a0fa64d074c90bbc8c3c2ccc2201749d6a6487",
+      "original_sha256": "efbc32a8484d58e5583c511d987881c2899fb53585fd44a92efa66467e5f5f97",
       "source_file": "source/06-dossier.svg",
-      "source_sha256": "d62cac3c011603cf50e352caa7b5e02eba86b2fde6cb7bcf2b0f0e74b0181cb1",
+      "source_sha256": "b057484d8b9520e9de20dbb280c041fe6b2443d377f4a9669e9f26e90dfa18cf",
       "editable_html_file": "source/06-dossier.html",
       "plate_source_file": "source/06-dossier-plate.svg",
       "dimensions": [
@@ -1059,18 +1059,18 @@
         "Program seçimi ve başvuru dosyanı birlikte hazırlayalım.",
         "Ücretsiz ön görüşme"
       ],
-      "canonical_lockup_id": "D-04/dark",
-      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
       "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
       "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-dark.svg",
-      "logo_width_px": 264,
-      "logo_height_px": 101.06545582709441,
+      "canonical_lockup_file": "assets/lockups/h-02-primary-horizontal-light.svg",
+      "logo_width_px": 528,
+      "logo_height_px": 198.03881730051648,
       "logo_x_y_px": [
-        762,
-        1206
+        276,
+        1108
       ],
-      "minimum_supported_display_width_px": 200,
+      "minimum_supported_display_width_px": 528,
       "render_validation": {
         "jostLoaded": true,
         "cjkLoaded": false,
@@ -1078,7 +1078,7 @@
           {
             "copy": "BAŞVURU REHBERİ / 001",
             "x": 138,
-            "y": 94.5,
+            "y": 86.5,
             "width": 301.08,
             "height": 29.74,
             "weight": "500",
@@ -1088,7 +1088,7 @@
           {
             "copy": "Çin'de üniversiteye",
             "x": 66,
-            "y": 183.68,
+            "y": 165.68,
             "width": 380.8,
             "height": 45.84,
             "weight": "600",
@@ -1098,7 +1098,7 @@
           {
             "copy": "başvurmak için",
             "x": 66,
-            "y": 235.68,
+            "y": 213.68,
             "width": 297.67,
             "height": 45.46,
             "weight": "600",
@@ -1108,7 +1108,7 @@
           {
             "copy": "diploma yetmiyor.",
             "x": 66,
-            "y": 287.68,
+            "y": 261.68,
             "width": 354.16,
             "height": 44,
             "weight": "600",
@@ -1118,7 +1118,7 @@
           {
             "copy": "Başvuruda istenebilen belgeler:",
             "x": 66,
-            "y": 399.72,
+            "y": 363.72,
             "width": 361.13,
             "height": 26.46,
             "weight": "500",
@@ -1128,7 +1128,7 @@
           {
             "copy": "Pasaport",
             "x": 88,
-            "y": 570.6,
+            "y": 530.6,
             "width": 83.05,
             "height": 20.24,
             "weight": "500",
@@ -1138,7 +1138,7 @@
           {
             "copy": "Diploma ve",
             "x": 325,
-            "y": 568.84,
+            "y": 528.84,
             "width": 109.25,
             "height": 22,
             "weight": "500",
@@ -1148,7 +1148,7 @@
           {
             "copy": "transkript",
             "x": 325,
-            "y": 595.84,
+            "y": 555.84,
             "width": 90.38,
             "height": 22,
             "weight": "500",
@@ -1158,7 +1158,7 @@
           {
             "copy": "İngilizce yeterlilik",
             "x": 562,
-            "y": 566.11,
+            "y": 526.11,
             "width": 168.86,
             "height": 25.03,
             "weight": "500",
@@ -1168,7 +1168,7 @@
           {
             "copy": "belgesi",
             "x": 562,
-            "y": 595.84,
+            "y": 555.84,
             "width": 70.17,
             "height": 22.3,
             "weight": "500",
@@ -1178,7 +1178,7 @@
           {
             "copy": "Akademik sınav",
             "x": 799,
-            "y": 568.84,
+            "y": 528.84,
             "width": 151.48,
             "height": 18.1,
             "weight": "500",
@@ -1188,7 +1188,7 @@
           {
             "copy": "sonuçları",
             "x": 799,
-            "y": 595.84,
+            "y": 555.84,
             "width": 86.89,
             "height": 22.43,
             "weight": "500",
@@ -1198,7 +1198,7 @@
           {
             "copy": "Niyet veya",
             "x": 88,
-            "y": 713.83,
+            "y": 671.83,
             "width": 100.69,
             "height": 21.01,
             "weight": "500",
@@ -1208,7 +1208,7 @@
           {
             "copy": "araştırma planı",
             "x": 88,
-            "y": 739.84,
+            "y": 697.84,
             "width": 142.19,
             "height": 22.39,
             "weight": "500",
@@ -1218,7 +1218,7 @@
           {
             "copy": "Akademik",
             "x": 325,
-            "y": 712.84,
+            "y": 670.84,
             "width": 96.23,
             "height": 17.38,
             "weight": "500",
@@ -1228,7 +1228,7 @@
           {
             "copy": "referanslar",
             "x": 325,
-            "y": 739.56,
+            "y": 697.56,
             "width": 103.56,
             "height": 17.74,
             "weight": "500",
@@ -1238,7 +1238,7 @@
           {
             "copy": "Mali durum",
             "x": 562,
-            "y": 712.84,
+            "y": 670.84,
             "width": 110.13,
             "height": 17.39,
             "weight": "500",
@@ -1248,7 +1248,7 @@
           {
             "copy": "belgesi",
             "x": 562,
-            "y": 739.84,
+            "y": 697.84,
             "width": 70.17,
             "height": 22.3,
             "weight": "500",
@@ -1258,7 +1258,7 @@
           {
             "copy": "Ve programa göre daha fazlası.",
             "x": 66,
-            "y": 842.58,
+            "y": 800.58,
             "width": 455.53,
             "height": 32.98,
             "weight": "600",
@@ -1268,7 +1268,7 @@
           {
             "copy": "Bazı üniversiteler mülakat, adli sicil belgesi ve resmî",
             "x": 66,
-            "y": 918.5,
+            "y": 874.5,
             "width": 548.35,
             "height": 25.25,
             "weight": "400",
@@ -1278,7 +1278,7 @@
           {
             "copy": "çeviri de istiyor.",
             "x": 66,
-            "y": 952.5,
+            "y": 908.5,
             "width": 167.08,
             "height": 25.03,
             "weight": "400",
@@ -1288,7 +1288,7 @@
           {
             "copy": "Program seçimi ve başvuru dosyanı birlikte hazırlayalım.",
             "x": 66,
-            "y": 1018.6,
+            "y": 966.6,
             "width": 740.22,
             "height": 30.59,
             "weight": "500",
@@ -1298,7 +1298,7 @@
           {
             "copy": "Ücretsiz ön görüşme",
             "x": 66,
-            "y": 1108.78,
+            "y": 1032.78,
             "width": 438.64,
             "height": 55.37,
             "weight": "700",
@@ -1308,10 +1308,10 @@
         ],
         "cjkBounds": [],
         "logoBounds": {
-          "x": 762,
-          "y": 1206,
-          "width": 264,
-          "height": 101.07
+          "x": 276,
+          "y": 1108,
+          "width": 528,
+          "height": 198.04
         },
         "viewport": [
           1080,
@@ -1321,43 +1321,43 @@
         "iconBounds": [
           {
             "x": 79,
-            "y": 506,
+            "y": 464,
             "width": 42,
             "height": 53.76
           },
           {
             "x": 316,
-            "y": 508.52,
+            "y": 466.52,
             "width": 42,
             "height": 57.12
           },
           {
             "x": 553,
-            "y": 506,
+            "y": 464,
             "width": 42,
             "height": 52.08
           },
           {
             "x": 790,
-            "y": 506,
+            "y": 464,
             "width": 35.28,
             "height": 47.04
           },
           {
             "x": 79.84,
-            "y": 652.52,
+            "y": 608.52,
             "width": 42.84,
             "height": 50.4
           },
           {
             "x": 316,
-            "y": 650,
+            "y": 606,
             "width": 42,
             "height": 46.2
           },
           {
             "x": 553,
-            "y": 660.08,
+            "y": 616.08,
             "width": 42,
             "height": 26.04
           }
@@ -1368,38 +1368,38 @@
   "pixel_integrity_review": [
     {
       "slide": "01-cover",
-      "source_to_final_changed_area_percent": 4.13,
-      "logo_region_changed_pixels": 2690,
+      "source_to_final_changed_area_percent": 4.63,
+      "logo_region_changed_pixels": 9925,
       "status": "PASS"
     },
     {
       "slide": "02-fields",
-      "source_to_final_changed_area_percent": 3.48,
-      "logo_region_changed_pixels": 1545,
+      "source_to_final_changed_area_percent": 3.89,
+      "logo_region_changed_pixels": 7514,
       "status": "PASS"
     },
     {
       "slide": "03-atlas",
-      "source_to_final_changed_area_percent": 2.65,
-      "logo_region_changed_pixels": 2690,
+      "source_to_final_changed_area_percent": 3.15,
+      "logo_region_changed_pixels": 9925,
       "status": "PASS"
     },
     {
       "slide": "04-masters",
-      "source_to_final_changed_area_percent": 3.2,
-      "logo_region_changed_pixels": 2690,
+      "source_to_final_changed_area_percent": 3.94,
+      "logo_region_changed_pixels": 9925,
       "status": "PASS"
     },
     {
       "slide": "05-doctorate",
-      "source_to_final_changed_area_percent": 3.54,
-      "logo_region_changed_pixels": 2009,
+      "source_to_final_changed_area_percent": 4.23,
+      "logo_region_changed_pixels": 9967,
       "status": "PASS"
     },
     {
       "slide": "06-dossier",
-      "source_to_final_changed_area_percent": 3.98,
-      "logo_region_changed_pixels": 1864,
+      "source_to_final_changed_area_percent": 5.93,
+      "logo_region_changed_pixels": 30092,
       "status": "PASS"
     }
   ],
