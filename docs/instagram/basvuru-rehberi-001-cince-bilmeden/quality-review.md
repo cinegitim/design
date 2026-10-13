@@ -56,3 +56,38 @@ yayınlanacaktı.
 
 **İnsan yaratıcı incelemesi bekleniyor.** Teknik ve tipografik kapılar geçti;
 estetik onay ayrı bir insan kararıdır. Instagram'da yayınlanmamıştır.
+
+
+## İnceleme 4 — kullanıcı geri bildirimi sonrası (revizyon 2)
+
+### Bulgu 1 — Logo varyantları ters (kritik)
+
+Kullanıcı "logolar doğru uygulanmamış, tasarımda tipografi kayboluyor" dedi.
+Doğrulandı: **altı slaydın tamamında** marka wordmark'ı görünmez durumdaydı.
+Neden: onaylı renk varyant adlandırmasında `light` = mürekkep harfler (açık zemin),
+`dark` = kâğıt harfler (koyu zemin). Üretim bunu ters varsaymıştı.
+
+Düzeltme tablosu, ölçülen kontrast değerleri ve kalıcı denetim kapısı
+`generation-notes.md` bölüm 2.1'de ve `exact-copy.json` içinde kayıtlıdır.
+
+- [x] Altı slaytta wordmark görünür; 13,0:1–14,7:1 kontrast
+- [x] Doğru varyant–zemin eşleşmesi; yeni denetim kapısı orijinal hatayı reddediyor
+- [x] Slayt 06 birincil yatay H-02 tam imza ile kapanıyor
+- [x] D-04 boyutları 300–340 px (minimumun üzerinde)
+
+### Bulgu 2 — Tekrarlayan metin kalıbı (majör)
+
+`Ve çok daha fazlası.` 02, 04 ve 05'te birebir tekrar ediyordu. Kalıp 02'de
+korundu; 04 ve 05'e farklı, olgusal ifadeler yazıldı. Otomatik kontrol artık
+ifadenin yalnızca bir slaytta geçtiğini doğruluyor.
+
+- [x] Kalıp tam olarak bir kez (02)
+- [x] Diğer tüm kilitli satırlar birebir
+- [x] `exact-copy.json` → PASS (6/6)
+
+### Yeniden doğrulama
+
+- [x] Geometri denetimi tekrar PASS (çakışma/kırpma yok)
+- [x] Bağımsız depo denetimi PASS
+- [x] Mobil önizlemeler yeniden üretildi; 06'daki yeni imza mobilde okunur
+- [x] Görsel inceleme: tam altılı set + logo yakın çekimleri + 06 detayları

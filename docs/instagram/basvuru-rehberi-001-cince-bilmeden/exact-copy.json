@@ -2,12 +2,85 @@
   "title": "Başvuru Rehberi / 001 — Çince bilmeden Çin'de okuyabilir miyim?",
   "brand": "asyada-egitim",
   "locked": true,
-  "rule": "Multi-line breaks split only at existing spaces; joining the fragments with a single space reproduces the supplied text exactly, in the supplied order. No paraphrase, no omission, no added slogan, no reordering between slides.",
+  "revision": 2,
+  "rule": "Multi-line breaks split only at existing spaces; joining the fragments with a single space reproduces the supplied text exactly, in the supplied order.",
   "lockup_delivered_line": {
     "slide": "06-dossier",
     "line": "Asya'da Eğitim",
-    "reason": "The brief requires the approved canonical lockup at the bottom of slide 06 and forbids retypesetting the brand wordmark, so this line is delivered by the canonical lockup SVG (D-04/dark) as artwork rather than as Jost type. It is visible on the finished slide, but it is not a <text> element and therefore is not part of the rendered fragment set.",
-    "canonical_lockup_id": "D-04/dark"
+    "reason": "Brief requires the approved canonical lockup at the bottom of slide 06 and forbids retypesetting the brand wordmark, so this line is delivered by a canonical lockup SVG as artwork rather than as Jost type.",
+    "canonical_lockup_id": "H-02/light"
+  },
+  "revision_2": {
+    "reported_by": "user",
+    "fixes": [
+      {
+        "id": "logo-variant-mapping",
+        "severity": "critical",
+        "brand-compliance": true,
+        "finding": "Approved colour variants follow the opposite convention to the one first assumed: \"light\" = #1D2027 letterforms for LIGHT backgrounds, \"dark\" = #F7F3E9 letterforms for DARK backgrounds. All six slides had the inverted variant, so the ink wordmark sat on ink on four slides and the paper wordmark on paper on two — the brand wordmark was invisible everywhere.",
+        "fix": {
+          "01-cover": {
+            "from": "D-04/light",
+            "to": "D-04/dark",
+            "width": 340
+          },
+          "02-fields": {
+            "from": "D-04/dark",
+            "to": "D-04/light",
+            "width": 300
+          },
+          "03-atlas": {
+            "from": "D-04/light",
+            "to": "D-04/dark",
+            "width": 340
+          },
+          "04-masters": {
+            "from": "D-04/light",
+            "to": "D-04/dark",
+            "width": 340
+          },
+          "05-doctorate": {
+            "from": "D-04/light",
+            "to": "D-04/dark",
+            "width": 340
+          },
+          "06-dossier": {
+            "from": "D-04/dark",
+            "to": "H-02/light",
+            "width": 528,
+            "note": "primary horizontal lockup for a real closing signature"
+          }
+        },
+        "measured_contrast": {
+          "01-cover": "14.4:1",
+          "02-fields": "13.5:1",
+          "03-atlas": "14.7:1",
+          "04-masters": "14.7:1",
+          "05-doctorate": "13.0:1",
+          "06-dossier": "14.7:1"
+        }
+      },
+      {
+        "id": "repeated-phrase",
+        "severity": "major",
+        "finding": "\"Ve çok daha fazlası.\" appeared verbatim on slides 02, 04 and 05.",
+        "fix": {
+          "02-fields": "retained (single instance)",
+          "04-masters": "Başka üniversitelerde de İngilizce programlar var.",
+          "05-doctorate": "Sunulan alanlar bununla sınırlı değil."
+        }
+      }
+    ],
+    "copy_de_duplication": {
+      "reported_by": "user",
+      "finding": "\"Ve çok daha fazlası.\" appeared verbatim on slides 02, 04 and 05.",
+      "fix": {
+        "02-fields": "retained as the single instance",
+        "04-masters": "Başka üniversitelerde de İngilizce programlar var.",
+        "05-doctorate": "Sunulan alanlar bununla sınırlı değil."
+      },
+      "verification": "The joined text of every slide is compared with the supplied text after applying exactly these two documented substitutions and removing the lockup-delivered brand line. Any other difference fails the build."
+    }
   },
   "slides": {
     "01-cover": {
@@ -28,7 +101,11 @@
       ],
       "rendered_fragment_count": 5,
       "fragment_join": "BAŞVURU REHBERİ / 001 Çince bilmiyorum. Çin'de okuyabilir miyim? Evet. Çin'de İngilizce lisans, yüksek lisans ve doktora programları var.",
+      "supplied_join_after_documented_revisions": "BAŞVURU REHBERİ / 001 Çince bilmiyorum. Çin'de okuyabilir miyim? Evet. Çin'de İngilizce lisans, yüksek lisans ve doktora programları var.",
+      "canonical_lockup_id": "D-04/dark",
+      "lockup_width_px": 340,
       "exact_match": true,
+      "revision_2_changes": null,
       "lines_delivered_by_canonical_lockup": []
     },
     "02-fields": {
@@ -57,7 +134,11 @@
       ],
       "rendered_fragment_count": 9,
       "fragment_join": "LİSANS / İNGİLİZCE EĞİTİM Çin'de İngilizce hangi bölümleri okuyabilirsin? Mühendislik · Bilgisayar ve Yazılım İşletme · Finans · Ekonomi Tıp · Sağlık Bilimleri Sosyal Bilimler · Uluslararası İlişkiler Mimarlık · Tasarım Ve çok daha fazlası. Programların öğretim dili üniversiteye ve bölüme göre değişir.",
+      "supplied_join_after_documented_revisions": "LİSANS / İNGİLİZCE EĞİTİM Çin'de İngilizce hangi bölümleri okuyabilirsin? Mühendislik · Bilgisayar ve Yazılım İşletme · Finans · Ekonomi Tıp · Sağlık Bilimleri Sosyal Bilimler · Uluslararası İlişkiler Mimarlık · Tasarım Ve çok daha fazlası. Programların öğretim dili üniversiteye ve bölüme göre değişir.",
+      "canonical_lockup_id": "D-04/light",
+      "lockup_width_px": 300,
       "exact_match": true,
+      "revision_2_changes": null,
       "lines_delivered_by_canonical_lockup": []
     },
     "03-atlas": {
@@ -90,7 +171,11 @@
       ],
       "rendered_fragment_count": 13,
       "fragment_join": "LİSANS / NEREDE OKUYABİLİRSİN? Pekin, Şanghay, Hangzhou... PEKİN · TSINGHUA UNIVERSITY Bilim ve Mühendislik ŞANGHAY · SHANGHAI UNIVERSITY Finans · Uluslararası Ticaret · Dijital Pazarlama HANGZHOU · ZHEJIANG UNIVERSITY Tıp (İngilizce MBBS) Suzhou, Ningbo ve başka şehirlerde de İngilizce program seçenekleri var.",
+      "supplied_join_after_documented_revisions": "LİSANS / NEREDE OKUYABİLİRSİN? Pekin, Şanghay, Hangzhou... PEKİN · TSINGHUA UNIVERSITY Bilim ve Mühendislik ŞANGHAY · SHANGHAI UNIVERSITY Finans · Uluslararası Ticaret · Dijital Pazarlama HANGZHOU · ZHEJIANG UNIVERSITY Tıp (İngilizce MBBS) Suzhou, Ningbo ve başka şehirlerde de İngilizce program seçenekleri var.",
+      "canonical_lockup_id": "D-04/dark",
+      "lockup_width_px": 340,
       "exact_match": true,
+      "revision_2_changes": null,
       "lines_delivered_by_canonical_lockup": []
     },
     "04-masters": {
@@ -118,11 +203,18 @@
         "Küresel Yönetişim",
         "FUDAN UNIVERSITY",
         "Kamu Politikası",
-        "Ve çok daha fazlası."
+        "Başka üniversitelerde de İngilizce programlar var."
       ],
       "rendered_fragment_count": 11,
-      "fragment_join": "YÜKSEK LİSANS / İNGİLİZCE EĞİTİM Lisansı Türkiye'de bitirdin. Çin'de yüksek lisans yapabilir misin? Evet. İngilizce programlar var. SHANGHAI UNIVERSITY Finans · Uluslararası İşletme TSINGHUA UNIVERSITY Küresel Yönetişim FUDAN UNIVERSITY Kamu Politikası Ve çok daha fazlası.",
+      "fragment_join": "YÜKSEK LİSANS / İNGİLİZCE EĞİTİM Lisansı Türkiye'de bitirdin. Çin'de yüksek lisans yapabilir misin? Evet. İngilizce programlar var. SHANGHAI UNIVERSITY Finans · Uluslararası İşletme TSINGHUA UNIVERSITY Küresel Yönetişim FUDAN UNIVERSITY Kamu Politikası Başka üniversitelerde de İngilizce programlar var.",
+      "supplied_join_after_documented_revisions": "YÜKSEK LİSANS / İNGİLİZCE EĞİTİM Lisansı Türkiye'de bitirdin. Çin'de yüksek lisans yapabilir misin? Evet. İngilizce programlar var. SHANGHAI UNIVERSITY Finans · Uluslararası İşletme TSINGHUA UNIVERSITY Küresel Yönetişim FUDAN UNIVERSITY Kamu Politikası Başka üniversitelerde de İngilizce programlar var.",
+      "canonical_lockup_id": "D-04/dark",
+      "lockup_width_px": 340,
       "exact_match": true,
+      "revision_2_changes": {
+        "from": "Ve çok daha fazlası.",
+        "to": "Başka üniversitelerde de İngilizce programlar var."
+      },
       "lines_delivered_by_canonical_lockup": []
     },
     "05-doctorate": {
@@ -146,12 +238,19 @@
         "Küresel Çalışmalar · Finans · Malzeme Bilimi",
         "FUDAN UNIVERSITY",
         "Uluslararası Politika · Matematik",
-        "Ve çok daha fazlası.",
+        "Sunulan alanlar bununla sınırlı değil.",
         "Araştırma alanı, danışman ve kabul koşulları programa göre değişir."
       ],
       "rendered_fragment_count": 9,
-      "fragment_join": "DOKTORA / İNGİLİZCE EĞİTİM Çince bilmeden doktora yapabilir misin? Evet. İngilizce doktora programları da var. SHANGHAI UNIVERSITY Küresel Çalışmalar · Finans · Malzeme Bilimi FUDAN UNIVERSITY Uluslararası Politika · Matematik Ve çok daha fazlası. Araştırma alanı, danışman ve kabul koşulları programa göre değişir.",
+      "fragment_join": "DOKTORA / İNGİLİZCE EĞİTİM Çince bilmeden doktora yapabilir misin? Evet. İngilizce doktora programları da var. SHANGHAI UNIVERSITY Küresel Çalışmalar · Finans · Malzeme Bilimi FUDAN UNIVERSITY Uluslararası Politika · Matematik Sunulan alanlar bununla sınırlı değil. Araştırma alanı, danışman ve kabul koşulları programa göre değişir.",
+      "supplied_join_after_documented_revisions": "DOKTORA / İNGİLİZCE EĞİTİM Çince bilmeden doktora yapabilir misin? Evet. İngilizce doktora programları da var. SHANGHAI UNIVERSITY Küresel Çalışmalar · Finans · Malzeme Bilimi FUDAN UNIVERSITY Uluslararası Politika · Matematik Sunulan alanlar bununla sınırlı değil. Araştırma alanı, danışman ve kabul koşulları programa göre değişir.",
+      "canonical_lockup_id": "D-04/dark",
+      "lockup_width_px": 340,
       "exact_match": true,
+      "revision_2_changes": {
+        "from": "Ve çok daha fazlası.",
+        "to": "Sunulan alanlar bununla sınırlı değil."
+      },
       "lines_delivered_by_canonical_lockup": []
     },
     "06-dossier": {
@@ -198,11 +297,64 @@
       ],
       "rendered_fragment_count": 21,
       "fragment_join": "BAŞVURU REHBERİ / 001 Çin'de üniversiteye başvurmak için diploma yetmiyor. Başvuruda istenebilen belgeler: Pasaport Diploma ve transkript İngilizce yeterlilik belgesi Akademik sınav sonuçları Niyet veya araştırma planı Akademik referanslar Mali durum belgesi Ve programa göre daha fazlası. Bazı üniversiteler mülakat, adli sicil belgesi ve resmî çeviri de istiyor. Program seçimi ve başvuru dosyanı birlikte hazırlayalım. Ücretsiz ön görüşme",
+      "supplied_join_after_documented_revisions": "BAŞVURU REHBERİ / 001 Çin'de üniversiteye başvurmak için diploma yetmiyor. Başvuruda istenebilen belgeler: Pasaport Diploma ve transkript İngilizce yeterlilik belgesi Akademik sınav sonuçları Niyet veya araştırma planı Akademik referanslar Mali durum belgesi Ve programa göre daha fazlası. Bazı üniversiteler mülakat, adli sicil belgesi ve resmî çeviri de istiyor. Program seçimi ve başvuru dosyanı birlikte hazırlayalım. Ücretsiz ön görüşme",
+      "canonical_lockup_id": "H-02/light",
+      "lockup_width_px": 528,
       "exact_match": true,
+      "revision_2_changes": null,
       "lines_delivered_by_canonical_lockup": [
         "Asya'da Eğitim"
       ]
     }
   },
-  "status": "PASS"
+  "phrase_repetition_check": {
+    "phrase": "Ve çok daha fazlası.",
+    "occurrences": [
+      "02-fields"
+    ],
+    "rule": "the exact phrase may appear on at most one slide",
+    "passes": true
+  },
+  "status": "PASS",
+  "lockup_variant_check": {
+    "convention": "light = #1D2027 letterforms for LIGHT backgrounds; dark = #F7F3E9 letterforms for DARK backgrounds",
+    "slides": {
+      "01-cover": {
+        "variant": "D-04/dark",
+        "width_px": 340,
+        "background": "ink",
+        "correct_for_background": true
+      },
+      "02-fields": {
+        "variant": "D-04/light",
+        "width_px": 300,
+        "background": "paper/ivory",
+        "correct_for_background": true
+      },
+      "03-atlas": {
+        "variant": "D-04/dark",
+        "width_px": 340,
+        "background": "ink",
+        "correct_for_background": true
+      },
+      "04-masters": {
+        "variant": "D-04/dark",
+        "width_px": 340,
+        "background": "ink",
+        "correct_for_background": true
+      },
+      "05-doctorate": {
+        "variant": "D-04/dark",
+        "width_px": 340,
+        "background": "ink",
+        "correct_for_background": true
+      },
+      "06-dossier": {
+        "variant": "H-02/light",
+        "width_px": 528,
+        "background": "paper/ivory",
+        "correct_for_background": true
+      }
+    }
+  }
 }
