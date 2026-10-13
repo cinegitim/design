@@ -52,6 +52,14 @@
       "dimensions": [1080, 1350],
       "slide_ids": ["01-admission-letter", "02-campus-geography", "03-six-universities", "04-english-taught", "05-accommodation", "06-final-decision"],
       "required_files": ["index.html", "build.py", "extract-backgrounds.mjs", "render.mjs", "verify_and_package.py", "geometry-audit.json", "exact-copy.json", "photography-sources.json", "photography-attributions.md", "quality-review.md", "visual-qa.md", "caption.md", "platform-adaptation-notes.md", "assets/Jost-OFL.txt"]
+    },
+    {
+      "path": "docs/instagram/basvuru-rehberi-001-cince-bilmeden",
+      "format": "carousel",
+      "manifest": "manifest.json",
+      "dimensions": [1080, 1350],
+      "slide_ids": ["01-cover", "02-fields", "03-atlas", "04-masters", "05-doctorate", "06-dossier"],
+      "required_files": ["index.html", "build.py", "render.mjs", "render-plates.mjs", "verify_and_package.py", "render-validation.json", "exact-copy.json", "generation-notes.md", "quality-review.md", "caption-and-credits.md", "exact-copy.md", "handoff.md", "photography-sources.json", "contact-sheet.png", "original-to-final-contact-sheet.jpg", "mobile-preview-contact-sheet.png", "package/basvuru-rehberi-001-cince.zip", "assets/Jost-OFL.txt"]
     }
   ]
 }
