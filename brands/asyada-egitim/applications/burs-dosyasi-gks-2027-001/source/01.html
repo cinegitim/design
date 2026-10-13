@@ -1,0 +1,85 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><style>@font-face{font-family:Jost;src:url(../assets/Jost-VF.ttf) format('truetype');font-weight:100 900}html,body{margin:0;width:1080px;height:1350px;overflow:hidden;background:#1D2027}svg{display:block}</style></head><body><svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" font-family="Jost"><style>@font-face{font-family:Jost;src:url(/Users/serdaryurt/.local/share/opencode/worktree/73f623/glowing-canyon/brands/asyada-egitim/applications/burs-dosyasi-gks-2027-001/assets/Jost-VF.ttf) format('truetype');font-weight:100 900}</style><rect x="0" y="0" width="1080" height="1350" fill="#101318"/><image href="../assets/photos-crop/01-hero.jpg" x="0" y="0" width="1080" height="1350" preserveAspectRatio="none"/><defs><linearGradient id="gv1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(13,15,20,.86)"/><stop offset="0.3" stop-color="rgba(13,15,20,.52)"/><stop offset="0.58" stop-color="rgba(13,15,20,.58)"/><stop offset="1" stop-color="rgba(13,15,20,.93)"/></linearGradient><filter id="qs-shadow" x="-15%" y="-40%" width="130%" height="190%" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#04070C" flood-opacity="0.95"/><feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#04070C" flood-opacity="0.9"/></filter></defs><rect x="0" y="0" width="1080" height="1350" fill="url(#gv1)"/><text x="540" y="863" font-size="212" font-weight="650" letter-spacing="4.24" fill="rgba(247,243,233,.13)" text-anchor="middle">30 EYLÜL</text><rect x="88" y="744" width="904" height="12" rx="6" fill="#003478" opacity=".85" transform="rotate(-1.6 540 750)"/><rect x="72" y="144" width="96" height="5" fill="#003478"/><rect x="72" y="496" width="10" height="107.16" fill="#003478"/><image id="canonical-lockup" href="../assets/lockups/p-01-primary-stacked-dark.svg" x="628" y="900.41" width="380" height="373.5984"/><g id="editable-campaign-copy" data-exact-copy-json='["BURS DOSYASI / 001", "Kore devlet bursunu kaçırdım diye üzülme.", "30 Eylül’de büyükelçilik başvuruları kapandı.", "Ama üniversite yolunda Ekim son tarihleri var.", "GKS-UIC 2027", "Türkiye’den başvuru mümkün."]'><g data-copy="BURS DOSYASI / 001"><text x="103.59" y="96" font-size="30" font-weight="600" fill="#F7F3E9" letter-spacing="4.2">BURS DOSYASI / 001</text></g><g data-copy="Kore devlet bursunu kaçırdım diye üzülme."><text x="72" y="243" font-size="78" font-weight="600" fill="#F7F3E9" letter-spacing="-1.56">Kore devlet bursunu</text><text x="72" y="324.11" font-size="78" font-weight="600" fill="#003478" letter-spacing="-1.56" filter="url(#qs-shadow)">kaçırdım diye üzülme.</text></g><g data-copy="30 Eylül’de büyükelçilik başvuruları kapandı."><text x="72" y="437" font-size="35" font-weight="500" fill="rgba(247,243,233,.92)">30 Eylül’de büyükelçilik başvuruları kapandı.</text></g><g data-copy="Ama üniversite yolunda Ekim son tarihleri var."><text x="110" y="538" font-size="47" font-weight="600" fill="#F7F3E9" letter-spacing="-0.47">Ama üniversite yolunda Ekim son</text><text x="110" y="591.58" font-size="47" font-weight="600" fill="#F7F3E9" letter-spacing="-0.47">tarihleri var.</text></g><g data-copy="GKS-UIC 2027"><text x="72" y="1204" font-size="44" font-weight="650" fill="#F7F3E9" letter-spacing="0.88">GKS-UIC 2027</text></g><g data-copy="Türkiye’den başvuru mümkün."><text x="72" y="1263" font-size="30" font-weight="500" fill="rgba(247,243,233,.85)">Türkiye’den başvuru mümkün.</text></g></g></svg><script>
+(function () {
+  const out = { errors: [], rects: [], copy: [], metrics: {} };
+  const vis = el => { let s='';
+    for (const n of el.childNodes){
+      if (n.nodeType === 3) s += n.textContent;
+      else if (n.nodeType === 1) s += ' ' + vis(n) + ' ';
+    }
+    return s.replace(/\s+/g,' ').trim(); };
+  function measure() {
+    try {
+      for (const el of document.querySelectorAll('[data-copy]')) {
+        out.copy.push({ claim: el.dataset.copy, visible: vis(el) });
+      }
+      for (const el of document.querySelectorAll('[data-qa]')) {
+        const r = el.getBoundingClientRect();
+        const rec = { id: el.dataset.qa, zone: el.dataset.zone || 'txt',
+          x:+r.x.toFixed(2), y:+r.y.toFixed(2), w:+r.width.toFixed(2), h:+r.height.toFixed(2),
+          right:+r.right.toFixed(2), bottom:+r.bottom.toFixed(2),
+          clipX: el.scrollWidth  > el.clientWidth  + 1,
+          clipY: el.scrollHeight > el.clientHeight + 1 };
+        if (rec.x < -0.5 || rec.y < -0.5 || rec.right > 1080.5 || rec.bottom > 1350.5)
+          out.errors.push({ type:'out-of-canvas', id:rec.id, rect:rec });
+        if (rec.zone === 'txt' && (rec.x < 63.5 || rec.y < 63.5 || rec.right > 1016.5 || rec.bottom > 1286.5))
+          out.errors.push({ type:'outside-safe-area', id:rec.id, rect:rec });
+        if (rec.zone === 'logo' && (rec.x < 63.5 || rec.y < 63.5 || rec.right > 1016.5 || rec.bottom > 1286.5))
+          out.errors.push({ type:'logo-outside-safe-area', id:rec.id, rect:rec });
+        const cs = getComputedStyle(el);
+        const reallyClipsX = cs.overflowX !== 'visible' && rec.clipX;
+        const reallyClipsY = cs.overflowY !== 'visible' && rec.clipY;
+        if (reallyClipsX || reallyClipsY) out.errors.push({ type:'text-clipped', id:rec.id, clipX:reallyClipsX, clipY:reallyClipsY });
+        const lines = [];
+        try {
+          const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+          let node;
+          while ((node = walker.nextNode())) {
+            if (!node.textContent.trim()) continue;
+            const text = node.textContent;
+            const rectAt = i => { const r2 = document.createRange(); r2.setStart(node,i); r2.setEnd(node,i); return r2.getBoundingClientRect(); };
+            let lineStart = 0, prevTop = null;
+            const push = (a,b) => { const rr = document.createRange(); rr.setStart(node,a); rr.setEnd(node,b);
+              const rb = rr.getBoundingClientRect();
+              if (rb.width > 0.5 || rb.height > 0.5)
+                lines.push({ x:+rb.x.toFixed(2), y:+rb.y.toFixed(2), w:+rb.width.toFixed(2), h:+rb.height.toFixed(2),
+                             text: text.slice(a,b).replace(/\s+$/,'') }); };
+            for (let i = 0; i <= text.length; i++) {
+              const b2 = rectAt(Math.min(i, text.length));
+              if (b2.top > 0 || b2.height > 0) {
+                if (prevTop !== null && Math.abs(b2.top - prevTop) > 2) { push(lineStart, i); lineStart = i; }
+                prevTop = b2.top;
+              }
+            }
+            push(lineStart, text.length);
+          }
+        } catch (e) {}
+        rec.lines = lines;
+        const cs2 = getComputedStyle(el);
+        const fs = cs2.fontSize, fw = cs2.fontWeight;
+        try {
+          const c = document.createElement('canvas').getContext('2d');
+          c.font = fw + ' ' + fs + ' Jost';
+          const m = c.measureText('ÃÃgy');
+          out.metrics[fs] = { asc:+m.fontBoundingBoxAscent.toFixed(2), desc:+m.fontBoundingBoxDescent.toFixed(2) };
+        } catch (e) {}
+        out.rects.push(rec);
+      }
+      const fg = out.rects.filter(r => r.zone === 'txt' || r.zone === 'logo');
+      for (let i = 0; i < fg.length; i++) for (let j = i+1; j < fg.length; j++) {
+        const a = fg[i], b = fg[j];
+        const ox = Math.min(a.right,b.right) - Math.max(a.x,b.x);
+        const oy = Math.min(a.bottom,b.bottom) - Math.max(a.y,b.y);
+        if (ox > 1 && oy > 1) out.errors.push({ type:'overlap', a:a.id, b:b.id, ox:+ox.toFixed(1), oy:+oy.toFixed(1) });
+      }
+    } catch (e) { out.errors.push({ type:'js-error', message: String(e) }); }
+    out.jostLoaded = !!(document.fonts && document.fonts.status === 'loaded');
+    const pre = document.createElement('pre'); pre.id = 'qa-result';
+    pre.textContent = JSON.stringify(out); document.body.appendChild(pre);
+  }
+  function tick() {
+    if (document.fonts && document.fonts.status !== 'loaded') { setTimeout(tick, 50); return; }
+    measure();
+  }
+  if (document.readyState === 'complete') tick(); else window.addEventListener('load', tick);
+})();
+</script></body></html>

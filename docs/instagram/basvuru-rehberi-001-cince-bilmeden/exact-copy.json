@@ -1,0 +1,208 @@
+{
+  "title": "Başvuru Rehberi / 001 — Çince bilmeden Çin'de okuyabilir miyim?",
+  "brand": "asyada-egitim",
+  "locked": true,
+  "rule": "Multi-line breaks split only at existing spaces; joining the fragments with a single space reproduces the supplied text exactly, in the supplied order. No paraphrase, no omission, no added slogan, no reordering between slides.",
+  "lockup_delivered_line": {
+    "slide": "06-dossier",
+    "line": "Asya'da Eğitim",
+    "reason": "The brief requires the approved canonical lockup at the bottom of slide 06 and forbids retypesetting the brand wordmark, so this line is delivered by the canonical lockup SVG (D-04/dark) as artwork rather than as Jost type. It is visible on the finished slide, but it is not a <text> element and therefore is not part of the rendered fragment set.",
+    "canonical_lockup_id": "D-04/dark"
+  },
+  "slides": {
+    "01-cover": {
+      "supplied_lines": [
+        "BAŞVURU REHBERİ / 001",
+        "Çince bilmiyorum.",
+        "Çin'de okuyabilir miyim?",
+        "Evet.",
+        "Çin'de İngilizce lisans, yüksek lisans ve doktora programları var."
+      ],
+      "supplied_line_count": 5,
+      "rendered_fragments": [
+        "BAŞVURU REHBERİ / 001",
+        "Çince bilmiyorum.",
+        "Çin'de okuyabilir miyim?",
+        "Evet.",
+        "Çin'de İngilizce lisans, yüksek lisans ve doktora programları var."
+      ],
+      "rendered_fragment_count": 5,
+      "fragment_join": "BAŞVURU REHBERİ / 001 Çince bilmiyorum. Çin'de okuyabilir miyim? Evet. Çin'de İngilizce lisans, yüksek lisans ve doktora programları var.",
+      "exact_match": true,
+      "lines_delivered_by_canonical_lockup": []
+    },
+    "02-fields": {
+      "supplied_lines": [
+        "LİSANS / İNGİLİZCE EĞİTİM",
+        "Çin'de İngilizce hangi bölümleri okuyabilirsin?",
+        "Mühendislik · Bilgisayar ve Yazılım",
+        "İşletme · Finans · Ekonomi",
+        "Tıp · Sağlık Bilimleri",
+        "Sosyal Bilimler · Uluslararası İlişkiler",
+        "Mimarlık · Tasarım",
+        "Ve çok daha fazlası.",
+        "Programların öğretim dili üniversiteye ve bölüme göre değişir."
+      ],
+      "supplied_line_count": 9,
+      "rendered_fragments": [
+        "LİSANS / İNGİLİZCE EĞİTİM",
+        "Çin'de İngilizce hangi bölümleri okuyabilirsin?",
+        "Mühendislik · Bilgisayar ve Yazılım",
+        "İşletme · Finans · Ekonomi",
+        "Tıp · Sağlık Bilimleri",
+        "Sosyal Bilimler · Uluslararası İlişkiler",
+        "Mimarlık · Tasarım",
+        "Ve çok daha fazlası.",
+        "Programların öğretim dili üniversiteye ve bölüme göre değişir."
+      ],
+      "rendered_fragment_count": 9,
+      "fragment_join": "LİSANS / İNGİLİZCE EĞİTİM Çin'de İngilizce hangi bölümleri okuyabilirsin? Mühendislik · Bilgisayar ve Yazılım İşletme · Finans · Ekonomi Tıp · Sağlık Bilimleri Sosyal Bilimler · Uluslararası İlişkiler Mimarlık · Tasarım Ve çok daha fazlası. Programların öğretim dili üniversiteye ve bölüme göre değişir.",
+      "exact_match": true,
+      "lines_delivered_by_canonical_lockup": []
+    },
+    "03-atlas": {
+      "supplied_lines": [
+        "LİSANS / NEREDE OKUYABİLİRSİN?",
+        "Pekin, Şanghay, Hangzhou...",
+        "PEKİN · TSINGHUA UNIVERSITY",
+        "Bilim ve Mühendislik",
+        "ŞANGHAY · SHANGHAI UNIVERSITY",
+        "Finans · Uluslararası Ticaret · Dijital Pazarlama",
+        "HANGZHOU · ZHEJIANG UNIVERSITY",
+        "Tıp (İngilizce MBBS)",
+        "Suzhou, Ningbo ve başka şehirlerde de İngilizce program seçenekleri var."
+      ],
+      "supplied_line_count": 9,
+      "rendered_fragments": [
+        "LİSANS / NEREDE OKUYABİLİRSİN?",
+        "Pekin, Şanghay, Hangzhou...",
+        "PEKİN ·",
+        "TSINGHUA UNIVERSITY",
+        "Bilim ve Mühendislik",
+        "ŞANGHAY ·",
+        "SHANGHAI UNIVERSITY",
+        "Finans · Uluslararası Ticaret · Dijital Pazarlama",
+        "HANGZHOU ·",
+        "ZHEJIANG UNIVERSITY",
+        "Tıp (İngilizce MBBS)",
+        "Suzhou, Ningbo ve başka şehirlerde de",
+        "İngilizce program seçenekleri var."
+      ],
+      "rendered_fragment_count": 13,
+      "fragment_join": "LİSANS / NEREDE OKUYABİLİRSİN? Pekin, Şanghay, Hangzhou... PEKİN · TSINGHUA UNIVERSITY Bilim ve Mühendislik ŞANGHAY · SHANGHAI UNIVERSITY Finans · Uluslararası Ticaret · Dijital Pazarlama HANGZHOU · ZHEJIANG UNIVERSITY Tıp (İngilizce MBBS) Suzhou, Ningbo ve başka şehirlerde de İngilizce program seçenekleri var.",
+      "exact_match": true,
+      "lines_delivered_by_canonical_lockup": []
+    },
+    "04-masters": {
+      "supplied_lines": [
+        "YÜKSEK LİSANS / İNGİLİZCE EĞİTİM",
+        "Lisansı Türkiye'de bitirdin. Çin'de yüksek lisans yapabilir misin?",
+        "Evet. İngilizce programlar var.",
+        "SHANGHAI UNIVERSITY",
+        "Finans · Uluslararası İşletme",
+        "TSINGHUA UNIVERSITY",
+        "Küresel Yönetişim",
+        "FUDAN UNIVERSITY",
+        "Kamu Politikası",
+        "Ve çok daha fazlası."
+      ],
+      "supplied_line_count": 10,
+      "rendered_fragments": [
+        "YÜKSEK LİSANS / İNGİLİZCE EĞİTİM",
+        "Lisansı Türkiye'de bitirdin.",
+        "Çin'de yüksek lisans yapabilir misin?",
+        "Evet. İngilizce programlar var.",
+        "SHANGHAI UNIVERSITY",
+        "Finans · Uluslararası İşletme",
+        "TSINGHUA UNIVERSITY",
+        "Küresel Yönetişim",
+        "FUDAN UNIVERSITY",
+        "Kamu Politikası",
+        "Ve çok daha fazlası."
+      ],
+      "rendered_fragment_count": 11,
+      "fragment_join": "YÜKSEK LİSANS / İNGİLİZCE EĞİTİM Lisansı Türkiye'de bitirdin. Çin'de yüksek lisans yapabilir misin? Evet. İngilizce programlar var. SHANGHAI UNIVERSITY Finans · Uluslararası İşletme TSINGHUA UNIVERSITY Küresel Yönetişim FUDAN UNIVERSITY Kamu Politikası Ve çok daha fazlası.",
+      "exact_match": true,
+      "lines_delivered_by_canonical_lockup": []
+    },
+    "05-doctorate": {
+      "supplied_lines": [
+        "DOKTORA / İNGİLİZCE EĞİTİM",
+        "Çince bilmeden doktora yapabilir misin?",
+        "Evet. İngilizce doktora programları da var.",
+        "SHANGHAI UNIVERSITY",
+        "Küresel Çalışmalar · Finans · Malzeme Bilimi",
+        "FUDAN UNIVERSITY",
+        "Uluslararası Politika · Matematik",
+        "Ve çok daha fazlası.",
+        "Araştırma alanı, danışman ve kabul koşulları programa göre değişir."
+      ],
+      "supplied_line_count": 9,
+      "rendered_fragments": [
+        "DOKTORA / İNGİLİZCE EĞİTİM",
+        "Çince bilmeden doktora yapabilir misin?",
+        "Evet. İngilizce doktora programları da var.",
+        "SHANGHAI UNIVERSITY",
+        "Küresel Çalışmalar · Finans · Malzeme Bilimi",
+        "FUDAN UNIVERSITY",
+        "Uluslararası Politika · Matematik",
+        "Ve çok daha fazlası.",
+        "Araştırma alanı, danışman ve kabul koşulları programa göre değişir."
+      ],
+      "rendered_fragment_count": 9,
+      "fragment_join": "DOKTORA / İNGİLİZCE EĞİTİM Çince bilmeden doktora yapabilir misin? Evet. İngilizce doktora programları da var. SHANGHAI UNIVERSITY Küresel Çalışmalar · Finans · Malzeme Bilimi FUDAN UNIVERSITY Uluslararası Politika · Matematik Ve çok daha fazlası. Araştırma alanı, danışman ve kabul koşulları programa göre değişir.",
+      "exact_match": true,
+      "lines_delivered_by_canonical_lockup": []
+    },
+    "06-dossier": {
+      "supplied_lines": [
+        "BAŞVURU REHBERİ / 001",
+        "Çin'de üniversiteye başvurmak için diploma yetmiyor.",
+        "Başvuruda istenebilen belgeler:",
+        "Pasaport",
+        "Diploma ve transkript",
+        "İngilizce yeterlilik belgesi",
+        "Akademik sınav sonuçları",
+        "Niyet veya araştırma planı",
+        "Akademik referanslar",
+        "Mali durum belgesi",
+        "Ve programa göre daha fazlası.",
+        "Bazı üniversiteler mülakat, adli sicil belgesi ve resmî çeviri de istiyor.",
+        "Program seçimi ve başvuru dosyanı birlikte hazırlayalım.",
+        "Ücretsiz ön görüşme",
+        "Asya'da Eğitim"
+      ],
+      "supplied_line_count": 15,
+      "rendered_fragments": [
+        "BAŞVURU REHBERİ / 001",
+        "Çin'de üniversiteye başvurmak için diploma yetmiyor.",
+        "Başvuruda istenebilen belgeler:",
+        "Pasaport",
+        "Diploma ve",
+        "transkript",
+        "İngilizce yeterlilik",
+        "belgesi",
+        "Akademik sınav",
+        "sonuçları",
+        "Niyet veya",
+        "araştırma planı",
+        "Akademik",
+        "referanslar",
+        "Mali durum",
+        "belgesi",
+        "Ve programa göre daha fazlası.",
+        "Bazı üniversiteler mülakat, adli sicil belgesi ve resmî",
+        "çeviri de istiyor.",
+        "Program seçimi ve başvuru dosyanı birlikte hazırlayalım.",
+        "Ücretsiz ön görüşme"
+      ],
+      "rendered_fragment_count": 21,
+      "fragment_join": "BAŞVURU REHBERİ / 001 Çin'de üniversiteye başvurmak için diploma yetmiyor. Başvuruda istenebilen belgeler: Pasaport Diploma ve transkript İngilizce yeterlilik belgesi Akademik sınav sonuçları Niyet veya araştırma planı Akademik referanslar Mali durum belgesi Ve programa göre daha fazlası. Bazı üniversiteler mülakat, adli sicil belgesi ve resmî çeviri de istiyor. Program seçimi ve başvuru dosyanı birlikte hazırlayalım. Ücretsiz ön görüşme",
+      "exact_match": true,
+      "lines_delivered_by_canonical_lockup": [
+        "Asya'da Eğitim"
+      ]
+    }
+  },
+  "status": "PASS"
+}
