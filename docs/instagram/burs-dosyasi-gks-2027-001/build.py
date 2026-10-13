@@ -28,7 +28,7 @@ A = 'assets'                                       # relative from source/*.html
 # ---------------------------------------------------------------- locked copy
 COPY = {
  '01': ["BURS DOSYASI / 001",
-        "Kore devlet bursunu kaçırdın mı?",
+        "Kore devlet bursunu kaçırdım diye üzülme.",
         "30 Eylül’de büyükelçilik başvuruları kapandı.",
         "Ama üniversite yolunda Ekim son tarihleri var.",
         "GKS-UIC 2027",
@@ -234,7 +234,7 @@ S1_CSS = """
 .sid::before{content:'/';color:#BD2120;padding-right:10px}
 .sid b{display:block;width:96px;height:5px;background:#BD2120;margin-top:16px}
 .q{position:absolute;left:72px;top:176px;width:920px;z-index:3;font-size:78px;font-weight:600;line-height:1.04;letter-spacing:-.02em;color:#F7F3E9}
-.q em{font-style:normal;color:#BD2120}
+.q em{font-style:normal;color:#003478}
 .p1{position:absolute;left:72px;top:404px;width:820px;z-index:3;font-size:35px;font-weight:500;line-height:1.25;color:rgba(247,243,233,.92)}
 .p2{position:absolute;left:72px;top:496px;width:840px;z-index:3;font-size:47px;font-weight:600;line-height:1.14;letter-spacing:-.01em;color:#F7F3E9;
   border-left:10px solid #BD2120;padding-left:28px}
@@ -254,7 +254,7 @@ S1_HTML = """
   <div class="deco-date" data-qa="deco-date" data-zone="deco">30 EYLÜL</div>
   <div class="strike" data-qa="strike" data-zone="deco"></div>
   <div class="sid" data-qa="sid" data-zone="txt" data-copy="BURS DOSYASI / 001">BURS DOSYASI / 001<b></b></div>
-  <h1 class="q" data-qa="question" data-zone="txt"><div data-copy="Kore devlet bursunu kaçırdın mı?">Kore devlet bursunu<br><em>kaçırdın mı?</em></div></h1>
+  <h1 class="q" data-qa="question" data-zone="txt"><div data-copy="Kore devlet bursunu kaçırdım diye üzülme.">Kore devlet bursunu<br><em>kaçırdım diye üzülme.</em></div></h1>
   <p class="p1" data-qa="embassy-closed" data-zone="txt"><span data-copy="30 Eylül’de büyükelçilik başvuruları kapandı.">30 Eylül’de büyükelçilik başvuruları kapandı.</span></p>
   <p class="p2" data-qa="university-track" data-zone="txt"><span data-copy="Ama üniversite yolunda Ekim son tarihleri var.">Ama üniversite yolunda Ekim son tarihleri var.</span></p>
   <div class="bottom" data-qa="bottom" data-zone="wrap">

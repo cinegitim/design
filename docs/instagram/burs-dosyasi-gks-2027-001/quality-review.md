@@ -34,8 +34,8 @@ authored in exactly one place, `svgmaster.py`, and propagates through `source/NN
 `export/NN.png` → `original/NN.png` → ZIP → published gallery.
 
 A first pass converted only a subset of the accent sites and left brand red on primary elements
-("kaçırdın mı?" and its rules on 01, "13 Ekim 2026 itibarıyla." on 02, the "100" numeral on 03, the
-TÜRK VATANDAŞLARI band on 04, the CTA band on 06). That partial state was incorrect and has been
+(the headline line and its rules on 01, "13 Ekim 2026 itibarıyla." on 02, the "100" numeral on 03,
+the TÜRK VATANDAŞLARI band on 04, the CTA band on 06). That partial state was incorrect and has been
 superseded by a full conversion of the remaining nine sites.
 
 `#BD2120` is retained **only** inside the linked canonical lockup SVGs under `assets/lockups/`.
@@ -49,13 +49,21 @@ Verified after the re-render, by inspecting each exported PNG as image input:
 - `studio/tools/verify_asyada_canonical_lockups.py` passes — 15 records, seal `8f5d46f0…c77e11a`.
 - Copy, geometry and Jost gates re-ran clean (0 errors, all six slides, 1080×1350).
 
-## Slide 01 accent-line legibility (fixed at human request)
-With the accent applied, "kaçırdın mı?" in `#003478` sat over a darkened photograph and its glyph
-edge was lost against the mid-tone sky and buildings — the line read as disappearing. Fixed with a
-two-stage black drop shadow on **that line only** (`#04070C`, dy 6 / blur 9, plus a tight
-dy 1 / blur 1.5 contact pass), declared once in `svgmaster.py` as `QS_SHADOW` and applied per line
-through the `line_extra` argument added to `text_el()`. The cream line above it and every other
-slide are untouched; the filter appears in `source/01.svg` only.
+## Slide 01 headline copy and accent-line legibility (both at human request)
+Copy changed from "Kore devlet bursunu kaçırdın mı?" to "Kore devlet bursunu kaçırdım diye üzülme."
+— a reframe that addresses the reader's family rather than asking the reader a question, and sets up
+the "Ama üniversite yolunda Ekim son tarihleri var." turn below it. The line is 12 characters longer,
+so the CSS prototype was re-measured (`build.py --css`) rather than hand-fitted: the accent line
+measures 690.1 px in the 920 px `.q` column (229.9 px spare), the block still ends at 338.2 px
+against the next block at 404 px (65.8 px clearance), and the right edge lands at 762.1 px, well
+inside the 1016 px safe limit.
+
+Separately, the accent line in `#003478` sat over a darkened photograph and its glyph edge was lost
+against the mid-tone sky and buildings — it read as disappearing. Fixed with a two-stage black drop
+shadow on **that line only** (`#04070C`, dy 6 / blur 9, plus a tight dy 1 / blur 1.5 contact pass),
+declared once in `svgmaster.py` as `QS_SHADOW` and applied per line through the `line_extra`
+argument added to `text_el()`. The cream line above it and every other slide are untouched; the
+filter appears in `source/01.svg` only.
 
 Measured on the exported PNG before and after, across the line's own bounding box:
 - median luminance of the 1 px ring immediately around the glyphs: **0.0571 → 0.0116**
@@ -64,6 +72,11 @@ Measured on the exported PNG before and after, across the line's own bounding bo
 
 Confirmed by inspecting the export as image input at 1080 px and again at the 375 px mobile
 preview: the accent line reads cleanly at both.
+
+Note: the locked copy lives in three places — the `COPY` dict and the CSS prototype in `build.py`,
+and the `copy_group` literals in `svgmaster.py`. `copy-manifest.json` is generated from `COPY`.
+`Slide.render()` compares the two and aborts on drift, which is the intended guard; when copy
+changes, all three must be updated together.
 
 ## Remaining constraints (disclosed, not blocking)
 - Photography is licensed Wikimedia Commons imagery; correct identification of KOREATECH, Ajou,
