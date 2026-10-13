@@ -183,13 +183,13 @@ def shot(url, png, mode):
                 if png and os.path.exists(png) and os.path.getsize(png) > 10000: break
                 time.sleep(.2)
             if proc.poll() is None:
-                try: os.killpg(proc.pid, signal.SIGTERM)
-                except ProcessLookupError: pass
+                # Screenshot is already on disk; reaping the detached browser is best-effort
+                # cleanup and must never fail the render.
+                for sig in (signal.SIGTERM, signal.SIGKILL):
+                    try: os.killpg(proc.pid, sig); break
+                    except (ProcessLookupError, PermissionError): pass
                 try: proc.wait(timeout=5)
-                except subprocess.TimeoutExpired:
-                    try: os.killpg(proc.pid, signal.SIGKILL)
-                    except ProcessLookupError: pass
-                    proc.wait(timeout=5)
+                except subprocess.TimeoutExpired: pass
             return ''
         cmd.append(url); cmd.append('--dump-dom')
         for attempt in range(5):
