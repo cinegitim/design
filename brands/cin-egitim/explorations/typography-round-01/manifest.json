@@ -1,0 +1,264 @@
+{
+  "brand": "cin-egitim",
+  "round": "typography-round-01",
+  "status": "EXPLORATION / HUMAN A-L SELECTION PENDING",
+  "scope": "Twelve typography and wordmark-placement explorations; each uses the exact canonical symbol unchanged. No wordmark or full identity approval.",
+  "canonical_logo": "brands/cin-egitim/assets/symbol.svg",
+  "canonical_logo_sha256": "1cc1808947d8f7f759ebb9956a715d535bb4fcc985d3f85194d4eaf1a85c7381",
+  "decision_record": "brands/cin-egitim/decisions/2026-10-10-symbol-svg-lock.md",
+  "brand_name": "Çin Eğitim",
+  "language": "Turkish-first; no English or Chinese writing added in these lockup studies.",
+  "palette": {
+    "locked_symbol": "Exact canonical SVG; no geometry, colour, crop, or path edits.",
+    "wordmark_ink": "#202020",
+    "paper": "#F5F0E7",
+    "annotation_red": "#BF0C1A"
+  },
+  "directions": [
+    {
+      "id": "A",
+      "slug": "direction-a",
+      "name": "Sessiz Kütüphane",
+      "promise": "Akademik ağırlık, sakin editoryal ritim.",
+      "font_display": "Source Serif 4",
+      "font_support": "Manrope",
+      "case": "Baş harfleri büyük",
+      "lines": [
+        "Çin",
+        "Eğitim"
+      ],
+      "arrangement": "Yatay sembol + iki satırlı serif wordmark",
+      "logic": "Sol hizalı iki satır ve sıkı serif ritmi; sembol solda, tipografi sağda.",
+      "mood": "Editoryal · ölçülü · kültürlü"
+    },
+    {
+      "id": "B",
+      "slug": "direction-b",
+      "name": "Açık Rehber",
+      "promise": "İlk bakışta anlaşılır, dijitalde doğrudan.",
+      "font_display": "Manrope",
+      "font_support": "Manrope",
+      "case": "Baş harfleri büyük",
+      "lines": [
+        "Çin Eğitim"
+      ],
+      "arrangement": "Ortalanmış dikey sembol + tek satır sans",
+      "logic": "Sembol üstte, temiz tek satırlı isim altta; kısa ve merkezî imza.",
+      "mood": "Açık · çağdaş · güven veren"
+    },
+    {
+      "id": "C",
+      "slug": "direction-c",
+      "name": "Program İndeksi",
+      "promise": "Sıkı, modüler ve kurumsal bir bilgi imzası.",
+      "font_display": "Barlow Condensed",
+      "font_support": "Manrope",
+      "case": "Tümü büyük harf",
+      "lines": [
+        "ÇİN",
+        "EĞİTİM"
+      ],
+      "arrangement": "Yatay sembol + çizgiyle başlayan condensed blok",
+      "logic": "Sembol solda; çizgi ve dar büyük harfli blok yalnız tipografiyi yapılandırır.",
+      "mood": "Kompakt · sistematik · kurumsal"
+    },
+    {
+      "id": "D",
+      "slug": "direction-d",
+      "name": "İnce Klasik",
+      "promise": "Zarif kontrast, gösterişsiz bir kültür tonu.",
+      "font_display": "Cormorant Garamond",
+      "font_support": "Manrope",
+      "case": "Baş harfleri büyük",
+      "lines": [
+        "Çin Eğitim"
+      ],
+      "arrangement": "Yatay sembol + tek satır yüksek kontrastlı serif",
+      "logic": "Uzun ve ince serifler tek satırda akış kurar; sembol sol başta ağırlık noktasıdır.",
+      "mood": "Zarif · kültürel · rafine"
+    },
+    {
+      "id": "E",
+      "slug": "direction-e",
+      "name": "Yeni Nesil",
+      "promise": "Çağdaş sans, kontrollü ve insani bir ses.",
+      "font_display": "IBM Plex Sans",
+      "font_support": "Manrope",
+      "case": "Baş harfleri büyük",
+      "lines": [
+        "Çin",
+        "Eğitim"
+      ],
+      "arrangement": "Yatay sembol + iki ağırlıklı grotesk satır",
+      "logic": "İlk satır daha güçlü, ikinci satır daha sakin; net, işlevsel ve teknikleşmeyen ritim.",
+      "mood": "Çağdaş · akılcı · insani"
+    },
+    {
+      "id": "F",
+      "slug": "direction-f",
+      "name": "Arşiv Kaydı",
+      "promise": "Düzenli, ölçülü, belge gibi okunaklı.",
+      "font_display": "IBM Plex Mono",
+      "font_support": "IBM Plex Sans",
+      "case": "Tümü büyük harf",
+      "lines": [
+        "ÇİN",
+        "EĞİTİM"
+      ],
+      "arrangement": "Yatay sembol + monospaced kayıt bloğu",
+      "logic": "Eş aralıklı harfler iki satırlı kayıt hissi verir; ince üst-alt çizgiler yalnız yazıyı çerçeveler.",
+      "mood": "Arşivsel · kesin · düzenli"
+    },
+    {
+      "id": "G",
+      "slug": "direction-g",
+      "name": "Yumuşak Karşılama",
+      "promise": "Yakın, sıcak ve kolay yaklaşılır.",
+      "font_display": "Nunito Sans",
+      "font_support": "Manrope",
+      "case": "Baş harfleri büyük",
+      "lines": [
+        "Çin",
+        "Eğitim"
+      ],
+      "arrangement": "Sembol sağda + sağ hizalı, yuvarlak sans wordmark",
+      "logic": "Tipografi soldan başlar, sembol sağda denge kurar; yumuşak biçimler sert kurumsallığı azaltır.",
+      "mood": "Sıcak · erişilebilir · samimi"
+    },
+    {
+      "id": "H",
+      "slug": "direction-h",
+      "name": "Dikey Vurgu",
+      "promise": "Dar alanda güçlü, dikey bir imza.",
+      "font_display": "Oswald",
+      "font_support": "Manrope",
+      "case": "Tümü büyük harf",
+      "lines": [
+        "ÇİN",
+        "EĞİTİM"
+      ],
+      "arrangement": "Ortalanmış sembol üstte + dikey condensed wordmark",
+      "logic": "Dar karakterli harfler sembol altındaki kompakt bloğa oturur; küçük yüzeylerde dikey kullanım için.",
+      "mood": "Güçlü · dar · yüksek enerjili"
+    },
+    {
+      "id": "I",
+      "slug": "direction-i",
+      "name": "Kültür Defteri",
+      "promise": "Edebî karakter, belirgin ve hatırlanır serif.",
+      "font_display": "DM Serif Display",
+      "font_support": "Manrope",
+      "case": "Baş harfleri büyük",
+      "lines": [
+        "Çin",
+        "Eğitim"
+      ],
+      "arrangement": "Sembol üstte + merkezî display-serif wordmark",
+      "logic": "Sembol üstte, geniş ve heykelsi serif harfler iki merkezî satırda; yüksek kontrastlı dikey imza.",
+      "mood": "Edebî · karakterli · seçkin"
+    },
+    {
+      "id": "J",
+      "slug": "direction-j",
+      "name": "Açık Ufuk",
+      "promise": "Geniş nefes, geometrik ve çağdaş duruş.",
+      "font_display": "Space Grotesk",
+      "font_support": "Manrope",
+      "case": "Tümü büyük harf",
+      "lines": [
+        "ÇİN EĞİTİM"
+      ],
+      "arrangement": "Tek satır wordmark + sembol sağda",
+      "logic": "Açık harf aralığı yatay akışı uzatır; sembol sağ uçta kapanış noktası olur.",
+      "mood": "Geometrik · özgün · ferah"
+    },
+    {
+      "id": "K",
+      "slug": "direction-k",
+      "name": "Mektup Tonu",
+      "promise": "Daha kişisel, düşünceli ve edebî bir yakınlık.",
+      "font_display": "Lora",
+      "font_support": "Manrope",
+      "case": "Baş harfleri büyük, italik",
+      "lines": [
+        "Çin",
+        "Eğitim"
+      ],
+      "arrangement": "İtalik iki satırlı wordmark solda + sembol sağda",
+      "logic": "Hafif italik hareket tipografiyi kişiselleştirir; sağdaki değişmeyen sembol denge sağlar.",
+      "mood": "Kişisel · düşünceli · sıcak"
+    },
+    {
+      "id": "L",
+      "slug": "direction-l",
+      "name": "Sağlam Rehber",
+      "promise": "Ağırlıklı, güven veren ve net bir bitiş.",
+      "font_display": "Roboto Slab",
+      "font_support": "Manrope",
+      "case": "Tümü büyük harf",
+      "lines": [
+        "ÇİN",
+        "EĞİTİM"
+      ],
+      "arrangement": "Yatay sembol + kalın slab-serif iki satır",
+      "logic": "Karemsi slab serifler sağlam bir blok kurar; kısa kırmızı çizgi yalnız yazı bloğunu işaretler.",
+      "mood": "Sağlam · kararlı · görünür"
+    }
+  ],
+  "distinction_test": "A-L varyasyonu yalnız font adı değildir: 12 ayrı font karakteri, sembolün yazıya göre üç konumu (solda, üstte, sağda), 1 veya 2 satır, büyük harf/italik biçimler ve farklı çizgi/harf aralığı kurguları birlikte karşılaştırılır.",
+  "selection_gate": "Kullanıcı A-L arasından yön seçecek; seçimden önce hiçbir wordmark veya brand-system kanonikleşmez.",
+  "directions_source_sha256": "f57917fa5724439126f63437a18911400f1f5bd46aa5683910b536cedeb4e8e1",
+  "build_recipe_sha256": "ce0d431c1c49b8616ce8d18a8ee30ab2a50c12f60e4ea9dda04d3778ea9cfbbf",
+  "source_outputs": {
+    "typography.css": "17718b45a926acd7d6b6a45c1291da63e373ede1c590330d7f526ba43022bca0",
+    "index.html": "7bd567710fd7067391c23096e40b399dc8503d4880c25d10c9ff748f079153b4",
+    "direction-a.html": "07f3a9b7585022fa0e6ba8afab906bd8335204ca2937e02661d68da130067040",
+    "direction-b.html": "ad74f75cc4206f7498895063bc2348f9173bff695d5058fa4cd2891ee12f6fbd",
+    "direction-c.html": "e6f8915efe3c8c1b2a09bcd73de1569ad93d97a31d125afca9814978c53bbb02",
+    "direction-d.html": "9e7efede9a3fd1e2161af574ce5fe0c679a42289dff7762df93d59147a84c2a0",
+    "direction-e.html": "b55e43898d12abb0257f24478b56fb28312bff94f8b6d74b8a297a1a6a5b075b",
+    "direction-f.html": "077b0968ea14159e09b34a171b34edf309ea7998cd3be05fb8fb92477ab5fd05",
+    "direction-g.html": "f8118211af59b09b7d183b0c2540eae488661daf2d637be82237b81f7a405462",
+    "direction-h.html": "9cf50f88519f6c2e20c3b8d50772fc5cc7720fd7f48212089bf1caa8a0c8a2a2",
+    "direction-i.html": "016ee77c4ddf69ee73d7e7c3eb36e82ea46e430aa595d90e942cda6ab196e1c5",
+    "direction-j.html": "0f0afd4c5ac0c84275876babbc79ac37774f12eb55db0cc047184b1bc8a82cd3",
+    "direction-k.html": "4b2a9eb54b194aaae32113ad652f477bc7f92a6636bd7e69b636d89f1ef265b5",
+    "direction-l.html": "7ea86425ae99226c1b3570c68c0843b8f10d99cf2e03c422ae463409dbdcd664"
+  },
+  "docs_outputs": {
+    "typography.css": "17718b45a926acd7d6b6a45c1291da63e373ede1c590330d7f526ba43022bca0",
+    "index.html": "f38b006e7e5dcfae4ec6a125b911841009c71f355a5e55102018841263c25c8a",
+    "direction-a.html": "178acbd889bfb6ed7e13a82c45c7cf839ae4090bb13f1d390df8d700c7b6acb1",
+    "direction-b.html": "264bc116481fb8081818c3e07de7f017c52f4183e22d95de4d4b3f0c83669bc2",
+    "direction-c.html": "b16e7c2fd09190d9e4c0182e4a99b1a047a9582c06698c1e8153285c4f119b48",
+    "direction-d.html": "d10647c314c8ccdd463f3d80beeded58120e44e035acbad6d1b45df368956003",
+    "direction-e.html": "8931e51c92c8bfc848d7f4bf4f44b0fd1f8484973a11078d71165815ff3673ca",
+    "direction-f.html": "93b621dbd8706cc81030a9255c6febb74c62f2a15f92a4e0c6ff508510666867",
+    "direction-g.html": "9b92207c7cc62667927740f2dfe11db8b93d14d4f389b4037fd14b231c1c7364",
+    "direction-h.html": "8a47c22e7bb172715415296e1c4bb48460a92686226e5f65f7e23a4dccbeb2d1",
+    "direction-i.html": "c9b7c74941c3b37f615d6731edab2d4c9cc5343e6b1d6e5179f9ef9528433bb1",
+    "direction-j.html": "36b2e340087a0937e51058fc60a6689fa2ee236ce974fd9bd1e34199642fc371",
+    "direction-k.html": "5b16646348c1b36680cfc5bdaf5c65bf9d3b32ae7b04f3aeb0744d1be7a5462e",
+    "direction-l.html": "e720ec3403cb9a791a27597aedfe873d8186535cb75f8d45df795a42137597c8"
+  },
+  "published_support_files": {
+    "README.md": "eb0970d8f028c5c7c4b9d8fc0fabb1590e1b81573dc9a5e685a8bbbca376e78c",
+    "research.md": "6c8ba147488bc0abb4aa4dfcc9e8705a750820e63a51e2c96f05082c08da7814"
+  },
+  "fonts": {
+    "Barlow Condensed": "https://fonts.google.com/specimen/Barlow+Condensed",
+    "Cormorant Garamond": "https://fonts.google.com/specimen/Cormorant+Garamond",
+    "DM Serif Display": "https://fonts.google.com/specimen/DM+Serif+Display",
+    "IBM Plex Mono": "https://fonts.google.com/specimen/IBM+Plex+Mono",
+    "IBM Plex Sans": "https://fonts.google.com/specimen/IBM+Plex+Sans",
+    "Lora": "https://fonts.google.com/specimen/Lora",
+    "Manrope": "https://fonts.google.com/specimen/Manrope",
+    "Nunito Sans": "https://fonts.google.com/specimen/Nunito+Sans",
+    "Oswald": "https://fonts.google.com/specimen/Oswald",
+    "Roboto Slab": "https://fonts.google.com/specimen/Roboto+Slab",
+    "Source Serif 4": "https://fonts.google.com/specimen/Source+Serif+4",
+    "Space Grotesk": "https://fonts.google.com/specimen/Space+Grotesk"
+  },
+  "image_model_calls": 0,
+  "approval": "Human A-L selection pending. No canonical wordmark or brand-system approval."
+}
