@@ -63,16 +63,16 @@
     {
       "slide": "05-invitation",
       "file": "originals/05-invitation-first.png",
-      "sha256": "415a9f4cf1090a69a1a87e486532edc51f46a97838dc8a1575cc511111106fec"
+      "sha256": "cc9c8dd24bdddbf565d01bafa01f76023e9b6f9f583b7c7f87d02cae8e4845dc"
     }
   ],
   "slides": [
     {
       "id": "01-cover",
       "final_file": "final/01-cover.png",
-      "final_sha256": "30ad204a0d61ea411a5ec7e6da20c963805317f5eb0e85651b28c1e3718bb8b4",
+      "final_sha256": "30f7b821aeb6c26dcc4b326d57e5913ac7f5c8eb098ff7468b889a97895b94c4",
       "original_file": "originals/01-cover.png",
-      "original_sha256": "f61f758a15862e199be46ffa2b792fd420f63424d3e7d991dcdfb264dd8ca14a",
+      "original_sha256": "30f7b821aeb6c26dcc4b326d57e5913ac7f5c8eb098ff7468b889a97895b94c4",
       "source_file": "source/01-cover.svg",
       "source_sha256": "fda36c618ad1afc855b5f7c5f1ad4c56af2ca05c2ae9c0ad6f856f241e200e20",
       "editable_html_file": "source/01-cover.html",
@@ -187,14 +187,15 @@
           1350
         ],
         "issues": []
-      }
+      },
+      "editable_html_sha256": "0f86c732031534d66e9694fcc7a6835b5d5a669de7fe8c9be512dd47e3733551"
     },
     {
       "id": "02-perspective",
       "final_file": "final/02-perspective.png",
-      "final_sha256": "3ae16ab5ede8170d6c3e83f2811825b49934f839cf6566e1f30590fb3d6f3f96",
+      "final_sha256": "55d3681f10e0848b5d49359b34d0bb0d94a1f101aebfef2b619a2fec7bf0039e",
       "original_file": "originals/02-perspective.png",
-      "original_sha256": "25253793ed1d15f30c384079d816886dd935c2006a40e86dbadc906d4acd4720",
+      "original_sha256": "55d3681f10e0848b5d49359b34d0bb0d94a1f101aebfef2b619a2fec7bf0039e",
       "source_file": "source/02-perspective.svg",
       "source_sha256": "f574a545f3c03d2f5914bef0af6c846282d33f985f3d5d533898b2353f7859dd",
       "editable_html_file": "source/02-perspective.html",
@@ -339,14 +340,15 @@
           1350
         ],
         "issues": []
-      }
+      },
+      "editable_html_sha256": "020cba6cf6cf694529593732dd30c353091b2634246f571530f6547629598ae8"
     },
     {
       "id": "03-five-worlds",
       "final_file": "final/03-five-worlds.png",
-      "final_sha256": "8f6f0789124e1204578701d1f1a50540a3c9640ba0846332b59f3cff87eb42a0",
+      "final_sha256": "8f8f0544c82d414be8644f8a12087e53d1eb6ffa6f6f24da77d78fd6634a1e21",
       "original_file": "originals/03-five-worlds.png",
-      "original_sha256": "2d1809cf410697bc2aa3ceedd1ac33a08a32b31a0a47244c99dadeb713d6a42e",
+      "original_sha256": "8f8f0544c82d414be8644f8a12087e53d1eb6ffa6f6f24da77d78fd6634a1e21",
       "source_file": "source/03-five-worlds.svg",
       "source_sha256": "023ea2644255dee3504c64b387cb343ef27f43049f75dec3f86941c948246770",
       "editable_html_file": "source/03-five-worlds.html",
@@ -526,14 +528,15 @@
           1350
         ],
         "issues": []
-      }
+      },
+      "editable_html_sha256": "33eddc833864cfb438052ca0c84824d321b146a4717ffe7c420938529bf00c0c"
     },
     {
       "id": "04-experience",
       "final_file": "final/04-experience.png",
-      "final_sha256": "b3a83f8d8d2273a35efcad59a26be4555d4cbd8b44d96f5c811bf4c302c4da6f",
+      "final_sha256": "924886fb50604a789cfce0778178a6c1784150d2c2c82da338e4bbbda754c155",
       "original_file": "originals/04-experience.png",
-      "original_sha256": "cfe42248f261fcf583ee1761f1982ebb15a5e713271e2856041d1c0e3bfc32f8",
+      "original_sha256": "924886fb50604a789cfce0778178a6c1784150d2c2c82da338e4bbbda754c155",
       "source_file": "source/04-experience.svg",
       "source_sha256": "77dc28a63db67acd0176930b1bd5ac13c383432ec447b1229dacd5c414a87071",
       "editable_html_file": "source/04-experience.html",
@@ -742,14 +745,15 @@
           1350
         ],
         "issues": []
-      }
+      },
+      "editable_html_sha256": "eefc263286f91556b5fc4801edaeddb9886e6eb7ce4a5d239a68ff0d509a7917"
     },
     {
       "id": "05-invitation",
       "final_file": "final/05-invitation.png",
-      "final_sha256": "45bff6bc9edd29be64cadb9397133eb9d4286a88f49e66340125e3f228151559",
+      "final_sha256": "cc9c8dd24bdddbf565d01bafa01f76023e9b6f9f583b7c7f87d02cae8e4845dc",
       "original_file": "originals/05-invitation.png",
-      "original_sha256": "8a6c1485c5d3f24d952ef7e78366dc071a7ae9f8218c92f61620de258f2d8c20",
+      "original_sha256": "cc9c8dd24bdddbf565d01bafa01f76023e9b6f9f583b7c7f87d02cae8e4845dc",
       "source_file": "source/05-invitation.svg",
       "source_sha256": "510a1ea7530425a943c2063f3a55bb695374954fe51236bc3f67eba48fb7b5ff",
       "editable_html_file": "source/05-invitation.html",
@@ -881,7 +885,8 @@
           1350
         ],
         "issues": []
-      }
+      },
+      "editable_html_sha256": "25138205cfdc5a3246ace96cb61ce796730a5186c37d01a737c3ee6d15f67c1c"
     }
   ],
   "pixel_integrity_review": [
