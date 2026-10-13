@@ -1,0 +1,383 @@
+{
+  "title": "Asya’da Eğitim — Burs Dosyası / 001 · GKS 2027 (altı slaytlı Instagram carousel)",
+  "campaign": "Burs Dosyası / 001 — GKS 2027",
+  "status": "HUMAN CREATIVE APPROVAL PENDING — NOT MERGED, NOT PUBLISHED TO SOCIAL MEDIA",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "exact_copy": {
+    "01-the-scholarship-hook": [
+      "BURS DOSYASI / 001",
+      "Kore devlet bursunu kaçırdın mı?",
+      "30 Eylül’de büyükelçilik başvuruları kapandı.",
+      "Ama üniversite yolunda Ekim son tarihleri var.",
+      "GKS-UIC 2027",
+      "Türkiye’den başvuru mümkün."
+    ],
+    "02-three-deadlines": [
+      "GKS-UIC’de üç üniversitenin başvurusu sürüyor.",
+      "23 EKİM 2026",
+      "KOREATECH",
+      "Bilgisayar / Makine Mühendisliği",
+      "30 EKİM 2026",
+      "Ajou University",
+      "Yapay Zekâ ve Bilgisayar Mühendisliği",
+      "30 EKİM 2026",
+      "Kookmin University",
+      "Yazılım",
+      "Son tarihler Kore saatine göredir. Belge teslim yöntemleri üniversiteye göre değişir.",
+      "13 Ekim 2026 itibarıyla."
+    ],
+    "03-international-quotas": [
+      "100 burs kontenjanı. Dünya genelinden başvuru.",
+      "13 kurum · Lisans ve ön lisans",
+      "7 KONTENJAN",
+      "Ajou — Yapay Zekâ ve Bilgisayar Mühendisliği",
+      "7 KONTENJAN",
+      "Kookmin — Yazılım",
+      "5 + 5 KONTENJAN",
+      "KOREATECH — Bilgisayar ve Makine Mühendisliği",
+      "Kontenjanlar uluslararası adaylara açık. Türkiye’ye özel kota değil."
+    ],
+    "04-eligibility": [
+      "Türkiye’den kimler GKS-UIC’ye başvurabilir?",
+      "TÜRK VATANDAŞLARI",
+      "Başvurabilir.",
+      "YAŞ",
+      "1 Mart 2002’den sonra doğmuş olmak.",
+      "MEZUNİYET",
+      "Lise veya ön lisans mezunu olmak ya da en geç 31 Aralık 2026’da mezun olmak.",
+      "AKADEMİK BAŞARI",
+      "80/100 veya sınıfın ilk %20’si veya kabul edilen eşdeğer not ortalaması.",
+      "Adayın ve ebeveynlerinin Kore vatandaşlığı olmamalı. Lisans diploması sahipleri uygun değil. Bölüme özel şartlar ayrıca geçerli."
+    ],
+    "05-scholarship-amount": [
+      "GKS 2027 bursu ne kadar?",
+      "14.400.000 KRW* / yıl",
+      "≈ 9.675 € / yıl",
+      "Lisans eğitimi döneminde verilen yaşam desteği.",
+      "Ayrıca karşılananlar:",
+      "Öğrenim ücreti",
+      "Korece hazırlık eğitimi (gerektiğinde)",
+      "Uygun adaylar için ekonomi sınıfı uçak bileti",
+      "Yaşam desteğine barınma, sağlık sigortası ve ilgili ödenekler dahildir.",
+      "Avro karşılığı 12 Ekim 2026 kuru üzerinden yaklaşık hesaplanmıştır."
+    ],
+    "06-single-choice-cta": [
+      "BURS DOSYASI / 001",
+      "GKS-UIC’de ikinci üniversite tercihi yok.",
+      "1 ÜNİVERSİTE",
+      "1 BÖLÜM",
+      "Birden fazla üniversiteye başvurmak GKS değerlendirmesinden çıkarılmana neden olabilir.",
+      "Türkiye’den başvurabileceğin programları, gerekli belgeleri ve son tarihleri birlikte kontrol edelim.",
+      "Ücretsiz ön görüşme"
+    ]
+  },
+  "font": {
+    "family": "Jost",
+    "file": "assets/Jost-VF.ttf",
+    "sha256": "6343b70971000b04c5d401c96ae08ce371086135e999d5e1e1413039c0213076",
+    "license": "SIL OFL 1.1 (assets/Jost-OFL.txt)"
+  },
+  "palette": {
+    "paper": "#F7F3E9",
+    "ink": "#1D2027",
+    "accent": "#003478",
+    "accent_name": "Kore mavisi (GKS) — this campaign's only accent colour",
+    "canonical_lockup_red": "#BD2120",
+    "accent_scope": "All slide accents, numerals, bands and rules use #003478. #BD2120 appears nowhere in the slide artwork; it exists only inside the linked canonical lockup SVGs, which are locked assets and were not edited."
+  },
+  "brand_tokens": {
+    "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "canonical_lockups_manifest_sha256": "60fb1f6d105fa7c3d47e349ee75b191c023491967b75412a0323ba003b7ed351"
+  },
+  "copy_validation": {
+    "method": "in-page DOM capture (whitespace-normalised) vs copy-manifest.json; SVG <text> join vs data-exact-copy-json",
+    "result": "PASS"
+  },
+  "geometry_qa": {
+    "harness": "qa/geometry-report.json (getBoundingClientRect after document.fonts.ready; text/text and text/logo overlap, 64 px safe area, clipping, canvas bounds)",
+    "result": "PASS",
+    "jost_loaded_all_slides": true
+  },
+  "visual_qa": {
+    "method": "each exported PNG inspected as image input at 1080 px and 375 px; contact sheet and mobile strip reviewed",
+    "result": "PASS — six distinct compositions, no overlap, clipping or glyph defects detected"
+  },
+  "production_method": "Deterministic vector masters (source/NN.svg) rendered in Chromium with the real Jost variable font; no AI-generated raster imagery; no post-render raster editing.",
+  "imagery_disclosure": "All photography is real, correctly identified university imagery from Wikimedia Commons (licences in photo-credits.md), cropped/graded only. No synthetic campus imagery; photos are editorial backdrops, not partnership claims.",
+  "time_sensitive_notice": "Copy is anchored to the information date 13 October 2026. Embassy-track applications closed 30 September 2026; university-track deadlines are 23 and 30 October 2026 (Korean time). Do not present as a live opportunity after those dates without renewed verification.",
+  "eur_display": {
+    "locked_value": "≈ 9.675 € / yıl",
+    "reference_date": "12 Ekim 2026"
+  },
+  "ai_image_generation_calls": 0,
+  "paid_image_or_api_usage": "none",
+  "mobile_preview_files": [
+    "mobile-preview/01.png",
+    "mobile-preview/02.png",
+    "mobile-preview/03.png",
+    "mobile-preview/04.png",
+    "mobile-preview/05.png",
+    "mobile-preview/06.png"
+  ],
+  "contact_sheet_file": "contact-sheet.png",
+  "source_vs_final_contact_sheet_file": "source-vs-final-contact-sheet.png",
+  "revision_comparison_file": "revision-comparison.png",
+  "package_file": "package/burs-dosyasi-gks-2027-001.zip",
+  "slides": [
+    {
+      "id": "01-the-scholarship-hook",
+      "copy": [
+        "BURS DOSYASI / 001",
+        "Kore devlet bursunu kaçırdın mı?",
+        "30 Eylül’de büyükelçilik başvuruları kapandı.",
+        "Ama üniversite yolunda Ekim son tarihleri var.",
+        "GKS-UIC 2027",
+        "Türkiye’den başvuru mümkün."
+      ],
+      "final_file": "export/01.png",
+      "final_sha256": "2bfb2445fcc08507b766f624026ed06cadf382f3e57972a8c2a0b8d9d9ff7ffd",
+      "original_file": "original/01.png",
+      "original_sha256": "2bfb2445fcc08507b766f624026ed06cadf382f3e57972a8c2a0b8d9d9ff7ffd",
+      "source_file": "source/01.svg",
+      "source_sha256": "6e50cdb01c992725b5ee8c96edc4a649be0d407e74cd58b6a7c885e80c9b5395",
+      "editable_html_file": "source/01.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "canonical_lockup_id": "P-01/dark",
+      "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_lockup_file": "assets/lockups/p-01-primary-stacked-dark.svg",
+      "logo_x_y_px": [
+        628.0,
+        900.41
+      ],
+      "logo_width_px": 380.0,
+      "logo_height_px": 373.5984,
+      "minimum_supported_display_width_px": 352,
+      "render_validation": {
+        "jostLoaded": true,
+        "issues": [],
+        "copyVerified": true
+      }
+    },
+    {
+      "id": "02-three-deadlines",
+      "copy": [
+        "GKS-UIC’de üç üniversitenin başvurusu sürüyor.",
+        "23 EKİM 2026",
+        "KOREATECH",
+        "Bilgisayar / Makine Mühendisliği",
+        "30 EKİM 2026",
+        "Ajou University",
+        "Yapay Zekâ ve Bilgisayar Mühendisliği",
+        "30 EKİM 2026",
+        "Kookmin University",
+        "Yazılım",
+        "Son tarihler Kore saatine göredir. Belge teslim yöntemleri üniversiteye göre değişir.",
+        "13 Ekim 2026 itibarıyla."
+      ],
+      "final_file": "export/02.png",
+      "final_sha256": "2ada274770018e81c1fd0aff6fc32b42e587903f0496bb9d20c8460b9353d94c",
+      "original_file": "original/02.png",
+      "original_sha256": "2ada274770018e81c1fd0aff6fc32b42e587903f0496bb9d20c8460b9353d94c",
+      "source_file": "source/02.svg",
+      "source_sha256": "f9a2816bdb2ffe5edc6f05c2f3095a7d63a5036bd94afdd3bd221321dfc5bdae",
+      "editable_html_file": "source/02.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_lockup_file": "assets/lockups/d-04-small-use-digital-light.svg",
+      "logo_x_y_px": [
+        768.0,
+        1139.86
+      ],
+      "logo_width_px": 240.0,
+      "logo_height_px": 91.8777,
+      "minimum_supported_display_width_px": 200,
+      "render_validation": {
+        "jostLoaded": true,
+        "issues": [],
+        "copyVerified": true
+      }
+    },
+    {
+      "id": "03-international-quotas",
+      "copy": [
+        "100 burs kontenjanı. Dünya genelinden başvuru.",
+        "13 kurum · Lisans ve ön lisans",
+        "7 KONTENJAN",
+        "Ajou — Yapay Zekâ ve Bilgisayar Mühendisliği",
+        "7 KONTENJAN",
+        "Kookmin — Yazılım",
+        "5 + 5 KONTENJAN",
+        "KOREATECH — Bilgisayar ve Makine Mühendisliği",
+        "Kontenjanlar uluslararası adaylara açık. Türkiye’ye özel kota değil."
+      ],
+      "final_file": "export/03.png",
+      "final_sha256": "f4a551255a15a6ad2c6a8278f7877fecd12478e9809b92a7f668be7a8498c750",
+      "original_file": "original/03.png",
+      "original_sha256": "f4a551255a15a6ad2c6a8278f7877fecd12478e9809b92a7f668be7a8498c750",
+      "source_file": "source/03.svg",
+      "source_sha256": "16358df0144821bb9060f8ed487d316880bf3414be418eb05269bc83182d3c7b",
+      "editable_html_file": "source/03.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_lockup_file": "assets/lockups/p-01-primary-stacked-light.svg",
+      "logo_x_y_px": [
+        656.0,
+        64.0
+      ],
+      "logo_width_px": 352.0,
+      "logo_height_px": 346.0701,
+      "minimum_supported_display_width_px": 352,
+      "render_validation": {
+        "jostLoaded": true,
+        "issues": [],
+        "copyVerified": true
+      }
+    },
+    {
+      "id": "04-eligibility",
+      "copy": [
+        "Türkiye’den kimler GKS-UIC’ye başvurabilir?",
+        "TÜRK VATANDAŞLARI",
+        "Başvurabilir.",
+        "YAŞ",
+        "1 Mart 2002’den sonra doğmuş olmak.",
+        "MEZUNİYET",
+        "Lise veya ön lisans mezunu olmak ya da en geç 31 Aralık 2026’da mezun olmak.",
+        "AKADEMİK BAŞARI",
+        "80/100 veya sınıfın ilk %20’si veya kabul edilen eşdeğer not ortalaması.",
+        "Adayın ve ebeveynlerinin Kore vatandaşlığı olmamalı. Lisans diploması sahipleri uygun değil. Bölüme özel şartlar ayrıca geçerli."
+      ],
+      "final_file": "export/04.png",
+      "final_sha256": "68525caa33aa6f7286d1d12065d5051a3cfb7110cf9e59f85ecc53b56909759c",
+      "original_file": "original/04.png",
+      "original_sha256": "68525caa33aa6f7286d1d12065d5051a3cfb7110cf9e59f85ecc53b56909759c",
+      "source_file": "source/04.svg",
+      "source_sha256": "6ccfbb7ccfd1ffe419590e9a6a0eec497bbf9b659cd6204a6deb87211854d614",
+      "editable_html_file": "source/04.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_lockup_file": "assets/lockups/h-02-primary-horizontal-light.svg",
+      "logo_x_y_px": [
+        72.0,
+        64.0
+      ],
+      "logo_width_px": 560.0,
+      "logo_height_px": 210.0412,
+      "minimum_supported_display_width_px": 528,
+      "render_validation": {
+        "jostLoaded": true,
+        "issues": [],
+        "copyVerified": true
+      }
+    },
+    {
+      "id": "05-scholarship-amount",
+      "copy": [
+        "GKS 2027 bursu ne kadar?",
+        "14.400.000 KRW* / yıl",
+        "≈ 9.675 € / yıl",
+        "Lisans eğitimi döneminde verilen yaşam desteği.",
+        "Ayrıca karşılananlar:",
+        "Öğrenim ücreti",
+        "Korece hazırlık eğitimi (gerektiğinde)",
+        "Uygun adaylar için ekonomi sınıfı uçak bileti",
+        "Yaşam desteğine barınma, sağlık sigortası ve ilgili ödenekler dahildir.",
+        "Avro karşılığı 12 Ekim 2026 kuru üzerinden yaklaşık hesaplanmıştır."
+      ],
+      "final_file": "export/05.png",
+      "final_sha256": "8c6064aff2799cdd4d818d08ea7a9f5a61ec01bbf3e386cf424a1bbd5d540f25",
+      "original_file": "original/05.png",
+      "original_sha256": "8c6064aff2799cdd4d818d08ea7a9f5a61ec01bbf3e386cf424a1bbd5d540f25",
+      "source_file": "source/05.svg",
+      "source_sha256": "3d622ea3bf244ad034b50034abade40bca2b8d4df3738c017373dde565e9356d",
+      "editable_html_file": "source/05.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "canonical_lockup_id": "P-01/dark",
+      "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_lockup_file": "assets/lockups/p-01-primary-stacked-dark.svg",
+      "logo_x_y_px": [
+        656.0,
+        64.0
+      ],
+      "logo_width_px": 352.0,
+      "logo_height_px": 346.0701,
+      "minimum_supported_display_width_px": 352,
+      "render_validation": {
+        "jostLoaded": true,
+        "issues": [],
+        "copyVerified": true
+      }
+    },
+    {
+      "id": "06-single-choice-cta",
+      "copy": [
+        "BURS DOSYASI / 001",
+        "GKS-UIC’de ikinci üniversite tercihi yok.",
+        "1 ÜNİVERSİTE",
+        "1 BÖLÜM",
+        "Birden fazla üniversiteye başvurmak GKS değerlendirmesinden çıkarılmana neden olabilir.",
+        "Türkiye’den başvurabileceğin programları, gerekli belgeleri ve son tarihleri birlikte kontrol edelim.",
+        "Ücretsiz ön görüşme"
+      ],
+      "final_file": "export/06.png",
+      "final_sha256": "7a3b6e66af03694cd2976b79fe06b5bcef704a280eee03fca7e460843ec07e49",
+      "original_file": "original/06.png",
+      "original_sha256": "7a3b6e66af03694cd2976b79fe06b5bcef704a280eee03fca7e460843ec07e49",
+      "source_file": "source/06.svg",
+      "source_sha256": "8d6ac10fc648c36058e436ab3f7f90ca8df379ea94210398a0e5ec4938f73ed7",
+      "editable_html_file": "source/06.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "canonical_lockup_id": "P-01/dark",
+      "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_lockup_file": "assets/lockups/p-01-primary-stacked-dark.svg",
+      "logo_x_y_px": [
+        628.0,
+        912.41
+      ],
+      "logo_width_px": 380.0,
+      "logo_height_px": 373.5984,
+      "minimum_supported_display_width_px": 352,
+      "render_validation": {
+        "jostLoaded": true,
+        "issues": [],
+        "copyVerified": true
+      }
+    }
+  ]
+}
