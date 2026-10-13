@@ -9,7 +9,7 @@
   "exact_copy": {
     "01-the-scholarship-hook": [
       "BURS DOSYASI / 001",
-      "Kore devlet bursunu kaçırdın mı?",
+      "Kore devlet bursunu kaçırdım diye üzülme.",
       "30 Eylül’de büyükelçilik başvuruları kapandı.",
       "Ama üniversite yolunda Ekim son tarihleri var.",
       "GKS-UIC 2027",
@@ -131,18 +131,18 @@
       "id": "01-the-scholarship-hook",
       "copy": [
         "BURS DOSYASI / 001",
-        "Kore devlet bursunu kaçırdın mı?",
+        "Kore devlet bursunu kaçırdım diye üzülme.",
         "30 Eylül’de büyükelçilik başvuruları kapandı.",
         "Ama üniversite yolunda Ekim son tarihleri var.",
         "GKS-UIC 2027",
         "Türkiye’den başvuru mümkün."
       ],
       "final_file": "export/01.png",
-      "final_sha256": "2bfb2445fcc08507b766f624026ed06cadf382f3e57972a8c2a0b8d9d9ff7ffd",
+      "final_sha256": "47a44991d7c2e02d7b549244126d11717e2ecb23e3030f7ba070e7b64dbdfa8c",
       "original_file": "original/01.png",
-      "original_sha256": "2bfb2445fcc08507b766f624026ed06cadf382f3e57972a8c2a0b8d9d9ff7ffd",
+      "original_sha256": "47a44991d7c2e02d7b549244126d11717e2ecb23e3030f7ba070e7b64dbdfa8c",
       "source_file": "source/01.svg",
-      "source_sha256": "6e50cdb01c992725b5ee8c96edc4a649be0d407e74cd58b6a7c885e80c9b5395",
+      "source_sha256": "8e1ef348db8fa3c2536c03104d16776b3d389f7b8fa6138855a3eb1a1f22d7ef",
       "editable_html_file": "source/01.html",
       "dimensions": [
         1080,
