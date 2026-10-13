@@ -15,7 +15,7 @@ Bu checklist Work/Codex içindir; **OpenCode üretim yapmak için Codex'in açı
 beklemek zorunda değildir**. Seçilen OpenCode modeli için
 [EPHEMERAL.md](../work/EPHEMERAL.md): geçici yerel üretim, doğrulama sonrası temizlik;
 ücretli uzak sunucu gerekmez. Uzak execution host yalnız isteğe bağlı alternatiftir.
-Her iki ortam aynı GitHub kaynaklarına ve PR/merge izni kurallarına bağlıdır.
+Her iki ortam aynı GitHub kaynaklarına ve exact-head checked-merge kurallarına bağlıdır.
 
 1. ChatGPT Work/Codex'te **Work in → Cloud → Create environment** seçin.
 2. GitHub bağlantısına `cinegitim/design` erişimi verin; güncel `main`i kullanın.
@@ -39,7 +39,8 @@ Her iki ortam aynı GitHub kaynaklarına ve PR/merge izni kurallarına bağlıd�
 > üzerine yazma. Araç sürümlerini, font yüklemesini, beş PNG ölçüsünü ve audit
 > sonucunu raporla. Linux/Chromium çıktısını mevcut macOS teslimiyle gerçek görsel
 > incelemeyle karşılaştır; byte-identical olduğunu varsayma. Önemli test kanıtlarını
-> repoya ekleyen bir PR aç, kendin merge etme. Kullanılabilir görsel araçlarını açıkla.
+> repoya ekleyen bir PR aç; PUBLISHING.md'deki exact-head zorunlu denetimler ve teknik
+> düzeltmelerden sonra checked merge yap, yayını doğrula. Kullanılabilir görsel araçlarını açıkla.
 
 Bu test PR'ı ve insan incelemesi tamamlandığında cutover kaydı eklenir. O zamana
 kadar yerel klasörler silinmez. Bulut VM önbelleği, Actions artifact'i veya sohbet

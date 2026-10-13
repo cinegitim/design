@@ -12,4 +12,4 @@ Steps: resolve the exact brand from the brief and metadata/decisions, never modi
 
 **Locked logo gate:** if `brands/<slug>/brand.json` has `canonicalLogo.locked`, `/brand-refine` does **not** touch the logo. The canonical asset is immutable — not re-traced, not re-fitted, not smoothed, not simplified, not re-typeset. If the refinement intent targets the logo itself, say so plainly, refuse, and point at what can be refined instead (application, layout, colour use, typography). Changing a canonical logo requires an explicit new human decision and a new record in `brands/<slug>/decisions/`. Run `studio/tools/verify-canonical-logo.sh` to confirm it is untouched.
 
-Finish via `studio/workflow/PUBLISHING.md`: a new branch and open PR. Wait for explicit authorization to merge that PR; verify Pages only after an authorized publication.
+Finish via `studio/workflow/PUBLISHING.md`: new branch → PR → exact-head required checks → lossless technical corrections → rerun checks → checked merge without another confirmation → verify Pages. Honor explicit PR holds; creative/identity approval remains human-only.

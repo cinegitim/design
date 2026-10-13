@@ -1,6 +1,6 @@
 ---
 name: brand-studio
-description: Create, refine or apply visual brand identities and campaign assets in ChatGPT Work or Codex. Follow the shared Brand Studio methodology, exact approved assets and human approval gates; deliver on a separate GitHub branch and unmerged PR.
+description: Create, refine or apply visual brand identities and campaign assets in ChatGPT Work or Codex. Follow the shared methodology, exact approved assets and human creative gates; deliver via a separate branch, checked PR merge and verified publication.
 ---
 
 # Brand Studio — Work / Codex adapter
@@ -31,5 +31,8 @@ connector is absent, work vector-first or disclose the blocked raster step.
 Headless rendering uses the pinned Playwright recipe, not a desktop browser tool.
 
 For production/delivery also read `.agents/skills/cloud-delivery/SKILL.md`.
-Deliver an open PR. Never merge any work without explicit user authorization for
-that PR; creative acceptance and merge authorization are separate gates.
+Deliver through `studio/workflow/PUBLISHING.md`: open a PR, inspect required exact-head
+checks, resolve technical conflicts/corrections, rerun checks, then merge without
+an additional confirmation when all checks pass and no substantive blocker remains.
+An explicit user hold leaves that PR open. Creative/identity approval, locked-artwork
+changes and social publication remain separate human gates; CI is not aesthetic approval.

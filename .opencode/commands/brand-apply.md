@@ -35,4 +35,4 @@ If `brands/<slug>/brand.json` has `canonicalLockups.locked`:
 
 If the logo is not locked, follow references/image-production.md normally.
 
-Finish via `studio/workflow/PUBLISHING.md`: a new branch and open PR. Wait for explicit authorization to merge that PR; verify Pages only after an authorized publication.
+Finish via `studio/workflow/PUBLISHING.md`: new branch → PR → exact-head required checks → lossless technical corrections → rerun checks → checked merge without another confirmation → verify Pages. Honor explicit PR holds; creative/identity approval remains human-only.

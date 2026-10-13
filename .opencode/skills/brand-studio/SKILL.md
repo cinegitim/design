@@ -11,7 +11,9 @@ Paths in this skill are relative to this SKILL.md directory.
 
 Shared execution contract: read root `AGENTS.md` and
 `studio/workflow/PUBLISHING.md`. Use a new branch and isolated checkout for each
-production request; deliver an unmerged PR until the user authorizes that merge.
+production request; follow `studio/workflow/PUBLISHING.md` for required exact-head
+checks, lossless technical fixes, checked merge without another confirmation and
+verified delivery. Explicit PR holds and human creative/identity gates remain.
 Resolve brands by explicit brief/metadata/decisions, never modification time.
 The OpenCode backend/model names below apply only in OpenCode; Work/Codex use
 the thin adapter and tool mapping in `studio/work/README.md`. The creative

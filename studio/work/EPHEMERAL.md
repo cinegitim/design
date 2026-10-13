@@ -5,12 +5,16 @@ alanında üretir. Ücretli VM yok. Her host'ta bir ana geçici alan; her aktif 
 küçük, izole bir alt alan ve yeni branch. Gerçek RAM disk değildir; klasör sayısı
 token tasarrufu sağlamaz. Script rutin işlemleri ve uzun logları azaltır.
 
+**Kalıcı küçük istisna:** ortak talimat/araç kaynakları [BASELINE.md](BASELINE.md)
+uyarınca geçici kökün dışında bir kez saklanır. Marka dosyaları ve teslimler bu
+temele alınmaz; değişmeyen kaynak blob'ları yeni işte tekrar indirilmez.
+
 ```text
 OpenCode: geçici kök/tasks/iş-a ──────┐
                                     ├─ GitHub kaynak + branch/PR + kısa handoff
 Codex: kendi geçici kökü/tasks/iş-b ──┘
+       → PR / exact-head zorunlu CI / teknik düzeltmeler → checked merge → Pages doğrula
        → exact SHA + bağımsız byte kontrolü + PR CI → yalnız iş alanını temizle
-       → açık PR / insan incelemesi → ayrı merge izni → Pages
 ```
 
 RAM veya sohbet hafızası paylaşılmaz. GitHub senkronizasyon/arşiv kaynağıdır;
@@ -34,12 +38,19 @@ export BS="$BRAND_STUDIO_TEMP_ROOT/control/ephemeral.py"
 Sonraki işlemler: `python3 "$BS" ...`. `--root /seçilen/geçici/alan` ile tek bir
 özel kök seçilebilir. Alan mevcut ve doluysa manager onu sahiplenmez. Root özel
 izinli (700) ve ownership marker'lıdır. Küçük launcher, task kayıtları ve hash
-özetleri tutulur; proje kaynakları yalnız `tasks/` içinde bulunur. Bu küçük kontrol
+özetleri tutulur; üretim kaynakları `tasks/` içinde bulunur, ortak temel ayrı kalıcı
+baseline'da saklanır. Bu küçük kontrol
 dosyaları veya OpenCode'un global oturum/cache'leri için “sıfır yerel byte” iddiası yok.
 Temp alan OS tarafından da silinebilir; bu yüzden çalışırken düzenli commit/push gerekir.
 Kurulu control/ launcher, override verilmezse kendi kökünü kullanır. Scriptin yeni
 sürümüne geçmek için task'lar duruyorken control/ kopyasını açıkça güncelleyin; init
 eski launcher'ın üstüne sessizce yazmaz.
+
+Bir kez `python3 "$BS" calibrate` çalıştırın; bundan sonra sürümü kayıtlı kalıcı
+launcher `~/.local/share/brand-studio/baseline/ephemeral.py` kullanılabilir.
+`BRAND_STUDIO_TEMP_ROOT` seçiminizi koruyun veya her çağrıya `--root` verin.
+`start` artık varsayılan olarak baseline'ı kullanır; `--no-baseline` bu yolu
+bilinçli olarak kapatır. `BRAND_STUDIO_BASELINE_ROOT` kalıcı yol override'ıdır.
 
 Codex kendi cloud workspace'inde aynı scripti kullanabilir. Mevcut platform checkout'u
 manager tarafından silinmez; çalışma manager-owned ayrı clone'a alınır. Platformun
@@ -63,6 +74,10 @@ fetch eder. Bu bant genişliği ve geçici disk kullanır; sıfır indirme deği
 Her task bağımsız clone'dur; ortak bare repo/worktree cache'i kullanılmaz. Böylece
 task silinince `.git` object store'u da silinir. Legacy worktree'leri kullanmak,
 kaynakları eski ortak Git object store'unda bırakacağı için yeni modelin parçası değil.
+Baseline'dan doğrulanmış blob'lar clone'un **kendi** object store'una yazılır;
+ortak alternates, hardlink veya çalışma dosyası symlink'i yoktur. Her iş başlangıcı
+yeni main commit/tree metadatasını alır; yalnız değişen ortak kaynak içeriği yüklenir.
+Marka kaynaklarının alınması ve son bağımsız koruma fetch'i bu optimizasyonun dışındadır.
 
 Üretim sonrası:
 
@@ -74,7 +89,10 @@ kaynakları eski ortak Git object store'unda bırakacağı için yeni modelin pa
 4. `python3 "$BS" publish yeni-is-20261010` — yalnız temiz committed branch'i push eder.
    Network/conflict durumunda retry/force yok, dosyalar korunur.
 5. `gh pr create --repo cinegitim/design --base main --head <JSON branch>`.
-   PR'ın exact HEAD'inde `submitted-files` kontrolünün geçmesini bekleyin; açık bırakın.
+   PR'ın exact HEAD'inde tüm zorunlu kontrollerin geçmesini bekleyin. PUBLISHING.md
+   uyarınca teknik düzeltmeleri kayıpsız uygulayıp tekrar denetleyin; esaslı blocker
+   veya açık hold yoksa ek merge onayı istemeden checked merge yapın, yayını doğrulayın.
+   Branch'i cleanup bitene kadar koruyun; başarısız/bekleyen CI varsa PR açık kalır.
 
 ## Güvenli tamamlamanın tek komutu
 
@@ -89,8 +107,11 @@ python3 "$BS" cleanup yeni-is-20261010 --pr 123 --apply
 ```
 
 Bu explicit tamamlanma komutu, doğrulama sonrası temizliği otomatik yürütür; zamanlı
-daemon/startup silmesi değildir. `--apply` için exact branch/SHA ile açık PR, `main`
-hedefi ve passing `submitted-files` CI zorunludur. **Merge gerekmez ve yapılmaz.**
+daemon/startup silmesi değildir. `--apply` için exact branch/SHA ile OPEN veya MERGED
+PR, `main` hedefi ve passing exact-head `submitted-files` CI zorunludur. MERGED PR'ın
+merge commit'inin güncel main geçmişinde olduğu API ile ayrıca doğrulanır. Cleanup
+merge yapmaz: normal sıra checked merge → yayın doğrulama → cleanup. Güvenle
+arşivlenen held OPEN PR da temizlenebilir; merge cleanup'ın byte koruma kapısını kaldırmaz.
 
 Kapı ayrıca: remote HEAD = local HEAD; bağımsız fetch + Git fsck; her blob SHA-256;
 materialized dosyalarla byte/mode eşitliği; dirty/staged/untracked/**ignored** dosya
@@ -120,7 +141,8 @@ OpenCode PR'ı push edip kısa handoff'u commit eder. Kullanıcı Codex'e:
 
 > PR #123'teki işe devam et. Handoff'u oku; aynı markanın approved kaynaklarıyla
 > çalış. `--base publish/opencode-yeni-is-20261010 --executor codex` ile yeni task
-> branch/clone aç. Değişiklikleri incele, yeni PR aç; eskisini ezme veya merge etme.
+> branch/clone aç. Değişiklikleri incele, yeni PR aç; eskisini ezme. Yeni PR için
+> PUBLISHING.md'nin checked-merge kurallarını uygula; parent/held PR'ı otomatik kapatma.
 
 Codex GitHub'dan aynı bytes'ı alır, kendi yeni branch'ine yazar. Parent PR merge
 edilmemişse yeni PR önceki değişiklikleri de içerir; PR body'ye dependency/supersession

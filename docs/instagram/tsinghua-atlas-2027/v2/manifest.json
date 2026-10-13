@@ -1,0 +1,738 @@
+{
+  "title": "Tsinghua Üniversitesi — 2027 lisans başvuru carousel — V2",
+  "status": "HUMAN CREATIVE REVIEW PENDING",
+  "checked_on": "2026-10-10",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "color_space": "sRGB (embedded ICC profile)",
+  "brand": "asyada-egitim",
+  "brand_system_note": "Approved identity metadata and exact lockups used; no full brand-system approval inferred.",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "font": {
+    "file": "assets/Jost-VF.ttf",
+    "sha256": "6343b70971000b04c5d401c96ae08ce371086135e999d5e1e1413039c0213076",
+    "license": "SIL Open Font License 1.1"
+  },
+  "canonical_lockups": {
+    "P-01/light": {
+      "file": "assets/p-01-light.svg",
+      "sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "minimum_display_width_px": 352
+    },
+    "P-01/dark": {
+      "file": "assets/p-01-dark.svg",
+      "sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "minimum_display_width_px": 352
+    },
+    "D-04/light": {
+      "file": "assets/d-04-light.svg",
+      "sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "minimum_display_width_px": 200
+    },
+    "D-04/dark": {
+      "file": "assets/d-04-dark.svg",
+      "sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "minimum_display_width_px": 200
+    }
+  },
+  "slides": [
+    {
+      "id": "01-cover",
+      "final_file": "png/01.png",
+      "final_sha256": "4dd16ef065c96592b6959c2ae5ba3df7a7e2c3e4aef71d136ee976c661d20277",
+      "original_file": "originals/01.png",
+      "original_sha256": "da7707efac4638121176c1b46eafd3c7778aa005853b6be93c666e3d34f3613f",
+      "source_file": "source/01.svg",
+      "source_sha256": "1b63cbe28d61e64f8691698f3601a7621fa1f29d659742e79d78bd8947930fbf",
+      "editable_html_file": "source/01.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "copy": [
+        "TSINGHUA · ÜNİVERSİTE ATLASI",
+        "01 / 07",
+        "Tsinghua",
+        "Üniversitesi",
+        "2027 LİSANS BAŞVURU REHBERİ",
+        "PEKİN’DE KÜRESEL ÖLÇEKTE BİR AKADEMİK EKOSİSTEM.",
+        "SIRALAMALAR · PROGRAMLAR",
+        "BAŞVURU TAKVİMİ · ÜCRET · BURS"
+      ],
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_lockup_file": "assets/p-01-light.svg",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_x_y_px": [
+        72,
+        956
+      ],
+      "logo_width_px": 376,
+      "logo_height_px": 369.6658132676,
+      "minimum_supported_display_width_px": 352,
+      "photo_files": [
+        "main-building.jpg"
+      ],
+      "render_validation": {
+        "jostLoaded": true,
+        "issues": [],
+        "browser": "Chromium 141.0.7390.37",
+        "images": [
+          {
+            "src": "../assets/main-building.jpg",
+            "width": 3264,
+            "height": 2448
+          },
+          {
+            "src": "../assets/p-01-light.svg",
+            "width": 1021,
+            "height": 1004
+          }
+        ],
+        "textOverflows": [],
+        "dateOverlaps": []
+      }
+    },
+    {
+      "id": "02-subject-rankings",
+      "final_file": "png/02.png",
+      "final_sha256": "ca110e1e34862a0ca75c3529917dde081600dcffa1c438cb49ecf5d95d2e93b4",
+      "original_file": "originals/02.png",
+      "original_sha256": "7bfd47555297068acad4d8fc9b6fa15e89261dd6f55db784a8927968e4708136",
+      "source_file": "source/02.svg",
+      "source_sha256": "482a0898a3fdd0e1f16b85e96e040f5524290c2ac582ec0d1cd85eb6c0a733a5",
+      "editable_html_file": "source/02.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "copy": [
+        "02 · QS ALAN SIRALAMALARI",
+        "2026",
+        "Altı alanda",
+        "ilk 10’da.",
+        "KİMYA BİNASI · TSINGHUA",
+        "DÜNYA SIRALAMASI · QS 2026",
+        "=7",
+        "Çevre",
+        "Bilimleri",
+        "01",
+        "8",
+        "İnşaat ve Yapı",
+        "Mühendisliği",
+        "02",
+        "9",
+        "Mimarlık ve",
+        "Yapılı Çevre",
+        "03",
+        "9",
+        "Malzeme",
+        "Bilimleri",
+        "04",
+        "10",
+        "Veri Bilimi ve",
+        "Yapay Zekâ",
+        "05",
+        "10",
+        "Kimya",
+        "Mühendisliği",
+        "06",
+        "QS World University Rankings by Subject · Dünya sıralaması"
+      ],
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_lockup_file": "assets/d-04-light.svg",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_x_y_px": [
+        72,
+        1235
+      ],
+      "logo_width_px": 220,
+      "logo_height_px": 84.2212131892,
+      "minimum_supported_display_width_px": 200,
+      "photo_files": [
+        "chemistry-building.jpg"
+      ],
+      "render_validation": {
+        "jostLoaded": true,
+        "issues": [],
+        "browser": "Chromium 141.0.7390.37",
+        "images": [
+          {
+            "src": "../assets/chemistry-building.jpg",
+            "width": 1280,
+            "height": 960
+          },
+          {
+            "src": "../assets/d-04-light.svg",
+            "width": 1315,
+            "height": 503
+          }
+        ],
+        "textOverflows": [],
+        "dateOverlaps": []
+      }
+    },
+    {
+      "id": "03-global-rankings",
+      "final_file": "png/03.png",
+      "final_sha256": "606f92678d285f962539b94cd7ece20e6c5482354e409dd841c8baf2bd472941",
+      "original_file": "originals/03.png",
+      "original_sha256": "7e3d201c8f4d57c20628aa9e8b87eebb8af2ebb80a6c4e4529efba69966f4bb9",
+      "source_file": "source/03.svg",
+      "source_sha256": "77f4f480ddeac18985d01979d80c65e39b44e5920b7686e3407341a8ab1eaa32",
+      "editable_html_file": "source/03.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "copy": [
+        "03 · KÜRESEL SIRALAMALAR",
+        "2027",
+        "Bir üniversite.",
+        "Üç küresel ölçüt.",
+        "Farklı metodolojiler · ayrı edisyonlar",
+        "#14",
+        "QS",
+        "World University",
+        "Rankings",
+        "2027",
+        "#11",
+        "THE",
+        "World University",
+        "Rankings",
+        "2027",
+        "#6",
+        "U.S. News",
+        "Best Global",
+        "Universities",
+        "2026–2027",
+        "Sıralamalar farklı metodolojiler kullanır; doğrudan birbirinin yerine geçmez."
+      ],
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "canonical_lockup_file": "assets/d-04-dark.svg",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_x_y_px": [
+        72,
+        1235
+      ],
+      "logo_width_px": 220,
+      "logo_height_px": 84.2212131892,
+      "minimum_supported_display_width_px": 200,
+      "photo_files": [
+        "grand-auditorium.jpg"
+      ],
+      "render_validation": {
+        "jostLoaded": true,
+        "issues": [],
+        "browser": "Chromium 141.0.7390.37",
+        "images": [
+          {
+            "src": "../assets/grand-auditorium.jpg",
+            "width": 1280,
+            "height": 960
+          },
+          {
+            "src": "../assets/d-04-dark.svg",
+            "width": 1315,
+            "height": 503
+          }
+        ],
+        "textOverflows": [],
+        "dateOverlaps": []
+      }
+    },
+    {
+      "id": "04-english-hsk",
+      "final_file": "png/04.png",
+      "final_sha256": "56bb6e6bd3092f748ee57564b8645a3b738151a97f5b6de45c8c2c6a52d9e3e1",
+      "original_file": "originals/04.png",
+      "original_sha256": "4576ebc18e3f2882369803c6bc496b62589e9753a37b84d556d0c0baf0d4ddea",
+      "source_file": "source/04.svg",
+      "source_sha256": "cc7938d22bc04dc72977935ce80491848fdc054ba99f5bba5aeb13f2d5bee677",
+      "editable_html_file": "source/04.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "copy": [
+        "ESKİ KÜTÜPHANE · TSINGHUA",
+        "04 · PROGRAMLAR + DİL",
+        "İngilizce",
+        "& HSK",
+        "2027’DE DUYURULAN ÜÇ TAMAMEN İNGİLİZCE LİSANS PROGRAMI",
+        "01",
+        "Global Talents in Science",
+        "and Engineering",
+        "02",
+        "Urban Regeneration",
+        "and Design",
+        "03",
+        "Politics, Economics and Sociology",
+        "for Global Leaders in Smart Society",
+        "ÇİNCE–İNGİLİZCE PROGRAMLAR",
+        "HSK 5+",
+        "Dinleme, Okuma ve Yazma puanlarının",
+        "her biri 60’ın üzerinde olmalı.",
+        "TAMAMEN İNGİLİZCE PROGRAMLARDA",
+        "ÇİNCE YETERLİLİK KANITI GEREKMEZ.",
+        "Ana dili İngilizce olmayanlar resmî",
+        "İngilizce sınav sonucu sunmalıdır.",
+        "TOEFL / IELTS gibi sonuçlar kabul edilir."
+      ],
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_lockup_file": "assets/d-04-light.svg",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_x_y_px": [
+        438,
+        1238
+      ],
+      "logo_width_px": 220,
+      "logo_height_px": 84.2212131892,
+      "minimum_supported_display_width_px": 200,
+      "photo_files": [
+        "old-library.jpg"
+      ],
+      "render_validation": {
+        "jostLoaded": true,
+        "issues": [],
+        "browser": "Chromium 141.0.7390.37",
+        "images": [
+          {
+            "src": "../assets/old-library.jpg",
+            "width": 3264,
+            "height": 2448
+          },
+          {
+            "src": "../assets/d-04-light.svg",
+            "width": 1315,
+            "height": 503
+          }
+        ],
+        "textOverflows": [],
+        "dateOverlaps": []
+      }
+    },
+    {
+      "id": "05-deadlines",
+      "final_file": "png/05.png",
+      "final_sha256": "8d8c70df01a6765f823f0c1ecbe3c04f56f6988a4462478a132bfc233b4bd39b",
+      "original_file": "originals/05.png",
+      "original_sha256": "1b5f86183b3f5325cc8448044047476ceb5a9ecbad132509ea905d0525f2ca92",
+      "source_file": "source/05.svg",
+      "source_sha256": "a642a976903019e0fa7bf1f98e5e52d9bdbcf91ddf680201eb50b587e5837ff0",
+      "editable_html_file": "source/05.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "copy": [
+        "05 · 2027 BAŞVURU TAKVİMİ",
+        "PEKİN SAATİ",
+        "Takvimini",
+        "işaretle.",
+        "1. TUR · KAPANIŞ",
+        "20",
+        "KASIM",
+        "2026",
+        "17.00 · PEKİN SAATİ",
+        "2. TUR · KAPANIŞ",
+        "28",
+        "ŞUBAT",
+        "2027",
+        "17.00 · PEKİN SAATİ",
+        "Bazı programlar yalnızca belirli turda açıktır; güncel program kılavuzunu kontrol edin."
+      ],
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "canonical_lockup_file": "assets/d-04-dark.svg",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_x_y_px": [
+        72,
+        1238
+      ],
+      "logo_width_px": 220,
+      "logo_height_px": 84.2212131892,
+      "minimum_supported_display_width_px": 200,
+      "photo_files": [
+        "quantum-information-center.jpg"
+      ],
+      "render_validation": {
+        "jostLoaded": true,
+        "issues": [],
+        "browser": "Chromium 141.0.7390.37",
+        "images": [
+          {
+            "src": "../assets/quantum-information-center.jpg",
+            "width": 1280,
+            "height": 960
+          },
+          {
+            "src": "../assets/d-04-dark.svg",
+            "width": 1315,
+            "height": 503
+          }
+        ],
+        "textOverflows": [],
+        "dateOverlaps": []
+      }
+    },
+    {
+      "id": "06-tuition-scholarships",
+      "final_file": "png/06.png",
+      "final_sha256": "ab1bcc5fbb4831224a9cf9c1177e942b2e45add72b8dfa1819a6f89c527c11a1",
+      "original_file": "originals/06.png",
+      "original_sha256": "24a2c7bdf1cee2570510dd0fd92af6f351eca30bc48b1a42ffad01824abcc446",
+      "source_file": "source/06.svg",
+      "source_sha256": "9af2dc65e3da6679dda526b00a36f690dabc63ef9af2cb50e6eff67093da33ef",
+      "editable_html_file": "source/06.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "copy": [
+        "06 · ÜCRET + BURS",
+        "RMB",
+        "Ücretler ve burslar",
+        "Öğrenim ücreti programa göre değişir.",
+        "SEÇİLİ ÇİNCE–İNGİLİZCE",
+        "PROGRAMLAR",
+        "¥30.000",
+        "/ YIL · ÖĞRENİM ÜCRETİ",
+        "GLOBAL TALENTS IN",
+        "SCIENCE & ENGINEERING",
+        "¥100.000",
+        "/ YIL · ÖĞRENİM ÜCRETİ",
+        "~45%",
+        "2026’DA ULUSLARARASI LİSANS",
+        "BİRİNCİ SINIF ÖĞRENCİLERİ",
+        "Tsinghua International Undergraduate",
+        "Freshmen Scholarship aldı.",
+        "Tam, yarım ve kısmi öğrenim ücreti",
+        "bursları var; oran garanti değildir.",
+        "BAŞVURU ÜCRETİ",
+        "¥800",
+        "SAĞLIK SİGORTASI",
+        "¥800 / yıl",
+        "~%45 oranı 2026 kohortuna aittir; bireysel burs garantisi değildir."
+      ],
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_lockup_file": "assets/d-04-light.svg",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_x_y_px": [
+        72,
+        1239
+      ],
+      "logo_width_px": 220,
+      "logo_height_px": 84.2212131892,
+      "minimum_supported_display_width_px": 200,
+      "photo_files": [],
+      "render_validation": {
+        "jostLoaded": true,
+        "issues": [],
+        "browser": "Chromium 141.0.7390.37",
+        "images": [
+          {
+            "src": "../assets/d-04-light.svg",
+            "width": 1315,
+            "height": 503
+          }
+        ],
+        "textOverflows": [],
+        "dateOverlaps": []
+      }
+    },
+    {
+      "id": "07-cta",
+      "final_file": "png/07.png",
+      "final_sha256": "7c9cc01651b81fbacefb5d11fb008257e3cc7c3740e0e3728f2b617ca33a7cc5",
+      "original_file": "originals/07.png",
+      "original_sha256": "58670df26d7b2fc84cfd5df687118476c351e0652f6a485bf61457ff9ad01c83",
+      "source_file": "source/07.svg",
+      "source_sha256": "739ee480813913ea1d3f8cd303a4c0791c477a4cff9ba502097fb436fc33b169",
+      "editable_html_file": "source/07.html",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "copy": [
+        "Başvuru rotanı",
+        "birlikte çizelim.",
+        "Tsinghua 2027 lisans başvurusunu",
+        "adım adım değerlendirelim.",
+        "ÖN GÖRÜŞMENİ PLANLA  ↗"
+      ],
+      "canonical_lockup_id": "P-01/dark",
+      "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_lockup_file": "assets/p-01-dark.svg",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_x_y_px": [
+        72,
+        70
+      ],
+      "logo_width_px": 360,
+      "logo_height_px": 353.9353531285,
+      "minimum_supported_display_width_px": 352,
+      "photo_files": [
+        "campus-sport.jpg"
+      ],
+      "render_validation": {
+        "jostLoaded": true,
+        "issues": [],
+        "browser": "Chromium 141.0.7390.37",
+        "images": [
+          {
+            "src": "../assets/campus-sport.jpg",
+            "width": 1280,
+            "height": 880
+          },
+          {
+            "src": "../assets/p-01-dark.svg",
+            "width": 1021,
+            "height": 1004
+          }
+        ],
+        "textOverflows": [],
+        "dateOverlaps": []
+      }
+    }
+  ],
+  "exact_copy": {
+    "01-cover": [
+      "TSINGHUA · ÜNİVERSİTE ATLASI",
+      "01 / 07",
+      "Tsinghua",
+      "Üniversitesi",
+      "2027 LİSANS BAŞVURU REHBERİ",
+      "PEKİN’DE KÜRESEL ÖLÇEKTE BİR AKADEMİK EKOSİSTEM.",
+      "SIRALAMALAR · PROGRAMLAR",
+      "BAŞVURU TAKVİMİ · ÜCRET · BURS"
+    ],
+    "02-subject-rankings": [
+      "02 · QS ALAN SIRALAMALARI",
+      "2026",
+      "Altı alanda",
+      "ilk 10’da.",
+      "KİMYA BİNASI · TSINGHUA",
+      "DÜNYA SIRALAMASI · QS 2026",
+      "=7",
+      "Çevre",
+      "Bilimleri",
+      "01",
+      "8",
+      "İnşaat ve Yapı",
+      "Mühendisliği",
+      "02",
+      "9",
+      "Mimarlık ve",
+      "Yapılı Çevre",
+      "03",
+      "9",
+      "Malzeme",
+      "Bilimleri",
+      "04",
+      "10",
+      "Veri Bilimi ve",
+      "Yapay Zekâ",
+      "05",
+      "10",
+      "Kimya",
+      "Mühendisliği",
+      "06",
+      "QS World University Rankings by Subject · Dünya sıralaması"
+    ],
+    "03-global-rankings": [
+      "03 · KÜRESEL SIRALAMALAR",
+      "2027",
+      "Bir üniversite.",
+      "Üç küresel ölçüt.",
+      "Farklı metodolojiler · ayrı edisyonlar",
+      "#14",
+      "QS",
+      "World University",
+      "Rankings",
+      "2027",
+      "#11",
+      "THE",
+      "World University",
+      "Rankings",
+      "2027",
+      "#6",
+      "U.S. News",
+      "Best Global",
+      "Universities",
+      "2026–2027",
+      "Sıralamalar farklı metodolojiler kullanır; doğrudan birbirinin yerine geçmez."
+    ],
+    "04-english-hsk": [
+      "ESKİ KÜTÜPHANE · TSINGHUA",
+      "04 · PROGRAMLAR + DİL",
+      "İngilizce",
+      "& HSK",
+      "2027’DE DUYURULAN ÜÇ TAMAMEN İNGİLİZCE LİSANS PROGRAMI",
+      "01",
+      "Global Talents in Science",
+      "and Engineering",
+      "02",
+      "Urban Regeneration",
+      "and Design",
+      "03",
+      "Politics, Economics and Sociology",
+      "for Global Leaders in Smart Society",
+      "ÇİNCE–İNGİLİZCE PROGRAMLAR",
+      "HSK 5+",
+      "Dinleme, Okuma ve Yazma puanlarının",
+      "her biri 60’ın üzerinde olmalı.",
+      "TAMAMEN İNGİLİZCE PROGRAMLARDA",
+      "ÇİNCE YETERLİLİK KANITI GEREKMEZ.",
+      "Ana dili İngilizce olmayanlar resmî",
+      "İngilizce sınav sonucu sunmalıdır.",
+      "TOEFL / IELTS gibi sonuçlar kabul edilir."
+    ],
+    "05-deadlines": [
+      "05 · 2027 BAŞVURU TAKVİMİ",
+      "PEKİN SAATİ",
+      "Takvimini",
+      "işaretle.",
+      "1. TUR · KAPANIŞ",
+      "20",
+      "KASIM",
+      "2026",
+      "17.00 · PEKİN SAATİ",
+      "2. TUR · KAPANIŞ",
+      "28",
+      "ŞUBAT",
+      "2027",
+      "17.00 · PEKİN SAATİ",
+      "Bazı programlar yalnızca belirli turda açıktır; güncel program kılavuzunu kontrol edin."
+    ],
+    "06-tuition-scholarships": [
+      "06 · ÜCRET + BURS",
+      "RMB",
+      "Ücretler ve burslar",
+      "Öğrenim ücreti programa göre değişir.",
+      "SEÇİLİ ÇİNCE–İNGİLİZCE",
+      "PROGRAMLAR",
+      "¥30.000",
+      "/ YIL · ÖĞRENİM ÜCRETİ",
+      "GLOBAL TALENTS IN",
+      "SCIENCE & ENGINEERING",
+      "¥100.000",
+      "/ YIL · ÖĞRENİM ÜCRETİ",
+      "~45%",
+      "2026’DA ULUSLARARASI LİSANS",
+      "BİRİNCİ SINIF ÖĞRENCİLERİ",
+      "Tsinghua International Undergraduate",
+      "Freshmen Scholarship aldı.",
+      "Tam, yarım ve kısmi öğrenim ücreti",
+      "bursları var; oran garanti değildir.",
+      "BAŞVURU ÜCRETİ",
+      "¥800",
+      "SAĞLIK SİGORTASI",
+      "¥800 / yıl",
+      "~%45 oranı 2026 kohortuna aittir; bireysel burs garantisi değildir."
+    ],
+    "07-cta": [
+      "Başvuru rotanı",
+      "birlikte çizelim.",
+      "Tsinghua 2027 lisans başvurusunu",
+      "adım adım değerlendirelim.",
+      "ÖN GÖRÜŞMENİ PLANLA  ↗"
+    ]
+  },
+  "assets": {
+    "assets/Jost-OFL.txt": {
+      "sha256": "82b806b20fb9d8f2c64669c12a44efb87d27971e743f38a78365e83641626dd2",
+      "bytes": 4383
+    },
+    "assets/Jost-VF.ttf": {
+      "sha256": "6343b70971000b04c5d401c96ae08ce371086135e999d5e1e1413039c0213076",
+      "bytes": 134996
+    },
+    "assets/campus-sport.jpg": {
+      "sha256": "9431bc3baf80a59cc936af9f6a3f9ac5704a69bfc3a4cfe4302d43addd333293",
+      "bytes": 246305
+    },
+    "assets/chemistry-building.jpg": {
+      "sha256": "80e1217ae3e2feae923e7ef1e0811d2d71ea6392077c62b55a8ea883c8d48d25",
+      "bytes": 473003
+    },
+    "assets/d-04-dark.svg": {
+      "sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "bytes": 17305
+    },
+    "assets/d-04-light.svg": {
+      "sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "bytes": 17310
+    },
+    "assets/grand-auditorium.jpg": {
+      "sha256": "84ffcbce2951175d18f7590e1b52c0aa0c1203d2a6250151f3d9993313560718",
+      "bytes": 281343
+    },
+    "assets/main-building.jpg": {
+      "sha256": "bd31e4dcac078887514cf749aa449e6820798d54dffcdcecaf3a79807ec3da1e",
+      "bytes": 2220720
+    },
+    "assets/old-library.jpg": {
+      "sha256": "131887bc6ccbc96071ecf14bc12dc62a4a31a4c295c5f1ab355c73ce11b2478e",
+      "bytes": 3214158
+    },
+    "assets/p-01-dark.svg": {
+      "sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "bytes": 29271
+    },
+    "assets/p-01-light.svg": {
+      "sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "bytes": 29276
+    },
+    "assets/quantum-information-center.jpg": {
+      "sha256": "28af8d66a7914845c06f0c49d435879394651f6e59cd6092696742cbca8b2c1e",
+      "bytes": 429142
+    },
+    "assets/sRGB.icc": {
+      "sha256": "4efb3c60c4e17b496e818e7be18769804b36d11612bd754583bb1f2558aaa8dd",
+      "bytes": 588
+    }
+  },
+  "photograph_count": 6,
+  "photo_slide_count": 6,
+  "mobile_preview_files": [
+    "mobile-375/01.png",
+    "mobile-375/02.png",
+    "mobile-375/03.png",
+    "mobile-375/04.png",
+    "mobile-375/05.png",
+    "mobile-375/06.png",
+    "mobile-375/07.png"
+  ],
+  "mobile_preview_324_files": [
+    "mobile-324/01.png",
+    "mobile-324/02.png",
+    "mobile-324/03.png",
+    "mobile-324/04.png",
+    "mobile-324/05.png",
+    "mobile-324/06.png",
+    "mobile-324/07.png"
+  ],
+  "contact_sheet_file": "contact-sheet.png",
+  "mobile_324_contact_sheet_file": "mobile-324-contact-sheet.png",
+  "source_vs_final_contact_sheet_file": "source-vs-final-contact-sheet.png",
+  "revision_comparison_file": "revision-comparison.png",
+  "feed_cover_preview_file": "feed-cover-preview.png",
+  "caption_and_credits_file": "caption-and-credits.md",
+  "factual_source_report_file": "factual-source-report.md",
+  "quality_review_file": "quality-review.md",
+  "package_file": "package/tsinghua-atlas-2027-v2.zip"
+}

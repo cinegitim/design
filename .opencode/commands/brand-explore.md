@@ -11,4 +11,4 @@ Format: `<brand-slug> <round/instruction>`. Steps: resolve `brands/<brand-slug>/
 
 **Locked logo gate:** if `brands/<brand-slug>/brand.json` has `canonicalLogo.locked`, the logo is excluded from every exploration prompt and image model call. Exploration covers territories, textures, scenes and compositions only; the canonical SVG is composited afterward per references/image-production.md. Never let a model redraw, imitate or typeset a locked logo, and never let a generated result overwrite the canonical asset.
 
-Finish via `studio/workflow/PUBLISHING.md`: a new branch and open PR. Wait for explicit authorization to merge that PR; verify Pages only after an authorized publication.
+Finish via `studio/workflow/PUBLISHING.md`: new branch → PR → exact-head required checks → lossless technical corrections → rerun checks → checked merge without another confirmation → verify Pages. Honor explicit PR holds; creative/identity approval remains human-only.

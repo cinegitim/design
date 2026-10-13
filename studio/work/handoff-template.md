@@ -12,5 +12,5 @@
 - Actual inspected images / before-after comparisons:
 - Existing human decisions (link records; do not infer approval):
 - Remaining constraints / next step:
-- Delivery: open PR; merge authorization pending
-- After authorized merge only: merge SHA / Pages run / live URLs and hashes
+- Delivery: PR / exact checked HEAD / technical fixes / remaining blockers or explicit hold
+- After checked merge: merge SHA / Pages run / live URLs and hashes / cleanup receipt

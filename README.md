@@ -27,7 +27,8 @@ task clones (and their Git object stores) can be removed without merging the PR.
 This needs no paid VM, is not a RAM disk and does not erase legacy folders,
 OpenCode sessions or installed tool caches. Remote execution is optional.
 
-Every new production uses a separate branch/checkout and ends in an open PR.
-Merge only after explicit user authorization; existing GitHub Pages publication
-remains unchanged. Work reads repository skills explicitly when they are not
+Every new production uses a separate branch/checkout, then a PR with required checks.
+The standing policy is checked merge without another confirmation, followed by
+verified delivery; blocked/explicitly held PRs remain open. Existing Pages mechanics
+remain unchanged. Work reads repository skills explicitly when they are not
 auto-discovered; connecting GitHub alone does not install OpenCode commands.

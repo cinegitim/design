@@ -25,9 +25,11 @@ Known limits / unresolved compromises:
 
 Technical checks do NOT approve aesthetics, a logo or Instagram publication.
 Creative work: leave PR open until the human accepts the shown visuals.
-All work: leave PR open until the user explicitly authorizes merging this PR.
-Implementation authorization, visual acceptance and merge authorization are separate.
+All work: follow PUBLISHING.md's standing checked-merge policy without another confirmation.
+Exact-head required checks must pass; technical conflicts must be resolved and retested.
+Explicit PR holds, unresolved substantive review blockers and failed/pending CI leave it open.
+Visual/canonical acceptance and social publication remain separate human gates.
 
-## After authorized merge
+## After checked merge
 
 - [ ] Pages deployment and live URLs/hashes verified.

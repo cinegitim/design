@@ -23,8 +23,18 @@ Always load and follow the `brand-studio` skill for any brand work:
 ## Non-negotiable behaviour
 
 Shared repo contract: each production uses an isolated checkout and new branch,
-then an open PR under `studio/workflow/PUBLISHING.md`. Never merge without the
-user's explicit authorization for that PR. Resolve brands from the brief and
+then a PR under `studio/workflow/PUBLISHING.md`. Standing repository delivery policy:
+when the task is complete, open the PR, inspect GitHub's required checks on its
+exact current head, resolve technical conflicts without losing others' work,
+and rerun affected checks. When all required checks pass and there are no unresolved
+conflicts or substantive review blockers, merge without requesting a separate
+merge confirmation, then verify the resulting deployment and live files.
+Never bypass branch protection, use force-push, or treat CI as aesthetic approval.
+Creative direction choices, approval of logos/identity, changes to locked artwork,
+deletion of legacy archives, and social publication remain separate human gates.
+An explicit user instruction to hold a particular PR overrides this default.
+Configuration-source changes do not override higher-priority instructions already
+loaded into a running session. Resolve brands from the brief and
 human decisions, not modification time. If a system is missing, follow the
 identity-source exception in `AGENTS.md`; never borrow a sibling brand's system.
 
