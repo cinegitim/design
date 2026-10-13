@@ -1,0 +1,2733 @@
+{
+  "campaign": "BURS DOSYASI / 001 — GKS 2027",
+  "generated": "2026-10-13T04:38:42",
+  "slides": {
+    "01": {
+      "slide": "01-the-scholarship-hook",
+      "geometry_ok": true,
+      "copy_ok": true,
+      "jost_loaded": true,
+      "metrics": {
+        "212px": {
+          "asc": 227,
+          "desc": 80
+        },
+        "16px": {
+          "asc": 17,
+          "desc": 6
+        },
+        "30px": {
+          "asc": 32,
+          "desc": 11
+        },
+        "78px": {
+          "asc": 83,
+          "desc": 29
+        },
+        "35px": {
+          "asc": 37,
+          "desc": 13
+        },
+        "47px": {
+          "asc": 50,
+          "desc": 18
+        },
+        "44px": {
+          "asc": 47,
+          "desc": 17
+        }
+      },
+      "errors": [],
+      "copy_missing": [],
+      "copy_extra": [],
+      "copy_mismatch": [],
+      "rects": [
+        {
+          "id": "deco-date",
+          "zone": "deco",
+          "x": 0,
+          "y": 636,
+          "w": 1080,
+          "h": 212,
+          "right": 1080,
+          "bottom": 848,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 43.81,
+              "y": 588,
+              "w": 992.36,
+              "h": 307,
+              "text": "30 EYLÜL"
+            }
+          ]
+        },
+        {
+          "id": "strike",
+          "zone": "deco",
+          "x": 88.01,
+          "y": 731.38,
+          "w": 903.98,
+          "h": 37.24,
+          "right": 991.99,
+          "bottom": 768.62,
+          "clipX": false,
+          "clipY": false,
+          "lines": []
+        },
+        {
+          "id": "sid",
+          "zone": "txt",
+          "x": 72,
+          "y": 64,
+          "w": 408.77,
+          "h": 64,
+          "right": 480.77,
+          "bottom": 128,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 103.59,
+              "y": 64,
+              "w": 377.17,
+              "h": 43,
+              "text": "BURS DOSYASI / 001"
+            }
+          ]
+        },
+        {
+          "id": "question",
+          "zone": "txt",
+          "x": 72,
+          "y": 176,
+          "w": 920,
+          "h": 162.22,
+          "right": 992,
+          "bottom": 338.22,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 160,
+              "w": 684.22,
+              "h": 112,
+              "text": "Kore devlet bursunu"
+            },
+            {
+              "x": 72,
+              "y": 241.11,
+              "w": 419.78,
+              "h": 112,
+              "text": "kaçırdın mı?"
+            }
+          ]
+        },
+        {
+          "id": "embassy-closed",
+          "zone": "txt",
+          "x": 72,
+          "y": 404,
+          "w": 820,
+          "h": 43.75,
+          "right": 892,
+          "bottom": 447.75,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 400,
+              "w": 690.33,
+              "h": 50,
+              "text": "30 Eylül’de büyükelçilik başvuruları kapandı."
+            }
+          ]
+        },
+        {
+          "id": "university-track",
+          "zone": "txt",
+          "x": 72,
+          "y": 496,
+          "w": 840,
+          "h": 107.16,
+          "right": 912,
+          "bottom": 603.16,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 110,
+              "y": 488,
+              "w": 688.11,
+              "h": 68,
+              "text": "Ama üniversite yolunda Ekim son"
+            },
+            {
+              "x": 110,
+              "y": 541.58,
+              "w": 250.59,
+              "h": 68,
+              "text": "tarihleri var."
+            }
+          ]
+        },
+        {
+          "id": "bottom",
+          "zone": "wrap",
+          "x": 72,
+          "y": 900.41,
+          "w": 936,
+          "h": 373.59,
+          "right": 1008,
+          "bottom": 1274,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 1157,
+              "w": 311.67,
+              "h": 64,
+              "text": "GKS-UIC 2027"
+            },
+            {
+              "x": 72,
+              "y": 1231,
+              "w": 396.03,
+              "h": 43,
+              "text": "Türkiye’den başvuru mümkün."
+            }
+          ]
+        },
+        {
+          "id": "gks-uic",
+          "zone": "txt",
+          "x": 72,
+          "y": 1157,
+          "w": 396.03,
+          "h": 64,
+          "right": 468.03,
+          "bottom": 1221,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 1157,
+              "w": 311.67,
+              "h": 64,
+              "text": "GKS-UIC 2027"
+            }
+          ]
+        },
+        {
+          "id": "tr-apply",
+          "zone": "txt",
+          "x": 72,
+          "y": 1231,
+          "w": 396.03,
+          "h": 43,
+          "right": 468.03,
+          "bottom": 1274,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 1231,
+              "w": 396.03,
+              "h": 43,
+              "text": "Türkiye’den başvuru mümkün."
+            }
+          ]
+        },
+        {
+          "id": "logo",
+          "zone": "logo",
+          "x": 628,
+          "y": 900.41,
+          "w": 380,
+          "h": 373.59,
+          "right": 1008,
+          "bottom": 1274,
+          "clipX": false,
+          "clipY": false,
+          "lines": []
+        }
+      ]
+    },
+    "02": {
+      "slide": "02-three-deadlines",
+      "geometry_ok": true,
+      "copy_ok": true,
+      "jost_loaded": true,
+      "metrics": {
+        "54px": {
+          "asc": 58,
+          "desc": 20
+        },
+        "16px": {
+          "asc": 17,
+          "desc": 6
+        },
+        "58px": {
+          "asc": 62,
+          "desc": 22
+        },
+        "46px": {
+          "asc": 49,
+          "desc": 17
+        },
+        "30px": {
+          "asc": 32,
+          "desc": 11
+        },
+        "44px": {
+          "asc": 47,
+          "desc": 17
+        },
+        "37px": {
+          "asc": 40,
+          "desc": 14
+        },
+        "28px": {
+          "asc": 30,
+          "desc": 11
+        },
+        "24px": {
+          "asc": 26,
+          "desc": 9
+        }
+      },
+      "errors": [],
+      "copy_missing": [],
+      "copy_extra": [],
+      "copy_mismatch": [],
+      "rects": [
+        {
+          "id": "head",
+          "zone": "txt",
+          "x": 72,
+          "y": 64,
+          "w": 936,
+          "h": 116.63,
+          "right": 1008,
+          "bottom": 180.63,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 54,
+              "w": 671.34,
+              "h": 78,
+              "text": "GKS-UIC’de üç üniversitenin"
+            },
+            {
+              "x": 72,
+              "y": 112.31,
+              "w": 445.53,
+              "h": 78,
+              "text": "başvurusu sürüyor."
+            }
+          ]
+        },
+        {
+          "id": "entry-koreatech",
+          "zone": "wrap",
+          "x": 106,
+          "y": 202.63,
+          "w": 902,
+          "h": 436,
+          "right": 1008,
+          "bottom": 638.63,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 106,
+              "y": 195.63,
+              "w": 393.42,
+              "h": 84,
+              "text": "23 EKİM 2026"
+            },
+            {
+              "x": 106,
+              "y": 270.63,
+              "w": 273.27,
+              "h": 66,
+              "text": "KOREATECH"
+            },
+            {
+              "x": 106,
+              "y": 337.53,
+              "w": 436.19,
+              "h": 43,
+              "text": "Bilgisayar / Makine Mühendisliği"
+            }
+          ]
+        },
+        {
+          "id": "date-1",
+          "zone": "txt",
+          "x": 106,
+          "y": 208.63,
+          "w": 490,
+          "h": 58,
+          "right": 596,
+          "bottom": 266.63,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 106,
+              "y": 195.63,
+              "w": 393.42,
+              "h": 84,
+              "text": "23 EKİM 2026"
+            }
+          ]
+        },
+        {
+          "id": "name-1",
+          "zone": "txt",
+          "x": 106,
+          "y": 280.63,
+          "w": 490,
+          "h": 46.91,
+          "right": 596,
+          "bottom": 327.53,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 106,
+              "y": 270.63,
+              "w": 273.27,
+              "h": 66,
+              "text": "KOREATECH"
+            }
+          ]
+        },
+        {
+          "id": "prog-1",
+          "zone": "txt",
+          "x": 106,
+          "y": 341.53,
+          "w": 490,
+          "h": 36.59,
+          "right": 596,
+          "bottom": 378.13,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 106,
+              "y": 337.53,
+              "w": 436.19,
+              "h": 43,
+              "text": "Bilgisayar / Makine Mühendisliği"
+            }
+          ]
+        },
+        {
+          "id": "entry-ajou",
+          "zone": "wrap",
+          "x": 106,
+          "y": 664.63,
+          "w": 902,
+          "h": 196,
+          "right": 1008,
+          "bottom": 860.63,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 390,
+              "y": 675.13,
+              "w": 298.91,
+              "h": 64,
+              "text": "30 EKİM 2026"
+            },
+            {
+              "x": 390,
+              "y": 739.13,
+              "w": 253.45,
+              "h": 54,
+              "text": "Ajou University"
+            },
+            {
+              "x": 390,
+              "y": 801.13,
+              "w": 468.91,
+              "h": 41,
+              "text": "Yapay Zekâ ve Bilgisayar Mühendisliği"
+            }
+          ]
+        },
+        {
+          "id": "date-2",
+          "zone": "txt",
+          "x": 390,
+          "y": 685.13,
+          "w": 618,
+          "h": 44,
+          "right": 1008,
+          "bottom": 729.13,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 390,
+              "y": 675.13,
+              "w": 298.91,
+              "h": 64,
+              "text": "30 EKİM 2026"
+            }
+          ]
+        },
+        {
+          "id": "name-2",
+          "zone": "txt",
+          "x": 390,
+          "y": 739.13,
+          "w": 618,
+          "h": 54,
+          "right": 1008,
+          "bottom": 793.13,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 390,
+              "y": 739.13,
+              "w": 253.45,
+              "h": 54,
+              "text": "Ajou University"
+            }
+          ]
+        },
+        {
+          "id": "prog-2",
+          "zone": "txt",
+          "x": 390,
+          "y": 801.13,
+          "w": 618,
+          "h": 41,
+          "right": 1008,
+          "bottom": 842.13,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 390,
+              "y": 801.13,
+              "w": 468.91,
+              "h": 41,
+              "text": "Yapay Zekâ ve Bilgisayar Mühendisliği"
+            }
+          ]
+        },
+        {
+          "id": "entry-kookmin",
+          "zone": "wrap",
+          "x": 106,
+          "y": 886.63,
+          "w": 902,
+          "h": 196,
+          "right": 1008,
+          "bottom": 1082.63,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 383.81,
+              "y": 897.13,
+              "w": 298.91,
+              "h": 64,
+              "text": "30 EKİM 2026"
+            },
+            {
+              "x": 383.81,
+              "y": 961.13,
+              "w": 321.55,
+              "h": 54,
+              "text": "Kookmin University"
+            },
+            {
+              "x": 383.81,
+              "y": 1023.13,
+              "w": 85.84,
+              "h": 41,
+              "text": "Yazılım"
+            }
+          ]
+        },
+        {
+          "id": "date-3",
+          "zone": "txt",
+          "x": 383.81,
+          "y": 907.13,
+          "w": 624.19,
+          "h": 44,
+          "right": 1008,
+          "bottom": 951.13,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 383.81,
+              "y": 897.13,
+              "w": 298.91,
+              "h": 64,
+              "text": "30 EKİM 2026"
+            }
+          ]
+        },
+        {
+          "id": "name-3",
+          "zone": "txt",
+          "x": 383.81,
+          "y": 961.13,
+          "w": 624.19,
+          "h": 54,
+          "right": 1008,
+          "bottom": 1015.13,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 383.81,
+              "y": 961.13,
+              "w": 321.55,
+              "h": 54,
+              "text": "Kookmin University"
+            }
+          ]
+        },
+        {
+          "id": "prog-3",
+          "zone": "txt",
+          "x": 383.81,
+          "y": 1023.13,
+          "w": 624.19,
+          "h": 41,
+          "right": 1008,
+          "bottom": 1064.13,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 383.81,
+              "y": 1023.13,
+              "w": 85.84,
+              "h": 41,
+              "text": "Yazılım"
+            }
+          ]
+        },
+        {
+          "id": "footer",
+          "zone": "wrap",
+          "x": 106,
+          "y": 1108.63,
+          "w": 902,
+          "h": 131.34,
+          "right": 1008,
+          "bottom": 1239.97,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 106,
+              "y": 1129.63,
+              "w": 603.94,
+              "h": 35,
+              "text": "Son tarihler Kore saatine göredir. Belge teslim yöntemleri"
+            },
+            {
+              "x": 106,
+              "y": 1161.3,
+              "w": 267.39,
+              "h": 35,
+              "text": "üniversiteye göre değişir."
+            },
+            {
+              "x": 106,
+              "y": 1204.97,
+              "w": 267.05,
+              "h": 35,
+              "text": "13 Ekim 2026 itibarıyla."
+            }
+          ]
+        },
+        {
+          "id": "note-1",
+          "zone": "txt",
+          "x": 106,
+          "y": 1131.63,
+          "w": 610,
+          "h": 63.34,
+          "right": 716,
+          "bottom": 1194.97,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 106,
+              "y": 1129.63,
+              "w": 603.94,
+              "h": 35,
+              "text": "Son tarihler Kore saatine göredir. Belge teslim yöntemleri"
+            },
+            {
+              "x": 106,
+              "y": 1161.3,
+              "w": 267.39,
+              "h": 35,
+              "text": "üniversiteye göre değişir."
+            }
+          ]
+        },
+        {
+          "id": "note-2",
+          "zone": "txt",
+          "x": 106,
+          "y": 1204.97,
+          "w": 610,
+          "h": 35,
+          "right": 716,
+          "bottom": 1239.97,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 106,
+              "y": 1204.97,
+              "w": 267.05,
+              "h": 35,
+              "text": "13 Ekim 2026 itibarıyla."
+            }
+          ]
+        },
+        {
+          "id": "logo",
+          "zone": "logo",
+          "x": 768,
+          "y": 1139.86,
+          "w": 240,
+          "h": 91.88,
+          "right": 1008,
+          "bottom": 1231.73,
+          "clipX": false,
+          "clipY": false,
+          "lines": []
+        }
+      ]
+    },
+    "03": {
+      "slide": "03-international-quotas",
+      "geometry_ok": true,
+      "copy_ok": true,
+      "jost_loaded": true,
+      "metrics": {
+        "16px": {
+          "asc": 17,
+          "desc": 6
+        },
+        "48px": {
+          "asc": 51,
+          "desc": 18
+        },
+        "31px": {
+          "asc": 33,
+          "desc": 12
+        },
+        "300px": {
+          "asc": 321,
+          "desc": 113
+        },
+        "30px": {
+          "asc": 32,
+          "desc": 11
+        },
+        "86px": {
+          "asc": 92,
+          "desc": 32
+        },
+        "26px": {
+          "asc": 28,
+          "desc": 10
+        },
+        "25px": {
+          "asc": 27,
+          "desc": 9
+        }
+      },
+      "errors": [],
+      "copy_missing": [],
+      "copy_extra": [],
+      "copy_mismatch": [],
+      "rects": [
+        {
+          "id": "head",
+          "zone": "wrap",
+          "x": 72,
+          "y": 64,
+          "w": 576,
+          "h": 224.25,
+          "right": 648,
+          "bottom": 288.25,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 56,
+              "w": 434.98,
+              "h": 69,
+              "text": "100 burs kontenjanı."
+            },
+            {
+              "x": 72,
+              "y": 109.75,
+              "w": 383.02,
+              "h": 69,
+              "text": "Dünya genelinden"
+            },
+            {
+              "x": 72,
+              "y": 163.5,
+              "w": 180.8,
+              "h": 69,
+              "text": "başvuru."
+            },
+            {
+              "x": 72,
+              "y": 243.25,
+              "w": 432.33,
+              "h": 45,
+              "text": "13 kurum · Lisans ve ön lisans"
+            }
+          ]
+        },
+        {
+          "id": "headline",
+          "zone": "txt",
+          "x": 72,
+          "y": 64,
+          "w": 576,
+          "h": 161.25,
+          "right": 648,
+          "bottom": 225.25,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 56,
+              "w": 434.98,
+              "h": 69,
+              "text": "100 burs kontenjanı."
+            },
+            {
+              "x": 72,
+              "y": 109.75,
+              "w": 383.02,
+              "h": 69,
+              "text": "Dünya genelinden"
+            },
+            {
+              "x": 72,
+              "y": 163.5,
+              "w": 180.8,
+              "h": 69,
+              "text": "başvuru."
+            }
+          ]
+        },
+        {
+          "id": "institutions",
+          "zone": "txt",
+          "x": 72,
+          "y": 243.25,
+          "w": 576,
+          "h": 45,
+          "right": 648,
+          "bottom": 288.25,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 243.25,
+              "w": 432.33,
+              "h": 45,
+              "text": "13 kurum · Lisans ve ön lisans"
+            }
+          ]
+        },
+        {
+          "id": "logo",
+          "zone": "logo",
+          "x": 656,
+          "y": 64,
+          "w": 352,
+          "h": 346.06,
+          "right": 1008,
+          "bottom": 410.06,
+          "clipX": false,
+          "clipY": false,
+          "lines": []
+        },
+        {
+          "id": "big100",
+          "zone": "deco",
+          "x": 58,
+          "y": 300,
+          "w": 514.47,
+          "h": 303,
+          "right": 572.47,
+          "bottom": 603,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 58,
+              "y": 218,
+              "w": 514.47,
+              "h": 434,
+              "text": "100"
+            },
+            {
+              "x": 58,
+              "y": 568,
+              "w": 473.03,
+              "h": 43,
+              "text": "DÜNYA GENELİNDEN BAŞVURU"
+            }
+          ]
+        },
+        {
+          "id": "big100-sub",
+          "zone": "deco",
+          "x": 58,
+          "y": 576,
+          "w": 514.47,
+          "h": 27,
+          "right": 572.47,
+          "bottom": 603,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 58,
+              "y": 568,
+              "w": 473.03,
+              "h": 43,
+              "text": "DÜNYA GENELİNDEN BAŞVURU"
+            }
+          ]
+        },
+        {
+          "id": "quotas",
+          "zone": "wrap",
+          "x": 72,
+          "y": 878,
+          "w": 936,
+          "h": 238,
+          "right": 1008,
+          "bottom": 1116,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 859,
+              "w": 49.08,
+              "h": 124,
+              "text": "7"
+            },
+            {
+              "x": 72,
+              "y": 970,
+              "w": 174.66,
+              "h": 38,
+              "text": "KONTENJAN"
+            },
+            {
+              "x": 72,
+              "y": 1018,
+              "w": 245.47,
+              "h": 36,
+              "text": "Ajou — Yapay Zekâ ve"
+            },
+            {
+              "x": 72,
+              "y": 1050,
+              "w": 254.89,
+              "h": 36,
+              "text": "Bilgisayar Mühendisliği"
+            },
+            {
+              "x": 393.33,
+              "y": 859,
+              "w": 49.08,
+              "h": 124,
+              "text": "7"
+            },
+            {
+              "x": 393.33,
+              "y": 970,
+              "w": 174.66,
+              "h": 38,
+              "text": "KONTENJAN"
+            },
+            {
+              "x": 393.33,
+              "y": 1018,
+              "w": 209.86,
+              "h": 36,
+              "text": "Kookmin — Yazılım"
+            },
+            {
+              "x": 714.67,
+              "y": 859,
+              "w": 208.94,
+              "h": 124,
+              "text": "5 + 5"
+            },
+            {
+              "x": 714.67,
+              "y": 970,
+              "w": 174.66,
+              "h": 38,
+              "text": "KONTENJAN"
+            },
+            {
+              "x": 714.67,
+              "y": 1018,
+              "w": 171.95,
+              "h": 36,
+              "text": "KOREATECH —"
+            },
+            {
+              "x": 714.67,
+              "y": 1050,
+              "w": 225.69,
+              "h": 36,
+              "text": "Bilgisayar ve Makine"
+            },
+            {
+              "x": 714.67,
+              "y": 1082,
+              "w": 141.47,
+              "h": 36,
+              "text": "Mühendisliği"
+            }
+          ]
+        },
+        {
+          "id": "fig-ajou",
+          "zone": "txt",
+          "x": 72,
+          "y": 878,
+          "w": 267.33,
+          "h": 86,
+          "right": 339.33,
+          "bottom": 964,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 859,
+              "w": 49.08,
+              "h": 124,
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "lab-ajou",
+          "zone": "txt",
+          "x": 72,
+          "y": 970,
+          "w": 267.33,
+          "h": 38,
+          "right": 339.33,
+          "bottom": 1008,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 970,
+              "w": 174.66,
+              "h": 38,
+              "text": "KONTENJAN"
+            }
+          ]
+        },
+        {
+          "id": "att-ajou",
+          "zone": "txt",
+          "x": 72,
+          "y": 1020,
+          "w": 267.33,
+          "h": 64,
+          "right": 339.33,
+          "bottom": 1084,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 1018,
+              "w": 245.47,
+              "h": 36,
+              "text": "Ajou — Yapay Zekâ ve"
+            },
+            {
+              "x": 72,
+              "y": 1050,
+              "w": 254.89,
+              "h": 36,
+              "text": "Bilgisayar Mühendisliği"
+            }
+          ]
+        },
+        {
+          "id": "fig-kookmin",
+          "zone": "txt",
+          "x": 393.33,
+          "y": 878,
+          "w": 267.34,
+          "h": 86,
+          "right": 660.67,
+          "bottom": 964,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 393.33,
+              "y": 859,
+              "w": 49.08,
+              "h": 124,
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "lab-kookmin",
+          "zone": "txt",
+          "x": 393.33,
+          "y": 970,
+          "w": 267.34,
+          "h": 38,
+          "right": 660.67,
+          "bottom": 1008,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 393.33,
+              "y": 970,
+              "w": 174.66,
+              "h": 38,
+              "text": "KONTENJAN"
+            }
+          ]
+        },
+        {
+          "id": "att-kookmin",
+          "zone": "txt",
+          "x": 393.33,
+          "y": 1020,
+          "w": 267.34,
+          "h": 32,
+          "right": 660.67,
+          "bottom": 1052,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 393.33,
+              "y": 1018,
+              "w": 209.86,
+              "h": 36,
+              "text": "Kookmin — Yazılım"
+            }
+          ]
+        },
+        {
+          "id": "fig-koreatech",
+          "zone": "txt",
+          "x": 714.67,
+          "y": 878,
+          "w": 267.33,
+          "h": 86,
+          "right": 982,
+          "bottom": 964,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 714.67,
+              "y": 859,
+              "w": 208.94,
+              "h": 124,
+              "text": "5 + 5"
+            }
+          ]
+        },
+        {
+          "id": "lab-koreatech",
+          "zone": "txt",
+          "x": 714.67,
+          "y": 970,
+          "w": 267.33,
+          "h": 38,
+          "right": 982,
+          "bottom": 1008,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 714.67,
+              "y": 970,
+              "w": 174.66,
+              "h": 38,
+              "text": "KONTENJAN"
+            }
+          ]
+        },
+        {
+          "id": "att-koreatech",
+          "zone": "txt",
+          "x": 714.67,
+          "y": 1020,
+          "w": 267.33,
+          "h": 96,
+          "right": 982,
+          "bottom": 1116,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 714.67,
+              "y": 1018,
+              "w": 171.95,
+              "h": 36,
+              "text": "KOREATECH —"
+            },
+            {
+              "x": 714.67,
+              "y": 1050,
+              "w": 225.69,
+              "h": 36,
+              "text": "Bilgisayar ve Makine"
+            },
+            {
+              "x": 714.67,
+              "y": 1082,
+              "w": 141.47,
+              "h": 36,
+              "text": "Mühendisliği"
+            }
+          ]
+        },
+        {
+          "id": "strip",
+          "zone": "wrap",
+          "x": 0,
+          "y": 1210,
+          "w": 1080,
+          "h": 140,
+          "right": 1080,
+          "bottom": 1350,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 1245,
+              "w": 882.3,
+              "h": 43,
+              "text": "Kontenjanlar uluslararası adaylara açık. Türkiye’ye özel kota değil."
+            }
+          ]
+        },
+        {
+          "id": "strip-t",
+          "zone": "txt",
+          "x": 72,
+          "y": 1248,
+          "w": 882.3,
+          "h": 37.5,
+          "right": 954.3,
+          "bottom": 1285.5,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 1245,
+              "w": 882.3,
+              "h": 43,
+              "text": "Kontenjanlar uluslararası adaylara açık. Türkiye’ye özel kota değil."
+            }
+          ]
+        }
+      ]
+    },
+    "04": {
+      "slide": "04-eligibility",
+      "geometry_ok": true,
+      "copy_ok": true,
+      "jost_loaded": true,
+      "metrics": {
+        "16px": {
+          "asc": 17,
+          "desc": 6
+        },
+        "52px": {
+          "asc": 56,
+          "desc": 20
+        },
+        "38px": {
+          "asc": 41,
+          "desc": 14
+        },
+        "46px": {
+          "asc": 49,
+          "desc": 17
+        },
+        "58px": {
+          "asc": 62,
+          "desc": 22
+        },
+        "33px": {
+          "asc": 35,
+          "desc": 12
+        },
+        "26px": {
+          "asc": 28,
+          "desc": 10
+        }
+      },
+      "errors": [],
+      "copy_missing": [],
+      "copy_extra": [],
+      "copy_mismatch": [],
+      "rects": [
+        {
+          "id": "logo",
+          "zone": "logo",
+          "x": 72,
+          "y": 64,
+          "w": 560,
+          "h": 210.03,
+          "right": 632,
+          "bottom": 274.03,
+          "clipX": false,
+          "clipY": false,
+          "lines": []
+        },
+        {
+          "id": "question",
+          "zone": "txt",
+          "x": 72,
+          "y": 302,
+          "w": 936,
+          "h": 116.47,
+          "right": 1008,
+          "bottom": 418.47,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 293,
+              "w": 707.34,
+              "h": 76,
+              "text": "Türkiye’den kimler GKS-UIC’ye"
+            },
+            {
+              "x": 72,
+              "y": 351.23,
+              "w": 298.23,
+              "h": 76,
+              "text": "başvurabilir?"
+            }
+          ]
+        },
+        {
+          "id": "answer",
+          "zone": "wrap",
+          "x": 72,
+          "y": 440,
+          "w": 936,
+          "h": 104,
+          "right": 1008,
+          "bottom": 544,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 112,
+              "y": 472,
+              "w": 431.09,
+              "h": 55,
+              "text": "TÜRK VATANDAŞLARI"
+            },
+            {
+              "x": 577.09,
+              "y": 464,
+              "w": 267.88,
+              "h": 66,
+              "text": "Başvurabilir."
+            }
+          ]
+        },
+        {
+          "id": "answer-a",
+          "zone": "txt",
+          "x": 112,
+          "y": 472,
+          "w": 431.09,
+          "h": 55,
+          "right": 543.09,
+          "bottom": 527,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 112,
+              "y": 472,
+              "w": 431.09,
+              "h": 55,
+              "text": "TÜRK VATANDAŞLARI"
+            }
+          ]
+        },
+        {
+          "id": "answer-b",
+          "zone": "txt",
+          "x": 577.09,
+          "y": 464,
+          "w": 267.88,
+          "h": 66,
+          "right": 844.97,
+          "bottom": 530,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 577.09,
+              "y": 464,
+              "w": 267.88,
+              "h": 66,
+              "text": "Başvurabilir."
+            }
+          ]
+        },
+        {
+          "id": "groups",
+          "zone": "wrap",
+          "x": 72,
+          "y": 726,
+          "w": 936,
+          "h": 440.56,
+          "right": 1008,
+          "bottom": 1166.56,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 733,
+              "w": 66.84,
+              "h": 84,
+              "text": "01"
+            },
+            {
+              "x": 274,
+              "y": 744,
+              "w": 64.05,
+              "h": 47,
+              "text": "YAŞ"
+            },
+            {
+              "x": 216,
+              "y": 797,
+              "w": 448.39,
+              "h": 38,
+              "text": "1 Mart 2002’den sonra doğmuş olmak."
+            },
+            {
+              "x": 72,
+              "y": 856.31,
+              "w": 75.13,
+              "h": 84,
+              "text": "02"
+            },
+            {
+              "x": 274,
+              "y": 867.31,
+              "w": 192.53,
+              "h": 47,
+              "text": "MEZUNİYET"
+            },
+            {
+              "x": 216,
+              "y": 920.31,
+              "w": 755.2,
+              "h": 38,
+              "text": "Lise veya ön lisans mezunu olmak ya da en geç 31 Aralık 2026’da"
+            },
+            {
+              "x": 216,
+              "y": 954.63,
+              "w": 159.36,
+              "h": 38,
+              "text": "mezun olmak."
+            },
+            {
+              "x": 72,
+              "y": 1013.94,
+              "w": 73.17,
+              "h": 84,
+              "text": "03"
+            },
+            {
+              "x": 274,
+              "y": 1024.94,
+              "w": 314.86,
+              "h": 47,
+              "text": "AKADEMİK BAŞARI"
+            },
+            {
+              "x": 216,
+              "y": 1077.94,
+              "w": 695.11,
+              "h": 38,
+              "text": "80/100 veya sınıfın ilk %20’si veya kabul edilen eşdeğer not"
+            },
+            {
+              "x": 216,
+              "y": 1112.25,
+              "w": 123.78,
+              "h": 38,
+              "text": "ortalaması."
+            }
+          ]
+        },
+        {
+          "id": "grp-yas",
+          "zone": "wrap",
+          "x": 72,
+          "y": 726,
+          "w": 936,
+          "h": 123.31,
+          "right": 1008,
+          "bottom": 849.31,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 733,
+              "w": 66.84,
+              "h": 84,
+              "text": "01"
+            },
+            {
+              "x": 274,
+              "y": 744,
+              "w": 64.05,
+              "h": 47,
+              "text": "YAŞ"
+            },
+            {
+              "x": 216,
+              "y": 797,
+              "w": 448.39,
+              "h": 38,
+              "text": "1 Mart 2002’den sonra doğmuş olmak."
+            }
+          ]
+        },
+        {
+          "id": "num-1",
+          "zone": "deco",
+          "x": 72,
+          "y": 744,
+          "w": 118,
+          "h": 89.31,
+          "right": 190,
+          "bottom": 833.31,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 733,
+              "w": 66.84,
+              "h": 84,
+              "text": "01"
+            }
+          ]
+        },
+        {
+          "id": "gh-1",
+          "zone": "txt",
+          "x": 216,
+          "y": 744,
+          "w": 792,
+          "h": 47,
+          "right": 1008,
+          "bottom": 791,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 274,
+              "y": 744,
+              "w": 64.05,
+              "h": 47,
+              "text": "YAŞ"
+            }
+          ]
+        },
+        {
+          "id": "gb-1",
+          "zone": "txt",
+          "x": 216,
+          "y": 799,
+          "w": 792,
+          "h": 34.31,
+          "right": 1008,
+          "bottom": 833.31,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 216,
+              "y": 797,
+              "w": 448.39,
+              "h": 38,
+              "text": "1 Mart 2002’den sonra doğmuş olmak."
+            }
+          ]
+        },
+        {
+          "id": "grp-mezuniyet",
+          "zone": "wrap",
+          "x": 72,
+          "y": 849.31,
+          "w": 936,
+          "h": 157.63,
+          "right": 1008,
+          "bottom": 1006.94,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 856.31,
+              "w": 75.13,
+              "h": 84,
+              "text": "02"
+            },
+            {
+              "x": 274,
+              "y": 867.31,
+              "w": 192.53,
+              "h": 47,
+              "text": "MEZUNİYET"
+            },
+            {
+              "x": 216,
+              "y": 920.31,
+              "w": 755.2,
+              "h": 38,
+              "text": "Lise veya ön lisans mezunu olmak ya da en geç 31 Aralık 2026’da"
+            },
+            {
+              "x": 216,
+              "y": 954.63,
+              "w": 159.36,
+              "h": 38,
+              "text": "mezun olmak."
+            }
+          ]
+        },
+        {
+          "id": "num-2",
+          "zone": "deco",
+          "x": 72,
+          "y": 867.31,
+          "w": 118,
+          "h": 123.63,
+          "right": 190,
+          "bottom": 990.94,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 856.31,
+              "w": 75.13,
+              "h": 84,
+              "text": "02"
+            }
+          ]
+        },
+        {
+          "id": "gh-2",
+          "zone": "txt",
+          "x": 216,
+          "y": 867.31,
+          "w": 792,
+          "h": 47,
+          "right": 1008,
+          "bottom": 914.31,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 274,
+              "y": 867.31,
+              "w": 192.53,
+              "h": 47,
+              "text": "MEZUNİYET"
+            }
+          ]
+        },
+        {
+          "id": "gb-2",
+          "zone": "txt",
+          "x": 216,
+          "y": 922.31,
+          "w": 792,
+          "h": 68.63,
+          "right": 1008,
+          "bottom": 990.94,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 216,
+              "y": 920.31,
+              "w": 755.2,
+              "h": 38,
+              "text": "Lise veya ön lisans mezunu olmak ya da en geç 31 Aralık 2026’da"
+            },
+            {
+              "x": 216,
+              "y": 954.63,
+              "w": 159.36,
+              "h": 38,
+              "text": "mezun olmak."
+            }
+          ]
+        },
+        {
+          "id": "grp-akademik",
+          "zone": "wrap",
+          "x": 72,
+          "y": 1006.94,
+          "w": 936,
+          "h": 159.63,
+          "right": 1008,
+          "bottom": 1166.56,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 1013.94,
+              "w": 73.17,
+              "h": 84,
+              "text": "03"
+            },
+            {
+              "x": 274,
+              "y": 1024.94,
+              "w": 314.86,
+              "h": 47,
+              "text": "AKADEMİK BAŞARI"
+            },
+            {
+              "x": 216,
+              "y": 1077.94,
+              "w": 695.11,
+              "h": 38,
+              "text": "80/100 veya sınıfın ilk %20’si veya kabul edilen eşdeğer not"
+            },
+            {
+              "x": 216,
+              "y": 1112.25,
+              "w": 123.78,
+              "h": 38,
+              "text": "ortalaması."
+            }
+          ]
+        },
+        {
+          "id": "num-3",
+          "zone": "deco",
+          "x": 72,
+          "y": 1024.94,
+          "w": 118,
+          "h": 123.63,
+          "right": 190,
+          "bottom": 1148.56,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 1013.94,
+              "w": 73.17,
+              "h": 84,
+              "text": "03"
+            }
+          ]
+        },
+        {
+          "id": "gh-3",
+          "zone": "txt",
+          "x": 216,
+          "y": 1024.94,
+          "w": 792,
+          "h": 47,
+          "right": 1008,
+          "bottom": 1071.94,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 274,
+              "y": 1024.94,
+              "w": 314.86,
+              "h": 47,
+              "text": "AKADEMİK BAŞARI"
+            }
+          ]
+        },
+        {
+          "id": "gb-3",
+          "zone": "txt",
+          "x": 216,
+          "y": 1079.94,
+          "w": 792,
+          "h": 68.63,
+          "right": 1008,
+          "bottom": 1148.56,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 216,
+              "y": 1077.94,
+              "w": 695.11,
+              "h": 38,
+              "text": "80/100 veya sınıfın ilk %20’si veya kabul edilen eşdeğer not"
+            },
+            {
+              "x": 216,
+              "y": 1112.25,
+              "w": 123.78,
+              "h": 38,
+              "text": "ortalaması."
+            }
+          ]
+        },
+        {
+          "id": "disclaimer",
+          "zone": "wrap",
+          "x": 0,
+          "y": 1181,
+          "w": 1080,
+          "h": 130,
+          "right": 1080,
+          "bottom": 1311,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 1209,
+              "w": 909.77,
+              "h": 38,
+              "text": "Adayın ve ebeveynlerinin Kore vatandaşlığı olmamalı. Lisans diploması sahipleri"
+            },
+            {
+              "x": 72,
+              "y": 1243.83,
+              "w": 539.13,
+              "h": 38,
+              "text": "uygun değil. Bölüme özel şartlar ayrıca geçerli."
+            }
+          ]
+        },
+        {
+          "id": "disc-p",
+          "zone": "txt",
+          "x": 72,
+          "y": 1211,
+          "w": 936,
+          "h": 69.66,
+          "right": 1008,
+          "bottom": 1280.66,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 1209,
+              "w": 909.77,
+              "h": 38,
+              "text": "Adayın ve ebeveynlerinin Kore vatandaşlığı olmamalı. Lisans diploması sahipleri"
+            },
+            {
+              "x": 72,
+              "y": 1243.83,
+              "w": 539.13,
+              "h": 38,
+              "text": "uygun değil. Bölüme özel şartlar ayrıca geçerli."
+            }
+          ]
+        }
+      ]
+    },
+    "05": {
+      "slide": "05-scholarship-amount",
+      "geometry_ok": true,
+      "copy_ok": true,
+      "jost_loaded": true,
+      "metrics": {
+        "16px": {
+          "asc": 17,
+          "desc": 6
+        },
+        "58px": {
+          "asc": 62,
+          "desc": 22
+        },
+        "122px": {
+          "asc": 131,
+          "desc": 46
+        },
+        "54px": {
+          "asc": 58,
+          "desc": 20
+        },
+        "38px": {
+          "asc": 41,
+          "desc": 14
+        },
+        "32px": {
+          "asc": 34,
+          "desc": 12
+        },
+        "30px": {
+          "asc": 32,
+          "desc": 11
+        },
+        "28px": {
+          "asc": 30,
+          "desc": 11
+        },
+        "27px": {
+          "asc": 29,
+          "desc": 10
+        },
+        "24px": {
+          "asc": 26,
+          "desc": 9
+        }
+      },
+      "errors": [],
+      "copy_missing": [],
+      "copy_extra": [],
+      "copy_mismatch": [],
+      "rects": [
+        {
+          "id": "logo",
+          "zone": "logo",
+          "x": 656,
+          "y": 64,
+          "w": 352,
+          "h": 346.06,
+          "right": 1008,
+          "bottom": 410.06,
+          "clipX": false,
+          "clipY": false,
+          "lines": []
+        },
+        {
+          "id": "question",
+          "zone": "txt",
+          "x": 72,
+          "y": 64,
+          "w": 552,
+          "h": 125.25,
+          "right": 624,
+          "bottom": 189.25,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 53,
+              "w": 513.31,
+              "h": 84,
+              "text": "GKS 2027 bursu ne"
+            },
+            {
+              "x": 72,
+              "y": 115.63,
+              "w": 178.84,
+              "h": 84,
+              "text": "kadar?"
+            }
+          ]
+        },
+        {
+          "id": "krw",
+          "zone": "wrap",
+          "x": 72,
+          "y": 452,
+          "w": 923.33,
+          "h": 123,
+          "right": 995.33,
+          "bottom": 575,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 424,
+              "w": 672.28,
+              "h": 177,
+              "text": "14.400.000"
+            },
+            {
+              "x": 758.28,
+              "y": 497,
+              "w": 157.2,
+              "h": 78,
+              "text": "KRW*"
+            },
+            {
+              "x": 925.48,
+              "y": 514,
+              "w": 69.84,
+              "h": 55,
+              "text": "/ yıl"
+            }
+          ]
+        },
+        {
+          "id": "krw-amount",
+          "zone": "txt",
+          "x": 72,
+          "y": 424,
+          "w": 672.28,
+          "h": 177,
+          "right": 744.28,
+          "bottom": 601,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 424,
+              "w": 672.28,
+              "h": 177,
+              "text": "14.400.000"
+            }
+          ]
+        },
+        {
+          "id": "krw-cur",
+          "zone": "txt",
+          "x": 758.28,
+          "y": 497,
+          "w": 157.2,
+          "h": 78,
+          "right": 915.48,
+          "bottom": 575,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 758.28,
+              "y": 497,
+              "w": 157.2,
+              "h": 78,
+              "text": "KRW*"
+            }
+          ]
+        },
+        {
+          "id": "krw-yr",
+          "zone": "txt",
+          "x": 925.48,
+          "y": 514,
+          "w": 69.84,
+          "h": 55,
+          "right": 995.33,
+          "bottom": 569,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 925.48,
+              "y": 514,
+              "w": 69.84,
+              "h": 55,
+              "text": "/ yıl"
+            }
+          ]
+        },
+        {
+          "id": "eur",
+          "zone": "txt",
+          "x": 72,
+          "y": 640,
+          "w": 346.5,
+          "h": 78,
+          "right": 418.5,
+          "bottom": 718,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 640,
+              "w": 346.5,
+              "h": 78,
+              "text": "≈ 9.675 € / yıl"
+            }
+          ]
+        },
+        {
+          "id": "life",
+          "zone": "txt",
+          "x": 72,
+          "y": 768,
+          "w": 690.84,
+          "h": 46,
+          "right": 762.84,
+          "bottom": 814,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 768,
+              "w": 690.84,
+              "h": 46,
+              "text": "Lisans eğitimi döneminde verilen yaşam desteği."
+            }
+          ]
+        },
+        {
+          "id": "also",
+          "zone": "txt",
+          "x": 72,
+          "y": 850,
+          "w": 293.27,
+          "h": 43,
+          "right": 365.27,
+          "bottom": 893,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 850,
+              "w": 293.27,
+              "h": 43,
+              "text": "Ayrıca karşılananlar:"
+            }
+          ]
+        },
+        {
+          "id": "items",
+          "zone": "wrap",
+          "x": 72,
+          "y": 900,
+          "w": 936,
+          "h": 198.17,
+          "right": 1008,
+          "bottom": 1098.17,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 986,
+              "w": 186.25,
+              "h": 41,
+              "text": "Öğrenim ücreti"
+            },
+            {
+              "x": 392.66,
+              "y": 986,
+              "w": 275.45,
+              "h": 41,
+              "text": "Korece hazırlık eğitimi"
+            },
+            {
+              "x": 392.66,
+              "y": 1022.39,
+              "w": 174.2,
+              "h": 41,
+              "text": "(gerektiğinde)"
+            },
+            {
+              "x": 713.33,
+              "y": 986,
+              "w": 227.86,
+              "h": 41,
+              "text": "Uygun adaylar için"
+            },
+            {
+              "x": 713.33,
+              "y": 1022.39,
+              "w": 236.88,
+              "h": 41,
+              "text": "ekonomi sınıfı uçak"
+            },
+            {
+              "x": 713.33,
+              "y": 1058.78,
+              "w": 60.98,
+              "h": 41,
+              "text": "bileti"
+            }
+          ]
+        },
+        {
+          "id": "item-1",
+          "zone": "wrap",
+          "x": 72,
+          "y": 900,
+          "w": 294.66,
+          "h": 198.17,
+          "right": 366.66,
+          "bottom": 1098.17,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 986,
+              "w": 186.25,
+              "h": 41,
+              "text": "Öğrenim ücreti"
+            }
+          ]
+        },
+        {
+          "id": "item-1-t",
+          "zone": "txt",
+          "x": 72,
+          "y": 989,
+          "w": 294.66,
+          "h": 36.39,
+          "right": 366.66,
+          "bottom": 1025.39,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 986,
+              "w": 186.25,
+              "h": 41,
+              "text": "Öğrenim ücreti"
+            }
+          ]
+        },
+        {
+          "id": "item-2",
+          "zone": "wrap",
+          "x": 392.66,
+          "y": 900,
+          "w": 294.67,
+          "h": 198.17,
+          "right": 687.33,
+          "bottom": 1098.17,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 392.66,
+              "y": 986,
+              "w": 275.45,
+              "h": 41,
+              "text": "Korece hazırlık eğitimi"
+            },
+            {
+              "x": 392.66,
+              "y": 1022.39,
+              "w": 174.2,
+              "h": 41,
+              "text": "(gerektiğinde)"
+            }
+          ]
+        },
+        {
+          "id": "item-2-t",
+          "zone": "txt",
+          "x": 392.66,
+          "y": 989,
+          "w": 294.67,
+          "h": 72.78,
+          "right": 687.33,
+          "bottom": 1061.78,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 392.66,
+              "y": 986,
+              "w": 275.45,
+              "h": 41,
+              "text": "Korece hazırlık eğitimi"
+            },
+            {
+              "x": 392.66,
+              "y": 1022.39,
+              "w": 174.2,
+              "h": 41,
+              "text": "(gerektiğinde)"
+            }
+          ]
+        },
+        {
+          "id": "item-3",
+          "zone": "wrap",
+          "x": 713.33,
+          "y": 900,
+          "w": 294.67,
+          "h": 198.17,
+          "right": 1008,
+          "bottom": 1098.17,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 713.33,
+              "y": 986,
+              "w": 227.86,
+              "h": 41,
+              "text": "Uygun adaylar için"
+            },
+            {
+              "x": 713.33,
+              "y": 1022.39,
+              "w": 236.88,
+              "h": 41,
+              "text": "ekonomi sınıfı uçak"
+            },
+            {
+              "x": 713.33,
+              "y": 1058.78,
+              "w": 60.98,
+              "h": 41,
+              "text": "bileti"
+            }
+          ]
+        },
+        {
+          "id": "item-3-t",
+          "zone": "txt",
+          "x": 713.33,
+          "y": 989,
+          "w": 294.67,
+          "h": 109.17,
+          "right": 1008,
+          "bottom": 1098.17,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 713.33,
+              "y": 986,
+              "w": 227.86,
+              "h": 41,
+              "text": "Uygun adaylar için"
+            },
+            {
+              "x": 713.33,
+              "y": 1022.39,
+              "w": 236.88,
+              "h": 41,
+              "text": "ekonomi sınıfı uçak"
+            },
+            {
+              "x": 713.33,
+              "y": 1058.78,
+              "w": 60.98,
+              "h": 41,
+              "text": "bileti"
+            }
+          ]
+        },
+        {
+          "id": "note-a",
+          "zone": "txt",
+          "x": 72,
+          "y": 1098,
+          "w": 890.03,
+          "h": 75.09,
+          "right": 962.03,
+          "bottom": 1173.09,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 100,
+              "y": 1116,
+              "w": 834.03,
+              "h": 39,
+              "text": "Yaşam desteğine barınma, sağlık sigortası ve ilgili ödenekler dahildir."
+            }
+          ]
+        },
+        {
+          "id": "rule-5",
+          "zone": "deco",
+          "x": 72,
+          "y": 1230,
+          "w": 936,
+          "h": 2,
+          "right": 1008,
+          "bottom": 1232,
+          "clipX": false,
+          "clipY": false,
+          "lines": []
+        },
+        {
+          "id": "note-b",
+          "zone": "txt",
+          "x": 72,
+          "y": 1246,
+          "w": 681.88,
+          "h": 31.19,
+          "right": 753.88,
+          "bottom": 1277.19,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 1244,
+              "w": 681.88,
+              "h": 35,
+              "text": "Avro karşılığı 12 Ekim 2026 kuru üzerinden yaklaşık hesaplanmıştır."
+            }
+          ]
+        }
+      ]
+    },
+    "06": {
+      "slide": "06-single-choice-cta",
+      "geometry_ok": true,
+      "copy_ok": true,
+      "jost_loaded": true,
+      "metrics": {
+        "30px": {
+          "asc": 32,
+          "desc": 11
+        },
+        "64px": {
+          "asc": 68,
+          "desc": 24
+        },
+        "16px": {
+          "asc": 17,
+          "desc": 6
+        },
+        "92px": {
+          "asc": 98,
+          "desc": 35
+        },
+        "31px": {
+          "asc": 33,
+          "desc": 12
+        },
+        "40px": {
+          "asc": 43,
+          "desc": 15
+        }
+      },
+      "errors": [],
+      "copy_missing": [],
+      "copy_extra": [],
+      "copy_mismatch": [],
+      "rects": [
+        {
+          "id": "sid",
+          "zone": "txt",
+          "x": 72,
+          "y": 64,
+          "w": 408.77,
+          "h": 64,
+          "right": 480.77,
+          "bottom": 128,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 103.59,
+              "y": 64,
+              "w": 377.17,
+              "h": 43,
+              "text": "BURS DOSYASI / 001"
+            }
+          ]
+        },
+        {
+          "id": "headline",
+          "zone": "txt",
+          "x": 72,
+          "y": 176,
+          "w": 700,
+          "h": 135.66,
+          "right": 772,
+          "bottom": 311.66,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 72,
+              "y": 163,
+              "w": 505.98,
+              "h": 92,
+              "text": "GKS-UIC’de ikinci"
+            },
+            {
+              "x": 72,
+              "y": 230.83,
+              "w": 604.09,
+              "h": 92,
+              "text": "üniversite tercihi yok."
+            }
+          ]
+        },
+        {
+          "id": "path",
+          "zone": "deco",
+          "x": 78,
+          "y": 420,
+          "w": 4,
+          "h": 262,
+          "right": 82,
+          "bottom": 682,
+          "clipX": true,
+          "clipY": true,
+          "lines": []
+        },
+        {
+          "id": "node",
+          "zone": "deco",
+          "x": 69,
+          "y": 671,
+          "w": 22,
+          "h": 22,
+          "right": 91,
+          "bottom": 693,
+          "clipX": false,
+          "clipY": false,
+          "lines": []
+        },
+        {
+          "id": "choice",
+          "zone": "wrap",
+          "x": 120,
+          "y": 404,
+          "w": 596.25,
+          "h": 218,
+          "right": 716.25,
+          "bottom": 622,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 120,
+              "y": 383,
+              "w": 596.25,
+              "h": 133,
+              "text": "1 ÜNİVERSİTE"
+            },
+            {
+              "x": 120,
+              "y": 509,
+              "w": 393.42,
+              "h": 133,
+              "text": "1 BÖLÜM"
+            }
+          ]
+        },
+        {
+          "id": "one-uni",
+          "zone": "txt",
+          "x": 120,
+          "y": 404,
+          "w": 596.25,
+          "h": 92,
+          "right": 716.25,
+          "bottom": 496,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 120,
+              "y": 383,
+              "w": 596.25,
+              "h": 133,
+              "text": "1 ÜNİVERSİTE"
+            }
+          ]
+        },
+        {
+          "id": "one-dept",
+          "zone": "txt",
+          "x": 120,
+          "y": 530,
+          "w": 596.25,
+          "h": 92,
+          "right": 716.25,
+          "bottom": 622,
+          "clipX": false,
+          "clipY": true,
+          "lines": [
+            {
+              "x": 120,
+              "y": 509,
+              "w": 393.42,
+              "h": 133,
+              "text": "1 BÖLÜM"
+            }
+          ]
+        },
+        {
+          "id": "warning",
+          "zone": "txt",
+          "x": 72,
+          "y": 716,
+          "w": 540,
+          "h": 124.59,
+          "right": 612,
+          "bottom": 840.59,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 104,
+              "y": 714,
+              "w": 488.84,
+              "h": 45,
+              "text": "Birden fazla üniversiteye başvurmak"
+            },
+            {
+              "x": 104,
+              "y": 755.53,
+              "w": 363,
+              "h": 45,
+              "text": "GKS değerlendirmesinden"
+            },
+            {
+              "x": 104,
+              "y": 797.06,
+              "w": 360.86,
+              "h": 45,
+              "text": "çıkarılmana neden olabilir."
+            }
+          ]
+        },
+        {
+          "id": "service",
+          "zone": "txt",
+          "x": 72,
+          "y": 886,
+          "w": 540,
+          "h": 124.59,
+          "right": 612,
+          "bottom": 1010.59,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 72,
+              "y": 884,
+              "w": 399.56,
+              "h": 45,
+              "text": "Türkiye’den başvurabileceğin"
+            },
+            {
+              "x": 72,
+              "y": 925.53,
+              "w": 500.48,
+              "h": 45,
+              "text": "programları, gerekli belgeleri ve son"
+            },
+            {
+              "x": 72,
+              "y": 967.06,
+              "w": 422.5,
+              "h": 45,
+              "text": "tarihleri birlikte kontrol edelim."
+            }
+          ]
+        },
+        {
+          "id": "cta",
+          "zone": "txt",
+          "x": 72,
+          "y": 1040,
+          "w": 463.61,
+          "h": 102,
+          "right": 535.61,
+          "bottom": 1142,
+          "clipX": false,
+          "clipY": false,
+          "lines": [
+            {
+              "x": 112,
+              "y": 1062,
+              "w": 383.61,
+              "h": 58,
+              "text": "Ücretsiz ön görüşme"
+            }
+          ]
+        },
+        {
+          "id": "logo",
+          "zone": "logo",
+          "x": 628,
+          "y": 912.41,
+          "w": 380,
+          "h": 373.59,
+          "right": 1008,
+          "bottom": 1286,
+          "clipX": false,
+          "clipY": false,
+          "lines": []
+        }
+      ]
+    }
+  },
+  "overall_ok": true
+}
