@@ -86,7 +86,10 @@ manifest = {
  'exact_copy': {NAMES[n]: copy[n] for n in NAMES},
  'font': {'family': 'Jost', 'file': 'assets/Jost-VF.ttf', 'sha256': sha(APP/'assets/Jost-VF.ttf'),
           'license': 'SIL OFL 1.1 (assets/Jost-OFL.txt)'},
- 'palette': {'paper': '#F7F3E9', 'ink': '#1D2027', 'red': '#BD2120'},
+ 'palette': {'paper': '#F7F3E9', 'ink': '#1D2027', 'accent': '#003478',
+             'accent_name': 'Kore mavisi (GKS) — this campaign\'s only accent colour',
+             'canonical_lockup_red': '#BD2120',
+             'accent_scope': 'All slide accents, numerals, bands and rules use #003478. #BD2120 appears nowhere in the slide artwork; it exists only inside the linked canonical lockup SVGs, which are locked assets and were not edited.'},
  'brand_tokens': {'canonical_seal_sha256': seal,
    'canonical_lockups_manifest_sha256': brand['canonicalLockups']['manifestSha256']},
  'copy_validation': {'method': 'in-page DOM capture (whitespace-normalised) vs copy-manifest.json; SVG <text> join vs data-exact-copy-json',
@@ -269,7 +272,16 @@ for cmd in steps:
 # ---------------------------------------------------------------- ZIP + published gallery
 PKG.mkdir(exist_ok=True)
 zip_path = PKG/'burs-dosyasi-gks-2027-001.zip'
-members = ([f'export/{n}.png' for n in NAMES] + [f'original/{n}.png' for n in NAMES]
+# Flat, root-level archive: the audit contract reads contract['manifest']
+# ("manifest.json") and every manifest-referenced path directly out of the ZIP,
+# and additionally requires each slide's bare basename ("01.png") alongside
+# "export/01.png". A folder prefix would break that, so keep members flat.
+members = ([f'export/{n}.png' for n in NAMES]
+    # Bare basename "01.png" alongside "export/01.png": the audit contract indexes
+    # zip_members by Path(final_file).name. Written from export/ so no loose
+    # duplicate PNGs are left in the working tree.
+    + [(f'{n}.png', f'export/{n}.png') for n in NAMES]
+    + [f'original/{n}.png' for n in NAMES]
     + [f'source/{n}.svg' for n in NAMES] + [f'source/{n}.html' for n in NAMES]
     + [f'mobile-preview/{n}.png' for n in NAMES]
     + ['mobile-preview/mobile-strip.png', 'contact-sheet.png', 'source-vs-final-contact-sheet.png',
@@ -284,9 +296,12 @@ members = ([f'export/{n}.png' for n in NAMES] + [f'original/{n}.png' for n in NA
     + [f'assets/lockups/{f}' for f in ['p-01-primary-stacked-dark.svg','p-01-primary-stacked-light.svg',
        'h-02-primary-horizontal-light.svg','d-04-small-use-digital-light.svg']]
     + [f'assets/photos-original/{p}' for p in sorted(x.name for x in (APP/'assets/photos-original').glob('*.jpg'))])
+members = [(m, m) if isinstance(m, str) else m for m in members]
+arcnames = [m[0] for m in members]
+assert len(arcnames) == len(set(arcnames)), 'duplicate ZIP members'
 with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as z:
-    for rel in members:
-        z.write(APP/rel, f'burs-dosyasi-gks-2027-001/{rel}')
+    for arcname, rel in members:
+        z.write(APP/rel, arcname)
 print('zip:', zip_path.name, zip_path.stat().st_size//1024, 'KB,', len(members), 'members')
 
 if GALL.exists(): shutil.rmtree(GALL)
