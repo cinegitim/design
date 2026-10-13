@@ -1,0 +1,59 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rotanı Seç #001 V2 — Tokyo mu, Seul mü?</title>
+<style>
+@font-face{font-family:Jost;src:url(assets/Jost-VF.ttf);font-weight:100 900}
+:root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120;--acid:#D8F457}
+*{box-sizing:border-box}
+body{margin:0;background:#101216;color:var(--paper);font:16px/1.45 Jost,Arial,sans-serif}
+a{color:var(--acid)}
+.wrap{width:min(1320px,calc(100% - 36px));margin:auto}
+header{padding:48px 0 34px;border-bottom:1px solid #353943;background:radial-gradient(circle at 80% 0,#1d4a5c 0,transparent 42%)}
+.kicker{font-size:12px;letter-spacing:.16em;color:#7fd6e8;font-weight:700;text-transform:uppercase}
+h1{font-size:clamp(42px,7vw,86px);line-height:.9;letter-spacing:-.06em;margin:15px 0 20px;max-width:900px}
+.lede{max-width:800px;color:#d5d1c9;font-size:18px}
+.notice{margin-top:22px;border-left:5px solid var(--red);padding:14px 18px;background:#1b1e24;max-width:920px}
+.v2badge{display:inline-block;background:var(--acid);color:var(--ink);padding:7px 14px;font-size:13px;font-weight:800;letter-spacing:.12em;margin-bottom:16px}
+.viewer{display:grid;grid-template-columns:minmax(280px,570px) 1fr;gap:35px;align-items:center;padding:38px 0}
+.hero{position:relative;background:#000;box-shadow:0 24px 70px #0009}
+.hero img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.counter{position:absolute;top:14px;left:14px;background:#151820dd;padding:7px 11px;font-size:13px;letter-spacing:.1em}
+.copy h2{font-size:42px;line-height:1;margin:0 0 12px}
+.controls,.files{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+.controls button,.files a{font:inherit;color:inherit;background:#242832;border:1px solid #565c68;padding:10px 14px;cursor:pointer;text-decoration:none}
+.dots{display:flex;gap:8px;flex-wrap:wrap}
+.dots button[aria-current=true],.controls button:hover{background:var(--red);border-color:var(--red)}
+.download{display:inline-block;margin-top:22px;background:var(--paper);color:var(--ink);text-decoration:none;padding:13px 18px;font-weight:700}
+.v1link{display:inline-block;margin-top:12px;border:1px solid #565c68;padding:12px 18px;color:#d5d1c9;text-decoration:none}
+.thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}
+.thumbs button{padding:5px;background:#1b1e24;border:1px solid #3a3e47;color:inherit;cursor:pointer}
+.thumbs button[aria-current=true]{border:3px solid var(--acid)}
+.thumbs img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.thumbs span{display:block;padding:6px 3px 2px;font-size:12px}
+.section{padding:42px 0;border-top:1px solid #353943}
+.section h2{font-size:34px;margin:0 0 8px}
+.section p{color:#c7c3bb;max-width:840px}
+.sheet{display:block;width:100%;height:auto;margin-top:18px;background:#171a20}
+.compare{display:block;width:100%;height:auto;margin-top:18px;background:#171a20}
+.mobiles{display:flex;gap:14px;overflow:auto;padding:15px 0}
+.mobile{flex:0 0 min(375px,80vw)}
+.mobile img{display:block;width:100%;aspect-ratio:4/5}
+.small{font-size:13px;color:#aaa69e}
+footer{padding:30px 0 55px;border-top:1px solid #353943;color:#aaa69e}
+@media(max-width:800px){.viewer{grid-template-columns:1fr}.thumbs{grid-template-columns:repeat(3,1fr)}h1{font-size:50px}}
+</style></head><body>
+<header><div class="wrap"><div class="kicker">Asya'da Eğitim · Rotanı Seç / 001 · V2</div><div class="v2badge">V2 — YENİ TASARIM</div><h1>Tokyo mu,<br>Seul mü?</h1><p class="lede">Kabul mektubundan konaklama bütçesine altı slaytlık editoryal karşılaştırma. Ölçülen tipografi, lisanslı kampüs fotoğrafları ve deterministik SVG üretim.</p><div class="notice"><b>İnsan incelemesi bekliyor.</b> Kanonik kimlik değiştirilmedi. Bu kampanya sosyal medyada yayımlanmadı. Geometri ve kontrast denetimleri teknik doğrulamadır; estetik onay değildir.</div></div></header>
+<main class="wrap"><section class="viewer"><div class="hero"><img id="hero" src="v2/final/01-admission-letter.png" alt="Rotanı Seç V2 slaytı"><span class="counter" id="counter">01 / 06</span></div><div class="copy"><div class="kicker">1080 × 1350 · sRGB</div><h2 id="title">01 — Kabul mektubu</h2><p id="desc">Tokyo ve Seul gece enerjisinin asimetrik, sinematik karşılaşması.</p><div class="controls"><button id="prev">← Önceki</button><button id="next">Sonraki →</button></div><div class="dots" id="dots"></div><a class="download" href="v2/package/rotani-sec-tokyo-seoul-001-v2.zip" download>V2 + kaynak paketini indir ↓</a><br><a class="v1link" href="v1/">← V1 kampanyasına bak (arşiv)</a></div></section><nav class="thumbs" id="thumbs" aria-label="Slaytlar"></nav>
+<section class="section"><div class="kicker">CONTACT SHEET</div><h2>Altı farklı ritim, tek seri</h2><p>Kapak sinematik; 02 coğrafi keşif; 03 akademik atlas; 04 öğretim dili; 05 bütçe sayfası; 06 karar anı.</p><a href="v2/contact-sheet.png"><img class="sheet" src="v2/contact-sheet.png" alt="Altı final slaydın kontak sayfası"></a></section>
+<section class="section"><div class="kicker">375 PX REVIEW</div><h2>Mobil okunabilirlik</h2><p>Tüm final PNG'ler 375×469 önizleme boyutunda ayrıca kontrol edildi. Bağlayıcı ölçütler: altı üniversite adı ve iki para birimi değeri.</p><div class="mobiles" id="mobiles"></div></section>
+<section class="section"><div class="kicker">V1 / V2</div><h2>Revizyon karşılaştırması</h2><p>Sol kolonda önceki sürümün ilk slaydı; sağda V2'nin her slaydı. İçerik sözleşmesi yeni brief'e göre ayrıdır; bu karşılaştırma tasarım değişimini gösterir.</p><a href="v2/v1-vs-v2-contact-sheet.jpg"><img class="compare" src="v2/v1-vs-v2-contact-sheet.jpg" alt="V1 ve V2 karşılaştırma şeridi"></a></section>
+<section class="section"><div class="kicker">FILES & EVIDENCE</div><h2>Kaynak, doğrulama ve atıf</h2><div class="files"><a href="v2/manifest.json">Teslim manifesti</a><a href="v2/exact-copy.json">Exact-copy sözleşmesi</a><a href="v2/geometry-audit.json">Geometri denetimi</a><a href="v2/photography-attributions.md">Fotoğraf atıfları</a><a href="v2/quality-review.md">Kalite incelemesi</a><a href="v2/visual-qa.md">Görsel QA</a><a href="v2/caption.md">Caption</a><a href="v2/platform-adaptation-notes.md">Platform notları</a></div><p class="small">Üniversite logoları kullanılmadı; hiçbir ortaklık veya onay ima edilmez. Slayt 05'teki iki iç mekân görseli örnek niteliğinde üretilmiş illüstrasyondur, belgesel fotoğraf değildir. Orijinaller, tam kaynak sayfaları, yazarlar, lisanslar ve SHA-256 kayıtları pakette korunur.</p></section></main>
+<footer><div class="wrap">HUMAN CAMPAIGN REVIEW PENDING · NOT SOCIAL-PUBLISHED · Canonical logo geometry unchanged.</div></footer>
+<script>
+const slides=[['01-admission-letter','01 — Kabul mektubu','Tokyo ve Seul gece enerjisinin asimetrik, sinematik karşılaşması.'],['02-campus-geography','02 — Kampüs coğrafyası','Songdo ilk yıl ve Waseda/WISH konumlarının editoryal keşfi.'],['03-six-universities','03 — Altı üniversite','Gerçek kampüs fotoğraflarıyla akademik atlas.'],['04-english-taught','04 — İngilizce lisans','Öğretim dili ve gündelik yaşam dili gerilimi.'],['05-accommodation','05 — Konaklama','Yerel para birimi önde, avro karşılığı hemen altında.'],['06-final-decision','06 — Karar','Yorum odaklı güçlü seçim anı ve kanonik marka kapanışı.']];
+let n=0;const hero=document.querySelector('#hero'),counter=document.querySelector('#counter'),title=document.querySelector('#title'),desc=document.querySelector('#desc'),dots=document.querySelector('#dots'),thumbs=document.querySelector('#thumbs'),mobiles=document.querySelector('#mobiles');
+slides.forEach((s,i)=>{const d=document.createElement('button');d.textContent=String(i+1).padStart(2,'0');d.onclick=()=>show(i);dots.appendChild(d);
+const b=document.createElement('button');b.innerHTML=`<img src="v2/final/${s[0]}.png" alt=""><span>${String(i+1).padStart(2,'0')}</span>`;b.onclick=()=>show(i);thumbs.appendChild(b);
+const m=document.createElement('div');m.className='mobile';m.innerHTML=`<img loading="lazy" src="v2/mobile/${s[0]}-375x469.png" alt="${s[1]} mobil önizleme">`;mobiles.appendChild(m)});
+function show(i){n=(i+slides.length)%slides.length;const s=slides[n];hero.src=`final/${s[0]}.png`;hero.alt=s[1];counter.textContent=`${String(n+1).padStart(2,'0')} / 06`;title.textContent=s[1];desc.textContent=s[2];[...dots.children].forEach((x,j)=>x.setAttribute('aria-current',j===n));[...thumbs.children].forEach((x,j)=>x.setAttribute('aria-current',j===n))}
+document.querySelector('#prev').onclick=()=>show(n-1);document.querySelector('#next').onclick=()=>show(n+1);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(n-1);if(e.key==='ArrowRight')show(n+1)});show(0);
+</script></body></html>
