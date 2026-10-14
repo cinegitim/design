@@ -88,6 +88,24 @@ Secret taraması bilinen credential örüntülerini ve riskli dosya adlarını d
 tam DLP/secret güvenlik garantisi değildir. GitHub secret scanning uygunsa ayrıca
 açık tutulmalıdır. Hiçbir credential'ı loga veya repoya yazmayın.
 
+### Symbol avatar teslimleri
+
+`symbol-avatars` formatı path-only kanonik simgeden türeyen kare/yuvarlak profil
+görsellerini ve favicon export'larını denetler. Policy kaydı kanonik dosya/hash,
+beklenen export sırası, her export'un ölçüsü, dolu zemin rengi ve izin verilen
+grup renklerini sabitler. SVG'de yalnız zemin ve tam simge bulunabilir; path,
+transform, stroke ve fill-rule kanonik kaynakla aynı olmalıdır. Sadece onaylı
+grup fill varyantları kullanılabilir. Merkezleme, oran ve dairesel kırpma güvenliği,
+gerçek PNG ölçüleri/hash'leri ve ZIP byte eşitliği ayrıca kontrol edilir.
+
+Manifest `canonical_logo_sha256`, `exports` (id, svg_file/svg_sha256,
+png_file/png_sha256) ve `package_file` içerir. ZIP manifest, tüm export'lar ve
+contract.required_files ile tam eşleşir. Denetim PNG alfa piksellerini veya görsel
+kaliteyi ölçmez; gerçek raster incelemesi üreticinin ayrı sorumluluğudur.
+Yeni format desteği önce altyapı PR'ında teslim edilmelidir. Böylece daha sonraki
+avatar kayıtlarını denetleyen checker yine güvenilir base commit'ten alınır;
+mevcut workflow veya eski teslim sözleşmeleri gevşetilmez.
+
 ## Koruma ve kalıcılık
 
 Onaylı seal/lockup aileleri bağımsız hash anchor ile korunur. Aktif teslim dizininde
