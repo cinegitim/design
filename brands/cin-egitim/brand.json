@@ -1,8 +1,8 @@
 {
   "slug": "cin-egitim",
   "name": "Çin Eğitim",
-  "status": "REFERENCE_LOCKED / CANONICAL_SYMBOL",
-  "canonicalIdentity": false,
+  "status": "CANONICAL_IDENTITY_PRODUCED",
+  "canonicalIdentity": true,
   "canonicalLogo": {
     "locked": true,
     "status": "HUMAN_APPROVED / CANONICAL SYMBOL",
@@ -10,6 +10,21 @@
     "path": "brands/cin-egitim/assets/symbol.svg",
     "sha256": "1cc1808947d8f7f759ebb9956a715d535bb4fcc985d3f85194d4eaf1a85c7381",
     "decisionRecord": "brands/cin-egitim/decisions/2026-10-10-symbol-svg-lock.md"
+  },
+  "canonicalLockups": {
+    "status": "HUMAN_SELECTED / PRODUCED_LOGO_SUITE",
+    "approvedOn": "2026-10-14",
+    "approvedDirection": "P-01 Primary Horizontal (Source Serif 4 SemiBold 600, 2-line)",
+    "supportFont": "Manrope (OFL)",
+    "manifest": "brands/cin-egitim/assets/lockups/canonical-lockups.json",
+    "assets": {
+      "p01_horizontal_light": "brands/cin-egitim/assets/lockups/p-01-horizontal-light.svg",
+      "p01_horizontal_dark": "brands/cin-egitim/assets/lockups/p-01-horizontal-dark.svg",
+      "h02_stacked_light": "brands/cin-egitim/assets/lockups/h-02-stacked-light.svg",
+      "c03_inline_light": "brands/cin-egitim/assets/lockups/c-03-inline-light.svg",
+      "d04_avatar": "brands/cin-egitim/assets/lockups/d-04-avatar-square-light.svg",
+      "d04_favicon": "brands/cin-egitim/assets/lockups/d-04-favicon.svg"
+    }
   },
   "targetReference": {
     "locked": true,
@@ -21,5 +36,5 @@
     "path": "brands/cin-egitim/enhancements/target-symbol-super-resolution-4x.png",
     "sha256": "56ad9bc59a50a53f44db2c91800a5470868002b70fb692107c4e8e115582bdc7"
   },
-  "scope": "Symbol only. User explicitly approved and requested locking the SVG. No typography or full brand-system approval. PR merge remains a separate gate."
+  "scope": "Phase 2 Complete. Canonical symbol (#1cc18089) combined with approved P-01 horizontal lockup (Source Serif 4 SemiBold) into a comprehensive 17-variant SVG logo suite with proportion and clear-space rules."
 }
