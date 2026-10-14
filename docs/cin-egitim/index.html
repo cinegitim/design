@@ -344,14 +344,15 @@
     }
 
     /* 12 AYRI TİPOGRAFİK STİL (A - L) */
+    /* Standart P-01 Kuralı: Sembol solda, logotype her zaman sağda yer alır */
+
     /* YÖN A: Sessiz Kütüphane (Source Serif 4) */
     .type-a { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; letter-spacing: -0.04em; }
     .type-a .wm-line:first-child { font-size: 26px; }
     .type-a .wm-line:last-child { font-size: 24px; }
 
     /* YÖN B: Açık Rehber (Manrope) */
-    .lockup-col { flex-direction: column; gap: 8px; text-align: center; }
-    .type-b { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.04em; }
+    .type-b { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.035em; }
 
     /* YÖN C: Program İndeksi (Barlow Condensed) */
     .type-c {
@@ -386,8 +387,7 @@
     }
 
     /* YÖN G: Yumuşak Karşılama (Nunito Sans) */
-    .lockup-reverse { flex-direction: row-reverse; }
-    .type-g { font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 23px; letter-spacing: -0.035em; text-align: right; }
+    .type-g { font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 23px; letter-spacing: -0.035em; }
 
     /* YÖN H: Dikey Vurgu (Oswald) */
     .type-h {
@@ -396,18 +396,17 @@
       font-size: 24px;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      line-height: 0.85;
-      text-align: center;
+      line-height: 0.9;
     }
 
     /* YÖN I: Kültür Defteri (DM Serif Display) */
     .type-i { font-family: 'DM Serif Display', Georgia, serif; font-size: 26px; letter-spacing: -0.015em; line-height: 0.92; }
 
     /* YÖN J: Açık Ufuk (Space Grotesk) */
-    .type-j { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .type-j { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.06em; text-transform: uppercase; }
 
     /* YÖN K: Mektup Tonu (Lora) */
-    .type-k { font-family: 'Lora', Georgia, serif; font-style: italic; font-weight: 500; font-size: 24px; letter-spacing: -0.02em; text-align: right; }
+    .type-k { font-family: 'Lora', Georgia, serif; font-style: italic; font-weight: 500; font-size: 24px; letter-spacing: -0.02em; }
 
     /* YÖN L: Sağlam Rehber (Roboto Slab) */
     .type-l {
@@ -625,7 +624,7 @@
     <h2 class="showcase-title">12 Tipografik Karakter ve Lockup Çeşitlemesi</h2>
     <p class="showcase-desc">
       Akademik seriflerden rasyonel grotesklere, heykelsi başlıklardan kompakt condensed kurgulara kadar 
-      Çin Eğitim sembolüyle eşleşen 12 farklı görsel ses. Kategori butonlarıyla filtreleyebilir veya tamamını yan yana kıyaslayabilirsiniz.
+      Çin Eğitim sembolüyle eşleşen 12 farklı görsel ses. <strong>Kurumsal kimlik standardı gereği tüm kurgularda kanonik sembol solda, logotype sağda yer alır.</strong> Kategori butonlarıyla filtreleyebilir veya tamamını yan yana kıyaslayabilirsiniz.
     </p>
 
     <!-- Filtre Sekmeleri -->
@@ -652,7 +651,7 @@
         <div class="card-meta">
           <div><strong>Display:</strong> Source Serif 4 (SemiBold 600)</div>
           <div><strong>Gövde:</strong> Manrope · Robert Slimbach (Adobe)</div>
-          <div><strong>Yerleşim:</strong> Yatay sembol + iki satırlı serif</div>
+          <div><strong>Yerleşim:</strong> Sembol solda + iki satırlı serif</div>
         </div>
         <div class="preview-box">
           <div class="lockup">
@@ -683,10 +682,10 @@
         <div class="card-meta">
           <div><strong>Display:</strong> Manrope (Bold 700)</div>
           <div><strong>Gövde:</strong> Manrope · Mikhail Sharanda</div>
-          <div><strong>Yerleşim:</strong> Dikey ortalanmış sembol + tek satır sans</div>
+          <div><strong>Yerleşim:</strong> Sembol solda + tek satır hümanist sans</div>
         </div>
         <div class="preview-box">
-          <div class="lockup lockup-col">
+          <div class="lockup">
             <img src="assets/symbol.svg" alt="Sembol">
             <div class="wordmark type-b">
               <span class="wm-line">Çin Eğitim</span>
@@ -744,7 +743,7 @@
         <div class="card-meta">
           <div><strong>Display:</strong> Cormorant Garamond (SemiBold 600)</div>
           <div><strong>Gövde:</strong> Manrope · Christian Thalmann</div>
-          <div><strong>Yerleşim:</strong> Yatay sembol + tek satır yüksek kontrast</div>
+          <div><strong>Yerleşim:</strong> Sembol solda + tek satır yüksek kontrast</div>
         </div>
         <div class="preview-box">
           <div class="lockup">
@@ -775,7 +774,7 @@
         <div class="card-meta">
           <div><strong>Display:</strong> IBM Plex Sans (Bold + Regular)</div>
           <div><strong>Gövde:</strong> IBM Plex Sans · Mike Abbink (IBM)</div>
-          <div><strong>Yerleşim:</strong> Yatay sembol + iki ağırlıklı satır</div>
+          <div><strong>Yerleşim:</strong> Sembol solda + iki ağırlıklı satır</div>
         </div>
         <div class="preview-box">
           <div class="lockup">
@@ -806,7 +805,7 @@
         <div class="card-meta">
           <div><strong>Display:</strong> IBM Plex Mono (SemiBold 600)</div>
           <div><strong>Gövde:</strong> IBM Plex Sans · Mike Abbink</div>
-          <div><strong>Yerleşim:</strong> Eş aralıklı iki satır, alt-üst yatay çizgi</div>
+          <div><strong>Yerleşim:</strong> Sembol solda + çift çizgili iki satır</div>
         </div>
         <div class="preview-box">
           <div class="lockup">
@@ -837,10 +836,10 @@
         <div class="card-meta">
           <div><strong>Display:</strong> Nunito Sans (Bold 700)</div>
           <div><strong>Gövde:</strong> Manrope · Vernon Adams</div>
-          <div><strong>Yerleşim:</strong> Sembol sağda + sağa dayalı yumuşak sans</div>
+          <div><strong>Yerleşim:</strong> Sembol solda + iki satır yumuşak sans</div>
         </div>
         <div class="preview-box">
-          <div class="lockup lockup-reverse">
+          <div class="lockup">
             <img src="assets/symbol.svg" alt="Sembol">
             <div class="wordmark type-g">
               <span class="wm-line">Çin</span>
@@ -868,10 +867,10 @@
         <div class="card-meta">
           <div><strong>Display:</strong> Oswald (SemiBold 600)</div>
           <div><strong>Gövde:</strong> Manrope · Vernon Adams</div>
-          <div><strong>Yerleşim:</strong> Ortalanmış dikey sembol + dar all-caps</div>
+          <div><strong>Yerleşim:</strong> Sembol solda + iki satır dar all-caps</div>
         </div>
         <div class="preview-box">
-          <div class="lockup lockup-col">
+          <div class="lockup">
             <img src="assets/symbol.svg" alt="Sembol">
             <div class="wordmark type-h">
               <span class="wm-line">ÇİN</span>
@@ -900,7 +899,7 @@
         <div class="card-meta">
           <div><strong>Display:</strong> DM Serif Display (Regular 400)</div>
           <div><strong>Gövde:</strong> Plus Jakarta Sans · Colophon Foundry</div>
-          <div><strong>Yerleşim:</strong> Yatay sembol + heykelsi iki satır</div>
+          <div><strong>Yerleşim:</strong> Sembol solda + heykelsi iki satır</div>
         </div>
         <div class="preview-box">
           <div class="lockup">
@@ -931,10 +930,10 @@
         <div class="card-meta">
           <div><strong>Display:</strong> Space Grotesk (SemiBold 600)</div>
           <div><strong>Gövde:</strong> Manrope · Florian Karsten</div>
-          <div><strong>Yerleşim:</strong> Tek satır açık tracking + sembol sağda</div>
+          <div><strong>Yerleşim:</strong> Sembol solda + tek satır açık tracking</div>
         </div>
         <div class="preview-box">
-          <div class="lockup lockup-reverse">
+          <div class="lockup">
             <img src="assets/symbol.svg" alt="Sembol">
             <div class="wordmark type-j">
               <span class="wm-line">ÇİN EĞİTİM</span>
@@ -961,10 +960,10 @@
         <div class="card-meta">
           <div><strong>Display:</strong> Lora (Italic 500)</div>
           <div><strong>Gövde:</strong> Manrope · Cyreal</div>
-          <div><strong>Yerleşim:</strong> İki satırlı italik wordmark + sembol sağda</div>
+          <div><strong>Yerleşim:</strong> Sembol solda + iki satırlı zarif italik</div>
         </div>
         <div class="preview-box">
-          <div class="lockup lockup-reverse">
+          <div class="lockup">
             <img src="assets/symbol.svg" alt="Sembol">
             <div class="wordmark type-k">
               <span class="wm-line">Çin</span>
@@ -992,7 +991,7 @@
         <div class="card-meta">
           <div><strong>Display:</strong> Roboto Slab (Bold 700)</div>
           <div><strong>Gövde:</strong> Manrope · Christian Robertson</div>
-          <div><strong>Yerleşim:</strong> Yatay sembol + sol kırmızı ayraçlı slab</div>
+          <div><strong>Yerleşim:</strong> Sembol solda + sol kırmızı ayraçlı slab</div>
         </div>
         <div class="preview-box">
           <div class="lockup">
@@ -1045,7 +1044,7 @@
             <td><strong>Yön B</strong></td>
             <td>Manrope</td>
             <td>Hümanist Sans</td>
-            <td>Sembol Üstte + 1 Satır</td>
+            <td>Sembol Solda + 1 Satır</td>
             <td>Baş Harfleri Büyük</td>
             <td>İlk bakışta anlaşılır, dijitalde doğrudan</td>
             <td>Gövde Fontu Olarak İdeal</td>
@@ -1090,7 +1089,7 @@
             <td><strong>Yön G</strong></td>
             <td>Nunito Sans</td>
             <td>Yumuşak Sans</td>
-            <td>Sembol Sağda + 2 Satır Sağa Dayalı</td>
+            <td>Sembol Solda + 2 Satır</td>
             <td>Baş Harfleri Büyük</td>
             <td>Yakın, sıcak ve kolay yaklaşılır</td>
             <td>Dostane Alternatif</td>
@@ -1099,7 +1098,7 @@
             <td><strong>Yön H</strong></td>
             <td>Oswald</td>
             <td>Condensed Sans</td>
-            <td>Sembol Üstte + 2 Satır Dar Blok</td>
+            <td>Sembol Solda + 2 Satır Dar Blok</td>
             <td>Tümü Büyük Harf</td>
             <td>Dar alanda güçlü dikey imza</td>
             <td>Afiş / Dikey Vurgu</td>
@@ -1117,7 +1116,7 @@
             <td><strong>Yön J</strong></td>
             <td>Space Grotesk</td>
             <td>Geometrik Sans</td>
-            <td>Sembol Sağda + 1 Satır Geniş Tracking</td>
+            <td>Sembol Solda + 1 Satır Geniş Tracking</td>
             <td>Tümü Büyük Harf</td>
             <td>Geniş nefes, geometrik ve çağdaş duruş</td>
             <td>Fütüristik Alternatif</td>
@@ -1126,7 +1125,7 @@
             <td><strong>Yön K</strong></td>
             <td>Lora</td>
             <td>İtalik Serif</td>
-            <td>Sembol Sağda + 2 Satır İtalik</td>
+            <td>Sembol Solda + 2 Satır İtalik</td>
             <td>Baş Harfleri Büyük, İtalik</td>
             <td>Düşünceli, edebî ve kişisel yakınlık</td>
             <td>Edebî / Mektup Tonu</td>
