@@ -135,6 +135,8 @@ def canonical_assets(root, policy):
 
 def audit_bundle(root, contract, canonical, seal_sha):
     root = root.resolve()
+    if contract['format'] == 'symbol-avatars':
+        return audit_symbol_avatars(root, contract)
     base = (root / contract['path']).resolve()
     need(base.is_relative_to(root), 'bundle escapes repository')
     need(contract['format'] == 'carousel', 'unsupported bundle format; add a reviewed checker')
@@ -223,6 +225,83 @@ def audit_bundle(root, contract, canonical, seal_sha):
             if PurePosixPath(i.filename).suffix.lower() in TEXT_EXT:
                 scan_text(z.read(i.filename), 'ZIP text member')
     return {'path': contract['path'], 'slides': len(ids), 'package_sha256': digest(package), 'status': 'PASS'}
+
+def symbol_geometry(tree):
+    """Exact approved vector structure; only group fill is a permitted variant."""
+    groups = [e for e in tree if e.tag == NS+'g']
+    need(bool(groups), 'missing symbol geometry')
+    result = []
+    for group in groups:
+        for el in group.iter():
+            need(el.tag in {NS+'g', NS+'path'}, 'unexpected symbol element')
+            attrs = dict(el.attrib)
+            if el.tag == NS+'g':
+                attrs.pop('fill', None)
+            result.append((el.tag, tuple(sorted(attrs.items()))))
+    return result
+
+def audit_symbol_avatars(root, contract):
+    """Read-only vector/PNG/package checks, without rendering producer code."""
+    root = root.resolve()
+    base = (root / contract['path']).resolve()
+    need(base.is_relative_to(root), 'bundle escapes repository')
+    for name in contract['required_files']:
+        safe_file(base, name)
+    source = matched_file(root, contract['canonical_logo_file'], contract['canonical_logo_sha256'])
+    approved = svg_links(source, root)
+    geometry = symbol_geometry(approved)
+    m = load(safe_file(base, contract['manifest']))
+    need(m['canonical_logo_sha256'] == contract['canonical_logo_sha256'], 'symbol provenance mismatch')
+    records = m['exports']
+    need([e['id'] for e in records] == [e['id'] for e in contract['exports']], 'avatar set/order mismatch')
+    members = {contract['manifest']: safe_file(base, contract['manifest'])}
+    for name in contract['required_files']:
+        members[name] = safe_file(base, name)
+    for rec, spec in zip(records, contract['exports']):
+        dims = spec['dimensions']
+        need(len(dims) == 2 and dims[0] == dims[1], 'avatar must be square')
+        png = matched_file(base, rec['png_file'], rec['png_sha256'])
+        svg = matched_file(base, rec['svg_file'], rec['svg_sha256'])
+        need(png_dimensions(png) == dims, 'avatar PNG dimension mismatch')
+        tree = svg_links(svg, root)
+        need(set(tree.attrib) <= {'width', 'height', 'viewBox', 'role', 'aria-label'}, 'unexpected avatar root attributes')
+        need(tree.get('width') == str(dims[0]) and tree.get('height') == str(dims[1]), 'avatar SVG dimension mismatch')
+        need(tree.get('viewBox') == f'0 0 {dims[0]} {dims[1]}', 'avatar viewBox mismatch')
+        children = [e for e in tree if e.tag not in {NS+'title', NS+'desc'}]
+        need(len(children) == 2, 'avatar must contain only background and complete symbol')
+        bg, mark = children
+        n = dims[0]
+        expected = ({'width': str(n), 'height': str(n), 'fill': spec['background']}
+                    if spec['shape'] == 'square' else
+                    {'cx': str(n/2), 'cy': str(n/2), 'r': str(n/2), 'fill': spec['background']})
+        need(spec['shape'] in {'square', 'circle'}, 'unsupported avatar shape')
+        need(bg.tag == NS+('rect' if spec['shape'] == 'square' else 'circle') and bg.attrib == expected,
+             'avatar background must fill declared shape')
+        need(mark.tag == NS+'svg' and mark.get('viewBox') == approved.get('viewBox'), 'complete symbol viewport required')
+        need(symbol_geometry(mark) == geometry, 'canonical symbol geometry changed')
+        need([e.get('fill') for e in mark if e.tag == NS+'g'] == spec['symbol_fills'], 'unapproved symbol colour')
+        need(all(e.tag in {NS+'title', NS+'desc', NS+'g', NS+'path'} for e in mark.iter() if e is not mark),
+             'unexpected symbol content')
+        need(set(mark.attrib) == {'id', 'viewBox', 'x', 'y', 'width', 'height'}, 'unexpected symbol viewport attributes')
+        x,y,w,h = [number(mark.get(k)) for k in ('x','y','width','height')]
+        vb = list(map(float, approved.get('viewBox').split()))
+        need(math.isclose(w/h, vb[2]/vb[3], rel_tol=1e-6), 'distorted avatar symbol')
+        need(math.isclose(x,(n-w)/2,abs_tol=1e-5) and math.isclose(y,(n-h)/2,abs_tol=1e-5), 'off-centre avatar symbol')
+        need(0.5*n <= max(w,h) <= 0.7*n, 'avatar symbol outside safe size range')
+        need(math.hypot(w,h) <= n, 'symbol clipped by circular crop')
+        members[rec['svg_file']], members[rec['png_file']] = svg,png
+    package = safe_file(base, m['package_file'])
+    with zipfile.ZipFile(package) as z:
+        need(len(z.namelist()) == len(set(z.namelist())) and set(z.namelist()) == set(members), 'avatar ZIP member set mismatch')
+        need(sum(i.file_size for i in z.infolist()) < 512*1024*1024, 'avatar ZIP too large')
+        need(z.testzip() is None, 'avatar ZIP CRC failure')
+        for name,path in members.items():
+            info=z.getinfo(name)
+            need((info.external_attr >> 16) & 0o170000 != 0o120000 and info.file_size <= MAX_FILE, 'unsafe avatar ZIP member')
+            need(hashlib.sha256(z.read(name)).hexdigest() == digest(path), 'avatar ZIP stale member')
+            if Path(name).suffix in TEXT_EXT:
+                scan_text(z.read(name), 'avatar ZIP text member')
+    return {'path': contract['path'], 'exports': len(records), 'package_sha256': digest(package), 'status': 'PASS'}
 
 def tracked(root):
     r = subprocess.run(['git', '-C', str(root), 'ls-files', '-z'], capture_output=True, check=True)
