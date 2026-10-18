@@ -1,0 +1,34 @@
+name: Asyada Offline Assets Export
+on:
+  push:
+    branches:
+      - chore/asyada-offline-assets-20261018
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Stage exact approved assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p export/assets/lockups export/assets/photos
+          cp brands/asyada-egitim/assets/lockups/d-04-small-use-digital-light.svg export/assets/lockups/
+          cp brands/asyada-egitim/assets/lockups/d-04-small-use-digital-dark.svg export/assets/lockups/
+          cp brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg export/assets/lockups/
+          cp brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-dark.svg export/assets/lockups/
+          cp brands/asyada-egitim/assets/lockups/p-01-primary-stacked-light.svg export/assets/lockups/
+          cp docs/instagram/rotani-sec-tokyo-seoul-001/assets/Jost-VF.ttf export/assets/
+          cp docs/instagram/rotani-sec-tokyo-seoul-001/assets/photos/originals/yonsei-main.jpg export/assets/photos/
+          cp docs/instagram/rotani-sec-tokyo-seoul-001/assets/photos/originals/seoul-hongdae-night.jpg export/assets/photos/
+          cp docs/instagram/rotani-sec-tokyo-seoul-001/assets/photos/originals/sinchon-street.jpg export/assets/photos/
+          cp docs/instagram/burs-dosyasi-gks-2027-001/assets/photos-original/campus-hero-ewha.jpg export/assets/photos/
+          sha256sum export/assets/Jost-VF.ttf export/assets/lockups/*.svg > export/SHASUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asyada-exact-local-assets
+          path: export/
+          retention-days: 1
