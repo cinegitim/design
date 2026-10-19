@@ -1,192 +1,25 @@
-<!doctype html>
-<html lang="tr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Asya'da Eğitim — Brand Studio</title>
-<meta name="description" content="Asya'da Eğitim marka kimliği, Çin Eğitim sembolü, aktif tasarım çalışmaları ve arşiv. Onaylı logolar ve proje durumları tek yerde.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120;--line:#d9d1bf;--muted:#65625a;--card:#fffdf7}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--paper);color:var(--ink);font-family:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
-.wrap{max-width:1120px;margin:0 auto;padding:0 28px 80px}
-.skip-link{position:absolute;top:8px;left:8px;z-index:5;transform:translateY(-160%);padding:10px 14px;background:var(--ink);color:var(--paper);border-radius:6px}
-.skip-link:focus{transform:translateY(0)}
-.topbar{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--ink)}
-.topbar img{width:44px;height:auto}
-.topbar .t{font-size:13px;letter-spacing:.14em;font-weight:500}
-.topbar nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
-.topbar nav a{min-height:40px;display:inline-flex;align-items:center;font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:var(--card)}
-.topbar nav a.here,.topbar nav a:hover{border-color:var(--ink)}
-.hero{display:grid;grid-template-columns:112px 1fr;gap:26px;align-items:center;padding:30px 0 14px}
-.hero img.seal{width:108px;height:auto}
-.hero img.word{width:min(300px,100%);height:auto;display:block;margin-top:10px}
-h1{font-size:clamp(34px,4.5vw,56px);line-height:1.04;letter-spacing:-.04em;font-weight:600}
-.lede{font-size:16px;max-width:64ch;margin-top:12px;color:#33302a}
-.badges{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
-.badge{font-size:11px;letter-spacing:.06em;font-weight:500;border-radius:999px;padding:6px 11px;border:1px solid var(--ink)}
-.badge.ok{background:var(--ink);color:var(--paper)}
-.badge.live{border-color:var(--red);color:var(--red)}
-.badge.old{border-color:var(--line);color:var(--muted)}
-section.block{margin-top:54px}
-.kicker{font-size:12px;letter-spacing:.16em;color:var(--muted);font-weight:500}
-h2{font-size:clamp(28px,4vw,46px);letter-spacing:-.03em;margin:8px 0 6px}
-.sub{color:#3d3a34;max-width:70ch}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:20px}
-.card{display:block;background:var(--card);border:1px solid var(--ink);border-radius:14px;padding:22px 20px;text-decoration:none;color:var(--ink)}
-.card:hover{box-shadow:6px 6px 0 var(--ink)}
-.card.first{grid-column:1/-1;display:grid;grid-template-columns:1fr 220px;gap:24px;align-items:center;background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.card.first:hover{box-shadow:6px 6px 0 var(--red)}
-.card.first img{width:220px;max-width:100%;height:auto}
-.card .tag{font-size:11px;letter-spacing:.14em;color:var(--red);font-weight:600}
-.card.first .tag{color:#ff8f8d}
-.card b.t{font-size:24px;display:block;margin:8px 0 4px;letter-spacing:-.01em}
-.card p{font-size:15px;opacity:.85}
-.card .go{font-size:13px;margin-top:14px;display:inline-block;border-bottom:2px solid var(--red);padding-bottom:2px}
-footer{margin-top:68px;border-top:1px solid var(--line);padding-top:20px;font-size:13px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
-code{font-size:12px;overflow-wrap:anywhere}
-.brandbar{border-bottom:1px solid var(--ink);padding:10px 0 12px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-.brandbar .blab{font:11px/1.4 ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
-.brandbar .opts{display:flex;gap:8px;flex-wrap:wrap}
-.opt{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);
-  border:1px solid var(--line);border-radius:10px;padding:7px 13px 7px 9px;background:var(--card);min-height:52px}
-.opt:hover{border-color:var(--ink)}
-.opt.here{border-color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
-.opt img,.opt .pending{width:34px;height:34px;flex:none;border-radius:7px}
-.opt .pending{border:1.5px dashed var(--line);display:grid;place-items:center;
-  font:10px/1.1 ui-monospace,Menlo,monospace;color:var(--muted);letter-spacing:.04em;text-align:center}
-.opt .txt{display:flex;flex-direction:column;gap:2px}
-.opt .on{font-size:15px;font-weight:500;letter-spacing:-.01em}
-.opt .sub{font:10px/1.2 ui-monospace,Menlo,monospace;color:var(--muted);letter-spacing:.035em}
-.opt.here .sub{color:var(--red)}
-.china-feature{display:grid;grid-template-columns:1fr 148px;gap:22px;align-items:center;margin-top:26px;padding:20px 24px;border:1px solid var(--line);border-radius:14px;background:var(--card);text-decoration:none;color:var(--ink)}
-.china-feature:hover{border-color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
-.china-feature img{width:132px;height:132px;object-fit:contain;justify-self:center}
-.china-feature .tag{font-size:11px;letter-spacing:.14em;color:#bf0c1a;font-weight:600}
-.china-feature h2{font-size:clamp(26px,4vw,38px);margin:6px 0}
-.china-feature p{font-size:15px;max-width:60ch;color:#3d3a34}
-.china-feature .go{display:inline-block;margin-top:10px;font-size:13px;border-bottom:2px solid #bf0c1a;padding-bottom:2px}
-a:focus-visible{outline:3px solid #bf0c1a;outline-offset:3px}
-@media(max-width:760px){.brandbar{gap:8px}.brandbar .opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));flex:1;min-width:0}.opt{min-width:0;padding:7px 8px;gap:8px}.opt .txt{min-width:0}.opt .on{font-size:13px}.opt .sub{font-size:9px;overflow-wrap:anywhere}}
-@media(max-width:760px){.topbar{flex-wrap:wrap}.topbar .t{font-size:11px}.topbar nav{width:100%;margin-left:0}.topbar nav a{padding:6px 11px;font-size:12px}.hero{grid-template-columns:82px 1fr;gap:16px;padding:22px 0 10px}.hero img.seal{width:78px}.hero img.word{width:min(300px,100%);margin-top:8px}h1{font-size:clamp(32px,8vw,44px)}.lede{font-size:15px;margin-top:9px}.badges{margin-top:11px;gap:6px}.badge{font-size:10px;padding:5px 8px}.card.first{grid-template-columns:1fr}.card.first img{width:150px}.china-feature{grid-template-columns:1fr 100px;gap:12px;padding:16px}.china-feature img{width:96px;height:96px;grid-column:2;grid-row:1;align-self:center}.china-feature .tag{font-size:9px}.china-feature h2{font-size:26px}.china-feature p{font-size:14px}.wrap{padding:0 16px 56px}section.block{margin-top:42px}.cards{grid-template-columns:1fr;gap:12px;margin-top:16px}footer{margin-top:52px}}
-</style>
-</head>
-<body>
-<div class="wrap">
-  <a class="skip-link" href="#main-content">İçeriğe geç</a>
-  <div class="brandbar" role="navigation" aria-label="Marka seçimi">
-    <span class="blab">Marka</span>
-    <div class="opts">
-      <a class="opt here" href="./" aria-current="true">
-        <img src="asyada-seal/assets/v01-canonical.svg" alt="">
-        <span class="txt"><span class="on">Asya'da Eğitim</span><span class="sub">Education in Asia · APPROVED / CANONICAL</span></span>
-      </a>
-      <a class="opt" href="cin-egitim/">
-        <img src="cin-egitim/assets/symbol.svg" alt="">
-        <span class="txt"><span class="on">Çin Eğitim</span><span class="sub">Education in China · SYMBOL APPROVED / LOCKED</span></span>
-      </a>
-    </div>
-  </div>
-
-  <div class="topbar">
-    <img src="asyada-seal/assets/v01-canonical.svg" alt="Asya'da Eğitim mührü">
-    <span class="t">ASYA'DA EĞİTİM &middot; BRAND STUDIO</span>
-    <nav aria-label="Ana gezinme"><a class="here" href="./" aria-current="page">Panel</a><a href="identity/">Kimlik</a><a href="instagram/">Instagram</a><a href="social-covers/">Sosyal kapaklar</a><a href="archive/">Arşiv</a></nav>
-  </div>
-
-  <main id="main-content">
-  <div class="hero" aria-labelledby="page-title">
-    <img class="seal" src="asyada-seal/assets/v01-canonical.svg" alt="Onaylı kanonik mühür V-01">
-    <div>
-      <h1 id="page-title">Brand Studio</h1>
-      <img class="word" src="asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg" alt="ASYA'DA EĞİTİM — EDUCATION IN ASIA onaylı wordmark">
-      <p class="lede">Onaylı kimlik, aktif üretim ve tam arşiv tek çatıda. Logo ailesi kanonik ve kilitli; Instagram sistemi aktif geliştirmede; tüm tarihsel çalışmalar korunuyor.</p>
-      <div class="badges">
-        <span class="badge ok">IDENTITY — APPROVED / CANONICAL</span>
-        <span class="badge live">INSTAGRAM SYSTEM — ACTIVE DEVELOPMENT</span>
-        <span class="badge old">HISTORICAL WORK — ARCHIVED / PRESERVED</span>
-      </div>
-    </div>
-  </div>
-
-  <a class="china-feature" href="cin-egitim/">
-    <div><span class="tag">ÇİN EĞİTİM · SYMBOL APPROVED / CANONICAL</span>
-      <h2>Çin Eğitim</h2>
-      <p>Kırmızı fırça halkası ve pagoda sembolü onaylandı ve kilitlendi. Bu, sembol onayıdır; tam marka sistemi ve wordmark henüz geliştirilmedi.</p>
-      <span class="go">Sembolü ve çalışma durumunu gör &rarr;</span>
-    </div>
-    <img src="cin-egitim/assets/symbol.svg" alt="Çin Eğitim'in kırmızı fırça halkası, siyah pagoda ve mürekkep zemini sembolü">
-  </a>
-
-  <section class="block" id="identity">
-    <div class="kicker">01 &middot; LOGO &amp; TYPOGRAPHY — ÖNCE KİMLİK</div>
-    <h2>Onaylı kimlik</h2>
-    <p class="sub">Mühür, wordmark ve beş kilit — hepsi tek sayfada, manifest ve doğrulama ile birlikte.</p>
-    <div class="cards">
-      <a class="card first" href="identity/">
-        <div><span class="tag">APPROVED / CANONICAL &middot; 2026-10-08</span>
-        <b class="t">Kimlik: mühür + wordmark + 5 kilit</b>
-        <p>P-01, H-02, C-03, D-04, F-05 — light / dark / monochrome. Minimum boyut, clearspace, SHA listesi ve hazırlık sürecinin kronolojisi.</p>
-        <span class="go">Kimlik sayfasını aç &rarr;</span></div>
-        <img src="asyada-seal/canonical-lockups/assets/p-01-primary-stacked-light.svg" alt="P-01 birincil dikey kilit">
-      </a>
-    </div>
-  </section>
-
-  <section class="block" id="studio">
-    <div class="kicker">02 &middot; INSTAGRAM STUDIO — AKTİF ÜRETİM</div>
-    <h2>Instagram çalışma alanı</h2>
-    <p class="sub">Gençlere dönük ama kurumsal güven veren, carousel odaklı tasarım sistemi. Faz 0 mimariden başlıyor; şablonlar kanonik değil.</p>
-    <div class="cards">
-      <a class="card" href="instagram/">
-        <span class="tag">ACTIVE DEVELOPMENT &middot; PHASE 0</span>
-        <b class="t">Instagram Studio</b>
-        <p>1080&times;1350 zemin, 6 içerik ailesi, 5 carousel yapısı, 4 görsel mod. İnteraktif storyboard ve tel-kare demolar.</p>
-        <span class="go">Stüdyoyu aç &rarr;</span>
-      </a>
-      <a class="card" href="social-covers/">
-        <span class="tag">X · LINKEDIN PAGE · FACEBOOK PAGE</span>
-        <b class="t">Sosyal medya kapakları</b>
-        <p>“Üniversite için başka bir dünya var.” sloganı ve beş çalışma ülkesiyle X, LinkedIn ve Facebook sayfa kapakları. PNG ve SVG olarak indirilebilir.</p>
-        <span class="go">Kapakları incele &rarr;</span>
-      </a>
-      <a class="card" href="asyada-seal/visual-system-phase-1/">
-        <span class="tag">HISTORICAL REFERENCE</span>
-        <b class="t">Görsel Sistem Faz 1</b>
-        <p>Kare post, dikey kampanya ve fuar el ilanı prototipleri — Instagram öncesi referans.</p>
-        <span class="go">Referansı aç &rarr;</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="block" id="archive">
-    <div class="kicker">03 &middot; ARCHIVE — DENEYSEL GEÇMİŞ</div>
-    <h2>Arşiv</h2>
-    <p class="sub">İlk yön denemelerinden tipografi ağırlık çalışmalarına kadar tüm yayınlanmış sayfalar, oldukları gibi korunuyor. Deneysel içerik üretimde kullanılamaz.</p>
-    <div class="cards">
-      <a class="card" href="archive/">
-        <span class="tag">PRESERVED &middot; NOT FOR PRODUCTION</span>
-        <b class="t">Tüm arşiv envanteri</b>
-        <p>Kategorilere ayrılmış 28 sayfa: yönler, mühür deneyleri, wordmark, kilitler, tutarlılık testleri, mockup'lar.</p>
-        <span class="go">Arşivi aç &rarr;</span>
-      </a>
-      <a class="card" href="asyada-seal/">
-        <span class="tag">SEAL GALLERY</span>
-        <b class="t">Mühür galerisi</b>
-        <p>V-01 seçim süreci, 10 mühür varyantı ve uygulama setleri.</p>
-        <span class="go">Galeriyi aç &rarr;</span>
-      </a>
-    </div>
-  </section>
-
-  </main>
-
-  <footer>
-    <span>Asya'da Eğitim Brand Studio &middot; Mühür SHA <code>8f5d46f0&hellip;</code> &middot; Kilit manifest <code>60fb1f6d&hellip;</code></span>
-    <span><a href="identity/">Kimlik</a> &middot; <a href="instagram/">Instagram</a> &middot; <a href="archive/">Arşiv</a></span>
-  </footer>
-</div>
-</body>
-</html>
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Brandstudio — Tasarım çalışma alanı</title><meta name="description" content="Onaylı markalar, güncel tasarım çıktıları ve çalışma arşivine kolay erişim."><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet"><style>:root{--bg:#f7f6f1;--ink:#25292a;--muted:#646965;--red:#b71f32;--line:#dfdfd6;--card:#fffefa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Jost,system-ui,-apple-system,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}a{color:inherit}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.skip{position:absolute;top:-120px;left:20px;padding:10px 15px;background:var(--ink);color:white;z-index:20}.skip:focus{top:10px}.container{max-width:1150px;margin:auto;padding:0 24px 60px}
+header{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}.logo{font-weight:650;font-size:26px;letter-spacing:-.05em;text-decoration:none}.logo:after{content:"";display:inline-block;background:var(--red);width:8px;height:8px;border-radius:50%;margin-left:3px}
+nav{display:flex;flex-wrap:wrap;gap:2px}nav a{text-decoration:none;border-radius:7px;padding:9px 13px;font-size:13px;font-weight:550;color:var(--muted)}nav a:hover,nav a[aria-current=page]{color:var(--ink);background:#e9e8de}
+.eyebrow,.label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:650;color:var(--red)}
+h1{font-size:clamp(38px,6vw,70px);font-weight:600;line-height:1.04;letter-spacing:-.055em;margin:12px 0 15px}h2{font-size:clamp(26px,4vw,36px);font-weight:600;letter-spacing:-.04em;margin:4px 0 5px;line-height:1.1}h3{font-size:26px;line-height:1.1;letter-spacing:-.03em;margin:10px 0}p{margin:0}.muted{color:var(--muted)}.lead{font-size:17px;color:var(--muted);max-width:65ch}.hero{padding:66px 0 38px;max-width:900px}.section{margin-top:46px}.section-header{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:18px}.section-header .muted{font-size:14px;margin-top:5px}.more{font-size:13px;white-space:nowrap;font-weight:600;text-underline-offset:4px}
+.brands{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.brand{min-height:229px;background:var(--card);border:1px solid var(--line);border-radius:14px;display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:15px;align-items:center;padding:27px;text-decoration:none;transition:transform .15s,border-color .15s}.brand:hover,.tile:hover{transform:translateY(-2px);border-color:var(--ink)}.brand img{width:100%;max-height:135px;object-fit:contain}.brand .muted{font-size:13px;max-width:37ch}.brand .more{display:block;margin-top:19px}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.tile{display:flex;flex-direction:column;min-width:0;text-decoration:none;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);transition:transform .15s,border-color .15s}.thumb{height:auto;aspect-ratio:1.5;background:#e7e6dc;display:flex;align-items:center;justify-content:center;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover}.thumb img[src$=".svg"]{object-fit:contain;padding:25px}
+.tile .caption{padding:14px 14px 0;font-size:11px;color:var(--muted)}.tile strong{font-size:17px;letter-spacing:-.02em;line-height:1.2;padding:5px 14px 0}.tile .detail{font-size:12px;color:var(--muted);padding:6px 14px 0}.tile .status{display:flex;justify-content:space-between;color:var(--red);font-size:12px;font-weight:600;margin-top:auto;padding:15px 14px}
+.archive-note{margin-top:43px;background:#eeece4;border:1px solid var(--line);border-radius:12px;padding:23px;display:flex;gap:18px;align-items:center;justify-content:space-between}.archive-note .muted{font-size:13px;margin-top:4px}
+footer{margin-top:60px;border-top:1px solid var(--line);padding-top:20px;font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:900px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.brand{grid-template-columns:minmax(0,1fr) 90px}.brand img{max-height:105px}}
+@media(max-width:630px){.container{padding:0 16px 40px}header{display:block;padding:16px 0}nav{margin-top:8px}nav a{padding:8px 9px;font-size:12px}.hero{padding:45px 0 20px}.lead{font-size:15px}.brands,.tiles{grid-template-columns:1fr}.brand{min-height:188px;padding:21px}.section-header{display:block}.section-header .more{display:inline-block;margin-top:9px}.archive-note{display:block}.archive-note .more{display:inline-block;margin-top:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.brand,.tile{transition:none}}</style></head><body><a class="skip" href="#main">İçeriğe geç</a><div class="container"><header><a class="logo" href="./">Brandstudio</a><nav aria-label="Ana gezinme"><a href="./#brands" aria-current="page">Markalar</a><a href="./productions/">Üretimler</a><a href="./identity/">Kimlik</a><a href="./archive/">Arşiv</a></nav></header><main id="main"><section class="hero"><span class="eyebrow">Tasarım çalışma alanı</span><h1>İki marka.<br>Tek stüdyo.</h1><p class="lead">Onaylı kimlikler ve güncel tasarımlar burada. Geçmiş denemeler arşivde korunuyor; üretimler henüz onaylanmış içerik sayılmıyor.</p></section>
+<section class="section" id="brands"><div class="section-header"><div><span class="eyebrow">01 / Markalar</span><h2>Marka alanları</h2></div></div><div class="brands">
+<a class="brand" href="identity/"><div><span class="label">Mühür ve logo ailesi onaylı</span><h3>Asya'da Eğitim</h3><p class="muted">Kanonik mühür, beş logo ailesi ve kullanım ilkeleri.</p><span class="more">Onaylı kimliği aç ↗</span></div><img src="asyada-seal/canonical-lockups/assets/p-01-primary-stacked-light.svg" alt="Asya'da Eğitim logosu"></a>
+<a class="brand" href="cin-egitim/"><div><span class="label">Sembol onaylı · tipografi geliştirmede</span><h3>Çin Eğitim</h3><p class="muted">Kilitli sembol ve karşılaştırmalı tipografi yönleri.</p><span class="more">Marka çalışmalarını aç ↗</span></div><img src="cin-egitim/assets/symbol.svg" alt="Çin Eğitim sembolü"></a>
+</div></section>
+<section class="section"><div class="section-header"><div><span class="eyebrow">02 / Güncel üretimler</span><h2>Son çalışmalar</h2><p class="muted">İnceleme için hazırlanmış gerçek çalışma galerileri.</p></div><a class="more" href="productions/">Tüm üretimleri gör ↗</a></div><div class="tiles"><a class="tile" href="instagram/basvuru-rehberi-china-001/" data-brand="asyada" data-search="çince bilmeden çin'de eğitim başvuru rehberi · 6 slayt asya'da eğitim karusel"><span class="thumb"><img loading="lazy" src="instagram/basvuru-rehberi-china-001/contact-sheet.png" alt="Çince bilmeden Çin'de eğitim çalışmasının önizlemesi"></span><span class="caption">Asya'da Eğitim · Karusel</span><strong>Çince bilmeden Çin'de eğitim</strong><span class="detail">Başvuru Rehberi · 6 slayt</span><span class="status">İncelemede <span aria-hidden="true">↗</span></span></a>
+<a class="tile" href="instagram/rotani-sec-tokyo-seoul-001/v3/" data-brand="asyada" data-search="tokyo mu, seul mü? rotanı seç · 6 slayt asya'da eğitim karusel"><span class="thumb"><img loading="lazy" src="instagram/rotani-sec-tokyo-seoul-001/v3/contact-sheet.png" alt="Tokyo mu, Seul mü? çalışmasının önizlemesi"></span><span class="caption">Asya'da Eğitim · Karusel</span><strong>Tokyo mu, Seul mü?</strong><span class="detail">Rotanı Seç · 6 slayt</span><span class="status">İncelemede <span aria-hidden="true">↗</span></span></a>
+<a class="tile" href="instagram/tsinghua-atlas-2027/v2/" data-brand="asyada" data-search="tsinghua üniversitesi atlası üniversite tanıtımı · 7 slayt asya'da eğitim karusel"><span class="thumb"><img loading="lazy" src="instagram/tsinghua-atlas-2027/v2/contact-sheet.png" alt="Tsinghua Üniversitesi Atlası çalışmasının önizlemesi"></span><span class="caption">Asya'da Eğitim · Karusel</span><strong>Tsinghua Üniversitesi Atlası</strong><span class="detail">Üniversite tanıtımı · 7 slayt</span><span class="status">İncelemede <span aria-hidden="true">↗</span></span></a>
+<a class="tile" href="instagram/burs-dosyasi-gks-2027-001/" data-brand="asyada" data-search="gks 2027 burs dosyası burs serisi · 6 slayt asya'da eğitim karusel"><span class="thumb"><img loading="lazy" src="instagram/burs-dosyasi-gks-2027-001/contact-sheet.png" alt="GKS 2027 Burs Dosyası çalışmasının önizlemesi"></span><span class="caption">Asya'da Eğitim · Karusel</span><strong>GKS 2027 Burs Dosyası</strong><span class="detail">Burs serisi · 6 slayt</span><span class="status">Onay bekliyor <span aria-hidden="true">↗</span></span></a></div></section>
+<aside class="archive-note"><div><strong>Bir önceki tasarımı mı arıyorsunuz?</strong><p class="muted">Eski yönler, logo deneyleri ve önceki sürümler kaybolmadı.</p></div><a class="more" href="archive/">Tarihsel arşiv ↗</a></aside></main>
+<footer><span>Brandstudio · Kaynaklar GitHub'da sürüm kontrollü.</span><span><a href="instagram/">Instagram metodolojisi</a> · <a href="https://github.com/cinegitim/design">GitHub</a></span></footer></div></body></html>
