@@ -2,7 +2,8 @@
 """Read-only pilot: verify exact image duplication and references in Pages sources.
 
 No network requests, build/render operations, deletion, or file mutations.
-Run: python3 studio/tools/audit_asset_dedup_pilot.py --root . --json
+Run (migrated tree): python3 studio/tools/audit_asset_dedup_pilot.py --mode after --root . --json
+Run (historical baseline): python3 studio/tools/audit_asset_dedup_pilot.py --mode before --root . --json
 """
 from __future__ import annotations
 
@@ -108,22 +109,90 @@ def inspect(root: Path, targets: tuple[str, ...] = TARGETS) -> dict:
     }
 
 
+
+# Exact, pre-existing Git blob reused without PNG re-encoding (caBX preserved).
+SHARED = "instagram/_shared/assets/study-worlds-22dde98f.png"
+EXPECTED_SHARED_SHA256 = "c9e22040515021cfa5014b51426cf63ba3ded488370ae347edba77632c4e63ed"
+EXPECTED_SHARED_BYTES = 3281287
+HISTORICAL_SOURCE_PAGES = (
+    "instagram/carousel-01-v2/source/03.html",
+    "instagram/carousel-01-v3/source/03.html",
+    "instagram/carousel-02/source/03.html",
+    "instagram/discovery-01/source/02.html",
+)
+
+
+def verify_migrated(root: Path, *, expected_sha256: str = EXPECTED_SHARED_SHA256,
+                    expected_bytes: int = EXPECTED_SHARED_BYTES) -> dict:
+    """Read-only, fail-closed check for the finished 4-path -> 1-path migration."""
+    docs = root / "docs"
+    shared = docs / SHARED
+    if not shared.is_file() or shared.is_symlink():
+        raise ValueError(f"Shared source missing or symlinked: {SHARED}")
+    if shared.stat().st_size != expected_bytes or digest(shared) != expected_sha256:
+        raise ValueError("Shared image byte count or SHA256 differs from unchanged source")
+
+    for old in TARGETS:
+        if (docs / old).exists() or (docs / old).is_symlink():
+            raise ValueError(f"Original duplicate still published: {old}")
+
+    required = set(HISTORICAL_SOURCE_PAGES)
+    confirmed = []
+    scanned = 0
+    for source in docs.rglob("*"):
+        if not source.is_file() or source.is_symlink() or source.suffix.lower() not in TEXT_EXTENSIONS:
+            continue
+        if source.stat().st_size > MAX_TEXT_BYTES:
+            continue
+        rel = source.relative_to(docs).as_posix()
+        content = source.read_text(encoding="utf-8", errors="replace")
+        scanned += 1
+        refs = HTML_ATTRIBUTE.findall(content) + CSS_URL.findall(content)
+        for value in refs:
+            target = resolve_site_url(rel, value)
+            if target in TARGETS:
+                raise ValueError(f"Stale HTML/CSS image reference: {rel} -> {target}")
+            if target == SHARED and rel in required:
+                confirmed.append({"page": rel, "reference": value, "target": SHARED})
+
+    counts = {page: sum(x["page"] == page for x in confirmed) for page in required}
+    if any(n != 1 for n in counts.values()):
+        raise ValueError(f"Expected one shared image reference in every source page: {counts}")
+
+    return {
+        "status": "PASS_AFTER_MIGRATION",
+        "shared_path": SHARED,
+        "shared_sha256": expected_sha256,
+        "source_file_bytes": expected_bytes,
+        "removed_duplicate_paths": list(TARGETS),
+        "png_asset_bytes_saved": (len(TARGETS) - 1) * expected_bytes,
+        "source_pages": sorted(confirmed, key=lambda x: x["page"]),
+        "text_files_scanned": scanned,
+        "old_image_deep_links_intentionally_retired": True,
+        "modifies_files": False,
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[2])
     parser.add_argument("--json", action="store_true", help="Emit machine-readable findings")
+    parser.add_argument("--mode", choices=("before", "after"), default="after", help="Verify baseline before or migration after")
     args = parser.parse_args()
     try:
-        result = inspect(args.root.resolve())
+        result = inspect(args.root.resolve()) if args.mode == "before" else verify_migrated(args.root.resolve())
     except (ValueError, OSError) as exc:
         parser.exit(2, f"Asset pilot STOP: {exc}\n")
     if args.json:
         print(json.dumps(result, indent=2, ensure_ascii=False))
     else:
-        print(f"PASS: {len(result['files'])} identical files")
-        print(f"Theoretical reduction: {result['theoretical_bytes_saved_if_three_urls_removed']:,} bytes")
-        print(f"Resolved HTML/CSS references: {len(result['exact_site_references'])}")
-        print("No files modified; existing URLs must not be deleted.")
+        if args.mode == "before":
+            print(f"PASS: {len(result['files'])} identical files")
+            print(f"Theoretical reduction: {result['theoretical_bytes_saved_if_three_urls_removed']:,} bytes")
+        else:
+            print(f"PASS: {len(result['source_pages'])} migrated layout references")
+            print(f"Published asset reduction: {result['png_asset_bytes_saved']:,} bytes")
+        print("Read-only verification; no files modified.")
     return 0
 
 
