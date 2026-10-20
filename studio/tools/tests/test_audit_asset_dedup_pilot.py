@@ -83,7 +83,7 @@ class DedupPilotTests(unittest.TestCase):
         result = module.verify_migrated(self.root, expected_sha256=sha, expected_bytes=n)
         self.assertEqual(result["status"], "PASS_AFTER_MIGRATION")
         self.assertEqual(len(result["source_pages"]), 4)
-        self.assertEqual(result["net_published_bytes_saved"], 3 * n)
+        self.assertEqual(result["png_asset_bytes_saved"], 3 * n)
         self.assertTrue(result["old_image_deep_links_intentionally_retired"])
 
     def test_after_migration_refuses_stale_source_url(self):

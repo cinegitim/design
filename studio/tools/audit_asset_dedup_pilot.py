@@ -165,7 +165,7 @@ def verify_migrated(root: Path, *, expected_sha256: str = EXPECTED_SHARED_SHA256
         "shared_sha256": expected_sha256,
         "source_file_bytes": expected_bytes,
         "removed_duplicate_paths": list(TARGETS),
-        "net_published_bytes_saved": (len(TARGETS) - 1) * expected_bytes,
+        "png_asset_bytes_saved": (len(TARGETS) - 1) * expected_bytes,
         "source_pages": sorted(confirmed, key=lambda x: x["page"]),
         "text_files_scanned": scanned,
         "old_image_deep_links_intentionally_retired": True,
@@ -191,7 +191,7 @@ def main() -> int:
             print(f"Theoretical reduction: {result['theoretical_bytes_saved_if_three_urls_removed']:,} bytes")
         else:
             print(f"PASS: {len(result['source_pages'])} migrated layout references")
-            print(f"Published asset reduction: {result['net_published_bytes_saved']:,} bytes")
+            print(f"Published asset reduction: {result['png_asset_bytes_saved']:,} bytes")
         print("Read-only verification; no files modified.")
     return 0
 

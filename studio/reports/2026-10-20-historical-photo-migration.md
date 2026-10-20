@@ -25,7 +25,7 @@ A Git tree move reuses that precise blob, without PNG encoding, stripping caBX p
 
 **Current total for the 4 paths:** 13,125,148 bytes.  
 **New shared path:** 3,281,287 bytes.  
-**Net published-tree reduction:** **9,843,861 bytes (9.39 MiB)**. This is a tracked-tree calculation, not a claim of reduced Git pack storage or a measured GitHub Pages deployment artifact.
+**PNG asset-only reduction:** **9,843,861 bytes**. The four updated HTML references add **95 bytes** in total. **Measured net `docs/` tree reduction:** **9,843,766 bytes (9.39 MiB)**. Both are uncompressed current-tree counts, not Git object-pack or compressed Pages deployment billing metrics. This is a tracked-tree calculation, not a claim of reduced Git pack storage or a measured GitHub Pages deployment artifact.
 
 ## Deep-link policy
 
