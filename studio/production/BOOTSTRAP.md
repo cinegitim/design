@@ -12,8 +12,10 @@ On an actual Brandstudio creation/refinement/application request:
    environment, not from repository examples or model self-description. Record the
    model ID only when runtime/provider metadata actually verifies it. Otherwise
    leave `model_verified` null. Do not infer capabilities from model names.
-2. Resolve the exact brand slug from the user's request and
-   `brands/<slug>/brand.json`. Never substitute `asya-egitim` for
+2. Resolve the exact brand slug from the user's request and existing
+   `brands/<slug>/brand.json` for applications. For `new-identity`, an
+   unregistered safe slug is allowed: perform the existing intake/scaffolding
+   before expecting brand metadata. Never substitute `asya-egitim` for
    `asyada-egitim`.
 3. Classify the production category and preserve the entire original user brief.
    Do not treat the category classification as a lossless creative brief.
