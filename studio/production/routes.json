@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "categories": {
+    "instagram-carousel": [
+      ".opencode/skills/brand-studio/references/applications.md"
+    ],
+    "social-post": [
+      ".opencode/skills/brand-studio/references/applications.md"
+    ],
+    "identity-application": [
+      ".opencode/skills/brand-studio/references/applications.md"
+    ],
+    "print-catalog": [
+      ".opencode/skills/brand-studio/references/applications.md"
+    ],
+    "web-design": [
+      ".opencode/skills/brand-studio/references/applications.md"
+    ],
+    "new-identity": [
+      ".opencode/skills/brand-studio/SKILL.md"
+    ]
+  },
+  "profiles": [
+    {
+      "id": "codex-code-v1",
+      "executor": "codex",
+      "requires": [
+        "filesystem",
+        "terminal"
+      ],
+      "categories": [
+        "*"
+      ],
+      "strategy": "code-first"
+    },
+    {
+      "id": "opencode-code-v1",
+      "executor": "opencode",
+      "requires": [
+        "filesystem",
+        "terminal"
+      ],
+      "categories": [
+        "*"
+      ],
+      "strategy": "code-first"
+    },
+    {
+      "id": "antigravity-agent-v1",
+      "executor": "antigravity",
+      "requires": [
+        "filesystem",
+        "terminal"
+      ],
+      "categories": [
+        "*"
+      ],
+      "strategy": "agent-skills"
+    },
+    {
+      "id": "work-connected-v1",
+      "executor": "chatgpt-work",
+      "requires": [
+        "github-read"
+      ],
+      "categories": [
+        "*"
+      ],
+      "strategy": "connected-tools"
+    },
+    {
+      "id": "chat-image-v1",
+      "executor": "chatgpt-chat",
+      "requires": [
+        "image-generation"
+      ],
+      "categories": [
+        "instagram-carousel",
+        "social-post"
+      ],
+      "strategy": "native-image"
+    },
+    {
+      "id": "generic-limited-v1",
+      "executor": "*",
+      "requires": [],
+      "categories": [
+        "*"
+      ],
+      "strategy": "capability-limited"
+    }
+  ]
+}
