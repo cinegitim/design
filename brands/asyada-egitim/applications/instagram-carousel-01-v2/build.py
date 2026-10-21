@@ -40,3 +40,8 @@ manifest={'campaign':'Üniversite için başka bir dünya var.','version':'v2 �
 for i,n in enumerate(names,1):
  lid='P-01/dark' if i==5 else 'P-01/light';p=OUT/(n+'.png');manifest['slides'].append({'file':p.name,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'source_html':f'source/{i:02}.html','canonical_lockup_id':lid,'canonical_lockup_sha256':rec[lid]['sha256'],'canonical_seal_sha256':m['canonical_seal_sha256']})
 (OUT/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
+
+# Ensure the rebuilt historical gallery does not re-publish redundant raw PNGs.
+import sys
+subprocess.run([sys.executable, str(ROOT / "studio/tools/normalize_historical_carousel_build.py"),
+                "--root", str(ROOT), "--slug", "carousel-01-v2", "--apply"], check=True)

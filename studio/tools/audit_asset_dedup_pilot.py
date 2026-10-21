@@ -173,6 +173,121 @@ def verify_migrated(root: Path, *, expected_sha256: str = EXPECTED_SHARED_SHA256
     }
 
 
+
+# Later historical carousel photo clusters: retained byte-for-byte from their Git blobs.
+ADDITIONAL_CLUSTERS = (
+    {
+        "name": "students",
+        "shared": "instagram/_shared/assets/students-53a42641.png",
+        "sha256": "9018a8239c23e3dde39b448d79ce441ecdcc14f7e95dfe375f71169df2663761",
+        "bytes": 2644250,
+        "old": (
+            "instagram/carousel-01-v2/assets/photo-1.png",
+            "instagram/carousel-01-v3/assets/photo-1.png",
+            "instagram/carousel-02/assets/photo-1.png",
+            "instagram/discovery-01/assets/students.png",
+        ),
+        "pages": (
+            "instagram/carousel-01-v2/source/01.html",
+            "instagram/carousel-01-v3/source/01.html",
+            "instagram/carousel-02/source/02.html",
+            "instagram/discovery-01/source/01.html",
+            "instagram/discovery-01/source/05.html",
+        ),
+    },
+    {
+        "name": "campus",
+        "shared": "instagram/_shared/assets/campus-1bebf73c.png",
+        "sha256": "5e0d818fcece01758b60c6a767b4e3d40b121586a312985531b67ff7f046b91b",
+        "bytes": 2248887,
+        "old": (
+            "instagram/carousel-01-v2/assets/photo-4.png",
+            "instagram/carousel-01-v3/assets/photo-4.png",
+            "instagram/carousel-02/assets/photo-4.png",
+            "instagram/discovery-01/assets/campus.png",
+        ),
+        "pages": ("instagram/discovery-01/source/04.html",),
+    },
+    {
+        "name": "photo-2",
+        "shared": "instagram/_shared/assets/photo-2-031a795c.png",
+        "sha256": "d0b3667953d8c8754d2a06f056dd222ef647702f1e67053a11d01c935a157625",
+        "bytes": 2552934,
+        "old": (
+            "instagram/carousel-01-v2/assets/photo-2.png",
+            "instagram/carousel-01-v3/assets/photo-2.png",
+            "instagram/carousel-02/assets/photo-2.png",
+        ),
+        "pages": (
+            "instagram/carousel-01-v2/source/02.html",
+            "instagram/carousel-01-v2/source/05.html",
+            "instagram/carousel-01-v3/source/02.html",
+            "instagram/carousel-02/source/01.html",
+        ),
+    },
+)
+
+
+def verify_additional_clusters(root: Path, groups=ADDITIONAL_CLUSTERS) -> dict:
+    """Read-only fail-closed verification of three new 4/4/3-to-one image groups."""
+    docs = root / "docs"
+    removed = set()
+    expected = {}
+    saved_bytes = 0
+    for group in groups:
+        shared = group["shared"]
+        path = docs / shared
+        if not path.is_file() or path.is_symlink():
+            raise ValueError(f"Missing shared PNG: {shared}")
+        if path.stat().st_size != group["bytes"] or digest(path) != group["sha256"]:
+            raise ValueError(f"Wrong shared PNG SHA256 or length: {shared}")
+        if shared in expected:
+            raise ValueError(f"Duplicated shared group: {shared}")
+        for old in group["old"]:
+            if old in removed:
+                raise ValueError(f"Overlapping old PNG group: {old}")
+            if (docs / old).exists() or (docs / old).is_symlink():
+                raise ValueError(f"Old duplicated PNG still present: {old}")
+            removed.add(old)
+        saved_bytes += (len(group["old"]) - 1) * group["bytes"]
+        for page in group["pages"]:
+            key = (page, shared)
+            if key in expected:
+                raise ValueError(f"Duplicated expected source reference: {page}")
+            expected[key] = 0
+
+    found = []
+    scanned = 0
+    shared_set = {group["shared"] for group in groups}
+    for source in docs.rglob("*"):
+        if (not source.is_file() or source.is_symlink() or
+                source.suffix.lower() not in TEXT_EXTENSIONS or
+                source.stat().st_size > MAX_TEXT_BYTES):
+            continue
+        rel = source.relative_to(docs).as_posix()
+        content = source.read_text(encoding="utf-8", errors="replace")
+        scanned += 1
+        for raw in HTML_ATTRIBUTE.findall(content) + CSS_URL.findall(content):
+            target = resolve_site_url(rel, raw)
+            if target in removed:
+                raise ValueError(f"Stale PNG reference: {rel} -> {target}")
+            if target in shared_set and (rel, target) in expected:
+                expected[(rel, target)] += 1
+                found.append({"page": rel, "target": target, "reference": raw})
+
+    if any(count != 1 for count in expected.values()):
+        raise ValueError(f"Incorrect per-page shared image references: {expected}")
+    return {
+        "status": "PASS",
+        "groups": len(groups),
+        "source_pages": sorted(found, key=lambda item: (item["page"], item["target"])),
+        "png_asset_bytes_saved": saved_bytes,
+        "text_files_scanned": scanned,
+        "old_raw_image_urls_intentionally_retired": True,
+        "modifies_files": False,
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[2])
@@ -180,7 +295,14 @@ def main() -> int:
     parser.add_argument("--mode", choices=("before", "after"), default="after", help="Verify baseline before or migration after")
     args = parser.parse_args()
     try:
-        result = inspect(args.root.resolve()) if args.mode == "before" else verify_migrated(args.root.resolve())
+        if args.mode == "before":
+            result = inspect(args.root.resolve())
+        else:
+            result = verify_migrated(args.root.resolve())
+            additional = verify_additional_clusters(args.root.resolve())
+            result["additional_groups"] = additional
+            result["png_asset_bytes_saved"] += additional["png_asset_bytes_saved"]
+            result["source_pages"].extend(additional["source_pages"])
     except (ValueError, OSError) as exc:
         parser.exit(2, f"Asset pilot STOP: {exc}\n")
     if args.json:
