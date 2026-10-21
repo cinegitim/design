@@ -66,6 +66,15 @@ class RouterTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.route(brand="not-a-real-brand")
 
+    def test_new_identity_without_metadata_enters_intake(self):
+        result = self.route(
+            brand="new-safe-brand", category="new-identity",
+            capabilities={"filesystem", "terminal"},
+        )
+        self.assertEqual(result["route"]["id"], "codex-code-v1")
+        self.assertNotIn("brands/new-safe-brand/brand.json", result["load"])
+        self.assertTrue(any("scaffolding" in w for w in result["warnings"]))
+
     def test_existing_identity_is_explicit(self):
         r = self.route()
         self.assertIn("brands/asyada-egitim/brand.json", r["load"])
