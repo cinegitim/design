@@ -123,5 +123,65 @@ class DedupPilotTests(unittest.TestCase):
 
 
 
+    def create_additional_fixture(self):
+        """Construct an isolated two-copy image fixture with no external dependencies."""
+        import hashlib
+        shared = "instagram/_shared/assets/synthetic.png"
+        old = ("instagram/test-a/assets/image.png", "instagram/test-b/assets/image.png")
+        page = "instagram/test-a/source/01.html"
+        payload = b"unchanged synthetic PNG"
+        target = self.root / "docs" / shared
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(payload)
+        sample = self.root / "docs" / page
+        sample.parent.mkdir(parents=True, exist_ok=True)
+        sample.write_text('<img src="../../_shared/assets/synthetic.png">', encoding="utf-8")
+        group = {
+            "shared": shared,
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+            "old": old,
+            "pages": (page,),
+        }
+        return group
+
+    def test_additional_cluster_passes_and_is_read_only(self):
+        group = self.create_additional_fixture()
+        before = {p.as_posix(): p.read_bytes() for p in (self.root / "docs").rglob("*") if p.is_file()}
+        result = module.verify_additional_clusters(self.root, (group,))
+        after = {p.as_posix(): p.read_bytes() for p in (self.root / "docs").rglob("*") if p.is_file()}
+        self.assertEqual(before, after)
+        self.assertEqual(result["png_asset_bytes_saved"], group["bytes"])
+        self.assertEqual(len(result["source_pages"]), 1)
+
+    def test_additional_cluster_rejects_mutated_shared_bytes(self):
+        group = self.create_additional_fixture()
+        (self.root / "docs" / group["shared"]).write_bytes(b"different")
+        with self.assertRaisesRegex(ValueError, "SHA256 or length"):
+            module.verify_additional_clusters(self.root, (group,))
+
+    def test_additional_cluster_rejects_old_duplicate(self):
+        group = self.create_additional_fixture()
+        path = self.root / "docs" / group["old"][0]
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(b"old")
+        with self.assertRaisesRegex(ValueError, "still present"):
+            module.verify_additional_clusters(self.root, (group,))
+
+    def test_additional_cluster_rejects_stale_source_reference(self):
+        group = self.create_additional_fixture()
+        old = self.root / "docs" / group["pages"][0]
+        old.write_text('<img src="../../test-a/assets/image.png">', encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "Stale PNG reference"):
+            module.verify_additional_clusters(self.root, (group,))
+
+    def test_additional_cluster_rejects_missing_expected_ref(self):
+        group = self.create_additional_fixture()
+        (self.root / "docs" / group["pages"][0]).write_text("<p>missing shared image</p>", encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "Incorrect per-page shared image references"):
+            module.verify_additional_clusters(self.root, (group,))
+
+
+
 if __name__ == "__main__":
     unittest.main()
