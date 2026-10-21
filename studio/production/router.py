@@ -21,7 +21,8 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
     if not SLUG.fullmatch(brand):
         raise ValueError("Brand must be an exact safe slug")
     metadata = root / "brands" / brand / "brand.json"
-    if not metadata.is_file():
+    registered = metadata.is_file()
+    if not registered and category != "new-identity":
         raise ValueError(f"Brand metadata not found: brands/{brand}/brand.json")
     if model_verified and not model_id:
         raise ValueError("Verified model flag requires --model-id")
@@ -58,13 +59,16 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
         "load": [
             "AGENTS.md",
             "studio/production/BOOTSTRAP.md",
-            f"brands/{brand}/brand.json",
+            *([f"brands/{brand}/brand.json"] if registered else []),
             ".agents/skills/brand-studio/SKILL.md",
             *config["categories"][category],
             "studio/workflow/PUBLISHING.md",
         ],
         "telemetry": {"collected": False, "run_id": None},
         "warnings": (
+            ["New brand: follow identity intake/scaffolding before applications; no brand metadata exists."]
+            if not registered else []
+        ) + (
             ["No verified model identity; a specific model version cannot be asserted."]
             if not model_verified else []
         ) + (
