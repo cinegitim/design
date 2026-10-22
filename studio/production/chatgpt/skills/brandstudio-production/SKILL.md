@@ -23,6 +23,9 @@ Scope: reusable Brandstudio production workflow for approved identities, campaig
 
 
 
+## Style selector contract
+For branded application production, treat **brand, category, style family and preset** as separate decisions. When a style is explicitly selected, read only its manifest at `brands/<brand>/styles/<category>/<style_id>/style.json`, the adjacent README and the immutable approval sources. Validate the style's exact brand/category, preset and named variation axes; do not assign a new style ID to each preset. This enables future UI selectors. Record selected style/version/preset/resolved variations on real production. If no style is chosen, leave it unspecified; do not claim an automatic choice or human approval. Style manifests marked `review-only` remain proposals.
+
 ## Binding carousel production method
 For `instagram-carousel`, follow `routes.json` → `production_policies` **before**
 selecting image tools. Match the brand's existing HTML/CSS/SVG build approach;
