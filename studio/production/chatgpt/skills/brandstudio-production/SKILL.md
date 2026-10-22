@@ -41,3 +41,14 @@ Scope: reusable Brandstudio production workflow for approved identities, campaig
 
 ## Finish and evidence
 Reuse the existing Brandstudio approval, locked-logo, security and publishing rules. In production, record observed executor/model evidence, source commit, route/strategy version, changed paths, PR/checks and outputs. Duration, input/output/cache tokens and cost must be actual measurements or `unavailable`—never fabricated zeros. Do not publish private prompts or credentials. Do not auto-post to social media. Creative approval is human; technical CI is not aesthetic approval.
+
+
+## Recorder integration
+For real production, consult `studio/production/recording/README.md`.
+Store only observed tool/model/PR/output evidence; token usage is
+unavailable unless an actual provider/host surface reports it.
+The recorder CLI requires a real checkout and Python; normal ChatGPT
+may instead prepare a safe, manually verified summary via GitHub tools.
+Never save a private brief to the public repository. Never claim
+recorder.py was executed, source bytes were hashed or CI passed without
+observing those operations. For route-only checks, do not write run files.

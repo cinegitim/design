@@ -24,3 +24,6 @@ __pycache__/
 !.env.example
 *.pem
 *.key
+
+# Private Brandstudio run ledger: never commit raw local provenance
+**/.brandstudio-private/

@@ -76,3 +76,17 @@ model settings, records proper route/fallback, and does no unrequested edits.
 This test proves **that conversation's** activation, not automatic activation
 in all future conversations. Work and Codex must be separately tested in
 their respective experiences.
+
+## Production Recorder v1 (after a real production request)
+
+See `studio/production/recording/README.md` and
+`studio/production/recording/recorder.py`. The recorder is an explicit
+CLI for Work/Codex/checkouts, not an automatically installed ChatGPT
+telemetry connector. Private event ledger lives only in ignored
+`.brandstudio-private/`; the public repository receives an allowlisted
+summary after explicit review and the normal checked PR workflow.
+Never place original personal briefs or private URLs in public run records.
+Report absent model tokens/cost as unavailable. For ordinary ChatGPT with
+connector-only tools, log only connector-observed evidence; do not pretend
+to have executed recorder.py. "Finished" requires a hashed real artifact;
+a planned/dry-run task is not a finished production.
