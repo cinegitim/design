@@ -80,3 +80,13 @@ must be `unavailable`, not zero.
 
 Production Analytics, event collection, automatic ChatGPT project configuration
 and true cross-platform trigger validation are **not implemented in v1**.
+
+## Optional provenance on actual production
+
+After the route is selected and a real deliverable is requested, use
+`studio/production/recording/README.md` for evidence capture. Recorder
+v1 is NOT an automatic model/token collector; it never turns a route
+dry-run into a completed design, and it cannot verify remote PR/CI data
+without an actual GitHub tool observation. Public summaries must omit
+the user brief. No local run or public record is required for read-only
+routing tests.
