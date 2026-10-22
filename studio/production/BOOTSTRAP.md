@@ -36,6 +36,31 @@ On an actual Brandstudio creation/refinement/application request:
 8. Proceed using the existing brand-studio skill and publishing workflow. This
    bootstrap does not replace technical checks or required human creative gates.
 
+## Application production precedence (vector-first default)
+
+For `instagram-carousel`, `routes.json` defines the **default artifact method**,
+independent of executor and whichever image tool happens to be exposed:
+
+1. Inspect the brand's existing HTML/CSS/SVG recipes and real source assets;
+   reuse its approved visual language before proposing a new composition.
+2. Create editable HTML/CSS/SVG for typography, layout, grids and visual devices;
+   load manifest-listed *complete* canonical logo/lockup SVGs at their approved
+   sizes and clearspace. Never write brand-name lettering into an image prompt.
+3. Optional image generation may create only isolated background, photography
+   or illustration layers. It does **not** create a finished branded carousel
+   slide. A full-slide image-only experiment is an alternative workflow that
+   requires the user's *explicit* selection, not automatic tool fallback.
+4. Render actual slides at the requested pixel dimensions using a verified
+   browser/Chromium/Playwright capability. Inspect rendered pixels, verify logo
+   manifest hashes, prepare editable source + exported PNG + delivery manifest.
+5. If rendering, asset retrieval, source preservation or verification is
+   unavailable, report the exact missing step. Do not substitute ChatGPT Image
+   and claim the historic carousel pipeline was reproduced.
+
+A router `route.id` names orchestration, not an exemption from this method.
+This constraint applies equally to ChatGPT, Work and Codex. Keep pre-existing
+brand-studio skills/build recipes unchanged; their methodology remains authority.
+
 ## Representative dry-run
 
 ```sh
