@@ -25,5 +25,8 @@ application, print asset or web-design production in this repository:
    Image generation is limited to optional background/photo/illustration layers;
    the full-slide image experiment requires an explicit user choice.
 
+## Optional style layer
+Category and visual style are independent. When given an explicit style, resolve the exact brand/category-scoped manifest with `studio/production/style_catalog.py` or verify it manually from connected GitHub; presets and variation overrides are bounded by `variation_axes`. An unselected style remains null. Do not turn a review-only style into brand approval or bypass fixed SVG/HTML/Chromium production rules.
+
 This skill does not install tools, switch models, override `AGENTS.md`, create
 a production output by itself or auto-activate in ordinary ChatGPT conversations.

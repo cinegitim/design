@@ -47,7 +47,14 @@ jobs:
       - name: Test trusted checker rejection cases
         env:
           AUDIT_REPO: ${{ github.workspace }}
-        run: python -I -B -m unittest discover -s "$TRUSTED_AUDIT/studio/cloud/tests" -v
+        # Rejection tests hard-link submitted files into TemporaryDirectory.
+        # Hosted runners may mount /tmp on a different filesystem.
+        run: |
+          set -euo pipefail
+          export TMPDIR="$GITHUB_WORKSPACE/.audit-test-tmp"
+          mkdir -p "$TMPDIR"
+          trap 'rmdir "$TMPDIR" 2>/dev/null || true' EXIT
+          python -I -B -m unittest discover -s "$TRUSTED_AUDIT/studio/cloud/tests" -v
       - name: Audit submitted sources and existing exports — no build/render
         run: python -I -B "$TRUSTED_AUDIT/audit.py" --policy "$TRUSTED_AUDIT/policy.json" --root "$GITHUB_WORKSPACE" --report "$RUNNER_TEMP/submitted-files-audit.json"
       - name: Save technical report (temporary evidence, not an archive)

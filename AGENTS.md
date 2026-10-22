@@ -10,6 +10,7 @@ metadata and available tools, then follow `studio/production/BOOTSTRAP.md` and
 For real productions, follow studio/production/recording/README.md to record
 observed provenance without exposing private briefs in this public repository.
 For Instagram carousels and other brand applications, the default production is editable HTML/CSS/SVG plus real browser rendering, with exact manifest-listed canonical SVG compositing. Image generation is optional for supporting photo/illustration/background layers only; never silently replace the whole coded layout with a generated slide. See `studio/production/chatgpt/EXECUTION.md` and `studio/production/routes.json`.
+For a user-selected style family, additionally read the exact `brands/<brand>/styles/<category>/<style_id>/style.json` and README using `studio/production/style_catalog.py` selection rules. A style has presets and controlled variations; it is independent from the category and cannot supersede approved identity or user copy. Review-only styles are not canonical approvals.
 Only load the relevant brand/category sources. The router is currently a
 read-only planner; it does **not** establish model identity, install tools,
 collect telemetry, publish, or override this file's locked-identity and

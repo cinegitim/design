@@ -36,6 +36,12 @@ On an actual Brandstudio creation/refinement/application request:
 8. Proceed using the existing brand-studio skill and publishing workflow. This
    bootstrap does not replace technical checks or required human creative gates.
 
+## Style-family selection (independent from category)
+
+Select **brand → category → optional style family → optional preset → validated variation overrides**. A style family is one reusable visual grammar, *not* a specific layout/template; multiple preset combinations retain the same `style_id`. When the user selects a style, load `brands/<brand>/styles/<category>/<style_id>/style.json` plus its README after validating exact brand/category scope. Never choose a similarly named sibling-brand style or infer a style merely from filename timestamps. The read-only `studio/production/style_catalog.py` registry and router `--list-styles`, `--style`, `--preset`, `--variation AXIS=VALUE` arguments expose choices for a future UI. Invalid IDs or options fail; absent style remains unspecified (not silently approved).
+
+An individual style's status `review-only` is **not** canonical approval. Canonical identity, logo/lockup geometry and exact user copy always outrank style directions. Production must record resolved `style_id`, version, preset and variations with the delivered assets; the router does not run rendering or grant aesthetic approval.
+
 ## Application production precedence (vector-first default)
 
 For `instagram-carousel`, `routes.json` defines the **default artifact method**,
