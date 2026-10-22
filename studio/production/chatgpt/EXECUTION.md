@@ -19,6 +19,12 @@ permissions. The user's complete natural-language brief is preserved unchanged.
    Never apply the Chat thinking slider to Work/Codex model metadata.
 5. Pin the GitHub main commit SHA and route/skill versions before production.
 
+## Style layer beside production category
+
+An optional style ID (for example `editorial-campaign`) is selected separately from `instagram-carousel`. It resolves only within the exact brand/category through `studio/production/style_catalog.py` and the selected family's `style.json`. A preset and validated axis overrides change layout/color/photo behavior **within the same family**, never the route ID or canonical identity. Prefer cream/paper as a recurring institutional surface when the selected style specifies it; do not stamp the same background/layout onto every slide. Record style family/version, preset and resolved variations in the real output manifest.
+
+A `review-only` style may guide experimental art direction but is not human-approved. In ordinary ChatGPT with GitHub connector access, read the style manifest via GitHub and apply equivalent validation manually if the Python checkout is absent. The local router's reads do not prove its Python CLI ran on the host.
+
 ## Instagram carousel: preserve the existing code-and-render method
 
 **Default across ChatGPT/Work/Codex:** consult the current brand's actual
