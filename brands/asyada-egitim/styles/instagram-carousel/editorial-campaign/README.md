@@ -68,3 +68,37 @@ Produce **three separate five-slide carousels**, each as editable HTML/CSS/SVG +
 - Evidence: run summaries record `brand`, `category`, `style_id`, `version`, `preset_id`, resolved variations, git SHA and comparison images; human approval remains pending until explicitly given.
 
 The three output trials require a separate actual production run and human visual review. No success/repeatability score is asserted by this spec. Previous productions must not be overwritten.
+
+## Quality floor informed by published Instagram examples (2026-10-22)
+
+Published @asyadaegitim carousel references to inspect visually:
+[Launch editorial](https://www.instagram.com/asyadaegitim/p/DePgrvQDdeB/),
+[Shanghai city atlas](https://www.instagram.com/asyadaegitim/p/DepRg6tDbNY/),
+[Photo-led message](https://www.instagram.com/asyadaegitim/p/Der8OLnjQWg/), and
+[Korean scholarship explainer](https://www.instagram.com/asyadaegitim/p/DekOFQkDe7X/).
+Treat these as a **quality floor** for photo scale, typographic/photo integration,
+visual density and content hierarchy, not permission to copy or claim the
+source image provenance or future visual approval.
+
+### Strict combined-lockup gate
+
+- Carousel exports require a **complete, approved, exact** P-01 or D-04 SVG,
+  not the V-01 seal-only substitute and not an HTML wordmark composed from text.
+- Before render, verify SVG SHA-256 and permitted width against
+  `brands/asyada-egitim/assets/lockups/canonical-lockups.json`.
+- Render must contain one visible complete lockup on each slide, with its
+  canonical ID and SHA-256 in the output manifest. Missing image, clipping,
+  wrong hash, or a typed imitation **fail** publication.
+- Never impose one fixed footer bar on all slides. Select logo placements
+  according to background, editorial whitespace and composition, always
+  maintaining logo clear space, proportions, and appropriate approved variant.
+- Image prominence, typographic scale, data/microcopy modules and surface
+  distribution must be checked over the whole series as separate visual dimensions.
+
+A local three-variant proof-of-concept was rendered from editable HTML/CSS with
+an **exact D-04/light** SVG, SHA-256
+`2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e`;
+15 PNG previews passed source/image-loading and 1080×1350 checks. That output
+is **not part of this PR** and remains review-only. Supporting fonts still use
+an Inter fallback, and photos are illustrative rather than verified campuses.
+Do not infer independent repeatability or visual approval from these technical checks.
