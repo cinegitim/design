@@ -84,6 +84,16 @@ def validate(doc: dict):
         value = doc["metrics"][key]
         if value is not None and (type(value) is not int or value < 0):
             raise ValueError("Token usage must be an observed nonnegative integer or null")
+    if doc["runtime"]["model_observed_id"] is not None:
+        if not doc["runtime"]["model_evidence"] or not isinstance(doc["runtime"]["model_observed_id"], str):
+            raise ValueError("Observed model requires source attestation")
+    delivery = doc["delivery"]
+    if delivery["ci_status"] == "success" and delivery.get("checked_head_sha") != delivery["head_sha"]:
+        raise ValueError("CI success must match the recorded PR head")
+    for key in ("head_sha", "checked_head_sha", "merged_commit"):
+        sha = delivery.get(key)
+        if sha is not None and not COMMIT.fullmatch(sha):
+            raise ValueError("Invalid delivery SHA")
     for artifact in doc["artifacts"]:
         safe_relative(artifact["path"])
         if not re.fullmatch(r"[a-f0-9]{64}", artifact["sha256"]):
@@ -147,7 +157,8 @@ def init(args):
         "events": [],
         "artifacts": [],
         "delivery": {"pr_number": None, "head_sha": None,
-                     "ci_status": "unverified", "merged_commit": None},
+                     "checked_head_sha": None, "ci_status": "unverified",
+                     "merged_commit": None, "attestation": None},
     }
     atomic_json(path, validate(record), exclusive=True)
     return record
@@ -175,6 +186,38 @@ def metrics(args):
                 raise ValueError("Negative usage not permitted")
             record["metrics"][k] = v
     record["metrics"]["source"] = args.source
+    atomic_json(Path(args.file), validate(record))
+    return record
+
+
+def model(args):
+    record = read_private(Path(args.file))
+    if record["status"] != "in_progress":
+        raise ValueError("Closed runs are immutable")
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._:/ -]{0,119}", args.model_id):
+        raise ValueError("Invalid model ID label")
+    record["runtime"]["model_observed_id"] = args.model_id
+    record["runtime"]["model_evidence"] = args.source
+    atomic_json(Path(args.file), validate(record))
+    return record
+
+
+def delivery(args):
+    record = read_private(Path(args.file))
+    if record["status"] != "in_progress":
+        raise ValueError("Closed runs are immutable")
+    if args.pr_number < 1 or not COMMIT.fullmatch(args.head_sha):
+        raise ValueError("Valid PR and exact head commit required")
+    if args.ci_status == "success" and args.checked_head_sha != args.head_sha:
+        raise ValueError("Cannot report successful CI on a different/unchecked head")
+    if args.merged_commit and not COMMIT.fullmatch(args.merged_commit):
+        raise ValueError("Merged commit must be a full SHA")
+    record["delivery"] = {
+        "pr_number": args.pr_number, "head_sha": args.head_sha,
+        "checked_head_sha": args.checked_head_sha,
+        "ci_status": args.ci_status, "merged_commit": args.merged_commit,
+        "attestation": "reported-from-github-by-caller-not-independently-verified"
+    }
     atomic_json(Path(args.file), validate(record))
     return record
 
@@ -225,8 +268,10 @@ def public_summary(doc):
         "task": {"brand": doc["task"]["brand"], "category": doc["task"]["category"]},
         "runtime": {"executor": doc["runtime"]["executor"],
                     "effort_requested": doc["runtime"]["effort_requested"],
-                    "model_id": None,
-                    "model_verification": "unavailable"},
+                    "model_id": doc["runtime"]["model_observed_id"],
+                    "model_verification": (
+                        "reported-with-" + doc["runtime"]["model_evidence"]
+                        if doc["runtime"]["model_evidence"] else "unavailable")},
         "route": {"id": doc["route"]["id"],
                   "strategy_version": doc["route"]["strategy_version"]},
         "timing": {"started_at": doc["time"]["started_at"],
@@ -262,6 +307,17 @@ def main():
     a.add_argument("--source", required=True, choices=sorted(SOURCES))
     for name in ("input_tokens", "output_tokens", "cache_tokens"):
         a.add_argument("--" + name.replace("_", "-"), type=int)
+    a = subs.add_parser("model")
+    a.add_argument("--file", required=True)
+    a.add_argument("--model-id", required=True)
+    a.add_argument("--source", choices=["provider-metadata", "host-metadata"], required=True)
+    a = subs.add_parser("delivery")
+    a.add_argument("--file", required=True)
+    a.add_argument("--pr-number", type=int, required=True)
+    a.add_argument("--head-sha", required=True)
+    a.add_argument("--checked-head-sha")
+    a.add_argument("--ci-status", choices=["unverified", "pending", "failed", "success"], default="unverified")
+    a.add_argument("--merged-commit")
     a = subs.add_parser("artifact")
     a.add_argument("--file", required=True)
     a.add_argument("--root", required=True)
@@ -282,6 +338,10 @@ def main():
             doc = event(args)
         elif args.command == "metrics":
             doc = metrics(args)
+        elif args.command == "model":
+            doc = model(args)
+        elif args.command == "delivery":
+            doc = delivery(args)
         elif args.command == "artifact":
             doc = artifact(args)
         elif args.command == "finish":
@@ -292,7 +352,7 @@ def main():
             out = Path(args.output)
             if ".brandstudio-private" in out.parts:
                 raise ValueError("Public export must not overwrite a private run")
-            atomic_json(out, public_summary(doc))
+            atomic_json(out, public_summary(doc), exclusive=True)
         print(json.dumps({"ok": True, "run_id": doc["run_id"],
                           "status": doc["status"], "command": args.command},
                          ensure_ascii=False))
