@@ -18,6 +18,12 @@ application, print asset or web-design production in this repository:
    and publishing rules. Respect locked identity and human approval gates.
 6. Use a candidate strategy only as a production **method**, never as a new
    source of brand authority. Do not claim tokens/telemetry were collected.
+7. For `instagram-carousel`, enforce the `production_policies` contract in
+   `routes.json`: editable HTML/CSS/SVG → exact canonical SVG placement →
+   actual browser render → visual inspection/manifest. Do not use ImageGen to
+   generate a finished branded slide by default, even when image tools exist.
+   Image generation is limited to optional background/photo/illustration layers;
+   the full-slide image experiment requires an explicit user choice.
 
 This skill does not install tools, switch models, override `AGENTS.md`, create
 a production output by itself or auto-activate in ordinary ChatGPT conversations.
