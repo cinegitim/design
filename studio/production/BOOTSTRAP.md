@@ -48,6 +48,14 @@ Output is a JSON route proposal, not an execution record. If a capability is
 unknown, omit it; never mark it present without evidence. Unknown or insufficient
 capabilities select the generic limited route.
 
+## Activation readiness and verification
+
+Before claiming a host is connected, follow `studio/production/ACTIVATION.md`.
+Run `python3 studio/production/activation_probe.py` when supported. It proves
+repository layout readiness, **not** live agent activation or a selected model.
+Skill discovery is implicit and probabilistic; test each executor in its own
+running workspace. Antigravity uses Agent Skills, not retired Workflows.
+
 ## Activation boundaries
 
 - **Repository-based Codex/OpenCode:** add the short entrypoint in root
