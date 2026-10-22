@@ -48,6 +48,30 @@ class RouterTests(unittest.TestCase):
         default = self.route(executor="chatgpt-chat", capabilities={"github-read"})
         self.assertEqual(default["route"]["id"], "chatgpt-connected-v1")
 
+    def test_carousel_always_uses_editable_source_pipeline(self):
+        for executor, capabilities in (
+            ("chatgpt-chat", {"github-read", "image-generation"}),
+            ("chatgpt-chat", {"image-generation"}),
+            ("chatgpt-work", {"github-read"}),
+            ("codex", {"filesystem", "terminal"}),
+            ("opencode", {"filesystem", "terminal"}),
+        ):
+            with self.subTest(executor=executor, capabilities=capabilities):
+                result = self.route(executor=executor, capabilities=capabilities)
+                policy = result["production_policy"]
+                self.assertEqual(policy["primary_method"], "editable-html-css-svg")
+                self.assertEqual(policy["render_method"], "actual-browser-exact-pixels")
+                self.assertEqual(policy["canonical_branding"], "complete-manifest-listed-svg-composite")
+                self.assertIn("isolated", policy["image_generation"])
+                self.assertEqual(policy["full_slide_image_only"], "explicit-user-experimental-opt-in")
+                self.assertTrue(policy["reuse_existing_brand_recipes"])
+                self.assertIn("rendered-slide-png", policy["required_deliverables"])
+
+    def test_old_carousel_and_approval_sources_still_exist(self):
+        self.assertTrue((ROOT / "brands/asyada-egitim/applications/instagram-carousel-01-v3/build.py").is_file())
+        self.assertTrue((ROOT / "brands/asyada-egitim/assets/lockups/canonical-lockups.json").is_file())
+        self.assertTrue((ROOT / ".opencode/skills/brand-studio/SKILL.md").is_file())
+
     def test_chat_effort_cannot_be_passed_to_codex(self):
         with self.assertRaises(ValueError):
             self.route(executor="codex", requested_effort="high")
@@ -60,6 +84,8 @@ class RouterTests(unittest.TestCase):
     def test_normal_chat_image_only_when_available(self):
         result = self.route(executor="chatgpt-chat", capabilities={"image-generation"})
         self.assertEqual(result["route"]["id"], "chat-image-v1")
+        self.assertEqual(result["route"]["strategy"], "native-raster-layer-only")
+        self.assertTrue(any("not a complete" in w for w in result["warnings"]))
         result = self.route(executor="chatgpt-chat", capabilities={"image-generation"}, category="print-catalog")
         self.assertEqual(result["route"]["id"], "generic-limited-v1")
 
