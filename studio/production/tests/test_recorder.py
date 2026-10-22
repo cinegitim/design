@@ -169,6 +169,27 @@ class RecorderTests(unittest.TestCase):
         self.assertNotIn("raw_brief", serialized)
         self.assertIsNone(safe["usage"]["input_tokens"])
 
+    def test_public_export_filters_nested_extra_fields(self):
+        doc = self.new()
+        doc["metrics"]["private_api_key"] = "NEVER_PUBLISH_METRICS_SECRET"
+        doc["delivery"]["comment"] = "NEVER_PUBLISH_DELIVERY_SECRET"
+        doc["artifacts"].append({
+            "path": "docs/output.svg",
+            "sha256": hashlib.sha256(b"demo").hexdigest(),
+            "evidence": "locally-hashed-file",
+            "private_note": "NEVER_PUBLISH_ARTIFACT_SECRET",
+        })
+        safe = json.dumps(rec.public_summary(doc))
+        self.assertNotIn("NEVER_PUBLISH_", safe)
+
+    def test_private_symlink_parent_rejected(self):
+        safe = self.root / "real-private"
+        safe.mkdir()
+        link = self.root / ".brandstudio-private"
+        link.symlink_to(safe)
+        with self.assertRaises(ValueError):
+            self.new()
+
     def test_event_counts_only_not_freeform_logs(self):
         self.new()
         rec.event(Args(file=str(self.private), kind="repo-read"))
