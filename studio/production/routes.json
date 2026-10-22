@@ -31,7 +31,11 @@
       "categories": [
         "*"
       ],
-      "strategy": "code-first"
+      "strategy": "code-first",
+      "references": [
+        ".agents/skills/brand-studio/SKILL.md",
+        "studio/production/chatgpt/EXECUTION.md"
+      ]
     },
     {
       "id": "opencode-code-v1",
@@ -66,7 +70,42 @@
       "categories": [
         "*"
       ],
-      "strategy": "connected-tools"
+      "strategy": "connected-tools",
+      "references": [
+        "studio/work/README.md",
+        "studio/production/chatgpt/EXECUTION.md"
+      ]
+    },
+    {
+      "id": "chatgpt-high-connected-v1",
+      "executor": "chatgpt-chat",
+      "requires": [
+        "github-read"
+      ],
+      "categories": [
+        "*"
+      ],
+      "effort": "high",
+      "strategy": "github-connected-chat",
+      "references": [
+        "studio/production/chatgpt/EXECUTION.md",
+        "studio/production/chatgpt/skills/brandstudio-production/SKILL.md"
+      ]
+    },
+    {
+      "id": "chatgpt-connected-v1",
+      "executor": "chatgpt-chat",
+      "requires": [
+        "github-read"
+      ],
+      "categories": [
+        "*"
+      ],
+      "strategy": "github-connected-chat",
+      "references": [
+        "studio/production/chatgpt/EXECUTION.md",
+        "studio/production/chatgpt/skills/brandstudio-production/SKILL.md"
+      ]
     },
     {
       "id": "chat-image-v1",
