@@ -7,6 +7,8 @@ web-design, new identity or other brand application), load the shared
 `production-router` skill before creating artifacts; first inspect the actual executor/model
 metadata and available tools, then follow `studio/production/BOOTSTRAP.md` and
 `.agents/skills/production-router/SKILL.md` to select a capability-aware route.
+For real productions, follow studio/production/recording/README.md to record
+observed provenance without exposing private briefs in this public repository.
 Only load the relevant brand/category sources. The router is currently a
 read-only planner; it does **not** establish model identity, install tools,
 collect telemetry, publish, or override this file's locked-identity and
