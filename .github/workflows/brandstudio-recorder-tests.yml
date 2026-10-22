@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "studio/production/**"
+      - "brands/asyada-egitim/styles/**"
       - ".github/workflows/brandstudio-recorder-tests.yml"
   workflow_dispatch:
 
@@ -22,6 +23,7 @@ jobs:
           sparse-checkout: |
             studio/production/
             brands/asyada-egitim/brand.json
+            brands/asyada-egitim/styles/
           sparse-checkout-cone-mode: false
       - name: Python interpreter
         run: python3 --version
