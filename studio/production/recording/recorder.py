@@ -38,8 +38,8 @@ def utcnow():
 def check_private_path(path: Path):
     if ".brandstudio-private" not in path.parts:
         raise ValueError("Private run files must be within .brandstudio-private/")
-    if path.is_symlink():
-        raise ValueError("Refusing a symlink run file")
+    if path.is_symlink() or any(parent.is_symlink() for parent in path.parents):
+        raise ValueError("Refusing a symlink run path")
 
 
 def atomic_json(path: Path, document: dict, *, exclusive=False):
@@ -55,7 +55,10 @@ def atomic_json(path: Path, document: dict, *, exclusive=False):
             out.write("\n")
             out.flush()
             os.fsync(out.fileno())
-        os.replace(tmp, path)
+        if exclusive:
+            os.link(tmp, path)  # atomic no-overwrite; same-directory hard link
+        else:
+            os.replace(tmp, path)
     finally:
         if os.path.exists(tmp):
             os.unlink(tmp)
@@ -73,13 +76,21 @@ def validate(doc: dict):
         raise ValueError("Missing exact source commit")
     if runtime["executor"] not in EXECUTORS:
         raise ValueError("Unsupported executor")
+    if runtime["effort_requested"] is not None and runtime["effort_requested"] not in EFFORTS:
+        raise ValueError("Invalid requested effort")
+    if runtime["effort_requested"] and runtime["executor"] != "chatgpt-chat":
+        raise ValueError("Effort does not belong to this executor")
     if doc["status"] not in {"in_progress", *STATUSES}:
         raise ValueError("Unknown run status")
-    if not ROUTE.fullmatch(doc["route"]["id"]):
-        raise ValueError("Invalid route id")
-    if doc["metrics"]["input_tokens"] is not None or doc["metrics"]["output_tokens"] is not None:
+    if not ROUTE.fullmatch(doc["route"]["id"]) or not ROUTE.fullmatch(doc["route"]["strategy_version"]):
+        raise ValueError("Invalid route or strategy version")
+    if origin["repository"] != "cinegitim/design":
+        raise ValueError("Unexpected repository")
+    if any(doc["metrics"][key] is not None for key in ("input_tokens", "output_tokens", "cache_tokens")):
         if doc["metrics"]["source"] not in SOURCES:
             raise ValueError("Usage figures require a declared observation source")
+    elif doc["metrics"]["source"] is not None:
+        raise ValueError("Empty metrics should have no source")
     for key in ("input_tokens", "output_tokens", "cache_tokens"):
         value = doc["metrics"][key]
         if value is not None and (type(value) is not int or value < 0):
@@ -90,12 +101,23 @@ def validate(doc: dict):
     delivery = doc["delivery"]
     if delivery["ci_status"] == "success" and delivery.get("checked_head_sha") != delivery["head_sha"]:
         raise ValueError("CI success must match the recorded PR head")
+    if delivery["ci_status"] not in {"unverified", "pending", "failed", "success"}:
+        raise ValueError("Invalid CI state")
+    if delivery["attestation"] not in {None, "reported-from-github-by-caller-not-independently-verified"}:
+        raise ValueError("Invalid delivery evidence label")
+    if delivery["pr_number"] is not None and (type(delivery["pr_number"]) is not int or delivery["pr_number"] < 1):
+        raise ValueError("Invalid PR number")
     for key in ("head_sha", "checked_head_sha", "merged_commit"):
         sha = delivery.get(key)
         if sha is not None and not COMMIT.fullmatch(sha):
             raise ValueError("Invalid delivery SHA")
+    for event in doc["events"]:
+        if event["kind"] not in EVENTS:
+            raise ValueError("Unknown event kind")
     for artifact in doc["artifacts"]:
         safe_relative(artifact["path"])
+        if artifact["evidence"] != "locally-hashed-file":
+            raise ValueError("Only locally hashed artifacts are accepted")
         if not re.fullmatch(r"[a-f0-9]{64}", artifact["sha256"]):
             raise ValueError("Artifact must have a real SHA-256")
     return doc
@@ -278,11 +300,15 @@ def public_summary(doc):
                    "ended_at": doc["time"]["ended_at"],
                    "elapsed_wall_seconds": doc["time"]["wall_seconds"],
                    "elapsed_kind": "calendar-wall-clock-not-model-runtime"},
-        "usage": dict(doc["metrics"]),
+        "usage": {key: doc["metrics"][key]
+                  for key in ("input_tokens", "output_tokens", "cache_tokens", "source")},
         "event_counts": {kind: sum(e["kind"] == kind for e in doc["events"])
                          for kind in sorted({e["kind"] for e in doc["events"]})},
-        "artifacts": [dict(x) for x in doc["artifacts"]],
-        "delivery": dict(doc["delivery"]),
+        "artifacts": [{"path": x["path"], "sha256": x["sha256"],
+                       "evidence": x["evidence"]} for x in doc["artifacts"]],
+        "delivery": {key: doc["delivery"][key] for key in
+                     ("pr_number", "head_sha", "checked_head_sha", "ci_status",
+                      "merged_commit", "attestation")},
     }
 
 
