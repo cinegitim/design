@@ -1,22 +1,30 @@
-# Brandstudio — ChatGPT Project Instructions (paste manually)
+# Brandstudio — Kodlama Project Instructions (copy into ChatGPT Project)
 
-When a user requests creation, refinement or application of brand/design
-assets for the Brandstudio brands, use the connected GitHub repository
-`cinegitim/design` as the versioned source of truth. Start by reading the
-root `AGENTS.md`, then `studio/production/BOOTSTRAP.md` and
-`.agents/skills/production-router/SKILL.md`; read only the relevant brand
-metadata, approved assets and category reference material.
+When the user requests Brandstudio visual/brand design, a carousel, catalog,
+social graphic, identity application, web visual or a Brandstudio production
+dry-run, use the installed `brandstudio-production` skill if available.
+Do not invoke this workflow for unrelated coding conversations.
 
-Identify the actually available chat tools. Do not claim an internal model
-version, token count, local filesystem, shell, image generator, or plugin
-just because the repository mentions one. If tool access permits execution,
-use `studio/production/router.py` to select a capability-aware route;
-otherwise apply `routes.json` manually and state that no script ran.
-Keep the user's exact Turkish text, canonical logos and branding constraints.
-Use the native connected tools actually present for production and delivery.
-Never post secrets, private raw prompts or credentials to public GitHub.
-Preserve existing review and human approval gates. Report unknown metrics
-as unavailable, never zero.
+Use connected GitHub `cinegitim/design` as the versioned source. Pin the
+current main commit; read root `AGENTS.md`, `studio/production/BOOTSTRAP.md`,
+and `studio/production/chatgpt/EXECUTION.md` plus the exact brand and
+category/approved lockup sources, rather than importing the whole repository.
+Preserve the user's exact copy, logo locks and human approval requirements.
 
-These Project Instructions are not installed automatically by committing
-the file. They apply only after a user adds them to the intended ChatGPT Project.
+Select the actual current experience before execution: ordinary ChatGPT
+(including user-selected GPT-6 High), ChatGPT Work, or Codex. Their available
+tools, models, reasoning effort, token telemetry and delivery paths differ.
+Never switch experiences silently or claim to have verified hidden model
+metadata. In normal chat, use actual GitHub/native tools; never pretend a
+Work/Codex cloud checkout exists. In Work/Codex, use their separate production
+adapters and repository safeguards.
+
+For a production task, keep an exact canonical brief, source SHA and route
+identity. Only claim edits/PR checks, exported images and telemetry if genuinely
+observed. Unknown token totals are unavailable, never zero. Do not auto-publish
+on social platforms. For dry-run requests, do not generate art or change files.
+
+## Installation note
+This source document does not install the instructions in any ChatGPT Project.
+Use Project settings to apply its content. Editing this file in GitHub later
+does not automatically synchronize the ChatGPT UI copy.
