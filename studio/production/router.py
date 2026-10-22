@@ -14,7 +14,8 @@ SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 def plan(*, root: Path, config: dict, executor: str, brand: str,
          category: str, capabilities: set[str],
-         model_id: str | None = None, model_verified: bool = False) -> dict:
+         model_id: str | None = None, model_verified: bool = False,
+         requested_effort: str | None = None) -> dict:
     """Select a candidate strategy using explicitly observed runtime capabilities."""
     if category not in config["categories"]:
         raise ValueError(f"Unknown category: {category}")
@@ -24,6 +25,10 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
     registered = metadata.is_file()
     if not registered and category != "new-identity":
         raise ValueError(f"Brand metadata not found: brands/{brand}/brand.json")
+    if requested_effort not in (None, "instant", "medium", "high", "extra-high", "pro"):
+        raise ValueError("Unsupported effort label")
+    if requested_effort and executor != "chatgpt-chat":
+        raise ValueError("ChatGPT thinking effort is only valid for chatgpt-chat")
     if model_verified and not model_id:
         raise ValueError("Verified model flag requires --model-id")
     supported_executors = {"codex", "opencode", "antigravity", "chatgpt-work", "chatgpt-chat"}
@@ -34,6 +39,8 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
         if profile["executor"] not in (executor, "*"):
             continue
         if category not in profile["categories"] and "*" not in profile["categories"]:
+            continue
+        if profile.get("effort") and profile["effort"] != requested_effort:
             continue
         if not set(profile["requires"]).issubset(capabilities):
             continue
@@ -49,6 +56,8 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
             "model_reported": model_id,
             "model_verified": model_id if model_verified else None,
             "verified_capabilities": sorted(capabilities),
+            "effort_requested": requested_effort,
+            "effort_verified": False,
         },
         "task": {"brand": brand, "category": category},
         "route": {
@@ -62,6 +71,7 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
             *([f"brands/{brand}/brand.json"] if registered else []),
             ".agents/skills/brand-studio/SKILL.md",
             *config["categories"][category],
+            *selected.get("references", []),
             "studio/workflow/PUBLISHING.md",
         ],
         "telemetry": {"collected": False, "run_id": None},
@@ -86,6 +96,7 @@ def main() -> int:
     parser.add_argument("--capability", action="append", default=[])
     parser.add_argument("--model-id")
     parser.add_argument("--model-verified", action="store_true")
+    parser.add_argument("--requested-effort", choices=["instant", "medium", "high", "extra-high", "pro"])
     parser.add_argument("--root", type=Path, default=ROOT)
     args = parser.parse_args()
     try:
@@ -95,6 +106,7 @@ def main() -> int:
             brand=args.brand, category=args.category,
             capabilities=set(args.capability), model_id=args.model_id,
             model_verified=args.model_verified,
+            requested_effort=args.requested_effort,
         )
     except (ValueError, KeyError, OSError, json.JSONDecodeError) as exc:
         parser.error(str(exc))
