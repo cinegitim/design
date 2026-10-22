@@ -20,6 +20,22 @@
       ".opencode/skills/brand-studio/SKILL.md"
     ]
   },
+  "production_policies": {
+    "instagram-carousel": {
+      "primary_method": "editable-html-css-svg",
+      "render_method": "actual-browser-exact-pixels",
+      "canonical_branding": "complete-manifest-listed-svg-composite",
+      "image_generation": "optional-isolated-photo-background-illustration-only",
+      "full_slide_image_only": "explicit-user-experimental-opt-in",
+      "reuse_existing_brand_recipes": true,
+      "required_deliverables": [
+        "editable-html-css-svg-source",
+        "rendered-slide-png",
+        "canonical-hash-manifest",
+        "visual-inspection-evidence"
+      ]
+    }
+  },
   "profiles": [
     {
       "id": "codex-code-v1",
@@ -117,7 +133,7 @@
         "instagram-carousel",
         "social-post"
       ],
-      "strategy": "native-image"
+      "strategy": "native-raster-layer-only"
     },
     {
       "id": "generic-limited-v1",
