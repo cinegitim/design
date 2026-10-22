@@ -1,0 +1,29 @@
+name: Brandstudio production recorder tests
+
+on:
+  pull_request:
+    paths:
+      - "studio/production/**"
+      - ".github/workflows/brandstudio-recorder-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recorder:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout only tested sources
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            studio/production/
+            brands/asyada-egitim/brand.json
+          sparse-checkout-cone-mode: false
+      - name: Python interpreter
+        run: python3 --version
+      - name: Execute read-only stdlib tests
+        run: python3 -m unittest discover -s studio/production/tests -v
