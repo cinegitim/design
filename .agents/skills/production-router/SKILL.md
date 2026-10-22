@@ -1,6 +1,6 @@
 ---
 name: production-router
-description: Start Brandstudio design production from a natural-language request by detecting the execution environment, selecting a capability-aware route, and loading only the required brand and production skills.
+description: Routes Brandstudio design production for Instagram carousels, social graphics, print catalogs, website visuals, logos, new brand identities and brand applications. Use at the start of a natural-language design or branding request to identify runtime tools, resolve the approved brand, select a capability-aware production route and load the relevant skills.
 ---
 
 # Brandstudio Production Router
@@ -8,7 +8,7 @@ description: Start Brandstudio design production from a natural-language request
 When the user requests a visual brand, carousel, social post, identity
 application, print asset or web-design production in this repository:
 
-1. Read `studio/production/BOOTSTRAP.md`.
+1. Read `studio/production/BOOTSTRAP.md`. For setup or test requests, read `studio/production/ACTIVATION.md` and use `activation_probe.py` without generating art.
 2. Detect the actual executor, model metadata and available tools before
    selecting a production strategy. Never invent model/version/capabilities.
 3. Resolve exact brand and task category. Preserve original request unchanged.
