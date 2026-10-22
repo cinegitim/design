@@ -48,6 +48,7 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
         break
     if selected is None:
         raise ValueError("Missing fallback profile")
+    production_policy = config.get("production_policies", {}).get(category, {})
     return {
         "schema_version": config["schema_version"],
         "mode": "read-only-dry-run",
@@ -60,6 +61,7 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
             "effort_verified": False,
         },
         "task": {"brand": brand, "category": category},
+        "production_policy": dict(production_policy),
         "route": {
             "id": selected["id"],
             "strategy": selected["strategy"],
@@ -84,6 +86,9 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
         ) + (
             ["Limited route: some required capabilities were not verified."]
             if selected["id"] == "generic-limited-v1" else []
+        ) + (
+            ["Image-only access supports raster layers, not a complete editable/rendered branded carousel."]
+            if selected["id"] == "chat-image-v1" and category == "instagram-carousel" else []
         ),
     }
 
