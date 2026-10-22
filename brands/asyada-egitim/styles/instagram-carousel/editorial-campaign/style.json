@@ -240,5 +240,57 @@
     "method": "three controlled renders: same preset across two briefs (A/B), then same brief with another preset (A/C); review family recognition vs layout variation against historical carousel-01/v2/v3/02",
     "minimum_test_outputs": 3,
     "status": "not-yet-benchmarked"
+  },
+  "preview_quality_contract": {
+    "status": "candidate-not-human-approved",
+    "reference_instagram_posts": [
+      {
+        "url": "https://www.instagram.com/asyadaegitim/p/DePgrvQDdeB/",
+        "role": "original editorial campaign"
+      },
+      {
+        "url": "https://www.instagram.com/asyadaegitim/p/DepRg6tDbNY/",
+        "role": "Shanghai carousel: city photo and multi-photo editorial layout"
+      },
+      {
+        "url": "https://www.instagram.com/asyadaegitim/p/Der8OLnjQWg/",
+        "role": "large headline integrated with aspirational photograph"
+      },
+      {
+        "url": "https://www.instagram.com/asyadaegitim/p/DekOFQkDe7X/",
+        "role": "high-density bursary explainer"
+      }
+    ],
+    "source_preference": "Existing published posts are a visual quality reference, not new approvals of logo, type, or source image provenance.",
+    "identity_gate": {
+      "composite_logo_required": true,
+      "allowed_approved_lockups": [
+        "P-01/light",
+        "P-01/dark",
+        "D-04/light",
+        "D-04/dark"
+      ],
+      "reject_seal_only_for_carousel": true,
+      "reject_retypeset_brand_name": true,
+      "reject_missing_or_unverified_lockup": true,
+      "manifest_sha256_required": true,
+      "minimum_width_enforce_from_canonical_manifest": true,
+      "note": "Complete outlined paths must be byte-for-byte identical to the canonical SVG record; brand name must not be a substitute HTML text block."
+    },
+    "density_and_layout_gate": {
+      "no_fixed_repeated_footer": true,
+      "logo_positions": "Can vary across safe, contrast-appropriate placements; each slide preserves clearspace.",
+      "image_usage": "Use editorial crops, not five stock photo slots or fake university photographs; record actual provenance.",
+      "composition": "Maintain headline/image integration, layered modules, legible explanatory microcopy and variation in photo scale.",
+      "prohibit_auto_approval": true,
+      "visual_inspection": "Compare full-page sequences at mobile scale against the existing campaign exemplars; check visual density and content legibility, not palette alone."
+    },
+    "test_acceptance": [
+      "All five slides render at target size from editable HTML/CSS/SVG.",
+      "Every slide composites an authentic complete lockup, SHA-256 checked and visible in pixels.",
+      "No seal-only substitute and no manually typed faux wordmark.",
+      "No mechanical identical bottom bars across the series.",
+      "Photos, headline, information modules and color rhythm meet a human visual-review gate."
+    ]
   }
 }
