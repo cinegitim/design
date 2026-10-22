@@ -19,6 +19,32 @@ permissions. The user's complete natural-language brief is preserved unchanged.
    Never apply the Chat thinking slider to Work/Codex model metadata.
 5. Pin the GitHub main commit SHA and route/skill versions before production.
 
+## Instagram carousel: preserve the existing code-and-render method
+
+**Default across ChatGPT/Work/Codex:** consult the current brand's actual
+previous `build.py`/HTML/CSS/SVG application, then build or adapt editable source;
+composite an approved *complete* canonical lockup SVG from its manifest;
+render at the exact requested dimensions with an observed browser/Playwright
+runtime; inspect PNGs and record source, lockup hashes and output evidence.
+For `asyada-egitim`, a real reference is
+`brands/asyada-egitim/applications/instagram-carousel-01-v3/build.py`;
+this is an example, not permission to borrow the sibling `asya-egitim` identity
+or to overwrite an earlier application. Campaign choices remain review-only.
+
+Use image generation only for separately composited photography, illustrations
+or backgrounds **when authorized**. Do not generate full-slide text/logo/layout
+via native ImageGen as the default, regardless of tool availability. An explicit
+user instruction to explore image-only slides enables a separate *experimental*
+path; it is not the legacy deliverable, cannot be described as canonical, and
+still cannot redraw or retype approved logos. Image-only tools without a
+rendering/source pipeline are insufficient to finish a production carousel;
+stop and disclose that limitation rather than replacing the method silently.
+
+Source code, genuine browser-rendered exports, logo verifiers and visual review
+are distinct checks. A chat-rendered image or CI pass alone proves none of them.
+Do not claim a finished production until the actual deliverables are preserved.
+See `routes.json` → `production_policies.instagram-carousel`.
+
 ## Standard ChatGPT — GPT-6 High / connected tools
 
 Optimized for conversational orchestration: read only the exact brand metadata,
