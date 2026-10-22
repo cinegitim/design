@@ -23,6 +23,23 @@ Scope: reusable Brandstudio production workflow for approved identities, campaig
 
 
 
+## Binding carousel production method
+For `instagram-carousel`, follow `routes.json` → `production_policies` **before**
+selecting image tools. Match the brand's existing HTML/CSS/SVG build approach;
+reuse approved recipes (for `asyada-egitim`, see
+`brands/asyada-egitim/applications/instagram-carousel-01-v3/build.py`) without
+overwriting previous rounds. Assemble layout/type in editable HTML/CSS/SVG,
+composite the manifest-listed exact canonical logo/lockup SVG, and export via
+real Chromium/Playwright at exact dimensions. Verify rendered pixels, source
+preservation, canonical hashes and the output manifest.
+
+Native ImageGen may supply *optional isolated* background/photo/illustration
+layers, not the final branded slide or its typography/lockup. Full-slide
+image generation is a separate user-authorized **experimental** route, never
+a transparent fallback. If the host cannot obtain brand assets or actually
+render source, disclose the blocked production step and preserve the code-first
+plan; do not replace it with image output and claim completion.
+
 ## Distinct execution routes
 **Regular ChatGPT (including GPT-6 High selected by the user)**: prefer connected GitHub file tools for reading source/approved assets, available native design/image tools when the request actually asks for an image, and simple source edits/files when these are sufficient. Do not require Work/Codex or assert local checkout/shell/auto token telemetry. For repository writes, use an isolated `publish/<topic>` branch and exact-head PR checks. If generated image bytes cannot be reliably preserved in the repository, report the delivery gap instead of inventing a GitHub file.
 
