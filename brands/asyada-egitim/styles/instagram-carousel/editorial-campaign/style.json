@@ -237,7 +237,7 @@
     "brand and creative human approvals remain distinct; no automatic brand lock or Instagram publication"
   ],
   "evaluation": {
-    "method": "human side-by-side with prior carousel-01/v2/v3/02 and two varied outputs; assess recognisability and non-duplication separately",
+    "method": "three controlled renders: same preset across two briefs (A/B), then same brief with another preset (A/C); review family recognition vs layout variation against historical carousel-01/v2/v3/02",
     "minimum_test_outputs": 3,
     "status": "not-yet-benchmarked"
   }
