@@ -77,6 +77,23 @@ class StyleCatalogTests(unittest.TestCase):
             resolve_style(root=ROOT, brand=BRAND, category=CATEGORY,
                           style_id="editorial-campaign", preset_id="unknown")
 
+    def test_editorial_visual_quality_and_combined_logo_gates(self):
+        spec_path = ROOT / "brands/asyada-egitim/styles/instagram-carousel/editorial-campaign/style.json"
+        spec = json.loads(spec_path.read_text(encoding="utf-8"))
+        policy = spec["preview_quality_contract"]
+        identity = policy["identity_gate"]
+        layout = policy["density_and_layout_gate"]
+        self.assertTrue(identity["composite_logo_required"])
+        self.assertTrue(identity["reject_seal_only_for_carousel"])
+        self.assertTrue(identity["reject_retypeset_brand_name"])
+        self.assertTrue(identity["reject_missing_or_unverified_lockup"])
+        self.assertTrue(identity["manifest_sha256_required"])
+        self.assertTrue(identity["minimum_width_enforce_from_canonical_manifest"])
+        self.assertEqual(len(identity["allowed_approved_lockups"]), 4)
+        self.assertTrue(layout["no_fixed_repeated_footer"])
+        self.assertTrue(layout["prohibit_auto_approval"])
+        self.assertGreaterEqual(len(policy["reference_instagram_posts"]), 3)
+
     def test_style_optional_and_route_remains_unchanged(self):
         kwargs = dict(root=ROOT, config=CONFIG, executor="chatgpt-chat",
                       brand=BRAND, category=CATEGORY, capabilities={"github-read"})
