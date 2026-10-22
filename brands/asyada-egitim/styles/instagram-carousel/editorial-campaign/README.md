@@ -6,10 +6,10 @@ This file is an art-direction proposal and a test contract, **not** a human appr
 
 ## Why these four references form one family
 
-- [Carousel 01](../../../../../../docs/instagram/carousel-01/) — photo windows, sparse paper compositions, compact lockups.
-- [Carousel 01 v2](../../../../../../docs/instagram/carousel-01-v2/) — clearer repeatable logo placement, photo/type rhythm.
-- [Carousel 01 v3](../../../../../../docs/instagram/carousel-01-v3/) — strong alternating paper/ink/red pages and headline hierarchy.
-- [Carousel 02](../../../../../../docs/instagram/carousel-02/) — related layout grammar with different opening questions and stronger contrast.
+- [Carousel 01](../../../../../docs/instagram/carousel-01/) — photo windows, sparse paper compositions, compact lockups.
+- [Carousel 01 v2](../../../../../docs/instagram/carousel-01-v2/) — clearer repeatable logo placement, photo/type rhythm.
+- [Carousel 01 v3](../../../../../docs/instagram/carousel-01-v3/) — strong alternating paper/ink/red pages and headline hierarchy.
+- [Carousel 02](../../../../../docs/instagram/carousel-02/) — related layout grammar with different opening questions and stronger contrast.
 
 These are **candidate references**, not four locked templates. Their review manifests say human approval was pending. Variation changes composition and color distribution within one coherent family; style identity is not equivalent to a single screenshot.
 
