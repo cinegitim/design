@@ -7,6 +7,8 @@ import json
 import re
 from pathlib import Path
 
+from style_catalog import list_styles, resolve_style
+
 ROOT = Path(__file__).resolve().parents[2]
 CONFIG = Path(__file__).with_name("routes.json")
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -15,7 +17,9 @@ SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 def plan(*, root: Path, config: dict, executor: str, brand: str,
          category: str, capabilities: set[str],
          model_id: str | None = None, model_verified: bool = False,
-         requested_effort: str | None = None) -> dict:
+         requested_effort: str | None = None, style_id: str | None = None,
+         preset_id: str | None = None,
+         variation_overrides: dict[str, str] | None = None) -> dict:
     """Select a candidate strategy using explicitly observed runtime capabilities."""
     if category not in config["categories"]:
         raise ValueError(f"Unknown category: {category}")
@@ -49,6 +53,9 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
     if selected is None:
         raise ValueError("Missing fallback profile")
     production_policy = config.get("production_policies", {}).get(category, {})
+    style = resolve_style(root=root, brand=brand, category=category,
+                          style_id=style_id, preset_id=preset_id,
+                          variation_overrides=variation_overrides)
     return {
         "schema_version": config["schema_version"],
         "mode": "read-only-dry-run",
@@ -61,6 +68,7 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
             "effort_verified": False,
         },
         "task": {"brand": brand, "category": category},
+        "style": style,
         "production_policy": dict(production_policy),
         "route": {
             "id": selected["id"],
@@ -74,6 +82,7 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
             ".agents/skills/brand-studio/SKILL.md",
             *config["categories"][category],
             *selected.get("references", []),
+            *([style["definition_path"], style["definition_path"].replace("style.json", "README.md")] if style else []),
             "studio/workflow/PUBLISHING.md",
         ],
         "telemetry": {"collected": False, "run_id": None},
@@ -99,6 +108,12 @@ def main() -> int:
     parser.add_argument("--brand", required=True)
     parser.add_argument("--category", required=True)
     parser.add_argument("--capability", action="append", default=[])
+    parser.add_argument("--style", help="Exact style family ID (optional)")
+    parser.add_argument("--preset", help="Preset ID within the selected family")
+    parser.add_argument("--variation", action="append", default=[], metavar="AXIS=VALUE",
+                        help="Repeatable controlled variation override")
+    parser.add_argument("--list-styles", action="store_true",
+                        help="List style families scoped to the requested brand/category")
     parser.add_argument("--model-id")
     parser.add_argument("--model-verified", action="store_true")
     parser.add_argument("--requested-effort", choices=["instant", "medium", "high", "extra-high", "pro"])
@@ -106,12 +121,25 @@ def main() -> int:
     args = parser.parse_args()
     try:
         config = json.loads(CONFIG.read_text(encoding="utf-8"))
+        overrides = {}
+        for raw in args.variation:
+            if "=" not in raw:
+                raise ValueError("Variation must be in AXIS=VALUE format")
+            axis, value = raw.split("=", 1)
+            if axis in overrides:
+                raise ValueError(f"Duplicate variation axis: {axis}")
+            overrides[axis] = value
+        if args.list_styles:
+            print(json.dumps(list_styles(root=args.root, brand=args.brand,
+                                         category=args.category), ensure_ascii=False, indent=2))
+            return 0
         result = plan(
             root=args.root, config=config, executor=args.executor,
             brand=args.brand, category=args.category,
             capabilities=set(args.capability), model_id=args.model_id,
             model_verified=args.model_verified,
             requested_effort=args.requested_effort,
+            style_id=args.style, preset_id=args.preset, variation_overrides=overrides,
         )
     except (ValueError, KeyError, OSError, json.JSONDecodeError) as exc:
         parser.error(str(exc))
