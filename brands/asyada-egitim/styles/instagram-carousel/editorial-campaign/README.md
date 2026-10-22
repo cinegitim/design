@@ -55,9 +55,9 @@ The router prints a **candidate plan**. It does not build a carousel, select a m
 
 Produce **three separate five-slide carousels**, each as editable HTML/CSS/SVG + real browser-rendered 1080×1350 PNG, using the real `P-01` or `D-04` complete SVG and preserved photo provenance:
 
-1. **A:** "Neden Asya'da üniversite okumalı?" — `institutional-paper`; informative and paper-led.
-2. **B:** "Üniversite için başka bir dünya var." — `campaign-dynamic`; distinct splits/crops/red contrasts.
-3. **C:** "Japonya'da öğrenci hayatı" — `photo-editorial`; same family, different topic, more imagery.
+1. **A / baseline:** "Neden Asya'da üniversite okumalı?" — `institutional-paper`; paper-led and informative.
+2. **B / content change:** "Japonya'da öğrenci hayatı" — **the same `institutional-paper` preset**; examine whether the visual family survives a different topic and longer image-led content.
+3. **C / variant change:** "Neden Asya'da üniversite okumalı?" — **the same brief as A**, with `campaign-dynamic`; examine variation without losing the family identity.
 
 **Acceptance tests (separate judgments):**
 
