@@ -119,6 +119,45 @@ class RecorderTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             rec.event(Args(file=str(self.private), kind="tool-called"))
 
+    def test_observed_model_source_is_reported_not_verified(self):
+        self.new()
+        rec.model(Args(file=str(self.private), model_id="model_from_host",
+                       source="host-metadata"))
+        safe = rec.public_summary(rec.read_private(self.private))
+        self.assertEqual(safe["runtime"]["model_id"], "model_from_host")
+        self.assertEqual(safe["runtime"]["model_verification"],
+                         "reported-with-host-metadata")
+
+    def test_ci_success_requires_exact_checked_head(self):
+        self.new()
+        before = self.private.read_bytes()
+        with self.assertRaises(ValueError):
+            rec.delivery(Args(file=str(self.private), pr_number=123,
+                              head_sha=SHA, checked_head_sha=None,
+                              ci_status="success", merged_commit=None))
+        self.assertEqual(self.private.read_bytes(), before)
+
+    def test_attested_gitHub_delivery_not_independent_verification(self):
+        self.new()
+        rec.delivery(Args(file=str(self.private), pr_number=119, head_sha=SHA,
+                          checked_head_sha=SHA, ci_status="success",
+                          merged_commit=None))
+        safe = rec.public_summary(rec.read_private(self.private))
+        self.assertEqual(safe["delivery"]["pr_number"], 119)
+        self.assertEqual(safe["delivery"]["checked_head_sha"], SHA)
+        self.assertIn("not-independently-verified", safe["delivery"]["attestation"])
+
+    def test_finished_run_with_real_artifact(self):
+        self.new()
+        asset = self.root / "docs" / "proof.svg"
+        asset.parent.mkdir()
+        asset.write_text("<svg/>")
+        rec.artifact(Args(file=str(self.private), root=str(self.root),
+                          path="docs/proof.svg"))
+        rec.finish(Args(file=str(self.private), status="finished"))
+        self.assertEqual(rec.read_private(self.private)["status"], "finished")
+        self.assertIsInstance(rec.read_private(self.private)["time"]["wall_seconds"], int)
+
     def test_public_export_omits_raw_data(self):
         doc = self.new()
         doc["private_note"] = "NOT_FOR_PUBLICATION"
