@@ -67,10 +67,12 @@ class RouterTests(unittest.TestCase):
                 self.assertTrue(policy["reuse_existing_brand_recipes"])
                 self.assertIn("rendered-slide-png", policy["required_deliverables"])
 
-    def test_old_carousel_and_approval_sources_still_exist(self):
-        self.assertTrue((ROOT / "brands/asyada-egitim/applications/instagram-carousel-01-v3/build.py").is_file())
-        self.assertTrue((ROOT / "brands/asyada-egitim/assets/lockups/canonical-lockups.json").is_file())
-        self.assertTrue((ROOT / ".opencode/skills/brand-studio/SKILL.md").is_file())
+    def test_router_does_not_require_full_checkout_for_policy(self):
+        # GitHub Actions checks out only studio/production; the router must
+        # describe the production method without reading historical assets.
+        result = self.route(executor="chatgpt-chat", capabilities={"github-read"})
+        self.assertTrue(result["production_policy"]["reuse_existing_brand_recipes"])
+        self.assertEqual(result["route"]["id"], "chatgpt-connected-v1")
 
     def test_chat_effort_cannot_be_passed_to_codex(self):
         with self.assertRaises(ValueError):
