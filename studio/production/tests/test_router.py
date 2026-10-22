@@ -39,6 +39,19 @@ class RouterTests(unittest.TestCase):
                     route,
                 )
 
+    def test_high_chat_and_default_chat_have_distinct_routes(self):
+        high = self.route(executor="chatgpt-chat",
+                          capabilities={"github-read"}, requested_effort="high")
+        self.assertEqual(high["route"]["id"], "chatgpt-high-connected-v1")
+        self.assertFalse(high["runtime"]["effort_verified"])
+        self.assertIn("studio/production/chatgpt/EXECUTION.md", high["load"])
+        default = self.route(executor="chatgpt-chat", capabilities={"github-read"})
+        self.assertEqual(default["route"]["id"], "chatgpt-connected-v1")
+
+    def test_chat_effort_cannot_be_passed_to_codex(self):
+        with self.assertRaises(ValueError):
+            self.route(executor="codex", requested_effort="high")
+
     def test_missing_capability_falls_back(self):
         result = self.route(executor="opencode", capabilities={"filesystem"})
         self.assertEqual(result["route"]["id"], "generic-limited-v1")
