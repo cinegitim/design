@@ -6,7 +6,7 @@
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.4 system-ui,sans-serif}
 button,input,select{font:inherit}button:focus-visible,summary:focus-visible{outline:2px solid #ffbd83;outline-offset:3px}button{cursor:pointer}header{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:9px;flex-wrap:wrap}header a{color:var(--muted)}
 h1{font-size:18px;margin:0}.badge{display:inline-block;border-radius:99px;border:1px solid #697586;font-size:10px;padding:4px 8px;color:#d0deee}
-.layout{display:grid;grid-template-columns:255px minmax(0,1fr) 300px;min-height:calc(100vh - 60px)}
+.layout{display:grid;grid-template-columns:255px minmax(0,1fr) 300px;height:calc(100dvh - 65px);min-height:560px}
 aside{background:#151f2b;padding:16px;border-right:1px solid var(--line);overflow:auto}aside.right{border-left:1px solid var(--line);border-right:0}aside h2{font-size:15px;margin:5px 0 13px}
 .small{font-size:11px;color:var(--muted);line-height:1.5}.panel{border:1px solid var(--line);border-radius:11px;padding:12px;margin:13px 0;background:#111b29}
 input[type=text],input[type=number],select{width:100%;background:#0c1420;color:white;border:1px solid var(--line);padding:8px;border-radius:7px}input[type=color]{width:100%;height:35px;background:none;border:0}
@@ -36,14 +36,14 @@ input[type=text],input[type=number],select{width:100%;background:#0c1420;color:w
 @media(min-width:1150px){.layout{grid-template-columns:265px minmax(0,1fr) 350px}}
 
 .layer{background:#0e1724;border:1px solid var(--line);padding:9px;border-radius:8px;color:var(--ink);text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.layer.selected{border-color:#ffbd83;background:#2b3441}
-.center{display:grid;grid-template-rows:auto 1fr auto;min-width:0}.toolbar{background:#162231;border-bottom:1px solid var(--line);padding:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.canvas{display:flex;overflow:auto;padding:20px;min-height:410px;position:relative;align-items:safe center;justify-content:safe center;background:radial-gradient(circle at center,#243448,#101a28)}.frame{position:relative;flex:none;width:432px;height:540px;overflow:hidden;background:white;box-shadow:0 12px 38px #0008; margin:auto}.frame.hand{cursor:grab}.frame.hand:active{cursor:grabbing}.pan-shield{position:absolute;inset:0;z-index:10;background:transparent;cursor:grab}.pan-shield:active{cursor:grabbing}
+.center{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;min-width:0;min-height:0}.toolbar{background:#162231;border-bottom:1px solid var(--line);padding:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.canvas{display:flex;overflow:auto;padding:20px;min-height:0;position:relative;align-items:safe center;justify-content:safe center;background:radial-gradient(circle at center,#243448,#101a28)}.frame{position:relative;flex:none;width:432px;height:540px;overflow:hidden;background:white;box-shadow:0 12px 38px #0008; margin:auto}.frame.hand{cursor:grab}.frame.hand:active{cursor:grabbing}.pan-shield{position:absolute;inset:0;z-index:10;background:transparent;cursor:grab}.pan-shield:active{cursor:grabbing}
 iframe{position:absolute;inset:0;width:1080px;height:1350px;transform:scale(.4);transform-origin:0 0;border:0}
 .bottom{border-top:1px solid var(--line);padding:10px 15px;font-size:11px;color:var(--muted)}
 .notice{border-left:3px solid #dfad75;background:#233247;padding:12px;font-size:12px;color:#dae6f5;margin:10px 0;line-height:1.5}
 .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.swatches label{font-size:11px;color:var(--muted);display:grid;gap:4px}
 dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;background:#1b2737;color:white}dialog::backdrop{background:#000b}
-[hidden]{display:none!important}@media(max-width:990px){.layout{grid-template-columns:230px 1fr}aside.right{grid-column:1/-1;border-top:1px solid var(--line)}}@media(max-width:650px){.layout{display:block}.canvas{min-height:500px;max-height:600px}.layers{max-height:180px}}
+[hidden]{display:none!important}@media(max-width:990px){.layout{grid-template-columns:230px 1fr}aside.right{grid-column:1/-1;border-top:1px solid var(--line)}}@media(max-width:650px){.layout{display:block;height:auto;min-height:0}.center{min-height:670px}.canvas{min-height:500px;max-height:600px}.layers{max-height:180px}}
 </style></head><body>
 <header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><a href="../">← Visual Editor</a></div></header>
 <div class="layout" id="workspace"><aside><h2>Katmanlar</h2><p class="small">Fotoğraf ile üzerindeki yazılar birlikte gruplanır. Logo ve dipnot kilitlidir.</p><div class="controls"><button class="btn" id="groups-open">Tümünü aç</button><button class="btn" id="groups-close">Tümünü kapat</button></div><div id="layers" class="layers"></div>
