@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "policy": "zero-cost-or-stop",
+  "cloudflare_account": "personal-iakfiratt",
+  "hosting": {
+    "allowed": [
+      "pages-free",
+      "workers-free",
+      "d1-free"
+    ],
+    "automatic_paid_upgrade": false,
+    "new_paid_products": false,
+    "stop_on_exhaustion": true
+  },
+  "storage": {
+    "r2_enabled_for_brandstudio": false,
+    "r2_bucket_creations_allowed": false,
+    "r2_uploads_allowed": false,
+    "paid_media_services_allowed": false,
+    "large_archives": "legacy-github-pages-links"
+  },
+  "deployment": {
+    "max_asset_bytes": 26214400,
+    "max_asset_count": 19000,
+    "max_output_bytes": 1400000000,
+    "paid_build_overages_allowed": false,
+    "autodeploy": "off-until-quota-verified"
+  },
+  "editor": {
+    "write_api_enabled": false,
+    "persist_only_small_json_in_d1_when_authenticated": true,
+    "max_editor_state_bytes": 32768,
+    "max_versions_per_product": 25,
+    "max_products": 100,
+    "png_server_rendering_enabled": false
+  },
+  "limitations": [
+    "Static analysis alone cannot enforce account-wide spending caps.",
+    "Cloudflare R2 budget alerts are notifications, not hard caps.",
+    "Cloudflare billing API usage is inaccessible with current OAuth scopes.",
+    "External Cloudflare services outside Brandstudio must be audited separately."
+  ]
+}
