@@ -85,7 +85,7 @@ function layers(){
   box.appendChild(inner);out.appendChild(box);
  })
 }
-$('groups-open').onclick=function(){document.querySelectorAll('#layers details').forEach(function(x){x.open=true;groupOpen[page+':'+x.querySelector('summary span').textContent]=true})};
+$('groups-open').onclick=function(){document.querySelectorAll('#layers details').forEach(function(x){x.open=true})};
 $('groups-close').onclick=function(){document.querySelectorAll('#layers details').forEach(function(x){x.open=false})};
 function historyButtons(){var s=history.status();$('undo').disabled=s.undo===0;$('redo').disabled=s.redo===0}
 function checkpoint(){history.checkpoint(state);historyButtons()}
@@ -101,7 +101,7 @@ document.addEventListener('keydown',function(ev){var tag=ev.target&&ev.target.ta
  if(ev.altKey&&!ctrl&&(ev.key==='ArrowLeft'||ev.key==='ArrowRight')){ev.preventDefault();show(page+(ev.key==='ArrowLeft'?-1:1));return}
  if(sel>=0&&!ctrl&&!ev.altKey&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(ev.key)){
   var n=nodes()[sel];if(logo(n)||n.classList.contains('folio'))return;
-  ev.preventDefault();var p=pos(n),step=ev.shiftKey?10:1;checkpoint();setXY(p.x+(ev.key==='ArrowLeft'?-step:ev.key==='ArrowRight'?step:0),p.y+(ev.key==='ArrowUp'?-step:ev.key==='ArrowDown'?step:0));return
+  ev.preventDefault();var p=pos(n),step=ev.shiftKey?10:1;setXY(p.x+(ev.key==='ArrowLeft'?-step:ev.key==='ArrowRight'?step:0),p.y+(ev.key==='ArrowUp'?-step:ev.key==='ArrowDown'?step:0));return
  }
 });
 function pos(n){var a=n.getBoundingClientRect(),b=doc.querySelector('.slide').getBoundingClientRect();return{x:Math.round(a.left-b.left),y:Math.round(a.top-b.top),w:Math.round(a.width)}}
