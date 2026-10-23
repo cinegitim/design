@@ -20,6 +20,7 @@ class PagesEntryTests(unittest.TestCase):
         self.assertIn("brand=asyada-egitim", html)
         self.assertIn("category=instagram-carousel", html)
         self.assertIn("MutationObserver", html)
+        self.assertIn(".visual-product[hidden]{display:none!important}", html)
 
     def test_studio_navigation(self):
         self.assertIn('href="visual-editor/"', (ROOT / "docs/index.html").read_text(encoding="utf-8"))
