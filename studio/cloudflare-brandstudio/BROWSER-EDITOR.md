@@ -40,3 +40,23 @@ The Cloudflare Pages Git installation is independently blocked with
 HTTP 401 even though the cinegitim GitHub app is installed. Never enable
 paid features or Cloudflare Access Free when its checkout requires agreeing
 to bill usage above free limits: user's absolute preference is zero charges.
+
+
+## Visual editing UX (browser-only)
+
+- Accordion layer list groups each photo with overlapping or nearby text; other
+  headings, logos and footers are separate sections. The grouping is a visual
+  convenience and never rewrites the canonical source DOM or approved copy.
+- Logo and folio can be inspected but are read-only in the browser editor.
+- A five-slide navigator and Alt+ArrowLeft/ArrowRight allow direct slide change.
+  Selected editable layers can move 1px with arrow keys or 10px with Shift.
+- Undo/redo buttons and Cmd/Ctrl+Z, Cmd/Ctrl+Shift+Z and Ctrl+Y cover editor
+  state changes with a 40-checkpoint in-memory history. One drag contributes
+  one checkpoint; after switching saved versions, history resets. History is
+  *not* written to exported JSON or the cloud; approved vN saves still use
+  the existing explicit confirmation dialog.
+- Photo/type group proximity is based on actual preview element rectangles;
+  it is not a semantic image classifier. For designs with no nearby overlap,
+  the copy remains in the text section instead of being inaccurately grouped.
+- Undo affects uncommitted editor state only and does not change previously
+  saved versions or the immutable v1 source.
