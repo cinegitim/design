@@ -12,6 +12,8 @@ from pathlib import Path
 import shutil
 
 MAX_BYTES = 25 * 1024 * 1024
+MAX_FILES = 19_000
+MAX_OUTPUT_BYTES = 1_400_000_000
 ORIGIN = "https://cinegitim.github.io/design"
 
 def build(source: Path, dest: Path, dry_run=False):
@@ -36,6 +38,10 @@ def build(source: Path, dest: Path, dry_run=False):
             continue
         kept += 1
         size_total += size
+        if kept + 1 > MAX_FILES:
+            raise ValueError('Free-only Pages file count quota exceeded')
+        if size_total > MAX_OUTPUT_BYTES:
+            raise ValueError('Free-only Pages total output byte budget exceeded')
         if not dry_run:
             out = dest / rel
             out.parent.mkdir(parents=True, exist_ok=True)
