@@ -122,7 +122,7 @@ function setupOverlay(){
  selectionHandle.addEventListener('pointerdown',function(e){
   if(sel<0||e.button!==0)return;var n=nodes()[sel];if(!n||logo(n)||n.classList.contains('folio'))return;
   e.stopPropagation();e.preventDefault();var start=pos(n),sx=e.clientX,sy=e.clientY,isPhoto=n.tagName==='IMG',checked=false;selectionHandle.setPointerCapture(e.pointerId);
-  function move(v){var dx=v.clientX-sx,dy=v.clientY-sy;if(!checked){if(Math.abs(dx)+Math.abs(dy)<2)return;checkpoint();checked=true}var w=Math.max(20,Math.round(start.w+dx)),h=Math.max(20,Math.round(start.h+dy));var a=edit();a.styles.width=w+'px';n.style.width=a.styles.width;
+  function move(v){var dx=v.clientX-sx,dy=v.clientY-sy;if(!checked){if(Math.abs(dx)+Math.abs(dy)<2)return;checkpoint();checked=true;var initial=edit();Object.assign(initial.styles,{position:'absolute',left:start.x+'px',top:start.y+'px',right:'auto',bottom:'auto',margin:'0'});Object.entries(initial.styles).forEach(function(pair){n.style.setProperty(pair[0],pair[1])})}var w=Math.max(20,Math.round(start.w+dx)),h=Math.max(20,Math.round(start.h+dy));var a=edit();a.styles.width=w+'px';n.style.width=a.styles.width;
    if(isPhoto){a.styles.height=h+'px';n.style.height=a.styles.height;a.styles['object-fit']=a.styles['object-fit']||'cover';n.style.objectFit=a.styles['object-fit']}
    $('w').value=w;$('height').value=isPhoto?h:start.h;updateOverlay();dirtyStatus()}
   function stop(){selectionHandle.removeEventListener('pointermove',move);selectionHandle.removeEventListener('pointerup',stop)}
