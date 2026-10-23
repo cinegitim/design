@@ -27,27 +27,57 @@ input[type=text],input[type=number],select{width:100%;background:#0c1420;color:w
 .slide-tabs button.active{background:#43352e;color:#ffe8c7;border-color:#ffbd83}
 .slide-tabs button[aria-current="step"]{box-shadow:inset 0 -2px 0 #ffbd83}
 .toolbar .btn:disabled{opacity:.4;cursor:not-allowed}
+.zoom-controls{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:8px;padding:3px 6px;background:#0f1926}
+.zoom-controls select{background:transparent;border:0;color:#f8e2c7;padding:4px;font-size:12px;min-width:81px;width:auto}
+.zoom-controls button{min-width:29px;padding:3px 6px}
+.quick-align{display:flex;flex-wrap:wrap;gap:5px}.quick-align button{min-width:42px;padding:6px 9px}
+.field input[type=range]{padding:0;accent-color:#ffbd83;background:transparent;border:0}
+.field input[type=number]:disabled,.field select:disabled{opacity:.45}
+@media(min-width:1150px){.layout{grid-template-columns:265px minmax(0,1fr) 350px}}
+
 .layer{background:#0e1724;border:1px solid var(--line);padding:9px;border-radius:8px;color:var(--ink);text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.layer.selected{border-color:#ffbd83;background:#2b3441}
 .center{display:grid;grid-template-rows:auto 1fr auto;min-width:0}.toolbar{background:#162231;border-bottom:1px solid var(--line);padding:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.canvas{display:grid;place-items:center;overflow:auto;padding:20px;min-height:450px}.frame{position:relative;width:432px;height:540px;max-width:100%;overflow:hidden;background:white;box-shadow:0 12px 38px #0008}
+.canvas{display:flex;overflow:auto;padding:20px;min-height:410px;position:relative;align-items:safe center;justify-content:safe center;background:radial-gradient(circle at center,#243448,#101a28)}.frame{position:relative;flex:none;width:432px;height:540px;overflow:hidden;background:white;box-shadow:0 12px 38px #0008; margin:auto}.frame.hand{cursor:grab}.frame.hand:active{cursor:grabbing}.pan-shield{position:absolute;inset:0;z-index:10;background:transparent;cursor:grab}.pan-shield:active{cursor:grabbing}
 iframe{position:absolute;inset:0;width:1080px;height:1350px;transform:scale(.4);transform-origin:0 0;border:0}
 .bottom{border-top:1px solid var(--line);padding:10px 15px;font-size:11px;color:var(--muted)}
 .notice{border-left:3px solid #dfad75;background:#233247;padding:12px;font-size:12px;color:#dae6f5;margin:10px 0;line-height:1.5}
 .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.swatches label{font-size:11px;color:var(--muted);display:grid;gap:4px}
 dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;background:#1b2737;color:white}dialog::backdrop{background:#000b}
-[hidden]{display:none!important}@media(max-width:990px){.layout{grid-template-columns:230px 1fr}aside.right{grid-column:1/-1;border-top:1px solid var(--line)}}@media(max-width:650px){.layout{display:block}.canvas{min-height:500px}.layers{max-height:180px}}
+[hidden]{display:none!important}@media(max-width:990px){.layout{grid-template-columns:230px 1fr}aside.right{grid-column:1/-1;border-top:1px solid var(--line)}}@media(max-width:650px){.layout{display:block}.canvas{min-height:500px;max-height:600px}.layers{max-height:180px}}
 </style></head><body>
 <header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><a href="../">← Visual Editor</a></div></header>
 <div class="layout"><aside><h2>Katmanlar</h2><p class="small">Fotoğraf ile üzerindeki yazılar birlikte gruplanır. Logo ve dipnot kilitlidir.</p><div class="controls"><button class="btn" id="groups-open">Tümünü aç</button><button class="btn" id="groups-close">Tümünü kapat</button></div><div id="layers" class="layers"></div>
 <div class="panel"><h2>Global renkler</h2><p class="small">Bağlı renkler aynı anda değişir. Özel renk verdiğin nesne etkilenmez.</p>
 <div class="swatches"><label>Krem<input type="color" id="paper" value="#f7f3e9"></label><label>Koyu<input type="color" id="ink" value="#1d2027"></label><label>Kırmızı<input type="color" id="red" value="#bd2120"></label></div></div>
 <div class="notice">Kaydettiğin sürümler <strong>bu tarayıcıda</strong> saklanır. İstersen klasör seçerek ayrıca <code>versions/v2</code>, <code>versions/v3</code> dosyalarını Mac'ine yazdırabilirsin. Sunucuya veri gönderilmez.</div></aside>
-<main class="center"><div class="toolbar"><button class="btn" id="prev">←</button><span id="count" class="badge"></span><button class="btn" id="next">→</button><button class="btn" id="undo" disabled title="Geri al · Cmd/Ctrl+Z">↶ Geri al</button><button class="btn" id="redo" disabled title="Yeniden yap · Cmd/Ctrl+Shift+Z">↷ Yeniden yap</button><button class="btn primary" id="save">Yeni sürüm kaydet</button><button class="btn" id="export">Sürüm arşivini indir</button><button class="btn" id="import">Arşivi içe aktar</button><input type="file" id="importFile" accept=".json,application/json" hidden></div>
-<nav class="slide-tabs" aria-label="Slaytlar" id="slide-tabs"></nav><div class="canvas"><div class="frame"><iframe id="preview" title="Düzenlenebilir karusel" sandbox="allow-same-origin"></iframe></div></div><div class="bottom"><span id="status">Kaynak denetleniyor</span> · <span id="unsaved">Değişiklik yok</span></div></main>
+<main class="center"><div class="toolbar"><button class="btn" id="prev">←</button><span id="count" class="badge"></span><button class="btn" id="next">→</button><button class="btn" id="undo" disabled title="Geri al · Cmd/Ctrl+Z">↶ Geri al</button><button class="btn" id="redo" disabled title="Yeniden yap · Cmd/Ctrl+Shift+Z">↷ Yeniden yap</button>
+<div class="zoom-controls"><button type="button" class="btn" id="zoom-out" aria-label="Küçült">−</button><select id="zoom" aria-label="Tuval yakınlaştırma"><option value="fit">Sığdır</option><option value=".25">25%</option><option value=".4">40%</option><option value=".5">50%</option><option value=".75">75%</option><option value="1">100%</option><option value="1.25">125%</option></select><button type="button" class="btn" id="zoom-in" aria-label="Büyüt">+</button></div>
+<button class="btn" id="hand" aria-pressed="false" title="Eli kullanarak tuvali kaydır">✋ El</button><label class="small"><input type="checkbox" id="snap" checked> 8 px ızgara</label><button class="btn primary" id="save">Yeni sürüm kaydet</button><button class="btn" id="export">Sürüm arşivini indir</button><button class="btn" id="import">Arşivi içe aktar</button><input type="file" id="importFile" accept=".json,application/json" hidden></div>
+<nav class="slide-tabs" aria-label="Slaytlar" id="slide-tabs"></nav><div class="canvas" id="canvas"><div class="frame" id="frame"><iframe id="preview" title="Düzenlenebilir karusel" sandbox="allow-same-origin"></iframe><div id="pan-shield" class="pan-shield" hidden></div></div></div><div class="bottom"><span id="status">Kaynak denetleniyor</span> · <span id="unsaved">Değişiklik yok</span></div></main>
 <aside class="right"><h2>Özellikler</h2><div id="blank" class="notice">Düzenlemek için bir katmana tıkla.</div><div id="props" hidden>
 <div class="panel"><span id="label" class="badge"></span><div class="two">
 <div class="field"><label>X (px)</label><input type="number" id="x"></div><div class="field"><label>Y (px)</label><input type="number" id="y"></div>
 <div class="field"><label>Genişlik (px)</label><input type="number" id="w"></div><div class="field"><label>Font (px)</label><input type="number" id="fs" min="8" max="260"></div></div></div>
+<div class="panel"><h2>Hizalama</h2><div class="quick-align">
+<button type="button" class="btn" data-align="left" title="Sola hizala">⇤</button><button type="button" class="btn" data-align="center" title="Yatay ortala">↔</button><button type="button" class="btn" data-align="right" title="Sağa hizala">⇥</button>
+<button type="button" class="btn" data-align="top" title="Üste hizala">↑</button><button type="button" class="btn" data-align="middle" title="Dikey ortala">↕</button><button type="button" class="btn" data-align="bottom" title="Alta hizala">↓</button></div></div>
+<div class="panel"><h2>Görünüm</h2><div class="two">
+<div class="field"><label>Yükseklik (px)</label><input type="number" id="height" min="1" max="5000"></div>
+<div class="field"><label>Opaklık (0–100%)</label><input type="number" id="opacity" min="0" max="100" step="5"></div>
+<div class="field"><label>Köşe yuvarlaklığı (px)</label><input type="number" id="radius" min="0" max="600"></div>
+<div class="field"><label>Ön/arka sıra</label><input type="number" id="zindex" min="-30" max="30"></div>
+</div></div>
+<div class="panel" id="text-tools"><h2>Tipografi · Jost</h2><div class="two">
+<div class="field"><label>Kalınlık</label><input type="number" id="weight" min="100" max="900" step="50"></div>
+<div class="field"><label>Harf aralığı (px)</label><input type="number" id="letter" min="-20" max="100" step=".5"></div>
+<div class="field"><label>Satır yüksekliği</label><input type="number" id="leading" min=".6" max="3" step=".05"></div>
+<div class="field"><label>Metin hizası</label><select id="textalign"><option value="left">Sol</option><option value="center">Orta</option><option value="right">Sağ</option><option value="justify">İki yana</option></select></div>
+</div></div>
+<div class="panel" id="photo-tools" hidden><h2>Fotoğraf kadrajı</h2>
+<div class="field"><label>Yerleşim</label><select id="fit"><option value="cover">Alanı doldur</option><option value="contain">Tamamını göster</option><option value="fill">Esnet</option></select></div>
+<div class="field"><label>Kadraj yatay (%)</label><input type="range" id="cropx" min="0" max="100" step="1"></div>
+<div class="field"><label>Kadraj dikey (%)</label><input type="range" id="cropy" min="0" max="100" step="1"></div>
+<div class="small">Fotoğrafın orijinal dosyası değişmez; yalnızca görünümü ayarlanır.</div></div>
 <div class="panel"><div class="field"><label>Metin rengi</label><select id="mode"><option value="inherit">Orijinal</option><option value="paper">Krem tonuna bağlı</option><option value="ink">Koyu tona bağlı</option><option value="red">Kırmızı tona bağlı</option><option value="direct">Özel renk</option></select></div><div class="field" id="direct" hidden><label>Özel renk</label><input type="color" id="color" value="#ffffff"></div></div></div>
 <h2>Sürümler</h2><div class="panel"><div class="field"><label>Geri yükle</label><select id="versions"></select></div><div class="controls"><button class="btn" id="load">Aç</button><button class="btn" id="folder">Klasör seç</button></div><p class="small" id="folderStatus">Klasör seçilmedi</p></div>
 <div class="panel"><h2>Dosyaları indir</h2><div class="controls"><button class="btn" id="css">Aktif slaytın CSS’i</button><button class="btn" id="html">Aktif slaytın HTML’i</button></div><p class="small">Klasör kaydında her slayt için yeniden açılabilir HTML/CSS üretilir. Fotoğraflar özgün web adresinde kalır; PNG üretilmez.</p></div></aside></div>
@@ -65,6 +95,7 @@ var key='brandstudio:browser:'+slug,defaults={paper:'#f7f3e9',ink:'#1d2027',red:
 var state={colors:Object.assign({},defaults),edits:{}},pages=[],page=0,doc=null,sel=-1,dirty=false,folder=null,current=1;
 var codec=globalThis.BrandstudioPortable,ux=globalThis.BrandstudioUX; if(!codec||!ux){$('status').textContent='Editör modülü eksik';return}
 var history=ux.createHistory(40),savedState=copy(state),groupOpen={},dragging=false,dragRecorded=false,colorSessions={};
+var zoomLevel=.4,zoomMode='fit',handMode=false,selectionOverlay=null,selectionHandle=null;
 function copy(o){return JSON.parse(JSON.stringify(o))}
 function getDB(){try{return JSON.parse(localStorage.getItem(key)||'{"versions":[]}')}catch(e){return{versions:[]}}}
 function allV(){return getDB().versions||[]}
