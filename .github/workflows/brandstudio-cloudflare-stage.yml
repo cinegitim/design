@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - "studio/cloudflare-brandstudio/**"
+      - "docs/visual-editor/browser/**"
       - ".github/workflows/brandstudio-cloudflare-stage.yml"
   push:
     branches: [main]
@@ -31,6 +32,8 @@ jobs:
           python-version: "3.12"
       - name: Reject variable-cost service bindings and unsafe free-tier overrides
         run: python3 studio/cloudflare-brandstudio/check_free_only.py
+      - name: Portable browser editor state validation and syntax
+        run: node --test studio/cloudflare-brandstudio/tests/portable.test.mjs
       - name: Worker API safety tests — no network
         run: node --test studio/cloudflare-brandstudio/tests/worker.test.mjs
       - name: D1 schema immutability tests — local SQLite
