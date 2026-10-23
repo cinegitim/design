@@ -1,0 +1,35 @@
+name: Brandstudio Cloudflare stage checks
+on:
+  pull_request:
+    paths:
+      - "studio/cloudflare-brandstudio/**"
+      - ".github/workflows/brandstudio-cloudflare-stage.yml"
+  push:
+    branches: [main]
+    paths:
+      - "studio/cloudflare-brandstudio/**"
+      - ".github/workflows/brandstudio-cloudflare-stage.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  stage-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Read submitted repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+      - name: Python 3.12
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+      - name: Worker API safety tests — no network
+        run: node --test studio/cloudflare-brandstudio/tests/worker.test.mjs
+      - name: D1 schema immutability tests — local SQLite
+        run: python -I -B -m unittest discover -s studio/cloudflare-brandstudio/tests -p 'test_*.py' -v
