@@ -4,7 +4,7 @@
 "use strict";
 var SELECTOR='h1,h2,h3,p,.eyebrow,.dek,.photo,.country-line,.country-grid b,.country-list span,.options span,.cta-pill,.pathways span,.folio,.logo-foot,.cover-rule,.question-bottom,.question-photo,img';
 var COLORS={paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'};
-var ALLOWED_STYLES={'position':1,'left':1,'top':1,'width':1,'margin':1,'font-size':1};
+var ALLOWED_STYLES={'position':1,'left':1,'top':1,'width':1,'height':1,'margin':1,'font-size':1,'font-weight':1,'letter-spacing':1,'line-height':1,'text-align':1,'opacity':1,'object-fit':1,'object-position':1,'border-radius':1,'z-index':1,'visibility':1};
 var ALLOWED_MODES={inherit:1,paper:1,ink:1,red:1,direct:1};
 var HEX=/^#[0-9a-fA-F]{6}$/;
 var SLUG=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -28,10 +28,21 @@ function state(input,maxPages) {
    Object.keys(e.styles||{}).forEach(function(k){
      if(!ALLOWED_STYLES[k])err('İzin verilmeyen CSS özelliği');
      var v=e.styles[k];if(typeof v!=='string'||v.length>40)err('Geçersiz CSS değeri');
-     if(k==='position'&&v!=='absolute')err('Sadece absolute position destekleniyor');
-     else if(k==='margin'&&v!=='0')err('Geçersiz margin');
-     else if(k!=='position'&&k!=='margin'&&!/^-?[0-9]{1,5}(?:\.[0-9]{1,2})?px$/.test(v))err('Yalnızca sayısal px kabul ediliyor');
-     if(k==='width'&&parseFloat(v)<=0)err('Genişlik pozitif olmalı');
+     var px=/^-?[0-9]{1,5}(?:\.[0-9]{1,2})?px$/,n=Number.parseFloat(v);
+     if(k==='position'){if(v!=='absolute')err('Sadece absolute position destekleniyor')}
+     else if(k==='margin'){if(v!=='0')err('Geçersiz margin')}
+     else if(k==='text-align'){if(!['left','right','center','justify','start','end'].includes(v))err('Geçersiz hizalama')}
+     else if(k==='object-fit'){if(!['cover','contain','fill'].includes(v))err('Geçersiz fotoğraf uyumu')}
+     else if(k==='visibility'){if(!['visible','hidden'].includes(v))err('Geçersiz görünürlük')}
+     else if(k==='object-position'){var m=v.match(/^(\d{1,3})% (\d{1,3})%$/);if(!m||Number(m[1])>100||Number(m[2])>100)err('Geçersiz kadraj')}
+     else if(k==='font-weight'){if(!/^[1-9]\d{1,2}$/.test(v)||n<100||n>900)err('Geçersiz font ağırlığı')}
+     else if(k==='line-height'){if(!/^(?:[0-3](?:\.\d{1,2})?)$/.test(v)||n<0.6||n>3)err('Geçersiz satır yüksekliği')}
+     else if(k==='opacity'){if(!/^(?:0(?:\.\d{1,2})?|1(?:\.0{1,2})?)$/.test(v))err('Geçersiz opaklık')}
+     else if(k==='z-index'){if(!/^-?\d{1,2}$/.test(v)||n< -30||n>30)err('Geçersiz katman sırası')}
+     else if(!px.test(v))err('Yalnızca sayısal px kabul ediliyor');
+     if((k==='width'||k==='height'||k==='font-size')&&(n<1||n>5000))err('Geçersiz boyut');
+     if(k==='border-radius'&&(n<0||n>600))err('Geçersiz köşe yarıçapı');
+     if(k==='letter-spacing'&&(n< -20||n>100))err('Geçersiz harf aralığı');
      styles[k]=v;
    });
    var color=e.color;
