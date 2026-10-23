@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[3]
 class PagesEntryTests(unittest.TestCase):
     def test_public_editor_is_explicit_local_only(self):
         html = (ROOT / "docs/visual-editor/index.html").read_text(encoding="utf-8")
-        self.assertIn("GitHub Pages statiktir", html)
+        self.assertIn("Tarayıcı editörü yalnızca tarayıcıya", html)
         self.assertIn("http://127.0.0.1:8765/", html)
         self.assertIn("encodeURIComponent(product)", html)
         self.assertNotIn("api.github.com/repos", html)
