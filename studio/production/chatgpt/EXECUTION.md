@@ -84,6 +84,12 @@ Run unit tests and studio checks where available. Separate checkout/branch,
 base SHA, CI-head verification, merge and deployment rules are unchanged.
 Avoid copying ChatGPT-specific model/effort labels into Codex records.
 
+## Optional post-production Visual Editor handoff
+
+Visual Editor is **not** a production executor: the canonical prompt-driven HTML/CSS/SVG → real render workflow remains the default. When and only when a producer has verified original editable source and actual slide PNGs, the user may opt to register that output in their **installed local companion** via `studio/visual-editor/bridge.py`. The bridge verifies the exact on-disk P-01/light hash against the current brand lockup manifest, refuses duplicate product IDs and retains the original deliverable. The bridge's `--dry-run` inspects inputs but does not register a product.
+
+The public Pages `docs/visual-editor/` route and product-specific site actions only *navigate* to the user's local companion; Pages cannot run Python, write v2/v3 folders or silently sync GitHub. Local private revision states are not GitHub commits or approved production. A real published revision requires its own reviewed deliverable and exact-head PR/CI. A missing companion is a normal optional-capability state: do not block successful prompt production or invent registration.
+
 ## One common delivery contract
 
 Capture: original task, exact brand slug/approval manifest, category, source
