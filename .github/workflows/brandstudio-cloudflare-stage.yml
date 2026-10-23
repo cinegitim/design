@@ -37,7 +37,7 @@ jobs:
       - name: Reject variable-cost service bindings and unsafe free-tier overrides
         run: python3 studio/cloudflare-brandstudio/check_free_only.py
       - name: Portable browser editor state validation and syntax
-        run: node --test studio/cloudflare-brandstudio/tests/portable.test.mjs
+        run: node --test studio/cloudflare-brandstudio/tests/portable.test.mjs studio/cloudflare-brandstudio/tests/editor-ux.test.mjs
       - name: Worker API safety tests — no network
         run: node --test studio/cloudflare-brandstudio/tests/worker.test.mjs
       - name: D1 schema immutability tests — local SQLite
