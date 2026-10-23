@@ -29,6 +29,8 @@ jobs:
         uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.12"
+      - name: Reject variable-cost service bindings and unsafe free-tier overrides
+        run: python3 studio/cloudflare-brandstudio/check_free_only.py
       - name: Worker API safety tests — no network
         run: node --test studio/cloudflare-brandstudio/tests/worker.test.mjs
       - name: D1 schema immutability tests — local SQLite
