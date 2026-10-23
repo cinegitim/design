@@ -6,21 +6,21 @@ existing website or preview Workers; leave personal chat-handoff-v1 untouched.
 
 Current **staging bridge** only, not the final migrated production site:
 
-- Worker \`brandstudio-stage\` on personal workers.dev: proxies **read-only** static
-  paths from the original \`https://cinegitim.github.io/design/\`.
+- Worker `brandstudio-stage` on personal workers.dev: proxies **read-only** static
+  paths from the original `https://cinegitim.github.io/design/`.
   This deliberately preserves all existing galleries and relative URLs during migration.
   It is **not** static-asset migration: the GitHub Pages origin remains required.
-- D1 database \`brandstudio-stage\` has a separate private/public product catalog,
+- D1 database `brandstudio-stage` has a separate private/public product catalog,
   append-only version schema, but API only exposes public product metadata reads.
 - All API writes are **disabled** until a real authentication/authorization mechanism
   and appropriate durable image/source storage are connected. No generated output is
   marked approved merely because it is listed or saved.
-- \`/api/health\`: read-only app/database check; \`/api/products\`: *public* catalog.
-- No domain/DNS cutover. This stage is a test URL only and carries \`X-Robots-Tag: noindex\`.
+- `/api/health`: read-only app/database check; `/api/products`: *public* catalog.
+- No domain/DNS cutover. This stage is a test URL only and carries `X-Robots-Tag: noindex`.
 
 ## Intended final Cloudflare topology (not yet deployed)
 
-1. Wrangler Workers Static Assets upload the **actual** \`docs/\` tree into Cloudflare,
+1. Wrangler Workers Static Assets upload the **actual** `docs/` tree into Cloudflare,
    removing the upstream proxy dependence. Avoid wholesale removal or renaming of URLs.
 2. Access (or a comparably secure server-side authentication service) protects editor
    and write endpoints, with origin/CSRF controls, per-user authorization and audit logs.
@@ -34,17 +34,17 @@ Current **staging bridge** only, not the final migrated production site:
    publishing approved versions remains explicit, with a checked PR.
 7. Only after source and media are independently mirrored and routed/tested should
    a custom domain be selected and switched. Existing GitHub Pages remains available
-   throughout. \`asyadaegitim.com\` is a separate website and is not changed here.
+   throughout. `asyadaegitim.com` is a separate website and is not changed here.
 
 ## Verification
 
-\`\`\`sh
+```sh
 cd studio/cloudflare-brandstudio
 node --test tests/worker.test.mjs
-python3 -m sqlite3 :memory: ".read migrations/0001_initial.sql"
+python3 -m unittest discover -s tests -p 'test_*.py' -v
 npx wrangler d1 migrations apply brandstudio-stage --remote
 npx wrangler deploy
-\`\`\`
+```
 
 The last two commands require actual authorized credentials in the personal
 Cloudflare account. This repo does not contain credentials, private drafts,
@@ -52,7 +52,7 @@ Cloudflare API tokens or secret login links.
 
 Status:
 - Staging D1: created in personal account.
-- Staging Worker: not proven deployed merely by this repository's files.
+- Staging Worker: deployed to `brandstudio-stage.iakfiratt-handoff.workers.dev`; verify live `/api/health` independently. GitHub code must still pass PR checks.
 - R2: dashboard activation required.
 - Access: dashboard activation required.
 - Source-assets migration and private editor saves: not complete.
