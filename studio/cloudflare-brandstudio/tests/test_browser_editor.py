@@ -23,7 +23,8 @@ class BrowserEditorTests(unittest.TestCase):
     def test_version_is_append_only_and_authorized_by_dialog(self):
         self.assertIn("getDB()",self.editor)
         self.assertIn("$('dialog').showModal()",self.editor)
-        self.assertIn("db.versions=(db.versions||[]).concat(v)",self.editor)
+        self.assertIn("updated={versions:(db.versions||[]).concat(item)}",self.editor)
+        self.assertIn("localStorage.setItem(key,JSON.stringify(updated))",self.editor)
         self.assertIn("v1",self.editor)
         self.assertIn("25 sürüm sınırı",self.editor)
     def test_source_is_provenance_preserved(self):
