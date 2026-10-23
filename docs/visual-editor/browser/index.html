@@ -27,7 +27,7 @@ dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;
 <div class="panel"><h2>Global renkler</h2><p class="small">Bağlı renkler aynı anda değişir. Özel renk verdiğin nesne etkilenmez.</p>
 <div class="swatches"><label>Krem<input type="color" id="paper" value="#f7f3e9"></label><label>Koyu<input type="color" id="ink" value="#1d2027"></label><label>Kırmızı<input type="color" id="red" value="#bd2120"></label></div></div>
 <div class="notice">Kaydettiğin sürümler <strong>bu tarayıcıda</strong> saklanır. İstersen klasör seçerek ayrıca <code>versions/v2</code>, <code>versions/v3</code> dosyalarını Mac'ine yazdırabilirsin. Sunucuya veri gönderilmez.</div></aside>
-<main class="center"><div class="toolbar"><button class="btn" id="prev">←</button><span id="count" class="badge"></span><button class="btn" id="next">→</button><button class="btn primary" id="save">Yeni sürüm kaydet</button><button class="btn" id="export">JSON indir</button></div>
+<main class="center"><div class="toolbar"><button class="btn" id="prev">←</button><span id="count" class="badge"></span><button class="btn" id="next">→</button><button class="btn primary" id="save">Yeni sürüm kaydet</button><button class="btn" id="export">Sürüm arşivini indir</button><button class="btn" id="import">Arşivi içe aktar</button><input type="file" id="importFile" accept=".json,application/json" hidden></div>
 <div class="canvas"><div class="frame"><iframe id="preview" title="Düzenlenebilir karusel" sandbox="allow-same-origin"></iframe></div></div><div class="bottom"><span id="status">Kaynak denetleniyor</span> · <span id="unsaved">Değişiklik yok</span></div></main>
 <aside class="right"><h2>Özellikler</h2><div id="blank" class="notice">Düzenlemek için bir katmana tıkla.</div><div id="props" hidden>
 <div class="panel"><span id="label" class="badge"></span><div class="two">
@@ -35,8 +35,9 @@ dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;
 <div class="field"><label>Genişlik (px)</label><input type="number" id="w"></div><div class="field"><label>Font (px)</label><input type="number" id="fs" min="8" max="260"></div></div></div>
 <div class="panel"><div class="field"><label>Metin rengi</label><select id="mode"><option value="inherit">Orijinal</option><option value="paper">Krem tonuna bağlı</option><option value="ink">Koyu tona bağlı</option><option value="red">Kırmızı tona bağlı</option><option value="direct">Özel renk</option></select></div><div class="field" id="direct" hidden><label>Özel renk</label><input type="color" id="color" value="#ffffff"></div></div></div>
 <h2>Sürümler</h2><div class="panel"><div class="field"><label>Geri yükle</label><select id="versions"></select></div><div class="controls"><button class="btn" id="load">Aç</button><button class="btn" id="folder">Klasör seç</button></div><p class="small" id="folderStatus">Klasör seçilmedi</p></div>
-<div class="panel"><h2>Dosyaları indir</h2><div class="controls"><button class="btn" id="css">CSS</button><button class="btn" id="html">Aktif slayt HTML</button></div><p class="small">HTML kaynak fotoğrafları özgün web adresinden çağırır.</p></div></aside></div>
+<div class="panel"><h2>Dosyaları indir</h2><div class="controls"><button class="btn" id="css">Aktif slaytın CSS’i</button><button class="btn" id="html">Aktif slaytın HTML’i</button></div><p class="small">Klasör kaydında her slayt için yeniden açılabilir HTML/CSS üretilir. Fotoğraflar özgün web adresinde kalır; PNG üretilmez.</p></div></aside></div>
 <dialog id="dialog"><h2>Yeni sürüm oluştur</h2><p>Orijinal <b>v1</b> korunur. Yeni sürüm için onay gerekiyor.</p><div class="field"><label>Versiyon</label><input id="newV" readonly></div><div class="field"><label>Revizyon notu</label><input id="note" maxlength="140" placeholder="örn. başlık sola alındı"></div><div class="controls"><button class="btn primary" id="confirm">Kaydet</button><button class="btn" id="cancel">Vazgeç</button></div></dialog>
+<script src="portable.js"></script>
 <script>
 (function(){
 'use strict';
@@ -46,10 +47,11 @@ if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)){$('status').textContent='Geçersiz 
 var base=new URL('../../instagram/'+slug+'/source/',location.href);
 var key='brandstudio:browser:'+slug,defaults={paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'};
 var state={colors:Object.assign({},defaults),edits:{}},pages=[],page=0,doc=null,sel=-1,dirty=false,folder=null,current=1;
+var codec=globalThis.BrandstudioPortable; if(!codec){$('status').textContent='Taşınabilir sürüm modülü eksik';return}
 function copy(o){return JSON.parse(JSON.stringify(o))}
 function getDB(){try{return JSON.parse(localStorage.getItem(key)||'{"versions":[]}')}catch(e){return{versions:[]}}}
 function allV(){return getDB().versions||[]}
-function nodes(){if(!doc)return[];var selText='h1,h2,h3,p,.eyebrow,.dek,.photo,.country-line,.country-grid b,.country-list span,.options span,.cta-pill,.pathways span,.folio,.logo-foot,.cover-rule,.question-bottom,.question-photo,img';return Array.from(doc.querySelectorAll('.slide '+selText))}
+function nodes(){if(!doc)return[];var selText=codec.selector;return Array.from(doc.querySelectorAll('.slide '+selText))}
 function edit(){var k=page+':'+sel;if(!state.edits[k])state.edits[k]={styles:{},mode:'inherit'};return state.edits[k]}
 function norm(){if(!doc)return;doc.documentElement.style.setProperty('--paper',state.colors.paper);doc.documentElement.style.setProperty('--ink',state.colors.ink);doc.documentElement.style.setProperty('--red',state.colors.red);Array.from(doc.querySelectorAll('style')).forEach(function(s){if(s.dataset.normalized)return;s.textContent=s.textContent.replace(/#F7F3E9/gi,'var(--paper)').replace(/#1D2027/gi,'var(--ink)').replace(/#BD2120/gi,'var(--red)');s.dataset.normalized='1'})}
 function patch(n,v){if(!v)return;Object.entries(v.styles||{}).forEach(function(pair){n.style.setProperty(pair[0],pair[1])});if(v.mode&&v.mode!=='inherit')n.style.setProperty('color',v.mode==='direct'?v.color:'var(--'+v.mode+')')}
@@ -73,18 +75,66 @@ $('mode').onchange=function(){if(sel<0)return;var e=edit();e.mode=this.value;e.c
 $('color').oninput=function(){if(sel<0)return;var e=edit();e.mode='direct';e.color=this.value;patch(nodes()[sel],e);changed()};
 ['paper','ink','red'].forEach(function(k){$(k).oninput=function(){state.colors[k]=this.value;norm();changed()}});
 function download(name,s,type){var a=document.createElement('a'),b=new Blob([s],{type:type});a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},5000)}
-function dump(){return{schema:1,product:slug,brand:'asyada-egitim',version:current,colors:state.colors,edits:state.edits,source:base.href}}
-$('export').onclick=function(){download(slug+'-state.json',JSON.stringify(dump(),null,2),'application/json')};
-function css(){var s=':root{'+Object.entries(state.colors).map(function(p){return'--'+p[0]+':'+p[1]+';'}).join('')+'}\n';
-Object.entries(state.edits).forEach(function(pair){var e=pair[1],styles=Object.assign({},e.styles),parts=pair[0].split(':');if(e.mode&&e.mode!=='inherit')styles.color=e.mode==='direct'?e.color:'var(--'+e.mode+')';s+='.slide[data-slide-index="'+(Number(parts[0])+1)+'"] [data-edit-index="'+parts[1]+'"]{'+Object.entries(styles).map(function(p){return p[0]+':'+p[1]+';'}).join('')+'}\n'});return s}
-$('css').onclick=function(){download(slug+'-overrides.css',css(),'text/css')};
-$('html').onclick=function(){if(!doc)return;var s='<!doctype html>\n'+doc.documentElement.outerHTML;s=s.replace('<head>','<head><base href="'+pages[page]+'">');download(slug+'-'+(page+1)+'.html',s,'text/html')};
+function dump(){return codec.makeArchive(slug,allV(),state)}
+function safeStatus(e){$('status').textContent='İşlem durduruldu: '+String(e&&e.message||e)}
+async function sourceAt(i){var r=await fetch(pages[i],{cache:'no-store'});if(!r.ok)throw new Error('Kaynak okunamadı: '+(i+1));var html=await r.text();if(html.indexOf('class="slide')<0)throw new Error('Slayt yapısı bulunamadı: '+(i+1));return html}
+$('export').onclick=function(){try{download(slug+'-tum-surumler.json',JSON.stringify(dump(),null,2),'application/json')}catch(e){safeStatus(e)}};
+$('import').onclick=function(){$('importFile').value='';$('importFile').click()};
+$('importFile').onchange=async function(){
+ var file=this.files&&this.files[0];if(!file)return;
+ try{
+  if(file.size>1000000)throw new Error('Arşiv 1 MB sınırını aşıyor');
+  var raw=JSON.parse(await file.text()),back=codec.parseArchive(raw,slug,pages.length);
+  var existing=getDB(),next=Math.max(1,...(existing.versions||[]).map(function(v){return v.version}))+1;
+  var items=back.versions.map(function(v){return{version:v.version,note:v.note,state:v.state,time:v.time}});
+  if(!items.length||JSON.stringify(items[items.length-1].state)!==JSON.stringify(back.current))items.push({version:1,note:'Taşınan çalışma taslağı',state:back.current,time:''});
+  if((existing.versions||[]).length+items.length>25||next+items.length>27)throw new Error('25 sürüm sınırı; önce mevcut arşivi yedekleyin');
+  if(!confirm(items.length+' sürüm bu tarayıcıya yeni vN kayıtları olarak eklenecek. Mevcut sürümlere dokunulmayacak. Onaylıyor musun?'))return;
+  var fresh=items.map(function(v,i){return{version:next+i,note:'İçe aktarıldı: '+String(v.note||'v'+v.version).slice(0,110),state:copy(v.state),time:new Date().toISOString(),importedFrom:v.version}});
+  var updated={versions:(existing.versions||[]).concat(fresh)};
+  localStorage.setItem(key,JSON.stringify(updated));
+  state=copy(fresh[fresh.length-1].state);current=fresh[fresh.length-1].version;dirty=false;
+  ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
+  $('unsaved').textContent='v'+current+' geri yüklendi';$('status').textContent=items.length+' sürüm eklendi';renderV();show(page);
+ }catch(e){safeStatus(e)}
+};
+$('css').onclick=async function(){try{if(!pages.length)throw new Error('Kaynak bulunamadı');var raw=await sourceAt(page);download(slug+'-slide-'+(page+1)+'.css',codec.css(raw,state,page),'text/css')}catch(e){safeStatus(e)}};
+$('html').onclick=async function(){try{if(!pages.length)throw new Error('Kaynak bulunamadı');var raw=await sourceAt(page);download(slug+'-slide-'+(page+1)+'.html',codec.html(raw,pages[page],state,page),'text/html')}catch(e){safeStatus(e)}};
 function renderV(){var v=allV();$('versions').innerHTML='<option value="1">v1 · özgün</option>';v.forEach(function(x){var o=document.createElement('option');o.value=x.version;o.textContent='v'+x.version+' · '+(x.note||'revizyon');$('versions').appendChild(o)});$('versions').value=String(current)}
 $('load').onclick=function(){if(dirty&&!confirm('Kaydedilmemiş düzenlemeler kaybolsun mu?'))return;var n=Number($('versions').value),v=allV().find(function(x){return x.version===n});state=v?copy(v.state):{colors:Object.assign({},defaults),edits:{}};current=n;dirty=false;['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});$('unsaved').textContent='Değişiklik yok';show(page)};
 $('folder').onclick=async function(){if(!window.showDirectoryPicker){$('folderStatus').textContent='Bu tarayıcı klasöre kaydetmeyi desteklemiyor';return}try{folder=await window.showDirectoryPicker({mode:'readwrite'});$('folderStatus').textContent=folder.name}catch(e){if(e.name!=='AbortError')$('folderStatus').textContent=e.message}};
 $('save').onclick=function(){var n=Math.max(1,...allV().map(function(v){return v.version}))+1;$('newV').value='v'+n;$('dialog').showModal()};
 $('cancel').onclick=function(){$('dialog').close()};
-$('confirm').onclick=async function(){var n=Number($('newV').value.slice(1)),v={version:n,note:$('note').value.trim(),state:copy(state),time:new Date().toISOString()},db=getDB();if((db.versions||[]).length>=25){$('status').textContent='25 sürüm sınırı doldu';return}try{if(folder){var versions=await folder.getDirectoryHandle('versions',{create:true});var sub=await versions.getDirectoryHandle('v'+n,{create:true});var f=await sub.getFileHandle('editor-state.json',{create:true});var w=await f.createWritable();await w.write(JSON.stringify(v,null,2));await w.close();var cf=await sub.getFileHandle('overrides.css',{create:true});var cw=await cf.createWritable();await cw.write(css());await cw.close()}db.versions=(db.versions||[]).concat(v);localStorage.setItem(key,JSON.stringify(db));current=n;dirty=false;$('unsaved').textContent='v'+n+' kaydedildi';$('status').textContent='Yeni v'+n+' oluşturuldu';renderV();$('dialog').close()}catch(e){$('status').textContent='Kayıt başarısız: '+e.message}};
+async function writeFile(dir,name,value){var handle=await dir.getFileHandle(name,{create:true});var writer=await handle.createWritable();try{await writer.write(value)}finally{await writer.close()}}
+$('confirm').onclick=async function(){
+ var n=Number($('newV').value.slice(1)),db=getDB(),latest=Math.max(1,...(db.versions||[]).map(function(v){return v.version}));
+ if(!Number.isInteger(n)||n!==latest+1){$('status').textContent='Sürüm numarası değişti; yeniden deneyin';return}
+ if((db.versions||[]).length>=25){$('status').textContent='25 sürüm sınırı doldu';return}
+ try{
+  var checked=codec.validateState(state,pages.length);
+  var item={version:n,note:$('note').value.trim(),state:checked,time:new Date().toISOString()};
+  var updated={versions:(db.versions||[]).concat(item)};
+  if(folder){
+   var versions=await folder.getDirectoryHandle('versions',{create:true}),dirname='v'+n;
+   try{await versions.getDirectoryHandle(dirname,{create:false});throw new Error(dirname+' klasörü zaten var; üzerine yazılmadı')}
+   catch(e){if(e.name!=='NotFoundError')throw e}
+   var sub=await versions.getDirectoryHandle(dirname,{create:true});
+   var manifest={format:'brandstudio-source-snapshot',version:n,product:slug,source:pages.slice(),png_rendered:false,notes:'Görseller özgün URL üzerinden yüklenir'};
+   await writeFile(sub,'editor-state.json',JSON.stringify(item,null,2));
+   await writeFile(sub,'manifest.json',JSON.stringify(manifest,null,2));
+   var slides=await sub.getDirectoryHandle('slides',{create:true});
+   for(var i=0;i<pages.length;i++){
+    var original=await sourceAt(i),name=String(i+1).padStart(2,'0');
+    await writeFile(slides,name+'.html',codec.html(original,pages[i],checked,i));
+    await writeFile(slides,name+'.css',codec.css(original,checked,i));
+   }
+  }
+  localStorage.setItem(key,JSON.stringify(updated));
+  state=copy(checked);current=n;dirty=false;$('unsaved').textContent='v'+n+' kaydedildi';
+  $('status').textContent='v'+n+(folder?' tarayıcı ve klasöre':' tarayıcıya')+' kaydedildi';
+  renderV();$('dialog').close();
+ }catch(e){safeStatus(e)}
+};
 window.onbeforeunload=function(e){if(dirty){e.preventDefault();e.returnValue=''}};
 async function init(){$('product').textContent=slug;for(var i=1;i<=12;i++){var url=new URL(String(i).padStart(2,'0')+'.html',base);try{var res=await fetch(url);if(!res.ok)break;var data=await res.text();if(data.indexOf('class="slide')<0)break;pages.push(url.href)}catch(e){break}}if(!pages.length){$('status').textContent='Bu ürünün HTML/CSS kaynakları yayımlanmamış';return}var v=allV();if(v.length){current=Math.max(...v.map(function(x){return x.version}));state=copy(v.find(function(x){return x.version===current}).state)}['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});renderV();show(0)}
 init();
