@@ -12,6 +12,7 @@ function err(message){throw new Error(message)}
 function plain(x){return !!x&&typeof x==='object'&&!Array.isArray(x)}
 function state(input,maxPages) {
  if(!plain(input)||!plain(input.colors)||!plain(input.edits))err('Geçersiz sürüm durumu');
+ if(JSON.stringify(input).length>32768)err('Sürüm durumu 32 KB sınırını aşıyor');
  var colors={};Object.keys(COLORS).forEach(function(k){var v=input.colors[k];if(!HEX.test(v||''))err('Geçersiz renk: '+k);colors[k]=v.toLowerCase()});
  if(Object.keys(input.colors).some(function(k){return !Object.prototype.hasOwnProperty.call(COLORS,k)}))err('Bilinmeyen renk anahtarı');
  var edits={},keys=Object.keys(input.edits);
