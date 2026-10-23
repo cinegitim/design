@@ -60,3 +60,24 @@ to bill usage above free limits: user's absolute preference is zero charges.
   the copy remains in the text section instead of being inaccurately grouped.
 - Undo affects uncommitted editor state only and does not change previously
   saved versions or the immutable v1 source.
+
+
+## Flexible canvas / inspector (October 2026)
+
+Browser Editor now uses a viewport-sized editing shell and a responsive canvas:
+zoom-to-fit, 25–125% explicit zoom, Ctrl/Command+wheel zoom inside preview,
+hand-pan over the canvas, and a focus mode that hides both inspectors.
+Direct manipulation includes 8 px optional drag snapping, the resize grip
+on the selection border, and quick alignment to the 1080×1350 slide.
+
+The richer object inspector stores safe, portable CSS state for: width, height,
+font size/weight (existing approved Jost only), letter spacing, line height,
+text alignment, opacity, border radius, stacking order, image object-fit,
+and X/Y crop positions. These values are audited in portable.js and remain
+strictly bounded. Photo crops only change display geometry, never source bytes.
+The canonical logo and folio remain locked for editing.
+
+All gestures participate in local undo/redo and the same explicit vN save.
+Neither imported snapshots nor CSS exports can use arbitrary CSS expressions,
+remote URLs, JavaScript, or unapproved font substitution. No paid Cloudflare
+service, remote state write, server render or synchronization is enabled.
