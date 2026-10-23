@@ -31,6 +31,17 @@ test("strict CSS policy blocks URLs, oversized opacity, unsafe photo offsets",()
  }
 });
 
+test("anchored image resize persists origin offsets without unsafe CSS",()=>{
+ const x=sample();Object.assign(x.edits["1:3"].styles,{left:"44px",top:"71px",right:"auto",bottom:"auto"});
+ const safe=codec.validateState(x,5);
+ assert.equal(safe.edits["1:3"].styles.right,"auto");
+ assert.equal(safe.edits["1:3"].styles.top,"71px");
+ x.edits["1:3"].styles.right="url(https://bad)";
+ assert.throws(()=>codec.validateState(x,5),/ankrajı/);
+ assert.match(html,/left:start\.x\+'px'/);
+ assert.match(html,/top:start\.y\+'px'/);
+ assert.match(html,/right:'auto',bottom:'auto'/);
+});
 test("inspector and resize actions have real handlers, not decorative buttons",()=>{
  for(const id of ["zoom","zoom-in","zoom-out","frame","canvas","pan-shield","hand","focus","snap","weight","letter","leading","textalign","height","opacity","radius","zindex","photo-tools","fit","cropx","cropy"]){
   assert.ok(html.includes('id="'+id+'"'),"Missing UI "+id);
