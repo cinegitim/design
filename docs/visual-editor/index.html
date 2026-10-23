@@ -32,8 +32,8 @@ footer{border-top:1px solid var(--line);padding:20px 0 40px;font-size:12px;color
 <div class="kv"><span>Ürün</span><strong id="product">Ürün seçilmedi</strong></div>
 <div class="kv"><span>Kaydetme</span><strong>Yalnızca yerel / sürümlü</strong></div>
 </div><p id="product-note">Bir karusel kartındaki “Visual Editor” bağlantısından gelerek ürün seçebilirsin.</p>
-<div class="actions"><a id="open-editor" class="action" href="http://127.0.0.1:8765/">Yerel Visual Editor’i aç ↗</a><a class="secondary" href="https://github.com/cinegitim/design/tree/main/studio/visual-editor">Kurulum ve kayıt rehberi</a></div>
-<div class="warning"><strong>Bu sayfa dosya kaydetmez.</strong> GitHub Pages statiktir. Düzenleyici Mac'inde başlatılmış olmalı ve ürün daha önce yerel ürün listesine kaydedilmiş olmalıdır. Aksi hâlde yerel bağlantı açılmayabilir veya ürün bulunamayabilir. Site GitHub’a sessizce yazmaz.</div>
+<div class="actions"><a id="browser-editor" class="action" href="browser/">Tarayıcıda düzenle ↗</a><a id="open-editor" class="secondary" href="http://127.0.0.1:8765/">Yerel uygulamayı aç ↗</a><a class="secondary" href="https://github.com/cinegitim/design/tree/main/studio/visual-editor">Kurulum ve kayıt rehberi</a></div>
+<div class="warning"><strong>Bu sayfa dosya kaydetmez.</strong> Tarayıcı editörü yalnızca tarayıcıya veya seçtiğin klasöre kaydeder. Yerel uygulamayı tercih edersen Mac'inde başlatılmış olmalı ve ürün daha önce yerel ürün listesine kaydedilmiş olmalıdır. Aksi hâlde yerel bağlantı açılmayabilir veya ürün bulunamayabilir. Site GitHub’a sessizce yazmaz.</div>
 </section>
 <aside class="panel"><h2>Nasıl çalışır?</h2><ol><li>Önce mevcut HTML/CSS üretiminin kaynakları ve PNG’leri tamamlanır.</li><li>İsteğe bağlı <code>register-output</code> işlemi ürünü yerel uygulamaya kaydeder.</li><li><strong>Visual Editor</strong> ile düzenlemeyi yaparsın.</li><li><strong>Kaydet</strong> dediğinde onay sorulur; kayıt ayrı <code>versions/vN/</code> klasörüne yapılır.</li><li>Render ve onay kontrolleri tamamlanmadan hiçbir sürüm yayımlanmış sayılmaz.</li></ol><p style="color:var(--muted);font-size:13px">Özgün prompt üretimi korunur. Site sadece giriş noktasıdır; aktif düzenleyici yerel uygulamadır.</p></aside>
 </div></main>
@@ -56,6 +56,7 @@ footer{border-top:1px solid var(--line);padding:20px 0 40px;font-size:12px;color
     document.getElementById("product-note").textContent = "Ürün önceden yerel uygulamada kayıtlıysa Visual Editor doğrudan açılır. Kayıtlı değilse ürün listesinde bulunmayacaktır.";
     const url = "http://127.0.0.1:8765/editor/" + encodeURIComponent(category) + "/" + encodeURIComponent(product) + "/";
     document.getElementById("open-editor").href = url;
+    document.getElementById("browser-editor").href = "browser/?product=" + encodeURIComponent(product);
   }
 })();
 </script></body></html>
