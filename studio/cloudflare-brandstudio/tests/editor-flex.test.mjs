@@ -40,7 +40,7 @@ test("inspector and resize actions have real handlers, not decorative buttons",(
  }
  assert.match(html,/photo-tools" hidden/);
  assert.match(html,/Math\.round\(x\/8\)\*8/);
- assert.match(html,/logo\(target\)/);
+ assert.match(html,/logo\(n\)\|\|n\.classList\.contains\('folio'\)/);
 });
 
 test("published copy and canonical identity remain locked and unchanged",()=>{
