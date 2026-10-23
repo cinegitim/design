@@ -26,7 +26,7 @@ input[type=text],input[type=number],select{width:100%;background:#0c1420;color:w
 .slide-tabs button{min-width:45px;background:#1d2c3c;border:1px solid var(--line);border-radius:6px;color:var(--muted);padding:7px 9px}
 .slide-tabs button.active{background:#43352e;color:#ffe8c7;border-color:#ffbd83}
 .slide-tabs button[aria-current="step"]{box-shadow:inset 0 -2px 0 #ffbd83}
-.toolbar .btn:disabled{opacity:.4;cursor:not-allowed}
+.toolbar .btn:disabled{opacity:.4;cursor:not-allowed}.layout.focus-mode{grid-template-columns:minmax(0,1fr)}.layout.focus-mode>aside{display:none}.layout.focus-mode .center{min-height:calc(100vh - 60px)}
 .zoom-controls{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:8px;padding:3px 6px;background:#0f1926}
 .zoom-controls select{background:transparent;border:0;color:#f8e2c7;padding:4px;font-size:12px;min-width:81px;width:auto}
 .zoom-controls button{min-width:29px;padding:3px 6px}
@@ -46,13 +46,13 @@ dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;
 [hidden]{display:none!important}@media(max-width:990px){.layout{grid-template-columns:230px 1fr}aside.right{grid-column:1/-1;border-top:1px solid var(--line)}}@media(max-width:650px){.layout{display:block}.canvas{min-height:500px;max-height:600px}.layers{max-height:180px}}
 </style></head><body>
 <header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><a href="../">← Visual Editor</a></div></header>
-<div class="layout"><aside><h2>Katmanlar</h2><p class="small">Fotoğraf ile üzerindeki yazılar birlikte gruplanır. Logo ve dipnot kilitlidir.</p><div class="controls"><button class="btn" id="groups-open">Tümünü aç</button><button class="btn" id="groups-close">Tümünü kapat</button></div><div id="layers" class="layers"></div>
+<div class="layout" id="workspace"><aside><h2>Katmanlar</h2><p class="small">Fotoğraf ile üzerindeki yazılar birlikte gruplanır. Logo ve dipnot kilitlidir.</p><div class="controls"><button class="btn" id="groups-open">Tümünü aç</button><button class="btn" id="groups-close">Tümünü kapat</button></div><div id="layers" class="layers"></div>
 <div class="panel"><h2>Global renkler</h2><p class="small">Bağlı renkler aynı anda değişir. Özel renk verdiğin nesne etkilenmez.</p>
 <div class="swatches"><label>Krem<input type="color" id="paper" value="#f7f3e9"></label><label>Koyu<input type="color" id="ink" value="#1d2027"></label><label>Kırmızı<input type="color" id="red" value="#bd2120"></label></div></div>
 <div class="notice">Kaydettiğin sürümler <strong>bu tarayıcıda</strong> saklanır. İstersen klasör seçerek ayrıca <code>versions/v2</code>, <code>versions/v3</code> dosyalarını Mac'ine yazdırabilirsin. Sunucuya veri gönderilmez.</div></aside>
 <main class="center"><div class="toolbar"><button class="btn" id="prev">←</button><span id="count" class="badge"></span><button class="btn" id="next">→</button><button class="btn" id="undo" disabled title="Geri al · Cmd/Ctrl+Z">↶ Geri al</button><button class="btn" id="redo" disabled title="Yeniden yap · Cmd/Ctrl+Shift+Z">↷ Yeniden yap</button>
-<div class="zoom-controls"><button type="button" class="btn" id="zoom-out" aria-label="Küçült">−</button><select id="zoom" aria-label="Tuval yakınlaştırma"><option value="fit">Sığdır</option><option value=".25">25%</option><option value=".4">40%</option><option value=".5">50%</option><option value=".75">75%</option><option value="1">100%</option><option value="1.25">125%</option></select><button type="button" class="btn" id="zoom-in" aria-label="Büyüt">+</button></div>
-<button class="btn" id="hand" aria-pressed="false" title="Eli kullanarak tuvali kaydır">✋ El</button><label class="small"><input type="checkbox" id="snap" checked> 8 px ızgara</label><button class="btn primary" id="save">Yeni sürüm kaydet</button><button class="btn" id="export">Sürüm arşivini indir</button><button class="btn" id="import">Arşivi içe aktar</button><input type="file" id="importFile" accept=".json,application/json" hidden></div>
+<div class="zoom-controls"><button type="button" class="btn" id="zoom-out" aria-label="Küçült">−</button><select id="zoom" aria-label="Tuval yakınlaştırma"><option value="fit">Sığdır</option><option value=".25">25%</option><option value=".4">40%</option><option value=".5">50%</option><option value=".75">75%</option><option value="1">100%</option><option value="1.25">125%</option><option value="custom" hidden>Özel</option></select><button type="button" class="btn" id="zoom-in" aria-label="Büyüt">+</button></div>
+<button class="btn" id="hand" aria-pressed="false" title="Eli kullanarak tuvali kaydır">✋ El</button><button class="btn" id="focus" aria-pressed="false" title="Kenar panelleri gizle">⛶ Odak</button><label class="small"><input type="checkbox" id="snap" checked> 8 px ızgara</label><button class="btn primary" id="save">Yeni sürüm kaydet</button><button class="btn" id="export">Sürüm arşivini indir</button><button class="btn" id="import">Arşivi içe aktar</button><input type="file" id="importFile" accept=".json,application/json" hidden></div>
 <nav class="slide-tabs" aria-label="Slaytlar" id="slide-tabs"></nav><div class="canvas" id="canvas"><div class="frame" id="frame"><iframe id="preview" title="Düzenlenebilir karusel" sandbox="allow-same-origin"></iframe><div id="pan-shield" class="pan-shield" hidden></div></div></div><div class="bottom"><span id="status">Kaynak denetleniyor</span> · <span id="unsaved">Değişiklik yok</span></div></main>
 <aside class="right"><h2>Özellikler</h2><div id="blank" class="notice">Düzenlemek için bir katmana tıkla.</div><div id="props" hidden>
 <div class="panel"><span id="label" class="badge"></span><div class="two">
@@ -102,12 +102,13 @@ function setZoom(value){
  var n=value==='fit'?fitLevel():Math.min(1.25,Math.max(.18,Number(value)||.4));zoomLevel=n;zoomMode=value==='fit'?'fit':String(n);
  $('frame').style.width=Math.round(1080*n)+'px';$('frame').style.height=Math.round(1350*n)+'px';$('preview').style.transform='scale('+n+')';
  var options=[...$('zoom').options].map(function(o){return o.value});
- $('zoom').value=options.includes(zoomMode)?zoomMode:'fit';
+ var known=options.includes(zoomMode);$('zoom').value=known?zoomMode:'custom';$('zoom').querySelector('[value=custom]').textContent=Math.round(n*100)+'%';
  $('zoom-in').disabled=n>=1.25;$('zoom-out').disabled=n<=.18
 }
-$('zoom').onchange=function(){setZoom(this.value)};
+$('zoom').onchange=function(){setZoom(this.value==='custom'?zoomLevel:this.value)};
 $('zoom-in').onclick=function(){setZoom([.25,.4,.5,.75,1,1.25].find(function(x){return x>zoomLevel+.025})||1.25)};
 $('zoom-out').onclick=function(){setZoom([1.25,1,.75,.5,.4,.25,.18].find(function(x){return x<zoomLevel-.025})||.18)};
+$('focus').onclick=function(){var active=$('workspace').classList.toggle('focus-mode');$('focus').setAttribute('aria-pressed',String(active));$('focus').textContent=active?'⛶ Panelleri aç':'⛶ Odak';if(zoomMode==='fit')requestAnimationFrame(function(){setZoom('fit')})};
 $('hand').onclick=function(){handMode=!handMode;$('pan-shield').hidden=!handMode;$('frame').classList.toggle('hand',handMode);$('hand').setAttribute('aria-pressed',String(handMode));$('hand').textContent=handMode?'✋ Kaydırma açık':'✋ El'};
 $('pan-shield').addEventListener('pointerdown',function(e){if(!handMode||e.button!==0)return;var c=$('canvas'),sx=e.clientX,sy=e.clientY,ox=c.scrollLeft,oy=c.scrollTop;e.target.setPointerCapture(e.pointerId);
  function move(v){c.scrollLeft=ox+sx-v.clientX;c.scrollTop=oy+sy-v.clientY}
