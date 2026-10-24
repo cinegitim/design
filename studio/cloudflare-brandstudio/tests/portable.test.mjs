@@ -71,3 +71,25 @@ test("text editing is constrained to text nodes and rejects identity overrides",
  assert.match(portableSource,/function locked\(el\)/);
  assert.match(portableSource,/if\(locked\(el\)\)err/);
 });
+
+test("linked groups round trip in schema 2 and remain optional in older archives",()=>{
+ const a=fresh();a.groups={"0":[[0,2],[3,4]]};
+ const packed=codec.makeArchive("carousel-01-v3",[{version:2,note:"group",state:a}],a);
+ assert.deepEqual(JSON.parse(JSON.stringify(codec.parseArchive(packed,"carousel-01-v3",5).current.groups)),{"0":[[0,2],[3,4]]});
+ const old=fresh();delete old.groups;
+ assert.deepEqual(JSON.parse(JSON.stringify(codec.validateState(old,5).groups)),{});
+ assert.equal(packed.schema,2);
+});
+test("reject malformed, duplicated, overlapping and oversized group references",()=>{
+ const bad=[
+  {"0":[[1,2],[2,3]]},
+  {"0":[[1,1]]},
+  {"0":[[1]]},
+  {"9":[[1,2]]},
+  {"0":[[1,-2]]},
+  {"0":[[1,501]]},
+  {"0":[Array.from({length:25},(_,i)=>i)]},
+  {"__proto__":[[1,2]]}
+ ];
+ for(const groups of bad){const s=fresh();s.groups=groups;assert.throws(()=>codec.validateState(s,5))}
+});
