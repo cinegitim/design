@@ -58,3 +58,16 @@ test("valid JavaScript syntax in source and embedded editor",()=>{
   assert.ok(embedded);
   assert.ok(new vm.Script(embedded[1]));
 });
+
+test("text editing is constrained to text nodes and rejects identity overrides",()=>{
+ const draft=fresh();draft.edits["0:2"].segments=["Yeni başlık", "metin"];
+ const a=codec.parseArchive(codec.makeArchive("carousel-01-v3",[],draft),"carousel-01-v3",5);
+ assert.equal(a.current.edits["0:2"].segments[0],"Yeni başlık");
+ const el={ownerDocument:{createTreeWalker(){const ns=[{nodeValue:"eski"},{nodeValue:"parça"}];let i=0;return{nextNode(){return ns[i++]||null}}}}};
+ codec.applyText(el,a.current.edits["0:2"].segments);
+ assert.throws(()=>codec.applyText(el,["single"]),/yapısı/);
+ const s=fresh();s.edits["0:2"].segments=["".padEnd(1601,"a")];
+ assert.throws(()=>codec.validateState(s,5),/metin|Metin/);
+ assert.match(portableSource,/function locked\(el\)/);
+ assert.match(portableSource,/if\(locked\(el\)\)err/);
+});
