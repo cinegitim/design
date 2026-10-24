@@ -89,7 +89,7 @@ test("reject malformed, duplicated, overlapping and oversized group references",
   {"0":[[1,-2]]},
   {"0":[[1,501]]},
   {"0":[Array.from({length:25},(_,i)=>i)]},
-  {"__proto__":[[1,2]]}
+  Object.fromEntries([["__proto__",[[1,2]]]])
  ];
  for(const groups of bad){const s=fresh();s.groups=groups;assert.throws(()=>codec.validateState(s,5))}
 });
