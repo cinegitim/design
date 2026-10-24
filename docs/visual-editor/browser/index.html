@@ -33,6 +33,9 @@ input[type=text],input[type=number],select{width:100%;background:#0c1420;color:w
 .quick-align{display:flex;flex-wrap:wrap;gap:5px}.quick-align button{min-width:42px;padding:6px 9px}
 .field input[type=range]{padding:0;accent-color:#ffbd83;background:transparent;border:0}
 .field input[type=number]:disabled,.field select:disabled{opacity:.45}
+.text-segments{display:grid;gap:10px}.text-segments label{font-size:11px;color:var(--muted);display:grid;gap:4px}
+.text-segments textarea{width:100%;min-height:54px;resize:vertical;color:var(--ink);background:#0c1420;border:1px solid var(--line);padding:9px;border-radius:7px;font:13px/1.45 system-ui,sans-serif}
+.text-segments textarea:focus-visible{outline:2px solid #ffbd83;outline-offset:2px}
 @media(min-width:1150px){.layout{grid-template-columns:265px minmax(0,1fr) 350px}}
 
 .layer{background:#0e1724;border:1px solid var(--line);padding:9px;border-radius:8px;color:var(--ink);text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.layer.selected{border-color:#ffbd83;background:#2b3441}
@@ -67,6 +70,9 @@ dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;
 <div class="field"><label>Köşe yuvarlaklığı (px)</label><input type="number" id="radius" min="0" max="600"></div>
 <div class="field"><label>Ön/arka sıra</label><input type="number" id="zindex" min="-30" max="30"></div>
 </div></div>
+<div class="panel" id="copy-tools" hidden><h2>Metin içeriği</h2>
+<p class="small">Vurgular ve satır sonları korunur. Her metin parçasını ayrı düzenle; logo ve dipnot kilitlidir.</p>
+<div class="text-segments" id="text-fields"></div></div>
 <div class="panel" id="text-tools"><h2>Tipografi · Jost</h2><div class="two">
 <div class="field"><label>Kalınlık</label><input type="number" id="weight" min="100" max="900" step="50"></div>
 <div class="field"><label>Harf aralığı (px)</label><input type="number" id="letter" min="-20" max="100" step=".5"></div>
@@ -95,7 +101,7 @@ var key='brandstudio:browser:'+slug,defaults={paper:'#f7f3e9',ink:'#1d2027',red:
 var state={colors:Object.assign({},defaults),edits:{}},pages=[],page=0,doc=null,sel=-1,dirty=false,folder=null,current=1;
 var codec=globalThis.BrandstudioPortable,ux=globalThis.BrandstudioUX; if(!codec||!ux){$('status').textContent='Editör modülü eksik';return}
 var history=ux.createHistory(40),savedState=copy(state),groupOpen={},dragging=false,dragRecorded=false,colorSessions={};
-var zoomLevel=.4,zoomMode='fit',handMode=false,selectionOverlay=null,selectionHandle=null;
+var zoomLevel=.4,zoomMode='fit',handMode=false,selectionOverlay=null,selectionHandle=null,sourceNodes=[];
 
 function fitLevel(){var c=$('canvas');return Math.min(1,Math.max(.18,Math.min((c.clientWidth-55)/1080,(c.clientHeight-48)/1350)))}
 function setZoom(value){
@@ -183,8 +189,29 @@ function allV(){return getDB().versions||[]}
 function nodes(){if(!doc)return[];var selText=codec.selector;return Array.from(doc.querySelectorAll('.slide '+selText))}
 function edit(){var k=page+':'+sel;if(!state.edits[k])state.edits[k]={styles:{},mode:'inherit'};return state.edits[k]}
 function norm(){if(!doc)return;doc.documentElement.style.setProperty('--paper',state.colors.paper);doc.documentElement.style.setProperty('--ink',state.colors.ink);doc.documentElement.style.setProperty('--red',state.colors.red);Array.from(doc.querySelectorAll('style')).forEach(function(s){if(s.dataset.normalized)return;s.textContent=s.textContent.replace(/#F7F3E9/gi,'var(--paper)').replace(/#1D2027/gi,'var(--ink)').replace(/#BD2120/gi,'var(--red)');s.dataset.normalized='1'})}
-function patch(n,v){if(!v)return;Object.entries(v.styles||{}).forEach(function(pair){n.style.setProperty(pair[0],pair[1])});if(v.mode&&v.mode!=='inherit')n.style.setProperty('color',v.mode==='direct'?v.color:'var(--'+v.mode+')')}
-function paint(){norm();doc.querySelector('.slide').dataset.slideIndex=String(page+1);nodes().forEach(function(n,i){n.dataset.editIndex=i;patch(n,state.edits[page+':'+i])});setupOverlay();layers()}
+function patch(n,v){
+ if(!v||logo(n)||n.classList.contains('folio'))return;
+ if(v.segments!==undefined)codec.applyText(n,v.segments);
+ Object.entries(v.styles||{}).forEach(function(pair){n.style.setProperty(pair[0],pair[1])});
+ if(v.mode&&v.mode!=='inherit')n.style.setProperty('color',v.mode==='direct'?v.color:'var(--'+v.mode+')')
+}
+function refreshPreview(){
+ if(!doc)return;
+ var list=nodes();
+ list.forEach(function(n,i){
+   var original=sourceNodes[i];if(!original)return;
+   if(original.style===null)n.removeAttribute('style');else n.setAttribute('style',original.style);
+   var parts=codec.textNodes(n);if(parts.length===original.segments.length)parts.forEach(function(part,j){part.nodeValue=original.segments[j]});
+   patch(n,state.edits[page+':'+i]);
+ });
+ norm();if(sel>=0&&list[sel])choose(sel);else layers();
+}
+function paint(){
+ norm();doc.querySelector('.slide').dataset.slideIndex=String(page+1);
+ sourceNodes=nodes().map(function(n){return{style:n.getAttribute('style'),segments:codec.textNodes(n).map(function(t){return t.nodeValue})}});
+ nodes().forEach(function(n,i){n.dataset.editIndex=i;patch(n,state.edits[page+':'+i])});
+ setupOverlay();layers()
+}
 function layerEntries(){return nodes().map(function(n,i){var r=n.getBoundingClientRect(),parent=doc.querySelector('.slide').getBoundingClientRect();return{id:i,isLogo:logo(n),isFooter:n.classList.contains('folio'),isPhoto:(n.tagName==='IMG'&&!logo(n))||n.classList.contains('photo'),isText:['H1','H2','H3','P','B','SPAN','DIV'].includes(n.tagName)&&!logo(n)&&!n.classList.contains('folio'),rect:{x:r.left-parent.left,y:r.top-parent.top,w:r.width,h:r.height},name:(n.textContent||n.getAttribute('alt')||n.className||'görsel').trim().slice(0,52),tag:n.tagName}})}
 function layers(){
  var out=$('layers');out.innerHTML='';
@@ -202,7 +229,7 @@ $('groups-close').onclick=function(){document.querySelectorAll('#layers details'
 function historyButtons(){var s=history.status();$('undo').disabled=s.undo===0;$('redo').disabled=s.redo===0}
 function checkpoint(){history.checkpoint(state);historyButtons()}
 function dirtyStatus(){dirty=JSON.stringify(state)!==JSON.stringify(savedState);$('unsaved').textContent=dirty?'Kaydedilmemiş değişiklikler':'Değişiklik yok';historyButtons()}
-function restoreState(value){state=copy(value);['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});dirtyStatus();show(page)}
+function restoreState(value){state=copy(value);['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});refreshPreview();dirtyStatus()}
 $('undo').onclick=function(){var prev=history.undo(state);if(prev){restoreState(prev);$('status').textContent='Son değişiklik geri alındı'}};
 $('redo').onclick=function(){var next=history.redo(state);if(next){restoreState(next);$('status').textContent='Değişiklik yeniden uygulandı'}};
 function renderTabs(){var target=$('slide-tabs');target.innerHTML='';for(var i=0;i<pages.length;i++){var b=document.createElement('button');b.type='button';b.textContent=String(i+1).padStart(2,'0');b.className=i===page?'active':'';if(i===page)b.setAttribute('aria-current','step');b.setAttribute('aria-label',(i+1)+'. slaytı aç');(function(index){b.onclick=function(){show(index)}})(i);target.appendChild(b)}}
@@ -218,7 +245,33 @@ document.addEventListener('keydown',function(ev){var tag=ev.target&&ev.target.ta
 });
 function pos(n){var a=n.getBoundingClientRect(),b=doc.querySelector('.slide').getBoundingClientRect();return{x:Math.round(a.left-b.left),y:Math.round(a.top-b.top),w:Math.round(a.width),h:Math.round(a.height)}}
 function logo(n){return n.classList.contains('logo-foot')||!!n.closest('.logo-foot')}
-function choose(i){var ns=nodes(),n=ns[i];if(!n)return;sel=i;ns.forEach(function(x){x.style.outline=''});n.style.outline='3px dashed #ffa95f';$('blank').hidden=true;$('props').hidden=false;$('label').textContent=n.tagName.toLowerCase()+' · '+String(i);var p=pos(n);$('x').value=p.x;$('y').value=p.y;$('w').value=p.w;$('fs').value=Math.round(parseFloat(doc.defaultView.getComputedStyle(n).fontSize))||24;$('fs').disabled=n.tagName==='IMG'||logo(n)||n.classList.contains('folio');$('mode').disabled=n.tagName==='IMG'||logo(n)||n.classList.contains('folio');['x','y','w'].forEach(function(k){$(k).disabled=logo(n)||n.classList.contains('folio')});var e=state.edits[page+':'+sel]||{mode:'inherit'};fillAdvanced(n);$('mode').value=e.mode||'inherit';$('color').value=e.color||'#ffffff';$('direct').hidden=e.mode!=='direct';updateOverlay();layers()}
+function choose(i){var ns=nodes(),n=ns[i];if(!n)return;sel=i;ns.forEach(function(x){x.style.outline=''});n.style.outline='3px dashed #ffa95f';$('blank').hidden=true;$('props').hidden=false;$('label').textContent=n.tagName.toLowerCase()+' · '+String(i);var p=pos(n);$('x').value=p.x;$('y').value=p.y;$('w').value=p.w;$('fs').value=Math.round(parseFloat(doc.defaultView.getComputedStyle(n).fontSize))||24;$('fs').disabled=n.tagName==='IMG'||logo(n)||n.classList.contains('folio');$('mode').disabled=n.tagName==='IMG'||logo(n)||n.classList.contains('folio');['x','y','w'].forEach(function(k){$(k).disabled=logo(n)||n.classList.contains('folio')});var e=state.edits[page+':'+sel]||{mode:'inherit'};fillAdvanced(n);renderTextFields(n);$('mode').value=e.mode||'inherit';$('color').value=e.color||'#ffffff';$('direct').hidden=e.mode!=='direct';updateOverlay();layers()}
+function renderTextFields(n){
+ var box=$('copy-tools'),target=$('text-fields');target.replaceChildren();
+ var locked=logo(n)||n.classList.contains('folio'),parts=codec.textNodes(n);
+ var supported=!locked&&n.tagName!=='IMG'&&parts.length>0&&parts.length<=20&&
+   parts.some(function(t){return !!t.nodeValue.trim()});
+ box.hidden=!supported;if(!supported)return;
+ var initialPage=page,initialSelection=sel;
+ parts.forEach(function(part,i){
+  var label=document.createElement('label');label.textContent=parts.length===1?'Metin':'Metin parçası '+(i+1);
+  var field=document.createElement('textarea');field.value=part.nodeValue;field.maxLength=400;
+  field.setAttribute('aria-label',label.textContent);field.setAttribute('data-text-segment',String(i));
+  field.addEventListener('change',function(){
+   if(page!==initialPage||sel!==initialSelection||!doc)return;
+   var actual=nodes()[sel];if(!actual||logo(actual)||actual.classList.contains('folio'))return;
+   var segments=codec.textNodes(actual).map(function(t){return t.nodeValue});
+   if(segments[i]===field.value)return;
+   segments[i]=field.value;
+   var candidate=copy(state),key=page+':'+sel;
+   var entry=candidate.edits[key]||{styles:{},mode:'inherit'};
+   entry.segments=segments;candidate.edits[key]=entry;
+   try{codec.validateState(candidate,pages.length)}catch(err){$('status').textContent='Metin uygulanmadı: '+err.message;field.value=codec.textNodes(actual)[i].nodeValue;return}
+   checkpoint();state=candidate;patch(actual,entry);changed();layers();$('status').textContent='Metin güncellendi';
+  });
+  label.appendChild(field);target.appendChild(label);
+ })
+}
 function changed(){dirtyStatus();updateOverlay()}
 function setXY(x,y){var n=nodes()[sel];if(!n||logo(n)||n.classList.contains('folio'))return; if(dragging&&$('snap').checked){x=Math.round(x/8)*8;y=Math.round(y/8)*8} if(!dragging){checkpoint()}else if(!dragRecorded){checkpoint();dragRecorded=true} var e=edit(),p=pos(n);if(!e.styles)e.styles={};if(!e.styles.width)e.styles.width=p.w+'px';e.styles.position='absolute';e.styles.left=Math.round(x)+'px';e.styles.top=Math.round(y)+'px';e.styles.margin='0';patch(n,e);$('x').value=Math.round(x);$('y').value=Math.round(y);changed()}
 function apply(field,value){var n=nodes()[sel];if(!n||logo(n)||n.classList.contains('folio'))return;checkpoint();var e=edit();e.styles[field]=value;patch(n,e);changed()}
