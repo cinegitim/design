@@ -49,6 +49,15 @@ function state(input,maxPages) {
    var color=e.color;
    if(mode==='direct'&&!HEX.test(color||''))err('Geçersiz özel renk');
    edits[key]={styles:styles,mode:mode};
+   if(e.segments!==undefined){
+     if(!Array.isArray(e.segments)||e.segments.length<1||e.segments.length>20)err('Geçersiz metin bölümleri');
+     var total=0;
+     edits[key].segments=e.segments.map(function(part){
+       if(typeof part!=='string'||part.length>400||/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/.test(part))err('Geçersiz metin');
+       total+=part.length;return part;
+     });
+     if(total>1600)err('Metin uzunluğu sınırı aşıldı');
+   }
    if(mode==='direct')edits[key].color=color.toLowerCase();
  });
  return{colors:colors,edits:edits};
@@ -75,9 +84,23 @@ function parse(input,product,pages) {
  }).sort(function(a,b){return a.version-b.version});
  return{versions:versions,current:state(input.current,pages)};
 }
+function textNodes(el) {
+ var walker=el.ownerDocument.createTreeWalker(el,4),found=[],n;
+ while((n=walker.nextNode())){found.push(n);if(found.length>20)break}
+ return found;
+}
+function applyText(el,segments){
+ if(segments===undefined)return;
+ var parts=textNodes(el);
+ if(parts.length!==segments.length)err('Kaynak metin yapısı değişmiş; düzenleme uygulanmadı');
+ parts.forEach(function(part,i){part.nodeValue=segments[i]});
+}
+function locked(el){return el.classList.contains('folio')||!!el.closest('.logo-foot')}
 function nodes(doc) {return Array.from(doc.querySelectorAll('.slide '+SELECTOR))}
 function colorCSS(colors){return ':root{'+Object.entries(colors).map(function(p){return'--'+p[0]+':'+p[1]+';'}).join('')+'}\n'}
 function patch(el,edit){
+ if(locked(el))err('Kilitli marka öğesi düzenlenemez');
+ applyText(el,edit.segments);
  Object.entries(edit.styles||{}).forEach(function(p){el.style.setProperty(p[0],p[1])});
  if(edit.mode&&edit.mode!=='inherit')el.style.setProperty('color',edit.mode==='direct'?edit.color:'var(--'+edit.mode+')');
 }
@@ -120,5 +143,5 @@ function css(htmlSource,selectedState,index){
  });
  return output;
 }
-root.BrandstudioPortable={selector:SELECTOR,validateState:state,makeArchive:archive,parseArchive:parse,html:html,css:css};
+root.BrandstudioPortable={selector:SELECTOR,validateState:state,makeArchive:archive,parseArchive:parse,html:html,css:css,textNodes:textNodes,applyText:applyText};
 })(globalThis);
