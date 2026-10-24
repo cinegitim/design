@@ -60,7 +60,22 @@ function state(input,maxPages) {
    }
    if(mode==='direct')edits[key].color=color.toLowerCase();
  });
- return{colors:colors,edits:edits};
+ var groups={},inputGroups=input.groups===undefined?{}:input.groups;
+ if(!plain(inputGroups))err('Geçersiz katman grupları');
+ if(Object.keys(inputGroups).length>maxPages)err('Çok fazla slayt grubu');
+ Object.entries(inputGroups).forEach(function(pair){
+   var key=pair[0],page=Number(key),list=pair[1];
+   if(!/^(0|[1-9][0-9]*)$/.test(key)||page>=maxPages||!Array.isArray(list)||list.length>25)err('Geçersiz grup slaytı');
+   var members=new Set();
+   groups[key]=list.map(function(group){
+     if(!Array.isArray(group)||group.length<2||group.length>24)err('Geçersiz grup boyutu');
+     return group.map(function(id){
+       if(!Number.isInteger(id)||id<0||id>500||members.has(id))err('Çakışan/geçersiz grup katmanı');
+       members.add(id);return id;
+     });
+   });
+ });
+ return{colors:colors,edits:edits,groups:groups};
 }
 function archive(product,versions,current) {
  if(!SLUG.test(product))err('Geçersiz ürün');

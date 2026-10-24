@@ -39,6 +39,8 @@ input[type=text],input[type=number],select{width:100%;background:#0c1420;color:w
 @media(min-width:1150px){.layout{grid-template-columns:265px minmax(0,1fr) 350px}}
 
 .layer{background:#0e1724;border:1px solid var(--line);padding:9px;border-radius:8px;color:var(--ink);text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.layer.selected{border-color:#ffbd83;background:#2b3441}
+.group-tools{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:10px}.group-tools .btn{font-size:12px}
+.multi-hint{font-size:11px;color:var(--muted);line-height:1.5;margin:8px 0 0}
 .center{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;min-width:0;min-height:0}.toolbar{background:#162231;border-bottom:1px solid var(--line);padding:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .canvas{display:flex;overflow:auto;padding:20px;min-height:0;position:relative;align-items:safe center;justify-content:safe center;background:radial-gradient(circle at center,#243448,#101a28)}.frame{position:relative;flex:none;width:432px;height:540px;overflow:hidden;background:white;box-shadow:0 12px 38px #0008; margin:auto}.frame.hand{cursor:grab}.frame.hand:active{cursor:grabbing}.pan-shield{position:absolute;inset:0;z-index:10;background:transparent;cursor:grab}.pan-shield:active{cursor:grabbing}
 iframe{position:absolute;inset:0;width:1080px;height:1350px;transform:scale(.4);transform-origin:0 0;border:0}
@@ -57,7 +59,13 @@ dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;
 <div class="zoom-controls"><button type="button" class="btn" id="zoom-out" aria-label="Küçült">−</button><select id="zoom" aria-label="Tuval yakınlaştırma"><option value="fit">Sığdır</option><option value="0.25">25%</option><option value="0.4">40%</option><option value="0.5">50%</option><option value="0.75">75%</option><option value="1">100%</option><option value="1.25">125%</option><option value="custom" hidden>Özel</option></select><button type="button" class="btn" id="zoom-in" aria-label="Büyüt">+</button></div>
 <button class="btn" id="hand" aria-pressed="false" title="Eli kullanarak tuvali kaydır">✋ El</button><button class="btn" id="focus" aria-pressed="false" title="Kenar panelleri gizle">⛶ Odak</button><label class="small"><input type="checkbox" id="snap" checked> 8 px ızgara</label><button class="btn primary" id="save">Yeni sürüm kaydet</button><button class="btn" id="export">Sürüm arşivini indir</button><button class="btn" id="import">Arşivi içe aktar</button><input type="file" id="importFile" accept=".json,application/json" hidden></div>
 <nav class="slide-tabs" aria-label="Slaytlar" id="slide-tabs"></nav><div class="canvas" id="canvas"><div class="frame" id="frame"><iframe id="preview" title="Düzenlenebilir karusel" sandbox="allow-same-origin"></iframe><div id="pan-shield" class="pan-shield" hidden></div></div></div><div class="bottom"><span id="status">Kaynak denetleniyor</span> · <span id="unsaved">Değişiklik yok</span></div></main>
-<aside class="right"><h2>Özellikler</h2><div id="blank" class="notice">Düzenlemek için bir katmana tıkla.</div><div id="props" hidden>
+<aside class="right"><h2>Özellikler</h2>
+<div class="panel" id="selection-tools" hidden><strong id="selection-summary" aria-live="polite"></strong>
+<p class="multi-hint">Shift + tıklama: çoklu seçim · Sürükle veya ok tuşlarıyla birlikte taşı.</p>
+<div class="group-tools"><button class="btn" id="link-group" type="button">Grup oluştur</button><button class="btn" id="unlink-group" type="button">Grubu çöz</button></div>
+<div id="multi-align" hidden><h3 style="font-size:12px;margin:13px 0 7px">Birlikte hizala</h3>
+<div class="quick-align"><button class="btn" data-align="left" title="Sola hizala">⇤</button><button class="btn" data-align="center" title="Yatay ortala">↔</button><button class="btn" data-align="right" title="Sağa hizala">⇥</button><button class="btn" data-align="top" title="Üste hizala">↑</button><button class="btn" data-align="middle" title="Dikey ortala">↕</button><button class="btn" data-align="bottom" title="Alta hizala">↓</button></div></div></div>
+<div id="blank" class="notice">Düzenlemek için bir katmana tıkla.</div><div id="props" hidden>
 <div class="panel"><span id="label" class="badge"></span><div class="two">
 <div class="field"><label>X (px)</label><input type="number" id="x"></div><div class="field"><label>Y (px)</label><input type="number" id="y"></div>
 <div class="field"><label>Genişlik (px)</label><input type="number" id="w"></div><div class="field"><label>Font (px)</label><input type="number" id="fs" min="8" max="260"></div></div></div>
@@ -98,7 +106,7 @@ var q=new URLSearchParams(location.search),slug=q.get('product')||'carousel-01-v
 if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)){$('status').textContent='Geçersiz ürün';return}
 var base=new URL('../../instagram/'+slug+'/source/',location.href);
 var key='brandstudio:browser:'+slug,defaults={paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'};
-var state={colors:Object.assign({},defaults),edits:{}},pages=[],page=0,doc=null,sel=-1,dirty=false,folder=null,current=1;
+var state={colors:Object.assign({},defaults),edits:{},groups:{}},pages=[],page=0,doc=null,sel=-1,selectedIds=[],dirty=false,folder=null,current=1;
 var codec=globalThis.BrandstudioPortable,ux=globalThis.BrandstudioUX; if(!codec||!ux){$('status').textContent='Editör modülü eksik';return}
 var history=ux.createHistory(40),savedState=copy(state),groupOpen={},dragging=false,dragRecorded=false,colorSessions={};
 var zoomLevel=.4,zoomMode='fit',handMode=false,selectionOverlay=null,selectionHandle=null,sourceNodes=[];
@@ -126,7 +134,7 @@ function setupOverlay(){
  selectionOverlay=doc.createElement('div');selectionOverlay.className='brandstudio-selection';selectionOverlay.hidden=true;
  selectionHandle=doc.createElement('div');selectionHandle.className='brandstudio-resize';selectionHandle.title='Nesneyi sürükleyerek boyutlandır';selectionOverlay.appendChild(selectionHandle);doc.querySelector('.slide').appendChild(selectionOverlay);
  selectionHandle.addEventListener('pointerdown',function(e){
-  if(sel<0||e.button!==0)return;var n=nodes()[sel];if(!n||logo(n)||n.classList.contains('folio'))return;
+  if(sel<0||selectedIds.length!==1||e.button!==0)return;var n=nodes()[sel];if(!n||logo(n)||n.classList.contains('folio'))return;
   e.stopPropagation();e.preventDefault();var start=pos(n),sx=e.clientX,sy=e.clientY,isPhoto=n.tagName==='IMG',checked=false;selectionHandle.setPointerCapture(e.pointerId);
   function move(v){var dx=v.clientX-sx,dy=v.clientY-sy;if(!checked){if(Math.abs(dx)+Math.abs(dy)<2)return;checkpoint();checked=true;var initial=edit();Object.assign(initial.styles,{position:'absolute',left:start.x+'px',top:start.y+'px',right:'auto',bottom:'auto',margin:'0'});Object.entries(initial.styles).forEach(function(pair){n.style.setProperty(pair[0],pair[1])})}var w=Math.max(20,Math.round(start.w+dx)),h=Math.max(20,Math.round(start.h+dy));var a=edit();a.styles.width=w+'px';n.style.width=a.styles.width;
    if(isPhoto){a.styles.height=h+'px';n.style.height=a.styles.height;a.styles['object-fit']=a.styles['object-fit']||'cover';n.style.objectFit=a.styles['object-fit']}
@@ -136,8 +144,14 @@ function setupOverlay(){
  });
  doc.addEventListener('wheel',function(ev){if(!ev.ctrlKey&&!ev.metaKey)return;ev.preventDefault();setZoom(Math.round(Math.max(.18,Math.min(1.25,zoomLevel*(ev.deltaY>0?.88:1.12)))*100)/100)}, {passive:false})
 }
-function updateOverlay(){if(!selectionOverlay||!doc||sel<0)return;var n=nodes()[sel];if(!n)return;var p=pos(n);
- selectionOverlay.style.left=p.x+'px';selectionOverlay.style.top=p.y+'px';selectionOverlay.style.width=p.w+'px';selectionOverlay.style.height=p.h+'px';selectionOverlay.hidden=false;selectionHandle.hidden=logo(n)||n.classList.contains('folio')
+function updateOverlay(){
+ if(!selectionOverlay||!doc)return;
+ var list=selectedIds.map(function(i){return nodes()[i]}).filter(Boolean);
+ if(!list.length){selectionOverlay.hidden=true;return}
+ var p=ux.bounds(list.map(pos));
+ selectionOverlay.style.left=p.x+'px';selectionOverlay.style.top=p.y+'px';selectionOverlay.style.width=p.w+'px';selectionOverlay.style.height=p.h+'px';
+ selectionOverlay.hidden=false;
+ selectionHandle.hidden=list.length!==1||logo(list[0])||list[0].classList.contains('folio')
 }
 
 
@@ -178,8 +192,14 @@ function updateCrop(){
 ['cropx','cropy'].forEach(function(k){$(k).oninput=function(){if(sel<0)return;if(!colorSessions[k]){checkpoint();colorSessions[k]=true}updateCrop()};$(k).onchange=function(){colorSessions[k]=false}});
 Array.from(document.querySelectorAll('[data-align]')).forEach(function(btn){btn.onclick=function(){
  if(sel<0||this.disabled)return;var n=nodes()[sel],p=pos(n),a=this.dataset.align,x=p.x,y=p.y;
- if(a==='left')x=64;if(a==='center')x=(1080-p.w)/2;if(a==='right')x=1080-p.w-64;
- if(a==='top')y=64;if(a==='middle')y=(1350-p.h)/2;if(a==='bottom')y=1350-p.h-64;
+ if(!selectedIds.length||selectedIds.some(function(i){return !editable(nodes()[i])}))return;
+ var bounds=ux.bounds(selectedIds.map(function(i){return pos(nodes()[i])}));
+ if(a==='left')x=p.x+64-bounds.x;
+ if(a==='center')x=p.x+(1080-bounds.w)/2-bounds.x;
+ if(a==='right')x=p.x+1080-bounds.w-64-bounds.x;
+ if(a==='top')y=p.y+64-bounds.y;
+ if(a==='middle')y=p.y+(1350-bounds.h)/2-bounds.y;
+ if(a==='bottom')y=p.y+1350-bounds.h-64-bounds.y;
  setXY(x,y)
 }});
 
@@ -204,7 +224,7 @@ function refreshPreview(){
    var parts=codec.textNodes(n);if(parts.length===original.segments.length)parts.forEach(function(part,j){part.nodeValue=original.segments[j]});
    patch(n,state.edits[page+':'+i]);
  });
- norm();if(sel>=0&&list[sel])choose(sel);else layers();
+ norm();selectedIds=selectedIds.filter(function(i){return !!list[i]});sel=selectedIds.includes(sel)?sel:(selectedIds[0]??-1);showSelection();
 }
 function paint(){
  norm();doc.querySelector('.slide').dataset.slideIndex=String(page+1);
@@ -215,12 +235,12 @@ function paint(){
 function layerEntries(){return nodes().map(function(n,i){var r=n.getBoundingClientRect(),parent=doc.querySelector('.slide').getBoundingClientRect();return{id:i,isLogo:logo(n),isFooter:n.classList.contains('folio'),isPhoto:(n.tagName==='IMG'&&!logo(n))||n.classList.contains('photo'),isText:['H1','H2','H3','P','B','SPAN','DIV'].includes(n.tagName)&&!logo(n)&&!n.classList.contains('folio'),rect:{x:r.left-parent.left,y:r.top-parent.top,w:r.width,h:r.height},name:(n.textContent||n.getAttribute('alt')||n.className||'görsel').trim().slice(0,52),tag:n.tagName}})}
 function layers(){
  var out=$('layers');out.innerHTML='';
- ux.groupLayers(layerEntries()).forEach(function(group){
+ ux.groupLayers(layerEntries(),linkedGroups()).forEach(function(group){
   var box=document.createElement('details');box.className='layer-group';box.open=groupOpen[page+':'+group.id]!==false;
   var summary=document.createElement('summary');var title=document.createElement('span');title.textContent=group.label;var count=document.createElement('small');count.textContent=group.items.length+' katman';summary.append(title,count);box.appendChild(summary);
   box.addEventListener('toggle',function(){groupOpen[page+':'+group.id]=box.open});
   var inner=document.createElement('div');inner.className='layer-group-inner';
-  group.items.forEach(function(item){var n=nodes()[item.id],b=document.createElement('button');b.className='layer'+(sel===item.id?' selected':'');b.textContent=(item.isLogo?'🔒 ':item.isPhoto?'▧ ':'• ')+n.tagName.toLowerCase()+' · '+(item.name||'görsel');b.title=item.name;b.onclick=function(){choose(item.id)};inner.appendChild(b)});
+  group.items.forEach(function(item){var n=nodes()[item.id],b=document.createElement('button');b.className='layer'+(selectedIds.includes(item.id)?' selected':'');b.textContent=(item.isLogo?'🔒 ':item.isPhoto?'▧ ':'• ')+n.tagName.toLowerCase()+' · '+(item.name||'görsel');b.title=item.name;b.onclick=function(ev){choose(item.id,ev.shiftKey)};inner.appendChild(b)});
   box.appendChild(inner);out.appendChild(box);
  })
 }
@@ -245,7 +265,59 @@ document.addEventListener('keydown',function(ev){var tag=ev.target&&ev.target.ta
 });
 function pos(n){var a=n.getBoundingClientRect(),b=doc.querySelector('.slide').getBoundingClientRect();return{x:Math.round(a.left-b.left),y:Math.round(a.top-b.top),w:Math.round(a.width),h:Math.round(a.height)}}
 function logo(n){return n.classList.contains('logo-foot')||!!n.closest('.logo-foot')}
-function choose(i){var ns=nodes(),n=ns[i];if(!n)return;sel=i;ns.forEach(function(x){x.style.outline=''});n.style.outline='3px dashed #ffa95f';$('blank').hidden=true;$('props').hidden=false;$('label').textContent=n.tagName.toLowerCase()+' · '+String(i);var p=pos(n);$('x').value=p.x;$('y').value=p.y;$('w').value=p.w;$('fs').value=Math.round(parseFloat(doc.defaultView.getComputedStyle(n).fontSize))||24;$('fs').disabled=n.tagName==='IMG'||logo(n)||n.classList.contains('folio');$('mode').disabled=n.tagName==='IMG'||logo(n)||n.classList.contains('folio');['x','y','w'].forEach(function(k){$(k).disabled=logo(n)||n.classList.contains('folio')});var e=state.edits[page+':'+sel]||{mode:'inherit'};fillAdvanced(n);renderTextFields(n);$('mode').value=e.mode||'inherit';$('color').value=e.color||'#ffffff';$('direct').hidden=e.mode!=='direct';updateOverlay();layers()}
+function editable(n){return !!n&&!logo(n)&&!n.classList.contains('folio')}
+function linkedGroups(){
+ return (state.groups?.[String(page)]||[]).filter(function(group){
+  return group.length>=2&&group.every(function(i){return editable(nodes()[i])})
+ })
+}
+function choose(i,extend){
+ var n=nodes()[i];if(!n)return;
+ if(extend&&!editable(n))return;
+ selectedIds=ux.selectionTargets(selectedIds,i,linkedGroups(),!!extend);
+ sel=selectedIds.includes(i)?i:(selectedIds.at(-1)??-1);
+ showSelection()
+}
+function showSelection(){
+ if(!doc)return;
+ var ns=nodes(),count=selectedIds.length,n=ns[sel];
+ ns.forEach(function(x,i){x.style.outline=selectedIds.includes(i)?'3px dashed #ffa95f':''});
+ $('blank').hidden=count>0;$('props').hidden=count!==1;$('selection-tools').hidden=count===0;
+ $('multi-align').hidden=count<2;
+ $('selection-summary').textContent=count===1?'1 katman seçildi':count+' katman seçildi';
+ var members=selectedIds.filter(function(i){return editable(ns[i])});
+ var sameGroup=linkedGroups().some(function(g){return g.some(function(i){return selectedIds.includes(i)})});
+ $('link-group').disabled=members.length<2||members.length!==selectedIds.length||sameGroup&&linkedGroups().some(function(g){return g.length===members.length&&g.every(function(i){return members.includes(i)})});
+ $('unlink-group').disabled=!sameGroup;
+ if(count===1&&n){
+  $('label').textContent=n.tagName.toLowerCase()+' · '+String(sel);
+  var p=pos(n);$('x').value=p.x;$('y').value=p.y;$('w').value=p.w;
+  $('fs').value=Math.round(parseFloat(doc.defaultView.getComputedStyle(n).fontSize))||24;
+  $('fs').disabled=n.tagName==='IMG'||!editable(n);$('mode').disabled=n.tagName==='IMG'||!editable(n);
+  ['x','y','w'].forEach(function(k){$(k).disabled=!editable(n)});
+  var e=state.edits[page+':'+sel]||{mode:'inherit'};
+  fillAdvanced(n);renderTextFields(n);$('mode').value=e.mode||'inherit';$('color').value=e.color||'#ffffff';$('direct').hidden=e.mode!=='direct';
+ } else if(count>1){
+  document.querySelectorAll('#multi-align [data-align]').forEach(function(b){b.disabled=members.length!==count})
+ }
+ updateOverlay();layers()
+}
+$('link-group').onclick=function(){
+ var ids=selectedIds.filter(function(i){return editable(nodes()[i])}).slice().sort(function(a,b){return a-b});
+ if(ids.length<2||ids.length>24||ids.length!==selectedIds.length)return;
+ var groups=linkedGroups(),overlap=groups.filter(function(g){return g.some(function(i){return ids.includes(i)})});
+ if(overlap.some(function(g){return g.some(function(i){return !ids.includes(i)})})){ $('status').textContent='Önce bağlı grubun tüm üyelerini seç';return }
+ var next=groups.filter(function(g){return !overlap.includes(g)});next.push(ids);
+ if(next.length>25)return;
+ checkpoint();if(!state.groups)state.groups={};state.groups[String(page)]=next;
+ dirtyStatus();showSelection();$('status').textContent='Grup oluşturuldu'
+};
+$('unlink-group').onclick=function(){
+ var groups=linkedGroups(),rest=groups.filter(function(g){return !g.some(function(i){return selectedIds.includes(i)})});
+ if(rest.length===groups.length)return;
+ checkpoint();state.groups[String(page)]=rest;
+ dirtyStatus();showSelection();$('status').textContent='Grup bağlantısı çözüldü'
+};
 function renderTextFields(n){
  var box=$('copy-tools'),target=$('text-fields');target.replaceChildren();
  var locked=logo(n)||n.classList.contains('folio'),parts=codec.textNodes(n);
@@ -273,10 +345,43 @@ function renderTextFields(n){
  })
 }
 function changed(){dirtyStatus();updateOverlay()}
-function setXY(x,y){var n=nodes()[sel];if(!n||logo(n)||n.classList.contains('folio'))return; if(dragging&&$('snap').checked){x=Math.round(x/8)*8;y=Math.round(y/8)*8} if(!dragging){checkpoint()}else if(!dragRecorded){checkpoint();dragRecorded=true} var e=edit(),p=pos(n);if(!e.styles)e.styles={};if(!e.styles.width)e.styles.width=p.w+'px';e.styles.position='absolute';e.styles.left=Math.round(x)+'px';e.styles.top=Math.round(y)+'px';e.styles.margin='0';patch(n,e);$('x').value=Math.round(x);$('y').value=Math.round(y);changed()}
+function setXY(x,y){
+ var ns=nodes(),n=ns[sel];if(!editable(n))return;
+ if(dragging&&$('snap').checked){x=Math.round(x/8)*8;y=Math.round(y/8)*8}
+ var anchor=pos(n),dx=Math.round(x-anchor.x),dy=Math.round(y-anchor.y);
+ if(!dx&&!dy)return;
+ if(!dragging)checkpoint();else if(!dragRecorded){checkpoint();dragRecorded=true}
+ var ids=selectedIds.length?selectedIds:[sel];
+ // Capture all boxes before changing flow/positioning on any member.
+ var snapshots=ids.filter(function(i){return editable(ns[i])}).map(function(i){return{id:i,node:ns[i],p:pos(ns[i])}});
+ snapshots.forEach(function(item){
+  var i=item.id,node=item.node,p=item.p,key=page+':'+i;
+  if(!state.edits[key])state.edits[key]={styles:{},mode:'inherit'};
+  var e=state.edits[key];
+  if(!e.styles)e.styles={};
+  if(!e.styles.width)e.styles.width=p.w+'px';
+  if(node.tagName==='IMG'&&!e.styles.height)e.styles.height=p.h+'px';
+  Object.assign(e.styles,{position:'absolute',left:(p.x+dx)+'px',top:(p.y+dy)+'px',right:'auto',bottom:'auto',margin:'0'});
+  patch(node,e)
+ });
+ $('x').value=Math.round(x);$('y').value=Math.round(y);changed()
+}
 function apply(field,value){var n=nodes()[sel];if(!n||logo(n)||n.classList.contains('folio'))return;checkpoint();var e=edit();e.styles[field]=value;patch(n,e);changed()}
-function down(evt){var n=evt.target.closest('[data-edit-index]');if(!n||evt.button!==0)return;choose(Number(n.dataset.editIndex));if(logo(n)||n.classList.contains('folio'))return;var start=pos(n),sx=evt.clientX,sy=evt.clientY;dragging=true;dragRecorded=false;function move(e){if(Math.abs(e.clientX-sx)+Math.abs(e.clientY-sy)<2)return;setXY(start.x+e.clientX-sx,start.y+e.clientY-sy)}function up(){doc.removeEventListener('pointermove',move);dragging=false;dragRecorded=false}doc.addEventListener('pointermove',move);doc.addEventListener('pointerup',up,{once:true});evt.preventDefault()}
-function show(i){if(!pages.length)return;page=Math.max(0,Math.min(pages.length-1,i));sel=-1;doc=null;$('preview').src=pages[page];$('count').textContent=(page+1)+' / '+pages.length;renderTabs();$('props').hidden=true;$('blank').hidden=false}
+function down(evt){
+ var n=evt.target.closest('[data-edit-index]');if(!n||evt.button!==0)return;
+ var index=Number(n.dataset.editIndex),wasSelected=selectedIds.includes(index);
+ if(evt.shiftKey){choose(index,true);evt.preventDefault();return}
+ if(!wasSelected)choose(index,false);else{sel=index;showSelection()}
+ if(!editable(n))return;
+ var start=pos(n),sx=evt.clientX,sy=evt.clientY;dragging=true;dragRecorded=false;
+ function move(e){
+  if(Math.abs(e.clientX-sx)+Math.abs(e.clientY-sy)<2)return;
+  setXY(start.x+e.clientX-sx,start.y+e.clientY-sy)
+ }
+ function up(){doc.removeEventListener('pointermove',move);dragging=false;dragRecorded=false}
+ doc.addEventListener('pointermove',move);doc.addEventListener('pointerup',up,{once:true});evt.preventDefault()
+}
+function show(i){if(!pages.length)return;page=Math.max(0,Math.min(pages.length-1,i));sel=-1;selectedIds=[];doc=null;$('preview').src=pages[page];$('count').textContent=(page+1)+' / '+pages.length;renderTabs();$('props').hidden=true;$('selection-tools').hidden=true;$('blank').hidden=false}
 $('preview').addEventListener('load',function(){doc=$('preview').contentDocument;if(!doc||!doc.querySelector('.slide')){$('status').textContent='Kaynak slayt bulunamadı';return}doc.addEventListener('pointerdown',down);paint();setZoom(zoomMode);$('status').textContent='Slayt düzenlenebilir'});
 $('prev').onclick=function(){show(page-1)};$('next').onclick=function(){show(page+1)};
 $('x').onchange=function(){if(sel>=0)setXY(Number(this.value),pos(nodes()[sel]).y)};
@@ -313,7 +418,7 @@ $('importFile').onchange=async function(){
 $('css').onclick=async function(){try{if(!pages.length)throw new Error('Kaynak bulunamadı');var raw=await sourceAt(page);download(slug+'-slide-'+(page+1)+'.css',codec.css(raw,state,page),'text/css')}catch(e){safeStatus(e)}};
 $('html').onclick=async function(){try{if(!pages.length)throw new Error('Kaynak bulunamadı');var raw=await sourceAt(page);download(slug+'-slide-'+(page+1)+'.html',codec.html(raw,pages[page],state,page),'text/html')}catch(e){safeStatus(e)}};
 function renderV(){var v=allV();$('versions').innerHTML='<option value="1">v1 · özgün</option>';v.forEach(function(x){var o=document.createElement('option');o.value=x.version;o.textContent='v'+x.version+' · '+(x.note||'revizyon');$('versions').appendChild(o)});$('versions').value=String(current)}
-$('load').onclick=function(){if(dirty&&!confirm('Kaydedilmemiş düzenlemeler kaybolsun mu?'))return;var n=Number($('versions').value),v=allV().find(function(x){return x.version===n});state=v?copy(v.state):{colors:Object.assign({},defaults),edits:{}};current=n;dirty=false;savedState=copy(state);history.clear();historyButtons();['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});$('unsaved').textContent='Değişiklik yok';show(page)};
+$('load').onclick=function(){if(dirty&&!confirm('Kaydedilmemiş düzenlemeler kaybolsun mu?'))return;var n=Number($('versions').value),v=allV().find(function(x){return x.version===n});state=v?copy(v.state):{colors:Object.assign({},defaults),edits:{},groups:{}};current=n;dirty=false;savedState=copy(state);history.clear();historyButtons();['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});$('unsaved').textContent='Değişiklik yok';show(page)};
 $('folder').onclick=async function(){if(!window.showDirectoryPicker){$('folderStatus').textContent='Bu tarayıcı klasöre kaydetmeyi desteklemiyor';return}try{folder=await window.showDirectoryPicker({mode:'readwrite'});$('folderStatus').textContent=folder.name}catch(e){if(e.name!=='AbortError')$('folderStatus').textContent=e.message}};
 $('save').onclick=function(){var n=Math.max(1,...allV().map(function(v){return v.version}))+1;$('newV').value='v'+n;$('dialog').showModal()};
 $('cancel').onclick=function(){$('dialog').close()};
