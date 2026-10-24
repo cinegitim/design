@@ -370,7 +370,7 @@ function down(evt){
  var n=evt.target.closest('[data-edit-index]');if(!n||evt.button!==0)return;
  var index=Number(n.dataset.editIndex),wasSelected=selectedIds.includes(index);
  if(evt.shiftKey){choose(index,true);evt.preventDefault();return}
- if(!wasSelected)choose(index,false);else showSelection();
+ if(!wasSelected)choose(index,false);else{sel=index;showSelection()}
  if(!editable(n))return;
  var start=pos(n),sx=evt.clientX,sy=evt.clientY;dragging=true;dragRecorded=false;
  function move(e){
