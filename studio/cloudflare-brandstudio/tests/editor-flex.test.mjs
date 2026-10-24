@@ -97,3 +97,13 @@ test("history applies to live preview instead of reloading an iframe",()=>{
  assert.match(html,/codec\.applyText\(n,v\.segments\)/);
  assert.doesNotMatch(html,/contentEditable\s*=\s*true/);
 });
+
+test("group state has undo snapshots, and group operations do not expose paid APIs",()=>{
+ assert.match(html,/var state=\{colors:Object\.assign\(\{\},defaults\),edits:\{\},groups:\{\}\}/);
+ assert.match(html,/checkpoint\(\);if\(!state\.groups\)state\.groups=\{\}/);
+ assert.match(html,/function setXY\(x,y\)/);
+ assert.match(html,/var ids=selectedIds\.length\?selectedIds:\[sel\]/);
+ assert.match(html,/if\(node\.tagName==='IMG'&&!e\.styles\.height\)/);
+ assert.match(html,/selectionHandle\.hidden=list\.length!==1/);
+ assert.doesNotMatch(html,/method\s*:\s*['"]POST/);
+});
