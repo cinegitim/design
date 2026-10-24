@@ -136,7 +136,7 @@ function css(htmlSource,selectedState,index){
  var ns=nodes(doc),output=colorCSS(checked.colors);
  Object.entries(checked.edits).forEach(function(pair){
   var sp=pair[0].split(':');if(Number(sp[0])!==index)return;
-  var el=ns[Number(sp[1])];if(!el)err('Kaynakta düzenlenen katman artık yok');
+  var el=ns[Number(sp[1])];if(!el)err('Kaynakta düzenlenen katman artık yok');if(locked(el))err('Kilitli marka öğesi CSS ile düzenlenemez');
   var e=pair[1],styles=Object.assign({},e.styles);
   if(e.mode&&e.mode!=='inherit')styles.color=e.mode==='direct'?e.color:'var(--'+e.mode+')';
   output+=path(el,slide)+'{'+Object.entries(styles).map(function(p){return p[0]+':'+p[1]+';'}).join('')+'}\n';
