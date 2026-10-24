@@ -63,3 +63,38 @@ test("UI includes real accordion, slide strip, keyboard handling and identity lo
  assert.ok(embedded);assert.ok(new vm.Script(embedded[1]));
  assert.ok(new vm.Script(uxSource));
 });
+
+test("shift selection toggles whole linked groups and keeps unrelated members",()=>{
+ const eq=(a,b)=>assert.deepEqual(Array.from(a),b);
+ eq(UX.selectionTargets([],2,[[2,4]],false),[2,4]);
+ eq(UX.selectionTargets([1],2,[[2,4]],true),[1,2,4]);
+ eq(UX.selectionTargets([1,2,4],4,[[2,4]],true),[1]);
+ eq(UX.selectionTargets([1,2],3,[],true),[1,2,3]);
+ eq(UX.selectionTargets([1,2],2,[],true),[1]);
+});
+test("linked group sections are distinct from photo accordion heuristics",()=>{
+ const entries=[entry(0),entry(1),entry(2,{isLogo:true}),entry(3,{isPhoto:true,isText:false})];
+ const sections=UX.groupLayers(entries,[[0,1]]);
+ const linked=sections.find(x=>x.id==="linked-0");
+ assert.ok(linked);
+ assert.equal(linked.label,"Bağlı grup 1");
+ assert.deepEqual(Array.from(linked.items,x=>x.id),[0,1]);
+ assert.ok(sections.find(x=>x.id==="identity").items.some(x=>x.id===2));
+ assert.ok(!UX.groupLayers(entries,[[0,2]]).some(x=>x.id==="linked-0"));
+});
+test("union bounds include each selected object's dimensions",()=>{
+ const b=UX.bounds([{x:64,y:90,w:100,h:40},{x:220,y:150,w:70,h:130}]);
+ assert.deepEqual({...b},{x:64,y:90,w:226,h:190});
+});
+test("group controls and transforms are wired and exclude locked identity",()=>{
+ for(const id of ["selection-tools","selection-summary","link-group","unlink-group","multi-align"])assert.match(html,new RegExp('id="'+id+'"'));
+ assert.match(html,/choose\(item\.id,ev\.shiftKey\)/);
+ assert.match(html,/ux\.selectionTargets\(selectedIds,i,linkedGroups\(\),!!extend\)/);
+ assert.match(html,/function linkedGroups\(/);
+ assert.match(html,/state\.groups\[String\(page\)\]=next/);
+ assert.match(html,/state\.groups\[String\(page\)\]=rest/);
+ assert.match(html,/selectedIds\.map\(function\(i\)\{return nodes\(\)\[i\]\}\)/);
+ assert.match(html,/ids\.forEach\(function\(i\)\{/);
+ assert.match(html,/if\(!editable\(node\)\)return/);
+ assert.match(html,/if\(evt\.shiftKey\)\{choose\(index,true\)/);
+});
