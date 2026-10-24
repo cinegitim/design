@@ -23,9 +23,31 @@ function proximity(a,b) {
  var gap=Math.sqrt(dx*dx+dy*dy);
  return gap<=55?55-gap:0;
 }
-function groupLayers(entries) {
- var sections=[],photos=[],text=[],identity=[],misc=[];
+function selectionTargets(existing,clicked,groups,extend) {
+ var related=(groups||[]).find(function(g){return g.includes(clicked)})||[clicked];
+ if(!extend)return related.slice();
+ var all=related.every(function(id){return existing.includes(id)});
+ return all?existing.filter(function(id){return !related.includes(id)}):
+  Array.from(new Set(existing.concat(related)));
+}
+function bounds(rects){
+ if(!rects.length)return null;
+ var x=Math.min(...rects.map(function(r){return r.x})),
+ y=Math.min(...rects.map(function(r){return r.y})),
+ right=Math.max(...rects.map(function(r){return r.x+r.w})),
+ bottom=Math.max(...rects.map(function(r){return r.y+r.h}));
+ return{x:x,y:y,w:right-x,h:bottom-y};
+}
+function groupLayers(entries,linkedGroups) {
+ var sections=[],photos=[],text=[],identity=[],misc=[],used=new Set();
+ (linkedGroups||[]).forEach(function(group,i){
+  var items=group.map(function(id){return entries.find(function(e){return e.id===id&&!e.isLogo&&!e.isFooter})}).filter(Boolean);
+  if(items.length!==group.length||items.length<2)return;
+  items.forEach(function(e){used.add(e.id)});
+  sections.push({id:'linked-'+i,label:'Bağlı grup '+(i+1),items:items,rank:Math.min(...items.map(function(e){return e.id}))});
+ });
  for(var entry of entries) {
+  if(used.has(entry.id))continue;
   if(entry.isLogo||entry.isFooter)identity.push(entry);
   else if(entry.isPhoto)photos.push(entry);
   else if(entry.isText)text.push(entry);
@@ -50,5 +72,5 @@ function groupLayers(entries) {
  for(var c of sections)c.items.sort(function(a,b){return a.id-b.id});
  return sections;
 }
-root.BrandstudioUX={createHistory:createHistory,groupLayers:groupLayers,proximity:proximity};
+root.BrandstudioUX={createHistory:createHistory,groupLayers:groupLayers,proximity:proximity,selectionTargets:selectionTargets,bounds:bounds};
 })(globalThis);
