@@ -94,7 +94,8 @@ test("group controls and transforms are wired and exclude locked identity",()=>{
  assert.match(html,/state\.groups\[String\(page\)\]=next/);
  assert.match(html,/state\.groups\[String\(page\)\]=rest/);
  assert.match(html,/selectedIds\.map\(function\(i\)\{return nodes\(\)\[i\]\}\)/);
- assert.match(html,/ids\.forEach\(function\(i\)\{/);
+ assert.match(html,/snapshots=ids\.filter\(function\(i\)\{return editable\(ns\[i\]\)\}\)\.map\(function\(i\)\{return\{id:i,node:ns\[i\],p:pos\(ns\[i\]\)\}\}\)/);
+ assert.match(html,/snapshots\.forEach\(function\(item\)\{/);
  assert.match(html,/if\(!editable\(node\)\)return/);
  assert.match(html,/if\(evt\.shiftKey\)\{choose\(index,true\)/);
 });
