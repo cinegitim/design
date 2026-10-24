@@ -98,3 +98,9 @@ test("group controls and transforms are wired and exclude locked identity",()=>{
  assert.match(html,/if\(!editable\(node\)\)return/);
  assert.match(html,/if\(evt\.shiftKey\)\{choose\(index,true\)/);
 });
+
+test("pointer drag re-anchors a multi-selection to the grabbed member",()=>{
+ assert.match(html,/if\(!wasSelected\)choose\(index,false\);else\{sel=index;showSelection\(\)\}/);
+ assert.match(html,/var start=pos\(n\),sx=evt\.clientX,sy=evt\.clientY/);
+ assert.match(html,/setXY\(start\.x\+e\.clientX-sx,start\.y\+e\.clientY-sy\)/);
+});
