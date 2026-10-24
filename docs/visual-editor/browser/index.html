@@ -352,9 +352,10 @@ function setXY(x,y){
  if(!dx&&!dy)return;
  if(!dragging)checkpoint();else if(!dragRecorded){checkpoint();dragRecorded=true}
  var ids=selectedIds.length?selectedIds:[sel];
- ids.forEach(function(i){
-  var node=ns[i];if(!editable(node))return;
-  var p=pos(node),key=page+':'+i;
+ // Capture all boxes before changing flow/positioning on any member.
+ var snapshots=ids.filter(function(i){return editable(ns[i])}).map(function(i){return{id:i,node:ns[i],p:pos(ns[i])}});
+ snapshots.forEach(function(item){
+  var i=item.id,node=item.node,p=item.p,key=page+':'+i;
   if(!state.edits[key])state.edits[key]={styles:{},mode:'inherit'};
   var e=state.edits[key];
   if(!e.styles)e.styles={};
