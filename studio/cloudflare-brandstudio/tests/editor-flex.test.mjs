@@ -69,3 +69,31 @@ test("embedded code remains parseable; limited-size portable codec is present",(
  assert.ok(new vm.Script(js));
  assert.match(js,/32 KB sınırını aşıyor/);
 });
+
+test("formatted text segments are bounded and survive JSON state round-trip",()=>{
+ const s=sample();
+ s.edits["1:3"].segments=["Üniversite için","başka bir dünya","var."];
+ const checked=codec.validateState(s,5);
+ assert.equal(checked.edits["1:3"].segments[1],"başka bir dünya");
+ const result=codec.parseArchive(codec.makeArchive("carousel-01-v3",[],s),"carousel-01-v3",5);
+ assert.equal(result.current.edits["1:3"].segments[2],"var.");
+ for(const bad of [["x".repeat(401)],[],Array(21).fill("x"),["ok",0]]){
+  const changed=sample();changed.edits["1:3"].segments=bad;
+  assert.throws(()=>codec.validateState(changed,5));
+ }
+});
+
+test("history applies to live preview instead of reloading an iframe",()=>{
+ assert.match(html,/function refreshPreview\(/);
+ assert.match(html,/restoreState\(value\).*refreshPreview\(\);dirtyStatus\(\)/);
+ assert.doesNotMatch(html,/function restoreState\(value\)[^\n]*show\(page\)/);
+ assert.match(html,/sourceNodes=nodes\(\)\.map\(/);
+ assert.match(html,/sourceNodes\[i\]/);
+ assert.match(html,/function renderTextFields\(/);
+ assert.match(html,/id="copy-tools" hidden/);
+ assert.match(html,/field\.addEventListener\('change'/);
+ assert.match(html,/candidate=copy\(state\)/);
+ assert.match(html,/codec\.validateState\(candidate,pages\.length\)/);
+ assert.match(html,/codec\.applyText\(n,v\.segments\)/);
+ assert.doesNotMatch(html,/contentEditable\s*=\s*true/);
+});
