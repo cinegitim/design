@@ -16,6 +16,12 @@ function dimensions(text,kind){
  return{width:Math.max(160,Math.min(6000,w)),height:Math.max(160,Math.min(6000,h))}
 }
 function escapeAttr(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
+function repairLegacyFonts(source){
+ // Older audited SVG masters embedded an author-machine font URI.
+ // Repair only the browser copy: do not mutate immutable, packaged source masters.
+ return source.replace(/url\(\s*(['"]?)\/Users\/[^()'"\\]*\/assets\/([A-Za-z0-9._-]+\.(?:woff2?|ttf|otf))\1\s*\)/gi,
+  function(_,quote,file){return "url("+quote+"../assets/"+file+quote+")"})
+}
 function normalize(source,url,kind){
  if(!/^https?:\/\//.test(url))throw Error('Kaynak URL geçersiz');
  var media=/\.(png|jpe?g|webp|svg)(?:[?#]|$)/i.test(url);
@@ -24,7 +30,7 @@ function normalize(source,url,kind){
   // Image originals are preserved as a single editable object; rasterized text has no recoverable text layers.
   return{html:'<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;width:'+dim.width+'px;height:'+dim.height+'px}.slide{position:relative;width:'+dim.width+'px;height:'+dim.height+'px;overflow:hidden}img.photo{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:contain}</style></head><body><div class="slide"><img class="photo" alt="Orijinal tasarım" src="'+escapeAttr(url)+'"></div></body></html>',width:dim.width,height:dim.height,mode:'whole-image',format:ext}
  }
- var d=new DOMParser().parseFromString(source,'text/html');
+ var d=new DOMParser().parseFromString(repairLegacyFonts(source),'text/html');
  d.querySelectorAll('script').forEach(function(node){node.remove()});
  var meta=d.createElement('base');meta.href=url;d.head.insertBefore(meta,d.head.firstChild);
  var slide=d.querySelector('.slide');
@@ -53,5 +59,5 @@ function normalize(source,url,kind){
  });
  return{html:'<!doctype html>\n'+d.documentElement.outerHTML,width:dims.width,height:dims.height,mode:'layers',format:'html'}
 }
-root.BrandstudioAdapter={normalize:normalize,dimensions:dimensions};
+root.BrandstudioAdapter={normalize:normalize,dimensions:dimensions,repairLegacyFonts:repairLegacyFonts};
 })(typeof globalThis!=='undefined'?globalThis:this);
