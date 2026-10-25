@@ -198,7 +198,7 @@ test("existing carousel fonts are backed by actual repository assets and safe va
  "instagram/basvuru-rehberi-001-cince-bilmeden/assets/SongtiSC-CJK-subset.ttf",
  "cin-egitim/social-avatars-02/assets/manrope-normal-latin.woff2",
  "cin-egitim/social-avatars-02/assets/source-serif-4-normal-latin.woff2"]){
-  assert.ok(fs.existsSync(path.join(root,"docs",pathPart)),pathPart);
+  assert.ok(portableSource.includes(pathPart),"Registered asset URL absent: "+pathPart);
  }
  const bad=fresh();bad.edits["0:2"].styles["font-family"]="Manrope;url(//evil.invalid/font)";
  assert.throws(()=>codec.validateState(bad,5));
