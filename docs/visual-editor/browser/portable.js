@@ -94,7 +94,9 @@ function archive(product,versions,current) {
    if(!plain(v)||!Number.isInteger(v.version)||v.version<2||v.version>26)err('Geçersiz sürüm numarası');
    return{version:v.version,note:String(v.note||'').slice(0,140),time:String(v.time||''),state:state(v.state,25)};
  });
- return{format:'brandstudio-portable',schema:2,brand:'asyada-egitim',product:product,exportedAt:new Date().toISOString(),versions:out,current:state(current,25)};
+ var result={format:'brandstudio-portable',schema:2,brand:'asyada-egitim',product:product,exportedAt:new Date().toISOString(),versions:out,current:state(current,25)};
+ if(JSON.stringify(result).length>16000000)err('Arşiv 16 MB sınırını aşıyor');
+ return result;
 }
 function parse(input,product,pages) {
  if(!plain(input)||input.format!=='brandstudio-portable'||input.schema!==2)err('Bu dosya bir Brandstudio sürüm arşivi değil');
