@@ -177,7 +177,7 @@ function drawRulers(){
   }
  })
 }
-function editableResize(n){return editable(n)&&selectedIds.length===1}
+function editableResize(n){return editable(n)&&selectedIds.length>=1}
 function setRectangle(n,rect,resize){
  var index=Number(n.dataset.editIndex),key=page+':'+index,e=state.edits[key]||(state.edits[key]={mode:'inherit',styles:{}}),styles=e.styles||(e.styles={});
  var parent=n.closest('.logo-foot');
@@ -199,41 +199,60 @@ function setupOverlay(){
  var handles={};
  Object.entries(positions).forEach(function(item){
   var direction=item[0],spec=item[1],handle=doc.createElement('div');handle.className='brandstudio-resize';
-  handle.dataset.direction=direction;handle.style.left=spec[0]+'%';handle.style.top=spec[1]+'%';handle.style.setProperty('--handle-cursor',spec[2]);handle.title='Boyutlandır: '+direction;
+  handle.dataset.direction=direction;handle.style.left=spec[0]+'%';handle.style.top=spec[1]+'%';
+  handle.style.setProperty('--handle-cursor',spec[2]);
+  handle.title='Boyutlandır: '+direction+' · Shift: oranı koru';
   handle.setAttribute('role','slider');handle.setAttribute('aria-label','Boyutlandır: '+direction);
   selectionOverlay.appendChild(handle);handles[direction]=handle;
   handle.addEventListener('pointerdown',function(e){
-   if(sel<0||!editableResize(nodes()[sel])||e.button!==0)return;
-   var n=nodes()[sel],initial=pos(n),sx=e.clientX,sy=e.clientY,recorded=false,
-   aspect=initial.w/Math.max(1,initial.h),logoArt=identityImage(n);
+   if(sel<0||!selectedIds.length||e.button!==0)return;
    e.stopPropagation();e.preventDefault();if(e.isTrusted)handle.setPointerCapture(e.pointerId);
-   function move(v){
-    var dx=v.clientX-sx,dy=v.clientY-sy;
-    if(Math.abs(dx)+Math.abs(dy)<2&&!recorded)return;
-    var left=initial.x,top=initial.y,right=left+initial.w,bottom=top+initial.h;
-    if(direction.includes('w'))left+=dx;if(direction.includes('e'))right+=dx;
-    if(direction.includes('n'))top+=dy;if(direction.includes('s'))bottom+=dy;
-    var min=20;
-    if(right-left<min){if(direction.includes('w'))left=right-min;else right=left+min}
-    if(bottom-top<20){if(direction.includes('n'))top=bottom-20;else bottom=top+20}
-    if(right-left>5000){if(direction.includes('w'))left=right-5000;else right=left+5000}
-    if(bottom-top>5000){if(direction.includes('n'))top=bottom-5000;else bottom=top+5000}
-    if(logoArt){
-     var w=right-left;
-     if(direction==='n'||direction==='s')w=Math.max(20,Math.min(5000,Math.round((bottom-top)*aspect)));
-     w=Math.min(5000,w);
-     var h=w/aspect;
-     if(direction.includes('w'))left=right-w;else if(direction==='n'||direction==='s')left=initial.x+(initial.w-w)/2;else right=left+w;
-     if(direction.includes('n'))top=bottom-h;else if(direction==='e'||direction==='w')top=initial.y+(initial.h-h)/2;
-     bottom=top+h;
-    }
+   var ns=nodes(),selected=selectedIds.map(function(i){return ns[i]}).filter(Boolean),
+    initial=ux.bounds(selected.map(pos)),sx=e.clientX,sy=e.clientY,recorded=false,
+    alwaysProportional=selected.length===1&&identityImage(selected[0]);
+   // Moving a container's border also moves its nested editable content.
+   var targets=new Set(selected);
+   selected.forEach(function(node){
+    node.querySelectorAll('[data-edit-index]').forEach(function(child){targets.add(child)})
+   });
+   var members=Array.from(targets).sort(function(a,b){
+    if(a.contains(b))return-1;if(b.contains(a))return 1;return 0
+   }).map(function(node){return{node:node,rect:pos(node),
+    font:Number.parseFloat(doc.defaultView.getComputedStyle(node).fontSize)||0}});
+   function move(ev){
+    var dx=ev.clientX-sx,dy=ev.clientY-sy;
+    if(!recorded&&Math.abs(dx)+Math.abs(dy)<2)return;
+    var to=ux.resizeRect(initial,direction,dx,dy,alwaysProportional||ev.shiftKey);
     if(!recorded){checkpoint();recorded=true}
-    setRectangle(n,{x:left,y:top,w:right-left,h:bottom-top},true);
-    $('x').value=Math.round(left);$('y').value=Math.round(top);$('w').value=Math.round(right-left);$('height').value=Math.round(bottom-top);
+    var scaleX=to.w/Math.max(1,initial.w),scaleY=to.h/Math.max(1,initial.h);
+    members.forEach(function(item){
+     var rect=ux.scaleRect(item.rect,initial,to);
+     if(identityImage(item.node)){
+      // Canonical vector artwork keeps its intrinsic ratio; never stretch it.
+      rect.h=rect.w*(item.rect.h/Math.max(1,item.rect.w))
+     }
+     setRectangle(item.node,rect,true);
+     // Only text within a resized frame/group scales its point size.
+     if(members.length>1&&item.font&&item.node.tagName!=='IMG'&&
+       (item.node.children.length===0||!item.node.querySelector('[data-edit-index]'))){
+      var size=Math.max(8,Math.min(260,Math.round(item.font*Math.min(scaleX,scaleY))));
+      var key=page+':'+item.node.dataset.editIndex;
+      state.edits[key].styles['font-size']=size+'px';patch(item.node,state.edits[key])
+     }
+    });
+    $('x').value=Math.round(to.x);$('y').value=Math.round(to.y);
+    $('w').value=Math.round(to.w);$('height').value=Math.round(to.h);
     updateOverlay();dirtyStatus()
    }
-   function stop(){handle.removeEventListener('pointermove',move);handle.removeEventListener('pointerup',stop);handle.removeEventListener('pointercancel',stop);if(recorded)showSelection()}
-   handle.addEventListener('pointermove',move);handle.addEventListener('pointerup',stop,{once:true});handle.addEventListener('pointercancel',stop,{once:true})
+   function stop(){
+    handle.removeEventListener('pointermove',move);
+    handle.removeEventListener('pointerup',stop);
+    handle.removeEventListener('pointercancel',stop);
+    if(recorded)showSelection()
+   }
+   handle.addEventListener('pointermove',move);
+   handle.addEventListener('pointerup',stop,{once:true});
+   handle.addEventListener('pointercancel',stop,{once:true})
   })
  });
  selectionHandle=handles.se;
@@ -248,7 +267,7 @@ function updateOverlay(){
  var p=ux.bounds(list.map(pos));
  selectionOverlay.style.left=p.x+'px';selectionOverlay.style.top=p.y+'px';selectionOverlay.style.width=p.w+'px';selectionOverlay.style.height=p.h+'px';
  selectionOverlay.hidden=false;
- Object.values(selectionOverlay._handles).forEach(function(handle){handle.hidden=list.length!==1||!editable(list[0])})
+ Object.values(selectionOverlay._handles).forEach(function(handle){handle.hidden=!list.length})
 }
 
 
