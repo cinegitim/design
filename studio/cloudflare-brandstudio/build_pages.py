@@ -18,44 +18,69 @@ MAX_OUTPUT_BYTES = 1_400_000_000
 ORIGIN = "https://cinegitim.github.io/design"
 
 def design_catalog(paths):
-    """Mirror browser discovery while requiring no server, token or write to originals."""
+    """Discover authored product sources and final media only, not comparison pages or build assets."""
     grouped, images, single = {}, {}, []
     def slug(value):
         return re.sub(r"^-+|-+$", "", re.sub(r"[^a-z0-9]+", "-", value.lower()))[:125]
     def label(value):
         return re.sub(r"[-_]+", " ", value).title()
-    for p in sorted(set(paths)):
-        if not p.startswith("docs/"): continue
-        m = re.match(r"^docs/(.+?)/(source|editable)/([^/]+\.html)$", p, re.I)
+    paths = sorted(set(paths))
+    for p in paths:
+        if not p.startswith("docs/") or any(x in ("..", "") or x.startswith(".") for x in p.split("/")):
+            continue
+        m = re.fullmatch(r"docs/(.+?)/(source|editable)/([^/]+\.html)", p, re.I)
         if m:
-            key, filename = m.group(1), m.group(3)
-            variant = "-plates" if filename.lower().endswith("-plate.html") else ""
-            path_key = key + variant
-            entry = grouped.setdefault(path_key, dict(
-                id="carousel-01-v3" if path_key=="instagram/carousel-01-v3" else slug(path_key),
-                title=label(key.split("/")[-1]) + (" · Plakalar" if variant else ""),
-                family=key.split("/")[0],kind="html",pages=[]))
-            entry["pages"].append(p[5:]);continue
-        if re.search(r"\.(png|jpe?g|webp|svg)$", p, re.I):
-            folder=p[5:].rsplit("/",1)[0] if "/" in p[5:] else "root"
-            images.setdefault(folder,[]).append(p[5:]);continue
-        if re.search(r"\.html$",p,re.I) and not re.search(r"(?:^|/)(index|review|legacy)\.html$",p,re.I) and re.search(r"/(rollup|banners|typography|applications|social|poster|flyer|design)",p,re.I):
+            project, name = m.group(1), m.group(3)
+            if name.lower().endswith("-plate.html") or re.search(r"(?:^|/)(history|drafts|review|previews?)/", project,re.I):
+                continue
+            entry = grouped.setdefault(project, dict(
+                id="carousel-01-v3" if project=="instagram/carousel-01-v3" else slug(project),
+                title=label(project.split("/")[-1]),family=project.split("/")[0],kind="html",pages=[]))
+            entry["pages"].append(p[5:])
+            continue
+        if re.fullmatch(r"docs/[^/]+/(rollup|poster|flyer|banner|banners)/[^/]+\.html",p,re.I) and not re.search(r"/(index|review)\.html$",p,re.I):
             single.append(p[5:])
-    entries=list(grouped.values())
+    for p in paths:
+        if not p.startswith("docs/") or not re.search(r"\.(png|jpe?g|webp|svg)$",p,re.I):
+            continue
+        m = re.fullmatch(r"docs/instagram/([^/]+)/(.+)",p,re.I)
+        if m:
+            project,tail = "instagram/"+m.group(1),m.group(2)
+            if project in grouped:
+                continue
+            if re.fullmatch(r"(?:\d\d[-_][^/]+\.(png|jpe?g|webp|svg)|(?:export|png|final|renders|composited)/[^/]+\.(png|jpe?g|webp|svg))",tail,re.I):
+                images.setdefault(project,[]).append(p[5:])
+                continue
+            if re.fullmatch(r"profile-photo/(?:[^/]+\.(png|svg)|variants/[^/]+\.(png|svg))",m.group(1)+"/"+tail,re.I):
+                images.setdefault("instagram/profile-photo",[]).append(p[5:])
+                continue
+        if re.fullmatch(r"docs/social-covers/assets/(facebook|instagram|linkedin|x-profile|youtube)[^/]+\.(png|jpe?g|webp|svg)",p,re.I):
+            images.setdefault("social-covers/cover-graphics",[]).append(p[5:])
+    out = list(grouped.values())
     for p in single:
-        entries.append(dict(id=slug(re.sub(r"\.html$","",p,flags=re.I)),title=label(re.sub(r"\.html$","",p.rsplit("/",1)[-1],flags=re.I)),family=p.split("/")[0],kind="html",pages=[p]))
-    for folder,items in images.items():
-        items.sort()
-        for j in range(0,len(items),25):
+        out.append(dict(id=slug(re.sub(r"\.html$","",p,flags=re.I)),
+            title=label(re.sub(r"\.html$","",p.split("/")[-1],flags=re.I)),
+            family=p.split("/")[0],kind="html",pages=[p]))
+    for folder,files in images.items():
+        variants={}
+        for p in files:
+            stem=re.sub(r"\.(png|jpe?g|webp|svg)$","",p,flags=re.I)
+            if stem not in variants or p.lower().endswith(".svg"):
+                variants[stem]=p
+        sorted_files=sorted(variants.values())
+        for j in range(0,len(sorted_files),25):
             number=j//25+1
-            entries.append(dict(id="asset-"+slug(folder)+(f"-{number}" if j else ""),title=label(folder.split("/")[-1])+(f" · {number}" if j else ""),family=folder.split("/")[0],kind="image",pages=items[j:j+25]))
-    seen=set();out=[]
-    for x in entries:
+            out.append(dict(id="asset-"+slug(folder)+(f"-{number}" if j else ""),
+                title=label(folder.split("/")[-1])+(f" · {number}" if j else "")+" (görsel)",
+                family=folder.split("/")[0],kind="image",pages=sorted_files[j:j+25]))
+    seen=set()
+    clean=[]
+    for x in out:
         x["pages"].sort()
         if x["id"] not in seen and x["pages"]:
-            seen.add(x["id"]);out.append(x)
-    out.sort(key=lambda x:(0 if x["kind"]=="html" else 1,x["family"],x["title"]))
-    return out
+            seen.add(x["id"]);clean.append(x)
+    clean.sort(key=lambda x:(0 if x["kind"]=="html" else 1,x["family"],x["title"]))
+    return clean
 
 def build(source: Path, dest: Path, dry_run=False):
     source, dest = source.resolve(), dest.resolve()
