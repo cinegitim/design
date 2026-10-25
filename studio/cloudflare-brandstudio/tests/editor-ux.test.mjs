@@ -256,3 +256,28 @@ test("browser product picker, dynamic dimensions and isolated version state are 
  assert.match(html,/codec\.parseArchive\(raw,slug,pages\.length,brand\)/);
  assert.match(html,/codec\.makeArchive\(slug,allV\(\),state,brand\)/);
 });
+
+test("catalog shows actual authored work, not the typography comparison board in screenshot",()=>{
+ const examples=[
+  "docs/cin-egitim/typography-round-01/direction-a.html",
+  "docs/cin-egitim/typography-round-01/direction-l.html",
+  "docs/cin-egitim/typography-finalists/index.html",
+  "docs/instagram/tsinghua-atlas-2027/source/01.html",
+  "docs/instagram/tsinghua-atlas-2027/source/02.html",
+  "docs/instagram/tsinghua-atlas-2027/assets/campus.jpg",
+  "docs/instagram/tsinghua-atlas-2027/01-render.png",
+  "docs/cin-egitim/rollup/rollup-design-a.html",
+  "docs/instagram/creative-breakout/composited/A-cover.png",
+  "docs/instagram/creative-breakout/source-originals/A-cover.png"
+ ];
+ const picked=Catalog.fromPaths(examples);
+ const ids=picked.map(x=>x.id);
+ assert.ok(ids.includes("instagram-tsinghua-atlas-2027"));
+ assert.ok(ids.includes("cin-egitim-rollup-rollup-design-a"));
+ assert.ok(ids.includes("asset-instagram-creative-breakout"));
+ assert.ok(!ids.some(id=>/typography-round|typography-finalists/.test(id)));
+ const atlas=picked.find(x=>x.id==="instagram-tsinghua-atlas-2027");
+ assert.equal(atlas.kind,"html");
+ assert.equal(atlas.pages.length,2);
+ assert.ok(!picked.some(x=>x.pages.some(p=>/campus\.jpg|source-originals/.test(p))));
+});
