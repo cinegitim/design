@@ -1043,7 +1043,7 @@ $('importFile').onchange=async function(){
   $('unsaved').textContent='v'+current+' geri yüklendi';$('status').textContent=items.length+' sürüm eklendi';renderV();show(page);
  }catch(e){safeStatus(e)}
 };
-$('css').onclick=async function(){try{if(!pages.length)throw new Error('Kaynak bulunamadı');var raw=await sourceAt(page);download(slug+'-slide-'+(page+1)+'.css',codec.css(raw,state,page),'text/css')}catch(e){safeStatus(e)}};
+$('css').onclick=async function(){try{if(!pages.length)throw new Error('Kaynak bulunamadı');var raw=await sourceAt(page);download(slug+'-slide-'+(page+1)+'.css',codec.css(raw,state,page,pages[page]),'text/css')}catch(e){safeStatus(e)}};
 $('html').onclick=async function(){try{if(!pages.length)throw new Error('Kaynak bulunamadı');var raw=await sourceAt(page);download(slug+'-slide-'+(page+1)+'.html',codec.html(raw,pages[page],state,page),'text/html')}catch(e){safeStatus(e)}};
 function renderV(){var v=allV();$('versions').innerHTML='<option value="1">v1 · özgün</option>';v.forEach(function(x){var o=document.createElement('option');o.value=x.version;o.textContent='v'+x.version+' · '+(x.note||'revizyon');$('versions').appendChild(o)});$('versions').value=String(current)}
 $('load').onclick=function(){if(dirty&&!confirm('Kaydedilmemiş düzenlemeler kaybolsun mu?'))return;var n=Number($('versions').value),v=allV().find(function(x){return x.version===n});state=v?copy(v.state):{colors:Object.assign({},defaults),edits:{},groups:{}};current=n;dirty=false;savedState=copy(state);history.clear();historyButtons();['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});$('unsaved').textContent='Değişiklik yok';show(page)};
