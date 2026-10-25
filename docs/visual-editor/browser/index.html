@@ -87,9 +87,34 @@ dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;
 <input id="layer-search" class="sidebar-search" type="search" placeholder="Katman ara…" aria-label="Katmanlarda ara">
 <div id="layers" class="layers"></div>
 <details class="inspector-details"><summary>Renkler</summary><div class="panel"><div class="swatches"><label>Krem<input type="color" id="paper" value="#f7f3e9"></label><label>Koyu<input type="color" id="ink" value="#1d2027"></label><label>Kırmızı<input type="color" id="red" value="#bd2120"></label></div></div></details></aside>
-<main class="center"><div class="toolbar"><button class="btn sidebar-toggle" id="toggle-left" aria-expanded="true" title="Katmanları aç/kapat">☰ Katmanlar</button><button class="btn sidebar-toggle" id="toggle-right" aria-expanded="true" title="Özellikleri aç/kapat">◫ Özellikler</button><button class="btn" id="prev">←</button><span id="count" class="badge"></span><button class="btn" id="next">→</button><button class="btn" id="undo" disabled title="Geri al · Cmd/Ctrl+Z (tuvalde de çalışır)">↶ Geri al</button><button class="btn" id="redo" disabled title="Yeniden yap · Cmd/Ctrl+Shift+Z">↷ Yeniden yap</button>
-<div class="zoom-controls"><button type="button" class="btn" id="zoom-out" aria-label="Küçült">−</button><select id="zoom" aria-label="Tuval yakınlaştırma"><option value="fit">Sığdır</option><option value="0.25">25%</option><option value="0.4">40%</option><option value="0.5">50%</option><option value="0.75">75%</option><option value="1">100%</option><option value="1.25">125%</option><option value="custom" hidden>Özel</option></select><button type="button" class="btn" id="zoom-in" aria-label="Büyüt">+</button></div>
-<button class="btn" id="hand" aria-pressed="false" title="Eli kullanarak tuvali kaydır">✋ El</button><button class="btn" id="focus" aria-pressed="false" title="Kenar panelleri gizle">⛶ Odak</button><label class="small"><input type="checkbox" id="snap" checked> 8 px ızgara</label><button class="btn primary" id="save">Yeni sürüm kaydet</button><button class="btn" id="export">Sürüm arşivini indir</button><button class="btn" id="import">Arşivi içe aktar</button><input type="file" id="importFile" accept=".json,application/json" hidden></div>
+<main class="center"><div class="toolbar" role="toolbar" aria-label="Düzenleme araçları">
+<div class="toolbar-cluster sidebar-cluster">
+<button type="button" class="btn icon-btn sidebar-toggle" id="toggle-left" aria-expanded="true" title="Katmanlar paneli" aria-label="Katmanlar panelini aç veya kapat">☷</button>
+<button type="button" class="btn icon-btn sidebar-toggle" id="toggle-right" aria-expanded="true" title="Özellikler paneli" aria-label="Özellikler panelini aç veya kapat">▤</button>
+</div>
+<span class="toolbar-divider" aria-hidden="true"></span>
+<div class="toolbar-cluster slide-navigation">
+<button type="button" class="btn icon-btn" id="prev" title="Önceki slayt" aria-label="Önceki slayt">‹</button><span id="count" class="slide-counter" aria-live="polite"></span><button type="button" class="btn icon-btn" id="next" title="Sonraki slayt" aria-label="Sonraki slayt">›</button>
+</div>
+<span class="toolbar-divider" aria-hidden="true"></span>
+<div class="toolbar-cluster">
+<button type="button" class="btn icon-btn" id="undo" disabled title="Geri al · ⌘Z / Ctrl+Z" aria-label="Geri al">↶</button><button type="button" class="btn icon-btn" id="redo" disabled title="Yeniden yap · ⌘⇧Z / Ctrl+Shift+Z" aria-label="Yeniden yap">↷</button>
+</div>
+<span class="toolbar-divider" aria-hidden="true"></span>
+<div class="zoom-controls"><button type="button" class="btn icon-btn" id="zoom-out" aria-label="Küçült" title="Uzaklaştır">−</button><select id="zoom" aria-label="Tuval yakınlaştırma"><option value="fit">Sığdır</option><option value="0.25">25%</option><option value="0.4">40%</option><option value="0.5">50%</option><option value="0.75">75%</option><option value="1">100%</option><option value="1.25">125%</option><option value="custom" hidden>Özel</option></select><button type="button" class="btn icon-btn" id="zoom-in" aria-label="Büyüt" title="Yakınlaştır">+</button></div>
+<button type="button" class="btn icon-btn" id="hand" aria-pressed="false" aria-label="Tuvali kaydır" title="El aracı · çalışma alanını kaydır">✥</button>
+<span class="toolbar-spacer"></span>
+<button type="button" class="btn primary save-btn" id="save" title="Yeni sürüm oluştur">Kaydet</button>
+<details class="toolbar-overflow" id="tools-menu"><summary title="Diğer araçlar" aria-label="Diğer araçlar">···</summary><div class="tools-popover">
+<div class="tools-popover-heading">GÖRÜNÜM</div>
+<button type="button" class="menu-btn" id="focus" aria-pressed="false" title="Kenar panelleri gizle">⛶ Odak modu</button>
+<label class="menu-check"><input type="checkbox" id="snap" checked> 8 px ızgaraya hizala</label>
+<div class="tools-popover-heading">DOSYA</div>
+<button type="button" class="menu-btn" id="export">Sürüm arşivini indir</button>
+<button type="button" class="menu-btn" id="import">Arşivi içe aktar</button>
+</div></details>
+<input type="file" id="importFile" accept=".json,application/json" hidden>
+</div>
 <nav class="slide-tabs" aria-label="Slaytlar" id="slide-tabs"></nav><div class="canvas" id="canvas"><div class="ruler-stage" id="ruler-stage"><div id="ruler-corner" aria-hidden="true"></div><canvas id="ruler-x" aria-label="Tuvalin üst dış kenarındaki yatay cetvel"></canvas><canvas id="ruler-y" aria-label="Tuvalin sol dış kenarındaki dikey cetvel"></canvas><div class="frame" id="frame"><iframe id="preview" title="Düzenlenebilir karusel" sandbox="allow-same-origin"></iframe><div id="pan-shield" class="pan-shield" hidden></div></div></div></div><div class="bottom"><span id="status">Kaynak denetleniyor</span> · <span id="unsaved">Değişiklik yok</span></div></main>
 <aside class="right"><h2>Özellikler</h2>
 <div class="panel" id="selection-tools" hidden><strong id="selection-summary" aria-live="polite"></strong>
@@ -204,8 +229,8 @@ function setZoom(value){
 $('zoom').onchange=function(){setZoom(this.value==='custom'?zoomLevel:this.value)};
 $('zoom-in').onclick=function(){setZoom([.25,.4,.5,.75,1,1.25].find(function(x){return x>zoomLevel+.025})||1.25)};
 $('zoom-out').onclick=function(){setZoom([1.25,1,.75,.5,.4,.25,.18].find(function(x){return x<zoomLevel-.025})||.18)};
-$('focus').onclick=function(){var active=$('workspace').classList.toggle('focus-mode');$('focus').setAttribute('aria-pressed',String(active));$('focus').textContent=active?'⛶ Panelleri aç':'⛶ Odak';if(zoomMode==='fit')requestAnimationFrame(function(){setZoom('fit')})};
-$('hand').onclick=function(){handMode=!handMode;$('pan-shield').hidden=!handMode;$('frame').classList.toggle('hand',handMode);$('hand').setAttribute('aria-pressed',String(handMode));$('hand').textContent=handMode?'✋ Kaydırma açık':'✋ El'};
+$('focus').onclick=function(){var active=$('workspace').classList.toggle('focus-mode');$('focus').setAttribute('aria-pressed',String(active));$('focus').textContent=active?'⛶ Panelleri göster':'⛶ Odak modu';if(zoomMode==='fit')requestAnimationFrame(function(){setZoom('fit')})};
+$('hand').onclick=function(){handMode=!handMode;$('pan-shield').hidden=!handMode;$('frame').classList.toggle('hand',handMode);$('hand').setAttribute('aria-pressed',String(handMode));$('hand').textContent='✥'};
 $('pan-shield').addEventListener('pointerdown',function(e){if(!handMode||e.button!==0)return;var c=$('canvas'),sx=e.clientX,sy=e.clientY,ox=c.scrollLeft,oy=c.scrollTop;e.target.setPointerCapture(e.pointerId);
  function move(v){c.scrollLeft=ox+sx-v.clientX;c.scrollTop=oy+sy-v.clientY}
  function up(){e.target.removeEventListener('pointermove',move);e.target.removeEventListener('pointerup',up)}
