@@ -162,3 +162,10 @@ test("canonical artwork can be repositioned and proportionally resized, not repl
  assert.match(portableSource,/identityGuard\(el,e\)/);
  assert.ok(doc('IMG','anything',true).closest('.logo-foot'));
 });
+
+test("max-width escape hatch permits only safe none value on author-requested resize",()=>{
+ const s=fresh();s.edits["0:2"].styles["max-width"]="none";
+ assert.equal(codec.validateState(s,5).edits["0:2"].styles["max-width"],"none");
+ s.edits["0:2"].styles["max-width"]="url(javascript:unsafe)";
+ assert.throws(()=>codec.validateState(s,5),/max-width/);
+});
