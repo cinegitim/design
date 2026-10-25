@@ -26,7 +26,7 @@ def design_catalog(paths):
         return re.sub(r"[-_]+", " ", value).title()
     for p in sorted(set(paths)):
         if not p.startswith("docs/"): continue
-        m = re.match(r"^docs/(.+?)/(source|editable)/([^/]+\\.html)$", p, re.I)
+        m = re.match(r"^docs/(.+?)/(source|editable)/([^/]+\.html)$", p, re.I)
         if m:
             key, filename = m.group(1), m.group(3)
             variant = "-plates" if filename.lower().endswith("-plate.html") else ""
@@ -36,14 +36,14 @@ def design_catalog(paths):
                 title=label(key.split("/")[-1]) + (" · Plakalar" if variant else ""),
                 family=key.split("/")[0],kind="html",pages=[]))
             entry["pages"].append(p[5:]);continue
-        if re.search(r"\\.(png|jpe?g|webp|svg)$", p, re.I):
+        if re.search(r"\.(png|jpe?g|webp|svg)$", p, re.I):
             folder=p[5:].rsplit("/",1)[0] if "/" in p[5:] else "root"
             images.setdefault(folder,[]).append(p[5:]);continue
-        if re.search(r"\\.html$",p,re.I) and not re.search(r"(?:^|/)(index|review|legacy)\\.html$",p,re.I) and re.search(r"/(rollup|banners|typography|applications|social|poster|flyer|design)",p,re.I):
+        if re.search(r"\.html$",p,re.I) and not re.search(r"(?:^|/)(index|review|legacy)\.html$",p,re.I) and re.search(r"/(rollup|banners|typography|applications|social|poster|flyer|design)",p,re.I):
             single.append(p[5:])
     entries=list(grouped.values())
     for p in single:
-        entries.append(dict(id=slug(re.sub(r"\\.html$","",p,flags=re.I)),title=label(re.sub(r"\\.html$","",p.rsplit("/",1)[-1],flags=re.I)),family=p.split("/")[0],kind="html",pages=[p]))
+        entries.append(dict(id=slug(re.sub(r"\.html$","",p,flags=re.I)),title=label(re.sub(r"\.html$","",p.rsplit("/",1)[-1],flags=re.I)),family=p.split("/")[0],kind="html",pages=[p]))
     for folder,items in images.items():
         items.sort()
         for j in range(0,len(items),25):
