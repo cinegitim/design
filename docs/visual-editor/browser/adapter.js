@@ -19,7 +19,7 @@ function escapeAttr(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quo
 function normalize(source,url,kind){
  if(!/^https?:\/\//.test(url))throw Error('Kaynak URL geçersiz');
  var media=/\.(png|jpe?g|webp|svg)(?:[?#]|$)/i.test(url);
- if(kind==='image'||media){
+ if((kind==='image'||media)&&!url.toLowerCase().split(/[?#]/)[0].endsWith('.svg')){
   var dim=dimensions(source||'',kind),ext=url.split(/[?#]/)[0].split('.').pop().toLowerCase();
   // Image originals are preserved as a single editable object; rasterized text has no recoverable text layers.
   return{html:'<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;width:'+dim.width+'px;height:'+dim.height+'px}.slide{position:relative;width:'+dim.width+'px;height:'+dim.height+'px;overflow:hidden}img.photo{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:contain}</style></head><body><div class="slide"><img class="photo" alt="Orijinal tasarım" src="'+escapeAttr(url)+'"></div></body></html>',width:dim.width,height:dim.height,mode:'whole-image',format:ext}
@@ -29,7 +29,7 @@ function normalize(source,url,kind){
  var meta=d.createElement('base');meta.href=url;d.head.insertBefore(meta,d.head.firstChild);
  var slide=d.querySelector('.slide');
  var embeddedSVG=d.body.querySelector('svg');
- var dims=dimensions(source,'html');
+ var dims=dimensions(source,embeddedSVG?'image':'html');
  if(!slide){
   slide=d.createElement('div');slide.className='slide';
   slide.style.cssText='position:relative;width:'+dims.width+'px;height:'+dims.height+'px;overflow:hidden';
