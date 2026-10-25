@@ -158,7 +158,7 @@ test("artboard has a real pasteboard and selection can leave its edges",()=>{
  assert.match(html,/PASTEBOARD=320/);
  assert.match(html,/function installPasteboard\(/);
  assert.match(html,/\.slide\{margin:'\+PASTEBOARD\+'px!important;overflow:visible!important/);
- assert.match(html,/\(1080\+PASTEBOARD\*2\)/);
+ assert.match(html,/\(DESIGN_W\+PASTEBOARD\*2\)/);
  assert.match(html,/gridTemplateColumns='25px '/);
 });
 test("compact independent side panels with searchable layer list",()=>{
