@@ -2,7 +2,7 @@
    Pure helpers; no network calls, no remote writes, no paid services. */
 (function(root) {
 "use strict";
-var SELECTOR='h1,h2,h3,p,.eyebrow,.dek,.photo,.country-line,.country-grid b,.country-list span,.options span,.cta-pill,.pathways span,.folio,.logo-foot,.cover-rule,.question-bottom,.question-photo,img';
+var SELECTOR='h1,h2,h3,p,.eyebrow,.dek,.photo,.country-line,.country-grid b,.country-list span,.options span,.cta-pill,.pathways span,.folio,.logo-foot,.cover-rule,.question-bottom,.question-photo,img,[data-browser-editable]';
 var COLORS={paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'};
 var ALLOWED_STYLES={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'height':1,'margin':1,'font-size':1,'font-weight':1,'letter-spacing':1,'line-height':1,'text-align':1,'opacity':1,'object-fit':1,'object-position':1,'border-radius':1,'z-index':1,'visibility':1,'display':1,'background-color':1,'max-width':1,'font-family':1};
 var ALLOWED_MODES={inherit:1,paper:1,ink:1,red:1,direct:1};
@@ -95,20 +95,20 @@ function state(input,maxPages) {
  });
  return{colors:colors,edits:edits,groups:groups};
 }
-function archive(product,versions,current) {
+function archive(product,versions,current,brand) {
  if(!SLUG.test(product))err('Geçersiz ürün');
  if(!Array.isArray(versions)||versions.length>25)err('Çok fazla sürüm');
  var out=versions.map(function(v){
    if(!plain(v)||!Number.isInteger(v.version)||v.version<2||v.version>26)err('Geçersiz sürüm numarası');
    return{version:v.version,note:String(v.note||'').slice(0,140),time:String(v.time||''),state:state(v.state,25)};
  });
- var result={format:'brandstudio-portable',schema:2,brand:'asyada-egitim',product:product,exportedAt:new Date().toISOString(),versions:out,current:state(current,25)};
+ var result={format:'brandstudio-portable',schema:2,brand:brand||'asyada-egitim',product:product,exportedAt:new Date().toISOString(),versions:out,current:state(current,25)};
  if(JSON.stringify(result).length>16000000)err('Arşiv 16 MB sınırını aşıyor');
  return result;
 }
-function parse(input,product,pages) {
+function parse(input,product,pages,brand) {
  if(!plain(input)||input.format!=='brandstudio-portable'||input.schema!==2)err('Bu dosya bir Brandstudio sürüm arşivi değil');
- if(input.brand!=='asyada-egitim'||input.product!==product)err('Arşiv farklı bir marka veya ürüne ait');
+ if(input.brand!==(brand||'asyada-egitim')||input.product!==product)err('Arşiv farklı bir marka veya ürüne ait');
  if(!Array.isArray(input.versions)||input.versions.length>25)err('Geçersiz sürüm sayısı');
  if(JSON.stringify(input).length>16000000)err('Arşiv 16 MB sınırını aşıyor');
  var seen={};
@@ -132,7 +132,7 @@ function applyText(el,segments){
  parts.forEach(function(part,i){part.nodeValue=segments[i]});
 }
 function locked(el){return false} // Placement, typography and folio text are all editable.
-function identityArtwork(el){return el.tagName==='IMG'&&(el.hasAttribute(LOGO_MARKER)||!!el.closest('.logo-foot'))}
+function identityArtwork(el){return (el.tagName==='IMG'&&(el.hasAttribute(LOGO_MARKER)||!!el.closest('.logo-foot')))||el.hasAttribute('data-canonical-id')||el.id==='canonical-lockup'}
 function identityGuard(el,e){
  if(!identityArtwork(el))return;
  if(e.image!==undefined||e.segments!==undefined||e.mode&&e.mode!=='inherit')err('Onaylı logonun içeriği, kaynağı ve rengi değiştirilemez');
@@ -163,7 +163,10 @@ function detachLogo(doc){
 function fontCSS(sourceUrl) {
  // All URLs point to already-published static assets in this repository.
  var src=new URL(sourceUrl,typeof location!=='undefined'?location.href:'https://cinegitim.github.io/design/instagram/carousel-01-v3/source/01.html');
- var docs=new URL('../../../',src);
+ var docs=new URL(src.href);
+ var cat=src.pathname.match(/^(.*?\/)(?:instagram|cin-egitim|asyada-egitim|asya-egitim|social-covers|asyada-seal|review|identity|cloud|figma|archive)\//);
+ if(cat)docs.pathname=cat[1];else docs=new URL('../../../',src);
+ docs.search='';docs.hash='';
  function asset(path){return new URL(path,docs).href}
  return [
   "@font-face{font-family:Jost;src:url('"+asset('instagram/carousel-01-v3/assets/Jost-VF.ttf')+"') format('truetype');font-weight:100 900;font-display:swap}",
