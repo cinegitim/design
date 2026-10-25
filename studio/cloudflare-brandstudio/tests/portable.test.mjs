@@ -129,7 +129,7 @@ test("photo patch is only permitted on normal img nodes, not locked identity",()
  const attrs={},img={tagName:"IMG",classList:{contains:()=>false},closest:()=>null,
   setAttribute(k,v){attrs[k]=v},style:{setProperty(){}}};
  const el={tagName:"DIV",classList:{contains:()=>false},closest:()=>null,style:{setProperty(){}}};
- assert.match(portableSource,/if\(el\.tagName!=='IMG'\)err/);
+ assert.match(portableSource,/if\(el\.tagName!=='IMG'&&el\.localName!=='image'\)err/);
  assert.match(portableSource,/identityGuard\(el,edit\)/);
  assert.doesNotMatch(portableSource,/eval\(/);
  assert.ok(uri.startsWith("data:image/webp;base64,"));
