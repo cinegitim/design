@@ -224,3 +224,12 @@ test("safe, undoable layer deletion roundtrips in archives and only permits disp
   assert.throws(()=>codec.validateState(x,5),/display/);
  }
 });
+
+test("approved logo can be hidden as a layer without allowing SVG replacement",()=>{
+ const logoEdit={styles:{display:"none"},mode:"inherit"};
+ const s=fresh();s.edits["0:5"]=logoEdit;
+ assert.equal(codec.validateState(s,5).edits["0:5"].styles.display,"none");
+ assert.match(portableSource,/var allowed=\{[^}]*'display':1/);
+ const unsafe=fresh();unsafe.edits["0:5"]={styles:{display:"none"},mode:"direct",color:"#112233"};
+ assert.match(portableSource,/Onaylı logonun içeriği, kaynağı ve rengi değiştirilemez/);
+});
