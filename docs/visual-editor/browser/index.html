@@ -49,6 +49,23 @@ input[type=text],input[type=number],select{width:100%;background:#0c1420;color:w
 .context-menu button:disabled{opacity:.4;cursor:not-allowed}.context-menu hr{border:0;border-top:1px solid #32475d;margin:4px}
 .primary-properties{border-color:#d8ad78;background:#1b2735}.primary-properties h2{color:#ffd6a5}
 .coordinate-label{font:10px system-ui;color:#bed0dd}
+#workspace.left-closed>aside:first-child,#workspace.right-closed>aside.right{display:none}
+#workspace.left-closed{grid-template-columns:minmax(0,1fr) 350px}
+#workspace.right-closed{grid-template-columns:265px minmax(0,1fr)}
+#workspace.left-closed.right-closed{grid-template-columns:minmax(0,1fr)}
+.sidebar-toggle[aria-expanded="false"]{background:#2f4054;color:#ffc48d}
+.sidebar-search{width:100%;margin:8px 0 10px;background:#0c1420;color:#fff;border:1px solid var(--line);border-radius:8px;padding:9px}
+.compact-bar{display:flex;gap:5px;align-items:center;justify-content:space-between}
+.compact-bar h2{margin:0}
+details.inspector-details{border:1px solid var(--line);background:#111b29;border-radius:9px;margin:9px 0}
+details.inspector-details>summary{cursor:pointer;padding:10px 12px;font-size:12px;font-weight:650;color:#f0dec6}
+details.inspector-details>.panel{border:0;margin:0;padding-top:2px;background:transparent}
+.layer{cursor:grab;display:flex;gap:7px;align-items:center}.layer.dragging-layer{opacity:.5}.layer.drop-target{border-color:#ffc48d;box-shadow:inset 0 2px #ffc48d}
+.layer .grip{font-size:13px;color:#9fb3c9}.layer .layer-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#layer-path{display:block;font-size:12px;font-weight:650;color:#f8d4a5;margin:0 0 12px}
+#copy-tools .small,.photo-hint:not(#photo-status){display:none}
+[contenteditable="true"]:focus{outline:2px solid #ddae70!important;outline-offset:2px;caret-color:#ed9b46}
+
 
 @media(min-width:1150px){.layout{grid-template-columns:265px minmax(0,1fr) 350px}}
 
@@ -65,11 +82,11 @@ dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;
 [hidden]{display:none!important}@media(max-width:990px){.layout{grid-template-columns:230px 1fr}aside.right{grid-column:1/-1;border-top:1px solid var(--line)}}@media(max-width:650px){.layout{display:block;height:auto;min-height:0}.center{min-height:670px}.canvas{min-height:500px;max-height:600px}.layers{max-height:180px}}
 </style></head><body>
 <header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><a href="../">← Visual Editor</a></div></header>
-<div class="layout" id="workspace"><aside><h2>Katmanlar</h2><p class="small">Fotoğraf ve yazılar ilişkili başlıklarda gösterilir. Logo, bant ve dipnot taşınabilir; onaylı logo içeriği korunur.</p><div class="controls"><button class="btn" id="groups-open">Tümünü aç</button><button class="btn" id="groups-close">Tümünü kapat</button></div><div id="layers" class="layers"></div>
-<div class="panel"><h2>Global renkler</h2><p class="small">Bağlı renkler aynı anda değişir. Özel renk verdiğin nesne etkilenmez.</p>
-<div class="swatches"><label>Krem<input type="color" id="paper" value="#f7f3e9"></label><label>Koyu<input type="color" id="ink" value="#1d2027"></label><label>Kırmızı<input type="color" id="red" value="#bd2120"></label></div></div>
-<div class="notice">Kaydettiğin sürümler <strong>bu tarayıcıda</strong> saklanır. İstersen klasör seçerek ayrıca <code>versions/v2</code>, <code>versions/v3</code> dosyalarını Mac'ine yazdırabilirsin. Sunucuya veri gönderilmez.</div></aside>
-<main class="center"><div class="toolbar"><button class="btn" id="prev">←</button><span id="count" class="badge"></span><button class="btn" id="next">→</button><button class="btn" id="undo" disabled title="Geri al · Cmd/Ctrl+Z (tuvalde de çalışır)">↶ Geri al</button><button class="btn" id="redo" disabled title="Yeniden yap · Cmd/Ctrl+Shift+Z">↷ Yeniden yap</button>
+<div class="layout" id="workspace"><aside><div class="compact-bar"><h2>Katmanlar</h2><div class="controls"><button class="btn" id="groups-open" title="Tümünü aç">＋</button><button class="btn" id="groups-close" title="Tümünü kapat">−</button></div></div>
+<input id="layer-search" class="sidebar-search" type="search" placeholder="Katman ara…" aria-label="Katmanlarda ara">
+<div id="layers" class="layers"></div>
+<details class="inspector-details"><summary>Renkler</summary><div class="panel"><div class="swatches"><label>Krem<input type="color" id="paper" value="#f7f3e9"></label><label>Koyu<input type="color" id="ink" value="#1d2027"></label><label>Kırmızı<input type="color" id="red" value="#bd2120"></label></div></div></details></aside>
+<main class="center"><div class="toolbar"><button class="btn sidebar-toggle" id="toggle-left" aria-expanded="true" title="Katmanları aç/kapat">☰ Katmanlar</button><button class="btn sidebar-toggle" id="toggle-right" aria-expanded="true" title="Özellikleri aç/kapat">◫ Özellikler</button><button class="btn" id="prev">←</button><span id="count" class="badge"></span><button class="btn" id="next">→</button><button class="btn" id="undo" disabled title="Geri al · Cmd/Ctrl+Z (tuvalde de çalışır)">↶ Geri al</button><button class="btn" id="redo" disabled title="Yeniden yap · Cmd/Ctrl+Shift+Z">↷ Yeniden yap</button>
 <div class="zoom-controls"><button type="button" class="btn" id="zoom-out" aria-label="Küçült">−</button><select id="zoom" aria-label="Tuval yakınlaştırma"><option value="fit">Sığdır</option><option value="0.25">25%</option><option value="0.4">40%</option><option value="0.5">50%</option><option value="0.75">75%</option><option value="1">100%</option><option value="1.25">125%</option><option value="custom" hidden>Özel</option></select><button type="button" class="btn" id="zoom-in" aria-label="Büyüt">+</button></div>
 <button class="btn" id="hand" aria-pressed="false" title="Eli kullanarak tuvali kaydır">✋ El</button><button class="btn" id="focus" aria-pressed="false" title="Kenar panelleri gizle">⛶ Odak</button><label class="small"><input type="checkbox" id="snap" checked> 8 px ızgara</label><button class="btn primary" id="save">Yeni sürüm kaydet</button><button class="btn" id="export">Sürüm arşivini indir</button><button class="btn" id="import">Arşivi içe aktar</button><input type="file" id="importFile" accept=".json,application/json" hidden></div>
 <nav class="slide-tabs" aria-label="Slaytlar" id="slide-tabs"></nav><div class="canvas" id="canvas"><div class="ruler-stage" id="ruler-stage"><div id="ruler-corner" aria-hidden="true"></div><canvas id="ruler-x" aria-label="Tuvalin üst dış kenarındaki yatay cetvel"></canvas><canvas id="ruler-y" aria-label="Tuvalin sol dış kenarındaki dikey cetvel"></canvas><div class="frame" id="frame"><iframe id="preview" title="Düzenlenebilir karusel" sandbox="allow-same-origin"></iframe><div id="pan-shield" class="pan-shield" hidden></div></div></div></div><div class="bottom"><span id="status">Kaynak denetleniyor</span> · <span id="unsaved">Değişiklik yok</span></div></main>
@@ -79,15 +96,16 @@ dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;
 <div class="group-tools"><button class="btn" id="link-group" type="button">Grup oluştur</button><button class="btn" id="unlink-group" type="button">Grubu çöz</button></div>
 <div id="multi-align" hidden><h3 style="font-size:12px;margin:13px 0 7px">Birlikte hizala</h3>
 <div class="quick-align"><button class="btn" data-align="left" title="Sola hizala">⇤</button><button class="btn" data-align="center" title="Yatay ortala">↔</button><button class="btn" data-align="right" title="Sağa hizala">⇥</button><button class="btn" data-align="top" title="Üste hizala">↑</button><button class="btn" data-align="middle" title="Dikey ortala">↕</button><button class="btn" data-align="bottom" title="Alta hizala">↓</button></div></div></div>
-<div id="blank" class="notice">Düzenlemek için bir katmana tıkla. Sağ tıklayarak işlem menüsünü açabilirsin.</div><div id="props" hidden>
-<div class="panel primary-properties"><h2>Boyut ve konum</h2><span id="label" class="badge"></span><div class="two">
-<div class="field"><label>Genişlik (px)</label><input type="number" id="w" min="20" max="5000"></div>
-<div class="field"><label>Yükseklik (px)</label><input type="number" id="height" min="1" max="5000"></div>
-<div class="field"><label>X (px)</label><input type="number" id="x"></div>
-<div class="field"><label>Y (px)</label><input type="number" id="y"></div>
-<div class="field"><label>Punto (px)</label><input type="number" id="fs" min="8" max="260"></div>
-<div class="field"><label>Katman sırası</label><input type="number" id="zindex" min="-30" max="30"></div>
-</div><p class="small">Köşe ve kenar tutamaçlarıyla da boyutlandırabilirsin.</p></div>
+<div id="blank" class="notice">Katman seç</div><div id="props" hidden>
+<div class="panel primary-properties"><span id="layer-path"></span><span id="label" hidden></span><div class="two">
+<div class="field"><label>Font</label><select id="font"><option value="Jost">Jost</option><option value="Arial">Arial</option><option value="Georgia">Georgia</option><option value="Inter">Inter</option></select></div>
+<div class="field"><label>Punto</label><input type="number" id="fs" min="8" max="260"></div>
+<div class="field"><label>X</label><input type="number" id="x"></div>
+<div class="field"><label>Y</label><input type="number" id="y"></div>
+<div class="field" hidden><label>Genişlik</label><input type="number" id="w" min="20" max="5000"></div>
+<div class="field" hidden><label>Yükseklik</label><input type="number" id="height" min="1" max="5000"></div>
+<div class="field" hidden><label>Katman sırası</label><input type="number" id="zindex" min="-30" max="30"></div>
+</div></div>
 <div class="panel" id="band-tools" hidden><h2>Logo bandı</h2><div class="field"><label>Bant rengi</label><input type="color" id="band-color" value="#1d2027"></div><p class="small">Bant serbestçe düzenlenebilir; logo SVG'si değiştirilmez.</p></div>
 <div class="panel"><h2>Hizalama</h2><div class="quick-align">
 <button type="button" class="btn" data-align="left" title="Sola hizala">⇤</button><button type="button" class="btn" data-align="center" title="Yatay ortala">↔</button><button type="button" class="btn" data-align="right" title="Sağa hizala">⇥</button>
@@ -97,7 +115,7 @@ dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;
 <div class="field"><label>Köşe yuvarlaklığı (px)</label><input type="number" id="radius" min="0" max="600"></div>
 </div></div>
 <div class="panel" id="copy-tools" hidden><h2>Metin içeriği</h2>
-<p class="small">Vurgular ve satır sonları korunur. Her metin parçasını ayrı düzenle; logo ve dipnot kilitlidir.</p>
+
 <div class="text-segments" id="text-fields"></div></div>
 <div class="panel" id="text-tools"><h2>Tipografi · Jost</h2><div class="two">
 <div class="field"><label>Kalınlık</label><input type="number" id="weight" min="100" max="900" step="50"></div>
