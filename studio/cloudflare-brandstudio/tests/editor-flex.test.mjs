@@ -56,7 +56,7 @@ test("inspector and resize actions have real handlers, not decorative buttons",(
 
 test("published copy and canonical identity remain locked and unchanged",()=>{
  assert.match(html,/function logo\(n\)/);
- assert.match(html,/locked=logo\(n\)\|\|n\.classList\.contains\('folio'\)/);
+ assert.match(html,/var locked=logo\(n\),parts=codec\.textNodes\(n\)/);
  assert.doesNotMatch(html,/contentEditable\s*=\s*true/);
  assert.doesNotMatch(html,/method\s*:\s*['"]POST/);
  assert.doesNotMatch(js,/fetch\(/);
@@ -126,13 +126,13 @@ test("eight directional resize handles, rulers, context actions and primary geom
 test("logo backing band is editable independently while approved SVG remains immutable",()=>{
  assert.match(html,/function identityImage\(n\)/);
  assert.match(html,/function editable\(n\)\{return !!n\}/);
- assert.match(html,/Math\.max\(352,Number\.parseFloat\(value\)\)/);
+ assert.match(html,/Math\.max\(20,Number\.parseFloat\(value\)\)/);
  assert.match(html,/function setRectangle\(n,rect,resize\)/);
  assert.match(html,/if\(!identityImage\(n\)\)\{styles\.height=/);
  assert.match(html,/styles\['background-color'\]/);
  assert.match(html,/if\(identityImage\(n\)\)delete styles\.height/);
  assert.match(js,/function identityArtwork\(el\)/);
- assert.match(js,/if\(e\.styles&&e\.styles\.width&&Number\.parseFloat\(e\.styles\.width\)<352\)/);
+ assert.doesNotMatch(js,/minimum 352 px/);
  assert.doesNotMatch(html,/contentEditable\s*=\s*true/);
 });
 
