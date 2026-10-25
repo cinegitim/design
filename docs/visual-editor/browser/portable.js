@@ -171,7 +171,7 @@ function fontCSS(sourceUrl) {
   "@font-face{font-family:Manrope;src:url('"+asset('cin-egitim/social-avatars-02/assets/manrope-normal-latin-ext.woff2')+"') format('woff2');font-weight:400 800;font-display:swap;unicode-range:U+0100-02FF,U+1E00-1EFF}",
   "@font-face{font-family:SourceSerif;src:url('"+asset('cin-egitim/social-avatars-02/assets/source-serif-4-normal-latin.woff2')+"') format('woff2');font-weight:400 700;font-display:swap}",
   "@font-face{font-family:SourceSerif;src:url('"+asset('cin-egitim/social-avatars-02/assets/source-serif-4-normal-latin-ext.woff2')+"') format('woff2');font-weight:400 700;font-display:swap;unicode-range:U+0100-02FF,U+1E00-1EFF}"
- ].join('\\n')+'\\n'
+ ].join('')
 }
 function installFonts(doc,sourceUrl){
  if(doc.querySelector('style[data-brandstudio-fonts]'))return;
