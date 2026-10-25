@@ -42,7 +42,8 @@ function fromPaths(paths){
     addMedia('instagram/profile-photo',p);return
    }
   }
-  if(/^docs\/social-covers\/assets\/(?:facebook|instagram|linkedin|x-profile|youtube)[^/]+\.(?:png|jpe?g|webp|svg)$/i.test(p))
+  var covers=p.match(/^docs\/social-covers\/(assets|[a-z0-9-]+)\/([^/]+\.(?:png|jpe?g|webp|svg))$/i);
+  if(covers&&(covers[1]!=='assets'||/^(?:facebook|instagram|linkedin|x-profile|youtube)/i.test(covers[2])))
    addMedia('social-covers/cover-graphics',p);
  });
  var records=Array.from(works.values());
