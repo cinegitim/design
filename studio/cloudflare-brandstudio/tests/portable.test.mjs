@@ -169,3 +169,11 @@ test("max-width escape hatch permits only safe none value on author-requested re
  s.edits["0:2"].styles["max-width"]="url(javascript:unsafe)";
  assert.throws(()=>codec.validateState(s,5),/max-width/);
 });
+
+test("font-family export safely round-trips only approved families",()=>{
+ const d=fresh();d.edits["0:2"].styles["font-family"]="Georgia";
+ const archive=codec.makeArchive("carousel-01-v3",[],d);
+ assert.equal(codec.parseArchive(archive,"carousel-01-v3",5).current.edits["0:2"].styles["font-family"],"Georgia");
+ d.edits["0:2"].styles["font-family"]="serif;url(evil)";
+ assert.throws(()=>codec.validateState(d,5),/font/);
+});

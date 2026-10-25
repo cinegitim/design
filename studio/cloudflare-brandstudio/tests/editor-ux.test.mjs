@@ -153,3 +153,39 @@ test("selection frame scales selected objects and descendants with Shift",()=>{
  assert.match(html,/var size=Math\.max\(8,Math\.min\(260,/);
  assert.match(html,/handle\.hidden=!list\.length/);
 });
+
+test("artboard has a real pasteboard and selection can leave its edges",()=>{
+ assert.match(html,/PASTEBOARD=320/);
+ assert.match(html,/function installPasteboard\(/);
+ assert.match(html,/\.slide\{margin:'\+PASTEBOARD\+'px!important;overflow:visible!important/);
+ assert.match(html,/\(1080\+PASTEBOARD\*2\)/);
+ assert.match(html,/gridTemplateColumns='25px '/);
+});
+test("compact independent side panels with searchable layer list",()=>{
+ for(const id of ["toggle-left","toggle-right","layer-search","layer-path","font","fs","x","y"])
+  assert.match(html,new RegExp('id="'+id+'"'));
+ assert.doesNotMatch(html,/Fotoğraf ve yazılar ilişkili başlıklarda gösterilir/);
+ assert.doesNotMatch(html,/Kaydettiğin sürümler/);
+ assert.match(html,/function setupSidebars\(/);
+ assert.match(html,/function syncInspectorSections\(/);
+ assert.match(html,/\$\('layer-search'\)\.oninput=function\(\)\{layers\(\)\}/);
+ const start=html.indexOf('<div class="panel primary-properties">'),end=html.indexOf('</div></div>',start);
+ const first=html.slice(start,end);
+ assert.ok(first.indexOf('id="font"')<first.indexOf('id="fs"'));
+ assert.ok(first.indexOf('id="fs"')<first.indexOf('id="x"'));
+ assert.ok(first.indexOf('id="x"')<first.indexOf('id="y"'));
+});
+test("layer drag reorder persists z-index, supports undo and shows read-only path",()=>{
+ for(const token of ["function moveLayer(source,target)","b.draggable=true","dragstart","dragover","drop","moveLayer(source,item.id)","entry.styles['z-index']=String(index-30)","checkpoint();","function layerPath(i)"])
+  assert.ok(html.includes(token),"Missing stacking control "+token);
+});
+test("inline click-to-type caret saves only valid segments, with undo",()=>{
+ for(const token of ["function beginInlineText(n,x,y)","function endInlineText()","doc.caretRangeFromPoint","n.setAttribute('contenteditable','true')","n.addEventListener('beforeinput'","n.addEventListener('input'","codec.validateState(draft,pages.length)","beginInlineText(n,e.clientX,e.clientY)"])
+  assert.ok(html.includes(token),"Missing inline text behavior "+token);
+ assert.match(html,/ev\.target\?\.isContentEditable/);
+});
+test("Shift type scaling and stationary logo during band movement",()=>{
+ assert.match(html,/\(ev\.shiftKey\|\|members\.length>1\)/);
+ assert.match(html,/var stationary=snapshots\.filter/);
+ assert.match(html,/stationary\.forEach\(function\(item\)\{setRectangle\(item\.node,item\.p,false\)\}/);
+});
