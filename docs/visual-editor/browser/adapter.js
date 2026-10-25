@@ -45,7 +45,7 @@ function normalize(source,url,kind){
  var candidates=Array.from(slide.querySelectorAll(SELECTABLE+',svg text,svg image,svg rect'));
  var n=0;
  candidates.forEach(function(el){
-  if(n>=480)return;
+  if(n>=480||el.tagName.toLowerCase()==='svg')return;
   if(el.closest('[data-canonical-id],#canonical-lockup')||el.matches('svg rect')&&!el.hasAttribute('data-copy'))return;
   if(el.matches('svg image')&&el.getAttribute('id')==='canonical-lockup')return;
   if(el.closest('[data-browser-editable]')&&el.tagName.toLowerCase()!=='img')return;
