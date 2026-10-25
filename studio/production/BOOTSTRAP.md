@@ -36,6 +36,10 @@ On an actual Brandstudio creation/refinement/application request:
 8. Proceed using the existing brand-studio skill and publishing workflow. This
    bootstrap does not replace technical checks or required human creative gates.
 
+## Browser-editable delivery for all future artifacts
+
+Deliver new design sources as real HTML/CSS/SVG, preferably `docs/<category>/<product>/source/*.html` or `editable/*.html`. Do not omit the editable sources from published deliverables. The public browser catalog at `docs/visual-editor/browser/` discovers these paths, plus raster/vector output files, and can open them independently of executor. Keep authentic editable text/photo/illustration layers when available; a finished PNG can only be replaced, moved, resized or overlaid as a whole image. Original brand identity and approval requirements continue to apply. Publishing does not automatically save the user's browser revisions to GitHub.
+
 ## Style-family selection (independent from category)
 
 Select **brand → category → optional style family → optional preset → validated variation overrides**. A style family is one reusable visual grammar, *not* a specific layout/template; multiple preset combinations retain the same `style_id`. When the user selects a style, load `brands/<brand>/styles/<category>/<style_id>/style.json` plus its README after validating exact brand/category scope. Never choose a similarly named sibling-brand style or infer a style merely from filename timestamps. The read-only `studio/production/style_catalog.py` registry and router `--list-styles`, `--style`, `--preset`, `--variation AXIS=VALUE` arguments expose choices for a future UI. Invalid IDs or options fail; absent style remains unspecified (not silently approved).

@@ -158,7 +158,7 @@ test("artboard has a real pasteboard and selection can leave its edges",()=>{
  assert.match(html,/PASTEBOARD=320/);
  assert.match(html,/function installPasteboard\(/);
  assert.match(html,/\.slide\{margin:'\+PASTEBOARD\+'px!important;overflow:visible!important/);
- assert.match(html,/\(1080\+PASTEBOARD\*2\)/);
+ assert.match(html,/\(DESIGN_W\+PASTEBOARD\*2\)/);
  assert.match(html,/gridTemplateColumns='25px '/);
 });
 test("compact independent side panels with searchable layer list",()=>{
@@ -208,4 +208,49 @@ test("Backspace/Delete remove selected layers but preserve native text editing",
  assert.match(html,/filter\(function\(item\)\{return !isDeleted\(item\.id\)\}\)/);
  assert.match(html,/data-action="delete"/);
  assert.match(html,/if\(action==='delete'\)\{deleteSelection\(\);return\}/);
+});
+
+const catalogSource=fs.readFileSync(path.join(root,"docs/visual-editor/browser/catalog.js"),"utf8");
+const adapterSource=fs.readFileSync(path.join(root,"docs/visual-editor/browser/adapter.js"),"utf8");
+const catCtx={},adaptCtx={};vm.runInNewContext(catalogSource,catCtx);vm.runInNewContext(adapterSource,adaptCtx);
+const Catalog=catCtx.BrandstudioCatalog,Adapter=adaptCtx.BrandstudioAdapter;
+test("public catalog discovers new future HTML/SVG/raster outputs without registration",()=>{
+ const entries=Catalog.fromPaths([
+  "docs/instagram/future-campus/source/01-cover.html",
+  "docs/instagram/future-campus/source/02-life.html",
+  "docs/cin-egitim/rollup/new-banner.html",
+  "docs/social-covers/2027/new-01.png",
+  "docs/social-covers/2027/new-02.svg",
+  "docs/../private.png"
+ ]);
+ const products=Array.from(entries,r=>({id:r.id,kind:r.kind,pages:Array.from(r.pages)}));
+ assert.ok(products.some(r=>r.id==="instagram-future-campus"&&r.pages.length===2));
+ assert.ok(products.some(r=>r.id==="cin-egitim-rollup-new-banner"&&r.kind==="html"));
+ assert.ok(products.some(r=>r.kind==="image"&&r.pages.length===2));
+ assert.ok(products.every(r=>r.pages.every(p=>!p.includes(".."))));
+});
+test("snapshot lists previously produced designs and remains independent of local accounts",()=>{
+ const data=JSON.parse(fs.readFileSync(path.join(root,"docs/visual-editor/browser/catalog.json"),"utf8"));
+ assert.ok(data.length>=150,"Must cover produced assets as well as editable sources");
+ assert.ok(data.some(x=>x.id==="carousel-01-v3"&&x.pages.length===5));
+ assert.ok(data.some(x=>x.id==="instagram-tsinghua-atlas-2027"&&x.pages.length===7));
+ assert.ok(data.some(x=>x.id==="cin-egitim-rollup-rollup-design-a"&&x.pages.length===1));
+ assert.ok(data.some(x=>x.kind==="image"&&x.pages.length>1));
+ assert.equal(new Set(data.map(x=>x.id)).size,data.length);
+});
+test("browser adapter preserves each layout's own page size and wraps standalone image",()=>{
+ const banner='html, body {\n width: 850px;\n height: 2000px;\n overflow:hidden;}';
+ assert.equal(Adapter.dimensions(banner,"html").width,850);
+ assert.equal(Adapter.dimensions(banner,"html").height,2000);
+ const img=Adapter.normalize("","https://cinegitim.github.io/design/social-covers/cover-01.png","image");
+ assert.match(img.html,/<div class="slide"><img class="photo"/);
+ assert.equal(img.mode,"whole-image");
+ assert.ok(!img.html.includes("<script"));
+});
+test("browser product picker, dynamic dimensions and isolated version state are wired",()=>{
+ for(const fragment of ["id=\"catalog-search\"","id=\"catalog-select\"","src=\"catalog.js\"","src=\"adapter.js\"","function openProduct(productId)","async function sourceAt(i)","DESIGN_W","DESIGN_H","window.history.replaceState","brandstudio:browser:","await discovery.load"])
+  assert.ok(html.includes(fragment),"Missing "+fragment);
+ assert.match(html,/sourceCache\[i\]=normalized/);
+ assert.match(html,/codec\.parseArchive\(raw,slug,pages\.length,brand\)/);
+ assert.match(html,/codec\.makeArchive\(slug,allV\(\),state,brand\)/);
 });

@@ -2,9 +2,9 @@
    Pure helpers; no network calls, no remote writes, no paid services. */
 (function(root) {
 "use strict";
-var SELECTOR='h1,h2,h3,p,.eyebrow,.dek,.photo,.country-line,.country-grid b,.country-list span,.options span,.cta-pill,.pathways span,.folio,.logo-foot,.cover-rule,.question-bottom,.question-photo,img';
+var SELECTOR='h1,h2,h3,p,.eyebrow,.dek,.photo,.country-line,.country-grid b,.country-list span,.options span,.cta-pill,.pathways span,.folio,.logo-foot,.cover-rule,.question-bottom,.question-photo,img,[data-browser-editable]';
 var COLORS={paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'};
-var ALLOWED_STYLES={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'height':1,'margin':1,'font-size':1,'font-weight':1,'letter-spacing':1,'line-height':1,'text-align':1,'opacity':1,'object-fit':1,'object-position':1,'border-radius':1,'z-index':1,'visibility':1,'display':1,'background-color':1,'max-width':1,'font-family':1};
+var ALLOWED_STYLES={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'height':1,'margin':1,'font-size':1,'font-weight':1,'letter-spacing':1,'line-height':1,'text-align':1,'opacity':1,'object-fit':1,'object-position':1,'border-radius':1,'z-index':1,'visibility':1,'display':1,'background-color':1,'max-width':1,'font-family':1,'transform':1,'transform-box':1,'transform-origin':1};
 var ALLOWED_MODES={inherit:1,paper:1,ink:1,red:1,direct:1};
 var EDITOR_FONTS=['Jost','SongCJK','Manrope','SourceSerif','Hiragino Sans','Yu Gothic','Apple SD Gothic Neo','Noto Sans KR','Arial','Georgia','Inter'];
 var LOGO_MARKER='data-brandstudio-independent-logo';
@@ -33,13 +33,21 @@ function state(input,maxPages) {
    if(e.styles!==undefined&&!plain(e.styles))err('Geçersiz CSS');
    Object.keys(e.styles||{}).forEach(function(k){
      if(!ALLOWED_STYLES[k])err('İzin verilmeyen CSS özelliği');
-     var v=e.styles[k];if(typeof v!=='string'||v.length>40)err('Geçersiz CSS değeri');
+     var v=e.styles[k];if(typeof v!=='string'||v.length>(k==='transform'?110:40))err('Geçersiz CSS değeri');
      var px=/^-?[0-9]{1,5}(?:\.[0-9]{1,2})?px$/,n=Number.parseFloat(v);
      if(k==='position'){if(v!=='absolute')err('Sadece absolute position destekleniyor')}
      else if(k==='margin'){if(v!=='0')err('Geçersiz margin')}
      else if(k==='max-width'){if(v!=='none')err('Yalnızca max-width:none destekleniyor')}
      else if(k==='right'||k==='bottom'){if(v!=='auto')err('Yerleşim ankrajı yalnızca auto olabilir')}
      else if(k==='font-family'){if(!EDITOR_FONTS.includes(v))err('Geçersiz font')}
+     else if(k==='transform-box'){if(v!=='fill-box')err('Geçersiz SVG dönüşüm kutusu')}
+     else if(k==='transform-origin'){if(v!=='0 0')err('Geçersiz SVG dönüşüm odağı')}
+     else if(k==='transform'){
+       var transform=v.match(/^translate\((-?\d{1,5})px,(-?\d{1,5})px\)(?: scale\((\d{1,2}(?:\.\d{1,3})?),(\d{1,2}(?:\.\d{1,3})?)\))?$/);
+       if(!transform||Math.abs(+transform[1])>10000||Math.abs(+transform[2])>10000||
+          transform[3]&&(Number(transform[3])<.02||Number(transform[3])>40||Number(transform[4])<.02||Number(transform[4])>40))
+         err('Geçersiz SVG dönüşümü');
+     }
      else if(k==='text-align'){if(!['left','right','center','justify','start','end'].includes(v))err('Geçersiz hizalama')}
      else if(k==='background-color'){if(!HEX.test(v))err('Geçersiz arka plan rengi')}
      else if(k==='object-fit'){if(!['cover','contain','fill'].includes(v))err('Geçersiz fotoğraf uyumu')}
@@ -95,20 +103,20 @@ function state(input,maxPages) {
  });
  return{colors:colors,edits:edits,groups:groups};
 }
-function archive(product,versions,current) {
+function archive(product,versions,current,brand) {
  if(!SLUG.test(product))err('Geçersiz ürün');
  if(!Array.isArray(versions)||versions.length>25)err('Çok fazla sürüm');
  var out=versions.map(function(v){
    if(!plain(v)||!Number.isInteger(v.version)||v.version<2||v.version>26)err('Geçersiz sürüm numarası');
    return{version:v.version,note:String(v.note||'').slice(0,140),time:String(v.time||''),state:state(v.state,25)};
  });
- var result={format:'brandstudio-portable',schema:2,brand:'asyada-egitim',product:product,exportedAt:new Date().toISOString(),versions:out,current:state(current,25)};
+ var result={format:'brandstudio-portable',schema:2,brand:brand||'asyada-egitim',product:product,exportedAt:new Date().toISOString(),versions:out,current:state(current,25)};
  if(JSON.stringify(result).length>16000000)err('Arşiv 16 MB sınırını aşıyor');
  return result;
 }
-function parse(input,product,pages) {
+function parse(input,product,pages,brand) {
  if(!plain(input)||input.format!=='brandstudio-portable'||input.schema!==2)err('Bu dosya bir Brandstudio sürüm arşivi değil');
- if(input.brand!=='asyada-egitim'||input.product!==product)err('Arşiv farklı bir marka veya ürüne ait');
+ if(input.brand!==(brand||'asyada-egitim')||input.product!==product)err('Arşiv farklı bir marka veya ürüne ait');
  if(!Array.isArray(input.versions)||input.versions.length>25)err('Geçersiz sürüm sayısı');
  if(JSON.stringify(input).length>16000000)err('Arşiv 16 MB sınırını aşıyor');
  var seen={};
@@ -132,7 +140,7 @@ function applyText(el,segments){
  parts.forEach(function(part,i){part.nodeValue=segments[i]});
 }
 function locked(el){return false} // Placement, typography and folio text are all editable.
-function identityArtwork(el){return el.tagName==='IMG'&&(el.hasAttribute(LOGO_MARKER)||!!el.closest('.logo-foot'))}
+function identityArtwork(el){return (el.tagName==='IMG'&&(el.hasAttribute(LOGO_MARKER)||!!el.closest('.logo-foot')))||el.hasAttribute('data-canonical-id')||el.id==='canonical-lockup'||(el.classList?.contains('logo')&&!!el.querySelector('[data-canonical-id]'))}
 function identityGuard(el,e){
  if(!identityArtwork(el))return;
  if(e.image!==undefined||e.segments!==undefined||e.mode&&e.mode!=='inherit')err('Onaylı logonun içeriği, kaynağı ve rengi değiştirilemez');
@@ -163,7 +171,10 @@ function detachLogo(doc){
 function fontCSS(sourceUrl) {
  // All URLs point to already-published static assets in this repository.
  var src=new URL(sourceUrl,typeof location!=='undefined'?location.href:'https://cinegitim.github.io/design/instagram/carousel-01-v3/source/01.html');
- var docs=new URL('../../../',src);
+ var docs=new URL(src.href);
+ var cat=src.pathname.match(/^(.*?\/)(?:instagram|cin-egitim|asyada-egitim|asya-egitim|social-covers|asyada-seal|review|identity|cloud|figma|archive)\//);
+ if(cat)docs.pathname=cat[1];else docs=new URL('../../../',src);
+ docs.search='';docs.hash='';
  function asset(path){return new URL(path,docs).href}
  return [
   "@font-face{font-family:Jost;src:url('"+asset('instagram/carousel-01-v3/assets/Jost-VF.ttf')+"') format('truetype');font-weight:100 900;font-display:swap}",
@@ -198,8 +209,8 @@ function patch(el,edit){
  identityGuard(el,edit);
  applyText(el,edit.segments);
  if(edit.image!==undefined){
-   if(el.tagName!=='IMG')err('Fotoğraf yalnızca img katmanına uygulanabilir');
-   el.setAttribute('src',edit.image);
+   if(el.tagName!=='IMG'&&el.localName!=='image')err('Fotoğraf yalnızca görsel katmanına uygulanabilir');
+   el.setAttribute(el.localName==='image'?'href':'src',edit.image);
  }
  Object.entries(edit.styles||{}).forEach(function(p){el.style.setProperty(p[0],p[1])});
  if(edit.mode&&edit.mode!=='inherit')el.style.setProperty('color',edit.mode==='direct'?edit.color:'var(--'+edit.mode+')');
