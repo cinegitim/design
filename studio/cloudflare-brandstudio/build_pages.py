@@ -54,7 +54,8 @@ def design_catalog(paths):
             if re.fullmatch(r"profile-photo/(?:[^/]+\.(png|svg)|variants/[^/]+\.(png|svg))",m.group(1)+"/"+tail,re.I):
                 images.setdefault("instagram/profile-photo",[]).append(p[5:])
                 continue
-        if re.fullmatch(r"docs/social-covers/assets/(facebook|instagram|linkedin|x-profile|youtube)[^/]+\.(png|jpe?g|webp|svg)",p,re.I):
+        covers=re.fullmatch(r"docs/social-covers/(assets|[a-z0-9-]+)/([^/]+\.(png|jpe?g|webp|svg))",p,re.I)
+        if covers and (covers.group(1)!="assets" or re.match(r"(facebook|instagram|linkedin|x-profile|youtube)",covers.group(2),re.I)):
             images.setdefault("social-covers/cover-graphics",[]).append(p[5:])
     out = list(grouped.values())
     for p in single:
