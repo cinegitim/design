@@ -69,7 +69,7 @@ test("text editing is constrained to text nodes and rejects identity overrides",
  const s=fresh();s.edits["0:2"].segments=["".padEnd(1601,"a")];
  assert.throws(()=>codec.validateState(s,5),/metin|Metin/);
  assert.match(portableSource,/function locked\(el\)/);
- assert.match(portableSource,/if\(locked\(el\)\)err/);
+ assert.match(portableSource,/identityGuard\(el,edit\)/);
 });
 
 test("linked groups round trip in schema 2 and remain optional in older archives",()=>{
@@ -130,7 +130,7 @@ test("photo patch is only permitted on normal img nodes, not locked identity",()
   setAttribute(k,v){attrs[k]=v},style:{setProperty(){}}};
  const el={tagName:"DIV",classList:{contains:()=>false},closest:()=>null,style:{setProperty(){}}};
  assert.match(portableSource,/if\(el\.tagName!=='IMG'\)err/);
- assert.match(portableSource,/if\(locked\(el\)\)err/);
+ assert.match(portableSource,/identityGuard\(el,edit\)/);
  assert.doesNotMatch(portableSource,/eval\(/);
  assert.ok(uri.startsWith("data:image/webp;base64,"));
 });
