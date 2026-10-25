@@ -281,3 +281,10 @@ test("catalog shows actual authored work, not the typography comparison board in
  assert.equal(atlas.pages.length,2);
  assert.ok(!picked.some(x=>x.pages.some(p=>/campus\.jpg|source-originals/.test(p))));
 });
+
+test("audited SVG legacy machine-local font URL is repaired only in browser",()=>{
+ const legacy="url(/Users/artist/work/brands/example/assets/Jost-VF.ttf)";
+ assert.equal(Adapter.repairLegacyFonts(legacy),"url(../assets/Jost-VF.ttf)");
+ assert.equal(Adapter.repairLegacyFonts("url(../assets/Jost-VF.ttf)"),"url(../assets/Jost-VF.ttf)");
+ assert.equal(Adapter.repairLegacyFonts("url(/Users/artist/private/photo.jpg)"),"url(/Users/artist/private/photo.jpg)");
+});
