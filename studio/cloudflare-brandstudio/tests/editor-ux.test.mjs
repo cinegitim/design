@@ -231,11 +231,13 @@ test("public catalog discovers new future HTML/SVG/raster outputs without regist
 });
 test("snapshot lists previously produced designs and remains independent of local accounts",()=>{
  const data=JSON.parse(fs.readFileSync(path.join(root,"docs/visual-editor/browser/catalog.json"),"utf8"));
- assert.ok(data.length>=150,"Must cover produced assets as well as editable sources");
+ assert.ok(data.length>=20&&data.length<100,"Show real editable deliverables, not an uncurated folder dump");
  assert.ok(data.some(x=>x.id==="carousel-01-v3"&&x.pages.length===5));
  assert.ok(data.some(x=>x.id==="instagram-tsinghua-atlas-2027"&&x.pages.length===7));
  assert.ok(data.some(x=>x.id==="cin-egitim-rollup-rollup-design-a"&&x.pages.length===1));
  assert.ok(data.some(x=>x.kind==="image"&&x.pages.length>1));
+ assert.ok(!data.some(x=>/typography-round|direction-[a-z]/i.test(x.id)),"Review direction pages must not become projects");
+ assert.ok(data.every(x=>x.pages.every(p=>!/(?:photos-original|source-originals|\/assets\/Jost|\/qa\/)/.test(p))),"Intermediate assets must not be listed as finished work");
  assert.equal(new Set(data.map(x=>x.id)).size,data.length);
 });
 test("browser adapter preserves each layout's own page size and wraps standalone image",()=>{
