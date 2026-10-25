@@ -107,3 +107,31 @@ test("group state has undo snapshots, and group operations do not expose paid AP
  assert.match(html,/handle\.hidden=list\.length!==1/);
  assert.doesNotMatch(html,/method\s*:\s*['"]POST/);
 });
+
+test("eight directional resize handles, rulers, context actions and primary geometry tools are genuine",()=>{
+ for(const id of ["ruler-x","ruler-y","context-menu","band-color","band-tools","w","height","fs","x","y"])
+  assert.match(html,new RegExp('id="'+id+'"'));
+ assert.match(html,/function drawRulers\(/);
+ assert.match(html,/var positions=\{nw:/);
+ assert.match(html,/selectionOverlay\._handles=handles/);
+ assert.match(html,/handle\.addEventListener\('pointerdown'/);
+ assert.match(html,/setRectangle\(n,\{x:left,y:top,w:right-left,h:bottom-top\},true\)/);
+ assert.match(html,/function openContextMenu\(/);
+ assert.match(html,/doc\.addEventListener\('contextmenu'/);
+ for(const action of ["front","back","align-left","align-center","align-right","group","ungroup","reset","undo"])
+  assert.match(html,new RegExp('data-action="'+action+'"'));
+ const props=html.indexOf('<div id="props" hidden>'),width=html.indexOf('id="w"'),type=html.indexOf('id="fs"'),appearance=html.indexOf('<h2>Görünüm</h2>');
+ assert.ok(props>=0&&width>props&&width<appearance&&type<appearance);
+});
+test("logo backing band is editable independently while approved SVG remains immutable",()=>{
+ assert.match(html,/function identityImage\(n\)/);
+ assert.match(html,/function editable\(n\)\{return !!n\}/);
+ assert.match(html,/Math\.max\(352,Number\.parseFloat\(value\)\)/);
+ assert.match(html,/function setRectangle\(n,rect,resize\)/);
+ assert.match(html,/if\(!identityImage\(n\)\)styles\.height=/);
+ assert.match(html,/styles\['background-color'\]/);
+ assert.match(html,/if\(identityImage\(n\)\)delete styles\.height/);
+ assert.match(js,/function identityArtwork\(el\)/);
+ assert.match(js,/if\(e\.styles&&e\.styles\.width&&Number\.parseFloat\(e\.styles\.width\)<352\)/);
+ assert.doesNotMatch(html,/contentEditable\s*=\s*true/);
+});
