@@ -519,7 +519,7 @@ function updateOverlay(){
 
 
 function fillAdvanced(n){
- var st=doc.defaultView.getComputedStyle(n),p=pos(n),e=state.edits[page+':'+sel]||{styles:{}},styles=e.styles||{},isPhoto=n.tagName==='IMG'&&!identityImage(n),locked=!editable(n),logoArt=identityImage(n),band=n.classList.contains('logo-foot');
+ var st=doc.defaultView.getComputedStyle(n),p=pos(n),e=state.edits[page+':'+sel]||{styles:{}},styles=e.styles||{},isPhoto=(n.tagName==='IMG'||n.localName==='image')&&!logo(n),locked=!editable(n),logoArt=identityImage(n),band=n.classList.contains('logo-foot');
  $('height').value=p.h;$('opacity').value=Math.round((Number.parseFloat(st.opacity)||0)*100);
  $('radius').value=Math.round(Number.parseFloat(st.borderTopLeftRadius)||0);
  $('zindex').value=st.zIndex==='auto'?0:(Number.parseInt(st.zIndex,10)||0);
@@ -579,7 +579,7 @@ async function imageFromLocalFile(file){
  }finally{bitmap.close()}
 }
 $('replace-photo').onclick=function(){
- var n=nodes()[sel];if(!n||n.tagName!=='IMG'||identityImage(n)||!editable(n)||selectedIds.length!==1)return;
+ var n=nodes()[sel];if(!n||(n.tagName!=='IMG'&&n.localName!=='image')||logo(n)||!editable(n)||selectedIds.length!==1)return;
  $('photoFile').value='';$('photoFile').click()
 };
 $('photoFile').onchange=async function(){
@@ -588,7 +588,7 @@ $('photoFile').onchange=async function(){
  $('photo-status').textContent='Fotoğraf yerel olarak hazırlanıyor…';
  try{
   var uri=await imageFromLocalFile(file);
-  if(page!==slide||sel!==selected||selectedIds.length!==1||!editable(nodes()[selected])||identityImage(nodes()[selected])||nodes()[selected]?.tagName!=='IMG')
+  if(page!==slide||sel!==selected||selectedIds.length!==1||!editable(nodes()[selected])||logo(nodes()[selected])||(nodes()[selected]?.tagName!=='IMG'&&nodes()[selected]?.localName!=='image'))
    throw new Error('Bu sırada seçim değişti. Fotoğrafı yeniden seç');
   var candidate=copy(state),key=page+':'+sel;
   var entry=candidate.edits[key]||{styles:{},mode:'inherit'};
@@ -599,12 +599,12 @@ $('photoFile').onchange=async function(){
 };
 $('reset-photo').onclick=function(){
  var n=nodes()[sel],key=page+':'+sel;
- if(!n||n.tagName!=='IMG'||identityImage(n)||!editable(n)||!state.edits[key]?.image)return;
+ if(!n||(n.tagName!=='IMG'&&n.localName!=='image')||logo(n)||!editable(n)||!state.edits[key]?.image)return;
  checkpoint();delete state.edits[key].image;
  refreshPreview();dirtyStatus();$('status').textContent='Orijinal fotoğraf geri getirildi';
 };
 function updateCrop(){
- if(sel<0||nodes()[sel]?.tagName!=='IMG')return;
+ if(sel<0||(nodes()[sel]?.tagName!=='IMG'&&nodes()[sel]?.localName!=='image'))return;
  var e=edit(),x=Math.max(0,Math.min(100,Number($('cropx').value))),y=Math.max(0,Math.min(100,Number($('cropy').value)));
  e.styles['object-position']=Math.round(x)+'% '+Math.round(y)+'%';e.styles['object-fit']=e.styles['object-fit']||'cover';
  patch(nodes()[sel],e);changed()
@@ -638,7 +638,7 @@ function patch(n,v){
   var safe=['position','left','top','right','bottom','width','margin','z-index','display'];
   if(Object.keys(v.styles||{}).some(function(k){return !safe.includes(k)}))throw new Error('Logo kaynak görseli yalnızca oranı korunarak taşınabilir ve boyutlandırılabilir');
  }
- if(v.image!==undefined){if(n.tagName!=='IMG')throw new Error('Fotoğraf yalnızca görsel katmanında değiştirilebilir');n.setAttribute('src',v.image)}
+ if(v.image!==undefined){if(n.tagName!=='IMG'&&n.localName!=='image')throw new Error('Fotoğraf yalnızca görsel katmanında değiştirilebilir');n.setAttribute(n.localName==='image'?'href':'src',v.image)}
  if(v.segments!==undefined)codec.applyText(n,v.segments);
  Object.entries(v.styles||{}).forEach(function(pair){n.style.setProperty(pair[0],pair[1])});
  if(v.mode&&v.mode!=='inherit')n.style.setProperty('color',v.mode==='direct'?v.color:'var(--'+v.mode+')')
@@ -683,7 +683,7 @@ function paint(){
  nodes().forEach(function(n,i){n.dataset.editIndex=i;patch(n,state.edits[page+':'+i])});
  setupOverlay();layers()
 }
-function layerEntries(){return nodes().map(function(n,i){var r=n.getBoundingClientRect(),parent=doc.querySelector('.slide').getBoundingClientRect();return{id:i,isLogo:logo(n),isFooter:n.classList.contains('folio'),isPhoto:(n.tagName==='IMG'&&!logo(n))||n.classList.contains('photo'),isText:['H1','H2','H3','P','B','SPAN','DIV'].includes(n.tagName)&&!logo(n)&&!n.classList.contains('folio'),rect:{x:r.left-parent.left,y:r.top-parent.top,w:r.width,h:r.height},name:String(n.textContent||n.getAttribute('alt')||n.getAttribute('class')||'görsel').trim().slice(0,52),tag:n.tagName}}).filter(function(item){return !isDeleted(item.id)})}
+function layerEntries(){return nodes().map(function(n,i){var r=n.getBoundingClientRect(),parent=doc.querySelector('.slide').getBoundingClientRect();return{id:i,isLogo:logo(n),isFooter:n.classList.contains('folio'),isPhoto:((n.tagName==='IMG'||n.localName==='image')&&!logo(n))||n.classList.contains('photo'),isText:['H1','H2','H3','P','B','SPAN','DIV'].includes(n.tagName)&&!logo(n)&&!n.classList.contains('folio'),rect:{x:r.left-parent.left,y:r.top-parent.top,w:r.width,h:r.height},name:String(n.textContent||n.getAttribute('alt')||n.getAttribute('class')||'görsel').trim().slice(0,52),tag:n.tagName}}).filter(function(item){return !isDeleted(item.id)})}
 function zOf(i){
  var n=nodes()[i],raw=state.edits[page+':'+i]?.styles?.['z-index'];
  var z=raw===undefined?Number.parseInt(doc.defaultView.getComputedStyle(n).zIndex,10):Number(raw);
@@ -802,7 +802,7 @@ document.addEventListener('keydown',editorKeydown);
 document.addEventListener('keyup',editorKeyup);
 window.addEventListener('blur',function(){keyboardNudging=false;dragRecorded=false});
 function pos(n){var a=n.getBoundingClientRect(),b=doc.querySelector('.slide').getBoundingClientRect();return{x:Math.round(a.left-b.left),y:Math.round(a.top-b.top),w:Math.round(a.width),h:Math.round(a.height)}}
-function logo(n){return !!n&&(n.classList.contains('logo-foot')||n.hasAttribute('data-brandstudio-independent-logo')||!!n.closest('.logo-foot'))}
+function logo(n){return !!n&&(n.classList.contains('logo-foot')||n.hasAttribute('data-brandstudio-independent-logo')||!!n.closest('.logo-foot')||n.hasAttribute('data-canonical-id')||n.id==='canonical-lockup'||n.classList.contains('logo')&&!!n.querySelector('[data-canonical-id]'))}
 function identityImage(n){return !!n&&n.tagName==='IMG'&&logo(n)}
 function editable(n){return !!n&&!isDeleted(Number(n.dataset.editIndex))}
 function linkedGroups(){
