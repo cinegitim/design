@@ -56,7 +56,7 @@ test("UI includes real accordion, slide strip, keyboard handling and identity lo
  assert.match(html,/id="undo"/);assert.match(html,/id="redo"/);
  assert.match(html,/history\.checkpoint\(state\)/);
  assert.match(html,/ev\.key==='ArrowRight'/);
- assert.match(html,/logo\(n\)\|\|n\.classList\.contains\('folio'\)/);
+ assert.match(html,/function identityImage\(n\)/);
  assert.match(html,/src="ux\.js"/);
  assert.doesNotMatch(html,/fetch\([^)]*,\s*\{\s*method:\s*['"]POST/);
  const embedded=html.match(/<script>\s*([\s\S]*?)\s*<\/script>/);
