@@ -233,3 +233,17 @@ test("approved logo can be hidden as a layer without allowing SVG replacement",(
  const unsafe=fresh();unsafe.edits["0:5"]={styles:{display:"none"},mode:"direct",color:"#112233"};
  assert.match(portableSource,/Onaylı logonun içeriği, kaynağı ve rengi değiştirilemez/);
 });
+
+test("generic SVG transforms and multi-brand browser archives remain safely portable",()=>{
+ const s=fresh();s.edits["0:2"].styles.transform="translate(35px,-20px) scale(1.200,1.200)";
+ s.edits["0:2"].styles["transform-box"]="fill-box";
+ s.edits["0:2"].styles["transform-origin"]="0 0";
+ assert.equal(codec.validateState(s,5).edits["0:2"].styles.transform,"translate(35px,-20px) scale(1.200,1.200)");
+ for(const bad of ["translate(12px,0px) rotate(35deg)","url(http://evil)","translate(12px,0px) scale(100,100)"]){
+  const t=fresh();t.edits["0:2"].styles.transform=bad;assert.throws(()=>codec.validateState(t,5));
+ }
+ const archive=codec.makeArchive("cin-egitim-rollup-rollup-design-a",[],s,"cin-egitim");
+ assert.equal(archive.brand,"cin-egitim");
+ assert.ok(codec.parseArchive(archive,"cin-egitim-rollup-rollup-design-a",1,"cin-egitim"));
+ assert.throws(()=>codec.parseArchive(archive,"cin-egitim-rollup-rollup-design-a",1,"asyada-egitim"));
+});
