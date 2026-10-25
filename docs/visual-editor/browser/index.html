@@ -213,9 +213,12 @@ function setupOverlay(){
     var min=logoArt?352:20;
     if(right-left<min){if(direction.includes('w'))left=right-min;else right=left+min}
     if(bottom-top<20){if(direction.includes('n'))top=bottom-20;else bottom=top+20}
+    if(right-left>5000){if(direction.includes('w'))left=right-5000;else right=left+5000}
+    if(bottom-top>5000){if(direction.includes('n'))top=bottom-5000;else bottom=top+5000}
     if(logoArt){
      var w=right-left;
-     if(direction==='n'||direction==='s')w=Math.max(352,Math.round((bottom-top)*aspect));
+     if(direction==='n'||direction==='s')w=Math.max(352,Math.min(5000,Math.round((bottom-top)*aspect)));
+     w=Math.min(5000,w);
      var h=w/aspect;
      if(direction.includes('w'))left=right-w;else if(direction==='n'||direction==='s')left=initial.x+(initial.w-w)/2;else right=left+w;
      if(direction.includes('n'))top=bottom-h;else if(direction==='e'||direction==='w')top=initial.y+(initial.h-h)/2;
@@ -566,6 +569,7 @@ function down(evt){
  if(!wasSelected)choose(index,false);else{sel=index;showSelection()}
  if(!editable(n))return;
  var start=pos(n),sx=evt.clientX,sy=evt.clientY;dragging=true;dragRecorded=false;
+ if(evt.isTrusted&&evt.target.setPointerCapture)evt.target.setPointerCapture(evt.pointerId);
  function move(e){
   if(Math.abs(e.clientX-sx)+Math.abs(e.clientY-sy)<2)return;
   setXY(start.x+e.clientX-sx,start.y+e.clientY-sy)
