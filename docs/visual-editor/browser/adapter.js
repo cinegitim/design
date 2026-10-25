@@ -1,7 +1,7 @@
 /* Generic source adapter for browser-only editing. Does not alter committed originals. */
 (function(root){
 "use strict";
-var SELECTABLE='h1,h2,h3,h4,h5,p,figcaption,blockquote,.txt,.photo,img:not([data-canonical-id]),[data-copy],.cta-pill';
+var SELECTABLE='h1,h2,h3,h4,h5,p,figcaption,blockquote,.txt,.photo,img:not([data-canonical-id]),[data-copy],.cta-pill,.slide > *, .slide [class]';
 function dimensions(text,kind){
  var w=1080,h=1350;
  if(kind==='image'){
