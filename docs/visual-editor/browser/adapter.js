@@ -28,7 +28,7 @@ function normalize(source,url,kind){
  d.querySelectorAll('script').forEach(function(node){node.remove()});
  var meta=d.createElement('base');meta.href=url;d.head.insertBefore(meta,d.head.firstChild);
  var slide=d.querySelector('.slide');
- var embeddedSVG=d.body.querySelector('svg');
+ var embeddedSVG=Array.from(d.body.children).find(function(el){return el.localName==='svg'})||null;
  var dims=dimensions(source,embeddedSVG?'image':'html');
  if(!slide){
   slide=d.createElement('div');slide.className='slide';
@@ -46,9 +46,9 @@ function normalize(source,url,kind){
  var n=0;
  candidates.forEach(function(el){
   if(n>=480||el.tagName.toLowerCase()==='svg')return;
-  if(el.closest('[data-canonical-id],#canonical-lockup')||el.matches('svg rect')&&!el.hasAttribute('data-copy'))return;
+  if(el.closest('.logo [data-canonical-id],[data-canonical-id],#canonical-lockup')||el.matches('svg rect')&&!el.hasAttribute('data-copy'))return;
   if(el.matches('svg image')&&el.getAttribute('id')==='canonical-lockup')return;
-  if(el.closest('[data-browser-editable]')&&el.tagName.toLowerCase()!=='img')return;
+  if(el.closest('svg g[data-browser-editable]')&&el.tagName.toLowerCase()!=='image')return;
   el.setAttribute('data-browser-editable','1');n++
  });
  return{html:'<!doctype html>\n'+d.documentElement.outerHTML,width:dims.width,height:dims.height,mode:'layers',format:'html'}
