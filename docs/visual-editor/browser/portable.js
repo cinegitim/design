@@ -4,7 +4,7 @@
 "use strict";
 var SELECTOR='h1,h2,h3,p,.eyebrow,.dek,.photo,.country-line,.country-grid b,.country-list span,.options span,.cta-pill,.pathways span,.folio,.logo-foot,.cover-rule,.question-bottom,.question-photo,img';
 var COLORS={paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'};
-var ALLOWED_STYLES={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'height':1,'margin':1,'font-size':1,'font-weight':1,'letter-spacing':1,'line-height':1,'text-align':1,'opacity':1,'object-fit':1,'object-position':1,'border-radius':1,'z-index':1,'visibility':1,'background-color':1};
+var ALLOWED_STYLES={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'height':1,'margin':1,'font-size':1,'font-weight':1,'letter-spacing':1,'line-height':1,'text-align':1,'opacity':1,'object-fit':1,'object-position':1,'border-radius':1,'z-index':1,'visibility':1,'background-color':1,'max-width':1};
 var ALLOWED_MODES={inherit:1,paper:1,ink:1,red:1,direct:1};
 var HEX=/^#[0-9a-fA-F]{6}$/;
 var SLUG=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -35,6 +35,7 @@ function state(input,maxPages) {
      var px=/^-?[0-9]{1,5}(?:\.[0-9]{1,2})?px$/,n=Number.parseFloat(v);
      if(k==='position'){if(v!=='absolute')err('Sadece absolute position destekleniyor')}
      else if(k==='margin'){if(v!=='0')err('Geçersiz margin')}
+     else if(k==='max-width'){if(v!=='none')err('Yalnızca max-width:none destekleniyor')}
      else if(k==='right'||k==='bottom'){if(v!=='auto')err('Yerleşim ankrajı yalnızca auto olabilir')}
      else if(k==='text-align'){if(!['left','right','center','justify','start','end'].includes(v))err('Geçersiz hizalama')}
      else if(k==='background-color'){if(!HEX.test(v))err('Geçersiz arka plan rengi')}
