@@ -4,7 +4,7 @@
 "use strict";
 var SELECTOR='h1,h2,h3,p,.eyebrow,.dek,.photo,.country-line,.country-grid b,.country-list span,.options span,.cta-pill,.pathways span,.folio,.logo-foot,.cover-rule,.question-bottom,.question-photo,img';
 var COLORS={paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'};
-var ALLOWED_STYLES={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'height':1,'margin':1,'font-size':1,'font-weight':1,'letter-spacing':1,'line-height':1,'text-align':1,'opacity':1,'object-fit':1,'object-position':1,'border-radius':1,'z-index':1,'visibility':1};
+var ALLOWED_STYLES={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'height':1,'margin':1,'font-size':1,'font-weight':1,'letter-spacing':1,'line-height':1,'text-align':1,'opacity':1,'object-fit':1,'object-position':1,'border-radius':1,'z-index':1,'visibility':1,'background-color':1};
 var ALLOWED_MODES={inherit:1,paper:1,ink:1,red:1,direct:1};
 var HEX=/^#[0-9a-fA-F]{6}$/;
 var SLUG=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -37,6 +37,7 @@ function state(input,maxPages) {
      else if(k==='margin'){if(v!=='0')err('Geçersiz margin')}
      else if(k==='right'||k==='bottom'){if(v!=='auto')err('Yerleşim ankrajı yalnızca auto olabilir')}
      else if(k==='text-align'){if(!['left','right','center','justify','start','end'].includes(v))err('Geçersiz hizalama')}
+     else if(k==='background-color'){if(!HEX.test(v))err('Geçersiz arka plan rengi')}
      else if(k==='object-fit'){if(!['cover','contain','fill'].includes(v))err('Geçersiz fotoğraf uyumu')}
      else if(k==='visibility'){if(!['visible','hidden'].includes(v))err('Geçersiz görünürlük')}
      else if(k==='object-position'){var m=v.match(/^(\d{1,3})% (\d{1,3})%$/);if(!m||Number(m[1])>100||Number(m[2])>100)err('Geçersiz kadraj')}
@@ -124,11 +125,20 @@ function applyText(el,segments){
  if(parts.length!==segments.length)err('Kaynak metin yapısı değişmiş; düzenleme uygulanmadı');
  parts.forEach(function(part,i){part.nodeValue=segments[i]});
 }
-function locked(el){return el.classList.contains('folio')||!!el.closest('.logo-foot')}
+function locked(el){return el.classList.contains('folio')}
+function identityArtwork(el){return el.tagName==='IMG'&&!!el.closest('.logo-foot')}
+function identityGuard(el,e){
+ if(!identityArtwork(el))return;
+ if(e.image!==undefined||e.segments!==undefined||e.mode&&e.mode!=='inherit')err('Onaylı logonun içeriği, kaynağı ve rengi değiştirilemez');
+ var allowed={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'margin':1,'z-index':1};
+ Object.keys(e.styles||{}).forEach(function(k){if(!allowed[k])err('Logo yalnızca orantılı boyutlandırılabilir ve taşınabilir')});
+ if(e.styles&&e.styles.width&&Number.parseFloat(e.styles.width)<352)err('Logo minimum 352 px genişlikte olmalı');
+}
 function nodes(doc) {return Array.from(doc.querySelectorAll('.slide '+SELECTOR))}
 function colorCSS(colors){return ':root{'+Object.entries(colors).map(function(p){return'--'+p[0]+':'+p[1]+';'}).join('')+'}\n'}
 function patch(el,edit){
- if(locked(el))err('Kilitli marka öğesi düzenlenemez');
+ if(locked(el))err('Dipnot düzenlenemez');
+ identityGuard(el,edit);
  applyText(el,edit.segments);
  if(edit.image!==undefined){
    if(el.tagName!=='IMG')err('Fotoğraf yalnızca img katmanına uygulanabilir');
@@ -169,8 +179,8 @@ function css(htmlSource,selectedState,index){
  var ns=nodes(doc),output=colorCSS(checked.colors);
  Object.entries(checked.edits).forEach(function(pair){
   var sp=pair[0].split(':');if(Number(sp[0])!==index)return;
-  var el=ns[Number(sp[1])];if(!el)err('Kaynakta düzenlenen katman artık yok');if(locked(el))err('Kilitli marka öğesi CSS ile düzenlenemez');
-  var e=pair[1],styles=Object.assign({},e.styles);
+  var el=ns[Number(sp[1])];if(!el)err('Kaynakta düzenlenen katman artık yok');if(locked(el))err('Dipnot düzenlenemez');
+  var e=pair[1];identityGuard(el,e);var styles=Object.assign({},e.styles);
   if(e.mode&&e.mode!=='inherit')styles.color=e.mode==='direct'?e.color:'var(--'+e.mode+')';
   output+=path(el,slide)+'{'+Object.entries(styles).map(function(p){return p[0]+':'+p[1]+';'}).join('')+'}\n';
  });
