@@ -31,6 +31,15 @@ class PublishedAssetIntegrityTests(unittest.TestCase):
                     raw=unquote(parsed.path)
                     if raw.startswith("/design/"):
                         resolved=(DOCS/raw.removeprefix("/design/")).resolve()
+                    elif raw.startswith("/Users/"):
+                        # Preserve the audited, immutable GKS SVG deliverable. Its
+                        # machine-local nested CSS font URL is repaired only by the
+                        # public adapter at display/export time.
+                        self.assertTrue(rel.startswith("instagram/burs-dosyasi-gks-2027-001/source/"))
+                        self.assertTrue(raw.endswith("/assets/Jost-VF.ttf"))
+                        adapter=(DOCS/"visual-editor/browser/adapter.js").read_text(encoding="utf-8")
+                        self.assertIn("repairLegacyFonts(source)",adapter)
+                        resolved=(source.parent/"../assets/Jost-VF.ttf").resolve()
                     elif raw.startswith("/"):
                         self.fail("Machine-local absolute media path in public source")
                     else:
