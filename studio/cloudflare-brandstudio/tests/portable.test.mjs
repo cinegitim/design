@@ -93,3 +93,53 @@ test("reject malformed, duplicated, overlapping and oversized group references",
  ];
  for(const groups of bad){const s=fresh();s.groups=groups;assert.throws(()=>codec.validateState(s,5))}
 });
+
+test("embedded WebP photo data round-trips through existing schema 2 with content",()=>{
+ const data="data:image/webp;base64,"+"U".repeat(64);
+ const a=fresh();a.edits["0:3"]={mode:"inherit",styles:{"object-fit":"cover","object-position":"50% 45%"},image:data};
+ const saved=codec.validateState(a,5);
+ assert.equal(saved.edits["0:3"].image,data);
+ const archive=codec.makeArchive("carousel-01-v3",[{version:2,note:"local image",time:"2026",state:a}],a);
+ assert.equal(archive.schema,2);
+ const restored=codec.parseArchive(archive,"carousel-01-v3",5);
+ assert.equal(restored.current.edits["0:3"].image,data);
+ assert.equal(restored.versions[0].state.edits["0:3"].image,data);
+ const old=codec.validateState(fresh(),5);
+ assert.ok(!old.edits["0:2"].image);
+});
+
+test("photo replacements reject remote URLs, SVG and unsafe or oversized payloads",()=>{
+ const good="data:image/webp;base64,"+"U".repeat(64);
+ const bad=[
+  "https://example.com/image.jpg","data:image/svg+xml;base64,"+"U".repeat(64),
+  "data:text/html;base64,"+"U".repeat(64),"data:image/webp;base64,###",
+  "data:image/jpeg;base64,"+"U".repeat(260001),"data:image/webp;base64,abc"
+ ];
+ for(const uri of bad){
+  const s=fresh();s.edits["0:3"]={mode:"inherit",styles:{},image:uri};
+  assert.throws(()=>codec.validateState(s,5));
+ }
+ const s=fresh();
+ for(let i=0;i<9;i++)s.edits["1:"+i]={mode:"inherit",styles:{},image:good};
+ assert.throws(()=>codec.validateState(s,5),/en fazla 8/);
+});
+
+test("photo patch is only permitted on normal img nodes, not locked identity",()=>{
+ const uri="data:image/webp;base64,"+"U".repeat(64);
+ const attrs={},img={tagName:"IMG",classList:{contains:()=>false},closest:()=>null,
+  setAttribute(k,v){attrs[k]=v},style:{setProperty(){}}};
+ const el={tagName:"DIV",classList:{contains:()=>false},closest:()=>null,style:{setProperty(){}}};
+ assert.match(portableSource,/if\(el\.tagName!=='IMG'\)err/);
+ assert.match(portableSource,/if\(locked\(el\)\)err/);
+ assert.doesNotMatch(portableSource,/eval\(/);
+ assert.ok(uri.startsWith("data:image/webp;base64,"));
+});
+
+test("photo editor provides browser-only image selection and reversible source changes",()=>{
+ for(const id of ["photoFile","replace-photo","reset-photo","photo-status"])assert.match(editor,new RegExp('id="'+id+'"'));
+ for(const token of ["createImageBitmap(file)","canvas.toDataURL('image/webp'","imageFromLocalFile(file)","delete state.edits[key].image","src:n.getAttribute('src')","n.setAttribute('src',original.src)","codec.validateState(candidate,pages.length)"]){
+  assert.ok(editor.includes(token),"Missing local photo behavior "+token);
+ }
+ assert.doesNotMatch(editor,/method\s*:\s*['"]POST/);
+ assert.doesNotMatch(editor,/R2\.put/);
+});
