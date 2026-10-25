@@ -61,4 +61,21 @@ class StaticExportTests(unittest.TestCase):
         self.assertTrue(any(p["id"]=="cin-egitim-rollup-new-banner" for p in published))
         self.assertGreaterEqual(len(published),2)
 
+    def test_catalog_excludes_comparison_pages_and_internal_assets(self):
+        from build_pages import design_catalog
+        paths = ["docs/cin-egitim/typography-round-01/direction-a.html",
+                 "docs/cin-egitim/typography-round-01/direction-b.html",
+                 "docs/instagram/carousel-01-v3/source/01.html",
+                 "docs/instagram/carousel-01-v3/assets/background.png",
+                 "docs/instagram/carousel-01-v3/01-cover.png",
+                 "docs/instagram/creative-breakout/source-originals/raw.png",
+                 "docs/instagram/creative-breakout/composited/A-cover.png"]
+        listed = design_catalog(paths)
+        names = [x["id"] for x in listed]
+        self.assertIn("carousel-01-v3", names)
+        self.assertIn("asset-instagram-creative-breakout", names)
+        self.assertFalse(any("typography" in x for x in names))
+        self.assertFalse(any("background" in p for x in listed for p in x["pages"]))
+        self.assertFalse(any("source-originals" in p for x in listed for p in x["pages"]))
+
 if __name__ == "__main__": unittest.main()
