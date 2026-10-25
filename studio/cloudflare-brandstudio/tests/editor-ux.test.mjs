@@ -231,11 +231,13 @@ test("public catalog discovers new future HTML/SVG/raster outputs without regist
 });
 test("snapshot lists previously produced designs and remains independent of local accounts",()=>{
  const data=JSON.parse(fs.readFileSync(path.join(root,"docs/visual-editor/browser/catalog.json"),"utf8"));
- assert.ok(data.length>=150,"Must cover produced assets as well as editable sources");
+ assert.ok(data.length>=20&&data.length<100,"Show real editable deliverables, not an uncurated folder dump");
  assert.ok(data.some(x=>x.id==="carousel-01-v3"&&x.pages.length===5));
  assert.ok(data.some(x=>x.id==="instagram-tsinghua-atlas-2027"&&x.pages.length===7));
  assert.ok(data.some(x=>x.id==="cin-egitim-rollup-rollup-design-a"&&x.pages.length===1));
  assert.ok(data.some(x=>x.kind==="image"&&x.pages.length>1));
+ assert.ok(!data.some(x=>/typography-round|direction-[a-z]/i.test(x.id)),"Review direction pages must not become projects");
+ assert.ok(data.every(x=>x.pages.every(p=>!/(?:photos-original|source-originals|\/assets\/Jost|\/qa\/)/.test(p))),"Intermediate assets must not be listed as finished work");
  assert.equal(new Set(data.map(x=>x.id)).size,data.length);
 });
 test("browser adapter preserves each layout's own page size and wraps standalone image",()=>{
@@ -253,4 +255,29 @@ test("browser product picker, dynamic dimensions and isolated version state are 
  assert.match(html,/sourceCache\[i\]=normalized/);
  assert.match(html,/codec\.parseArchive\(raw,slug,pages\.length,brand\)/);
  assert.match(html,/codec\.makeArchive\(slug,allV\(\),state,brand\)/);
+});
+
+test("catalog shows actual authored work, not the typography comparison board in screenshot",()=>{
+ const examples=[
+  "docs/cin-egitim/typography-round-01/direction-a.html",
+  "docs/cin-egitim/typography-round-01/direction-l.html",
+  "docs/cin-egitim/typography-finalists/index.html",
+  "docs/instagram/tsinghua-atlas-2027/source/01.html",
+  "docs/instagram/tsinghua-atlas-2027/source/02.html",
+  "docs/instagram/tsinghua-atlas-2027/assets/campus.jpg",
+  "docs/instagram/tsinghua-atlas-2027/01-render.png",
+  "docs/cin-egitim/rollup/rollup-design-a.html",
+  "docs/instagram/creative-breakout/composited/A-cover.png",
+  "docs/instagram/creative-breakout/source-originals/A-cover.png"
+ ];
+ const picked=Catalog.fromPaths(examples);
+ const ids=picked.map(x=>x.id);
+ assert.ok(ids.includes("instagram-tsinghua-atlas-2027"));
+ assert.ok(ids.includes("cin-egitim-rollup-rollup-design-a"));
+ assert.ok(ids.includes("asset-instagram-creative-breakout"));
+ assert.ok(!ids.some(id=>/typography-round|typography-finalists/.test(id)));
+ const atlas=picked.find(x=>x.id==="instagram-tsinghua-atlas-2027");
+ assert.equal(atlas.kind,"html");
+ assert.equal(atlas.pages.length,2);
+ assert.ok(!picked.some(x=>x.pages.some(p=>/campus\.jpg|source-originals/.test(p))));
 });
