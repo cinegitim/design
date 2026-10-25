@@ -418,6 +418,14 @@ function drawRulers(){
 function editableResize(n){return editable(n)&&selectedIds.length>=1}
 function setRectangle(n,rect,resize){
  var index=Number(n.dataset.editIndex),key=page+':'+index,e=state.edits[key]||(state.edits[key]={mode:'inherit',styles:{}}),styles=e.styles||(e.styles={});
+ if(n.namespaceURI==='http://www.w3.org/2000/svg'&&n.tagName.toLowerCase()!=='svg'){
+  var base=sourceNodes[index]?.rect||pos(n),sx=resize?rect.w/Math.max(1,base.w):1,sy=resize?rect.h/Math.max(1,base.h):1;
+  var dx=Math.round(rect.x-base.x),dy=Math.round(rect.y-base.y);
+  sx=Math.max(.02,Math.min(40,sx));sy=Math.max(.02,Math.min(40,sy));
+  styles['transform-box']='fill-box';styles['transform-origin']='0 0';
+  styles.transform='translate('+dx+'px,'+dy+'px)'+(resize?' scale('+sx.toFixed(3)+','+sy.toFixed(3)+')':'');
+  patch(n,e);return
+ }
  var parent=identityImage(n)?null:n.closest('.logo-foot');
  if(parent===n)parent=null;
  if(identityImage(n))e.basis='artboard';
@@ -671,7 +679,7 @@ function expandPasteboard(){
 function paint(){
  codec.detachLogo(doc);codec.installFonts(doc,pages[page]);
  installPasteboard();norm();doc.querySelector('.slide').dataset.slideIndex=String(page+1);
- sourceNodes=nodes().map(function(n){return{style:n.getAttribute('style'),src:n.getAttribute('src'),segments:codec.textNodes(n).map(function(t){return t.nodeValue})}});
+ sourceNodes=nodes().map(function(n){return{style:n.getAttribute('style'),src:n.getAttribute('src'),segments:codec.textNodes(n).map(function(t){return t.nodeValue}),rect:pos(n)}});
  nodes().forEach(function(n,i){n.dataset.editIndex=i;patch(n,state.edits[page+':'+i])});
  setupOverlay();layers()
 }
