@@ -104,7 +104,7 @@ test("group state has undo snapshots, and group operations do not expose paid AP
  assert.match(html,/function setXY\(x,y\)/);
  assert.match(html,/var ids=selectedIds\.length\?selectedIds:\[sel\]/);
  assert.match(html,/setRectangle\(node,\{x:p\.x\+dx,y:p\.y\+dy,w:p\.w,h:p\.h\},false\)/);
- assert.match(html,/handle\.hidden=list\.length!==1/);
+ assert.match(html,/handle\.hidden=!list\.length/);
  assert.doesNotMatch(html,/method\s*:\s*['"]POST/);
 });
 
@@ -115,7 +115,7 @@ test("eight directional resize handles, rulers, context actions and primary geom
  assert.match(html,/var positions=\{nw:/);
  assert.match(html,/selectionOverlay\._handles=handles/);
  assert.match(html,/handle\.addEventListener\('pointerdown'/);
- assert.match(html,/setRectangle\(n,\{x:left,y:top,w:right-left,h:bottom-top\},true\)/);
+ assert.match(html,/setRectangle\(item\.node,rect,true\)/);
  assert.match(html,/function openContextMenu\(/);
  assert.match(html,/doc\.addEventListener\('contextmenu'/);
  for(const action of ["front","back","align-left","align-center","align-right","group","ungroup","reset","undo"])
