@@ -135,3 +135,14 @@ test("logo backing band is editable independently while approved SVG remains imm
  assert.match(js,/if\(e\.styles&&e\.styles\.width&&Number\.parseFloat\(e\.styles\.width\)<352\)/);
  assert.doesNotMatch(html,/contentEditable\s*=\s*true/);
 });
+
+test("horizontal resize overrides source max-width only when actually resized",()=>{
+ assert.match(html,/styles\['max-width'\]='none'/);
+ assert.match(html,/if\(field==='width'&&!identityImage\(n\)\)e\.styles\['max-width'\]='none'/);
+ assert.match(html,/var props=\[[^\]]*'max-width'/);
+ assert.match(js,/else if\(k==='max-width'\)/);
+ const s=sample();s.edits["1:3"].styles["max-width"]="none";
+ assert.equal(codec.validateState(s,5).edits["1:3"].styles["max-width"],"none");
+ s.edits["1:3"].styles["max-width"]="700px";
+ assert.throws(()=>codec.validateState(s,5),/max-width/);
+});
