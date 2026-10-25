@@ -9,9 +9,11 @@ class BrowserEditorTests(unittest.TestCase):
         self.editor=(ROOT/"docs/visual-editor/browser/index.html").read_text(encoding="utf-8")
         self.gateway=(ROOT/"docs/visual-editor/index.html").read_text(encoding="utf-8")
     def test_gateway_offers_cloudflare_safe_browser_editor(self):
-        self.assertIn('id="browser-editor"',self.gateway)
-        self.assertIn('browser/?product=',self.gateway)
-        self.assertIn('id="open-editor"',self.gateway)
+        self.assertIn('href="browser/"',self.gateway)
+        self.assertIn("target.searchParams.set('product',product)",self.gateway)
+        self.assertIn("location.replace(target.href)",self.gateway)
+        self.assertNotIn('id="open-editor"',self.gateway)
+        self.assertNotIn("127.0.0.1:8765",self.gateway)
     def test_editor_is_read_only_to_any_remote_server(self):
         self.assertIn("localStorage.setItem",self.editor)
         self.assertIn("showDirectoryPicker",self.editor)
