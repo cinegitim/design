@@ -354,7 +354,8 @@ function nodes(){if(!doc)return[];var selText=codec.selector;return Array.from(d
 function edit(){var k=page+':'+sel;if(!state.edits[k])state.edits[k]={styles:{},mode:'inherit'};return state.edits[k]}
 function norm(){if(!doc)return;doc.documentElement.style.setProperty('--paper',state.colors.paper);doc.documentElement.style.setProperty('--ink',state.colors.ink);doc.documentElement.style.setProperty('--red',state.colors.red);Array.from(doc.querySelectorAll('style')).forEach(function(s){if(s.dataset.normalized)return;s.textContent=s.textContent.replace(/#F7F3E9/gi,'var(--paper)').replace(/#1D2027/gi,'var(--ink)').replace(/#BD2120/gi,'var(--red)');s.dataset.normalized='1'})}
 function patch(n,v){
- if(!v||n.classList.contains('folio'))return;
+ if(!v)return;
+ if(n.classList.contains('folio')&&v.segments!==undefined)throw new Error('Dipnot metni değiştirilemez');
  if(identityImage(n)){
   if(v.image!==undefined||v.segments!==undefined||v.mode&&v.mode!=='inherit')throw new Error('Logonun orijinal SVG ve rengi değiştirilemez');
   var safe=['position','left','top','right','bottom','width','margin','z-index'];
@@ -417,7 +418,7 @@ document.addEventListener('keydown',function(ev){var tag=ev.target&&ev.target.ta
 function pos(n){var a=n.getBoundingClientRect(),b=doc.querySelector('.slide').getBoundingClientRect();return{x:Math.round(a.left-b.left),y:Math.round(a.top-b.top),w:Math.round(a.width),h:Math.round(a.height)}}
 function logo(n){return n.classList.contains('logo-foot')||!!n.closest('.logo-foot')}
 function identityImage(n){return !!n&&n.tagName==='IMG'&&logo(n)}
-function editable(n){return !!n&&!n.classList.contains('folio')}
+function editable(n){return !!n}
 function linkedGroups(){
  return (state.groups?.[String(page)]||[]).filter(function(group){
   return group.length>=2&&group.every(function(i){return editable(nodes()[i])})
