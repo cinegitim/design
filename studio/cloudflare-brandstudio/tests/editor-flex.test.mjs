@@ -38,20 +38,20 @@ test("anchored image resize persists origin offsets without unsafe CSS",()=>{
  assert.equal(safe.edits["1:3"].styles.top,"71px");
  x.edits["1:3"].styles.right="url(https://bad)";
  assert.throws(()=>codec.validateState(x,5),/ankrajı/);
- assert.match(html,/left:start\.x\+'px'/);
- assert.match(html,/top:start\.y\+'px'/);
+ assert.match(html,/left:Math\.round\(rect\.x-pr\.x\)\+'px'/);
+ assert.match(html,/top:Math\.round\(rect\.y-pr\.y\)\+'px'/);
  assert.match(html,/right:'auto',bottom:'auto'/);
 });
 test("inspector and resize actions have real handlers, not decorative buttons",()=>{
  for(const id of ["zoom","zoom-in","zoom-out","frame","canvas","pan-shield","hand","focus","snap","weight","letter","leading","textalign","height","opacity","radius","zindex","photo-tools","fit","cropx","cropy"]){
   assert.ok(html.includes('id="'+id+'"'),"Missing UI "+id);
  }
- for(const token of ["setZoom(","setupOverlay()","selectionHandle.addEventListener('pointerdown'","fillAdvanced(n)","updateCrop()","data-align","checkpoint();","aria-pressed","new ResizeObserver"]){
+ for(const token of ["setZoom(","setupOverlay()","handle.addEventListener('pointerdown'","fillAdvanced(n)","updateCrop()","data-align","checkpoint();","aria-pressed","new ResizeObserver"]){
   assert.ok(html.includes(token),"Missing handler "+token);
  }
  assert.match(html,/photo-tools" hidden/);
  assert.match(html,/Math\.round\(x\/8\)\*8/);
- assert.match(html,/logo\(n\)\|\|n\.classList\.contains\('folio'\)/);
+ assert.match(html,/function identityImage\(n\)/);
 });
 
 test("published copy and canonical identity remain locked and unchanged",()=>{
@@ -103,7 +103,7 @@ test("group state has undo snapshots, and group operations do not expose paid AP
  assert.match(html,/checkpoint\(\);if\(!state\.groups\)state\.groups=\{\}/);
  assert.match(html,/function setXY\(x,y\)/);
  assert.match(html,/var ids=selectedIds\.length\?selectedIds:\[sel\]/);
- assert.match(html,/if\(node\.tagName==='IMG'&&!e\.styles\.height\)/);
- assert.match(html,/selectionHandle\.hidden=list\.length!==1/);
+ assert.match(html,/setRectangle\(node,\{x:p\.x\+dx,y:p\.y\+dy,w:p\.w,h:p\.h\},false\)/);
+ assert.match(html,/handle\.hidden=list\.length!==1/);
  assert.doesNotMatch(html,/method\s*:\s*['"]POST/);
 });
