@@ -258,7 +258,16 @@ dialog h2{font-size:15px;font-weight:680}
 <div class="quick-align"><button class="btn" data-align="left" title="Sola hizala">⇤</button><button class="btn" data-align="center" title="Yatay ortala">↔</button><button class="btn" data-align="right" title="Sağa hizala">⇥</button><button class="btn" data-align="top" title="Üste hizala">↑</button><button class="btn" data-align="middle" title="Dikey ortala">↕</button><button class="btn" data-align="bottom" title="Alta hizala">↓</button></div></div></div>
 <div id="blank" class="notice">Katman seç</div><div id="props" hidden>
 <div class="panel primary-properties"><span id="layer-path"></span><span id="label" hidden></span><div class="two">
-<div class="field"><label>Font</label><select id="font"><option value="Jost">Jost</option><option value="Arial">Arial</option><option value="Georgia">Georgia</option><option value="Inter">Inter</option></select></div>
+<div class="field"><label>Font</label><select id="font">
+<optgroup label="Kullanılan marka fontları">
+<option value="Jost">Jost</option><option value="Manrope">Manrope</option>
+<option value="SourceSerif">Source Serif 4</option><option value="SongCJK">Songti SC (Çince)</option>
+<option value="Hiragino Sans">Hiragino Sans (Japonca · sistem)</option>
+<option value="Yu Gothic">Yu Gothic (Japonca · sistem)</option>
+<option value="Apple SD Gothic Neo">Apple SD Gothic Neo (Korece · sistem)</option>
+<option value="Noto Sans KR">Noto Sans KR (Korece · sistem)</option>
+</optgroup><optgroup label="Diğer"><option value="Arial">Arial</option><option value="Georgia">Georgia</option><option value="Inter">Inter (sistem)</option></optgroup>
+</select></div>
 <div class="field"><label>Punto</label><input type="number" id="fs" min="8" max="260"></div>
 <div class="field"><label>X</label><input type="number" id="x"></div>
 <div class="field"><label>Y</label><input type="number" id="y"></div>
@@ -401,8 +410,9 @@ function drawRulers(){
 function editableResize(n){return editable(n)&&selectedIds.length>=1}
 function setRectangle(n,rect,resize){
  var index=Number(n.dataset.editIndex),key=page+':'+index,e=state.edits[key]||(state.edits[key]={mode:'inherit',styles:{}}),styles=e.styles||(e.styles={});
- var parent=n.closest('.logo-foot');
+ var parent=identityImage(n)?null:n.closest('.logo-foot');
  if(parent===n)parent=null;
+ if(identityImage(n))e.basis='artboard';
  var pr=parent?pos(parent):{x:0,y:0};
  Object.assign(styles,{position:'absolute',left:Math.round(rect.x-pr.x)+'px',top:Math.round(rect.y-pr.y)+'px',right:'auto',bottom:'auto',margin:'0'});
  if(resize){
@@ -509,7 +519,7 @@ function fillAdvanced(n){
  var font=Number.parseFloat(st.fontSize)||24; $('leading').value=st.lineHeight==='normal'?1.2:Math.round((Number.parseFloat(st.lineHeight)/font)*100)/100;
  $('textalign').value=['left','right','center','justify'].includes(st.textAlign)?st.textAlign:'left';
  var firstFont=st.fontFamily.split(',')[0].replace(/['"]/g,'').trim();
- $('font').value=['Jost','Arial','Georgia','Inter'].includes(firstFont)?firstFont:'Jost';
+ $('font').value=codec.fonts.includes(firstFont)?firstFont:'Jost';
  $('font').disabled=logoArt||n.tagName==='IMG';
  $('fit').value=['cover','contain','fill'].includes(st.objectFit)?st.objectFit:'cover';
  var m=st.objectPosition.match(/^(\d+(?:\.\d+)?)% (\d+(?:\.\d+)?)%$/);
@@ -605,6 +615,7 @@ function edit(){var k=page+':'+sel;if(!state.edits[k])state.edits[k]={styles:{},
 function norm(){if(!doc)return;doc.documentElement.style.setProperty('--paper',state.colors.paper);doc.documentElement.style.setProperty('--ink',state.colors.ink);doc.documentElement.style.setProperty('--red',state.colors.red);Array.from(doc.querySelectorAll('style')).forEach(function(s){if(s.dataset.normalized)return;s.textContent=s.textContent.replace(/#F7F3E9/gi,'var(--paper)').replace(/#1D2027/gi,'var(--ink)').replace(/#BD2120/gi,'var(--red)');s.dataset.normalized='1'})}
 function patch(n,v){
  if(!v)return;
+ v=codec.adaptLogoEdit(doc,n,v,state,page);
  // The folio is editable text, not an immutable brand asset.
  if(identityImage(n)){
   if(v.image!==undefined||v.segments!==undefined||v.mode&&v.mode!=='inherit')throw new Error('Logonun orijinal SVG ve rengi değiştirilemez');
@@ -650,6 +661,7 @@ function expandPasteboard(){
  canvas.scrollLeft=left+(next-previous)*z;canvas.scrollTop=top+(next-previous)*z
 }
 function paint(){
+ codec.detachLogo(doc);codec.installFonts(doc,pages[page]);
  installPasteboard();norm();doc.querySelector('.slide').dataset.slideIndex=String(page+1);
  sourceNodes=nodes().map(function(n){return{style:n.getAttribute('style'),src:n.getAttribute('src'),segments:codec.textNodes(n).map(function(t){return t.nodeValue})}});
  nodes().forEach(function(n,i){n.dataset.editIndex=i;patch(n,state.edits[page+':'+i])});
@@ -758,7 +770,7 @@ document.addEventListener('keydown',editorKeydown);
 document.addEventListener('keyup',editorKeyup);
 window.addEventListener('blur',function(){keyboardNudging=false;dragRecorded=false});
 function pos(n){var a=n.getBoundingClientRect(),b=doc.querySelector('.slide').getBoundingClientRect();return{x:Math.round(a.left-b.left),y:Math.round(a.top-b.top),w:Math.round(a.width),h:Math.round(a.height)}}
-function logo(n){return n.classList.contains('logo-foot')||!!n.closest('.logo-foot')}
+function logo(n){return !!n&&(n.classList.contains('logo-foot')||n.hasAttribute('data-brandstudio-independent-logo')||!!n.closest('.logo-foot'))}
 function identityImage(n){return !!n&&n.tagName==='IMG'&&logo(n)}
 function editable(n){return !!n}
 function linkedGroups(){
@@ -870,6 +882,7 @@ function apply(field,value){
  if(identityImage(n)&&!['width','left','top','position','right','bottom','margin','z-index'].includes(field))return;
  if(identityImage(n)&&field==='width')value=Math.max(20,Number.parseFloat(value))+'px';
  checkpoint();var e=edit();e.styles[field]=value;
+ if(identityImage(n))e.basis='artboard';
  if(field==='width'&&!identityImage(n))e.styles['max-width']='none';patch(n,e);changed()
 }
 function openContextMenu(x,y){
