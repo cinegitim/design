@@ -229,12 +229,12 @@ function path(el,rootEl) {
  if(el!==rootEl)err('Katman seçicisi oluşturulamadı');
  return '.slide > '+parts.join(' > ');
 }
-function css(htmlSource,selectedState,index){
+function css(htmlSource,selectedState,index,sourceUrl){
  var checked=state(selectedState,25);
  var doc=new DOMParser().parseFromString(htmlSource,'text/html'),slide=doc.querySelector('.slide');
  if(!slide)err('Kaynak HTML bulunamadı');
  detachLogo(doc);
- var ns=nodes(doc),output=colorCSS(checked.colors)+fontCSS('https://cinegitim.github.io/design/instagram/carousel-01-v3/source/01.html');
+ var ns=nodes(doc),output=colorCSS(checked.colors)+fontCSS(sourceUrl||'https://cinegitim.github.io/design/instagram/carousel-01-v3/source/01.html');
  Object.entries(checked.edits).forEach(function(pair){
   var sp=pair[0].split(':');if(Number(sp[0])!==index)return;
   var el=ns[Number(sp[1])];if(!el)err('Kaynakta düzenlenen katman artık yok');var e=adaptLogoEdit(doc,el,pair[1],checked,index);identityGuard(el,e);var styles=Object.assign({},e.styles);
