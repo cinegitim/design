@@ -1027,7 +1027,26 @@ function down(evt){
  doc.addEventListener('pointermove',move);doc.addEventListener('pointerup',up,{once:true});
  evt.preventDefault()
 }
-function show(i){if(!pages.length)return;page=Math.max(0,Math.min(pages.length-1,i));sel=-1;selectedIds=[];doc=null;$('preview').src=pages[page];$('count').textContent=(page+1)+' / '+pages.length;renderTabs();$('props').hidden=true;$('selection-tools').hidden=true;$('blank').hidden=false}
+async function show(i){
+ if(!pages.length)return;
+ var ticket=++loadNonce;endInlineText();page=Math.max(0,Math.min(pages.length-1,i));
+ sel=-1;selectedIds=[];doc=null;
+ $('count').textContent=(page+1)+' / '+pages.length;renderTabs();
+ $('props').hidden=true;$('selection-tools').hidden=true;$('blank').hidden=false;
+ $('status').textContent='Tasarım yükleniyor…';
+ try{
+  if(slug==='carousel-01-v3'){
+   DESIGN_W=1080;DESIGN_H=1350;
+   $('preview').removeAttribute('srcdoc');$('preview').src=pages[page];return
+  }
+  await sourceAt(page);
+  if(ticket!==loadNonce)return;
+  var result=sourceCache[page];
+  DESIGN_W=result.width;DESIGN_H=result.height;PASTEBOARD=320;
+  $('preview').removeAttribute('src');
+  $('preview').srcdoc=result.html
+ }catch(e){if(ticket===loadNonce){$('status').textContent='Kaynak açılmadı: '+(e.message||e)}}
+}
 $('preview').addEventListener('load',function(){doc=$('preview').contentDocument;if(!doc||!doc.querySelector('.slide')){$('status').textContent='Kaynak slayt bulunamadı';return}doc.addEventListener('pointerdown',down);doc.addEventListener('keydown',editorKeydown);doc.addEventListener('keyup',editorKeyup);
  doc.addEventListener('contextmenu',function(ev){
   var n=ev.target.closest('[data-edit-index]');if(!n)return;
@@ -1116,7 +1135,56 @@ $('confirm').onclick=async function(){
  }catch(e){safeStatus(e)}
 };
 window.onbeforeunload=function(e){if(dirty){e.preventDefault();e.returnValue=''}};
-async function init(){$('product').textContent=slug;for(var i=1;i<=12;i++){var url=new URL(String(i).padStart(2,'0')+'.html',base);try{var res=await fetch(url);if(!res.ok)break;var data=await res.text();if(data.indexOf('class="slide')<0)break;pages.push(url.href)}catch(e){break}}if(!pages.length){$('status').textContent='Bu ürünün HTML/CSS kaynakları yayımlanmamış';return}var v=allV();if(v.length){current=Math.max(...v.map(function(x){return x.version}));state=copy(v.find(function(x){return x.version===current}).state)}savedState=copy(state);history.clear();historyButtons();['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});renderV();show(0)}
+
+function renderCatalog(filter){
+ var picker=$('catalog-select'),query=(filter||'').toLocaleLowerCase('tr'),previous=slug;
+ picker.replaceChildren();
+ var families={};
+ catalog.forEach(function(item){
+  if(query&&!(item.title+' '+item.id+' '+item.family).toLocaleLowerCase('tr').includes(query))return;
+  if(!families[item.family]){var group=document.createElement('optgroup');group.label=item.family;picker.appendChild(group);families[item.family]=group}
+  var option=document.createElement('option');option.value=item.id;
+  option.textContent=item.title+' · '+item.pages.length+(item.kind==='image'?' görsel':' sayfa');
+  families[item.family].appendChild(option)
+ });
+ if(catalog.some(function(x){return x.id===previous})&&picker.querySelector('option[value="'+previous+'"]'))picker.value=previous;
+ $('catalog-search').title=catalog.length+' tasarım paketi · kaynaklar otomatik keşfedilir'
+}
+function openProduct(productId){
+ var selected=discovery.byId(catalog,productId);
+ if(!selected)return false;
+ slug=selected.id;record=selected;brand=slug==='carousel-01-v3'?'asyada-egitim':
+   selected.family==='cin-egitim'?'cin-egitim':selected.family==='asya-egitim'?'asya-egitim':'asyada-egitim';
+ key='brandstudio:browser:'+slug;folder=null;sourceCache={};pageKinds=selected.pages.map(function(){return selected.kind});
+ pages=selected.pages.map(function(p){return new URL('../../'+p,location.href).href});
+ state={colors:Object.assign({},defaults),edits:{},groups:{}};current=1;dirty=false;
+ history.clear();historyButtons();groupOpen={};PASTEBOARD=320;
+ var versions=allV();
+ if(versions.length){current=Math.max(...versions.map(function(x){return x.version}));state=copy(versions.find(function(x){return x.version===current}).state)}
+ savedState=copy(state);
+ ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
+ $('product').textContent=selected.title;
+ $('catalog-select').value=slug;
+ renderV();
+ var q=new URLSearchParams(location.search);q.set('product',slug);
+ history.replaceState?.(null,'',location.pathname+'?'+q.toString()); // URL-only; browser archive storage unchanged.
+ show(0);return true
+}
+$('catalog-search').oninput=function(){renderCatalog(this.value)};
+$('catalog-select').onchange=function(){
+ var old=slug,target=this.value;
+ if(dirty&&!confirm('Kaydedilmemiş düzenlemeler var. Yine de tasarımı değiştir?')){this.value=old;return}
+ openProduct(target)
+};
+async function init(){
+ $('status').textContent='Tasarım kataloğu okunuyor…';
+ catalog=await discovery.load(new URL('catalog.json',location.href));
+ if(!catalog.length){$('status').textContent='Tasarım kataloğu açılamadı';return}
+ renderCatalog('');
+ var chosen=discovery.byId(catalog,slug)?slug:catalog[0].id;
+ if(!openProduct(chosen))$('status').textContent='Tasarım yüklenemedi'
+}
+
 init();
 })();
 </script></body></html>
