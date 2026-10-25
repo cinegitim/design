@@ -157,8 +157,8 @@ test("canonical artwork can be repositioned and proportionally resized, not repl
  assert.match(portableSource,/function identityGuard\(el,e\)/);
  assert.match(portableSource,/if\(e\.image!==undefined\|\|e\.segments!==undefined/);
  assert.match(portableSource,/if\(!allowed\[k\]\)err/);
- assert.match(portableSource,/352\)err/);
- assert.match(portableSource,/if\(locked\(el\)&&edit\.segments!==undefined\)/);
+ assert.doesNotMatch(portableSource,/minimum 352 px/);
+ assert.match(portableSource,/function locked\(el\)\{return false\}/);
  assert.match(portableSource,/identityGuard\(el,e\)/);
  assert.ok(doc('IMG','anything',true).closest('.logo-foot'));
 });

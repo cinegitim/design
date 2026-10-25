@@ -126,19 +126,19 @@ function applyText(el,segments){
  if(parts.length!==segments.length)err('Kaynak metin yapısı değişmiş; düzenleme uygulanmadı');
  parts.forEach(function(part,i){part.nodeValue=segments[i]});
 }
-function locked(el){return el.classList.contains('folio')}
+function locked(el){return false} // Placement, typography and folio text are all editable.
 function identityArtwork(el){return el.tagName==='IMG'&&!!el.closest('.logo-foot')}
 function identityGuard(el,e){
  if(!identityArtwork(el))return;
  if(e.image!==undefined||e.segments!==undefined||e.mode&&e.mode!=='inherit')err('Onaylı logonun içeriği, kaynağı ve rengi değiştirilemez');
  var allowed={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'margin':1,'z-index':1};
  Object.keys(e.styles||{}).forEach(function(k){if(!allowed[k])err('Logo yalnızca orantılı boyutlandırılabilir ve taşınabilir')});
- if(e.styles&&e.styles.width&&Number.parseFloat(e.styles.width)<352)err('Logo minimum 352 px genişlikte olmalı');
+
 }
 function nodes(doc) {return Array.from(doc.querySelectorAll('.slide '+SELECTOR))}
 function colorCSS(colors){return ':root{'+Object.entries(colors).map(function(p){return'--'+p[0]+':'+p[1]+';'}).join('')+'}\n'}
 function patch(el,edit){
- if(locked(el)&&edit.segments!==undefined)err('Dipnot metni değiştirilemez');
+ // Folio may be edited just like other text.
  identityGuard(el,edit);
  applyText(el,edit.segments);
  if(edit.image!==undefined){
@@ -180,7 +180,7 @@ function css(htmlSource,selectedState,index){
  var ns=nodes(doc),output=colorCSS(checked.colors);
  Object.entries(checked.edits).forEach(function(pair){
   var sp=pair[0].split(':');if(Number(sp[0])!==index)return;
-  var el=ns[Number(sp[1])];if(!el)err('Kaynakta düzenlenen katman artık yok');var e=pair[1];if(locked(el)&&e.segments!==undefined)err('Dipnot metni değiştirilemez');identityGuard(el,e);var styles=Object.assign({},e.styles);
+  var el=ns[Number(sp[1])];if(!el)err('Kaynakta düzenlenen katman artık yok');var e=pair[1];identityGuard(el,e);var styles=Object.assign({},e.styles);
   if(e.mode&&e.mode!=='inherit')styles.color=e.mode==='direct'?e.color:'var(--'+e.mode+')';
   output+=path(el,slide)+'{'+Object.entries(styles).map(function(p){return p[0]+':'+p[1]+';'}).join('')+'}\n';
  });
