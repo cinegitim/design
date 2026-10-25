@@ -12,7 +12,7 @@ class PagesEntryTests(unittest.TestCase):
         self.assertNotIn("http://127.0.0.1:8765/", html)
         self.assertNotIn("open-editor", html)
         self.assertIn("location.replace(target.href)", html)
-        self.assertIn("encodeURIComponent(product)", html)
+        self.assertIn("target.searchParams.set('product',product)", html)
         self.assertNotIn("api.github.com/repos", html)
         self.assertNotIn('method:"POST"', html)
 
