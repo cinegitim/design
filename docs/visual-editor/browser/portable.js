@@ -6,6 +6,8 @@ var SELECTOR='h1,h2,h3,p,.eyebrow,.dek,.photo,.country-line,.country-grid b,.cou
 var COLORS={paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'};
 var ALLOWED_STYLES={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'height':1,'margin':1,'font-size':1,'font-weight':1,'letter-spacing':1,'line-height':1,'text-align':1,'opacity':1,'object-fit':1,'object-position':1,'border-radius':1,'z-index':1,'visibility':1,'background-color':1,'max-width':1,'font-family':1};
 var ALLOWED_MODES={inherit:1,paper:1,ink:1,red:1,direct:1};
+var EDITOR_FONTS=['Jost','SongCJK','Manrope','SourceSerif','Hiragino Sans','Yu Gothic','Apple SD Gothic Neo','Noto Sans KR','Arial','Georgia','Inter'];
+var LOGO_MARKER='data-brandstudio-independent-logo';
 var HEX=/^#[0-9a-fA-F]{6}$/;
 var SLUG=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 var MEDIA=/^data:image\/(?:webp|jpeg|png);base64,([A-Za-z0-9+/]+={0,2})$/;
@@ -37,7 +39,7 @@ function state(input,maxPages) {
      else if(k==='margin'){if(v!=='0')err('Geçersiz margin')}
      else if(k==='max-width'){if(v!=='none')err('Yalnızca max-width:none destekleniyor')}
      else if(k==='right'||k==='bottom'){if(v!=='auto')err('Yerleşim ankrajı yalnızca auto olabilir')}
-     else if(k==='font-family'){if(!['Jost','Arial','Georgia','Inter'].includes(v))err('Geçersiz font')}
+     else if(k==='font-family'){if(!EDITOR_FONTS.includes(v))err('Geçersiz font')}
      else if(k==='text-align'){if(!['left','right','center','justify','start','end'].includes(v))err('Geçersiz hizalama')}
      else if(k==='background-color'){if(!HEX.test(v))err('Geçersiz arka plan rengi')}
      else if(k==='object-fit'){if(!['cover','contain','fill'].includes(v))err('Geçersiz fotoğraf uyumu')}
@@ -56,6 +58,7 @@ function state(input,maxPages) {
    var color=e.color;
    if(mode==='direct'&&!HEX.test(color||''))err('Geçersiz özel renk');
    edits[key]={styles:styles,mode:mode};
+   if(e.basis!==undefined){if(e.basis!=='artboard')err('Geçersiz koordinat temeli');edits[key].basis='artboard'}
    if(e.segments!==undefined){
      if(!Array.isArray(e.segments)||e.segments.length<1||e.segments.length>20)err('Geçersiz metin bölümleri');
      var total=0;
@@ -128,7 +131,7 @@ function applyText(el,segments){
  parts.forEach(function(part,i){part.nodeValue=segments[i]});
 }
 function locked(el){return false} // Placement, typography and folio text are all editable.
-function identityArtwork(el){return el.tagName==='IMG'&&!!el.closest('.logo-foot')}
+function identityArtwork(el){return el.tagName==='IMG'&&(el.hasAttribute(LOGO_MARKER)||!!el.closest('.logo-foot'))}
 function identityGuard(el,e){
  if(!identityArtwork(el))return;
  if(e.image!==undefined||e.segments!==undefined||e.mode&&e.mode!=='inherit')err('Onaylı logonun içeriği, kaynağı ve rengi değiştirilemez');
@@ -137,6 +140,57 @@ function identityGuard(el,e){
 
 }
 function nodes(doc) {return Array.from(doc.querySelectorAll('.slide '+SELECTOR))}
+function detachLogo(doc){
+ var slide=doc.querySelector('.slide'),band=slide&&slide.querySelector('.logo-foot');
+ if(!band)return false;
+ var img=band.querySelector('img');if(!img)return false;
+ // The original source file is unchanged. Only the editable/exported DOM is split.
+ // Approved P-01 bytes and image URI remain exactly as supplied by the source.
+ img.setAttribute(LOGO_MARKER,'true');
+ img.style.setProperty('position','absolute');
+ img.style.setProperty('left','64px');
+ img.style.setProperty('top','auto');
+ img.style.setProperty('right','auto');
+ img.style.setProperty('bottom','22px');
+ img.style.setProperty('width','380px');
+ img.style.setProperty('height','auto');
+ img.style.setProperty('margin','0');
+ img.style.setProperty('display','block');
+ img.style.setProperty('z-index','4');
+ band.after(img);return true
+}
+function fontCSS(sourceUrl) {
+ // All URLs point to already-published static assets in this repository.
+ var src=new URL(sourceUrl,typeof location!=='undefined'?location.href:'https://cinegitim.github.io/design/instagram/carousel-01-v3/source/01.html');
+ var docs=new URL('../../../',src);
+ function asset(path){return new URL(path,docs).href}
+ return [
+  "@font-face{font-family:Jost;src:url('"+asset('instagram/carousel-01-v3/assets/Jost-VF.ttf')+"') format('truetype');font-weight:100 900;font-display:swap}",
+  "@font-face{font-family:SongCJK;src:url('"+asset('instagram/basvuru-rehberi-001-cince-bilmeden/assets/SongtiSC-CJK-subset.ttf')+"') format('truetype');font-weight:100 900;font-display:swap}",
+  "@font-face{font-family:Manrope;src:url('"+asset('cin-egitim/social-avatars-02/assets/manrope-normal-latin.woff2')+"') format('woff2');font-weight:400 800;font-display:swap}",
+  "@font-face{font-family:Manrope;src:url('"+asset('cin-egitim/social-avatars-02/assets/manrope-normal-latin-ext.woff2')+"') format('woff2');font-weight:400 800;font-display:swap;unicode-range:U+0100-02FF,U+1E00-1EFF}",
+  "@font-face{font-family:SourceSerif;src:url('"+asset('cin-egitim/social-avatars-02/assets/source-serif-4-normal-latin.woff2')+"') format('woff2');font-weight:400 700;font-display:swap}",
+  "@font-face{font-family:SourceSerif;src:url('"+asset('cin-egitim/social-avatars-02/assets/source-serif-4-normal-latin-ext.woff2')+"') format('woff2');font-weight:400 700;font-display:swap;unicode-range:U+0100-02FF,U+1E00-1EFF}"
+ ].join('')
+}
+function installFonts(doc,sourceUrl){
+ if(doc.querySelector('style[data-brandstudio-fonts]'))return;
+ var style=doc.createElement('style');style.setAttribute('data-brandstudio-fonts','true');
+ style.textContent=fontCSS(sourceUrl);doc.head.appendChild(style)
+}
+function adaptLogoEdit(doc,el,edit,selectedState,index){
+ if(!edit||!identityArtwork(el)||edit.basis==='artboard')return edit;
+ var styles=edit.styles||{};
+ if(!Object.prototype.hasOwnProperty.call(styles,'left')&&!Object.prototype.hasOwnProperty.call(styles,'top'))return edit;
+ var band=doc.querySelector('.slide .logo-foot'),bandIndex=nodes(doc).indexOf(band);
+ var bandStyles=selectedState.edits[index+':'+bandIndex]?.styles||{};
+ var bx=bandStyles.left?Number.parseFloat(bandStyles.left):0;
+ var by=bandStyles.top?Number.parseFloat(bandStyles.top):925;
+ var clone=Object.assign({},edit,{styles:Object.assign({},styles)});
+ if(styles.left&&styles.left!=='auto')clone.styles.left=Math.round(bx+Number.parseFloat(styles.left))+'px';
+ if(styles.top&&styles.top!=='auto')clone.styles.top=Math.round(by+Number.parseFloat(styles.top))+'px';
+ return clone
+}
 function colorCSS(colors){return ':root{'+Object.entries(colors).map(function(p){return'--'+p[0]+':'+p[1]+';'}).join('')+'}\n'}
 function patch(el,edit){
  // Folio may be edited just like other text.
@@ -153,10 +207,11 @@ function sourceDocument(html,sourceUrl,selectedState,index) {
  var doc=new DOMParser().parseFromString(html,'text/html');
  var slide=doc.querySelector('.slide');if(!slide)err('HTML slayt yapısı bulunamadı');
  var base=doc.createElement('base');base.href=sourceUrl;doc.head.insertBefore(base,doc.head.firstChild);
+ detachLogo(doc);installFonts(doc,sourceUrl);
  Object.entries(selectedState.colors).forEach(function(p){doc.documentElement.style.setProperty('--'+p[0],p[1])});
  doc.querySelectorAll('style').forEach(function(el){el.textContent=el.textContent.replace(/#F7F3E9/gi,'var(--paper)').replace(/#1D2027/gi,'var(--ink)').replace(/#BD2120/gi,'var(--red)')});
  slide.dataset.slideIndex=String(index+1);
- nodes(doc).forEach(function(el,i){el.dataset.editIndex=String(i);var edit=selectedState.edits[index+':'+i];if(edit)patch(el,edit)});
+ nodes(doc).forEach(function(el,i){el.dataset.editIndex=String(i);var edit=selectedState.edits[index+':'+i];if(edit)patch(el,adaptLogoEdit(doc,el,edit,selectedState,index))});
  return doc;
 }
 function html(html,sourceUrl,selectedState,index) {
@@ -174,18 +229,19 @@ function path(el,rootEl) {
  if(el!==rootEl)err('Katman seçicisi oluşturulamadı');
  return '.slide > '+parts.join(' > ');
 }
-function css(htmlSource,selectedState,index){
+function css(htmlSource,selectedState,index,sourceUrl){
  var checked=state(selectedState,25);
  var doc=new DOMParser().parseFromString(htmlSource,'text/html'),slide=doc.querySelector('.slide');
  if(!slide)err('Kaynak HTML bulunamadı');
- var ns=nodes(doc),output=colorCSS(checked.colors);
+ detachLogo(doc);
+ var ns=nodes(doc),output=colorCSS(checked.colors)+fontCSS(sourceUrl||'https://cinegitim.github.io/design/instagram/carousel-01-v3/source/01.html');
  Object.entries(checked.edits).forEach(function(pair){
   var sp=pair[0].split(':');if(Number(sp[0])!==index)return;
-  var el=ns[Number(sp[1])];if(!el)err('Kaynakta düzenlenen katman artık yok');var e=pair[1];identityGuard(el,e);var styles=Object.assign({},e.styles);
+  var el=ns[Number(sp[1])];if(!el)err('Kaynakta düzenlenen katman artık yok');var e=adaptLogoEdit(doc,el,pair[1],checked,index);identityGuard(el,e);var styles=Object.assign({},e.styles);
   if(e.mode&&e.mode!=='inherit')styles.color=e.mode==='direct'?e.color:'var(--'+e.mode+')';
   output+=path(el,slide)+'{'+Object.entries(styles).map(function(p){return p[0]+':'+p[1]+';'}).join('')+'}\n';
  });
  return output;
 }
-root.BrandstudioPortable={selector:SELECTOR,validateState:state,makeArchive:archive,parseArchive:parse,html:html,css:css,textNodes:textNodes,applyText:applyText,MAX_MEDIA:MAX_MEDIA};
+root.BrandstudioPortable={selector:SELECTOR,validateState:state,makeArchive:archive,parseArchive:parse,html:html,css:css,textNodes:textNodes,applyText:applyText,detachLogo:detachLogo,adaptLogoEdit:adaptLogoEdit,installFonts:installFonts,fontCSS:fontCSS,fonts:EDITOR_FONTS,MAX_MEDIA:MAX_MEDIA};
 })(globalThis);

@@ -181,3 +181,17 @@ test("overflow and narrow-screen inspector remain operable",()=>{
  assert.match(html,/ev\.key==='Escape'\)\$\('tools-menu'\)\.open=false/);
  assert.match(html,/#workspace:not\(\.right-closed\)>aside\.right\{display:block;position:absolute/);
 });
+
+test("logo and band are DOM siblings, with stable selection/index and independent movement",()=>{
+ assert.match(html,/codec\.detachLogo\(doc\);codec\.installFonts\(doc,pages\[page\]\)/);
+ assert.match(html,/n\.hasAttribute\('data-brandstudio-independent-logo'\)/);
+ assert.match(html,/var parent=identityImage\(n\)\?null:n\.closest\('\.logo-foot'\)/);
+ assert.match(html,/if\(identityImage\(n\)\)e\.basis='artboard'/);
+ assert.match(html,/codec\.adaptLogoEdit\(doc,n,v,state,page\)/);
+});
+test("carousel font chooser includes all used brand families",()=>{
+ for(const label of ["Jost","Manrope","Source Serif 4","Songti SC (Çince)","Hiragino Sans","Noto Sans KR"])
+  assert.ok(html.includes(label),label);
+ assert.match(html,/\$\('font'\)\.value=codec\.fonts\.includes\(firstFont\)/);
+ assert.match(html,/\$\('font'\)\.onchange=function\(\)/);
+});

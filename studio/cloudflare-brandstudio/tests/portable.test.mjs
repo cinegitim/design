@@ -177,3 +177,38 @@ test("font-family export safely round-trips only approved families",()=>{
  d.edits["0:2"].styles["font-family"]="serif;url(evil)";
  assert.throws(()=>codec.validateState(d,5),/font/);
 });
+
+test("logo artboard coordinate basis is portable and rejects unknown basis",()=>{
+ const s=fresh();
+ s.edits["0:5"]={styles:{position:"absolute",left:"64px",top:"960px",width:"300px",right:"auto",bottom:"auto",margin:"0"},mode:"inherit",basis:"artboard"};
+ const archive=codec.makeArchive("carousel-01-v3",[{version:2,note:"Independent logo",state:s}],s);
+ const restored=codec.parseArchive(archive,"carousel-01-v3",5);
+ assert.equal(restored.current.edits["0:5"].basis,"artboard");
+ assert.equal(restored.versions[0].state.edits["0:5"].styles.left,"64px");
+ s.edits["0:5"].basis="parent";
+ assert.throws(()=>codec.validateState(s,5),/koordinat temeli/);
+});
+test("existing carousel fonts are backed by actual repository assets and safe values",()=>{
+ for(const font of ["Jost","SongCJK","Manrope","SourceSerif","Hiragino Sans","Yu Gothic","Apple SD Gothic Neo","Noto Sans KR"]){
+  assert.ok(codec.fonts.includes(font),"Missing existing brand font: "+font);
+  const s=fresh();s.edits["0:2"].styles["font-family"]=font;
+  assert.equal(codec.validateState(s,5).edits["0:2"].styles["font-family"],font);
+ }
+ for(const pathPart of ["instagram/carousel-01-v3/assets/Jost-VF.ttf",
+ "instagram/basvuru-rehberi-001-cince-bilmeden/assets/SongtiSC-CJK-subset.ttf",
+ "cin-egitim/social-avatars-02/assets/manrope-normal-latin.woff2",
+ "cin-egitim/social-avatars-02/assets/source-serif-4-normal-latin.woff2"]){
+  assert.ok(portableSource.includes(pathPart),"Registered asset URL absent: "+pathPart);
+ }
+ const bad=fresh();bad.edits["0:2"].styles["font-family"]="Manrope;url(//evil.invalid/font)";
+ assert.throws(()=>codec.validateState(bad,5));
+});
+test("portable export detaches canonical logo before applying revisions",()=>{
+ assert.match(portableSource,/function detachLogo\(doc\)/);
+ assert.match(portableSource,/band\.after\(img\)/);
+ assert.match(portableSource,/img\.setAttribute\(LOGO_MARKER,'true'\)/);
+ assert.match(portableSource,/detachLogo\(doc\);installFonts\(doc,sourceUrl\)/);
+ assert.match(portableSource,/function adaptLogoEdit\(doc,el,edit,selectedState,index\)/);
+ assert.match(portableSource,/identityGuard\(el,edit\)/);
+ assert.match(portableSource,/el\.hasAttribute\(LOGO_MARKER\)/);
+});
