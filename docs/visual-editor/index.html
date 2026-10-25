@@ -1,62 +1,22 @@
-<!doctype html>
-<html lang="tr"><head>
+<!doctype html><html lang="tr"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Visual Editor · Brandstudio</title>
-<meta name="description" content="Brandstudio karusellerine isteğe bağlı görsel düzenleme: kaynaklar korunur, sürümler yerelde kaydedilir.">
+<meta name="robots" content="noindex,follow">
+<title>Brandstudio · Tarayıcıda Tasarım Düzenleme</title>
+<meta name="description" content="Mevcut ve yeni tasarımları tarayıcıda aç, düzenle ve sürümlerini kaydet.">
 <style>
-:root{--paper:#f7f3e9;--ink:#1d2027;--red:#bd2120;--line:#d7d0c5;--muted:#63645f}
-*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
-a{color:inherit}a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset:4px}
-.wrap{width:min(1020px,calc(100% - 44px));margin:0 auto}.nav{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:20px 0;gap:16px}
-.nav a{text-decoration:none}.brand{font-size:20px;font-weight:790;letter-spacing:-.04em}.brand b{color:var(--red)}.back{font-size:13px;font-weight:600}
-.hero{padding:68px 0 30px}.eyebrow{letter-spacing:.17em;text-transform:uppercase;font-size:11px;color:var(--red);font-weight:800}
-h1{font-family:Georgia,serif;font-size:clamp(36px,6vw,67px);font-weight:500;letter-spacing:-.055em;line-height:1.05;margin:13px 0 22px;max-width:15ch}
-.lead{color:#484a49;max-width:65ch;font-size:18px}.layout{display:grid;grid-template-columns:1.3fr .9fr;gap:18px;margin:10px 0 60px}
-.panel{background:#fffdf7;border:1px solid var(--line);padding:27px;border-radius:15px;min-width:0}.panel h2{font-size:24px;letter-spacing:-.035em;margin:0 0 15px}
-.status{display:inline-flex;gap:8px;align-items:center;font-size:12px;font-weight:680;color:#846010;background:#fff4d9;border-radius:30px;padding:7px 12px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.kv{background:#f6f0e6;padding:11px 12px;border-radius:9px;word-break:break-word}.kv span{display:block;text-transform:uppercase;letter-spacing:.09em;font-size:10px;color:var(--muted);margin-bottom:3px}.kv strong{font-size:14px}
-.actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:23px 0 6px}.action{border:0;border-radius:8px;background:var(--red);color:white;font-weight:750;text-decoration:none;padding:13px 19px;display:inline-block}.secondary{border:1px solid var(--line);border-radius:8px;text-decoration:none;padding:12px 17px;font-size:14px;font-weight:650}
-ol{padding-left:21px}li{margin-bottom:12px}p{margin:9px 0}code{background:#f0e9dd;padding:2px 5px;border-radius:4px;word-break:break-word}
-.warning{padding:15px;border-left:3px solid var(--red);background:#f8f0e5;color:#484545;font-size:13px;margin-top:21px}
-footer{border-top:1px solid var(--line);padding:20px 0 40px;font-size:12px;color:var(--muted)}footer a{color:var(--ink)}
-@media(max-width:760px){.layout{grid-template-columns:1fr}.hero{padding-top:42px}.grid{grid-template-columns:1fr}.panel{padding:21px}}
-</style>
-</head><body><div class="wrap">
-<nav class="nav"><a href="../" class="brand">Brandstudio<b>.</b></a><a class="back" href="../workspaces/asyada-egitim/">← Asya'da Eğitim çalışmaları</a></nav>
-<main>
-<section class="hero"><div class="eyebrow">Opsiyonel düzenleme / Prompt-first</div><h1>Mevcut üretimini düzenle.</h1><p class="lead">Önce prompt ile üretilmiş HTML/CSS karuselini kullan. Başlıkları, fotoğraf alanlarını ve renkleri Visual Editor’de değiştirebilirsin. Kayıt onayınla yeni <code>v2</code>, <code>v3</code> klasörleri yerel bilgisayarında oluşturulur.</p></section>
-<div class="layout">
-<section class="panel" aria-labelledby="selection-heading"><div class="status">● Yerel uygulama gereklidir</div><h2 id="selection-heading" style="margin-top:18px">Seçilen ürün</h2><div class="grid">
-<div class="kv"><span>Marka</span><strong id="brand">Asya'da Eğitim</strong></div>
-<div class="kv"><span>Kategori</span><strong id="category">Instagram Karusel</strong></div>
-<div class="kv"><span>Ürün</span><strong id="product">Ürün seçilmedi</strong></div>
-<div class="kv"><span>Kaydetme</span><strong>Yalnızca yerel / sürümlü</strong></div>
-</div><p id="product-note">Bir karusel kartındaki “Visual Editor” bağlantısından gelerek ürün seçebilirsin.</p>
-<div class="actions"><a id="browser-editor" class="action" href="browser/">Tarayıcıda düzenle ↗</a><a id="open-editor" class="secondary" href="http://127.0.0.1:8765/">Yerel uygulamayı aç ↗</a><a class="secondary" href="https://github.com/cinegitim/design/tree/main/studio/visual-editor">Kurulum ve kayıt rehberi</a></div>
-<div class="warning"><strong>Bu sayfa dosya kaydetmez.</strong> Tarayıcı editörü yalnızca tarayıcıya veya seçtiğin klasöre kaydeder. Yerel uygulamayı tercih edersen Mac'inde başlatılmış olmalı ve ürün daha önce yerel ürün listesine kaydedilmiş olmalıdır. Aksi hâlde yerel bağlantı açılmayabilir veya ürün bulunamayabilir. Site GitHub’a sessizce yazmaz.</div>
-</section>
-<aside class="panel"><h2>Nasıl çalışır?</h2><ol><li>Önce mevcut HTML/CSS üretiminin kaynakları ve PNG’leri tamamlanır.</li><li>İsteğe bağlı <code>register-output</code> işlemi ürünü yerel uygulamaya kaydeder.</li><li><strong>Visual Editor</strong> ile düzenlemeyi yaparsın.</li><li><strong>Kaydet</strong> dediğinde onay sorulur; kayıt ayrı <code>versions/vN/</code> klasörüne yapılır.</li><li>Render ve onay kontrolleri tamamlanmadan hiçbir sürüm yayımlanmış sayılmaz.</li></ol><p style="color:var(--muted);font-size:13px">Özgün prompt üretimi korunur. Site sadece giriş noktasıdır; aktif düzenleyici yerel uygulamadır.</p></aside>
-</div></main>
-<footer>Asya'da Eğitim · Brandstudio · <a href="https://github.com/cinegitim/design">Kaynak depo</a></footer>
-</div>
+*{box-sizing:border-box}body{min-height:100dvh;display:grid;place-items:center;margin:0;background:#111923;color:#e8edf3;font:14px/1.6 -apple-system,BlinkMacSystemFont,"Inter",sans-serif}
+main{width:min(460px,calc(100vw - 40px));background:#1a2633;border:1px solid #334457;padding:32px;border-radius:16px}
+h1{font-weight:720;font-size:24px;letter-spacing:-.04em;margin:0 0 9px}p{color:#aab5c3;margin:0 0 23px}
+a{display:inline-flex;justify-content:center;align-items:center;color:#fff;text-decoration:none;background:#bd4334;padding:11px 16px;border-radius:8px;font-weight:650}
+a:focus-visible{outline:2px solid #efba86;outline-offset:4px}
+</style></head><body><main><h1>Brandstudio</h1><p>Tasarımların düzenleme alanı tarayıcıda açılıyor. Düzenlediğin sürümler yine tarayıcıda saklanabilir veya dosya olarak indirilebilir.</p>
+<a id="continue" href="browser/">Tarayıcı editörüne geç</a></main>
 <script>
-(() => {
-  const p = new URLSearchParams(location.search);
-  const valid = s => typeof s === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(s);
-  const brand = p.get("brand") || "asyada-egitim";
-  const category = p.get("category") || "instagram-carousel";
-  const product = p.get("product");
-  if (brand !== "asyada-egitim" || category !== "instagram-carousel" || (product && !valid(product))) {
-    document.getElementById("product").textContent = "Geçersiz ürün seçimi";
-    document.getElementById("open-editor").href = "http://127.0.0.1:8765/";
-    return;
-  }
-  if (product) {
-    document.getElementById("product").textContent = product.replace(/-/g, " ");
-    document.getElementById("product-note").textContent = "Ürün önceden yerel uygulamada kayıtlıysa Visual Editor doğrudan açılır. Kayıtlı değilse ürün listesinde bulunmayacaktır.";
-    const url = "http://127.0.0.1:8765/editor/" + encodeURIComponent(category) + "/" + encodeURIComponent(product) + "/";
-    document.getElementById("open-editor").href = url;
-    document.getElementById("browser-editor").href = "browser/?product=" + encodeURIComponent(product);
-  }
+(function(){
+ var params=new URLSearchParams(location.search),product=params.get('product');
+ var target=new URL('browser/',location.href);
+ if(product&&/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(product))target.searchParams.set('product',product);
+ document.getElementById('continue').href=target.href;
+ location.replace(target.href);
 })();
 </script></body></html>
