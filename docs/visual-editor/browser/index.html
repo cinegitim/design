@@ -1167,7 +1167,7 @@ function openProduct(productId){
  $('catalog-select').value=slug;
  renderV();
  var q=new URLSearchParams(location.search);q.set('product',slug);
- history.replaceState?.(null,'',location.pathname+'?'+q.toString()); // URL-only; browser archive storage unchanged.
+ window.history.replaceState(null,'',location.pathname+'?'+q.toString()); // URL-only; browser archive storage unchanged.
  show(0);return true
 }
 $('catalog-search').oninput=function(){renderCatalog(this.value)};
