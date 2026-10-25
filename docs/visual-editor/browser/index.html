@@ -69,7 +69,7 @@ dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;
 <div class="panel"><h2>Global renkler</h2><p class="small">Bağlı renkler aynı anda değişir. Özel renk verdiğin nesne etkilenmez.</p>
 <div class="swatches"><label>Krem<input type="color" id="paper" value="#f7f3e9"></label><label>Koyu<input type="color" id="ink" value="#1d2027"></label><label>Kırmızı<input type="color" id="red" value="#bd2120"></label></div></div>
 <div class="notice">Kaydettiğin sürümler <strong>bu tarayıcıda</strong> saklanır. İstersen klasör seçerek ayrıca <code>versions/v2</code>, <code>versions/v3</code> dosyalarını Mac'ine yazdırabilirsin. Sunucuya veri gönderilmez.</div></aside>
-<main class="center"><div class="toolbar"><button class="btn" id="prev">←</button><span id="count" class="badge"></span><button class="btn" id="next">→</button><button class="btn" id="undo" disabled title="Geri al · Cmd/Ctrl+Z">↶ Geri al</button><button class="btn" id="redo" disabled title="Yeniden yap · Cmd/Ctrl+Shift+Z">↷ Yeniden yap</button>
+<main class="center"><div class="toolbar"><button class="btn" id="prev">←</button><span id="count" class="badge"></span><button class="btn" id="next">→</button><button class="btn" id="undo" disabled title="Geri al · Cmd/Ctrl+Z (tuvalde de çalışır)">↶ Geri al</button><button class="btn" id="redo" disabled title="Yeniden yap · Cmd/Ctrl+Shift+Z">↷ Yeniden yap</button>
 <div class="zoom-controls"><button type="button" class="btn" id="zoom-out" aria-label="Küçült">−</button><select id="zoom" aria-label="Tuval yakınlaştırma"><option value="fit">Sığdır</option><option value="0.25">25%</option><option value="0.4">40%</option><option value="0.5">50%</option><option value="0.75">75%</option><option value="1">100%</option><option value="1.25">125%</option><option value="custom" hidden>Özel</option></select><button type="button" class="btn" id="zoom-in" aria-label="Büyüt">+</button></div>
 <button class="btn" id="hand" aria-pressed="false" title="Eli kullanarak tuvali kaydır">✋ El</button><button class="btn" id="focus" aria-pressed="false" title="Kenar panelleri gizle">⛶ Odak</button><label class="small"><input type="checkbox" id="snap" checked> 8 px ızgara</label><button class="btn primary" id="save">Yeni sürüm kaydet</button><button class="btn" id="export">Sürüm arşivini indir</button><button class="btn" id="import">Arşivi içe aktar</button><input type="file" id="importFile" accept=".json,application/json" hidden></div>
 <nav class="slide-tabs" aria-label="Slaytlar" id="slide-tabs"></nav><div class="canvas" id="canvas"><div class="ruler-stage" id="ruler-stage"><div id="ruler-corner" aria-hidden="true"></div><canvas id="ruler-x" aria-label="Tuvalin üst dış kenarındaki yatay cetvel"></canvas><canvas id="ruler-y" aria-label="Tuvalin sol dış kenarındaki dikey cetvel"></canvas><div class="frame" id="frame"><iframe id="preview" title="Düzenlenebilir karusel" sandbox="allow-same-origin"></iframe><div id="pan-shield" class="pan-shield" hidden></div></div></div></div><div class="bottom"><span id="status">Kaynak denetleniyor</span> · <span id="unsaved">Değişiklik yok</span></div></main>
@@ -430,16 +430,32 @@ function restoreState(value){state=copy(value);['paper','ink','red'].forEach(fun
 $('undo').onclick=function(){var prev=history.undo(state);if(prev){restoreState(prev);$('status').textContent='Son değişiklik geri alındı'}};
 $('redo').onclick=function(){var next=history.redo(state);if(next){restoreState(next);$('status').textContent='Değişiklik yeniden uygulandı'}};
 function renderTabs(){var target=$('slide-tabs');target.innerHTML='';for(var i=0;i<pages.length;i++){var b=document.createElement('button');b.type='button';b.textContent=String(i+1).padStart(2,'0');b.className=i===page?'active':'';if(i===page)b.setAttribute('aria-current','step');b.setAttribute('aria-label',(i+1)+'. slaytı aç');(function(index){b.onclick=function(){show(index)}})(i);target.appendChild(b)}}
-document.addEventListener('keydown',function(ev){var tag=ev.target&&ev.target.tagName;if(['INPUT','TEXTAREA','SELECT'].includes(tag)||ev.target?.isContentEditable||document.querySelector('dialog[open]'))return;
+var keyboardNudging=false;
+function editorKeydown(ev){
+ var tag=ev.target&&ev.target.tagName;
+ if(['INPUT','TEXTAREA','SELECT'].includes(tag)||ev.target?.isContentEditable||document.querySelector('dialog[open]'))return;
  var ctrl=ev.ctrlKey||ev.metaKey,k=ev.key.toLowerCase();
- if(ctrl&&!ev.altKey&&k==='z'){ev.preventDefault();(ev.shiftKey?$('redo'):$('undo')).click();return}
- if(ctrl&&!ev.altKey&&k==='y'){ev.preventDefault();$('redo').click();return}
+ if(ctrl&&!ev.altKey&&k==='z'){ev.preventDefault();keyboardNudging=false;dragRecorded=false;(ev.shiftKey?$('redo'):$('undo')).click();return}
+ if(ctrl&&!ev.altKey&&k==='y'){ev.preventDefault();keyboardNudging=false;dragRecorded=false;$('redo').click();return}
  if(ev.altKey&&!ctrl&&(ev.key==='ArrowLeft'||ev.key==='ArrowRight')){ev.preventDefault();show(page+(ev.key==='ArrowLeft'?-1:1));return}
  if(sel>=0&&!ctrl&&!ev.altKey&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(ev.key)){
   var n=nodes()[sel];if(!editable(n))return;
-  ev.preventDefault();var p=pos(n),step=ev.shiftKey?10:1;setXY(p.x+(ev.key==='ArrowLeft'?-step:ev.key==='ArrowRight'?step:0),p.y+(ev.key==='ArrowUp'?-step:ev.key==='ArrowDown'?step:0));return
+  ev.preventDefault();
+  if(!keyboardNudging){keyboardNudging=true;dragRecorded=false}
+  var p=pos(n),step=ev.shiftKey?10:1;
+  setXY(p.x+(ev.key==='ArrowLeft'?-step:ev.key==='ArrowRight'?step:0),
+        p.y+(ev.key==='ArrowUp'?-step:ev.key==='ArrowDown'?step:0));
+  return
  }
-});
+}
+function editorKeyup(ev){
+ if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(ev.key)){
+  keyboardNudging=false;dragRecorded=false
+ }
+}
+document.addEventListener('keydown',editorKeydown);
+document.addEventListener('keyup',editorKeyup);
+window.addEventListener('blur',function(){keyboardNudging=false;dragRecorded=false});
 function pos(n){var a=n.getBoundingClientRect(),b=doc.querySelector('.slide').getBoundingClientRect();return{x:Math.round(a.left-b.left),y:Math.round(a.top-b.top),w:Math.round(a.width),h:Math.round(a.height)}}
 function logo(n){return n.classList.contains('logo-foot')||!!n.closest('.logo-foot')}
 function identityImage(n){return !!n&&n.tagName==='IMG'&&logo(n)}
@@ -528,7 +544,7 @@ function setXY(x,y){
  if(dragging&&$('snap').checked){x=Math.round(x/8)*8;y=Math.round(y/8)*8}
  var anchor=pos(n),dx=Math.round(x-anchor.x),dy=Math.round(y-anchor.y);
  if(!dx&&!dy)return;
- if(!dragging)checkpoint();else if(!dragRecorded){checkpoint();dragRecorded=true}
+ if(!dragging&&!keyboardNudging)checkpoint();else if(!dragRecorded){checkpoint();dragRecorded=true}
  var ids=selectedIds.length?selectedIds:[sel];
  // Capture all boxes before changing flow/positioning on any member.
  var snapshots=ids.filter(function(i){return editable(ns[i])}).map(function(i){return{id:i,node:ns[i],p:pos(ns[i])}});
@@ -601,7 +617,7 @@ function down(evt){
  doc.addEventListener('pointermove',move);doc.addEventListener('pointerup',up,{once:true});evt.preventDefault()
 }
 function show(i){if(!pages.length)return;page=Math.max(0,Math.min(pages.length-1,i));sel=-1;selectedIds=[];doc=null;$('preview').src=pages[page];$('count').textContent=(page+1)+' / '+pages.length;renderTabs();$('props').hidden=true;$('selection-tools').hidden=true;$('blank').hidden=false}
-$('preview').addEventListener('load',function(){doc=$('preview').contentDocument;if(!doc||!doc.querySelector('.slide')){$('status').textContent='Kaynak slayt bulunamadı';return}doc.addEventListener('pointerdown',down);
+$('preview').addEventListener('load',function(){doc=$('preview').contentDocument;if(!doc||!doc.querySelector('.slide')){$('status').textContent='Kaynak slayt bulunamadı';return}doc.addEventListener('pointerdown',down);doc.addEventListener('keydown',editorKeydown);doc.addEventListener('keyup',editorKeyup);
  doc.addEventListener('contextmenu',function(ev){
   var n=ev.target.closest('[data-edit-index]');if(!n)return;
   ev.preventDefault();var i=Number(n.dataset.editIndex);
