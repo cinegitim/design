@@ -8,14 +8,18 @@ var ALLOWED_STYLES={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1
 var ALLOWED_MODES={inherit:1,paper:1,ink:1,red:1,direct:1};
 var HEX=/^#[0-9a-fA-F]{6}$/;
 var SLUG=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+var MEDIA=/^data:image\/(?:webp|jpeg|png);base64,([A-Za-z0-9+/]+={0,2})$/;
+var MAX_MEDIA=260000,MAX_MEDIA_COUNT=8,MAX_STATE=2100000;
 function err(message){throw new Error(message)}
 function plain(x){return !!x&&typeof x==='object'&&!Array.isArray(x)}
 function state(input,maxPages) {
  if(!plain(input)||!plain(input.colors)||!plain(input.edits))err('Geçersiz sürüm durumu');
- if(JSON.stringify(input).length>32768)err('Sürüm durumu 32 KB sınırını aşıyor');
+ var inputLength=JSON.stringify(input).length;
+ var withMedia=Object.values(input.edits).some(function(e){return plain(e)&&e.image!==undefined});
+ if(inputLength>(withMedia?MAX_STATE:32768))err(withMedia?'Fotoğraflı sürüm 2,1 MB sınırını aşıyor':'Sürüm durumu 32 KB sınırını aşıyor');
  var colors={};Object.keys(COLORS).forEach(function(k){var v=input.colors[k];if(!HEX.test(v||''))err('Geçersiz renk: '+k);colors[k]=v.toLowerCase()});
  if(Object.keys(input.colors).some(function(k){return !Object.prototype.hasOwnProperty.call(COLORS,k)}))err('Bilinmeyen renk anahtarı');
- var edits={},keys=Object.keys(input.edits);
+ var edits={},keys=Object.keys(input.edits),mediaCount=0;
  if(keys.length>500)err('Çok fazla düzenleme');
  keys.forEach(function(key){
    if(!/^(0|[1-9][0-9]*):(0|[1-9][0-9]*)$/.test(key))err('Geçersiz katman anahtarı');
@@ -58,6 +62,13 @@ function state(input,maxPages) {
      });
      if(total>1600)err('Metin uzunluğu sınırı aşıldı');
    }
+   if(e.image!==undefined){
+     if(typeof e.image!=='string'||e.image.length>MAX_MEDIA||!MEDIA.test(e.image)||e.image.length<60)err('Yalnızca küçük PNG/JPEG/WebP fotoğraf verisi kabul ediliyor');
+     var encoded=e.image.slice(e.image.indexOf(',')+1);
+     if(encoded.length%4!==0)err('Geçersiz fotoğraf kodlaması');
+     mediaCount++;if(mediaCount>MAX_MEDIA_COUNT)err('Bir sürümde en fazla 8 fotoğraf değiştirilebilir');
+     edits[key].image=e.image;
+   }
    if(mode==='direct')edits[key].color=color.toLowerCase();
  });
  var groups={},inputGroups=input.groups===undefined?{}:input.groups;
@@ -84,12 +95,15 @@ function archive(product,versions,current) {
    if(!plain(v)||!Number.isInteger(v.version)||v.version<2||v.version>26)err('Geçersiz sürüm numarası');
    return{version:v.version,note:String(v.note||'').slice(0,140),time:String(v.time||''),state:state(v.state,25)};
  });
- return{format:'brandstudio-portable',schema:2,brand:'asyada-egitim',product:product,exportedAt:new Date().toISOString(),versions:out,current:state(current,25)};
+ var result={format:'brandstudio-portable',schema:2,brand:'asyada-egitim',product:product,exportedAt:new Date().toISOString(),versions:out,current:state(current,25)};
+ if(JSON.stringify(result).length>16000000)err('Arşiv 16 MB sınırını aşıyor');
+ return result;
 }
 function parse(input,product,pages) {
  if(!plain(input)||input.format!=='brandstudio-portable'||input.schema!==2)err('Bu dosya bir Brandstudio sürüm arşivi değil');
  if(input.brand!=='asyada-egitim'||input.product!==product)err('Arşiv farklı bir marka veya ürüne ait');
  if(!Array.isArray(input.versions)||input.versions.length>25)err('Geçersiz sürüm sayısı');
+ if(JSON.stringify(input).length>16000000)err('Arşiv 16 MB sınırını aşıyor');
  var seen={};
  var versions=input.versions.map(function(v){
    if(!plain(v)||!Number.isInteger(v.version)||v.version<2||v.version>26||seen[v.version])err('Tekrarlanan/geçersiz sürüm');
@@ -116,6 +130,10 @@ function colorCSS(colors){return ':root{'+Object.entries(colors).map(function(p)
 function patch(el,edit){
  if(locked(el))err('Kilitli marka öğesi düzenlenemez');
  applyText(el,edit.segments);
+ if(edit.image!==undefined){
+   if(el.tagName!=='IMG')err('Fotoğraf yalnızca img katmanına uygulanabilir');
+   el.setAttribute('src',edit.image);
+ }
  Object.entries(edit.styles||{}).forEach(function(p){el.style.setProperty(p[0],p[1])});
  if(edit.mode&&edit.mode!=='inherit')el.style.setProperty('color',edit.mode==='direct'?edit.color:'var(--'+edit.mode+')');
 }
@@ -158,5 +176,5 @@ function css(htmlSource,selectedState,index){
  });
  return output;
 }
-root.BrandstudioPortable={selector:SELECTOR,validateState:state,makeArchive:archive,parseArchive:parse,html:html,css:css,textNodes:textNodes,applyText:applyText};
+root.BrandstudioPortable={selector:SELECTOR,validateState:state,makeArchive:archive,parseArchive:parse,html:html,css:css,textNodes:textNodes,applyText:applyText,MAX_MEDIA:MAX_MEDIA};
 })(globalThis);
