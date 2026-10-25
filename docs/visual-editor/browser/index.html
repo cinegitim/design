@@ -62,7 +62,7 @@ dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;
 [hidden]{display:none!important}@media(max-width:990px){.layout{grid-template-columns:230px 1fr}aside.right{grid-column:1/-1;border-top:1px solid var(--line)}}@media(max-width:650px){.layout{display:block;height:auto;min-height:0}.center{min-height:670px}.canvas{min-height:500px;max-height:600px}.layers{max-height:180px}}
 </style></head><body>
 <header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><a href="../">← Visual Editor</a></div></header>
-<div class="layout" id="workspace"><aside><h2>Katmanlar</h2><p class="small">Fotoğraf ile üzerindeki yazılar birlikte gruplanır. Logo ve dipnot kilitlidir.</p><div class="controls"><button class="btn" id="groups-open">Tümünü aç</button><button class="btn" id="groups-close">Tümünü kapat</button></div><div id="layers" class="layers"></div>
+<div class="layout" id="workspace"><aside><h2>Katmanlar</h2><p class="small">Fotoğraf ve yazılar ilişkili başlıklarda gösterilir. Logo, bant ve dipnot taşınabilir; onaylı logo içeriği korunur.</p><div class="controls"><button class="btn" id="groups-open">Tümünü aç</button><button class="btn" id="groups-close">Tümünü kapat</button></div><div id="layers" class="layers"></div>
 <div class="panel"><h2>Global renkler</h2><p class="small">Bağlı renkler aynı anda değişir. Özel renk verdiğin nesne etkilenmez.</p>
 <div class="swatches"><label>Krem<input type="color" id="paper" value="#f7f3e9"></label><label>Koyu<input type="color" id="ink" value="#1d2027"></label><label>Kırmızı<input type="color" id="red" value="#bd2120"></label></div></div>
 <div class="notice">Kaydettiğin sürümler <strong>bu tarayıcıda</strong> saklanır. İstersen klasör seçerek ayrıca <code>versions/v2</code>, <code>versions/v3</code> dosyalarını Mac'ine yazdırabilirsin. Sunucuya veri gönderilmez.</div></aside>
@@ -435,7 +435,7 @@ function showSelection(){
  if(!doc)return;
  var ns=nodes(),count=selectedIds.length,n=ns[sel];
  ns.forEach(function(x,i){x.style.outline=selectedIds.includes(i)?'3px dashed #ffa95f':''});
- $('blank').hidden=count>0;$('props').hidden=count!==1;$('selection-tools').hidden=count===0;
+ $('blank').hidden=count>0;$('props').hidden=count!==1;$('selection-tools').hidden=count<2;
  $('multi-align').hidden=count<2;
  $('selection-summary').textContent=count===1?'1 katman seçildi':count+' katman seçildi';
  var members=selectedIds.filter(function(i){return editable(ns[i])});
