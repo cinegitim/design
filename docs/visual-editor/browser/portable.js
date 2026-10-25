@@ -140,7 +140,7 @@ function applyText(el,segments){
  parts.forEach(function(part,i){part.nodeValue=segments[i]});
 }
 function locked(el){return false} // Placement, typography and folio text are all editable.
-function identityArtwork(el){return (el.tagName==='IMG'&&(el.hasAttribute(LOGO_MARKER)||!!el.closest('.logo-foot')))||el.hasAttribute('data-canonical-id')||el.id==='canonical-lockup'}
+function identityArtwork(el){return (el.tagName==='IMG'&&(el.hasAttribute(LOGO_MARKER)||!!el.closest('.logo-foot')))||el.hasAttribute('data-canonical-id')||el.id==='canonical-lockup'||(el.classList?.contains('logo')&&!!el.querySelector('[data-canonical-id]'))}
 function identityGuard(el,e){
  if(!identityArtwork(el))return;
  if(e.image!==undefined||e.segments!==undefined||e.mode&&e.mode!=='inherit')err('Onaylı logonun içeriği, kaynağı ve rengi değiştirilemez');
@@ -209,8 +209,8 @@ function patch(el,edit){
  identityGuard(el,edit);
  applyText(el,edit.segments);
  if(edit.image!==undefined){
-   if(el.tagName!=='IMG')err('Fotoğraf yalnızca img katmanına uygulanabilir');
-   el.setAttribute('src',edit.image);
+   if(el.tagName!=='IMG'&&el.localName!=='image')err('Fotoğraf yalnızca görsel katmanına uygulanabilir');
+   el.setAttribute(el.localName==='image'?'href':'src',edit.image);
  }
  Object.entries(edit.styles||{}).forEach(function(p){el.style.setProperty(p[0],p[1])});
  if(edit.mode&&edit.mode!=='inherit')el.style.setProperty('color',edit.mode==='direct'?edit.color:'var(--'+edit.mode+')');
