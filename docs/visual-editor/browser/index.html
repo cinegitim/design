@@ -36,6 +36,8 @@ input[type=text],input[type=number],select{width:100%;background:#0c1420;color:w
 .text-segments{display:grid;gap:10px}.text-segments label{font-size:11px;color:var(--muted);display:grid;gap:4px}
 .text-segments textarea{width:100%;min-height:54px;resize:vertical;color:var(--ink);background:#0c1420;border:1px solid var(--line);padding:9px;border-radius:7px;font:13px/1.45 system-ui,sans-serif}
 .text-segments textarea:focus-visible{outline:2px solid #ffbd83;outline-offset:2px}
+.photo-actions{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.photo-actions .btn:disabled{opacity:.45}
+.photo-hint{font-size:11px;color:var(--muted);line-height:1.5;margin:7px 0;overflow-wrap:anywhere}
 @media(min-width:1150px){.layout{grid-template-columns:265px minmax(0,1fr) 350px}}
 
 .layer{background:#0e1724;border:1px solid var(--line);padding:9px;border-radius:8px;color:var(--ink);text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.layer.selected{border-color:#ffbd83;background:#2b3441}
@@ -87,14 +89,18 @@ dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;
 <div class="field"><label>Satır yüksekliği</label><input type="number" id="leading" min=".6" max="3" step=".05"></div>
 <div class="field"><label>Metin hizası</label><select id="textalign"><option value="left">Sol</option><option value="center">Orta</option><option value="right">Sağ</option><option value="justify">İki yana</option></select></div>
 </div></div>
-<div class="panel" id="photo-tools" hidden><h2>Fotoğraf kadrajı</h2>
+<div class="panel" id="photo-tools" hidden><h2>Fotoğraf düzenleme</h2>
+<div class="photo-actions"><button type="button" class="btn primary" id="replace-photo">Bilgisayardan fotoğraf seç</button><button type="button" class="btn" id="reset-photo">Orijinaline dön</button></div>
+<input type="file" id="photoFile" accept="image/png,image/jpeg,image/webp" hidden>
+<div class="photo-hint" id="photo-status">Orijinal görsel kullanılıyor.</div>
+<div class="photo-hint">Yalnızca PNG, JPEG veya WebP. Fotoğraf tarayıcıda küçültülür; sunucuya yüklenmez. Gömülü görsel JSON arşivi ve indirilen HTML ile taşınır. Büyük fotoğraflar sürüm depolama limitini doldurabilir.</div>
 <div class="field"><label>Yerleşim</label><select id="fit"><option value="cover">Alanı doldur</option><option value="contain">Tamamını göster</option><option value="fill">Esnet</option></select></div>
 <div class="field"><label>Kadraj yatay (%)</label><input type="range" id="cropx" min="0" max="100" step="1"></div>
 <div class="field"><label>Kadraj dikey (%)</label><input type="range" id="cropy" min="0" max="100" step="1"></div>
-<div class="small">Fotoğrafın orijinal dosyası değişmez; yalnızca görünümü ayarlanır.</div></div>
+<div class="small">Kadraj ayarları kaynak dosyaya dokunmaz. Daha önce kaydedilmiş özgün fotoğrafı “Orijinaline dön” ile geri alabilirsin.</div></div>
 <div class="panel"><div class="field"><label>Metin rengi</label><select id="mode"><option value="inherit">Orijinal</option><option value="paper">Krem tonuna bağlı</option><option value="ink">Koyu tona bağlı</option><option value="red">Kırmızı tona bağlı</option><option value="direct">Özel renk</option></select></div><div class="field" id="direct" hidden><label>Özel renk</label><input type="color" id="color" value="#ffffff"></div></div></div>
 <h2>Sürümler</h2><div class="panel"><div class="field"><label>Geri yükle</label><select id="versions"></select></div><div class="controls"><button class="btn" id="load">Aç</button><button class="btn" id="folder">Klasör seç</button></div><p class="small" id="folderStatus">Klasör seçilmedi</p></div>
-<div class="panel"><h2>Dosyaları indir</h2><div class="controls"><button class="btn" id="css">Aktif slaytın CSS’i</button><button class="btn" id="html">Aktif slaytın HTML’i</button></div><p class="small">Klasör kaydında her slayt için yeniden açılabilir HTML/CSS üretilir. Fotoğraflar özgün web adresinde kalır; PNG üretilmez.</p></div></aside></div>
+<div class="panel"><h2>Dosyaları indir</h2><div class="controls"><button class="btn" id="css">Aktif slaytın CSS’i</button><button class="btn" id="html">Aktif slaytın HTML’i</button></div><p class="small">Klasör kaydında düzenlenebilir HTML/CSS üretilir. Değiştirdiğin fotoğraflar HTML'e gömülür; değiştirilmemiş görseller kaynak URL'lerinde kalır. PNG çıktısı bu editörde henüz yoktur.</p></div></aside></div>
 <dialog id="dialog"><h2>Yeni sürüm oluştur</h2><p>Orijinal <b>v1</b> korunur. Yeni sürüm için onay gerekiyor.</p><div class="field"><label>Versiyon</label><input id="newV" readonly></div><div class="field"><label>Revizyon notu</label><input id="note" maxlength="140" placeholder="örn. başlık sola alındı"></div><div class="controls"><button class="btn primary" id="confirm">Kaydet</button><button class="btn" id="cancel">Vazgeç</button></div></dialog>
 <script src="portable.js"></script>
 <script src="ux.js"></script>
@@ -161,6 +167,10 @@ function fillAdvanced(n){
  $('radius').value=Math.round(Number.parseFloat(st.borderTopLeftRadius)||0);
  $('zindex').value=st.zIndex==='auto'?0:(Number.parseInt(st.zIndex,10)||0);
  $('text-tools').hidden=isPhoto||locked;$('photo-tools').hidden=!isPhoto||locked;
+ if(isPhoto&&!locked){
+   $('reset-photo').disabled=!e.image;
+   $('photo-status').textContent=e.image?'Bu fotoğraf yerel olarak değiştirildi.':'Orijinal görsel kullanılıyor.';
+ }
  $('weight').value=Math.max(100,Math.min(900,Math.round((Number.parseInt(st.fontWeight,10)||400)/50)*50));
  $('letter').value=st.letterSpacing==='normal'?0:Math.round((Number.parseFloat(st.letterSpacing)||0)*100)/100;
  var font=Number.parseFloat(st.fontSize)||24; $('leading').value=st.lineHeight==='normal'?1.2:Math.round((Number.parseFloat(st.lineHeight)/font)*100)/100;
@@ -183,6 +193,52 @@ numberControl('letter','letter-spacing',function(x){return Math.max(-20,Math.min
 numberControl('leading','line-height',function(x){return String(Math.max(.6,Math.min(3,Math.round(x*100)/100)))});
 $('textalign').onchange=function(){if(sel<0||this.disabled)return;apply('text-align',this.value)};
 $('fit').onchange=function(){if(sel<0||this.disabled)return;apply('object-fit',this.value)};
+async function imageFromLocalFile(file){
+ if(!file||!['image/png','image/jpeg','image/webp'].includes(file.type)||file.size<1||file.size>12000000)
+  throw new Error('12 MB altında bir PNG, JPEG veya WebP dosyası seç');
+ var bitmap;
+ try{bitmap=await createImageBitmap(file)}catch(e){throw new Error('Görsel çözümlenemedi; geçerli bir fotoğraf seç')}
+ try{
+  if(bitmap.width<1||bitmap.height<1||bitmap.width>12000||bitmap.height>12000)
+   throw new Error('Görsel boyutları desteklenmiyor');
+  var maxSide=Math.max(bitmap.width,bitmap.height);
+  for(var limit of [1500,1200,1000,800,640,480]){
+   var scale=Math.min(1,limit/maxSide),w=Math.max(1,Math.round(bitmap.width*scale)),h=Math.max(1,Math.round(bitmap.height*scale));
+   var canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
+   canvas.getContext('2d').drawImage(bitmap,0,0,w,h);
+   for(var quality of [.86,.74,.62,.5,.4]){
+    var uri=canvas.toDataURL('image/webp',quality);
+    if(uri.startsWith('data:image/webp;base64,')&&uri.length<=codec.MAX_MEDIA)return uri;
+   }
+  }
+  throw new Error('Fotoğraf arşiv boyutuna sığmadı; daha küçük bir görsel seç');
+ }finally{bitmap.close()}
+}
+$('replace-photo').onclick=function(){
+ var n=nodes()[sel];if(!n||n.tagName!=='IMG'||!editable(n)||selectedIds.length!==1)return;
+ $('photoFile').value='';$('photoFile').click()
+};
+$('photoFile').onchange=async function(){
+ var file=this.files&&this.files[0];if(!file||sel<0)return;
+ var selected=sel,slide=page;
+ $('photo-status').textContent='Fotoğraf yerel olarak hazırlanıyor…';
+ try{
+  var uri=await imageFromLocalFile(file);
+  if(page!==slide||sel!==selected||selectedIds.length!==1||!editable(nodes()[selected])||nodes()[selected]?.tagName!=='IMG')
+   throw new Error('Bu sırada seçim değişti. Fotoğrafı yeniden seç');
+  var candidate=copy(state),key=page+':'+sel;
+  var entry=candidate.edits[key]||{styles:{},mode:'inherit'};
+  entry.image=uri;candidate.edits[key]=entry;
+  codec.validateState(candidate,pages.length);
+  checkpoint();state=candidate;refreshPreview();dirtyStatus();$('status').textContent='Fotoğraf değiştirildi; kaydetmek için yeni vN sürümü oluştur';
+ }catch(e){safeStatus(e);fillAdvanced(nodes()[sel]||{});}
+};
+$('reset-photo').onclick=function(){
+ var n=nodes()[sel],key=page+':'+sel;
+ if(!n||n.tagName!=='IMG'||!editable(n)||!state.edits[key]?.image)return;
+ checkpoint();delete state.edits[key].image;
+ refreshPreview();dirtyStatus();$('status').textContent='Orijinal fotoğraf geri getirildi';
+};
 function updateCrop(){
  if(sel<0||nodes()[sel]?.tagName!=='IMG')return;
  var e=edit(),x=Math.max(0,Math.min(100,Number($('cropx').value))),y=Math.max(0,Math.min(100,Number($('cropy').value)));
@@ -211,6 +267,7 @@ function edit(){var k=page+':'+sel;if(!state.edits[k])state.edits[k]={styles:{},
 function norm(){if(!doc)return;doc.documentElement.style.setProperty('--paper',state.colors.paper);doc.documentElement.style.setProperty('--ink',state.colors.ink);doc.documentElement.style.setProperty('--red',state.colors.red);Array.from(doc.querySelectorAll('style')).forEach(function(s){if(s.dataset.normalized)return;s.textContent=s.textContent.replace(/#F7F3E9/gi,'var(--paper)').replace(/#1D2027/gi,'var(--ink)').replace(/#BD2120/gi,'var(--red)');s.dataset.normalized='1'})}
 function patch(n,v){
  if(!v||logo(n)||n.classList.contains('folio'))return;
+ if(v.image!==undefined){if(n.tagName!=='IMG')throw new Error('Fotoğraf yalnızca görsel katmanında değiştirilebilir');n.setAttribute('src',v.image)}
  if(v.segments!==undefined)codec.applyText(n,v.segments);
  Object.entries(v.styles||{}).forEach(function(pair){n.style.setProperty(pair[0],pair[1])});
  if(v.mode&&v.mode!=='inherit')n.style.setProperty('color',v.mode==='direct'?v.color:'var(--'+v.mode+')')
@@ -221,6 +278,7 @@ function refreshPreview(){
  list.forEach(function(n,i){
    var original=sourceNodes[i];if(!original)return;
    if(original.style===null)n.removeAttribute('style');else n.setAttribute('style',original.style);
+   if(original.src!==null)n.setAttribute('src',original.src);
    var parts=codec.textNodes(n);if(parts.length===original.segments.length)parts.forEach(function(part,j){part.nodeValue=original.segments[j]});
    patch(n,state.edits[page+':'+i]);
  });
@@ -228,7 +286,7 @@ function refreshPreview(){
 }
 function paint(){
  norm();doc.querySelector('.slide').dataset.slideIndex=String(page+1);
- sourceNodes=nodes().map(function(n){return{style:n.getAttribute('style'),segments:codec.textNodes(n).map(function(t){return t.nodeValue})}});
+ sourceNodes=nodes().map(function(n){return{style:n.getAttribute('style'),src:n.getAttribute('src'),segments:codec.textNodes(n).map(function(t){return t.nodeValue})}});
  nodes().forEach(function(n,i){n.dataset.editIndex=i;patch(n,state.edits[page+':'+i])});
  setupOverlay();layers()
 }
@@ -393,14 +451,17 @@ $('color').oninput=function(){if(sel<0||$('mode').disabled)return;if(!colorSessi
 $('color').onchange=function(){colorSessions.direct=false};['paper','ink','red'].forEach(function(k){$(k).oninput=function(){if(!colorSessions[k]){checkpoint();colorSessions[k]=true}state.colors[k]=this.value;norm();changed()};$(k).onchange=function(){colorSessions[k]=false}});
 function download(name,s,type){var a=document.createElement('a'),b=new Blob([s],{type:type});a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},5000)}
 function dump(){return codec.makeArchive(slug,allV(),state)}
-function safeStatus(e){$('status').textContent='İşlem durduruldu: '+String(e&&e.message||e)}
+function safeStatus(e){
+ var message=e&&e.name==='QuotaExceededError'?'Tarayıcı depolaması dolu. Arşivi JSON olarak indir; yeni sürüm bu tarayıcıya kaydedilemedi':String(e&&e.message||e);
+ $('status').textContent='İşlem durduruldu: '+message;
+}
 async function sourceAt(i){var r=await fetch(pages[i],{cache:'no-store'});if(!r.ok)throw new Error('Kaynak okunamadı: '+(i+1));var html=await r.text();if(html.indexOf('class="slide')<0)throw new Error('Slayt yapısı bulunamadı: '+(i+1));return html}
 $('export').onclick=function(){try{download(slug+'-tum-surumler.json',JSON.stringify(dump(),null,2),'application/json')}catch(e){safeStatus(e)}};
 $('import').onclick=function(){$('importFile').value='';$('importFile').click()};
 $('importFile').onchange=async function(){
  var file=this.files&&this.files[0];if(!file)return;
  try{
-  if(file.size>1000000)throw new Error('Arşiv 1 MB sınırını aşıyor');
+  if(file.size>16000000)throw new Error('Arşiv 16 MB sınırını aşıyor');
   var raw=JSON.parse(await file.text()),back=codec.parseArchive(raw,slug,pages.length);
   var existing=getDB(),next=Math.max(1,...(existing.versions||[]).map(function(v){return v.version}))+1;
   var items=back.versions.map(function(v){return{version:v.version,note:v.note,state:v.state,time:v.time}});
