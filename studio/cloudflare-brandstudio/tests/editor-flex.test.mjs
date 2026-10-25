@@ -146,3 +146,38 @@ test("horizontal resize overrides source max-width only when actually resized",(
  s.edits["1:3"].styles["max-width"]="700px";
  assert.throws(()=>codec.validateState(s,5),/max-width/);
 });
+
+test("compact professional UI keeps one-row toolbar and accessible essential actions",()=>{
+ assert.match(html,/class="toolbar" role="toolbar" aria-label="Düzenleme araçları"/);
+ for(const id of ["toggle-left","toggle-right","prev","next","undo","redo","zoom","zoom-in","zoom-out","hand","save","tools-menu","export","import","snap","focus"])
+  assert.match(html,new RegExp('id="'+id+'"'),"Missing action "+id);
+ assert.match(html,/\.toolbar\{height:43px;min-height:43px;/);
+ assert.match(html,/\.toolbar-cluster\{display:flex;/);
+ assert.match(html,/\.toolbar-spacer\{flex:1 1 6px/);
+ assert.match(html,/class="btn primary save-btn" id="save"/);
+ assert.match(html,/class="tools-popover"/);
+ assert.match(html,/\.toolbar-overflow>summary\{list-style:none/);
+ assert.match(html,/\.slide-tabs\{min-height:39px;height:39px;/);
+ assert.match(html,/html\{color-scheme:dark\}/);
+});
+test("compact UI is scoped to editor, preserving editable artboard and existing action bindings",()=>{
+ assert.match(html,/body\{font:12px\/1\.45 -apple-system/);
+ assert.match(html,/aside\{background:#18222d;padding:12px 11px/);
+ assert.match(html,/\.layer\{min-height:26px/);
+ assert.match(html,/details\.inspector-details>summary\{min-height:31px/);
+ assert.match(html,/\.field input\[type=number\],\.field input\[type=text\]/);
+ assert.match(html,/function setZoom\(/);
+ assert.match(html,/\$\('focus'\)\.onclick=function\(/);
+ assert.match(html,/\$\('hand'\)\.onclick=function\(/);
+ assert.match(html,/\$\('save'\)\.onclick=function\(/);
+ assert.match(html,/\$\('export'\)\.onclick=function\(/);
+ assert.match(html,/\$\('import'\)\.onclick=function\(/);
+});
+test("overflow and narrow-screen inspector remain operable",()=>{
+ assert.match(html,/var narrowWorkspace=window\.matchMedia\('\(max-width:900px\)'\)/);
+ assert.match(html,/narrowWorkspace\.addEventListener\('change',syncNarrowSidebar\)/);
+ assert.match(html,/\$\('tools-menu'\)\.addEventListener\('click'/);
+ assert.match(html,/m\.open&&!m\.contains\(ev\.target\)/);
+ assert.match(html,/ev\.key==='Escape'\)\$\('tools-menu'\)\.open=false/);
+ assert.match(html,/#workspace:not\(\.right-closed\)>aside\.right\{display:block;position:absolute/);
+});
