@@ -309,7 +309,7 @@ dialog h2{font-size:15px;font-weight:680}
 <button type="button" role="menuitem" data-action="back">En arkaya gönder <span>↓</span></button>
 <hr><button type="button" role="menuitem" data-action="align-left">Sola hizala</button><button type="button" role="menuitem" data-action="align-center">Yatay ortala</button><button type="button" role="menuitem" data-action="align-right">Sağa hizala</button>
 <hr><button type="button" role="menuitem" data-action="group">Grup oluştur</button><button type="button" role="menuitem" data-action="ungroup">Grubu çöz</button>
-<button type="button" role="menuitem" data-action="reset">Konum / boyutu sıfırla</button>
+<button type="button" role="menuitem" data-action="reset">Konum / boyutu sıfırla</button><hr><button type="button" role="menuitem" data-action="delete">Sil <span>⌫</span></button>
 <hr><button type="button" role="menuitem" data-action="undo">Geri al <span>⌘Z</span></button></div>
 <dialog id="dialog"><h2>Yeni sürüm oluştur</h2><p>Orijinal <b>v1</b> korunur. Yeni sürüm için onay gerekiyor.</p><div class="field"><label>Versiyon</label><input id="newV" readonly></div><div class="field"><label>Revizyon notu</label><input id="note" maxlength="140" placeholder="örn. başlık sola alındı"></div><div class="controls"><button class="btn primary" id="confirm">Kaydet</button><button class="btn" id="cancel">Vazgeç</button></div></dialog>
 <script src="portable.js"></script>
@@ -493,7 +493,7 @@ function setupOverlay(){
 }
 function updateOverlay(){
  if(!selectionOverlay||!doc)return;
- var list=selectedIds.map(function(i){return nodes()[i]}).filter(Boolean);
+ var list=selectedIds.map(function(i){return nodes()[i]}).filter(function(n){return editable(n)});
  if(!list.length){selectionOverlay.hidden=true;return}
  var p=ux.bounds(list.map(pos));
  selectionOverlay.style.left=p.x+'px';selectionOverlay.style.top=p.y+'px';selectionOverlay.style.width=p.w+'px';selectionOverlay.style.height=p.h+'px';
@@ -619,7 +619,7 @@ function patch(n,v){
  // The folio is editable text, not an immutable brand asset.
  if(identityImage(n)){
   if(v.image!==undefined||v.segments!==undefined||v.mode&&v.mode!=='inherit')throw new Error('Logonun orijinal SVG ve rengi değiştirilemez');
-  var safe=['position','left','top','right','bottom','width','margin','z-index'];
+  var safe=['position','left','top','right','bottom','width','margin','z-index','display'];
   if(Object.keys(v.styles||{}).some(function(k){return !safe.includes(k)}))throw new Error('Logo kaynak görseli yalnızca oranı korunarak taşınabilir ve boyutlandırılabilir');
  }
  if(v.image!==undefined){if(n.tagName!=='IMG')throw new Error('Fotoğraf yalnızca görsel katmanında değiştirilebilir');n.setAttribute('src',v.image)}
@@ -637,7 +637,7 @@ function refreshPreview(){
    var parts=codec.textNodes(n);if(parts.length===original.segments.length)parts.forEach(function(part,j){part.nodeValue=original.segments[j]});
    patch(n,state.edits[page+':'+i]);
  });
- norm();selectedIds=selectedIds.filter(function(i){return !!list[i]});sel=selectedIds.includes(sel)?sel:(selectedIds[0]??-1);showSelection();
+ norm();selectedIds=selectedIds.filter(function(i){return !!list[i]&&!isDeleted(i)});sel=selectedIds.includes(sel)?sel:(selectedIds[0]??-1);showSelection();
 }
 function pasteboardCSS(){
  return 'html,body{width:'+(1080+PASTEBOARD*2)+'px!important;height:'+(1350+PASTEBOARD*2)+'px!important;overflow:visible!important;background:#273748!important}body{margin:0!important}.slide{margin:'+PASTEBOARD+'px!important;overflow:visible!important;box-shadow:0 12px 32px #0007}'
@@ -667,7 +667,7 @@ function paint(){
  nodes().forEach(function(n,i){n.dataset.editIndex=i;patch(n,state.edits[page+':'+i])});
  setupOverlay();layers()
 }
-function layerEntries(){return nodes().map(function(n,i){var r=n.getBoundingClientRect(),parent=doc.querySelector('.slide').getBoundingClientRect();return{id:i,isLogo:logo(n),isFooter:n.classList.contains('folio'),isPhoto:(n.tagName==='IMG'&&!logo(n))||n.classList.contains('photo'),isText:['H1','H2','H3','P','B','SPAN','DIV'].includes(n.tagName)&&!logo(n)&&!n.classList.contains('folio'),rect:{x:r.left-parent.left,y:r.top-parent.top,w:r.width,h:r.height},name:(n.textContent||n.getAttribute('alt')||n.className||'görsel').trim().slice(0,52),tag:n.tagName}})}
+function layerEntries(){return nodes().map(function(n,i){var r=n.getBoundingClientRect(),parent=doc.querySelector('.slide').getBoundingClientRect();return{id:i,isLogo:logo(n),isFooter:n.classList.contains('folio'),isPhoto:(n.tagName==='IMG'&&!logo(n))||n.classList.contains('photo'),isText:['H1','H2','H3','P','B','SPAN','DIV'].includes(n.tagName)&&!logo(n)&&!n.classList.contains('folio'),rect:{x:r.left-parent.left,y:r.top-parent.top,w:r.width,h:r.height},name:(n.textContent||n.getAttribute('alt')||n.className||'görsel').trim().slice(0,52),tag:n.tagName}}).filter(function(item){return !isDeleted(item.id)})}
 function zOf(i){
  var n=nodes()[i],raw=state.edits[page+':'+i]?.styles?.['z-index'];
  var z=raw===undefined?Number.parseInt(doc.defaultView.getComputedStyle(n).zIndex,10):Number(raw);
@@ -742,6 +742,19 @@ $('undo').onclick=function(){var prev=history.undo(state);if(prev){restoreState(
 $('redo').onclick=function(){var next=history.redo(state);if(next){restoreState(next);$('status').textContent='Değişiklik yeniden uygulandı'}};
 function renderTabs(){var target=$('slide-tabs');target.innerHTML='';for(var i=0;i<pages.length;i++){var b=document.createElement('button');b.type='button';b.textContent=String(i+1).padStart(2,'0');b.className=i===page?'active':'';if(i===page)b.setAttribute('aria-current','step');b.setAttribute('aria-label',(i+1)+'. slaytı aç');(function(index){b.onclick=function(){show(index)}})(i);target.appendChild(b)}}
 var keyboardNudging=false;
+function isDeleted(i){return state.edits[page+':'+i]?.styles?.display==='none'}
+function deleteSelection(){
+ if(inlineEditing||sel<0||!selectedIds.length)return;
+ var ns=nodes(),ids=selectedIds.filter(function(i){return ns[i]&&!isDeleted(i)});
+ if(!ids.length)return;
+ checkpoint();
+ ids.forEach(function(i){
+  var key=page+':'+i,e=state.edits[key]||(state.edits[key]={mode:'inherit',styles:{}});
+  e.styles||(e.styles={});e.styles.display='none';patch(ns[i],e)
+ });
+ selectedIds=[];sel=-1;
+ showSelection();dirtyStatus();$('status').textContent=ids.length+' katman silindi · ⌘Z ile geri al'
+}
 function editorKeydown(ev){
  var tag=ev.target&&ev.target.tagName;
  var ctrl=ev.ctrlKey||ev.metaKey,k=ev.key.toLowerCase();
@@ -750,6 +763,9 @@ function editorKeydown(ev){
  if(ctrl&&!ev.altKey&&k==='z'){ev.preventDefault();endInlineText();keyboardNudging=false;dragRecorded=false;(ev.shiftKey?$('redo'):$('undo')).click();return}
  if(ctrl&&!ev.altKey&&k==='y'){ev.preventDefault();endInlineText();keyboardNudging=false;dragRecorded=false;$('redo').click();return}
  if(ev.target?.isContentEditable)return;
+ if(!ctrl&&!ev.altKey&&!ev.shiftKey&&(ev.key==='Backspace'||ev.key==='Delete')&&sel>=0){
+  ev.preventDefault();deleteSelection();return
+ }
  if(ev.altKey&&!ctrl&&(ev.key==='ArrowLeft'||ev.key==='ArrowRight')){ev.preventDefault();show(page+(ev.key==='ArrowLeft'?-1:1));return}
  if(sel>=0&&!ctrl&&!ev.altKey&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(ev.key)){
   var n=nodes()[sel];if(!editable(n))return;
@@ -772,7 +788,7 @@ window.addEventListener('blur',function(){keyboardNudging=false;dragRecorded=fal
 function pos(n){var a=n.getBoundingClientRect(),b=doc.querySelector('.slide').getBoundingClientRect();return{x:Math.round(a.left-b.left),y:Math.round(a.top-b.top),w:Math.round(a.width),h:Math.round(a.height)}}
 function logo(n){return !!n&&(n.classList.contains('logo-foot')||n.hasAttribute('data-brandstudio-independent-logo')||!!n.closest('.logo-foot'))}
 function identityImage(n){return !!n&&n.tagName==='IMG'&&logo(n)}
-function editable(n){return !!n}
+function editable(n){return !!n&&!isDeleted(Number(n.dataset.editIndex))}
 function linkedGroups(){
  return (state.groups?.[String(page)]||[]).filter(function(group){
   return group.length>=2&&group.every(function(i){return editable(nodes()[i])})
@@ -905,6 +921,7 @@ $('context-menu').addEventListener('click',function(ev){
  if(action==='group'){$('link-group').click();return}
  if(action==='ungroup'){$('unlink-group').click();return}
  if(action==='undo'){$('undo').click();return}
+ if(action==='delete'){deleteSelection();return}
  if(action.startsWith('align-')){var bt=document.querySelector('#multi-align [data-align="'+action.slice(6)+'"]')||document.querySelector('#props [data-align="'+action.slice(6)+'"]');if(bt)bt.click();return}
  if(action==='front'||action==='back'){
   checkpoint();
@@ -978,9 +995,12 @@ function beginInlineText(n,x,y){
 function down(evt){
  closeContextMenu();
  var n=evt.target.closest('[data-edit-index]');
- if(inlineEditing===n&&!evt.shiftKey)return;
+ if(inlineEditing===n&&!evt.shiftKey){
+  // A click while typing returns to layer selection, not caret placement.
+  endInlineText();evt.preventDefault();return
+ }
  if(inlineEditing&&inlineEditing!==n)endInlineText();
- if(!n||evt.button!==0)return;
+ if(!n||evt.button!==0||!editable(n))return;
  var index=Number(n.dataset.editIndex),wasSelected=selectedIds.includes(index);
  if(evt.shiftKey){choose(index,true);evt.preventDefault();return}
  if(!wasSelected)choose(index,false);else{sel=index;showSelection()}
@@ -993,7 +1013,7 @@ function down(evt){
  }
  function up(e){
   doc.removeEventListener('pointermove',move);dragging=false;dragRecorded=false;
-  if(!moved&&textEligible(n))beginInlineText(n,e.clientX,e.clientY);
+  if(!moved&&wasSelected&&selectedIds.length===1&&textEligible(n))beginInlineText(n,e.clientX,e.clientY);
   if(moved)expandPasteboard()
  }
  doc.addEventListener('pointermove',move);doc.addEventListener('pointerup',up,{once:true});

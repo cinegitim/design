@@ -125,7 +125,7 @@ test("eight directional resize handles, rulers, context actions and primary geom
 });
 test("logo backing band is editable independently while approved SVG remains immutable",()=>{
  assert.match(html,/function identityImage\(n\)/);
- assert.match(html,/function editable\(n\)\{return !!n\}/);
+ assert.match(html,/function editable\(n\)\{return !!n&&!isDeleted\(Number\(n\.dataset\.editIndex\)\)\}/);
  assert.match(html,/Math\.max\(20,Number\.parseFloat\(value\)\)/);
  assert.match(html,/function setRectangle\(n,rect,resize\)/);
  assert.match(html,/if\(!identityImage\(n\)\)\{styles\.height=/);

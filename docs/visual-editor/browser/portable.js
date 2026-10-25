@@ -4,7 +4,7 @@
 "use strict";
 var SELECTOR='h1,h2,h3,p,.eyebrow,.dek,.photo,.country-line,.country-grid b,.country-list span,.options span,.cta-pill,.pathways span,.folio,.logo-foot,.cover-rule,.question-bottom,.question-photo,img';
 var COLORS={paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'};
-var ALLOWED_STYLES={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'height':1,'margin':1,'font-size':1,'font-weight':1,'letter-spacing':1,'line-height':1,'text-align':1,'opacity':1,'object-fit':1,'object-position':1,'border-radius':1,'z-index':1,'visibility':1,'background-color':1,'max-width':1,'font-family':1};
+var ALLOWED_STYLES={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'height':1,'margin':1,'font-size':1,'font-weight':1,'letter-spacing':1,'line-height':1,'text-align':1,'opacity':1,'object-fit':1,'object-position':1,'border-radius':1,'z-index':1,'visibility':1,'display':1,'background-color':1,'max-width':1,'font-family':1};
 var ALLOWED_MODES={inherit:1,paper:1,ink:1,red:1,direct:1};
 var EDITOR_FONTS=['Jost','SongCJK','Manrope','SourceSerif','Hiragino Sans','Yu Gothic','Apple SD Gothic Neo','Noto Sans KR','Arial','Georgia','Inter'];
 var LOGO_MARKER='data-brandstudio-independent-logo';
@@ -44,6 +44,7 @@ function state(input,maxPages) {
      else if(k==='background-color'){if(!HEX.test(v))err('Geçersiz arka plan rengi')}
      else if(k==='object-fit'){if(!['cover','contain','fill'].includes(v))err('Geçersiz fotoğraf uyumu')}
      else if(k==='visibility'){if(!['visible','hidden'].includes(v))err('Geçersiz görünürlük')}
+     else if(k==='display'){if(v!=='none')err('Yalnızca display:none destekleniyor')}
      else if(k==='object-position'){var m=v.match(/^(\d{1,3})% (\d{1,3})%$/);if(!m||Number(m[1])>100||Number(m[2])>100)err('Geçersiz kadraj')}
      else if(k==='font-weight'){if(!/^[1-9]\d{1,2}$/.test(v)||n<100||n>900)err('Geçersiz font ağırlığı')}
      else if(k==='line-height'){if(!/^(?:[0-3](?:\.\d{1,2})?)$/.test(v)||n<0.6||n>3)err('Geçersiz satır yüksekliği')}
@@ -135,7 +136,7 @@ function identityArtwork(el){return el.tagName==='IMG'&&(el.hasAttribute(LOGO_MA
 function identityGuard(el,e){
  if(!identityArtwork(el))return;
  if(e.image!==undefined||e.segments!==undefined||e.mode&&e.mode!=='inherit')err('Onaylı logonun içeriği, kaynağı ve rengi değiştirilemez');
- var allowed={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'margin':1,'z-index':1};
+ var allowed={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'margin':1,'z-index':1,'display':1};
  Object.keys(e.styles||{}).forEach(function(k){if(!allowed[k])err('Logo yalnızca orantılı boyutlandırılabilir ve taşınabilir')});
 
 }

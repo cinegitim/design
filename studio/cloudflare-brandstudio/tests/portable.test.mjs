@@ -212,3 +212,24 @@ test("portable export detaches canonical logo before applying revisions",()=>{
  assert.match(portableSource,/identityGuard\(el,edit\)/);
  assert.match(portableSource,/el\.hasAttribute\(LOGO_MARKER\)/);
 });
+
+test("safe, undoable layer deletion roundtrips in archives and only permits display none",()=>{
+ const s=fresh();s.edits["0:3"]={styles:{display:"none"},mode:"inherit"};
+ const version=codec.makeArchive("carousel-01-v3",[{version:2,note:"remove item",state:s}],s);
+ const parsed=codec.parseArchive(version,"carousel-01-v3",5);
+ assert.equal(parsed.current.edits["0:3"].styles.display,"none");
+ assert.equal(parsed.versions[0].state.edits["0:3"].styles.display,"none");
+ for(const bad of ["block","contents","none!important","url(evil)"]){
+  const x=fresh();x.edits["0:3"]={styles:{display:bad},mode:"inherit"};
+  assert.throws(()=>codec.validateState(x,5),/display/);
+ }
+});
+
+test("approved logo can be hidden as a layer without allowing SVG replacement",()=>{
+ const logoEdit={styles:{display:"none"},mode:"inherit"};
+ const s=fresh();s.edits["0:5"]=logoEdit;
+ assert.equal(codec.validateState(s,5).edits["0:5"].styles.display,"none");
+ assert.match(portableSource,/var allowed=\{[^}]*'display':1/);
+ const unsafe=fresh();unsafe.edits["0:5"]={styles:{display:"none"},mode:"direct",color:"#112233"};
+ assert.match(portableSource,/Onaylı logonun içeriği, kaynağı ve rengi değiştirilemez/);
+});
