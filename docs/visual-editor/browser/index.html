@@ -199,7 +199,7 @@ async function imageFromLocalFile(file){
  var bitmap;
  try{bitmap=await createImageBitmap(file)}catch(e){throw new Error('Görsel çözümlenemedi; geçerli bir fotoğraf seç')}
  try{
-  if(bitmap.width<1||bitmap.height<1||bitmap.width>12000||bitmap.height>12000)
+  if(bitmap.width<1||bitmap.height<1||bitmap.width>8000||bitmap.height>8000||bitmap.width*bitmap.height>25000000)
    throw new Error('Görsel boyutları desteklenmiyor');
   var maxSide=Math.max(bitmap.width,bitmap.height);
   for(var limit of [1500,1200,1000,800,640,480]){
@@ -231,7 +231,7 @@ $('photoFile').onchange=async function(){
   entry.image=uri;candidate.edits[key]=entry;
   codec.validateState(candidate,pages.length);
   checkpoint();state=candidate;refreshPreview();dirtyStatus();$('status').textContent='Fotoğraf değiştirildi; kaydetmek için yeni vN sürümü oluştur';
- }catch(e){safeStatus(e);fillAdvanced(nodes()[sel]||{});}
+ }catch(e){safeStatus(e);var active=nodes()[sel];if(active&&active.tagName==='IMG'&&editable(active))fillAdvanced(active);}
 };
 $('reset-photo').onclick=function(){
  var n=nodes()[sel],key=page+':'+sel;
