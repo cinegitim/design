@@ -15,6 +15,12 @@ https://cinegitim.github.io/design/visual-editor/browser/
 - Hazır `.slide` kaynaklarında eski carousel-01-v3 anahtarları ve eski sürüm arşivleri korunur.
 - Genel HTML tekil tasarımlar (roll-up, banner vb.) kendi ölçüleriyle normalize edilir ve kaynak dosyalar değiştirilmeden düzenlenir.
 
+## Düzenlenebilir tasarımların seçimi
+
+Katalog **çalışma dosyalarına** odaklanır. `source/*.html`, `editable/*.html` ve gerçekten üretilmiş bağımsız baskı tasarımları birer ürün olarak açılır; çok sayfalı üretimlerin tüm sayfaları aynı üründe görünür. Katman kaynakları olmayan nihai PNG/JPEG/SVG çıktılar görsel olarak açılır. `typography-round-01/direction-a.html` gibi **tasarım yönü karşılaştırmaları**, test/inceleme panoları, fotoğraf orijinalleri, fontlar, ara renderlar ve logo kaynak depoları tamamlanmış tasarım olarak listelenmez. Böylece başka bir ürünü açtığınızda karşılaştırma sitesi değil, seçilen gerçek çalışma açılır.
+
+Eski `/visual-editor/?product=...` adresleri tarayıcı editörüne yönlendirilir; localhost üzerinde ikinci bir editör açma seçeneği siteden kaldırılmıştır. Yeni bir üretim çıktısının ayrı katmanlarla açılabilmesi için gerçek HTML/CSS/SVG kaynaklarının yayımlanması gerekir. Render edilmiş tek parça bir görselin var olmayan katmanları geri üretilemez.
+
 ## Sınırlar ve korumalar
 Bu işlem yalnızca yayımlanmış görsellere erişir; özel git dalına, yerel Mac dosyasına ve henüz commit edilmemiş tasarıma otomatik erişim yoktur. Dışa aktarım HTML/CSS ve JSON'dur; PNG ekran görüntüsü veya PSD/PDF'nin orijinal katmanlarını editör kendiliğinden yeniden oluşturmaz. Raster-only içeriklerde var olmayan yazı katmanları uydurulmaz. Kaynak SVG, kabul edilmiş logo/lockup içeriği ve özgün render arşivleri korunur. Otomatik GitHub commit'i veya ücretli Cloudflare servisi yoktur. Kaydettiğiniz tarayıcı sürümleri, aynı tarayıcının kendi depolamasındadır.
 
