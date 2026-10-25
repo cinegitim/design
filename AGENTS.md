@@ -1,5 +1,9 @@
 # AI Brand Studio — shared GitHub source / OpenCode + Work/Codex
 
+## Browser editor coverage for every published visual deliverable
+
+For every future visual design (carousel, poster, roll-up, social asset, brand application), preserve the actual editable HTML/CSS/SVG sources under a public `docs/<category>/<project>/source/` or `docs/<category>/<project>/editable/` directory when possible, alongside authentic assets and the existing manifest. Do **not** flatten editable vector/text into PNG merely to make it appear in the editor. The shared `docs/visual-editor/browser/` picker discovers committed public sources and rendered PNG/JPEG/WebP/SVG artifacts automatically, without per-product hardcoding. New work becomes selectable after GitHub publication; static fallback catalog refreshes during free Cloudflare Pages builds. Browser-only edits stay in per-product local versions or downloaded artifacts, and never silently modify canonical repository sources. Raster-only artifacts are editable as a whole-image layer, not as imaginary reconstructable original typography. Do not promise editing proprietary files (e.g., PSD/PDF) without suitable editable export.
+
 ## Production bootstrap (read-only router v1)
 
 For brand-design production requests (carousel, social graphics, catalog,
