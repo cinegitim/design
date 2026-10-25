@@ -207,6 +207,14 @@ dialog h2{font-size:15px;font-weight:680}
  .slide-tabs{height:36px;min-height:36px}
 }
 
+
+@media(max-width:900px){
+ #workspace{position:relative;grid-template-columns:190px minmax(0,1fr)}
+ #workspace.right-closed{grid-template-columns:190px minmax(0,1fr)}
+ #workspace.left-closed{grid-template-columns:minmax(0,1fr)}
+ #workspace.left-closed.right-closed{grid-template-columns:minmax(0,1fr)}
+ #workspace:not(.right-closed)>aside.right{display:block;position:absolute;right:0;top:0;bottom:0;z-index:26;width:min(272px,88vw);box-shadow:-14px 0 30px #0007;overflow:auto}
+}
 </style></head><body>
 <header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><a href="../">← Visual Editor</a></div></header>
 <div class="layout" id="workspace"><aside><div class="compact-bar"><h2>Katmanlar</h2><div class="controls"><button class="btn" id="groups-open" title="Tümünü aç">＋</button><button class="btn" id="groups-close" title="Tümünü kapat">−</button></div></div>
@@ -329,6 +337,15 @@ function syncInspectorSections(){
  document.querySelectorAll('#props > details.inspector-details').forEach(function(d){d.hidden=!!d.querySelector('.panel')?.hidden})
 }
 setupSidebars();
+var narrowWorkspace=window.matchMedia('(max-width:900px)');
+function syncNarrowSidebar(event){
+ if(event.matches){$('workspace').classList.add('right-closed');$('toggle-right').setAttribute('aria-expanded','false')}
+ else {$('workspace').classList.remove('right-closed');$('toggle-right').setAttribute('aria-expanded','true')}
+}
+syncNarrowSidebar(narrowWorkspace);narrowWorkspace.addEventListener('change',syncNarrowSidebar);
+$('tools-menu').addEventListener('click',function(ev){if(ev.target.closest('.menu-btn'))this.open=false});
+document.addEventListener('pointerdown',function(ev){var m=$('tools-menu');if(m.open&&!m.contains(ev.target))m.open=false});
+document.addEventListener('keydown',function(ev){if(ev.key==='Escape')$('tools-menu').open=false});
 $('layer-search').oninput=function(){layers()};
 
 function fitLevel(){var c=$('canvas');return Math.min(1,Math.max(.18,Math.min((c.clientWidth-65)/1080,(c.clientHeight-55)/1350)))}
