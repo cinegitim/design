@@ -189,3 +189,23 @@ test("Shift type scaling and stationary logo during band movement",()=>{
  assert.match(html,/var stationary=snapshots\.filter/);
  assert.match(html,/stationary\.forEach\(function\(item\)\{setRectangle\(item\.node,item\.p,false\)\}/);
 });
+
+test("canvas clicks alternate layer selection, inline caret and layer selection again",()=>{
+ assert.match(html,/if\(inlineEditing===n&&!evt\.shiftKey\)\{[\s\S]*?endInlineText\(\);evt\.preventDefault\(\);return/);
+ assert.match(html,/var index=Number\(n\.dataset\.editIndex\),wasSelected=selectedIds\.includes\(index\)/);
+ assert.match(html,/if\(!wasSelected\)choose\(index,false\)/);
+ assert.match(html,/if\(!moved&&wasSelected&&selectedIds\.length===1&&textEligible\(n\)\)beginInlineText/);
+ assert.match(html,/n\.setAttribute\('contenteditable','true'\)/);
+ assert.match(html,/n\.removeAttribute\('contenteditable'\)/);
+});
+test("Backspace/Delete remove selected layers but preserve native text editing",()=>{
+ assert.match(html,/function deleteSelection\(\)/);
+ assert.match(html,/if\(ev\.target\?\.isContentEditable\)return;/);
+ assert.match(html,/ev\.key==='Backspace'\|\|ev\.key==='Delete'/);
+ assert.match(html,/if\(inlineEditing\|\|sel<0\|\|!selectedIds\.length\)return/);
+ assert.match(html,/e\.styles\.display='none';patch\(ns\[i\],e\)/);
+ assert.match(html,/selectedIds=\[\];sel=-1;/);
+ assert.match(html,/filter\(function\(item\)\{return !isDeleted\(item\.id\)\}\)/);
+ assert.match(html,/data-action="delete"/);
+ assert.match(html,/if\(action==='delete'\)\{deleteSelection\(\);return\}/);
+});
