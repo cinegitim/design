@@ -43,4 +43,22 @@ class StaticExportTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             build(self.docs,self.docs / "dist")
 
+
+    def test_catalog_is_regenerated_from_new_future_assets_at_deploy(self):
+        import json
+        from build_pages import design_catalog
+        catalog_dir = self.docs / "visual-editor/browser"
+        catalog_dir.mkdir(parents=True)
+        (catalog_dir / "catalog.json").write_text("[]", encoding="utf-8")
+        future = self.docs / "instagram/future-example/source"
+        future.mkdir(parents=True)
+        (future / "01.html").write_text('<div class="slide"></div>', encoding="utf-8")
+        self.docs.joinpath("cin-egitim/rollup").mkdir(parents=True)
+        self.docs.joinpath("cin-egitim/rollup/new-banner.html").write_text("banner", encoding="utf-8")
+        build(self.docs,self.dest)
+        published=json.loads((self.dest / "visual-editor/browser/catalog.json").read_text(encoding="utf-8"))
+        self.assertTrue(any(p["id"]=="instagram-future-example" for p in published))
+        self.assertTrue(any(p["id"]=="cin-egitim-rollup-new-banner" for p in published))
+        self.assertGreaterEqual(len(published),2)
+
 if __name__ == "__main__": unittest.main()
