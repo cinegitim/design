@@ -15,7 +15,8 @@ function plain(x){return !!x&&typeof x==='object'&&!Array.isArray(x)}
 function state(input,maxPages) {
  if(!plain(input)||!plain(input.colors)||!plain(input.edits))err('Geçersiz sürüm durumu');
  var inputLength=JSON.stringify(input).length;
- if(inputLength>MAX_STATE)err('Sürüm durumu 2,1 MB sınırını aşıyor');
+ var withMedia=Object.values(input.edits).some(function(e){return plain(e)&&e.image!==undefined});
+ if(inputLength>(withMedia?MAX_STATE:32768))err(withMedia?'Fotoğraflı sürüm 2,1 MB sınırını aşıyor':'Sürüm durumu 32 KB sınırını aşıyor');
  var colors={};Object.keys(COLORS).forEach(function(k){var v=input.colors[k];if(!HEX.test(v||''))err('Geçersiz renk: '+k);colors[k]=v.toLowerCase()});
  if(Object.keys(input.colors).some(function(k){return !Object.prototype.hasOwnProperty.call(COLORS,k)}))err('Bilinmeyen renk anahtarı');
  var edits={},keys=Object.keys(input.edits),mediaCount=0;
