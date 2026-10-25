@@ -619,7 +619,7 @@ function patch(n,v){
  // The folio is editable text, not an immutable brand asset.
  if(identityImage(n)){
   if(v.image!==undefined||v.segments!==undefined||v.mode&&v.mode!=='inherit')throw new Error('Logonun orijinal SVG ve rengi değiştirilemez');
-  var safe=['position','left','top','right','bottom','width','margin','z-index'];
+  var safe=['position','left','top','right','bottom','width','margin','z-index','display'];
   if(Object.keys(v.styles||{}).some(function(k){return !safe.includes(k)}))throw new Error('Logo kaynak görseli yalnızca oranı korunarak taşınabilir ve boyutlandırılabilir');
  }
  if(v.image!==undefined){if(n.tagName!=='IMG')throw new Error('Fotoğraf yalnızca görsel katmanında değiştirilebilir');n.setAttribute('src',v.image)}
