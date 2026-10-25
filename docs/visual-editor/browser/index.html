@@ -167,7 +167,7 @@ function setupSidebars(){
    if(zoomMode==='fit')requestAnimationFrame(function(){setZoom('fit')})
   }
  });
- Array.from(document.querySelectorAll('#props > .panel:not(.primary-properties),aside.right > .panel')).forEach(function(panel){
+ Array.from(document.querySelectorAll('#props > .panel:not(.primary-properties),aside.right > .panel:not(#selection-tools)')).forEach(function(panel){
   var details=document.createElement('details'),summary=document.createElement('summary');
   details.className='inspector-details';summary.textContent=panel.querySelector('h2')?.textContent||(panel.querySelector('#versions')?'Sürümler':panel.querySelector('#mode')?'Metin rengi':'Diğer');
   panel.before(details);details.append(summary,panel);
