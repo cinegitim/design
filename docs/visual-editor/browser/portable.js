@@ -4,7 +4,7 @@
 "use strict";
 var SELECTOR='h1,h2,h3,p,.eyebrow,.dek,.photo,.country-line,.country-grid b,.country-list span,.options span,.cta-pill,.pathways span,.folio,.logo-foot,.cover-rule,.question-bottom,.question-photo,img,[data-browser-editable]';
 var COLORS={paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'};
-var ALLOWED_STYLES={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'height':1,'margin':1,'font-size':1,'font-weight':1,'letter-spacing':1,'line-height':1,'text-align':1,'opacity':1,'object-fit':1,'object-position':1,'border-radius':1,'z-index':1,'visibility':1,'display':1,'background-color':1,'max-width':1,'font-family':1};
+var ALLOWED_STYLES={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'height':1,'margin':1,'font-size':1,'font-weight':1,'letter-spacing':1,'line-height':1,'text-align':1,'opacity':1,'object-fit':1,'object-position':1,'border-radius':1,'z-index':1,'visibility':1,'display':1,'background-color':1,'max-width':1,'font-family':1,'transform':1,'transform-box':1,'transform-origin':1};
 var ALLOWED_MODES={inherit:1,paper:1,ink:1,red:1,direct:1};
 var EDITOR_FONTS=['Jost','SongCJK','Manrope','SourceSerif','Hiragino Sans','Yu Gothic','Apple SD Gothic Neo','Noto Sans KR','Arial','Georgia','Inter'];
 var LOGO_MARKER='data-brandstudio-independent-logo';
@@ -33,13 +33,21 @@ function state(input,maxPages) {
    if(e.styles!==undefined&&!plain(e.styles))err('Geçersiz CSS');
    Object.keys(e.styles||{}).forEach(function(k){
      if(!ALLOWED_STYLES[k])err('İzin verilmeyen CSS özelliği');
-     var v=e.styles[k];if(typeof v!=='string'||v.length>40)err('Geçersiz CSS değeri');
+     var v=e.styles[k];if(typeof v!=='string'||v.length>(k==='transform'?110:40))err('Geçersiz CSS değeri');
      var px=/^-?[0-9]{1,5}(?:\.[0-9]{1,2})?px$/,n=Number.parseFloat(v);
      if(k==='position'){if(v!=='absolute')err('Sadece absolute position destekleniyor')}
      else if(k==='margin'){if(v!=='0')err('Geçersiz margin')}
      else if(k==='max-width'){if(v!=='none')err('Yalnızca max-width:none destekleniyor')}
      else if(k==='right'||k==='bottom'){if(v!=='auto')err('Yerleşim ankrajı yalnızca auto olabilir')}
      else if(k==='font-family'){if(!EDITOR_FONTS.includes(v))err('Geçersiz font')}
+     else if(k==='transform-box'){if(v!=='fill-box')err('Geçersiz SVG dönüşüm kutusu')}
+     else if(k==='transform-origin'){if(v!=='0 0')err('Geçersiz SVG dönüşüm odağı')}
+     else if(k==='transform'){
+       var transform=v.match(/^translate\((-?\d{1,5})px,(-?\d{1,5})px\)(?: scale\((\d{1,2}(?:\.\d{1,3})?),(\d{1,2}(?:\.\d{1,3})?)\))?$/);
+       if(!transform||Math.abs(+transform[1])>10000||Math.abs(+transform[2])>10000||
+          transform[3]&&(Number(transform[3])<.02||Number(transform[3])>40||Number(transform[4])<.02||Number(transform[4])>40))
+         err('Geçersiz SVG dönüşümü');
+     }
      else if(k==='text-align'){if(!['left','right','center','justify','start','end'].includes(v))err('Geçersiz hizalama')}
      else if(k==='background-color'){if(!HEX.test(v))err('Geçersiz arka plan rengi')}
      else if(k==='object-fit'){if(!['cover','contain','fill'].includes(v))err('Geçersiz fotoğraf uyumu')}
