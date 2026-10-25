@@ -203,7 +203,7 @@ function setupOverlay(){
    if(sel<0||!editableResize(nodes()[sel])||e.button!==0)return;
    var n=nodes()[sel],initial=pos(n),sx=e.clientX,sy=e.clientY,recorded=false,
    aspect=initial.w/Math.max(1,initial.h),logoArt=identityImage(n);
-   e.stopPropagation();e.preventDefault();handle.setPointerCapture(e.pointerId);
+   e.stopPropagation();e.preventDefault();if(e.isTrusted)handle.setPointerCapture(e.pointerId);
    function move(v){
     var dx=v.clientX-sx,dy=v.clientY-sy;
     if(Math.abs(dx)+Math.abs(dy)<2&&!recorded)return;
@@ -391,7 +391,7 @@ function layers(){
   var summary=document.createElement('summary');var title=document.createElement('span');title.textContent=group.label;var count=document.createElement('small');count.textContent=group.items.length+' katman';summary.append(title,count);box.appendChild(summary);
   box.addEventListener('toggle',function(){groupOpen[page+':'+group.id]=box.open});
   var inner=document.createElement('div');inner.className='layer-group-inner';
-  group.items.forEach(function(item){var n=nodes()[item.id],b=document.createElement('button');b.className='layer'+(selectedIds.includes(item.id)?' selected':'');b.textContent=(item.isLogo?'🔒 ':item.isPhoto?'▧ ':'• ')+n.tagName.toLowerCase()+' · '+(item.name||'görsel');b.title=item.name;b.onclick=function(ev){choose(item.id,ev.shiftKey)};b.oncontextmenu=function(ev){ev.preventDefault();if(!selectedIds.includes(item.id))choose(item.id,false);openContextMenu(ev.clientX,ev.clientY)};inner.appendChild(b)});
+  group.items.forEach(function(item){var n=nodes()[item.id],b=document.createElement('button');b.className='layer'+(selectedIds.includes(item.id)?' selected':'');b.textContent=(n.classList.contains('folio')?'🔒 ':item.isLogo?'▣ ':item.isPhoto?'▧ ':'• ')+n.tagName.toLowerCase()+' · '+(item.name||'görsel');b.title=item.name;b.onclick=function(ev){choose(item.id,ev.shiftKey)};b.oncontextmenu=function(ev){ev.preventDefault();if(!selectedIds.includes(item.id))choose(item.id,false);openContextMenu(ev.clientX,ev.clientY)};inner.appendChild(b)});
   box.appendChild(inner);out.appendChild(box);
  })
 }
