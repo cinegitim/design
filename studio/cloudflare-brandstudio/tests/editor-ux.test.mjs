@@ -114,3 +114,42 @@ test("context menu operates on current selection and snapping keeps undo semanti
  assert.match(html,/refreshPreview\(\);dirtyStatus\(\)/);
  assert.match(html,/var snapshots=ids\.filter/);
 });
+
+test("resize math handles proportional corners, sides and relative child scaling",()=>{
+ const box={x:40,y:60,w:200,h:100};
+ const e=UX.resizeRect(box,"e",35,0,false);
+ assert.deepEqual({...e},{x:40,y:60,w:235,h:100});
+ const shift=UX.resizeRect(box,"e",35,0,true);
+ assert.equal(shift.w,235);assert.equal(shift.h,117.5);
+ assert.equal(shift.y,51.25);
+ const nw=UX.resizeRect(box,"nw",20,10,true);
+ assert.equal(Math.round(nw.w/nw.h*100),200);
+ assert.equal(nw.x+nw.w,240);
+ assert.equal(nw.y+nw.h,160);
+ const child=UX.scaleRect({x:60,y:80,w:60,h:20},box,{x:40,y:60,w:400,h:200});
+ assert.deepEqual({...child},{x:80,y:100,w:120,h:40});
+ const floor=UX.resizeRect({x:0,y:0,w:200,h:100},"w",195,0,true);
+ assert.ok(floor.w>=20&&floor.h>=20);
+});
+test("rulers are outside frame and keyboard handles iframe and redo",()=>{
+ const expected='<div class="ruler-stage" id="ruler-stage">';
+ assert.ok(html.includes(expected));
+ const frame=html.slice(html.indexOf('<div class="canvas"'),html.indexOf('</main>'));
+ assert.ok(frame.indexOf('id="ruler-x"')<frame.indexOf('class="frame" id="frame"'));
+ assert.ok(frame.indexOf('id="ruler-y"')<frame.indexOf('class="frame" id="frame"'));
+ assert.doesNotMatch(frame.slice(frame.indexOf('id="frame"')),/<canvas id="ruler-x"/);
+ assert.match(html,/doc\.addEventListener\('keydown',editorKeydown\)/);
+ assert.match(html,/doc\.addEventListener\('keyup',editorKeyup\)/);
+ assert.match(html,/function editorKeydown\(ev\)/);
+ assert.match(html,/ev\.shiftKey\?\$\('redo'\):\$\('undo'\)/);
+ assert.match(html,/var p=pos\(n\),step=ev\.shiftKey\?10:1/);
+ assert.match(html,/if\(!dragging&&!keyboardNudging\)checkpoint\(\)/);
+});
+test("selection frame scales selected objects and descendants with Shift",()=>{
+ assert.match(html,/var targets=new Set\(selected\)/);
+ assert.match(html,/node\.querySelectorAll\('\[data-edit-index\]'\)/);
+ assert.match(html,/ux\.resizeRect\(initial,direction,dx,dy,alwaysProportional\|\|ev\.shiftKey\)/);
+ assert.match(html,/ux\.scaleRect\(item\.rect,initial,to\)/);
+ assert.match(html,/var size=Math\.max\(8,Math\.min\(260,/);
+ assert.match(html,/handle\.hidden=!list\.length/);
+});
