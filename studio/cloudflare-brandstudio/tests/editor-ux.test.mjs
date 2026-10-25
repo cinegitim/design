@@ -56,7 +56,7 @@ test("UI includes real accordion, slide strip, keyboard handling and identity lo
  assert.match(html,/id="undo"/);assert.match(html,/id="redo"/);
  assert.match(html,/history\.checkpoint\(state\)/);
  assert.match(html,/ev\.key==='ArrowRight'/);
- assert.match(html,/logo\(n\)\|\|n\.classList\.contains\('folio'\)/);
+ assert.match(html,/function identityImage\(n\)/);
  assert.match(html,/src="ux\.js"/);
  assert.doesNotMatch(html,/fetch\([^)]*,\s*\{\s*method:\s*['"]POST/);
  const embedded=html.match(/<script>\s*([\s\S]*?)\s*<\/script>/);
@@ -103,4 +103,14 @@ test("pointer drag re-anchors a multi-selection to the grabbed member",()=>{
  assert.match(html,/if\(!wasSelected\)choose\(index,false\);else\{sel=index;showSelection\(\)\}/);
  assert.match(html,/var start=pos\(n\),sx=evt\.clientX,sy=evt\.clientY/);
  assert.match(html,/setXY\(start\.x\+e\.clientX-sx,start\.y\+e\.clientY-sy\)/);
+});
+
+test("context menu operates on current selection and snapping keeps undo semantics",()=>{
+ assert.match(html,/b\.oncontextmenu=function\(ev\)/);
+ assert.match(html,/document\.addEventListener\('pointerdown',function\(e\)/);
+ assert.match(html,/closeContextMenu\(\)/);
+ assert.match(html,/if\(action==='front'\|\|action==='back'\)/);
+ assert.match(html,/if\(action==='reset'\)/);
+ assert.match(html,/refreshPreview\(\);dirtyStatus\(\)/);
+ assert.match(html,/var snapshots=ids\.filter/);
 });

@@ -69,7 +69,7 @@ test("text editing is constrained to text nodes and rejects identity overrides",
  const s=fresh();s.edits["0:2"].segments=["".padEnd(1601,"a")];
  assert.throws(()=>codec.validateState(s,5),/metin|Metin/);
  assert.match(portableSource,/function locked\(el\)/);
- assert.match(portableSource,/if\(locked\(el\)\)err/);
+ assert.match(portableSource,/identityGuard\(el,edit\)/);
 });
 
 test("linked groups round trip in schema 2 and remain optional in older archives",()=>{
@@ -130,7 +130,7 @@ test("photo patch is only permitted on normal img nodes, not locked identity",()
   setAttribute(k,v){attrs[k]=v},style:{setProperty(){}}};
  const el={tagName:"DIV",classList:{contains:()=>false},closest:()=>null,style:{setProperty(){}}};
  assert.match(portableSource,/if\(el\.tagName!=='IMG'\)err/);
- assert.match(portableSource,/if\(locked\(el\)\)err/);
+ assert.match(portableSource,/identityGuard\(el,edit\)/);
  assert.doesNotMatch(portableSource,/eval\(/);
  assert.ok(uri.startsWith("data:image/webp;base64,"));
 });
@@ -142,4 +142,23 @@ test("photo editor provides browser-only image selection and reversible source c
  }
  assert.doesNotMatch(editor,/method\s*:\s*['"]POST/);
  assert.doesNotMatch(editor,/R2\.put/);
+});
+
+test("backing band colour is archive-safe; unsafe CSS is rejected",()=>{
+ let t=fresh();t.edits["0:4"]={mode:"inherit",styles:{"background-color":"#ff5599",position:"absolute",width:"800px",height:"200px"}};
+ const archive=codec.makeArchive("carousel-01-v3",[{version:2,note:"band",state:t}],t);
+ assert.equal(codec.parseArchive(archive,"carousel-01-v3",5).current.edits["0:4"].styles["background-color"],"#ff5599");
+ t.edits["0:4"].styles["background-color"]="url(javascript:malicious)";
+ assert.throws(()=>codec.validateState(t,5));
+});
+test("canonical artwork can be repositioned and proportionally resized, not replaced or distorted",()=>{
+ const doc=(name,cls,ancestor)=>({tagName:name,classList:{contains:k=>cls===k},
+  closest:q=>q==='.logo-foot'&&ancestor?{}:null});
+ assert.match(portableSource,/function identityGuard\(el,e\)/);
+ assert.match(portableSource,/if\(e\.image!==undefined\|\|e\.segments!==undefined/);
+ assert.match(portableSource,/if\(!allowed\[k\]\)err/);
+ assert.match(portableSource,/352\)err/);
+ assert.match(portableSource,/if\(locked\(el\)&&edit\.segments!==undefined\)/);
+ assert.match(portableSource,/identityGuard\(el,e\)/);
+ assert.ok(doc('IMG','anything',true).closest('.logo-foot'));
 });

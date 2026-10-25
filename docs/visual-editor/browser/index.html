@@ -38,6 +38,15 @@ input[type=text],input[type=number],select{width:100%;background:#0c1420;color:w
 .text-segments textarea:focus-visible{outline:2px solid #ffbd83;outline-offset:2px}
 .photo-actions{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.photo-actions .btn:disabled{opacity:.45}
 .photo-hint{font-size:11px;color:var(--muted);line-height:1.5;margin:7px 0;overflow-wrap:anywhere}
+#ruler-x,#ruler-y{position:absolute;pointer-events:none;z-index:9;background:#1a293acc}
+#ruler-x{left:0;top:0;height:22px}#ruler-y{left:0;top:0;width:25px}
+.context-menu{position:fixed;z-index:20000;min-width:220px;background:#162332;border:1px solid #6986a0;border-radius:11px;padding:5px;box-shadow:0 18px 45px #0009}
+.context-menu button{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;border:0;background:transparent;color:#f5f8fb;text-align:left;font:12px system-ui;padding:10px;border-radius:7px}
+.context-menu button:hover,.context-menu button:focus-visible{background:#32475d}
+.context-menu button:disabled{opacity:.4;cursor:not-allowed}.context-menu hr{border:0;border-top:1px solid #32475d;margin:4px}
+.primary-properties{border-color:#d8ad78;background:#1b2735}.primary-properties h2{color:#ffd6a5}
+.coordinate-label{font:10px system-ui;color:#bed0dd}
+
 @media(min-width:1150px){.layout{grid-template-columns:265px minmax(0,1fr) 350px}}
 
 .layer{background:#0e1724;border:1px solid var(--line);padding:9px;border-radius:8px;color:var(--ink);text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.layer.selected{border-color:#ffbd83;background:#2b3441}
@@ -53,32 +62,36 @@ dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;
 [hidden]{display:none!important}@media(max-width:990px){.layout{grid-template-columns:230px 1fr}aside.right{grid-column:1/-1;border-top:1px solid var(--line)}}@media(max-width:650px){.layout{display:block;height:auto;min-height:0}.center{min-height:670px}.canvas{min-height:500px;max-height:600px}.layers{max-height:180px}}
 </style></head><body>
 <header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><a href="../">← Visual Editor</a></div></header>
-<div class="layout" id="workspace"><aside><h2>Katmanlar</h2><p class="small">Fotoğraf ile üzerindeki yazılar birlikte gruplanır. Logo ve dipnot kilitlidir.</p><div class="controls"><button class="btn" id="groups-open">Tümünü aç</button><button class="btn" id="groups-close">Tümünü kapat</button></div><div id="layers" class="layers"></div>
+<div class="layout" id="workspace"><aside><h2>Katmanlar</h2><p class="small">Fotoğraf ve yazılar ilişkili başlıklarda gösterilir. Logo, bant ve dipnot taşınabilir; onaylı logo içeriği korunur.</p><div class="controls"><button class="btn" id="groups-open">Tümünü aç</button><button class="btn" id="groups-close">Tümünü kapat</button></div><div id="layers" class="layers"></div>
 <div class="panel"><h2>Global renkler</h2><p class="small">Bağlı renkler aynı anda değişir. Özel renk verdiğin nesne etkilenmez.</p>
 <div class="swatches"><label>Krem<input type="color" id="paper" value="#f7f3e9"></label><label>Koyu<input type="color" id="ink" value="#1d2027"></label><label>Kırmızı<input type="color" id="red" value="#bd2120"></label></div></div>
 <div class="notice">Kaydettiğin sürümler <strong>bu tarayıcıda</strong> saklanır. İstersen klasör seçerek ayrıca <code>versions/v2</code>, <code>versions/v3</code> dosyalarını Mac'ine yazdırabilirsin. Sunucuya veri gönderilmez.</div></aside>
 <main class="center"><div class="toolbar"><button class="btn" id="prev">←</button><span id="count" class="badge"></span><button class="btn" id="next">→</button><button class="btn" id="undo" disabled title="Geri al · Cmd/Ctrl+Z">↶ Geri al</button><button class="btn" id="redo" disabled title="Yeniden yap · Cmd/Ctrl+Shift+Z">↷ Yeniden yap</button>
 <div class="zoom-controls"><button type="button" class="btn" id="zoom-out" aria-label="Küçült">−</button><select id="zoom" aria-label="Tuval yakınlaştırma"><option value="fit">Sığdır</option><option value="0.25">25%</option><option value="0.4">40%</option><option value="0.5">50%</option><option value="0.75">75%</option><option value="1">100%</option><option value="1.25">125%</option><option value="custom" hidden>Özel</option></select><button type="button" class="btn" id="zoom-in" aria-label="Büyüt">+</button></div>
 <button class="btn" id="hand" aria-pressed="false" title="Eli kullanarak tuvali kaydır">✋ El</button><button class="btn" id="focus" aria-pressed="false" title="Kenar panelleri gizle">⛶ Odak</button><label class="small"><input type="checkbox" id="snap" checked> 8 px ızgara</label><button class="btn primary" id="save">Yeni sürüm kaydet</button><button class="btn" id="export">Sürüm arşivini indir</button><button class="btn" id="import">Arşivi içe aktar</button><input type="file" id="importFile" accept=".json,application/json" hidden></div>
-<nav class="slide-tabs" aria-label="Slaytlar" id="slide-tabs"></nav><div class="canvas" id="canvas"><div class="frame" id="frame"><iframe id="preview" title="Düzenlenebilir karusel" sandbox="allow-same-origin"></iframe><div id="pan-shield" class="pan-shield" hidden></div></div></div><div class="bottom"><span id="status">Kaynak denetleniyor</span> · <span id="unsaved">Değişiklik yok</span></div></main>
+<nav class="slide-tabs" aria-label="Slaytlar" id="slide-tabs"></nav><div class="canvas" id="canvas"><div class="frame" id="frame"><iframe id="preview" title="Düzenlenebilir karusel" sandbox="allow-same-origin"></iframe><canvas id="ruler-x" aria-label="Yatay cetvel"></canvas><canvas id="ruler-y" aria-label="Dikey cetvel"></canvas><div id="pan-shield" class="pan-shield" hidden></div></div></div><div class="bottom"><span id="status">Kaynak denetleniyor</span> · <span id="unsaved">Değişiklik yok</span></div></main>
 <aside class="right"><h2>Özellikler</h2>
 <div class="panel" id="selection-tools" hidden><strong id="selection-summary" aria-live="polite"></strong>
 <p class="multi-hint">Shift + tıklama: çoklu seçim · Sürükle veya ok tuşlarıyla birlikte taşı.</p>
 <div class="group-tools"><button class="btn" id="link-group" type="button">Grup oluştur</button><button class="btn" id="unlink-group" type="button">Grubu çöz</button></div>
 <div id="multi-align" hidden><h3 style="font-size:12px;margin:13px 0 7px">Birlikte hizala</h3>
 <div class="quick-align"><button class="btn" data-align="left" title="Sola hizala">⇤</button><button class="btn" data-align="center" title="Yatay ortala">↔</button><button class="btn" data-align="right" title="Sağa hizala">⇥</button><button class="btn" data-align="top" title="Üste hizala">↑</button><button class="btn" data-align="middle" title="Dikey ortala">↕</button><button class="btn" data-align="bottom" title="Alta hizala">↓</button></div></div></div>
-<div id="blank" class="notice">Düzenlemek için bir katmana tıkla.</div><div id="props" hidden>
-<div class="panel"><span id="label" class="badge"></span><div class="two">
-<div class="field"><label>X (px)</label><input type="number" id="x"></div><div class="field"><label>Y (px)</label><input type="number" id="y"></div>
-<div class="field"><label>Genişlik (px)</label><input type="number" id="w"></div><div class="field"><label>Font (px)</label><input type="number" id="fs" min="8" max="260"></div></div></div>
+<div id="blank" class="notice">Düzenlemek için bir katmana tıkla. Sağ tıklayarak işlem menüsünü açabilirsin.</div><div id="props" hidden>
+<div class="panel primary-properties"><h2>Boyut ve konum</h2><span id="label" class="badge"></span><div class="two">
+<div class="field"><label>Genişlik (px)</label><input type="number" id="w" min="20" max="5000"></div>
+<div class="field"><label>Yükseklik (px)</label><input type="number" id="height" min="1" max="5000"></div>
+<div class="field"><label>X (px)</label><input type="number" id="x"></div>
+<div class="field"><label>Y (px)</label><input type="number" id="y"></div>
+<div class="field"><label>Punto (px)</label><input type="number" id="fs" min="8" max="260"></div>
+<div class="field"><label>Katman sırası</label><input type="number" id="zindex" min="-30" max="30"></div>
+</div><p class="small">Köşe ve kenar tutamaçlarıyla da boyutlandırabilirsin.</p></div>
+<div class="panel" id="band-tools" hidden><h2>Logo bandı</h2><div class="field"><label>Bant rengi</label><input type="color" id="band-color" value="#1d2027"></div><p class="small">Bant serbestçe düzenlenebilir; logo SVG'si değiştirilmez.</p></div>
 <div class="panel"><h2>Hizalama</h2><div class="quick-align">
 <button type="button" class="btn" data-align="left" title="Sola hizala">⇤</button><button type="button" class="btn" data-align="center" title="Yatay ortala">↔</button><button type="button" class="btn" data-align="right" title="Sağa hizala">⇥</button>
 <button type="button" class="btn" data-align="top" title="Üste hizala">↑</button><button type="button" class="btn" data-align="middle" title="Dikey ortala">↕</button><button type="button" class="btn" data-align="bottom" title="Alta hizala">↓</button></div></div>
 <div class="panel"><h2>Görünüm</h2><div class="two">
-<div class="field"><label>Yükseklik (px)</label><input type="number" id="height" min="1" max="5000"></div>
 <div class="field"><label>Opaklık (0–100%)</label><input type="number" id="opacity" min="0" max="100" step="5"></div>
 <div class="field"><label>Köşe yuvarlaklığı (px)</label><input type="number" id="radius" min="0" max="600"></div>
-<div class="field"><label>Ön/arka sıra</label><input type="number" id="zindex" min="-30" max="30"></div>
 </div></div>
 <div class="panel" id="copy-tools" hidden><h2>Metin içeriği</h2>
 <p class="small">Vurgular ve satır sonları korunur. Her metin parçasını ayrı düzenle; logo ve dipnot kilitlidir.</p>
@@ -101,6 +114,13 @@ dialog{border:1px solid #697586;border-radius:12px;padding:25px;max-width:410px;
 <div class="panel"><div class="field"><label>Metin rengi</label><select id="mode"><option value="inherit">Orijinal</option><option value="paper">Krem tonuna bağlı</option><option value="ink">Koyu tona bağlı</option><option value="red">Kırmızı tona bağlı</option><option value="direct">Özel renk</option></select></div><div class="field" id="direct" hidden><label>Özel renk</label><input type="color" id="color" value="#ffffff"></div></div></div>
 <h2>Sürümler</h2><div class="panel"><div class="field"><label>Geri yükle</label><select id="versions"></select></div><div class="controls"><button class="btn" id="load">Aç</button><button class="btn" id="folder">Klasör seç</button></div><p class="small" id="folderStatus">Klasör seçilmedi</p></div>
 <div class="panel"><h2>Dosyaları indir</h2><div class="controls"><button class="btn" id="css">Aktif slaytın CSS’i</button><button class="btn" id="html">Aktif slaytın HTML’i</button></div><p class="small">Klasör kaydında düzenlenebilir HTML/CSS üretilir. Değiştirdiğin fotoğraflar HTML'e gömülür; değiştirilmemiş görseller kaynak URL'lerinde kalır. PNG çıktısı bu editörde henüz yoktur.</p></div></aside></div>
+<div id="context-menu" class="context-menu" role="menu" aria-label="Katman işlemleri" hidden>
+<button type="button" role="menuitem" data-action="front">En öne getir <span>↑</span></button>
+<button type="button" role="menuitem" data-action="back">En arkaya gönder <span>↓</span></button>
+<hr><button type="button" role="menuitem" data-action="align-left">Sola hizala</button><button type="button" role="menuitem" data-action="align-center">Yatay ortala</button><button type="button" role="menuitem" data-action="align-right">Sağa hizala</button>
+<hr><button type="button" role="menuitem" data-action="group">Grup oluştur</button><button type="button" role="menuitem" data-action="ungroup">Grubu çöz</button>
+<button type="button" role="menuitem" data-action="reset">Konum / boyutu sıfırla</button>
+<hr><button type="button" role="menuitem" data-action="undo">Geri al <span>⌘Z</span></button></div>
 <dialog id="dialog"><h2>Yeni sürüm oluştur</h2><p>Orijinal <b>v1</b> korunur. Yeni sürüm için onay gerekiyor.</p><div class="field"><label>Versiyon</label><input id="newV" readonly></div><div class="field"><label>Revizyon notu</label><input id="note" maxlength="140" placeholder="örn. başlık sola alındı"></div><div class="controls"><button class="btn primary" id="confirm">Kaydet</button><button class="btn" id="cancel">Vazgeç</button></div></dialog>
 <script src="portable.js"></script>
 <script src="ux.js"></script>
@@ -120,7 +140,7 @@ var zoomLevel=.4,zoomMode='fit',handMode=false,selectionOverlay=null,selectionHa
 function fitLevel(){var c=$('canvas');return Math.min(1,Math.max(.18,Math.min((c.clientWidth-55)/1080,(c.clientHeight-48)/1350)))}
 function setZoom(value){
  var n=value==='fit'?fitLevel():Math.min(1.25,Math.max(.18,Number(value)||.4));zoomLevel=n;zoomMode=value==='fit'?'fit':String(n);
- $('frame').style.width=Math.round(1080*n)+'px';$('frame').style.height=Math.round(1350*n)+'px';$('preview').style.transform='scale('+n+')';
+ $('frame').style.width=Math.round(1080*n)+'px';$('frame').style.height=Math.round(1350*n)+'px';$('preview').style.transform='scale('+n+')';drawRulers();
  var options=[...$('zoom').options].map(function(o){return o.value});
  var known=options.includes(zoomMode);$('zoom').value=known?zoomMode:'custom';$('zoom').querySelector('[value=custom]').textContent=Math.round(n*100)+'%';
  $('zoom-in').disabled=n>=1.25;$('zoom-out').disabled=n<=.18
@@ -135,19 +155,87 @@ $('pan-shield').addEventListener('pointerdown',function(e){if(!handMode||e.butto
  function up(){e.target.removeEventListener('pointermove',move);e.target.removeEventListener('pointerup',up)}
  e.target.addEventListener('pointermove',move);e.target.addEventListener('pointerup',up,{once:true});e.preventDefault()});
 new ResizeObserver(function(){if(zoomMode==='fit')setZoom('fit')}).observe($('canvas'));
+function drawRulers(){
+ var x=$('ruler-x'),y=$('ruler-y'),wide=Math.round(1080*zoomLevel),high=Math.round(1350*zoomLevel);
+ if(!wide||!high)return;
+ x.style.width=wide+'px';y.style.height=high+'px';
+ x.width=wide*2;x.height=44;y.width=50;y.height=high*2;
+ [[x,true,wide],[y,false,high]].forEach(function(pair){
+  var canvas=pair[0],horizontal=pair[1],length=pair[2],ctx=canvas.getContext('2d');
+  ctx.scale(2,2);ctx.fillStyle='#1c2a3be8';ctx.fillRect(0,0,horizontal?length:25,horizontal?22:length);
+  ctx.strokeStyle='#bdd2e4';ctx.fillStyle='#ebeff5';ctx.font='9px system-ui';
+  var max=horizontal?1080:1350,unit=zoomLevel<.3?100:50;
+  for(var v=0;v<=max;v+=unit){
+   var p=Math.round(v*zoomLevel)+.5,major=v%100===0;
+   ctx.beginPath();if(horizontal){ctx.moveTo(p,22);ctx.lineTo(p,major?8:15)}
+   else{ctx.moveTo(25,p);ctx.lineTo(major?8:15,p)}
+   ctx.stroke();
+   if(major){if(horizontal)ctx.fillText(String(v),p+3,9);else{ctx.save();ctx.translate(8,p+3);ctx.rotate(-Math.PI/2);ctx.fillText(String(v),0,0);ctx.restore()}}
+  }
+ })
+}
+function editableResize(n){return editable(n)&&selectedIds.length===1}
+function setRectangle(n,rect,resize){
+ var index=Number(n.dataset.editIndex),key=page+':'+index,e=state.edits[key]||(state.edits[key]={mode:'inherit',styles:{}}),styles=e.styles||(e.styles={});
+ var parent=n.closest('.logo-foot');
+ if(parent===n)parent=null;
+ var pr=parent?pos(parent):{x:0,y:0};
+ Object.assign(styles,{position:'absolute',left:Math.round(rect.x-pr.x)+'px',top:Math.round(rect.y-pr.y)+'px',right:'auto',bottom:'auto',margin:'0'});
+ if(resize){
+  styles.width=Math.round(rect.w)+'px';
+  if(!identityImage(n))styles.height=Math.round(rect.h)+'px';
+ }else if(!styles.width)styles.width=Math.round(rect.w)+'px';
+ if(identityImage(n))delete styles.height;
+ patch(n,e)
+}
 function setupOverlay(){
- var st=doc.createElement('style');st.textContent='.brandstudio-selection{position:absolute;pointer-events:none;border:2px solid #e9a45f;z-index:9999;box-sizing:border-box}.brandstudio-resize{position:absolute;bottom:-10px;right:-10px;width:20px;height:20px;background:#e9a45f;border:2px solid #172333;border-radius:5px;cursor:nwse-resize;pointer-events:auto;touch-action:none}';doc.head.appendChild(st);
+ var st=doc.createElement('style');st.textContent='.brandstudio-selection{position:absolute;pointer-events:none;border:2px solid #e9a45f;z-index:9999;box-sizing:border-box}.brandstudio-resize{position:absolute;width:13px;height:13px;background:#f9c68c;border:2px solid #172333;border-radius:3px;cursor:var(--handle-cursor);pointer-events:auto;touch-action:none;transform:translate(-50%,-50%)}';
+ doc.head.appendChild(st);
  selectionOverlay=doc.createElement('div');selectionOverlay.className='brandstudio-selection';selectionOverlay.hidden=true;
- selectionHandle=doc.createElement('div');selectionHandle.className='brandstudio-resize';selectionHandle.title='Nesneyi sürükleyerek boyutlandır';selectionOverlay.appendChild(selectionHandle);doc.querySelector('.slide').appendChild(selectionOverlay);
- selectionHandle.addEventListener('pointerdown',function(e){
-  if(sel<0||selectedIds.length!==1||e.button!==0)return;var n=nodes()[sel];if(!n||logo(n)||n.classList.contains('folio'))return;
-  e.stopPropagation();e.preventDefault();var start=pos(n),sx=e.clientX,sy=e.clientY,isPhoto=n.tagName==='IMG',checked=false;selectionHandle.setPointerCapture(e.pointerId);
-  function move(v){var dx=v.clientX-sx,dy=v.clientY-sy;if(!checked){if(Math.abs(dx)+Math.abs(dy)<2)return;checkpoint();checked=true;var initial=edit();Object.assign(initial.styles,{position:'absolute',left:start.x+'px',top:start.y+'px',right:'auto',bottom:'auto',margin:'0'});Object.entries(initial.styles).forEach(function(pair){n.style.setProperty(pair[0],pair[1])})}var w=Math.max(20,Math.round(start.w+dx)),h=Math.max(20,Math.round(start.h+dy));var a=edit();a.styles.width=w+'px';n.style.width=a.styles.width;
-   if(isPhoto){a.styles.height=h+'px';n.style.height=a.styles.height;a.styles['object-fit']=a.styles['object-fit']||'cover';n.style.objectFit=a.styles['object-fit']}
-   $('w').value=w;$('height').value=isPhoto?h:start.h;updateOverlay();dirtyStatus()}
-  function stop(){selectionHandle.removeEventListener('pointermove',move);selectionHandle.removeEventListener('pointerup',stop)}
-  selectionHandle.addEventListener('pointermove',move);selectionHandle.addEventListener('pointerup',stop,{once:true})
+ var positions={nw:[0,0,'nwse-resize'],n:[50,0,'ns-resize'],ne:[100,0,'nesw-resize'],e:[100,50,'ew-resize'],se:[100,100,'nwse-resize'],s:[50,100,'ns-resize'],sw:[0,100,'nesw-resize'],w:[0,50,'ew-resize']};
+ var handles={};
+ Object.entries(positions).forEach(function(item){
+  var direction=item[0],spec=item[1],handle=doc.createElement('div');handle.className='brandstudio-resize';
+  handle.dataset.direction=direction;handle.style.left=spec[0]+'%';handle.style.top=spec[1]+'%';handle.style.setProperty('--handle-cursor',spec[2]);handle.title='Boyutlandır: '+direction;
+  handle.setAttribute('role','slider');handle.setAttribute('aria-label','Boyutlandır: '+direction);
+  selectionOverlay.appendChild(handle);handles[direction]=handle;
+  handle.addEventListener('pointerdown',function(e){
+   if(sel<0||!editableResize(nodes()[sel])||e.button!==0)return;
+   var n=nodes()[sel],initial=pos(n),sx=e.clientX,sy=e.clientY,recorded=false,
+   aspect=initial.w/Math.max(1,initial.h),logoArt=identityImage(n);
+   e.stopPropagation();e.preventDefault();if(e.isTrusted)handle.setPointerCapture(e.pointerId);
+   function move(v){
+    var dx=v.clientX-sx,dy=v.clientY-sy;
+    if(Math.abs(dx)+Math.abs(dy)<2&&!recorded)return;
+    var left=initial.x,top=initial.y,right=left+initial.w,bottom=top+initial.h;
+    if(direction.includes('w'))left+=dx;if(direction.includes('e'))right+=dx;
+    if(direction.includes('n'))top+=dy;if(direction.includes('s'))bottom+=dy;
+    var min=logoArt?352:20;
+    if(right-left<min){if(direction.includes('w'))left=right-min;else right=left+min}
+    if(bottom-top<20){if(direction.includes('n'))top=bottom-20;else bottom=top+20}
+    if(right-left>5000){if(direction.includes('w'))left=right-5000;else right=left+5000}
+    if(bottom-top>5000){if(direction.includes('n'))top=bottom-5000;else bottom=top+5000}
+    if(logoArt){
+     var w=right-left;
+     if(direction==='n'||direction==='s')w=Math.max(352,Math.min(5000,Math.round((bottom-top)*aspect)));
+     w=Math.min(5000,w);
+     var h=w/aspect;
+     if(direction.includes('w'))left=right-w;else if(direction==='n'||direction==='s')left=initial.x+(initial.w-w)/2;else right=left+w;
+     if(direction.includes('n'))top=bottom-h;else if(direction==='e'||direction==='w')top=initial.y+(initial.h-h)/2;
+     bottom=top+h;
+    }
+    if(!recorded){checkpoint();recorded=true}
+    setRectangle(n,{x:left,y:top,w:right-left,h:bottom-top},true);
+    $('x').value=Math.round(left);$('y').value=Math.round(top);$('w').value=Math.round(right-left);$('height').value=Math.round(bottom-top);
+    updateOverlay();dirtyStatus()
+   }
+   function stop(){handle.removeEventListener('pointermove',move);handle.removeEventListener('pointerup',stop);handle.removeEventListener('pointercancel',stop);if(recorded)showSelection()}
+   handle.addEventListener('pointermove',move);handle.addEventListener('pointerup',stop,{once:true});handle.addEventListener('pointercancel',stop,{once:true})
+  })
  });
+ selectionHandle=handles.se;
+ doc.querySelector('.slide').appendChild(selectionOverlay);
+ selectionOverlay._handles=handles;
  doc.addEventListener('wheel',function(ev){if(!ev.ctrlKey&&!ev.metaKey)return;ev.preventDefault();setZoom(Math.round(Math.max(.18,Math.min(1.25,zoomLevel*(ev.deltaY>0?.88:1.12)))*100)/100)}, {passive:false})
 }
 function updateOverlay(){
@@ -157,16 +245,18 @@ function updateOverlay(){
  var p=ux.bounds(list.map(pos));
  selectionOverlay.style.left=p.x+'px';selectionOverlay.style.top=p.y+'px';selectionOverlay.style.width=p.w+'px';selectionOverlay.style.height=p.h+'px';
  selectionOverlay.hidden=false;
- selectionHandle.hidden=list.length!==1||logo(list[0])||list[0].classList.contains('folio')
+ Object.values(selectionOverlay._handles).forEach(function(handle){handle.hidden=list.length!==1||!editable(list[0])})
 }
 
 
 function fillAdvanced(n){
- var st=doc.defaultView.getComputedStyle(n),p=pos(n),e=state.edits[page+':'+sel]||{styles:{}},styles=e.styles||{},isPhoto=n.tagName==='IMG',locked=logo(n)||n.classList.contains('folio');
+ var st=doc.defaultView.getComputedStyle(n),p=pos(n),e=state.edits[page+':'+sel]||{styles:{}},styles=e.styles||{},isPhoto=n.tagName==='IMG'&&!identityImage(n),locked=!editable(n),logoArt=identityImage(n),band=n.classList.contains('logo-foot');
  $('height').value=p.h;$('opacity').value=Math.round((Number.parseFloat(st.opacity)||0)*100);
  $('radius').value=Math.round(Number.parseFloat(st.borderTopLeftRadius)||0);
  $('zindex').value=st.zIndex==='auto'?0:(Number.parseInt(st.zIndex,10)||0);
- $('text-tools').hidden=isPhoto||locked;$('photo-tools').hidden=!isPhoto||locked;
+ $('text-tools').hidden=isPhoto||locked||logo(n);$('photo-tools').hidden=!isPhoto||locked;
+ $('band-tools').hidden=!band;
+ if(band){var bg=st.backgroundColor.match(/\d+/g)||[];$('band-color').value=styles['background-color']||'#'+[0,1,2].map(function(i){return Number(bg[i]||0).toString(16).padStart(2,'0')}).join('')}
  if(isPhoto&&!locked){
    $('reset-photo').disabled=!e.image;
    $('photo-status').textContent=e.image?'Bu fotoğraf yerel olarak değiştirildi.':'Orijinal görsel kullanılıyor.';
@@ -178,7 +268,7 @@ function fillAdvanced(n){
  $('fit').value=['cover','contain','fill'].includes(st.objectFit)?st.objectFit:'cover';
  var m=st.objectPosition.match(/^(\d+(?:\.\d+)?)% (\d+(?:\.\d+)?)%$/);
  $('cropx').value=m?Math.round(Number(m[1])):50;$('cropy').value=m?Math.round(Number(m[2])):50;
- ['height','opacity','radius','zindex'].forEach(function(id){$(id).disabled=locked});
+ ['height','opacity','radius','zindex'].forEach(function(id){$(id).disabled=locked||logoArt&&id!=='zindex'});
  Array.from(document.querySelectorAll('[data-align]')).forEach(function(b){b.disabled=locked});
 }
 function numberControl(id,prop,convert){
@@ -193,6 +283,7 @@ numberControl('letter','letter-spacing',function(x){return Math.max(-20,Math.min
 numberControl('leading','line-height',function(x){return String(Math.max(.6,Math.min(3,Math.round(x*100)/100)))});
 $('textalign').onchange=function(){if(sel<0||this.disabled)return;apply('text-align',this.value)};
 $('fit').onchange=function(){if(sel<0||this.disabled)return;apply('object-fit',this.value)};
+$('band-color').onchange=function(){var n=nodes()[sel];if(n&&n.classList.contains('logo-foot'))apply('background-color',this.value)};
 async function imageFromLocalFile(file){
  if(!file||!['image/png','image/jpeg','image/webp'].includes(file.type)||file.size<1||file.size>12000000)
   throw new Error('12 MB altında bir PNG, JPEG veya WebP dosyası seç');
@@ -215,7 +306,7 @@ async function imageFromLocalFile(file){
  }finally{bitmap.close()}
 }
 $('replace-photo').onclick=function(){
- var n=nodes()[sel];if(!n||n.tagName!=='IMG'||!editable(n)||selectedIds.length!==1)return;
+ var n=nodes()[sel];if(!n||n.tagName!=='IMG'||identityImage(n)||!editable(n)||selectedIds.length!==1)return;
  $('photoFile').value='';$('photoFile').click()
 };
 $('photoFile').onchange=async function(){
@@ -224,7 +315,7 @@ $('photoFile').onchange=async function(){
  $('photo-status').textContent='Fotoğraf yerel olarak hazırlanıyor…';
  try{
   var uri=await imageFromLocalFile(file);
-  if(page!==slide||sel!==selected||selectedIds.length!==1||!editable(nodes()[selected])||nodes()[selected]?.tagName!=='IMG')
+  if(page!==slide||sel!==selected||selectedIds.length!==1||!editable(nodes()[selected])||identityImage(nodes()[selected])||nodes()[selected]?.tagName!=='IMG')
    throw new Error('Bu sırada seçim değişti. Fotoğrafı yeniden seç');
   var candidate=copy(state),key=page+':'+sel;
   var entry=candidate.edits[key]||{styles:{},mode:'inherit'};
@@ -235,7 +326,7 @@ $('photoFile').onchange=async function(){
 };
 $('reset-photo').onclick=function(){
  var n=nodes()[sel],key=page+':'+sel;
- if(!n||n.tagName!=='IMG'||!editable(n)||!state.edits[key]?.image)return;
+ if(!n||n.tagName!=='IMG'||identityImage(n)||!editable(n)||!state.edits[key]?.image)return;
  checkpoint();delete state.edits[key].image;
  refreshPreview();dirtyStatus();$('status').textContent='Orijinal fotoğraf geri getirildi';
 };
@@ -266,7 +357,13 @@ function nodes(){if(!doc)return[];var selText=codec.selector;return Array.from(d
 function edit(){var k=page+':'+sel;if(!state.edits[k])state.edits[k]={styles:{},mode:'inherit'};return state.edits[k]}
 function norm(){if(!doc)return;doc.documentElement.style.setProperty('--paper',state.colors.paper);doc.documentElement.style.setProperty('--ink',state.colors.ink);doc.documentElement.style.setProperty('--red',state.colors.red);Array.from(doc.querySelectorAll('style')).forEach(function(s){if(s.dataset.normalized)return;s.textContent=s.textContent.replace(/#F7F3E9/gi,'var(--paper)').replace(/#1D2027/gi,'var(--ink)').replace(/#BD2120/gi,'var(--red)');s.dataset.normalized='1'})}
 function patch(n,v){
- if(!v||logo(n)||n.classList.contains('folio'))return;
+ if(!v)return;
+ if(n.classList.contains('folio')&&v.segments!==undefined)throw new Error('Dipnot metni değiştirilemez');
+ if(identityImage(n)){
+  if(v.image!==undefined||v.segments!==undefined||v.mode&&v.mode!=='inherit')throw new Error('Logonun orijinal SVG ve rengi değiştirilemez');
+  var safe=['position','left','top','right','bottom','width','margin','z-index'];
+  if(Object.keys(v.styles||{}).some(function(k){return !safe.includes(k)})||v.styles?.width&&parseFloat(v.styles.width)<352)throw new Error('Logo sadece oranı korunarak taşınabilir ve büyütülebilir');
+ }
  if(v.image!==undefined){if(n.tagName!=='IMG')throw new Error('Fotoğraf yalnızca görsel katmanında değiştirilebilir');n.setAttribute('src',v.image)}
  if(v.segments!==undefined)codec.applyText(n,v.segments);
  Object.entries(v.styles||{}).forEach(function(pair){n.style.setProperty(pair[0],pair[1])});
@@ -298,7 +395,7 @@ function layers(){
   var summary=document.createElement('summary');var title=document.createElement('span');title.textContent=group.label;var count=document.createElement('small');count.textContent=group.items.length+' katman';summary.append(title,count);box.appendChild(summary);
   box.addEventListener('toggle',function(){groupOpen[page+':'+group.id]=box.open});
   var inner=document.createElement('div');inner.className='layer-group-inner';
-  group.items.forEach(function(item){var n=nodes()[item.id],b=document.createElement('button');b.className='layer'+(selectedIds.includes(item.id)?' selected':'');b.textContent=(item.isLogo?'🔒 ':item.isPhoto?'▧ ':'• ')+n.tagName.toLowerCase()+' · '+(item.name||'görsel');b.title=item.name;b.onclick=function(ev){choose(item.id,ev.shiftKey)};inner.appendChild(b)});
+  group.items.forEach(function(item){var n=nodes()[item.id],b=document.createElement('button');b.className='layer'+(selectedIds.includes(item.id)?' selected':'');b.textContent=(n.classList.contains('folio')?'🔒 ':item.isLogo?'▣ ':item.isPhoto?'▧ ':'• ')+n.tagName.toLowerCase()+' · '+(item.name||'görsel');b.title=item.name;b.onclick=function(ev){choose(item.id,ev.shiftKey)};b.oncontextmenu=function(ev){ev.preventDefault();if(!selectedIds.includes(item.id))choose(item.id,false);openContextMenu(ev.clientX,ev.clientY)};inner.appendChild(b)});
   box.appendChild(inner);out.appendChild(box);
  })
 }
@@ -317,13 +414,14 @@ document.addEventListener('keydown',function(ev){var tag=ev.target&&ev.target.ta
  if(ctrl&&!ev.altKey&&k==='y'){ev.preventDefault();$('redo').click();return}
  if(ev.altKey&&!ctrl&&(ev.key==='ArrowLeft'||ev.key==='ArrowRight')){ev.preventDefault();show(page+(ev.key==='ArrowLeft'?-1:1));return}
  if(sel>=0&&!ctrl&&!ev.altKey&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(ev.key)){
-  var n=nodes()[sel];if(logo(n)||n.classList.contains('folio'))return;
+  var n=nodes()[sel];if(!editable(n))return;
   ev.preventDefault();var p=pos(n),step=ev.shiftKey?10:1;setXY(p.x+(ev.key==='ArrowLeft'?-step:ev.key==='ArrowRight'?step:0),p.y+(ev.key==='ArrowUp'?-step:ev.key==='ArrowDown'?step:0));return
  }
 });
 function pos(n){var a=n.getBoundingClientRect(),b=doc.querySelector('.slide').getBoundingClientRect();return{x:Math.round(a.left-b.left),y:Math.round(a.top-b.top),w:Math.round(a.width),h:Math.round(a.height)}}
 function logo(n){return n.classList.contains('logo-foot')||!!n.closest('.logo-foot')}
-function editable(n){return !!n&&!logo(n)&&!n.classList.contains('folio')}
+function identityImage(n){return !!n&&n.tagName==='IMG'&&logo(n)}
+function editable(n){return !!n}
 function linkedGroups(){
  return (state.groups?.[String(page)]||[]).filter(function(group){
   return group.length>=2&&group.every(function(i){return editable(nodes()[i])})
@@ -340,7 +438,7 @@ function showSelection(){
  if(!doc)return;
  var ns=nodes(),count=selectedIds.length,n=ns[sel];
  ns.forEach(function(x,i){x.style.outline=selectedIds.includes(i)?'3px dashed #ffa95f':''});
- $('blank').hidden=count>0;$('props').hidden=count!==1;$('selection-tools').hidden=count===0;
+ $('blank').hidden=count>0;$('props').hidden=count!==1;$('selection-tools').hidden=count<2;
  $('multi-align').hidden=count<2;
  $('selection-summary').textContent=count===1?'1 katman seçildi':count+' katman seçildi';
  var members=selectedIds.filter(function(i){return editable(ns[i])});
@@ -348,10 +446,10 @@ function showSelection(){
  $('link-group').disabled=members.length<2||members.length!==selectedIds.length||sameGroup&&linkedGroups().some(function(g){return g.length===members.length&&g.every(function(i){return members.includes(i)})});
  $('unlink-group').disabled=!sameGroup;
  if(count===1&&n){
-  $('label').textContent=n.tagName.toLowerCase()+' · '+String(sel);
+  $('label').textContent=(identityImage(n)?'Logo':n.classList.contains('logo-foot')?'Logo bandı':n.tagName.toLowerCase())+' · '+String(sel);
   var p=pos(n);$('x').value=p.x;$('y').value=p.y;$('w').value=p.w;
   $('fs').value=Math.round(parseFloat(doc.defaultView.getComputedStyle(n).fontSize))||24;
-  $('fs').disabled=n.tagName==='IMG'||!editable(n);$('mode').disabled=n.tagName==='IMG'||!editable(n);
+  $('fs').disabled=n.tagName==='IMG'||logo(n)||!editable(n);$('mode').disabled=n.tagName==='IMG'||logo(n)||!editable(n);
   ['x','y','w'].forEach(function(k){$(k).disabled=!editable(n)});
   var e=state.edits[page+':'+sel]||{mode:'inherit'};
   fillAdvanced(n);renderTextFields(n);$('mode').value=e.mode||'inherit';$('color').value=e.color||'#ffffff';$('direct').hidden=e.mode!=='direct';
@@ -418,20 +516,60 @@ function setXY(x,y){
   var e=state.edits[key];
   if(!e.styles)e.styles={};
   if(!e.styles.width)e.styles.width=p.w+'px';
-  if(node.tagName==='IMG'&&!e.styles.height)e.styles.height=p.h+'px';
-  Object.assign(e.styles,{position:'absolute',left:(p.x+dx)+'px',top:(p.y+dy)+'px',right:'auto',bottom:'auto',margin:'0'});
-  patch(node,e)
+  setRectangle(node,{x:p.x+dx,y:p.y+dy,w:p.w,h:p.h},false)
  });
  $('x').value=Math.round(x);$('y').value=Math.round(y);changed()
 }
-function apply(field,value){var n=nodes()[sel];if(!n||logo(n)||n.classList.contains('folio'))return;checkpoint();var e=edit();e.styles[field]=value;patch(n,e);changed()}
+function apply(field,value){
+ var n=nodes()[sel];if(!editable(n))return;
+ if(identityImage(n)&&!['width','left','top','position','right','bottom','margin','z-index'].includes(field))return;
+ if(identityImage(n)&&field==='width')value=Math.max(352,Number.parseFloat(value))+'px';
+ checkpoint();var e=edit();e.styles[field]=value;patch(n,e);changed()
+}
+function openContextMenu(x,y){
+ var menu=$('context-menu');if(!selectedIds.length)return;
+ menu.hidden=false;
+ menu.style.left=Math.min(x,window.innerWidth-245)+'px';menu.style.top=Math.min(y,window.innerHeight-385)+'px';
+ menu.querySelector('[data-action="group"]').disabled=$('link-group').disabled;
+ menu.querySelector('[data-action="ungroup"]').disabled=$('unlink-group').disabled;
+ menu.querySelector('[data-action="undo"]').disabled=$('undo').disabled;
+ menu.querySelectorAll('[data-action^="align-"]').forEach(function(x){x.disabled=selectedIds.some(function(i){return !editable(nodes()[i])})});
+ menu.querySelectorAll('[data-action="reset"],[data-action="front"],[data-action="back"]').forEach(function(x){x.disabled=selectedIds.some(function(i){return !editable(nodes()[i])})});
+}
+function closeContextMenu(){$('context-menu').hidden=true}
+document.addEventListener('pointerdown',function(e){if(!e.target.closest('#context-menu'))closeContextMenu()});
+document.addEventListener('scroll',closeContextMenu,true);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeContextMenu()});
+$('context-menu').addEventListener('click',function(ev){
+ var button=ev.target.closest('[data-action]');if(!button||button.disabled)return;
+ var action=button.dataset.action;closeContextMenu();
+ if(action==='group'){$('link-group').click();return}
+ if(action==='ungroup'){$('unlink-group').click();return}
+ if(action==='undo'){$('undo').click();return}
+ if(action.startsWith('align-')){var bt=document.querySelector('#multi-align [data-align="'+action.slice(6)+'"]')||document.querySelector('#props [data-align="'+action.slice(6)+'"]');if(bt)bt.click();return}
+ if(action==='front'||action==='back'){
+  checkpoint();
+  selectedIds.forEach(function(i){var n=nodes()[i],key=page+':'+i,e=state.edits[key]||(state.edits[key]={mode:'inherit',styles:{}});e.styles['z-index']=action==='front'?'20':'-20';patch(n,e)});
+  changed();showSelection();return
+ }
+ if(action==='reset'){
+  var props=['position','left','top','right','bottom','width','height','margin'];
+  checkpoint();selectedIds.forEach(function(i){
+   var e=state.edits[page+':'+i];if(!e)return;
+   props.forEach(function(k){delete e.styles[k]});
+  });
+  refreshPreview();dirtyStatus();$('status').textContent='Konum ve boyut özgün değerlerine döndü'
+ }
+});
 function down(evt){
+ closeContextMenu();
  var n=evt.target.closest('[data-edit-index]');if(!n||evt.button!==0)return;
  var index=Number(n.dataset.editIndex),wasSelected=selectedIds.includes(index);
  if(evt.shiftKey){choose(index,true);evt.preventDefault();return}
  if(!wasSelected)choose(index,false);else{sel=index;showSelection()}
  if(!editable(n))return;
  var start=pos(n),sx=evt.clientX,sy=evt.clientY;dragging=true;dragRecorded=false;
+ if(evt.isTrusted&&evt.target.setPointerCapture)evt.target.setPointerCapture(evt.pointerId);
  function move(e){
   if(Math.abs(e.clientX-sx)+Math.abs(e.clientY-sy)<2)return;
   setXY(start.x+e.clientX-sx,start.y+e.clientY-sy)
@@ -440,11 +578,18 @@ function down(evt){
  doc.addEventListener('pointermove',move);doc.addEventListener('pointerup',up,{once:true});evt.preventDefault()
 }
 function show(i){if(!pages.length)return;page=Math.max(0,Math.min(pages.length-1,i));sel=-1;selectedIds=[];doc=null;$('preview').src=pages[page];$('count').textContent=(page+1)+' / '+pages.length;renderTabs();$('props').hidden=true;$('selection-tools').hidden=true;$('blank').hidden=false}
-$('preview').addEventListener('load',function(){doc=$('preview').contentDocument;if(!doc||!doc.querySelector('.slide')){$('status').textContent='Kaynak slayt bulunamadı';return}doc.addEventListener('pointerdown',down);paint();setZoom(zoomMode);$('status').textContent='Slayt düzenlenebilir'});
+$('preview').addEventListener('load',function(){doc=$('preview').contentDocument;if(!doc||!doc.querySelector('.slide')){$('status').textContent='Kaynak slayt bulunamadı';return}doc.addEventListener('pointerdown',down);
+ doc.addEventListener('contextmenu',function(ev){
+  var n=ev.target.closest('[data-edit-index]');if(!n)return;
+  ev.preventDefault();var i=Number(n.dataset.editIndex);
+  if(!selectedIds.includes(i))choose(i,false);else{sel=i;showSelection()}
+  var frame=$('preview').getBoundingClientRect();openContextMenu(frame.left+ev.clientX*zoomLevel,frame.top+ev.clientY*zoomLevel)
+ });
+ paint();setZoom(zoomMode);$('status').textContent='Slayt düzenlenebilir'});
 $('prev').onclick=function(){show(page-1)};$('next').onclick=function(){show(page+1)};
 $('x').onchange=function(){if(sel>=0)setXY(Number(this.value),pos(nodes()[sel]).y)};
 $('y').onchange=function(){if(sel>=0)setXY(pos(nodes()[sel]).x,Number(this.value))};
-$('w').onchange=function(){if(sel>=0)apply('width',Math.max(20,Number(this.value))+'px')};
+$('w').onchange=function(){if(sel>=0)apply('width',Math.max(identityImage(nodes()[sel])?352:20,Number(this.value))+'px')};
 $('fs').onchange=function(){if(sel>=0&&!this.disabled)apply('font-size',Math.max(8,Number(this.value))+'px')};
 $('mode').onchange=function(){if(sel<0||this.disabled)return;checkpoint();var e=edit();e.mode=this.value;e.color=$('color').value;var n=nodes()[sel];if(e.mode==='inherit')n.style.removeProperty('color');else patch(n,e);$('direct').hidden=e.mode!=='direct';changed()};
 $('color').oninput=function(){if(sel<0||$('mode').disabled)return;if(!colorSessions.direct){checkpoint();colorSessions.direct=true}var e=edit();e.mode='direct';e.color=this.value;patch(nodes()[sel],e);changed()};
