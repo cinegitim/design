@@ -279,7 +279,7 @@ function setupOverlay(){
      }
      setRectangle(item.node,rect,true);
      // Only text within a resized frame/group scales its point size.
-     if(members.length>1&&item.font&&item.node.tagName!=='IMG'&&
+     if((ev.shiftKey||members.length>1)&&item.font&&item.node.tagName!=='IMG'&&
        (item.node.children.length===0||!item.node.querySelector('[data-edit-index]'))){
       var size=Math.max(8,Math.min(260,Math.round(item.font*Math.min(scaleX,scaleY))));
       var key=page+':'+item.node.dataset.editIndex;
@@ -657,6 +657,9 @@ function setXY(x,y){
  var ids=selectedIds.length?selectedIds:[sel];
  // Capture all boxes before changing flow/positioning on any member.
  var snapshots=ids.filter(function(i){return editable(ns[i])}).map(function(i){return{id:i,node:ns[i],p:pos(ns[i])}});
+ var stationary=snapshots.filter(function(item){return item.node.classList.contains('logo-foot')}).flatMap(function(item){
+  return Array.from(item.node.querySelectorAll('[data-edit-index]')).filter(function(n){return !ids.includes(Number(n.dataset.editIndex))}).map(function(n){return{node:n,p:pos(n)}})
+ });
  snapshots.forEach(function(item){
   var i=item.id,node=item.node,p=item.p,key=page+':'+i;
   if(!state.edits[key])state.edits[key]={styles:{},mode:'inherit'};
@@ -665,6 +668,7 @@ function setXY(x,y){
   if(!e.styles.width)e.styles.width=p.w+'px';
   setRectangle(node,{x:p.x+dx,y:p.y+dy,w:p.w,h:p.h},false)
  });
+ stationary.forEach(function(item){setRectangle(item.node,item.p,false)});
  $('x').value=Math.round(x);$('y').value=Math.round(y);changed()
 }
 function apply(field,value){
