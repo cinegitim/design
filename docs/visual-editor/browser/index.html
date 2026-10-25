@@ -183,7 +183,7 @@ function setRectangle(n,rect,resize){
  Object.assign(styles,{position:'absolute',left:Math.round(rect.x-pr.x)+'px',top:Math.round(rect.y-pr.y)+'px',right:'auto',bottom:'auto',margin:'0'});
  if(resize){
   styles.width=Math.round(rect.w)+'px';
-  if(!identityImage(n))styles.height=Math.round(rect.h)+'px';
+  if(!identityImage(n)){styles.height=Math.round(rect.h)+'px';styles['max-width']='none'}
  }else if(!styles.width)styles.width=Math.round(rect.w)+'px';
  if(identityImage(n))delete styles.height;
  patch(n,e)
@@ -524,7 +524,8 @@ function apply(field,value){
  var n=nodes()[sel];if(!editable(n))return;
  if(identityImage(n)&&!['width','left','top','position','right','bottom','margin','z-index'].includes(field))return;
  if(identityImage(n)&&field==='width')value=Math.max(352,Number.parseFloat(value))+'px';
- checkpoint();var e=edit();e.styles[field]=value;patch(n,e);changed()
+ checkpoint();var e=edit();e.styles[field]=value;
+ if(field==='width'&&!identityImage(n))e.styles['max-width']='none';patch(n,e);changed()
 }
 function openContextMenu(x,y){
  var menu=$('context-menu');if(!selectedIds.length)return;
@@ -553,7 +554,7 @@ $('context-menu').addEventListener('click',function(ev){
   changed();showSelection();return
  }
  if(action==='reset'){
-  var props=['position','left','top','right','bottom','width','height','margin'];
+  var props=['position','left','top','right','bottom','width','height','margin','max-width'];
   checkpoint();selectedIds.forEach(function(i){
    var e=state.edits[page+':'+i];if(!e)return;
    props.forEach(function(k){delete e.styles[k]});
