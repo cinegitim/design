@@ -128,7 +128,7 @@ test("logo backing band is editable independently while approved SVG remains imm
  assert.match(html,/function editable\(n\)\{return !!n\}/);
  assert.match(html,/Math\.max\(352,Number\.parseFloat\(value\)\)/);
  assert.match(html,/function setRectangle\(n,rect,resize\)/);
- assert.match(html,/if\(!identityImage\(n\)\)styles\.height=/);
+ assert.match(html,/if\(!identityImage\(n\)\)\{styles\.height=/);
  assert.match(html,/styles\['background-color'\]/);
  assert.match(html,/if\(identityImage\(n\)\)delete styles\.height/);
  assert.match(js,/function identityArtwork\(el\)/);
