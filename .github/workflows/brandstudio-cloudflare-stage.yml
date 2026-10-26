@@ -27,6 +27,7 @@ jobs:
             docs/visual-editor
             docs/archive
             docs/inventory
+            docs/workspaces/asyada-egitim
           sparse-checkout-cone-mode: true
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
