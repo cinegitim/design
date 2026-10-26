@@ -764,6 +764,8 @@ function moveLayer(source,target,above){
   patch(n,e)
  });
  dirtyStatus();showSelection();
+ var movedButton=document.querySelector('#layers button[data-layer-id="'+source+'"]');
+ movedButton?.scrollIntoView({block:'nearest'});
  $('status').textContent=branch.grouped
   ?'Kapsayıcı birlikte taşındı: '+layerPath(a)+'. İçindeki öğelerin konumu korunuyor.'
   :'Katman sırası değişti: '+layerPath(a)
@@ -790,13 +792,14 @@ function layerTree(){
  walk(root,0);return rows
 }
 function layers(){
- var out=$('layers');out.innerHTML='';
+ var out=$('layers'),previousScroll=out.scrollTop;out.innerHTML='';
  var query=$('layer-search')?.value.toLocaleLowerCase('tr')||'';
  var all=layerTree(),matches=all.filter(function(item){
   var name=layerName(item.element);
   return !query||(name+' '+layerPath(item.id)).toLocaleLowerCase('tr').includes(query)
  });
- var box=document.createElement('details');box.className='layer-group';box.open=true;
+ var box=document.createElement('details');box.className='layer-group';box.open=!!query||groupOpen[page+':layer-tree']!==false;
+ box.addEventListener('toggle',function(){if(!query)groupOpen[page+':layer-tree']=box.open});
  var summary=document.createElement('summary'),title=document.createElement('span'),count=document.createElement('small');
  title.textContent='Katman sırası · üstteki önde';count.textContent=matches.length;
  summary.append(title,count);box.appendChild(summary);
@@ -827,7 +830,7 @@ function layers(){
   });
   inner.appendChild(b)
  });
- box.appendChild(inner);out.appendChild(box)
+ box.appendChild(inner);out.appendChild(box);out.scrollTop=previousScroll
 }
 function layerName(n){
  if(n.classList?.contains('veil'))return 'Fotoğraf filtresi · koyu gradyan';
