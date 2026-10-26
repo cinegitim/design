@@ -20,41 +20,42 @@ class PagesEntryTests(unittest.TestCase):
 
     def test_brand_page_links_are_per_product_and_optional(self):
         html = (ROOT / "docs/workspaces/asyada-egitim/index.html").read_text(encoding="utf-8")
-        self.assertIn("Visual Editor ile düzenle", html)
+        self.assertIn("function card(g,posts)", html)
+        self.assertIn("tile.href=url", html)
+        self.assertIn("el('a','quick-action edit')", html)
+        self.assertIn("el('a','quick-action ig')", html)
+        self.assertIn("editor.setAttribute('aria-label'", html)
+        self.assertIn("proof.setAttribute('aria-label'", html)
         self.assertIn("../../visual-editor/browser/?product=", html)
-        self.assertNotIn("category=instagram-carousel&product=", html)
-        self.assertIn("MutationObserver", html)
-        self.assertIn(".visual-product[hidden]{display:none!important}", html)
+        self.assertIn("if(pub.length)", html)
+        self.assertNotIn("visual-editor-action", html)
+        self.assertNotIn("instagram-proof-link", html)
+        self.assertNotIn("MutationObserver", html)
 
-
-    def test_every_carousel_card_opens_its_exact_published_source_version(self):
+    def test_all_carousel_families_have_one_default_version_and_accessible_actions(self):
         page = (ROOT / "docs/workspaces/asyada-egitim/index.html").read_text(encoding="utf-8")
+        config = json.loads((ROOT / "docs/visual-editor/browser/product-groups.json").read_text(encoding="utf-8"))
         catalog = json.loads((ROOT / "docs/visual-editor/browser/catalog.json").read_text(encoding="utf-8"))
         by_id = {p["id"]: p for p in catalog}
-        carousel_cards = []
-        for tile in re.finditer(r'<a class="tile" ([^>]+)>(.*?)</a>', page, re.DOTALL):
-            attrs, contents = tile.groups()
-            if '<span class="category">Karusel</span>' not in contents:
-                continue
-            href = re.search(r'href="([^"]+)"', attrs)
-            product = re.search(r'data-editor-product="([^"]+)"', attrs)
-            self.assertIsNotNone(href, "Carousel must link to its real gallery")
-            self.assertIsNotNone(product, "Carousel must declare its exact editor product ID")
-            href, product = href.group(1), product.group(1)
-            self.assertIn(product, by_id, "Editor link must resolve to a published source")
-            prefix = href.removeprefix("../../").rstrip("/") + "/"
-            self.assertTrue(any(source.startswith(prefix+"source/") or source.startswith(prefix+"editable/")
-                                for source in by_id[product]["pages"]),
-                            f"{product} does not correspond to gallery at {href}")
-            carousel_cards.append((href, product))
-        self.assertEqual(len(carousel_cards), 5)
-        self.assertEqual(len(set(p for _, p in carousel_cards)), len(carousel_cards))
-        self.assertIn(('../../instagram/rotani-sec-tokyo-seoul-001/v3/',
-                       'instagram-rotani-sec-tokyo-seoul-001-v3'), carousel_cards)
-        self.assertIn(('../../instagram/tsinghua-atlas-2027/v2/',
-                       'instagram-tsinghua-atlas-2027-v2'), carousel_cards)
-        self.assertIn("const product=tile.dataset.editorProduct", page)
-        self.assertNotIn("const product=m[1]", page)
+        groups = [g for g in config["groups"] if g["brand"] == "asyada-egitim"
+                  and g.get("categoryPath", [None, None])[1] == "Karuseller"]
+        self.assertEqual(len(groups), 11)
+        self.assertEqual(len({g["id"] for g in groups}), 11)
+        for group in groups:
+            default_id = group["defaultId"]
+            self.assertIn(default_id, by_id, f"{group['id']} has no matching source")
+            self.assertTrue(by_id[default_id]["pages"])
+            self.assertIn(default_id, [v["id"] for v in group["versions"]])
+            self.assertIn("const id=g.defaultId||g.currentId", page)
+        published = next(g for g in groups if g["id"] == "instagram-carousel-01")
+        self.assertEqual(published["defaultId"], "instagram-carousel-01-v2")
+        self.assertEqual(published["publishedVersionId"], "instagram-carousel-01-v2")
+        self.assertEqual(published["currentId"], "carousel-01-v3")
+        self.assertTrue(all(source.startswith("instagram/carousel-01-v2/source/")
+                            for source in by_id[published["defaultId"]]["pages"]))
+        self.assertIn("'instagram-carousel-01': {v:'../../instagram/carousel-01-v2/'", page)
+        self.assertIn("wrap.append(actions)", page)
+        self.assertIn("tile.href='logos-and-covers/'", page)
 
     def test_studio_navigation(self):
         self.assertIn('href="visual-editor/"', (ROOT / "docs/index.html").read_text(encoding="utf-8"))
