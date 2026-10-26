@@ -61,14 +61,23 @@ test('source assets and canonical identity paths are preserved in original repos
  }
  assert.equal(uniq.size,1372);
 });
-test('unverified social posts never silently get Yayımlandı status',()=>{
- assert.deepEqual(JSON.parse(JSON.stringify(manifest.socialPublication.posts)),[]);
- assert.ok(families.every(x=>x.lifecycle!=='published'));
+test('Instagram publication requires real post evidence and does not invent a matched revision',()=>{
+ const published=families.filter(x=>x.lifecycle==='published');
+ assert.equal(manifest.socialPublication.totalInstagramPostsSeen,7);
+ assert.equal(published.length,5);
+ assert.deepEqual(new Set(published.map(x=>x.id)),new Set([
+  'carousel-01-v3','instagram-tsinghua-atlas-2027-v2','instagram-rotani-sec-tokyo-seoul-001-v3',
+  'instagram-basvuru-rehberi-china-001','instagram-burs-dosyasi-gks-2027-001'
+ ]));
+ assert.ok(families.every(x=>(x.publications||[]).every(p=>p.verified&&p.url.startsWith('https://www.instagram.com/'))));
+ const earlier=Catalog.byId(families,'instagram-carousel-01-v2');
+ assert.equal(earlier.lifecycle,'in-review');
+ assert.ok(earlier.familyPublications.length);
  const withInvalid=JSON.parse(JSON.stringify(manifest));
- withInvalid.socialPublication.posts=[{productId:'carousel-01-v3',verified:true,url:'https://not-instagram.com/p/XYZ',publishedAt:'2026-10-01'}];
+ withInvalid.socialPublication.posts=[{groupId:'instagram-carousel-01',verified:true,url:'https://not-instagram.com/p/XYZ',publishedAt:'2026-10-01'}];
  assert.equal(Catalog.groupRecords(raw,withInvalid).find(x=>x.id==='carousel-01-v3').lifecycle,'in-review');
  const withEvidence=JSON.parse(JSON.stringify(manifest));
- withEvidence.socialPublication.posts=[{productId:'carousel-01-v3',verified:true,url:'https://www.instagram.com/p/AbCdEf01234/',publishedAt:'2026-10-20'}];
+ withEvidence.socialPublication.posts=[{groupId:'instagram-carousel-01',verified:true,url:'https://www.instagram.com/p/AbCdEf01234/',publishedAt:'2026-10-20'}];
  assert.equal(Catalog.groupRecords(raw,withEvidence).find(x=>x.id==='carousel-01-v3').lifecycle,'published');
 });
 test('future products not manually mapped remain visible',()=>{
