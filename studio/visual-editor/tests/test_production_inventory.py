@@ -95,7 +95,7 @@ console.log(JSON.stringify({files:inv.filesCount,groups:inv.groupsCount,summary:
         self.assertEqual(len(json.loads(source)["groups"]), 14)
         archive = json.loads((ROOT / "docs/archive/retired-collections.json").read_text(encoding="utf8"))
         self.assertEqual(sum(x["fileCount"] for x in archive["collections"]), archive["filesTotal"])
-        self.assertEqual(archive["transferState"], "logical-retirement-source-paths-preserved")
+        self.assertEqual(archive["transferState"], "archive-branch-verified-source-paths-preserved")
 
 
 if __name__ == "__main__":
