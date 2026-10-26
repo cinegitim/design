@@ -94,3 +94,18 @@ test('editor offers actual product version selector; catalog does not show histo
  assert.match(html,/Yayımlandı/);
  assert.doesNotMatch(html,/Üretim Envanteri<\/a>/);
 });
+
+test('Phase 2C saved edits and linked groups migrate to retained-cover numbering exactly once',()=>{
+ const old={colors:{paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'},edits:{'0:5':{styles:{left:'123px'}},'2:7':{styles:{top:'10px'}}},groups:{'0':[[1,2]],'2':[[3,4]]}};
+ const moved=Catalog.migrateLegacyPhase2CState(old);
+ assert.deepEqual(Object.keys(moved.edits).sort(),['1:5','3:7']);
+ assert.deepEqual(Object.keys(moved.groups).sort(),['1','3']);
+ assert.equal(moved.edits['1:5'].styles.left,'123px');
+ assert.equal(old.edits['0:5'].styles.left,'123px');
+ assert.equal(moved.colors.paper,old.colors.paper);
+ const html=fs.readFileSync(path.join(root,'docs/visual-editor/browser/index.html'),'utf8');
+ assert.match(html,/sourcePageSchema===2/);
+ assert.match(html,/pre-cover-20261026/);
+ assert.match(html,/raw\.sourcePageSchema!==2/);
+ assert.match(html,/if\(sourceCoverAdded\(\)\)updated\.sourcePageSchema=2/);
+});
