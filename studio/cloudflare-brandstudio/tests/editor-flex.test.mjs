@@ -185,7 +185,8 @@ test("overflow and narrow-screen inspector remain operable",()=>{
 test("logo and band are DOM siblings, with stable selection/index and independent movement",()=>{
  assert.match(html,/codec\.detachLogo\(doc\);codec\.installFonts\(doc,pages\[page\]\)/);
  assert.match(html,/n\.hasAttribute\('data-brandstudio-independent-logo'\)/);
- assert.match(html,/var parent=identityImage\(n\)\?null:n\.closest\('\.logo-foot'\)/);
+ assert.match(html,/ux\.containingBlockOrigin\(n,doc\.querySelector\('\.slide'\)\)/);
+ assert.match(html,/original\?\.position==='static'/);
  assert.match(html,/if\(identityImage\(n\)\)e\.basis='artboard'/);
  assert.match(html,/codec\.adaptLogoEdit\(doc,n,v,state,page\)/);
 });
