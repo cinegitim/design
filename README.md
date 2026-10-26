@@ -1,34 +1,13 @@
-# AI Brand Studio
+# Brandstudio — tarihsel tasarım arşivi (26 Ekim 2026)
 
-**OpenCode and ChatGPT Work/Codex can both design and produce; GitHub is their shared source and independent audit layer.**
+Bu Git dalı aktif üretim dalı değildir. İki markanın onay öncesi kimlik denemeleri ve emekli edilmiş yaratıcı deneyleri burada kaynak dosyalarının birebir Git blob nesneleriyle korunmaktadır.
 
-- [Operating instructions](AGENTS.md)
-- [ChatGPT Work capability map, branch workflow and handoffs](studio/work/README.md)
-- [Cloud architecture and production commands](studio/cloud/README.md)
-- [One-time ChatGPT/Codex account activation](studio/cloud/ACTIVATION.md)
-- [OpenCode without a user-machine project checkout: remote execution boundary](studio/cloud/REMOTE-OPENCODE.md)
-- [Chosen setup: temporary OpenCode + cloud Codex, verified task cleanup](studio/work/EPHEMERAL.md)
-- [Live cloud handover guide](https://cinegitim.github.io/design/cloud/)
-- [Latest launch experiment — human review pending](https://cinegitim.github.io/design/instagram/launch-creative-02/)
+Kapsam: 1.372 dosya; eski Asya Eğitim kimliği, Asya'da Eğitim'in onay öncesi mühür/wordmark/görsel denemeleri, Çin Eğitim'in eski sembol/tipografi/ilk avatar denemeleri, Discovery 01 ve Creative Breakout.
 
-`brands/`, `studio/`, `docs/`, `.agents/` and `.opencode/` adapters are
-durable project sources. CI is audit-only: no render, model/image calls or
-OpenAI API key. Existing Pages serves committed review assets.
+Koruma ilkesi: Asya'da Eğitim'in V-01 kanonik mührü, P-01/H-02/C-03/D-04/F-05 onaylı lockup sistemi, Çin Eğitim kilitli sembolü, marka kararları ve ortak bağımlılıklar bu tarihi taşınma listesine dahil değildir ve aktif main'de kalır.
 
-The repository configuration does not activate a cloud account or prove an
-image connector is available. Complete the activation checklist and first
-actual cloud test before retiring local working folders. No local files are
-deleted by this migration. Technical CI success is never creative approval.
+Kaynak Git tree: 1caa29645737d0f2c57ef240d75c7e424bae2d3c. Her arşivlenmiş dosyanın kaynak Git blob SHA kimliği main üzerinde docs/archive/retired-collections.json dosyasında listelenir.
 
-GitHub is not an execution host by itself. The chosen setup uses one temporary
-disk root locally for OpenCode, with isolated disposable task clones; Work/Codex
-uses its own cloud workspace. Sources/exports remain on GitHub, then verified
-task clones (and their Git object stores) can be removed without merging the PR.
-This needs no paid VM, is not a RAM disk and does not erase legacy folders,
-OpenCode sessions or installed tool caches. Remote execution is optional.
+Bu dalın varlığı ayrı bir GitHub repository oluşturulduğu anlamına gelmez. Binari içerikler Git nesneleri olarak korunur; ayrı depoya ileride taşıma kararı alınırsa SHA doğrulamasıyla aktarılmalıdır.
 
-Every new production uses a separate branch/checkout, then a PR with required checks.
-The standing policy is checked merge without another confirmation, followed by
-verified delivery; blocked/explicitly held PRs remain open. Existing Pages mechanics
-remain unchanged. Work reads repository skills explicitly when they are not
-auto-discovered; connecting GitHub alone does not install OpenCode commands.
+Eski public URL'ler bozulmasın diye main üzerindeki tarihi kaynak sayfalarına doğrudan erişim hâlen mümkündür. Fakat aktif Brandstudio seçicisi bu deneyleri yeni üretim olarak önermez.
