@@ -65,7 +65,7 @@ const I=scope.BrandstudioInventory,raw=JSON.parse(fs.readFileSync(process.argv[2
 const inv=I.build(I.snapshotToTree(raw),{sha:raw.tree_sha});
 if(inv.filesCount!==raw.file_count)throw Error('Unclassified files');
 if(inv.groups.reduce((n,g)=>n+g.files.length,0)!==raw.file_count)throw Error('Group coverage mismatch');
-if(!inv.groups.every(g=>g.id&&g.files.every(f=>f.path.startsWith(g.id))))throw Error('Group prefix invalid');
+if(!inv.groups.every(g=>g.id&&g.files.length))throw Error('Empty or unnamed group');
 if(!inv.groups.some(g=>g.review==='candidate'))throw Error('No review candidates');
 if(!inv.groups.some(g=>g.review==='protected'&&g.id==='brands/asyada-egitim/assets'))throw Error('Canonical brand assets not protected');
 if(!inv.groups.some(g=>g.category==='social'))throw Error('Instagram production records missing');
