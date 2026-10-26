@@ -288,3 +288,24 @@ test("audited SVG legacy machine-local font URL is repaired only in browser",()=
  assert.equal(Adapter.repairLegacyFonts("url(../assets/Jost-VF.ttf)"),"url(../assets/Jost-VF.ttf)");
  assert.equal(Adapter.repairLegacyFonts("url(/Users/artist/private/photo.jpg)"),"url(/Users/artist/private/photo.jpg)");
 });
+
+test("nested footer transforms use containing block padding origin",()=>{
+ const artboard={getBoundingClientRect:()=>({left:320,top:320}),contains:x=>x===footer};
+ const footer={getBoundingClientRect:()=>({left:394,top:1380}),clientLeft:2,clientTop:3};
+ const img={offsetParent:footer};
+ assert.deepEqual({...UX.containingBlockOrigin(img,artboard)},{x:76,y:1063});
+ assert.deepEqual({...UX.containingBlockOrigin({offsetParent:artboard},artboard)},{x:0,y:0});
+ assert.deepEqual({...UX.containingBlockOrigin({offsetParent:null},artboard)},{x:0,y:0});
+});
+test("editor retains logo images and veil as selectable independent layers",()=>{
+ const portable=fs.readFileSync(path.join(root,"docs/visual-editor/browser/portable.js"),"utf8");
+ const source=fs.readFileSync(path.join(root,"docs/instagram/basvuru-rehberi-china-001/source/01-cover.html"),"utf8");
+ assert.match(source,/class="logo"/);
+ assert.match(source,/class="veil"/);
+ assert.match(html,/ux\.containingBlockOrigin\(n,doc\.querySelector\('\.slide'\)\)/);
+ assert.match(html,/Fotoğraf filtresi · koyu gradyan/);
+ assert.match(html,/x\.classList\.contains\('veil'\).*pointerEvents/);
+ assert.match(html,/\(\?:\^\|\-\)logo/);
+ assert.match(portable,/function identityArtwork\(el\)/);
+ assert.match(portable,/namedImage/);
+});
