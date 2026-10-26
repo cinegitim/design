@@ -358,7 +358,7 @@ test("layer reorder supports cross-container groups without negative stacking",(
  assert.match(html,/var common=p/);
  assert.match(html,/while\(a\.parentElement!==common\)/);
  assert.match(html,/while\(b\.parentElement!==common\)/);
- assert.match(html,/var branch=siblingBranch\(source,target\)/);
+ assert.match(html,/branch=siblingBranch\(source,target\)/);
  assert.match(html,/e\.styles\['z-index'\]=String\(index\+1\)/);
  assert.match(html,/e\.styles\.position='relative'/);
  assert.match(html,/branch\.grouped/);
