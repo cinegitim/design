@@ -148,5 +148,9 @@ test('one actual gallery shows logos, profile images, and platform covers',()=>{
  assert.doesNotMatch(html,/location\.replace\(/);
  const src=[...html.matchAll(/<img[^>]*src="([^"]+)"/g)].map(x=>x[1]);
  assert.ok(src.length>=10);
- for(const rel of src)assert.ok(fs.existsSync(path.resolve(folder,rel)),rel);
+ const publishedFiles=new Set(inventory.files.map(f=>f[0]));
+ for(const rel of src){
+  const repoPath=path.relative(root,path.resolve(folder,rel)).split(path.sep).join('/');
+  assert.ok(publishedFiles.has(repoPath),'Gallery references untracked image: '+repoPath);
+ }
 });
