@@ -76,8 +76,9 @@ function groupRecords(raw,config){
  if(!config||config.schema!==1||!Array.isArray(config.groups))return raw;
  var items=new Map(raw.map(function(r){return[r.id,r]})),used=new Set(),groups=[];
  var publications=config.socialPublication&&Array.isArray(config.socialPublication.posts)?config.socialPublication.posts:[];
- function publicationFor(ids){
-  return publications.filter(function(p){return ids.includes(p.productId)&&p.verified===true&&
+ function publicationFor(ids,groupId){
+  return publications.filter(function(p){return (ids.includes(p.productId)||(groupId&&p.groupId===groupId))&&
+   p.verified===true&&
    /^https:\/\/(?:www\.)?instagram\.com\/(?:p|reel|tv)\/[A-Za-z0-9_-]+\/?(?:\?.*)?$/.test(p.url||'')&&p.publishedAt})
  }
  config.groups.forEach(function(g){
@@ -100,7 +101,7 @@ function groupRecords(raw,config){
   }).filter(Boolean);
   if(!versions.length)return;
   var current=versions.find(function(v){return v.id===g.currentId})||versions[versions.length-1];
-  var matches=publicationFor(versions.map(function(v){return v.id}));
+  var matches=publicationFor(versions.map(function(v){return v.id}),g.id);
   groups.push(Object.assign({},current,{id:current.id,title:g.title,family:g.brand,brand:g.brand,
    category:g.category,groupId:current.id,currentId:current.id,versions:versions,
    lifecycle:matches.length?'published':g.lifecycle||'in-review',publications:matches}));
@@ -120,7 +121,8 @@ function byId(records,id){
   if(g.id===id||g.groupId===id)return g;
   var v=(g.versions||[]).find(function(x){return x.id===id});
   if(v)return Object.assign({},v,{title:g.title,groupTitle:g.title,category:g.category,brand:g.brand,
-   versions:g.versions,groupId:g.groupId||g.id,currentId:g.currentId||g.id})
+   versions:g.versions,groupId:g.groupId||g.id,currentId:g.currentId||g.id,
+   familyPublications:g.publications||[]})
  }
  return null
 }
