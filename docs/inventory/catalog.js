@@ -31,6 +31,7 @@ function classify(p){
   }else if(second==="asyada-seal"){
    brand=asya;category="identity-exploration";key=a.slice(0,3).join("/");review="candidate";basis="Historical seal/wordmark review galleries, not canonical identity source.";
    if(["canonical-lockups","final-lockups","unified"].includes(third)){review="verify";basis="May contain approved or referenced lockup presentations; check manifest and shared links."}
+   if(third==="assets"){review="protected";category="brand-foundation";basis="Shared seal assets used across public comparison and approval pages; dependency audit required before relocation."}
   }else if(second==="cin-egitim"){
    brand=chin;category=third==="rollup"?"print":"identity-exploration";key=a.slice(0,3).join("/");review="verify";basis="Review/public presentation or print output; retain if linked or approved.";
    if(["typography-round-01","social-avatars-01","social-avatars-02"].includes(third)){review="candidate";basis="Earlier experimental series; compare against newer and approved sources."}
@@ -65,6 +66,7 @@ function classify(p){
    category=third==="applications"?"brand-application":third==="boards"?"review":"identity-exploration";
    review=third==="applications"?"verify":"candidate";
    basis=third==="applications"?"Authored application source or collateral; evaluate version and dependencies.":"Historic creative explorations/boards; requires human retirement decision.";
+   if((third==="share-seal"&&a[3]==="assets")||(third==="explorations"&&a[3]==="final-lockup-family")){review=third==="share-seal"?"protected":"verify";basis="Shared assets or final lockup-family provenance; preserve pending a reference dependency audit."}
   }else if(third==="enhancements"||third==="reconstruction-direction-3"){
    category="identity-exploration";key=a.slice(0,3).join("/");review="candidate";basis="Historical enhancement or reconstruction trial.";
   }else if(third==="reference"){
