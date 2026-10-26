@@ -79,7 +79,7 @@ function groupRecords(raw,config){
  function publicationFor(ids,groupId){
   return publications.filter(function(p){return (ids.includes(p.productId)||(groupId&&p.groupId===groupId))&&
    p.verified===true&&
-   /^https:\/\/(?:www\.)?instagram\.com\/(?:p|reel|tv)\/[A-Za-z0-9_-]+\/?(?:\?.*)?$/.test(p.url||'')&&p.publishedAt})
+   /^https:\/\/(?:www\.)?instagram\.com\/(?:asyadaegitim\/)?(?:p|reel|tv)\/[A-Za-z0-9_-]+\/?(?:\?.*)?$/.test(p.url||'')&&p.publishedAt})
  }
  config.groups.forEach(function(g){
   var versions=(g.versions||[]).map(function(v){
