@@ -7,12 +7,18 @@ on:
       - "docs/workspaces/asyada-egitim/index.html"
       - "docs/index.html"
       - "docs/instagram/index.html"
+      - "docs/instagram/brandstudio-page.js"
+      - "docs/instagram/**/index.html"
+      - "docs/social-covers/index.html"
       - ".github/workflows/visual-editor-bridge.yml"
   push:
     branches: [main]
     paths:
       - "studio/visual-editor/**"
       - "docs/visual-editor/**"
+      - "docs/instagram/brandstudio-page.js"
+      - "docs/instagram/**/index.html"
+      - "docs/social-covers/index.html"
       - ".github/workflows/visual-editor-bridge.yml"
   workflow_dispatch:
 permissions:

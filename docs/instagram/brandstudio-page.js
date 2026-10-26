@@ -87,4 +87,160 @@
       actions.insertBefore(instagram,actions.firstChild);
     }
   }).catch(function(){/* Static page and Visual Editor access are still usable without metadata network. */});
+
+  /* All secondary production materials live below the artwork in four
+   * accessible native-details panels. Original links and content nodes are moved,
+   * not duplicated or rewritten; legacy deep links and downloads remain intact. */
+  function resourceType(label,href) {
+    var text=(label+" "+href).toLocaleLowerCase("tr")
+      .replace(/ı/g,"i").normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+    if(/mobile-324|324.contact|mobile.\d+.contact|375.469|paket|download|indir|\.zip(?:$|[?#])|source\/|\/editable\/|\.svg(?:$|[?#])/.test(text))
+      return "sources";
+    if(/v1.v2|v[1-9].v[1-9]|revision.comparison|revizyon karsilastirmasi|surum gecmisi|\bversiyon\b|v[1-9].galeri|\bv1\b|eski surum|onceki surum/.test(text))
+      return "history";
+    if(/factual|kaynak raporu|kaynak ve dogrulama|quality.review|quality.review|gorsel qa|kalite incele|caption|atif|credit|fotoraf kaynak|fotograf kaynak|photography|visual.qa|manifest|geometry.audit|exact.copy|\.(?:md|json)(?:$|[?#])|teknik dogrulama|uretim ve sanat yonetimi|platform.adaptation/.test(text))
+      return "audit";
+    if(/mobile|mobil|contact.sheet|temas sayfa|iletisim sayfa|feed.cover|mockup|onizleme|preview|profil izgarasi|karsilastirma.seridi/.test(text))
+      return "preview";
+    return null;
+  }
+  function organizeResources() {
+    if(document.querySelector(".bs-support"))return;
+    var types={
+      preview:{label:"Önizlemeler",description:"Mobil akış, temas sayfası ve kapak yerleşimi"},
+      history:{label:"Sürüm geçmişi",description:"Önceki sürümler ve karşılaştırmalar"},
+      audit:{label:"Üretim belgeleri",description:"Kaynak doğrulama, QA, caption ve görsel atıfları"},
+      sources:{label:"Kaynaklar ve indirmeler",description:"Düzenlenebilir dosyalar, teknik kontroller ve ZIP paketleri"},
+      extra:{label:"Diğer materyaller",description:"Önceki üretimden kalan ek bağlantılar"}
+    };
+    var items={preview:[],history:[],audit:[],sources:[],extra:[]};
+    var moved=new Set();
+    function add(type,node) {
+      if(!types[type]||moved.has(node))return;
+      moved.add(node);items[type].push(node);
+    }
+    // Resource links in the original header are production utilities, not
+    // primary nav. Preserve any unclassified link under "Diğer materyaller".
+    document.querySelectorAll("header nav.links, header .links").forEach(function(nav){
+      var links=Array.from(nav.querySelectorAll("a[href]"));
+      if(links.length<3||!links.some(function(a){return resourceType(a.textContent,a.getAttribute("href")||"")}))
+        return;
+      links.forEach(function(a){
+        var kind=resourceType(a.textContent,a.getAttribute("href")||"")||"extra";
+        var li=document.createElement("li");li.appendChild(a);add(kind,li);
+      });
+      if(!nav.querySelector("a,button,input,select"))nav.remove();
+    });
+    // A standalone primary-header download is a source asset, not a CTA
+    // comparable to "Instagram gönderisini gör" or "Visual Editor".
+    document.querySelectorAll("header a.download[href]").forEach(function(a){
+      if(!/\.zip(?:$|[?#])/.test(a.getAttribute("href")||""))return;
+      var li=document.createElement("li");li.appendChild(a);add("sources",li);
+    });
+    // QA/mobility sections are appended without reconstructing their DOM;
+    // this preserves any existing live gallery handlers / element references.
+    document.querySelectorAll("main section.section,main section.tech,main section.review").forEach(function(sec){
+      var head=sec.querySelector("h2,h3");
+      if(!head)return;
+      var label=head.textContent.trim();
+      var plain=label.toLocaleLowerCase("tr").replace(/ı/g,"i")
+        .normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+      var kind=null;
+      if(/^(mobil okunabilirlik|mobil akis|mobil kontrol|mobil onizleme)/.test(plain))kind="preview";
+      else if(/^(revizyon karsilastirmasi|surum karsilastirmasi)/.test(plain))kind="history";
+      else if(/^(kaynak,? dogrulama ve atif|teknik dogrulama ozeti|uretim ve sanat yonetimi ilkeleri|kalite kontrol|gorsel qa)/.test(plain))kind="audit";
+      else if(/^(slayt kaynaklari|kaynak dosyalari)/.test(plain))kind="sources";
+      if(kind)add(kind,sec);
+    });
+    // Revision pages may expose a flat JSON/ZIP evidence bar rather than
+    // structured sections; preserve those same links inside the drawers.
+    document.querySelectorAll("main > .files,main > .resources").forEach(function(block){
+      var links=Array.from(block.querySelectorAll("a[href]"));
+      if(links.length<2||!links.every(function(a){
+        return !!resourceType(a.textContent,a.getAttribute("href")||"");
+      }))return;
+      links.forEach(function(a){
+        var kind=resourceType(a.textContent,a.getAttribute("href")||"");
+        var li=document.createElement("li");li.appendChild(a);add(kind,li);
+      });
+      if(!block.querySelector("a,button,input,select"))block.remove();
+    });
+    // Slide galleries use different markup (article.card, div.slide, panels),
+    // so scan actual technical links rather than requiring a specific template.
+    // Keep artwork links around thumbnail images in their original place.
+    document.querySelectorAll("main a[href]").forEach(function(a){
+      if(moved.has(a)||a.querySelector("img,picture,svg,canvas"))return;
+      var href=a.getAttribute("href")||"";
+      var kind=resourceType(a.textContent,href);
+      var technical=/(?:^|\/)(?:source|editable)\/|\.svg(?:$|[?#])|\.zip(?:$|[?#])|\.(?:md|json)(?:$|[?#])/.test(href);
+      if(!technical||!kind)return;
+      var card=a.closest("article.card,.slide-card,.slide-item,.slide,section.section,article");
+      var title=card&&card.querySelector("h2,h3,h4");
+      var li=document.createElement("li");
+      if(title){var prefix=document.createElement("span");prefix.className="bs-resource-prefix";
+        prefix.textContent=title.textContent.trim()+" — ";li.appendChild(prefix)}
+      li.appendChild(a);add(kind,li);
+    });
+    // No need for an empty category or a third navigation interface.
+    if(!Object.keys(items).some(function(k){return items[k].length}))return;
+    var section=document.createElement("section");section.className="bs-support";
+    section.setAttribute("aria-label","Tasarımın yardımcı üretim materyalleri");
+    var heading=document.createElement("h2");heading.textContent="Tasarım materyalleri";
+    var description=document.createElement("p");description.className="bs-support-lead";
+    description.textContent="Önizleme ve üretim belgeleri gerektiğinde açılabilir. Tasarımın kendisi yukarıda.";
+    section.append(heading,description);
+    Object.keys(types).forEach(function(key){
+      var nodes=items[key];if(!nodes.length)return;
+      var detail=document.createElement("details");detail.className="bs-drawer";
+      detail.dataset.group=key;if(key==="preview")detail.open=true;
+      var summary=document.createElement("summary");
+      var title=document.createElement("strong");title.textContent=types[key].label;
+      var count=document.createElement("span");count.className="bs-drawer-count";
+      count.textContent=String(nodes.length);
+      var sub=document.createElement("small");sub.textContent=types[key].description;
+      summary.append(title,count,sub);detail.append(summary);
+      var body=document.createElement("div");body.className="bs-drawer-body";
+      var list=document.createElement("ul");list.className="bs-resource-links";
+      nodes.forEach(function(node){
+        if(node.tagName==="LI")list.appendChild(node);
+        else {var wrap=document.createElement("div");wrap.className="bs-resource-section";wrap.appendChild(node);body.appendChild(wrap)}
+      });
+      if(list.children.length)body.insertBefore(list,body.firstChild);
+      detail.append(body);section.append(detail);
+    });
+    var main=document.querySelector("main");
+    if(main)main.insertAdjacentElement("afterend",section);
+    else{var footer=document.querySelector("footer");if(footer)footer.before(section);else document.body.append(section)}
+    document.documentElement.dataset.bsResourceOrganized="true";
+  }
+  var supportStyle=document.createElement("style");
+  supportStyle.textContent=[
+    ".bs-support{max-width:1180px;margin:24px auto 50px;padding:0 24px;color:#1d2027;font:14px/1.5 system-ui,-apple-system,sans-serif}",
+    ".bs-support *{box-sizing:border-box}",
+    ".bs-support h2{font:600 clamp(25px,3vw,34px)/1.12 Georgia,serif;letter-spacing:-.025em;margin:0 0 5px;color:inherit}",
+    ".bs-support-lead{font-size:13px;color:#5e5a54;margin:0 0 20px}",
+    ".bs-drawer{border:1px solid #c5bfb3;border-radius:10px;margin-top:9px;background:#f7f3e9;overflow:hidden;color:#1d2027}",
+    ".bs-drawer summary{display:flex;align-items:center;gap:10px;flex-wrap:wrap;cursor:pointer;padding:14px 18px;font:14px/1.3 system-ui,-apple-system,sans-serif;list-style:none}",
+    ".bs-drawer summary::-webkit-details-marker{display:none}",
+    ".bs-drawer summary:focus-visible{outline:3px solid #bd2120;outline-offset:-3px}",
+    ".bs-drawer summary::after{content:'⌄';font-size:20px;margin-left:auto;color:#bd2120;line-height:1}",
+    ".bs-drawer[open] summary::after{content:'⌃'}",
+    ".bs-drawer-count{font:12px/1 system-ui,sans-serif;color:#6b6459;background:#e8e2d6;padding:5px 7px;border-radius:20px}",
+    ".bs-drawer summary small{width:100%;color:#655e55;font-size:11px;margin-top:-4px}",
+    ".bs-drawer-body{border-top:1px solid #d9d2c5;padding:13px 18px}",
+    ".bs-resource-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;padding:0;list-style:none;margin:0}",
+    ".bs-resource-links li{min-width:0;overflow-wrap:anywhere}",
+    ".bs-resource-links a,.bs-resource-section a{color:#9c2225!important;text-decoration:underline;text-underline-offset:3px}",
+    ".bs-resource-prefix{color:#625e58;font-size:12px}",
+    ".bs-resource-section{min-width:0;max-width:100%;margin-bottom:12px}",
+    ".bs-resource-section:last-child{margin-bottom:0}",
+    ".bs-resource-section img{max-width:100%;height:auto}",
+    ".bs-resource-section h2,.bs-resource-section h3{font-size:20px;line-height:1.25;letter-spacing:0}",
+    "body.bs-dark-gallery .bs-support{color:#f7f3e9}",
+    "body.bs-dark-gallery .bs-support-lead{color:#c8beb3}",
+    "@media(max-width:680px){.bs-support{padding:0 15px}.bs-resource-links{grid-template-columns:1fr}.bs-drawer summary{padding:12px 14px}.bs-drawer-body{padding:12px 14px}}"
+  ].join("\n");
+  document.head.append(supportStyle);
+  organizeResources();
+
 })();
