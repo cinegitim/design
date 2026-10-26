@@ -16,108 +16,91 @@ body{background:var(--paper);color:var(--ink);font:15px/1.55 Jost,system-ui,sans
 <a class="tile" href="../../social-covers/" data-search="sosyal medya kapakları x, linkedın ve facebook kapakları kapak tasarımı incelemede"><span class="thumb"><img src="../../asyada-seal/canonical-lockups/assets/h-02-primary-horizontal-light.svg" alt="Sosyal medya kapakları görsel önizlemesi" loading="lazy"></span><span class="tile-body"><span class="category">Kapak tasarımı</span><strong>Sosyal medya kapakları</strong><p>X, LinkedIn ve Facebook kapakları</p><span class="status">İncelemede <span aria-hidden="true">↗</span></span></span></a></div><p class="empty" id="empty" hidden>Bu aramayla eşleşen çalışma bulunamadı.</p></section>
 <aside class="identity-ribbon"><div><strong>Marka kimliği kilitli.</strong><p>Onaylı mühür ve logo ailesi yalnızca kanonik dosyalardan kullanılmalıdır. Mevcut çalışma galerilerinin burada listelenmesi yaratıcı onay anlamına gelmez.</p></div><a href="../../identity/">Kimlik kuralları ↗</a></aside>
 </main><footer class="brand-footer"><span>Asya'da Eğitim · Brandstudio</span><span><a href="../../">Marka seçimi</a> · <a href="https://github.com/cinegitim/design">Kaynak depo</a></span></footer></div><script>(()=>{const field=document.getElementById("search"),cards=[...document.querySelectorAll(".tile")],counter=document.getElementById("counter"),empty=document.getElementById("empty");const norm=s=>s.toLocaleLowerCase("tr").replace(/ı/g,"i").normalize("NFD").replace(/[\u0300-\u036f]/g,"");const update=()=>{const q=norm(field.value.trim());let n=0;for(const card of cards){const match=!q||norm(card.dataset.search).includes(q);card.hidden=!match;if(match)n++}counter.textContent=n+" çalışma";empty.hidden=n!==0;};field.addEventListener("input",update);update();})();</script><style>.visual-product{display:flex;flex-direction:column;min-width:0}.visual-product[hidden]{display:none!important}.visual-product>.tile{flex:1}.visual-editor-action{display:flex;align-items:center;justify-content:space-between;margin-top:7px;padding:10px 13px;border:1px solid #bd212057;border-radius:9px;color:#bd2120!important;font:700 12px Jost,system-ui,sans-serif;text-decoration:none;background:#fffcf5}.visual-editor-action:hover{background:#f7eee7}.visual-editor-action:focus-visible{outline:3px solid #bd2120;outline-offset:2px}</style><script>(()=>{const cards=[...document.querySelectorAll('a.tile')];for(const tile of cards){const category=tile.querySelector('.category')?.textContent?.trim().toLocaleLowerCase('tr')||'';if(!category.includes('karusel'))continue;const product=tile.dataset.editorProduct;if(!product||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(product))continue;const host=document.createElement('div');host.className='visual-product';tile.parentNode.insertBefore(host,tile);host.appendChild(tile);const link=document.createElement('a');link.className='visual-editor-action';link.textContent='Visual Editor ile düzenle ↗';link.href='../../visual-editor/browser/?product='+encodeURIComponent(product);link.setAttribute('aria-label',product+' ürününü Visual Editor ile düzenle');host.appendChild(link);const sync=()=>host.hidden=tile.hidden;new MutationObserver(sync).observe(tile,{attributes:true,attributeFilter:['hidden']});sync();}})();</script><style>
-.instagram-proof-link{display:block;color:#26633b!important;background:#f4f7ef;text-decoration:none;border:1px solid #5e9d694d;border-radius:8px;margin-top:5px;padding:9px 13px;font:650 12px Jost,system-ui,sans-serif}
-.instagram-proof-link:hover{text-decoration:underline}
-.tile .status.instagram-published{color:#26633b!important}
-</style>
-<script>(()=>{async function markPublished(){
-try{
- const r=await fetch('../../visual-editor/browser/product-groups.json',{cache:'no-store'});if(!r.ok)return;
- const config=await r.json(),posts=(config.socialPublication&&config.socialPublication.posts)||[];
- for(const tile of document.querySelectorAll('a.tile[data-editor-product]')){
-  const current=tile.dataset.editorProduct;
-  const group=(config.groups||[]).find(g=>g.currentId===current);
-  if(!group)continue;
-  const valid=posts.filter(p=>p.verified===true&&p.publishedAt&&
-   /^https:\/\/www\.instagram\.com\/(?:asyadaegitim\/)?p\/[a-zA-Z0-9_-]+\/?$/.test(p.url||'')&&
-   (p.groupId===group.id||(p.productId&&p.productId===current)));
-  if(!valid.length)continue;
-  const exact=valid.some(p=>p.productId===current);
-  const status=tile.querySelector('.status');if(status){
-   status.classList.add('instagram-published');
-   const t=status.firstChild;if(t&&t.nodeType===Node.TEXT_NODE)t.nodeValue=exact?'Instagram’da yayımlandı ':'Aile Instagram’da yayımlandı ';
-  }
-  tile.dataset.search+=' yayımlandı instagram';
-  tile.title=exact?'Bu sürüm için Instagram paylaşım kaydı doğrulandı.':'Bu tasarım ailesinin Instagram paylaşımı doğrulandı; kesin sürüm eşleştirmesi bekleniyor.';
-  const link=document.createElement('a');link.href=valid[0].url;link.className='instagram-proof-link';
-  link.target='_blank';link.rel='noopener noreferrer';link.textContent='Instagram paylaşımını gör ↗';
-  const host=tile.closest('.visual-product')||tile;
-  if(host!==tile)host.appendChild(link);else tile.insertAdjacentElement('afterend',link);
- }
-}catch(_){}}
-markPublished()})()
-</script>
-<style>
-.family-directory{display:grid;gap:29px;margin-top:18px}
-.family-directory .category-block{min-width:0}
-.family-directory .category-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:8px 0 13px;margin:0 0 14px}
-.family-directory .category-heading h3{margin:0;font:650 clamp(18px,2.5vw,25px) "Source Serif 4",Georgia,serif}
-.family-directory .category-heading small{color:var(--muted);font:12px Jost,system-ui,sans-serif}
-.family-directory .visual-product{min-width:0}
-.family-directory .tile-body .version-meta{font:12px Jost,system-ui,sans-serif;color:var(--muted);display:block;margin:7px 0 0}
-</style>
-<script>(()=>{async function populateFamilies(){
-const section=document.querySelector('.project-section'),original=section?.querySelector('.items'),search=document.getElementById('search'),counter=document.getElementById('counter');
-if(!section||!original||!search)return;
-let response;try{response=await fetch('../../visual-editor/browser/product-groups.json',{cache:'no-store'});if(!response.ok)return}catch(_){return}
-let registry;try{registry=await response.json()}catch(_){return}
-const groups=(registry.groups||[]).filter(g=>g.brand==='asyada-egitim');
-if(groups.length<8)return;
-const published=(registry.socialPublication?.posts||[]).filter(p=>p.verified===true&&p.publishedAt&&/^https:\/\/(?:www\.)?instagram\.com\/asyadaegitim\/p\/[A-Za-z0-9_-]+\/?$/.test(p.url||''));
-const thumbs={
-'carousel-01-v3':'../../instagram/carousel-01-v3/01-cover.png',
-'instagram-carousel-02':'../../instagram/carousel-02/01-cover.png',
-'instagram-phase-2c-a-snu':'../../instagram/phase-2c/a-snu/png/01.png',
-'instagram-phase-2c-b-waseda':'../../instagram/phase-2c/b-waseda/png/01.png',
-'instagram-phase-2c-c-tokyo':'../../instagram/phase-2c/c-tokyo/png/01.png',
-'instagram-phase-2c-d-six-steps':'../../instagram/phase-2c/d-six-steps/png/01.png',
-'asset-instagram-profile-photo':'../../instagram/profile-photo/instagram-profile-1080.png'
-};
-const groupsByCategory=new Map();
-const nodes=[...original.querySelectorAll('a.tile')];
-for(const g of groups){
-const key=g.category||'Sosyal Medya / Diğer',arr=groupsByCategory.get(key)||[];
-let tile=nodes.find(t=>t.dataset.editorProduct===g.currentId);
-if(!tile&&g.currentId==='asset-social-covers-cover-graphics')tile=nodes.find(t=>t.getAttribute('href')?.includes('/social-covers/'));
-let wrap;
-if(tile){wrap=tile.closest('.visual-product')||tile;if(wrap===tile){wrap=document.createElement('div');wrap.className='visual-product';wrap.append(tile)}}
-else{
- const url='../../visual-editor/browser/?product='+encodeURIComponent(g.currentId),pub=published.filter(p=>p.groupId===g.id||p.productId===g.currentId);
- const text=pub.length?(pub.some(p=>p.productId===g.currentId)?'Instagram’da yayımlandı':'Aile Instagram’da yayımlandı'):'İncelemede';
- wrap=document.createElement('div');wrap.className='visual-product';
- tile=document.createElement('a');tile.className='tile';tile.href=url;tile.dataset.editorProduct=g.currentId;
- const thumb=document.createElement('span');thumb.className='thumb';const img=document.createElement('img');
- img.src=thumbs[g.currentId]||'../../asyada-seal/canonical-lockups/assets/h-02-primary-horizontal-light.svg';img.loading='lazy';img.alt=g.title+' görsel önizlemesi';img.onerror=()=>{img.onerror=null;img.src='../../asyada-seal/canonical-lockups/assets/h-02-primary-horizontal-light.svg'};thumb.appendChild(img);
- const body=document.createElement('span');body.className='tile-body';
- const label=document.createElement('span');label.className='category';label.textContent=key.replace('Sosyal Medya / ','');
- const title=document.createElement('strong');title.textContent=g.title;
- const meta=document.createElement('span');meta.className='version-meta';meta.textContent=(g.versions?.length||1)+' sürüm · Güncel: '+(g.versions?.find(v=>v.id===g.currentId)?.label||'güncel');
- const status=document.createElement('span');status.className='status';status.textContent=text;body.append(label,title,meta,status);tile.append(thumb,body);wrap.append(tile);
- const editor=document.createElement('a');editor.className='visual-editor-action';editor.href=url;editor.textContent='Visual Editor ile düzenle ↗';wrap.append(editor);
- if(pub.length){const link=document.createElement('a');link.href=pub[0].url;link.className='instagram-proof-link';link.target='_blank';link.rel='noopener noreferrer';link.textContent='Instagram paylaşımını gör ↗';wrap.append(link)}
-}
-tile.dataset.search=(g.title+' '+g.category+' '+g.id+' '+(g.versions||[]).map(v=>v.label+' '+v.id).join(' ')).toLocaleLowerCase('tr');
-arr.push(wrap);groupsByCategory.set(key,arr)
-}
-const catalogue=document.createElement('div');catalogue.className='family-directory';
-for(const [category,items] of groupsByCategory){
- const sectionGroup=document.createElement('section');sectionGroup.className='category-block';sectionGroup.dataset.category=category;
- const heading=document.createElement('div');heading.className='category-heading';const h=document.createElement('h3');h.textContent=category.replace('Sosyal Medya / ','');
- const count=document.createElement('small');count.textContent=items.length+' tasarım ailesi';heading.append(h,count);
- const grid=document.createElement('div');grid.className='items';items.forEach(i=>grid.append(i));sectionGroup.append(heading,grid);catalogue.append(sectionGroup)
-}
-original.replaceWith(catalogue);
+.work-tree{display:grid;gap:38px;margin-top:22px}
+.work-area{border-top:2px solid var(--ink);padding-top:19px}
+.work-area>h3{font:600 clamp(26px,3.5vw,36px)/1.1 "Source Serif 4",Georgia,serif;letter-spacing:-.035em;margin:0 0 14px}
+.work-class{margin-top:20px}.work-class>h4{font:600 clamp(20px,2.7vw,27px)/1.15 "Source Serif 4",Georgia,serif;margin:0 0 6px}
+.work-class>p{color:var(--muted);font-size:13px;margin:0 0 15px}
+.work-subgroup{margin:18px 0 27px}.work-subgroup>h5{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--line);padding:0 0 9px;margin:0 0 13px}
+.work-tree .items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.work-tree .visual-product{display:flex;flex-direction:column;min-width:0}.work-tree .visual-product>.tile{flex:1}
+.work-tree .tile .thumb img{max-width:100%}.work-tree .tile-body .version-meta{font-size:12px;color:var(--muted);margin:9px 0 12px}
+.work-tree .tile .status.published{color:#246735}
+.work-tree .visual-editor-action{display:block;margin-top:7px;padding:10px 13px;border:1px solid #bd212057;border-radius:7px;color:#bd2120!important;font-size:12px;font-weight:700;text-decoration:none;background:#fffcf5}
+.work-tree .instagram-proof-link{display:block;color:#26633b!important;background:#f4f7ef;text-decoration:none;border:1px solid #5e9d694d;border-radius:7px;margin-top:5px;padding:9px 13px;font-size:12px;font-weight:700}
+.work-tree .gallery-caption{display:block;font-size:12px;color:var(--muted);margin-top:7px}
+@media(max-width:850px){.work-tree .items{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:570px){.work-tree .items{grid-template-columns:1fr}}
+</style><script>(()=>{"use strict";
+const host=document.querySelector('.project-section'),legacy=host?.querySelector('.items'),input=document.getElementById('search'),counter=document.getElementById('counter'),empty=document.getElementById('empty');
+if(!host||!legacy||!input)return;
+const pubUrl=p=>p?.verified===true&&p.publishedAt&&/^https:\/\/(?:www\.)?instagram\.com\/asyadaegitim\/p\/[A-Za-z0-9_-]+\/?$/.test(p.url||'');
 const norm=s=>(s||'').toLocaleLowerCase('tr').replace(/ı/g,'i').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-const newSearch=search.cloneNode(true);search.replaceWith(newSearch);
-const update=()=>{const q=norm(newSearch.value.trim());let n=0;
- catalogue.querySelectorAll('.category-block').forEach(cat=>{let match=0;
- cat.querySelectorAll('.visual-product').forEach(wrapper=>{const item=wrapper.querySelector('.tile');const ok=!q||norm(item?.dataset.search).includes(q);
- wrapper.hidden=!ok;if(ok){n++;match++}
- });cat.hidden=match===0
- });counter.textContent=n+' tasarım ailesi';
- const empty=document.getElementById('empty');if(empty)empty.hidden=n!==0
+const sources={
+ 'instagram-carousel-01': {v:'../../instagram/carousel-01-v2/',photo:'../../instagram/carousel-01-v2/01-cover.png'},
+ 'instagram-carousel-02': {v:'../../instagram/carousel-02/',photo:'../../instagram/carousel-02/01-cover.png'},
+ 'instagram-launch-creative-02':{v:'../../instagram/launch-creative-02/',photo:'../../instagram/launch-creative-02/final/01-cover.png'},
+ 'instagram-basvuru-rehberi':{v:'../../instagram/basvuru-rehberi-china-001/',photo:'../../instagram/basvuru-rehberi-china-001/contact-sheet.png'},
+ 'instagram-burs-dosyasi-gks-2027-001':{v:'../../instagram/burs-dosyasi-gks-2027-001/',photo:'../../instagram/burs-dosyasi-gks-2027-001/export/01.png'},
+ 'instagram-rotani-sec-tokyo-seoul-001':{v:'../../instagram/rotani-sec-tokyo-seoul-001/v3/',photo:'../../instagram/rotani-sec-tokyo-seoul-001/v3/final/01-admission-letter.png'},
+ 'instagram-tsinghua-atlas-2027':{v:'../../instagram/tsinghua-atlas-2027/v2/',photo:'../../instagram/tsinghua-atlas-2027/v2/contact-sheet.png'},
+ 'instagram-snu':{v:null,photo:'../../instagram/phase-2c/a-snu/png/01.png'},
+ 'instagram-waseda':{v:null,photo:'../../instagram/phase-2c/b-waseda/png/01.png'},
+ 'instagram-tokyo':{v:null,photo:'../../instagram/phase-2c/c-tokyo/png/01.png'},
+ 'instagram-six-steps':{v:null,photo:'../../instagram/phase-2c/d-six-steps/png/01.png'}
 };
-newSearch.addEventListener('input',update);update();
+function el(tag,cls,txt){const x=document.createElement(tag);if(cls)x.className=cls;if(txt!==undefined)x.textContent=txt;return x}
+function card(g,posts){
+ const id=g.defaultId||g.currentId,version=g.versions.find(v=>v.id===id)?.label||'güncel',latest=g.versions.find(v=>v.id===g.currentId)?.label||version;
+ const pub=posts.filter(p=>pubUrl(p)&&(p.groupId===g.id||p.productId===id));
+ const exact=pub.some(p=>p.productId===id);
+ const src=sources[g.id]||{},url=src.v||'../../visual-editor/browser/?product='+encodeURIComponent(id);
+ const wrap=el('div','visual-product design-card');wrap.dataset.search=norm([g.title,g.category,...g.versions.map(v=>v.label),exact?'yayımlandı':''].join(' '));
+ const tile=el('a','tile');tile.href=url;tile.title='Tasarımı incele: '+g.title;
+ const thumb=el('span','thumb');const image=el('img');image.src=src.photo||'';image.loading='lazy';image.alt=g.title+' tasarım önizlemesi';thumb.append(image);
+ const body=el('span','tile-body'),cat=el('span','category',g.categoryPath?.[2]||'Karusel'),title=el('strong','',g.title);
+ const meta=el('span','version-meta',g.versions.length+' sürüm · Varsayılan: '+version+(g.currentId!==id?' · Yeni taslak: '+latest:''));
+ const status=el('span','status'+(pub.length?' published':''),pub.length?(exact?'Yayımlandı · '+version:'Yayımlandı · sürüm belirtilmedi'):'İncelemede');
+ body.append(cat,title,meta,status);tile.append(thumb,body);wrap.append(tile);
+ const editor=el('a','visual-editor-action','Visual Editor ile düzenle ↗');editor.href='../../visual-editor/browser/?product='+encodeURIComponent(id);wrap.append(editor);
+ if(pub.length){const proof=el('a','instagram-proof-link','Instagram gönderisini gör ↗');proof.href=pub[0].url;proof.target='_blank';proof.rel='noopener noreferrer';wrap.append(proof)}
+ return wrap
 }
-populateFamilies()})()
-</script></body></html>
+function logoCard(){
+ const wrap=el('div','visual-product design-card');wrap.dataset.search=norm('logo logolar kapak profil kurumsal mühür kimlik uygulamaları linkedin facebook x instagram');
+ const tile=el('a','tile');tile.href='logos-and-covers/';tile.title='Güncel logoları ve sosyal medya kapaklarını aynı sayfada incele';
+ const thumb=el('span','thumb');const im=el('img');im.src='../../asyada-seal/canonical-lockups/assets/h-02-primary-horizontal-light.svg';im.alt='Asya’da Eğitim onaylı H-02 logosu';im.loading='lazy';thumb.append(im);
+ const body=el('span','tile-body');body.append(el('span','category','Kimlik Uygulamaları'),el('strong','','Logolar ve Kapaklar'),el('p','','Onaylı logo ailesi · profil görselleri · sosyal medya kapakları'),el('span','status','Görsel koleksiyonu ↗'));
+ tile.append(thumb,body);wrap.append(tile);wrap.append(el('span','gallery-caption','Logo kartına tıklayınca görsel galeri açılır.'));return wrap
+}
+async function populate(){
+ try{
+ const response=await fetch('../../visual-editor/browser/product-groups.json',{cache:'no-store'});if(!response.ok)return;
+ const registry=await response.json();const groups=registry.groups.filter(g=>g.brand==='asyada-egitim'&&g.categoryPath?.[0]==='Sosyal Medya');
+ if(groups.length<10)return;
+ const posts=registry.socialPublication?.posts||[];
+ const root=el('div','work-tree'),top=el('section','work-area');top.dataset.level='Sosyal Medya';
+ const head=el('h3','','Sosyal Medya');top.append(head);
+ const branches=new Map();
+ groups.filter(g=>g.categoryPath[1]==='Karuseller').forEach(g=>{
+  const name=g.categoryPath[2],list=branches.get(name)||[];list.push(g);branches.set(name,list)
+ });
+ const carousel=el('div','work-class');carousel.dataset.level='Karuseller';carousel.append(el('h4','','Karuseller'),el('p','','Üniversite tanıtımları, başvuru rehberleri, şehir karşılaştırmaları ve kampanyalar kendi alt kategorilerinde.'));
+ const priority=['Lansman ve Kampanyalar','Üniversite Tanıtımları','Başvuru ve Burs Rehberleri','Şehir ve Öğrenci Yaşamı'];
+ priority.forEach(name=>{const entries=branches.get(name)||[];if(!entries.length)return;const subgroup=el('section','work-subgroup');subgroup.dataset.subcategory=name;subgroup.append(el('h5','',name));const grid=el('div','items');entries.forEach(g=>grid.append(card(g,posts)));subgroup.append(grid);carousel.append(subgroup)});
+ top.append(carousel);
+ const identity=el('div','work-class');identity.dataset.level='Kimlik Uygulamaları';identity.append(el('h4','','Kimlik Uygulamaları'),el('p','','Logo, sosyal medya profili ve kapak tasarımları aynı görsel koleksiyonda.'));
+ const sub=el('section','work-subgroup');sub.dataset.subcategory='Logolar ve Kapaklar';sub.append(el('h5','','Logolar ve Kapaklar'));const grid=el('div','items');grid.append(logoCard());sub.append(grid);identity.append(sub);top.append(identity);root.append(top);
+ legacy.replaceWith(root);const oldField=input;const fresh=input.cloneNode(true);input.replaceWith(fresh);
+ const refresh=()=>{const q=norm(fresh.value.trim());let shown=0;
+ root.querySelectorAll('.work-subgroup').forEach(section=>{
+ let n=0;section.querySelectorAll('.design-card').forEach(c=>{const visible=!q||c.dataset.search.includes(q);c.hidden=!visible;if(visible){n++;shown++}});section.hidden=n===0
+ });
+ root.querySelectorAll('.work-class').forEach(x=>{x.hidden=![...x.querySelectorAll('.work-subgroup')].some(sub=>!sub.hidden)});
+ top.hidden=shown===0;counter.textContent=shown+' koleksiyon / tasarım ailesi';empty.hidden=shown!==0;
+ };
+ fresh.addEventListener('input',refresh);refresh();
+ }catch(e){console.warn('Brandstudio katalog sınıflandırması erişilemedi; mevcut görünüm korundu.',e)}
+}
+populate();
+})()</script></body></html>
