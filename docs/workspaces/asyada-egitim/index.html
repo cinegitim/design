@@ -80,7 +80,7 @@ const key=g.category||'Sosyal Medya / Diğer',arr=groupsByCategory.get(key)||[];
 let tile=nodes.find(t=>t.dataset.editorProduct===g.currentId);
 if(!tile&&g.currentId==='asset-social-covers-cover-graphics')tile=nodes.find(t=>t.getAttribute('href')?.includes('/social-covers/'));
 let wrap;
-if(tile){wrap=tile.closest('.visual-product')||tile}
+if(tile){wrap=tile.closest('.visual-product')||tile;if(wrap===tile){wrap=document.createElement('div');wrap.className='visual-product';wrap.append(tile)}}
 else{
  const url='../../visual-editor/browser/?product='+encodeURIComponent(g.currentId),pub=published.filter(p=>p.groupId===g.id||p.productId===g.currentId);
  const text=pub.length?(pub.some(p=>p.productId===g.currentId)?'Instagram’da yayımlandı':'Aile Instagram’da yayımlandı'):'İncelemede';
