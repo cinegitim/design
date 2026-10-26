@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Üretim Envanteri | Brandstudio</title>
+<style>
+:root{color-scheme:dark;--bg:#101824;--surface:#172433;--panel:#1d2d3b;--edge:#394d5c;--ink:#f7f1e7;--soft:#b4c3cf;--accent:#e5b77e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,sans-serif}
+a{color:var(--accent)}button,select,input{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+header{padding:27px clamp(20px,4vw,50px) 22px;border-bottom:1px solid var(--edge)}header .back{font-size:12px;text-decoration:none}h1{font-size:clamp(26px,3vw,39px);letter-spacing:-.035em;line-height:1.16;margin:14px 0 8px}h2{font-size:20px}p{color:var(--soft)}header p{max-width:850px;margin:0}
+main{max-width:1540px;padding:25px clamp(18px,3.2vw,50px) 60px;margin:auto}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:23px}.stat{border:1px solid var(--edge);border-radius:12px;background:var(--surface);padding:15px}.stat strong{display:block;font-size:26px}.stat small{color:var(--soft)}
+.notice{padding:13px 17px;border-left:3px solid var(--accent);color:#e7dbc9;background:#222b32;margin:16px 0 21px;line-height:1.6}
+.filters{display:grid;grid-template-columns:2fr repeat(3,minmax(145px,1fr));gap:10px;margin:12px 0}.filters label{font-size:11px;display:grid;gap:5px;color:var(--soft)}input[type=search],select{color:var(--ink);background:var(--surface);padding:11px 12px;border:1px solid var(--edge);border-radius:7px;width:100%}
+.switches{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:15px;margin:14px 0 17px}.switches label{display:inline-flex;gap:9px;align-items:center;color:var(--soft)}.switches .actions{display:flex;gap:7px;flex-wrap:wrap}
+button.action{color:var(--ink);background:#293b4c;border:1px solid #516576;border-radius:8px;padding:8px 11px}.action.primary{background:#6e4725;border-color:#b48756}
+.layout{display:grid;grid-template-columns:minmax(335px,1.1fr) minmax(320px,1fr);gap:15px;align-items:start}
+.panel{background:var(--surface);border:1px solid var(--edge);border-radius:12px;overflow:hidden}.panel h2{font-size:16px;padding:14px 16px;margin:0;border-bottom:1px solid var(--edge)}.count{font-size:12px;color:var(--soft);padding:8px 16px 11px}
+#groups{max-height:68vh;overflow:auto;padding:0 8px 9px}.group{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 8px;border-bottom:1px solid #293b4a;border-radius:6px}.group:hover,.group.selected{background:#2b3d4a}.group input{width:16px;height:16px;accent-color:var(--accent)}.group button{display:block;background:none;border:0;color:var(--ink);text-align:left;padding:0;min-width:0;width:100%}.group .name{display:block;font-weight:650;font-size:12.5px;overflow-wrap:anywhere}.group .path{display:block;color:var(--soft);font-size:10.5px;overflow-wrap:anywhere}.group .meta{font-size:11px;color:var(--soft);text-align:right;white-space:nowrap}
+.tag{display:inline-block;font-size:10px;padding:2px 6px;border:1px solid #65737a;border-radius:100px;color:#deccaf;margin-top:5px}.tag.protected{color:#accbcf}.tag.candidate{color:#e1ba83}
+#details{padding:17px;max-height:75vh;overflow:auto}#details h2{border:0;padding:0 0 8px;font-size:20px}#details .muted{font-size:12px;color:var(--soft)}.detail-stats{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}.detail-stats span{padding:7px 8px;border:1px solid var(--edge);border-radius:6px;font-size:11px}#files{padding:0;list-style:none;max-height:42vh;overflow:auto;border:1px solid var(--edge);border-radius:7px}#files li{padding:7px 9px;border-bottom:1px solid #304356;overflow-wrap:anywhere;font-size:11px}#files a{word-break:break-all}#files small{display:block;color:var(--soft);font-size:10px}
+.sub{color:var(--soft);font-size:11px}.legend{font-size:12px;margin:21px 0}.legend strong{color:var(--ink)}footer{border-top:1px solid var(--edge);padding:25px 0;color:var(--soft);font-size:11px}#message{min-height:1.3em;font-size:12px;color:#e4c69a}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:1fr 1fr}.filters label:first-child{grid-column:span 2}.layout{grid-template-columns:1fr}#groups,#details{max-height:none}}@media(max-width:440px){.filters{grid-template-columns:1fr}.filters label:first-child{grid-column:auto}.stats{grid-template-columns:1fr 1fr}}
+</style></head>
+<body>
+<header><a class="back" href="../">← Brandstudio</a><h1>Üretim envanteri</h1><p>Arşivleme kararlarından önce tüm GitHub üretim geçmişini, sürümlerini ve dosya bağımlılıklarını kategorik olarak incele. Buradaki işaretlemeler hiçbir üretimi kaldırmaz.</p></header>
+<main>
+<div class="stats" role="status" aria-label="Envanter özeti">
+ <div class="stat"><strong id="total-files">—</strong><small>İzlenen Git dosyası</small></div>
+ <div class="stat"><strong id="total-groups">—</strong><small>İncelenecek kayıt / dosya ailesi</small></div>
+ <div class="stat"><strong id="picker-count">—</strong><small>Visual Editor seçici paketi</small></div>
+ <div class="stat"><strong id="total-candidates">—</strong><small>Ön inceleme adayı, onaylanmamış</small></div>
+</div>
+<div class="notice"><strong>Arşive taşınmış hiçbir içerik yok.</strong> “Aday” bir öneridir; emeklilik kararı değildir. Onaylı logo ve kimlik kaynakları, tasarımların ortak varlıkları, manifestler ve sistem dosyaları korunur. Başka depoya aktarım ancak seçili dosya ve bağımlılıkları SHA ile doğrulandıktan sonra yapılabilir.</div>
+<div class="filters">
+ <label>Tüm dosya yollarında ara<input id="q" type="search" placeholder="Örn. tsinghua, lockup, rollup, v2..." autocomplete="off"></label>
+ <label>Çalışma alanı / marka<select id="brand"><option value="">Tümü</option></select></label>
+ <label>Kategori<select id="category"><option value="">Tümü</option></select></label>
+ <label>Değerlendirme<select id="review"><option value="">Tümü</option><option value="candidate">İlk arşiv adayı</option><option value="verify">Tek tek incelenecek</option><option value="review">Üretim / gözden geçirme</option><option value="protected">Korumalı kaynak</option></select></label>
+</div>
+<div class="switches">
+ <label><input id="only-picker" type="checkbox"> Yalnızca Visual Editor seçicisinde görünenler</label>
+ <div class="actions"><button type="button" id="select-candidates" class="action">Görünen adayları işaretle</button><button type="button" id="clear" class="action">İşaretleri temizle</button><button type="button" id="copy-selection" class="action primary">İşaretli kayıtları kopyala</button><button type="button" id="export" class="action">Değerlendirme JSON'u</button></div>
+</div>
+<div id="message" aria-live="polite">Envanter yükleniyor…</div>
+<div class="layout">
+ <section class="panel" aria-label="Kategorik üretim kayıtları"><h2>Üretim aileleri ve kaynak grupları</h2><div class="count" id="group-count"></div><div id="groups"></div></section>
+ <section class="panel" aria-label="Kayıt ayrıntıları"><div id="details"><h2>Bir kayıt seç</h2><p>Soldan üretim seçerek bütün dosyalarını, sürüm izlerini, kaynak doğrulama SHA kimliklerini ve koruma notlarını görebilirsin.</p></div></section>
+</div>
+<p class="legend"><strong>Kayıt sınıflaması:</strong> İlk arşiv adayı = eski/deneysel üretimleri karşılaştırmak için işaret. Tek tek incelenecek = kullanım, bağlantı ve sürüm kontrolü gerekiyor. Üretim/gözden geçirme = çıktısı mevcut, insan onayı varsayılmıyor. Korumalı kaynak = iş akışının veya marka kimliğinin bağlı olduğu dosyalar.</p>
+<footer id="provenance">Kaynak: cinegitim/design. Envanter kapsamı: bütün Git blob dosyaları; Git geçmişinde artık bulunmayan önceki commitler, tarayıcı localStorage'ındaki yayımlanmamış sürümler ve harici servislerde saklanan dosyalar bu kayıtların dışında olabilir.</footer>
+</main>
+<script src="catalog.js"></script><script src="../visual-editor/browser/catalog.js"></script>
+<script>
+(function(){"use strict";
+const $=id=>document.getElementById(id),checked=new Set();let inventory=null,packages=[],picked=null,selected=null;
+const bytes=n=>n>=1048576?(n/1048576).toFixed(1)+" MB":n>=1024?(n/1024).toFixed(1)+" KB":n+" B";
+const link=p=>"https://github.com/cinegitim/design/blob/main/"+p.split("/").map(encodeURIComponent).join("/");
+const reviewNames={candidate:"İlk arşiv adayı",verify:"Tek tek incelenecek",review:"Üretim / gözden geçirme",protected:"Korumalı kaynak"};
+function setMsg(v){$("message").textContent=v}
+function option(el,key){[...new Set(inventory.groups.map(g=>g[key]))].sort().forEach(x=>{let o=new Option(x,x);el.add(o)})}
+function visible(){
+ const q=$("q").value.toLocaleLowerCase("tr").trim(),brand=$("brand").value,cat=$("category").value,review=$("review").value,only=$("only-picker").checked;
+ return inventory.groups.filter(g=>(!brand||g.brand===brand)&&(!cat||g.category===cat)&&(!review||g.review===review)&&(!only||picked.has(g.id))&&(!q||g.id.toLocaleLowerCase("tr").includes(q)||g.title.toLocaleLowerCase("tr").includes(q)||g.files.some(f=>f.path.toLocaleLowerCase("tr").includes(q))))
+}
+function packagesFor(){
+ const ids=new Map(),index=new Map();
+ inventory.groups.forEach(g=>g.files.forEach(f=>index.set(f.path,g.id)));
+ packages=window.BrandstudioCatalog.fromPaths(inventory.groups.flatMap(g=>g.files.map(f=>f.path)));
+ packages.forEach(p=>p.pages.forEach(page=>{const id=index.get("docs/"+page);if(!id)return;const ps=ids.get(id)||new Set();ps.add(p.id);ids.set(id,ps)}));
+ picked=new Map([...ids].map(([id,set])=>[id,[...set]]));
+}
+function groupRow(g){
+ const div=document.createElement("div");div.className="group"+(selected===g.id?" selected":"");
+ const check=document.createElement("input");check.type="checkbox";check.checked=checked.has(g.id);check.title="Arşiv kararı değil, değerlendirmeye seç";check.setAttribute("aria-label",g.id+" incelemeye al");
+ check.onchange=()=>{check.checked?checked.add(g.id):checked.delete(g.id);setMsg(checked.size+" kayıt değerlendirme listesinde. Henüz arşivlenmedi.")};
+ const b=document.createElement("button");b.type="button";
+ const name=document.createElement("span");name.className="name";name.textContent=g.title;
+ const path=document.createElement("span");path.className="path";path.textContent=g.id;
+ const tag=document.createElement("span");tag.className="tag "+g.review;tag.textContent=reviewNames[g.review];
+ b.append(name,path,tag);b.onclick=()=>{selected=g.id;detail(g);render()};
+ const side=document.createElement("div");side.className="meta";side.textContent=g.files.length+" dosya";
+ const info=document.createElement("small");info.textContent=(picked.get(g.id)?.length?"Seçicide "+picked.get(g.id).length+" · ":"")+bytes(g.bytes);side.appendChild(document.createElement("br"));side.append(info);
+ div.append(check,b,side);return div
+}
+function render(){
+ const rows=visible(),root=$("groups");root.replaceChildren();
+ rows.forEach(g=>root.appendChild(groupRow(g)));
+ $("group-count").textContent=rows.length+" / "+inventory.groups.length+" kayıt gösteriliyor. Her kayıt kendi tüm Git dosyalarını içerir."
+}
+function scorePreview(path){let s=/\.(?:png|jpe?g|webp)$/i.test(path)?10:2;
+ if(/(?:^|\/)(?:01[-_.]|cover[-_.]|cover\.|hero[-_.])/i.test(path))s+=60;
+ if(/\/(?:final|composited|png|export)\//i.test(path))s+=40;
+ if(/(?:^|\/)v0?1[-_.]/i.test(path))s+=8;
+ if(/\/assets\//i.test(path))s-=13;
+ if(/\/source\//i.test(path))s-=20;
+ return s
+}
+function detail(g){
+ const root=$("details");root.replaceChildren();
+ const h=document.createElement("h2");h.textContent=g.title;root.append(h);
+ const path=document.createElement("p");path.className="muted";path.textContent=g.id;root.append(path);
+ const status=document.createElement("p");status.textContent=reviewNames[g.review]+" — "+g.basis;root.append(status);
+ const images=g.files.filter(f=>/\.(?:png|jpe?g|webp|svg)$/i.test(f.path)&&f.size<10000000).sort((a,b)=>scorePreview(b.path)-scorePreview(a.path));
+ if(images.length){
+  const f=images[0],url=f.path.startsWith("docs/")?"https://cinegitim.github.io/design/"+f.path.slice(5):"https://raw.githubusercontent.com/cinegitim/design/main/"+f.path;
+  const preview=document.createElement("a");preview.href=url;preview.target="_blank";preview.rel="noopener noreferrer";preview.title="Örnek görseli tam boy aç: "+f.path;
+  const img=document.createElement("img");img.src=url;img.alt=g.title+" üretiminden örnek görsel";img.loading="lazy";
+  img.style.cssText="display:block;max-width:100%;max-height:300px;object-fit:contain;background:#101824;border:1px solid #394d5c;border-radius:8px;margin:14px 0;";
+  img.onerror=function(){preview.hidden=true};
+  preview.append(img);root.append(preview);
+  const note=document.createElement("p");note.className="sub";note.textContent="Görsel örneği: "+f.path+" · bütün çıktılar aşağıdaki dosya listesinde";root.append(note)
+ }
+ const st=document.createElement("div");st.className="detail-stats";
+ for(const x of [g.brand,g.category,g.files.length+" dosya",bytes(g.bytes),(picked.get(g.id)?.length||0)+" editör paketi"]){const el=document.createElement("span");el.textContent=x;st.append(el)}
+ root.append(st);
+ if(g.versions.length){const v=document.createElement("p");v.className="muted";v.textContent="Sürüm / aşama izleri: "+g.versions.join(", ");root.append(v)}
+ if(picked.has(g.id)){const p=document.createElement("p");p.className="muted";p.textContent="Seçicideki ürün ID'leri: "+picked.get(g.id).join(" · ");root.append(p)}
+ const h3=document.createElement("h3");h3.textContent="Tüm dosyalar ("+g.files.length+")";root.append(h3);
+ const list=document.createElement("ul");list.id="files";
+ g.files.forEach(f=>{
+  const li=document.createElement("li"),a=document.createElement("a"),meta=document.createElement("small");
+  a.href=link(f.path);a.target="_blank";a.rel="noopener noreferrer";a.textContent=f.path;
+  meta.textContent=f.role+" · "+bytes(f.size)+" · Git SHA "+f.sha;
+  li.append(a,meta);list.append(li)
+ });root.append(list)
+}
+function selection(){return{schema:1,source:"cinegitim/design",tree_sha:inventory.meta.sha,proposal_only:true,no_files_moved:true,selection:[...checked].sort().map(id=>{let g=inventory.groups.find(g=>g.id===id);return{id,brand:g.brand,category:g.category,review:g.review,file_count:g.files.length,files:g.files.map(f=>({path:f.path,sha:f.sha,size:f.size}))}})}}
+async function copy(){
+ const ids=[...checked].sort();if(!ids.length){setMsg("Önce soldan kayıtları işaretle.");return}
+ try{await navigator.clipboard.writeText(ids.join("\n"));setMsg(ids.length+" kayıt kimliği kopyalandı. Sohbette değerlendirme için paylaşabilirsin.")}catch(_){const a=document.createElement("textarea");a.value=ids.join("\n");document.body.append(a);a.select();document.execCommand("copy");a.remove();setMsg(ids.length+" kayıt kopyalama denemesi yapıldı.")}
+}
+function exportDecision(){
+ const x=selection();if(!x.selection.length){setMsg("Önce incelemek istediğin üretimleri işaretle.");return}
+ const file=new Blob([JSON.stringify(x,null,2)],{type:"application/json"}),a=document.createElement("a");
+ a.href=URL.createObjectURL(file);a.download="brandstudio-archive-review-proposal.json";a.click();URL.revokeObjectURL(a.href);
+ setMsg("Yalnızca değerlendirme önerisi indirildi; hiçbir Git dosyası değişmedi.")
+}
+["q","brand","category","review","only-picker"].forEach(x=>$(x).addEventListener("input",render));
+$("select-candidates").onclick=()=>{visible().filter(g=>g.review==="candidate").forEach(g=>checked.add(g.id));render();setMsg(checked.size+" aday işaretlendi; herhangi bir dosya taşınmadı.")};
+$("clear").onclick=()=>{checked.clear();render();setMsg("Değerlendirme işaretleri temizlendi.")};
+$("copy-selection").onclick=copy;$("export").onclick=exportDecision;
+window.BrandstudioInventory.load().then(result=>{
+ inventory=result;packagesFor();
+ $("total-files").textContent=inventory.filesCount.toLocaleString("tr-TR");
+ $("total-groups").textContent=inventory.groupsCount.toLocaleString("tr-TR");
+ $("picker-count").textContent=packages.length.toLocaleString("tr-TR");
+ $("total-candidates").textContent=inventory.groups.filter(g=>g.review==="candidate").length;
+ option($("brand"),"brand");option($("category"),"category");
+ $("provenance").textContent="Kaynak: "+inventory.meta.source+" · commit/ağaç: "+inventory.meta.sha+" · "+inventory.filesCount+" dosyanın "+inventory.filesCount+" tanesi sınıflandırıldı. Snapshot "+(inventory.meta.source==="pinned"?"yedek dosyadan; canlı GitHub API'ye erişim yok.":"canlı GitHub ağacından.")+" Yerel ve Git geçmişinden silinmiş çıktılar dahil değil.";
+ render();setMsg(inventory.groupsCount+" kategorik kayıt, "+inventory.filesCount+" dosya, "+inventory.summary.exactDuplicateBlobs+" içerik-hash tekrarı. Arşivleme kararı bekleniyor.")
+}).catch(e=>{setMsg("Envanter yüklenemedi: "+e.message);$("group-count").textContent="GitHub kaynaklarını yeniden kontrol et."})
+})();
+</script></body></html>
