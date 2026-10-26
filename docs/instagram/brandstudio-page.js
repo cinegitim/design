@@ -165,17 +165,21 @@
       });
       if(!block.querySelector("a,button,input,select"))block.remove();
     });
-    // Editable HTML and SVG links repeated below each slide are secondary.
-    // Make labels unambiguous when collected (e.g. "02 · ALANLAR — SVG").
-    document.querySelectorAll("main article.card a[href]").forEach(function(a){
-      if(moved.has(a)||a.closest(".bs-support"))return;
+    // Slide galleries use different markup (article.card, div.slide, panels),
+    // so scan actual technical links rather than requiring a specific template.
+    // Keep artwork links around thumbnail images in their original place.
+    document.querySelectorAll("main a[href]").forEach(function(a){
+      if(moved.has(a)||a.querySelector("img,picture,svg,canvas"))return;
       var href=a.getAttribute("href")||"";
-      if(!/(?:^|\/)(?:source|editable)\/|\.svg(?:$|[?#])/.test(href))return;
-      var card=a.closest("article.card"),heading=card&&card.querySelector("h2,h3");
+      var kind=resourceType(a.textContent,href);
+      var technical=/(?:^|\/)(?:source|editable)\/|\.svg(?:$|[?#])|\.zip(?:$|[?#])|\.(?:md|json)(?:$|[?#])/.test(href);
+      if(!technical||!kind)return;
+      var card=a.closest("article.card,.slide-card,.slide-item,.slide,section.section,article");
+      var title=card&&card.querySelector("h2,h3,h4");
       var li=document.createElement("li");
-      if(heading){var strong=document.createElement("span");strong.className="bs-resource-prefix";
-        strong.textContent=heading.textContent.trim()+" — ";li.appendChild(strong)}
-      li.appendChild(a);add("sources",li);
+      if(title){var prefix=document.createElement("span");prefix.className="bs-resource-prefix";
+        prefix.textContent=title.textContent.trim()+" — ";li.appendChild(prefix)}
+      li.appendChild(a);add(kind,li);
     });
     // No need for an empty category or a third navigation interface.
     if(!Object.keys(items).some(function(k){return items[k].length}))return;
