@@ -721,9 +721,15 @@ function layerPath(i){
 // A layer is a real DOM node, not a guess based on spatial proximity.
 // Dragging across nested contexts moves the nearest actual sibling branch.
 // Its child layers travel as a group; their individual coordinates are unchanged.
+function layerParent(n){
+ var slide=doc.querySelector('.slide'),p=n?.parentElement;
+ while(p&&p!==slide&&!p.hasAttribute('data-edit-index'))p=p.parentElement;
+ return p
+}
 function peerLayers(i){
  var ns=nodes(),n=ns[i];if(!n)return [];
- return ns.map(function(el,id){return{id:id,node:el}}).filter(function(item){return item.node.parentElement===n.parentElement&&!isDeleted(item.id)})
+ var parent=layerParent(n);
+ return ns.map(function(el,id){return{id:id,node:el}}).filter(function(item){return layerParent(item.node)===parent&&!isDeleted(item.id)})
 }
 function siblingBranch(source,target){
  var ns=nodes(),from=ns[source],to=ns[target],slide=doc.querySelector('.slide');
@@ -736,8 +742,12 @@ function siblingBranch(source,target){
  var a=from,b=to;
  while(a.parentElement!==common)a=a.parentElement;
  while(b.parentElement!==common)b=b.parentElement;
+ // Some source formats use anonymous flex/grid wrappers. Treat their
+ // editable children as logical siblings instead of refusing the drop.
  var sourceId=ns.indexOf(a),targetId=ns.indexOf(b);
- if(sourceId<0||targetId<0||sourceId===targetId)return null;
+ if(sourceId<0)sourceId=source;
+ if(targetId<0)targetId=target;
+ if(sourceId===targetId||layerParent(ns[sourceId])!==layerParent(ns[targetId]))return null;
  return{source:sourceId,target:targetId,grouped:sourceId!==source||targetId!==target,parent:common}
 }
 function moveLayer(source,target,above){
