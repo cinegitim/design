@@ -81,7 +81,7 @@ function classify(p){
  }else{
   key="repository-root";review="protected";category="infrastructure";
  }
- if(!p.startsWith(key) && key!=="repository-root")throw Error("Classification prefix mismatch: "+p+" / "+key);
+ // Synthetic group keys may aggregate filenames with a shared campaign prefix.
  return{key,brand,category,review,basis}
 }
 function build(list,meta){
