@@ -220,11 +220,15 @@ dialog h2{font-size:15px;font-weight:680}
 .catalog-pick input,.catalog-pick select{font-size:11px;height:28px;border:1px solid #3a4b5c;border-radius:5px;background:#111c28;color:#edf3f8;padding:4px 8px;min-width:0}
 .catalog-pick input{width:125px;flex:0 1 125px}
 .catalog-pick select{width:245px;flex:1 1 140px}
+.catalog-pick .catalog-version{width:112px;flex:0 1 112px}
+.catalog-pick .catalog-status{font-size:10px;max-width:120px;white-space:nowrap;color:#b3c9d5;border:1px solid #425566;border-radius:6px;padding:5px 7px}
+.catalog-pick .catalog-status.published{color:#c5eccd;border-color:#39674b}
+@media(max-width:760px){.catalog-pick .catalog-version{width:76px;flex:0 1 76px}.catalog-pick .catalog-status{max-width:90px}}
 header #product{display:none}
 @media(max-width:1100px){.catalog-pick input{width:86px;flex-basis:86px}.catalog-pick select{width:155px}header .controls{font-size:9px}}
 @media(max-width:760px){.catalog-pick{max-width:56vw}.catalog-pick input{width:72px;flex-basis:72px}}
 </style></head><body>
-<header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><div class="catalog-pick"><input type="search" id="catalog-search" aria-label="Tasarımlarda ara" placeholder="Tasarım ara…"><select id="catalog-select" aria-label="Düzenlenecek tasarım"></select></div><a href="../../inventory/" title="Bütün tasarımların ve sürümlerin envanteri">Üretim Envanteri</a><a href="../">← Visual Editor</a></div></header>
+<header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><div class="catalog-pick"><input type="search" id="catalog-search" aria-label="Tasarımlarda ara" placeholder="Tasarım ara…"><select id="catalog-select" aria-label="Düzenlenecek tasarım"></select><select id="catalog-version" class="catalog-version" aria-label="Tasarım sürümü"></select><span id="catalog-status" class="catalog-status" title="Instagram'da yayımlanma ve tasarım inceleme durumu">İncelemede</span></div><a href="../">← Visual Editor</a></div></header>
 <div class="layout" id="workspace"><aside><div class="compact-bar"><h2>Katmanlar</h2><div class="controls"><button class="btn" id="groups-open" title="Tümünü aç">＋</button><button class="btn" id="groups-close" title="Tümünü kapat">−</button></div></div>
 <input id="layer-search" class="sidebar-search" type="search" placeholder="Katman ara…" aria-label="Katmanlarda ara">
 <div id="layers" class="layers"></div>
@@ -1268,14 +1272,31 @@ function renderCatalog(filter){
  picker.replaceChildren();
  var families={};
  catalog.forEach(function(item){
-  if(query&&!(item.title+' '+item.id+' '+item.family).toLocaleLowerCase('tr').includes(query))return;
-  if(!families[item.family]){var group=document.createElement('optgroup');group.label=item.family;picker.appendChild(group);families[item.family]=group}
+  var haystack=(item.title+' '+item.id+' '+item.family+' '+(item.category||'')+' '+
+   (item.versions||[]).map(function(v){return v.label+' '+v.id}).join(' ')).toLocaleLowerCase('tr');
+  if(query&&!haystack.includes(query))return;
+  var familyName=(item.brand==='cin-egitim'?'Çin Eğitim':'Asya’da Eğitim')+' · '+(item.category||item.family);
+  if(!families[familyName]){var group=document.createElement('optgroup');group.label=familyName;picker.appendChild(group);families[familyName]=group}
   var option=document.createElement('option');option.value=item.id;
-  option.textContent=item.title+' · '+item.pages.length+(item.kind==='image'?' görsel':' sayfa');
-  families[item.family].appendChild(option)
+  option.textContent=item.title+' · '+(item.versions||[]).length+' sürüm'+
+   (item.lifecycle==='published'?' · Yayımlandı':'');
+  families[familyName].appendChild(option)
  });
- if(catalog.some(function(x){return x.id===previous})&&picker.querySelector('option[value="'+previous+'"]'))picker.value=previous;
- $('catalog-search').title=catalog.length+' tasarım paketi · kaynaklar otomatik keşfedilir'
+ var active=discovery.byId(catalog,previous);
+ if(active&&picker.querySelector('option[value="'+(active.groupId||active.id)+'"]'))picker.value=active.groupId||active.id;
+ $('catalog-search').title=catalog.length+' tekil tasarım ailesi · önceki sürümler tasarım içinde'
+}
+function renderProductVersions(selected){
+ var sel=$('catalog-version'),all=selected.versions||[selected];sel.replaceChildren();
+ all.forEach(function(v){var option=document.createElement('option');option.value=v.id;
+   option.textContent=v.label||'güncel';sel.appendChild(option)});
+ sel.value=selected.id;sel.disabled=all.length<=1;
+ var status=$('catalog-status'),pub=selected.publications||[];
+ var published=selected.lifecycle==='published'&&pub.length>0;
+ status.textContent=published?'Yayımlandı':'İncelemede';
+ status.classList.toggle('published',published);
+ status.title=published?'Instagram paylaşımı: '+pub.map(function(p){return p.url}).join(', '):
+   'Instagram yayın kaydı henüz doğrulanmadı; tasarım sitesinde bulunması Instagram paylaşımı değildir.'
 }
 function openProduct(productId){
  var selected=discovery.byId(catalog,productId);
@@ -1291,7 +1312,8 @@ function openProduct(productId){
  savedState=copy(state);
  ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
  $('product').textContent=selected.title;
- $('catalog-select').value=slug;
+ $('catalog-select').value=selected.groupId||slug;
+ renderProductVersions(selected);
  renderV();
  var q=new URLSearchParams(location.search);q.set('product',slug);
  window.history.replaceState(null,'',location.pathname+'?'+q.toString()); // URL-only; browser archive storage unchanged.
@@ -1300,7 +1322,12 @@ function openProduct(productId){
 $('catalog-search').oninput=function(){renderCatalog(this.value)};
 $('catalog-select').onchange=function(){
  var old=slug,target=this.value;
- if(dirty&&!confirm('Kaydedilmemiş düzenlemeler var. Yine de tasarımı değiştir?')){this.value=old;return}
+ if(dirty&&!confirm('Kaydedilmemiş düzenlemeler var. Yine de tasarımı değiştir?')){this.value=discovery.byId(catalog,old)?.groupId||old;return}
+ openProduct(target)
+};
+$('catalog-version').onchange=function(){
+ var old=slug,target=this.value;
+ if(dirty&&!confirm('Kaydedilmemiş düzenlemeler var. Sürümü değiştir?')){this.value=old;return}
  openProduct(target)
 };
 async function init(){
