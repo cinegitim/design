@@ -1293,9 +1293,13 @@ function renderProductVersions(selected){
  sel.value=selected.id;sel.disabled=all.length<=1;
  var status=$('catalog-status'),pub=selected.publications||[];
  var published=selected.lifecycle==='published'&&pub.length>0;
- status.textContent=published?'Yayımlandı':'İncelemede';
- status.classList.toggle('published',published);
- status.title=published?'Instagram paylaşımı: '+pub.map(function(p){return p.url}).join(', '):
+ var matchVersion=published&&pub.some(function(p){return p.productId===selected.id});
+ var familyOnly=!published&&selected.familyPublications&&selected.familyPublications.length>0;
+ status.textContent=published?(matchVersion?'Yayımlandı':'Yayımlandı · aile'):(familyOnly?'Aile yayımlandı':'İncelemede');
+ status.classList.toggle('published',published||familyOnly);
+ status.title=published?('Instagram paylaşımı: '+pub.map(function(p){return p.url}).join(', ')+
+   (matchVersion?' · sürüm eşleşti':' · yayımlanan kesin sürüm ayrıca doğrulanmalı')):
+   familyOnly?'Tasarım ailesi Instagram\'da yayımlandı, ancak bu sürümün yayımlandığı doğrulanmadı.':
    'Instagram yayın kaydı henüz doğrulanmadı; tasarım sitesinde bulunması Instagram paylaşımı değildir.'
 }
 function openProduct(productId){
