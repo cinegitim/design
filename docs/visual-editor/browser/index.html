@@ -1206,7 +1206,7 @@ $('mode').onchange=function(){if(sel<0||this.disabled)return;checkpoint();var e=
 $('color').oninput=function(){if(sel<0||$('mode').disabled)return;if(!colorSessions.direct){checkpoint();colorSessions.direct=true}var e=edit();e.mode='direct';e.color=this.value;patch(nodes()[sel],e);changed()};
 $('color').onchange=function(){colorSessions.direct=false};['paper','ink','red'].forEach(function(k){$(k).oninput=function(){if(!colorSessions[k]){checkpoint();colorSessions[k]=true}state.colors[k]=this.value;norm();changed()};$(k).onchange=function(){colorSessions[k]=false}});
 function download(name,s,type){var a=document.createElement('a'),b=new Blob([s],{type:type});a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},5000)}
-function dump(){return codec.makeArchive(slug,allV(),state,brand)}
+function dump(){var result=codec.makeArchive(slug,allV(),state,brand);if(sourceCoverAdded())result.sourcePageSchema=2;return result}
 function safeStatus(e){
  var message=e&&e.name==='QuotaExceededError'?'Tarayıcı depolaması dolu. Arşivi JSON olarak indir; yeni sürüm bu tarayıcıya kaydedilemedi':String(e&&e.message||e);
  $('status').textContent='İşlem durduruldu: '+message;
@@ -1232,7 +1232,8 @@ $('importFile').onchange=async function(){
   if((existing.versions||[]).length+items.length>25||next+items.length>27)throw new Error('25 sürüm sınırı; önce mevcut arşivi yedekleyin');
   if(!confirm(items.length+' sürüm bu tarayıcıya yeni vN kayıtları olarak eklenecek. Mevcut sürümlere dokunulmayacak. Onaylıyor musun?'))return;
   var fresh=items.map(function(v,i){return{version:next+i,note:'İçe aktarıldı: '+String(v.note||'v'+v.version).slice(0,110),state:copy(v.state),time:new Date().toISOString(),importedFrom:v.version}});
-  var updated={versions:(existing.versions||[]).concat(fresh)};
+  var updated=Object.assign({},existing,{versions:(existing.versions||[]).concat(fresh)});
+  if(sourceCoverAdded())updated.sourcePageSchema=2;
   localStorage.setItem(key,JSON.stringify(updated));
   state=copy(fresh[fresh.length-1].state);current=fresh[fresh.length-1].version;dirty=false;savedState=copy(state);history.clear();historyButtons();
   ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
@@ -1254,7 +1255,8 @@ $('confirm').onclick=async function(){
  try{
   var checked=codec.validateState(state,pages.length);
   var item={version:n,note:$('note').value.trim(),state:checked,time:new Date().toISOString()};
-  var updated={versions:(db.versions||[]).concat(item)};
+  var updated=Object.assign({},db,{versions:(db.versions||[]).concat(item)});
+  if(sourceCoverAdded())updated.sourcePageSchema=2;
   if(folder){
    var versions=await folder.getDirectoryHandle('versions',{create:true}),dirname='v'+n;
    try{await versions.getDirectoryHandle(dirname,{create:false});throw new Error(dirname+' klasörü zaten var; üzerine yazılmadı')}
