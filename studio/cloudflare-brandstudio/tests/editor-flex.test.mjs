@@ -186,7 +186,7 @@ test("logo and band are DOM siblings, with stable selection/index and independen
  assert.match(html,/codec\.detachLogo\(doc\);codec\.installFonts\(doc,pages\[page\]\)/);
  assert.match(html,/n\.hasAttribute\('data-brandstudio-independent-logo'\)/);
  assert.match(html,/ux\.containingBlockOrigin\(n,doc\.querySelector\('\.slide'\)\)/);
- assert.match(html,/original\?\.position==='static'/);
+ assert.match(html,/\['static','absolute','relative'\]\.includes\(original\.position\)/);
  assert.match(html,/if\(identityImage\(n\)\)e\.basis='artboard'/);
  assert.match(html,/codec\.adaptLogoEdit\(doc,n,v,state,page\)/);
 });

@@ -176,7 +176,7 @@ test("compact independent side panels with searchable layer list",()=>{
  assert.ok(first.indexOf('id="x"')<first.indexOf('id="y"'));
 });
 test("layer drag reorder persists z-index, supports undo and shows read-only path",()=>{
- for(const token of ["function moveLayer(source,target)","b.draggable=true","dragstart","dragover","drop","moveLayer(source,item.id)","entry.styles['z-index']=String(index-30)","checkpoint();","function layerPath(i)"])
+ for(const token of ["function moveLayer(source,target,before)","b.draggable=true","dragstart","dragover","drop","moveLayer(source,item.id)","entry.styles['z-index']=String(index+1)","checkpoint();","function layerPath(i)"])
   assert.ok(html.includes(token),"Missing stacking control "+token);
 });
 test("inline click-to-type caret saves only valid segments, with undo",()=>{
@@ -302,7 +302,7 @@ test("editor retains logo images and veil as selectable independent layers",()=>
  // Stage CI uses a sparse checkout; test editor code and independent identity guards.
  assert.match(html,/ux\.containingBlockOrigin\(n,doc\.querySelector\('\.slide'\)\)/);
  assert.match(html,/Fotoğraf filtresi · koyu gradyan/);
- assert.match(html,/original\?\.position==='static'/);
+ assert.match(html,/\['static','absolute','relative'\]\.includes\(original\.position\)/);
  assert.match(html,/styles\.transform='translate\('/);
  assert.match(html,/var actual=pos\(n\),dx=/);
  assert.match(portable,/Logo yalnızca orantılı/);
@@ -311,4 +311,23 @@ test("editor retains logo images and veil as selectable independent layers",()=>
  assert.match(html,/\(\?:\^\|\-\)logo/);
  assert.match(portable,/function identityArtwork\(el\)/);
  assert.match(portable,/namedImage/);
+});
+
+test("full-height gradient stays directly clickable and will not collapse during move",()=>{
+ assert.match(html,/if\(x\.classList\.contains\('veil'\)\)x\.style\.pointerEvents='auto'/);
+ assert.match(html,/if\(!styles\.width\)styles\.width=Math\.round\(rect\.w\)\+'px'/);
+ assert.match(html,/if\(n\.tagName!=='IMG'&&!styles\.height\)styles\.height=Math\.round\(rect\.h\)\+'px'/);
+ assert.match(html,/hit\?\.classList\.contains\('veil'\)/);
+ assert.match(html,/if\(n===cover&&wasSelected\)choose\(Number\(photo\.dataset\.editIndex\),false\)/);
+ assert.match(html,/else if\(n===photo\)choose\(Number\(cover\.dataset\.editIndex\),false\)/);
+});
+test("layer reorder cannot send elements behind the canvas",()=>{
+ assert.match(html,/function peerLayers\(i\)/);
+ assert.match(html,/from\.parentElement!==to\.parentElement/);
+ assert.match(html,/stackTier\(from\)!==stackTier\(to\)/);
+ assert.match(html,/entry\.styles\['z-index'\]=String\(index\+1\)/);
+ assert.match(html,/if\(computed\.position==='static'&&!/);
+ assert.match(html,/entry\.styles\.position='relative'/);
+ assert.doesNotMatch(html,/entry\.styles\['z-index'\]=String\(index-30\)/);
+ assert.doesNotMatch(html,/e\.styles\['z-index'\]=action==='front'\?'20':'-20'/);
 });
