@@ -432,7 +432,7 @@ function setRectangle(n,rect,resize){
  // Converting a footer logo to absolute collapses its parent and moves it.
  var original=sourceNodes[index];
  if(original?.position==='static'&&original.transform==='none'&&!styles.position){
-  var previous=String(styles.transform||'').match(/^translate\\((-?\\d+)px,(-?\\d+)px\\)$/);
+  var previous=String(styles.transform||'').match(/^translate\((-?\d+)px,(-?\d+)px\)$/);
   var tx=previous?Number(previous[1]):0,ty=previous?Number(previous[2]):0;
   tx+=Math.round(rect.x-pos(n).x);ty+=Math.round(rect.y-pos(n).y);
   if(resize){styles.width=Math.round(rect.w)+'px';if(!identityImage(n)){styles.height=Math.round(rect.h)+'px';styles['max-width']='none'}}
@@ -651,7 +651,7 @@ function patch(n,v){
   if(v.image!==undefined||v.segments!==undefined||v.mode&&v.mode!=='inherit')throw new Error('Logonun orijinal SVG ve rengi değiştirilemez');
   var safe=['position','left','top','right','bottom','width','margin','z-index','display','transform'];
   if(Object.keys(v.styles||{}).some(function(k){return !safe.includes(k)}))throw new Error('Logo kaynak görseli yalnızca oranı korunarak taşınabilir ve boyutlandırılabilir');
-   if(v.styles?.transform&&!/^translate\\(-?\\d+px,-?\\d+px\\)$/.test(v.styles.transform))throw new Error('Logo yalnızca taşınabilir; içeriği bozulamaz');
+   if(v.styles?.transform&&!/^translate\(-?\d+px,-?\d+px\)$/.test(v.styles.transform))throw new Error('Logo yalnızca taşınabilir; içeriği bozulamaz');
  }
  if(v.image!==undefined){if(n.tagName!=='IMG'&&n.localName!=='image')throw new Error('Fotoğraf yalnızca görsel katmanında değiştirilebilir');n.setAttribute(n.localName==='image'?'href':'src',v.image)}
  if(v.segments!==undefined)codec.applyText(n,v.segments);
