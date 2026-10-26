@@ -86,11 +86,29 @@ function render(){
  rows.forEach(g=>root.appendChild(groupRow(g)));
  $("group-count").textContent=rows.length+" / "+inventory.groups.length+" kayıt gösteriliyor. Her kayıt kendi tüm Git dosyalarını içerir."
 }
+function scorePreview(path){let s=/\.(?:png|jpe?g|webp)$/i.test(path)?10:2;
+ if(/(?:^|\/)(?:01[-_.]|cover[-_.]|cover\.|hero[-_.])/i.test(path))s+=60;
+ if(/\/(?:final|composited|png|export)\//i.test(path))s+=40;
+ if(/(?:^|\/)v0?1[-_.]/i.test(path))s+=8;
+ if(/\/assets\//i.test(path))s-=13;
+ if(/\/source\//i.test(path))s-=20;
+ return s
+}
 function detail(g){
  const root=$("details");root.replaceChildren();
  const h=document.createElement("h2");h.textContent=g.title;root.append(h);
  const path=document.createElement("p");path.className="muted";path.textContent=g.id;root.append(path);
  const status=document.createElement("p");status.textContent=reviewNames[g.review]+" — "+g.basis;root.append(status);
+ const images=g.files.filter(f=>/\.(?:png|jpe?g|webp|svg)$/i.test(f.path)&&f.size<10000000).sort((a,b)=>scorePreview(b.path)-scorePreview(a.path));
+ if(images.length){
+  const f=images[0],url=f.path.startsWith("docs/")?"https://cinegitim.github.io/design/"+f.path.slice(5):"https://raw.githubusercontent.com/cinegitim/design/main/"+f.path;
+  const preview=document.createElement("a");preview.href=url;preview.target="_blank";preview.rel="noopener noreferrer";preview.title="Örnek görseli tam boy aç: "+f.path;
+  const img=document.createElement("img");img.src=url;img.alt=g.title+" üretiminden örnek görsel";img.loading="lazy";
+  img.style.cssText="display:block;max-width:100%;max-height:300px;object-fit:contain;background:#101824;border:1px solid #394d5c;border-radius:8px;margin:14px 0;";
+  img.onerror=function(){preview.hidden=true};
+  preview.append(img);root.append(preview);
+  const note=document.createElement("p");note.className="sub";note.textContent="Görsel örneği: "+f.path+" · bütün çıktılar aşağıdaki dosya listesinde";root.append(note)
+ }
  const st=document.createElement("div");st.className="detail-stats";
  for(const x of [g.brand,g.category,g.files.length+" dosya",bytes(g.bytes),(picked.get(g.id)?.length||0)+" editör paketi"]){const el=document.createElement("span");el.textContent=x;st.append(el)}
  root.append(st);
