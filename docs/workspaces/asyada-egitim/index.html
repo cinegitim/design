@@ -42,7 +42,7 @@ try{
   const link=document.createElement('a');link.href=valid[0].url;link.className='instagram-proof-link';
   link.target='_blank';link.rel='noopener noreferrer';link.textContent='Instagram paylaşımını gör ↗';
   const host=tile.closest('.visual-product')||tile;
-  host.after(link);
+  if(host!==tile)host.appendChild(link);else tile.insertAdjacentElement('afterend',link);
  }
 }catch(_){}}
 markPublished()})()
