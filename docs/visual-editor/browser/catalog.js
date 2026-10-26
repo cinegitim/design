@@ -108,22 +108,26 @@ function groupRecords(raw,config){
     if(previous&&previous.pages[0]&&!pages.some(function(p){return /\/(?:01|01-[^/]+)\.html$/.test(p)}))
       pages.unshift(previous.pages[0]);
    }
-   var result=Object.assign({},item,{label:v.label,pages:pages,groupId:g.currentId,category:g.category,brand:g.brand});
+   var result=Object.assign({},item,{label:v.label,pages:pages,groupId:g.defaultId||g.currentId,category:g.category,categoryPath:(g.categoryPath||[]).slice(),brand:g.brand});
    var proof=publicationFor([v.id]);
    result.lifecycle=proof.length?'published':'in-review';
    result.publications=proof;
    return result
   }).filter(Boolean);
   if(!versions.length)return;
-  var current=versions.find(function(v){return v.id===g.currentId})||versions[versions.length-1];
+  var latest=versions.find(function(v){return v.id===g.currentId})||versions[versions.length-1];
+  var preferred=versions.find(function(v){return v.id===(g.publishedVersionId||g.defaultId)})||latest;
   var matches=publicationFor(versions.map(function(v){return v.id}),g.id);
-  groups.push(Object.assign({},current,{id:current.id,title:g.title,family:g.brand,brand:g.brand,
-   category:g.category,groupId:current.id,currentId:current.id,versions:versions,
+  groups.push(Object.assign({},preferred,{id:preferred.id,title:g.title,family:g.brand,brand:g.brand,
+   category:g.category,categoryPath:(g.categoryPath||[]).slice(),familyId:g.id,
+   groupId:preferred.id,defaultId:preferred.id,currentId:latest.id,publishedVersionId:g.publishedVersionId||null,versions:versions,
    lifecycle:matches.length?'published':g.lifecycle||'in-review',publications:matches}));
  });
  var retired=new Set((config.retired||[]).map(function(x){return x.id}));
  raw.forEach(function(r){if(!used.has(r.id)&&!retired.has(r.id))groups.push(Object.assign({},r,{
-  category:r.family==='cin-egitim'?'Baskı / Diğer':'Sosyal Medya / Diğer',groupId:r.id,
+  category:r.family==='cin-egitim'?'Baskı / Diğer':'Sosyal Medya / Diğer',
+  categoryPath:r.family==='cin-egitim'?['Baskı','Diğer']:['Sosyal Medya','Diğer'],
+  groupId:r.id,
   currentId:r.id,versions:[Object.assign({},r,{label:'güncel',groupId:r.id})],
   lifecycle:'in-review',publications:[]
  }))});
@@ -137,6 +141,7 @@ function byId(records,id){
   var v=(g.versions||[]).find(function(x){return x.id===id});
   if(v)return Object.assign({},v,{title:g.title,groupTitle:g.title,category:g.category,brand:g.brand,
    versions:g.versions,groupId:g.groupId||g.id,currentId:g.currentId||g.id,
+   categoryPath:g.categoryPath||[],publishedVersionId:g.publishedVersionId||null,
    familyPublications:g.publications||[]})
  }
  return null
