@@ -223,12 +223,13 @@ dialog h2{font-size:15px;font-weight:680}
 .catalog-pick .catalog-version{width:112px;flex:0 1 112px}
 .catalog-pick .catalog-status{font-size:10px;max-width:120px;white-space:nowrap;color:#b3c9d5;border:1px solid #425566;border-radius:6px;padding:5px 7px}
 .catalog-pick .catalog-status.published{color:#c5eccd;border-color:#39674b}
+.catalog-breadcrumb{font:10px/1.45 system-ui,sans-serif;color:#a5b3c2;max-width:310px;flex:1 1 180px;overflow-wrap:anywhere}
 @media(max-width:760px){.catalog-pick .catalog-version{width:76px;flex:0 1 76px}.catalog-pick .catalog-status{max-width:90px}}
 header #product{display:none}
 @media(max-width:1100px){.catalog-pick input{width:86px;flex-basis:86px}.catalog-pick select{width:155px}header .controls{font-size:9px}}
 @media(max-width:760px){.catalog-pick{max-width:56vw}.catalog-pick input{width:72px;flex-basis:72px}}
 </style></head><body>
-<header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><div class="catalog-pick"><input type="search" id="catalog-search" aria-label="Tasarımlarda ara" placeholder="Tasarım ara…"><select id="catalog-select" aria-label="Düzenlenecek tasarım"></select><select id="catalog-version" class="catalog-version" aria-label="Tasarım sürümü"></select><span id="catalog-status" class="catalog-status" title="Instagram'da yayımlanma ve tasarım inceleme durumu">İncelemede</span></div><a href="../">← Visual Editor</a></div></header>
+<header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><div class="catalog-pick"><input type="search" id="catalog-search" aria-label="Tasarımlarda ara" placeholder="Tasarım ara…"><select id="catalog-select" aria-label="Düzenlenecek tasarım"></select><select id="catalog-version" class="catalog-version" aria-label="Tasarım sürümü"></select><span id="catalog-status" class="catalog-status" title="Instagram'da yayımlanma ve tasarım inceleme durumu">İncelemede</span><span id="catalog-breadcrumb" class="catalog-breadcrumb" aria-live="polite"></span></div><a href="../">← Visual Editor</a></div></header>
 <div class="layout" id="workspace"><aside><div class="compact-bar"><h2>Katmanlar</h2><div class="controls"><button class="btn" id="groups-open" title="Tümünü aç">＋</button><button class="btn" id="groups-close" title="Tümünü kapat">−</button></div></div>
 <input id="layer-search" class="sidebar-search" type="search" placeholder="Katman ara…" aria-label="Katmanlarda ara">
 <div id="layers" class="layers"></div>
@@ -1292,11 +1293,11 @@ function renderCatalog(filter){
   var haystack=(item.title+' '+item.id+' '+item.family+' '+(item.category||'')+' '+
    (item.versions||[]).map(function(v){return v.label+' '+v.id}).join(' ')).toLocaleLowerCase('tr');
   if(query&&!haystack.includes(query))return;
-  var familyName=(item.brand==='cin-egitim'?'Çin Eğitim':'Asya’da Eğitim')+' · '+(item.category||item.family);
+  var familyName=(item.brand==='cin-egitim'?'Çin Eğitim':'Asya’da Eğitim')+' › '+(item.categoryPath?.join(' › ')||item.category||item.family);
   if(!families[familyName]){var group=document.createElement('optgroup');group.label=familyName;picker.appendChild(group);families[familyName]=group}
   var option=document.createElement('option');option.value=item.id;
   option.textContent=item.title+' · '+(item.versions||[]).length+' sürüm'+
-   (item.lifecycle==='published'?' · Yayımlandı':'');
+   (item.publishedVersionId?' · Yayınlanan '+(item.versions.find(function(v){return v.id===item.publishedVersionId})?.label||'sürüm'):(item.lifecycle==='published'?' · Aile yayımlandı':''));
   families[familyName].appendChild(option)
  });
  var active=discovery.byId(catalog,previous);
@@ -1306,8 +1307,10 @@ function renderCatalog(filter){
 function renderProductVersions(selected){
  var sel=$('catalog-version'),all=selected.versions||[selected];sel.replaceChildren();
  all.forEach(function(v){var option=document.createElement('option');option.value=v.id;
-   option.textContent=v.label||'güncel';sel.appendChild(option)});
+   var isPublished=v.id===selected.publishedVersionId,latest=v.id===selected.currentId;
+   option.textContent=(v.label||'güncel')+(isPublished?' · Yayımlandı':(latest&&all.length>1?' · Son taslak':''));sel.appendChild(option)});
  sel.value=selected.id;sel.disabled=all.length<=1;
+ $('catalog-breadcrumb').textContent=(selected.brand==='cin-egitim'?'Çin Eğitim':'Asya’da Eğitim')+' › '+(selected.categoryPath?.join(' › ')||selected.category||'Diğer');
  var status=$('catalog-status'),pub=selected.publications||[];
  var published=selected.lifecycle==='published'&&pub.length>0;
  var matchVersion=published&&pub.some(function(p){return p.productId===selected.id});
