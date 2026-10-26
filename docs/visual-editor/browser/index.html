@@ -647,6 +647,17 @@ Array.from(document.querySelectorAll('[data-align]')).forEach(function(btn){btn.
 
 function copy(o){return JSON.parse(JSON.stringify(o))}
 function getDB(){try{return JSON.parse(localStorage.getItem(key)||'{"versions":[]}')}catch(e){return{versions:[]}}}
+function sourceCoverAdded(){return /^instagram-phase-2c-[a-d]-/.test(slug)}
+function ensureSourcePageSchema(){
+ if(!sourceCoverAdded())return;
+ var raw=localStorage.getItem(key);if(!raw)return;
+ var db=JSON.parse(raw);if(db.sourcePageSchema===2)return;
+ var saved=db.versions||[];if(!Array.isArray(saved))throw Error('Eski sürüm dizisi geçersiz');
+ var next=Object.assign({},db,{sourcePageSchema:2,versions:saved.map(function(v){return Object.assign({},v,{state:discovery.migrateLegacyPhase2CState(v.state)})})});
+ var backupKey=key+':pre-cover-20261026';
+ if(!localStorage.getItem(backupKey))localStorage.setItem(backupKey,raw);
+ localStorage.setItem(key,JSON.stringify(next))
+}
 function allV(){return getDB().versions||[]}
 function nodes(){if(!doc)return[];var selText=codec.selector;return Array.from(doc.querySelectorAll('.slide '+selText))}
 function edit(){var k=page+':'+sel;if(!state.edits[k])state.edits[k]={styles:{},mode:'inherit'};return state.edits[k]}
@@ -1311,6 +1322,7 @@ function openProduct(productId){
  pages=selected.pages.map(function(p){return new URL('../../'+p,location.href).href});
  state={colors:Object.assign({},defaults),edits:{},groups:{}};current=1;dirty=false;
  history.clear();historyButtons();groupOpen={};PASTEBOARD=320;
+ try{ensureSourcePageSchema()}catch(e){safeStatus(e);return false}
  var versions=allV();
  if(versions.length){current=Math.max(...versions.map(function(x){return x.version}));state=copy(versions.find(function(x){return x.version===current}).state)}
  savedState=copy(state);
