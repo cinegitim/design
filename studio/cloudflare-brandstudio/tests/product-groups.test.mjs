@@ -49,7 +49,7 @@ test('Phase 2C variants include retained Phase 2B cover and all updated slides',
 });
 test('source assets and canonical identity paths are preserved in original repository',()=>{
  assert.equal(archive.filesTotal,1372);
- assert.equal(archive.transferState,'logical-retirement-source-paths-preserved');
+ assert.equal(archive.transferState,'archive-branch-verified-source-paths-preserved');
  const src=new Map(inventory.files.map(x=>[x[0],x]));
  const uniq=new Set();
  for(const group of archive.collections)for(const f of group.files){
