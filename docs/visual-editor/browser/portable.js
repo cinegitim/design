@@ -147,8 +147,9 @@ function identityArtwork(el){
 function identityGuard(el,e){
  if(!identityArtwork(el))return;
  if(e.image!==undefined||e.segments!==undefined||e.mode&&e.mode!=='inherit')err('Onaylı logonun içeriği, kaynağı ve rengi değiştirilemez');
- var allowed={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'margin':1,'z-index':1,'display':1};
+ var allowed={'position':1,'left':1,'top':1,'right':1,'bottom':1,'width':1,'margin':1,'z-index':1,'display':1,'transform':1};
  Object.keys(e.styles||{}).forEach(function(k){if(!allowed[k])err('Logo yalnızca orantılı boyutlandırılabilir ve taşınabilir')});
+  if(e.styles?.transform&&!/^translate\(-?\d+px,-?\d+px\)$/.test(e.styles.transform))err('Logoya yalnızca konum dönüşümü uygulanabilir');
 
 }
 function nodes(doc) {return Array.from(doc.querySelectorAll('.slide '+SELECTOR))}
