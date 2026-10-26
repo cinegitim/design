@@ -428,6 +428,20 @@ function setRectangle(n,rect,resize){
  }
  // CSS absolute offsets are relative to a positioned ancestor, not always .slide.
  // Account for nested card/footer origins to prevent logo/background jumps.
+ // Static flex/grid items need to retain their original layout space.
+ // Converting a footer logo to absolute collapses its parent and moves it.
+ var original=sourceNodes[index];
+ if(original?.position==='static'&&original.transform==='none'&&!styles.position){
+  var previous=String(styles.transform||'').match(/^translate\\((-?\\d+)px,(-?\\d+)px\\)$/);
+  var tx=previous?Number(previous[1]):0,ty=previous?Number(previous[2]):0;
+  tx+=Math.round(rect.x-pos(n).x);ty+=Math.round(rect.y-pos(n).y);
+  if(resize){styles.width=Math.round(rect.w)+'px';if(!identityImage(n)){styles.height=Math.round(rect.h)+'px';styles['max-width']='none'}}
+  styles.transform='translate('+tx+'px,'+ty+'px)';patch(n,e);
+  // Resizing in-flow items can reflow their container; correct that drift.
+  var actual=pos(n),dx=Math.round(rect.x-actual.x),dy=Math.round(rect.y-actual.y);
+  if(dx||dy){styles.transform='translate('+(tx+dx)+'px,'+(ty+dy)+'px)';patch(n,e)}
+  return
+ }
  var pr=ux.containingBlockOrigin(n,doc.querySelector('.slide'));
  if(identityImage(n))e.basis='artboard';
  Object.assign(styles,{position:'absolute',left:Math.round(rect.x-pr.x)+'px',top:Math.round(rect.y-pr.y)+'px',right:'auto',bottom:'auto',margin:'0'});
@@ -635,8 +649,9 @@ function patch(n,v){
  // The folio is editable text, not an immutable brand asset.
  if(identityImage(n)){
   if(v.image!==undefined||v.segments!==undefined||v.mode&&v.mode!=='inherit')throw new Error('Logonun orijinal SVG ve rengi değiştirilemez');
-  var safe=['position','left','top','right','bottom','width','margin','z-index','display'];
+  var safe=['position','left','top','right','bottom','width','margin','z-index','display','transform'];
   if(Object.keys(v.styles||{}).some(function(k){return !safe.includes(k)}))throw new Error('Logo kaynak görseli yalnızca oranı korunarak taşınabilir ve boyutlandırılabilir');
+   if(v.styles?.transform&&!/^translate\\(-?\\d+px,-?\\d+px\\)$/.test(v.styles.transform))throw new Error('Logo yalnızca taşınabilir; içeriği bozulamaz');
  }
  if(v.image!==undefined){if(n.tagName!=='IMG'&&n.localName!=='image')throw new Error('Fotoğraf yalnızca görsel katmanında değiştirilebilir');n.setAttribute(n.localName==='image'?'href':'src',v.image)}
  if(v.segments!==undefined)codec.applyText(n,v.segments);
@@ -679,7 +694,7 @@ function expandPasteboard(){
 function paint(){
  codec.detachLogo(doc);codec.installFonts(doc,pages[page]);
  installPasteboard();norm();doc.querySelector('.slide').dataset.slideIndex=String(page+1);
- sourceNodes=nodes().map(function(n){return{style:n.getAttribute('style'),src:n.getAttribute('src'),segments:codec.textNodes(n).map(function(t){return t.nodeValue}),rect:pos(n)}});
+ sourceNodes=nodes().map(function(n){return{style:n.getAttribute('style'),src:n.getAttribute('src'),segments:codec.textNodes(n).map(function(t){return t.nodeValue}),rect:pos(n),position:doc.defaultView.getComputedStyle(n).position,transform:doc.defaultView.getComputedStyle(n).transform}});
  nodes().forEach(function(n,i){n.dataset.editIndex=i;patch(n,state.edits[page+':'+i])});
  setupOverlay();showSelection()
 }
