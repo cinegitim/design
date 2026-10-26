@@ -140,7 +140,10 @@ function applyText(el,segments){
  parts.forEach(function(part,i){part.nodeValue=segments[i]});
 }
 function locked(el){return false} // Placement, typography and folio text are all editable.
-function identityArtwork(el){return (el.tagName==='IMG'&&(el.hasAttribute(LOGO_MARKER)||!!el.closest('.logo-foot')))||el.hasAttribute('data-canonical-id')||el.id==='canonical-lockup'||(el.classList?.contains('logo')&&!!el.querySelector('[data-canonical-id]'))}
+function identityArtwork(el){
+ var namedImage=el.tagName==='IMG'&&(Array.from(el.classList).some(function(c){return /(?:^|-)logo(?:-|$)|lockup/i.test(c)})||/(?:^|[/_-])(?:logo|lockup|p-01|d-04)(?=[/_.-]|$)/i.test(el.getAttribute('src')||''));
+ return (el.tagName==='IMG'&&(el.hasAttribute(LOGO_MARKER)||!!el.closest('.logo-foot')||namedImage))||el.hasAttribute('data-canonical-id')||el.id==='canonical-lockup'||(el.classList?.contains('logo')&&!!el.querySelector('[data-canonical-id]'));
+}
 function identityGuard(el,e){
  if(!identityArtwork(el))return;
  if(e.image!==undefined||e.segments!==undefined||e.mode&&e.mode!=='inherit')err('Onaylı logonun içeriği, kaynağı ve rengi değiştirilemez');
