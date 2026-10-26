@@ -431,7 +431,7 @@ function setRectangle(n,rect,resize){
  // Static flex/grid items need to retain their original layout space.
  // Converting a footer logo to absolute collapses its parent and moves it.
  var original=sourceNodes[index];
- if(original&&['static','absolute','relative'].includes(original.position)&&original.transform==='none'&&!styles.position){
+ if(original&&['static','absolute','relative'].includes(original.position)&&original.transform==='none'&&(!styles.position||styles.position==='relative')){
   var previous=String(styles.transform||'').match(/^translate\((-?\d+)px,(-?\d+)px\)$/);
   var tx=previous?Number(previous[1]):0,ty=previous?Number(previous[2]):0;
   tx+=Math.round(rect.x-pos(n).x);ty+=Math.round(rect.y-pos(n).y);
@@ -746,6 +746,10 @@ function moveLayer(source,target,before){
  sequence.forEach(function(i,index){
   var entry=state.edits[page+':'+i]||(state.edits[page+':'+i]={mode:'inherit',styles:{}});
   entry.styles||(entry.styles={});
+  // z-index has no effect on ordinary static block children. Relative
+  // positioning keeps normal flow intact while making their order effective.
+  var computed=doc.defaultView.getComputedStyle(ns[i]),parentDisplay=doc.defaultView.getComputedStyle(ns[i].parentElement).display;
+  if(computed.position==='static'&&!/^(?:inline-)?(?:flex|grid)$/.test(parentDisplay))entry.styles.position='relative';
   entry.styles['z-index']=String(index+1);patch(ns[i],entry)
  });
  dirtyStatus();showSelection();$('status').textContent='Aynı kapsayıcıda katman sırası değişti'
