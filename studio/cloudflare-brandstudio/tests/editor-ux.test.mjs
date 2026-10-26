@@ -317,7 +317,7 @@ test("full-height gradient stays directly clickable and will not collapse during
  assert.match(html,/if\(x\.classList\.contains\('veil'\)\)x\.style\.pointerEvents='auto'/);
  assert.match(html,/if\(!styles\.width\)styles\.width=Math\.round\(rect\.w\)\+'px'/);
  assert.match(html,/if\(n\.tagName!=='IMG'&&!styles\.height\)styles\.height=Math\.round\(rect\.h\)\+'px'/);
- assert.match(html,/hit\.classList\.contains\('veil'\)/);
+ assert.match(html,/hit\?\.classList\.contains\('veil'\)/);
  assert.match(html,/if\(n===cover&&wasSelected\)choose\(Number\(photo\.dataset\.editIndex\),false\)/);
  assert.match(html,/else if\(n===photo\)choose\(Number\(cover\.dataset\.editIndex\),false\)/);
 });
