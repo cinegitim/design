@@ -72,6 +72,21 @@ function fromPaths(paths){
   .sort(function(a,b){return(a.kind==='html'?0:1)-(b.kind==='html'?0:1)||a.family.localeCompare(b.family)||a.title.localeCompare(b.title)})
 }
 function fromTree(tree){if(!Array.isArray(tree))throw Error('Geçersiz GitHub dosya ağacı');return fromPaths(tree.filter(function(x){return x&&x.type==='blob'}).map(function(x){return x.path}))}
+function migrateLegacyPhase2CState(old){
+ if(!old||typeof old!=='object')throw Error('Geçersiz eski slayt durumu');
+ var next=JSON.parse(JSON.stringify(old)),edits={},groups={};
+ Object.entries(old.edits||{}).forEach(function(pair){
+  var key=pair[0],m=key.match(/^(\d+):(\d+)$/);
+  if(!m)throw Error('Geçersiz slayt katmanı: '+key);
+  edits[(Number(m[1])+1)+':'+m[2]]=pair[1]
+ });
+ Object.entries(old.groups||{}).forEach(function(pair){
+  var key=pair[0];
+  if(!/^\d+$/.test(key))throw Error('Geçersiz sayfa grubu: '+key);
+  groups[String(Number(key)+1)]=pair[1]
+ });
+ next.edits=edits;next.groups=groups;return next
+}
 function groupRecords(raw,config){
  if(!config||config.schema!==1||!Array.isArray(config.groups))return raw;
  var items=new Map(raw.map(function(r){return[r.id,r]})),used=new Set(),groups=[];
@@ -143,5 +158,5 @@ async function load(url){
  }catch(_){}
  return groupRecords(snapshot,config)
 }
-root.BrandstudioCatalog={fromPaths:fromPaths,fromTree:fromTree,groupRecords:groupRecords,byId:byId,load:load};
+root.BrandstudioCatalog={fromPaths:fromPaths,fromTree:fromTree,groupRecords:groupRecords,migrateLegacyPhase2CState:migrateLegacyPhase2CState,byId:byId,load:load};
 })(typeof globalThis!=='undefined'?globalThis:this);
