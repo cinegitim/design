@@ -1,0 +1,268 @@
+{
+  "schema": 1,
+  "scope": "active-and-versioned",
+  "updated": "2026-10-26",
+  "archiveBranch": "archive/brand-identity-history-20261026",
+  "notes": "Default current = latest numbered working revision where known, not automatically human-approved. Roll-up has no agreed final so A remains default. Source files remain immutable.",
+  "groups": [
+    {
+      "id": "instagram-carousel-01",
+      "title": "Başka Bir Dünya Var",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Karusel",
+      "currentId": "carousel-01-v3",
+      "versions": [
+        {
+          "id": "instagram-carousel-01",
+          "label": "v1"
+        },
+        {
+          "id": "instagram-carousel-01-v2",
+          "label": "v2"
+        },
+        {
+          "id": "carousel-01-v3",
+          "label": "v3"
+        }
+      ],
+      "lifecycle": "in-review"
+    },
+    {
+      "id": "instagram-carousel-02",
+      "title": "Sınırların Dışında Düşün",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Karusel",
+      "currentId": "instagram-carousel-02",
+      "versions": [
+        {
+          "id": "instagram-carousel-02",
+          "label": "v1"
+        }
+      ],
+      "lifecycle": "in-review"
+    },
+    {
+      "id": "instagram-launch-creative-02",
+      "title": "Launch Creative 02",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Karusel",
+      "currentId": "instagram-launch-creative-02",
+      "versions": [
+        {
+          "id": "instagram-launch-creative-02",
+          "label": "güncel"
+        }
+      ],
+      "lifecycle": "in-review"
+    },
+    {
+      "id": "instagram-basvuru-rehberi",
+      "title": "Başvuru Rehberi · Çince Bilmeden Çin'de Eğitim",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Karusel",
+      "currentId": "instagram-basvuru-rehberi-china-001",
+      "versions": [
+        {
+          "id": "instagram-basvuru-rehberi-001-cince-bilmeden",
+          "label": "ilk çalışma"
+        },
+        {
+          "id": "instagram-basvuru-rehberi-china-001",
+          "label": "güncel"
+        }
+      ],
+      "lifecycle": "in-review"
+    },
+    {
+      "id": "instagram-burs-dosyasi-gks-2027-001",
+      "title": "GKS 2027 · Burs Dosyası",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Karusel",
+      "currentId": "instagram-burs-dosyasi-gks-2027-001",
+      "versions": [
+        {
+          "id": "instagram-burs-dosyasi-gks-2027-001",
+          "label": "v1"
+        }
+      ],
+      "lifecycle": "in-review"
+    },
+    {
+      "id": "instagram-rotani-sec-tokyo-seoul-001",
+      "title": "Rotanı Seç · Tokyo mu, Seul mü?",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Karusel",
+      "currentId": "instagram-rotani-sec-tokyo-seoul-001-v3",
+      "versions": [
+        {
+          "id": "instagram-rotani-sec-tokyo-seoul-001",
+          "label": "v1"
+        },
+        {
+          "id": "instagram-rotani-sec-tokyo-seoul-001-v2",
+          "label": "v2"
+        },
+        {
+          "id": "instagram-rotani-sec-tokyo-seoul-001-v3",
+          "label": "v3"
+        }
+      ],
+      "lifecycle": "in-review"
+    },
+    {
+      "id": "instagram-tsinghua-atlas-2027",
+      "title": "Tsinghua Atlas 2027",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Karusel",
+      "currentId": "instagram-tsinghua-atlas-2027-v2",
+      "versions": [
+        {
+          "id": "instagram-tsinghua-atlas-2027",
+          "label": "v1"
+        },
+        {
+          "id": "instagram-tsinghua-atlas-2027-v2",
+          "label": "v2"
+        }
+      ],
+      "lifecycle": "in-review"
+    },
+    {
+      "id": "instagram-snu",
+      "title": "Seoul National University",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Üniversite",
+      "currentId": "instagram-phase-2c-a-snu",
+      "versions": [
+        {
+          "id": "instagram-phase-2b-a-snu",
+          "label": "2B"
+        },
+        {
+          "id": "instagram-phase-2c-a-snu",
+          "label": "2C"
+        }
+      ],
+      "lifecycle": "in-review"
+    },
+    {
+      "id": "instagram-waseda",
+      "title": "Waseda Üniversitesi",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Üniversite",
+      "currentId": "instagram-phase-2c-b-waseda",
+      "versions": [
+        {
+          "id": "instagram-phase-2b-b-waseda",
+          "label": "2B"
+        },
+        {
+          "id": "instagram-phase-2c-b-waseda",
+          "label": "2C"
+        }
+      ],
+      "lifecycle": "in-review"
+    },
+    {
+      "id": "instagram-tokyo",
+      "title": "Tokyo'da Öğrenci Hayatı",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Üniversite",
+      "currentId": "instagram-phase-2c-c-tokyo",
+      "versions": [
+        {
+          "id": "instagram-phase-2b-c-tokyo",
+          "label": "2B"
+        },
+        {
+          "id": "instagram-phase-2c-c-tokyo",
+          "label": "2C"
+        }
+      ],
+      "lifecycle": "in-review"
+    },
+    {
+      "id": "instagram-six-steps",
+      "title": "Üniversite Başvurusu · 6 Adım",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Rehber",
+      "currentId": "instagram-phase-2c-d-six-steps",
+      "versions": [
+        {
+          "id": "instagram-phase-2b-d-six-steps",
+          "label": "2B"
+        },
+        {
+          "id": "instagram-phase-2c-d-six-steps",
+          "label": "2C"
+        }
+      ],
+      "lifecycle": "in-review"
+    },
+    {
+      "id": "asset-instagram-profile-photo",
+      "title": "Instagram Profil Tasarımları",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Profil",
+      "currentId": "asset-instagram-profile-photo",
+      "versions": [
+        {
+          "id": "asset-instagram-profile-photo",
+          "label": "varyasyonlar"
+        }
+      ],
+      "lifecycle": "in-review"
+    },
+    {
+      "id": "asset-social-covers-cover-graphics",
+      "title": "Sosyal Medya Kapakları",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Kapak",
+      "currentId": "asset-social-covers-cover-graphics",
+      "versions": [
+        {
+          "id": "asset-social-covers-cover-graphics",
+          "label": "varyasyonlar"
+        }
+      ],
+      "lifecycle": "in-review"
+    },
+    {
+      "id": "cin-egitim-rollup",
+      "title": "Çin Eğitim · Roll-up",
+      "brand": "cin-egitim",
+      "category": "Baskı / Roll-up",
+      "currentId": "cin-egitim-rollup-rollup-design-a",
+      "versions": [
+        {
+          "id": "cin-egitim-rollup-rollup-design-a",
+          "label": "A"
+        },
+        {
+          "id": "cin-egitim-rollup-rollup-design-b",
+          "label": "B"
+        }
+      ],
+      "lifecycle": "in-review"
+    }
+  ],
+  "retired": [
+    {
+      "id": "instagram-discovery-01",
+      "reason": "early creative exploration",
+      "archive": "creative-experiments"
+    },
+    {
+      "id": "asset-instagram-creative-breakout",
+      "reason": "multi-direction concept exploration",
+      "archive": "creative-experiments"
+    }
+  ],
+  "socialPublication": {
+    "platform": "instagram",
+    "profile": "@asyadaegitim",
+    "verification": "exact post permalink or trusted publication record required",
+    "posts": []
+  },
+  "futureProducts": "unmapped new products remain visible in the active catalog; never silently archived"
+}
