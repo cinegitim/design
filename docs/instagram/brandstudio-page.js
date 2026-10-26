@@ -152,6 +152,19 @@
       else if(/^(slayt kaynaklari|kaynak dosyalari)/.test(plain))kind="sources";
       if(kind)add(kind,sec);
     });
+    // Revision pages may expose a flat JSON/ZIP evidence bar rather than
+    // structured sections; preserve those same links inside the drawers.
+    document.querySelectorAll("main > .files,main > .resources").forEach(function(block){
+      var links=Array.from(block.querySelectorAll("a[href]"));
+      if(links.length<2||!links.every(function(a){
+        return !!resourceType(a.textContent,a.getAttribute("href")||"");
+      }))return;
+      links.forEach(function(a){
+        var kind=resourceType(a.textContent,a.getAttribute("href")||"");
+        var li=document.createElement("li");li.appendChild(a);add(kind,li);
+      });
+      if(!block.querySelector("a,button,input,select"))block.remove();
+    });
     // Editable HTML and SVG links repeated below each slide are secondary.
     // Make labels unambiguous when collected (e.g. "02 · ALANLAR — SVG").
     document.querySelectorAll("main article.card a[href]").forEach(function(a){
