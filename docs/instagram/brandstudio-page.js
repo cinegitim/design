@@ -18,6 +18,9 @@
     ".bs-product-trail{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0;color:#55504b;font-size:12px}",
     ".bs-product-trail a{color:inherit;text-decoration:none;border-bottom:1px solid #b7ad9b}",
     ".bs-product-trail a:hover{text-decoration:underline}",
+    "body.bs-dark-gallery .bs-product-trail{color:#e8e0d5}",
+    "body.bs-dark-gallery .bs-product-trail a{border-color:#a79a89}",
+    "body.bs-dark-gallery .bs-product-trail .bs-separator{color:#b8aa99}",
     ".bs-product-trail .bs-separator{color:#a89e90}",
     ".bs-actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px}",
     ".bs-action{display:inline-flex;justify-content:center;align-items:center;gap:9px;padding:11px 17px;min-height:45px;text-decoration:none!important;border-radius:9px;border:1px solid #bd2120;color:#fff!important;background:#bd2120;font-size:13px;font-weight:720;white-space:nowrap;transition:filter .16s}",
@@ -29,6 +32,11 @@
     "@media(max-width:680px){.bs-product-bar{padding:14px 15px 0;display:block}.bs-actions{margin-top:13px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.bs-actions .bs-action{white-space:normal;text-align:center;padding:11px 9px;font-size:12px}.bs-actions .bs-action:only-child{grid-column:1/-1}}"
   ].join("\n");
   document.head.appendChild(stylesheet);
+  var background=getComputedStyle(document.body).backgroundColor.match(/\d+(?:\.\d+)?/g);
+  if(background&&background.length>=3){
+    var rgb=background.slice(0,3).map(Number),lum=0.2126*rgb[0]+0.7152*rgb[1]+0.0722*rgb[2];
+    if(lum<132)document.body.classList.add("bs-dark-gallery");
+  }
   var bar=document.createElement("nav");bar.className="bs-product-bar";bar.setAttribute("aria-label","Tasarım künyesi ve işlemler");
   var trail=document.createElement("div");trail.className="bs-product-trail";
   var back=document.createElement("a");back.href=workspaceUrl.href;back.textContent="Asya'da Eğitim";trail.append(back);
