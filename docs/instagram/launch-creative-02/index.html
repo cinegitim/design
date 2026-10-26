@@ -76,4 +76,4 @@ document.querySelector('#modeCurrent').addEventListener('click',()=>{previous=fa
 document.querySelector('#modePrevious').addEventListener('click',()=>{previous=true;document.querySelector('#modeCurrent').setAttribute('aria-pressed','false');document.querySelector('#modePrevious').setAttribute('aria-pressed','true');show(current)});
 document.querySelector('#prev').addEventListener('click',()=>show(current-1));document.querySelector('#next').addEventListener('click',()=>show(current+1));document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(current+1);if(e.key==='ArrowLeft')show(current-1)});let startX=0;images.hero.addEventListener('touchstart',e=>startX=e.changedTouches[0].clientX,{passive:true});images.hero.addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>45)show(current+(dx<0?1:-1))},{passive:true});show(0);
 </script>
-</body></html>
+<script src="../brandstudio-page.js" data-product-id="instagram-launch-creative-02"></script></body></html>

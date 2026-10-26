@@ -56,4 +56,4 @@ const m=document.createElement('div');m.className='mobile';m.innerHTML=`<img loa
 function show(i){n=(i+slides.length)%slides.length;const s=slides[n];hero.src=`final/${s[0]}.png`;hero.alt=s[1];counter.textContent=`${String(n+1).padStart(2,'0')} / 06`;title.textContent=s[1];desc.textContent=s[2];[...dots.children].forEach((x,j)=>x.setAttribute('aria-current',j===n));[...thumbs.children].forEach((x,j)=>x.setAttribute('aria-current',j===n))}
 document.querySelector('#prev').onclick=()=>show(n-1);document.querySelector('#next').onclick=()=>show(n+1);
 document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(n-1);if(e.key==='ArrowRight')show(n+1)});show(0);
-</script></body></html>
+</script><script src="../brandstudio-page.js" data-product-id="instagram-rotani-sec-tokyo-seoul-001"></script></body></html>
