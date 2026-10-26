@@ -59,6 +59,15 @@ function resizeRect(box,direction,dx,dy,proportional) {
  else t=box.y+(box.h-h)/2;
  return{x:l,y:t,w:w,h:h};
 }
+// Absolute CSS left/top are relative to the nearest positioned ancestor,
+// not necessarily the slide. Read its padding edge in artboard coordinates.
+function containingBlockOrigin(node,slide){
+ var parent=node.offsetParent;
+ if(!parent||parent===slide||!slide.contains(parent))return{x:0,y:0};
+ var origin=parent.getBoundingClientRect(),artboard=slide.getBoundingClientRect();
+ return{x:origin.left-artboard.left+(parent.clientLeft||0),
+         y:origin.top-artboard.top+(parent.clientTop||0)};
+}
 function scaleRect(box,from,to) {
  var sx=to.w/Math.max(1,from.w),sy=to.h/Math.max(1,from.h);
  return{x:to.x+(box.x-from.x)*sx,y:to.y+(box.y-from.y)*sy,w:box.w*sx,h:box.h*sy};
@@ -97,5 +106,5 @@ function groupLayers(entries,linkedGroups) {
  for(var c of sections)c.items.sort(function(a,b){return a.id-b.id});
  return sections;
 }
-root.BrandstudioUX={createHistory:createHistory,groupLayers:groupLayers,proximity:proximity,selectionTargets:selectionTargets,bounds:bounds,resizeRect:resizeRect,scaleRect:scaleRect};
+root.BrandstudioUX={createHistory:createHistory,groupLayers:groupLayers,proximity:proximity,selectionTargets:selectionTargets,bounds:bounds,resizeRect:resizeRect,scaleRect:scaleRect,containingBlockOrigin:containingBlockOrigin};
 })(globalThis);
