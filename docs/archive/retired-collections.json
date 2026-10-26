@@ -5,8 +5,8 @@
   "sourceTreeSha": "1caa29645737d0f2c57ef240d75c7e424bae2d3c",
   "archiveBranch": "archive/brand-identity-history-20261026",
   "date": "2026-10-26",
-  "transferState": "logical-retirement-source-paths-preserved",
-  "permanentNote": "Full archive branch protects source content; archive copy to an independent repository is not yet complete. Existing historic/public permalinks remain readable while active selectors filter retired products. Do not delete source blobs before independent archive migration checksum verification.",
+  "transferState": "archive-branch-verified-source-paths-preserved",
+  "permanentNote": "1372 retired blobs preserved in a dedicated archive Git branch and independently verified by Git tree. Not yet a separate GitHub repository. Existing historic/public permalinks remain reachable on main; only active selectors filter retired designs. No destructive source deletions.",
   "approval": "user approved retiring historical brand experiments",
   "exclusions": [
     "brands/asyada-egitim/assets/**",
@@ -6934,5 +6934,15 @@
         }
       ]
     }
-  ]
+  ],
+  "archiveTreeSha": "65ba06ac8a60baf04bf75a2cbe6a849f4fbb6133",
+  "archiveCommitSha": "304e5e8c068580f69fa53b6125baca55e8374b95",
+  "verification": {
+    "date": "2026-10-26",
+    "method": "GitHub remote recursive tree",
+    "archiveBlobCount": 1372,
+    "additionalReadmeCount": 1,
+    "treeTruncated": false,
+    "originalBlobShasPreserved": true
+  }
 }
