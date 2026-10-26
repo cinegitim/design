@@ -175,9 +175,41 @@ test("compact independent side panels with searchable layer list",()=>{
  assert.ok(first.indexOf('id="fs"')<first.indexOf('id="x"'));
  assert.ok(first.indexOf('id="x"')<first.indexOf('id="y"'));
 });
-test("layer drag reorder persists z-index, supports undo and shows read-only path",()=>{
- for(const token of ["function moveLayer(source,target,before)","b.draggable=true","dragstart","dragover","drop","moveLayer(source,item.id)","entry.styles['z-index']=String(index+1)","checkpoint();","function layerPath(i)"])
+test("layer drag reorder uses actual DOM hierarchy and updates real visual stacking",()=>{
+ for(const token of ["function siblingBranch(source,target)","function moveLayer(source,target,above)","function layerTree()","function layerName(n)","b.draggable=true","dragstart","dragover","drop","moveLayer(source,item.id,zone)","e.styles['z-index']=String(index+1)","checkpoint();","function layerPath(i)"])
   assert.ok(html.includes(token),"Missing stacking control "+token);
+ assert.match(html,/dragLayerId=null;/);
+ assert.match(html,/box\.open=!!query\|\|groupOpen\[page\+':layer-tree'\]!==false/);
+ assert.match(html,/movedButton\?\.scrollIntoView/);
+ assert.match(html,/layerTree\(\)/);
+});
+test("nested layer reorder resolves actual siblings including anonymous flex wrappers",()=>{
+ const from=html.indexOf("function layerParent(n){"),to=html.indexOf("function layerTree(){",from);
+ assert.ok(from>0&&to>from);
+ const snippet=html.slice(from,to),status={textContent:""};
+ const mk=(name,parent,index)=>({name,parentElement:parent,index,hasAttribute(k){return k==='data-edit-index'&&index>=0},
+  contains(child){for(let n=child;n;n=n.parentElement)if(n===this)return true;return false}});
+ const slide=mk("slide",null,-1),bottom=mk("bottom",slide,0),anonymous=mk("anonymous-flex-item",bottom,-1),
+  logo=mk("logo",bottom,1),tag=mk("tag",anonymous,2),photo=mk("photo",slide,3);
+ const ns=[bottom,logo,tag,photo],state={edits:{}};
+ const mock={doc:{querySelector(){return slide},defaultView:{getComputedStyle(node){return{position:"static",zIndex:node===bottom?"3":"auto"}}}},
+  document:{querySelector(){return null}},nodes:()=>ns,isDeleted:()=>false,state,page:0,
+  zOf:i=>Number(state.edits["0:"+i]?.styles?.["z-index"]??(i===0?3:0)),checkpoint:()=>{},
+  patch:()=>{},dirtyStatus:()=>{},showSelection:()=>{},layerPath:i=>"test-"+i,
+  $:()=>status};
+ vm.createContext(mock);vm.runInContext(snippet,mock);
+ assert.deepEqual(Array.from(mock.peerLayers(1),x=>x.id),[1,2]);
+ assert.equal(mock.siblingBranch(1,2).source,1);
+ assert.equal(mock.siblingBranch(1,2).target,2);
+ assert.deepEqual({source:mock.siblingBranch(1,3).source,target:mock.siblingBranch(1,3).target},{source:0,target:3});
+ mock.moveLayer(1,2,true);
+ assert.equal(state.edits["0:1"].styles["z-index"],"2");
+ assert.equal(state.edits["0:2"].styles["z-index"],"1");
+ mock.moveLayer(1,3,false);
+ assert.equal(state.edits["0:0"].styles["z-index"],"1");
+ assert.equal(state.edits["0:3"].styles["z-index"],"2");
+ assert.match(status.textContent,/Kapsayıcı birlikte taşındı/);
+ assert.ok(Object.values(state.edits).every(e=>Number(e.styles["z-index"])>0));
 });
 test("inline click-to-type caret saves only valid segments, with undo",()=>{
  for(const token of ["function beginInlineText(n,x,y)","function endInlineText()","doc.caretRangeFromPoint","n.setAttribute('contenteditable','true')","n.addEventListener('beforeinput'","n.addEventListener('input'","codec.validateState(draft,pages.length)","beginInlineText(n,e.clientX,e.clientY)"])
@@ -321,13 +353,15 @@ test("full-height gradient stays directly clickable and will not collapse during
  assert.match(html,/if\(n===cover&&wasSelected\)choose\(Number\(photo\.dataset\.editIndex\),false\)/);
  assert.match(html,/else if\(n===photo\)choose\(Number\(cover\.dataset\.editIndex\),false\)/);
 });
-test("layer reorder cannot send elements behind the canvas",()=>{
+test("layer reorder supports cross-container groups without negative stacking",()=>{
  assert.match(html,/function peerLayers\(i\)/);
- assert.match(html,/from\.parentElement!==to\.parentElement/);
- assert.match(html,/stackTier\(from\)!==stackTier\(to\)/);
- assert.match(html,/entry\.styles\['z-index'\]=String\(index\+1\)/);
- assert.match(html,/if\(computed\.position==='static'&&!/);
- assert.match(html,/entry\.styles\.position='relative'/);
- assert.doesNotMatch(html,/entry\.styles\['z-index'\]=String\(index-30\)/);
- assert.doesNotMatch(html,/e\.styles\['z-index'\]=action==='front'\?'20':'-20'/);
+ assert.match(html,/var common=p/);
+ assert.match(html,/while\(a\.parentElement!==common\)/);
+ assert.match(html,/while\(b\.parentElement!==common\)/);
+ assert.match(html,/branch=siblingBranch\(source,target\)/);
+ assert.match(html,/e\.styles\['z-index'\]=String\(index\+1\)/);
+ assert.match(html,/e\.styles\.position='relative'/);
+ assert.match(html,/branch\.grouped/);
+ assert.doesNotMatch(html,/String\(index-30\)/);
+ assert.doesNotMatch(html,/stackTier\(/);
 });

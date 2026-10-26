@@ -165,7 +165,7 @@ input[type=color]{height:28px}
 .layer:hover{background:#273747;color:#f2f6fa}
 .layer.selected{background:#353b42;border-color:#9c7553;color:#ffdbb1}
 .layer .grip{font-size:11px;color:#677b90}
-.layer .layer-name{font-size:10.5px}
+.layer .layer-name{font-size:10.5px}.layer-container .layer-name{font-weight:650;color:#f1dbc0}.layer[data-layer-depth='0']{border-top:1px solid #324052;margin-top:2px}
 .compact-bar h2{font-size:12px}
 .compact-bar .btn{padding:0;width:24px;min-width:24px;min-height:24px;height:24px}
 details.inspector-details{border:1px solid #313e4e;background:#182430;border-radius:7px;margin:6px 0}
@@ -710,86 +710,144 @@ function zOf(i){
 }
 function allByStack(){return nodes().map(function(_,i){return i}).sort(function(a,b){return zOf(a)-zOf(b)||a-b})}
 function layerPath(i){
- var group=ux.groupLayers(layerEntries(),linkedGroups()).find(function(g){return g.items.some(function(e){return e.id===i})});
- if(!group)return 'Katman '+i;
- var items=group.items.slice().sort(function(a,b){return zOf(b.id)-zOf(a.id)||b.id-a.id});
- var n=nodes()[i],rank=items.findIndex(function(e){return e.id===i})+1;
- return group.label+' / '+n.tagName.toLowerCase()+'-'+rank
-}
-// Scope z-index updates to DOM siblings; global negative z-index values
-// send photos and text behind the slide background (black canvas).
-function stackTier(n){
- if(n.parentElement?.classList?.contains('slide')){
-  if(n.classList.contains('photo')&&n.tagName==='IMG')return 0;
-  if(n.classList.contains('veil'))return 1;
+ var n=nodes()[i];if(!n)return 'Katman '+i;
+ var trail=[],slide=doc.querySelector('.slide');
+ for(var el=n;el&&el!==slide;el=el.parentElement){
+  var name=el.classList?.[0]||el.tagName?.toLowerCase();
+  if(el.hasAttribute('data-edit-index'))trail.unshift(name)
  }
- return 2
+ return trail.join(' / ')
+}
+// A layer is a real DOM node, not a guess based on spatial proximity.
+// Dragging across nested contexts moves the nearest actual sibling branch.
+// Its child layers travel as a group; their individual coordinates are unchanged.
+function layerParent(n){
+ var slide=doc.querySelector('.slide'),p=n?.parentElement;
+ while(p&&p!==slide&&!p.hasAttribute('data-edit-index'))p=p.parentElement;
+ return p
 }
 function peerLayers(i){
  var ns=nodes(),n=ns[i];if(!n)return [];
- return ns.map(function(el,id){return{id:id,node:el}}).filter(function(item){return item.node.parentElement===n.parentElement&&!isDeleted(item.id)})
+ var parent=layerParent(n);
+ return ns.map(function(el,id){return{id:id,node:el}}).filter(function(item){return layerParent(item.node)===parent&&!isDeleted(item.id)})
 }
-function moveLayer(source,target,before){
+function siblingBranch(source,target){
+ var ns=nodes(),from=ns[source],to=ns[target],slide=doc.querySelector('.slide');
+ if(!from||!to||from===to||from.contains(to)||to.contains(from))return null;
+ var path=new Set(),p=from;
+ while(p&&slide.contains(p)){path.add(p);p=p.parentElement}
+ path.add(slide);p=to;
+ while(p&&!path.has(p))p=p.parentElement;
+ var common=p;if(!common||!slide.contains(common))return null;
+ var a=from,b=to;
+ while(a.parentElement!==common)a=a.parentElement;
+ while(b.parentElement!==common)b=b.parentElement;
+ // Some source formats use anonymous flex/grid wrappers. Treat their
+ // editable children as logical siblings instead of refusing the drop.
+ var sourceId=ns.indexOf(a),targetId=ns.indexOf(b);
+ if(sourceId<0)sourceId=source;
+ if(targetId<0)targetId=target;
+ if(sourceId===targetId||layerParent(ns[sourceId])!==layerParent(ns[targetId]))return null;
+ return{source:sourceId,target:targetId,grouped:sourceId!==source||targetId!==target,parent:common}
+}
+function moveLayer(source,target,above){
  if(source===target||!Number.isInteger(source)||!Number.isInteger(target))return;
- var ns=nodes(),from=ns[source],to=ns[target];if(!editable(from)||!editable(to))return;
- if(from.parentElement!==to.parentElement){$('status').textContent='Farklı kapsayıcılar arasında sıralama desteklenmiyor; tasarım korunuyor';return}
- if(stackTier(from)!==stackTier(to)){
-  $('status').textContent='Fotoğraf → filtre → içerik sırası korunuyor. Filtrenin opaklığını ayrı düzenleyebilirsin';return
- }
- var peers=peerLayers(source),order=peers.map(function(item){return item.id}).sort(function(a,b){return stackTier(ns[a])-stackTier(ns[b])||zOf(a)-zOf(b)||a-b});
- if(order.length>30){$('status').textContent='Bu kapsayıcıda çok fazla katman var';return}
- var sequence=order.filter(function(i){return i!==source}),at=sequence.indexOf(target);
+ var ns=nodes(),branch=siblingBranch(source,target);
+ if(!branch){$('status').textContent='Bu iki öğe aynı kapsayıcı içinde iç içe. Bağımsız sıralama için kardeş katmanlarını seç';return}
+ var a=branch.source,b=branch.target,items=peerLayers(a);
+ var sequence=items.map(function(item){return item.id}).sort(function(x,y){return zOf(x)-zOf(y)||x-y});
+ if(sequence.length>500){$('status').textContent='Çok fazla kardeş katman';return}
+ var next=sequence.filter(function(i){return i!==a}),at=next.indexOf(b);
  if(at<0)return;
- sequence.splice(at+(before?0:1),0,source);
- if(order.every(function(id,i){return sequence[i]===id}))return;
+ // The top edge means "in front of", i.e. later in back-to-front order.
+ next.splice(at+(above!==false?1:0),0,a);
+ if(sequence.every(function(i,j){return i===next[j]})){
+  $('status').textContent='Katman zaten bu sırada. Hedefin diğer yarısına bırakıp ters sıraya taşıyabilirsin';return
+ }
  checkpoint();
- sequence.forEach(function(i,index){
-  var entry=state.edits[page+':'+i]||(state.edits[page+':'+i]={mode:'inherit',styles:{}});
-  entry.styles||(entry.styles={});
-  // z-index has no effect on ordinary static block children. Relative
-  // positioning keeps normal flow intact while making their order effective.
-  var computed=doc.defaultView.getComputedStyle(ns[i]),parentDisplay=doc.defaultView.getComputedStyle(ns[i].parentElement).display;
-  if(computed.position==='static'&&!/^(?:inline-)?(?:flex|grid)$/.test(parentDisplay))entry.styles.position='relative';
-  entry.styles['z-index']=String(index+1);patch(ns[i],entry)
+ next.forEach(function(i,index){
+  var n=ns[i],e=state.edits[page+':'+i]||(state.edits[page+':'+i]={mode:'inherit',styles:{}});
+  e.styles||(e.styles={});
+  // Never use negative z-index: that would put photos under .slide background.
+  if(doc.defaultView.getComputedStyle(n).position==='static')e.styles.position='relative';
+  e.styles['z-index']=String(index+1);
+  patch(n,e)
  });
- dirtyStatus();showSelection();$('status').textContent='Aynı kapsayıcıda katman sırası değişti'
+ dirtyStatus();showSelection();
+ var movedButton=document.querySelector('#layers button[data-layer-id="'+source+'"]');
+ movedButton?.scrollIntoView({block:'nearest'});
+ $('status').textContent=branch.grouped
+  ?'Kapsayıcı birlikte taşındı: '+layerPath(a)+'. İçindeki öğelerin konumu korunuyor.'
+  :'Katman sırası değişti: '+layerPath(a)
+}
+function layerTree(){
+ var ns=nodes(),root=doc.querySelector('.slide'),visible=new Set(ns.filter(function(n,i){return !isDeleted(i)}));
+ var byParent=new Map();ns.forEach(function(n,i){
+  if(!visible.has(n))return;
+  var parent=n.parentElement;
+  while(parent!==root&&!visible.has(parent))parent=parent.parentElement;
+  if(!byParent.has(parent))byParent.set(parent,[]);
+  byParent.get(parent).push(i)
+ });
+ byParent.forEach(function(ids){ids.sort(function(a,b){return zOf(b)-zOf(a)||b-a})});
+ var rows=[],seen=new Set();
+ function walk(parent,depth){
+  (byParent.get(parent)||[]).forEach(function(i){
+   if(seen.has(i))return;seen.add(i);
+   var n=ns[i],descendants=byParent.get(n)||[];
+   rows.push({id:i,depth:depth,hasChildren:descendants.length>0,element:n});
+   walk(n,depth+1)
+  })
+ }
+ walk(root,0);return rows
 }
 function layers(){
- var out=$('layers');out.innerHTML='';
+ var out=$('layers'),previousScroll=out.scrollTop;out.innerHTML='';
  var query=$('layer-search')?.value.toLocaleLowerCase('tr')||'';
- ux.groupLayers(layerEntries(),linkedGroups()).forEach(function(group){
-  var members=group.items.slice().sort(function(a,b){return zOf(b.id)-zOf(a.id)||b.id-a.id});
-  var matches=members.filter(function(item){var n=nodes()[item.id];return !query||(group.label+' '+n.tagName+' '+item.name).toLocaleLowerCase('tr').includes(query)});
-  if(!matches.length)return;
-  var box=document.createElement('details');box.className='layer-group';box.open=query?true:groupOpen[page+':'+group.id]!==false;
-  var summary=document.createElement('summary'),title=document.createElement('span'),count=document.createElement('small');
-  title.textContent=group.label;count.textContent=matches.length;
-  summary.append(title,count);box.appendChild(summary);
-  box.addEventListener('toggle',function(){if(!query)groupOpen[page+':'+group.id]=box.open});
-  var inner=document.createElement('div');inner.className='layer-group-inner';
-  matches.forEach(function(item){
-   var n=nodes()[item.id],b=document.createElement('button');
-   b.type='button';b.draggable=true;b.dataset.layerId=String(item.id);
-   b.className='layer'+(selectedIds.includes(item.id)?' selected':'');
-   var grip=document.createElement('span');grip.className='grip';grip.textContent='⠿';
-   var name=document.createElement('span');name.className='layer-name';
-   name.textContent=n.tagName.toLowerCase()+'-'+(members.indexOf(item)+1)+' · '+(item.name||'görsel');
-   b.append(grip,name);b.title=name.textContent;
-   b.onclick=function(ev){choose(item.id,ev.shiftKey)};
-   b.oncontextmenu=function(ev){ev.preventDefault();if(!selectedIds.includes(item.id))choose(item.id,false);openContextMenu(ev.clientX,ev.clientY)};
-   b.addEventListener('dragstart',function(ev){dragLayerId=item.id;b.classList.add('dragging-layer');ev.dataTransfer.effectAllowed='move';ev.dataTransfer.setData('text/plain',String(item.id))});
-   b.addEventListener('dragover',function(ev){ev.preventDefault();ev.dataTransfer.dropEffect='move';b.classList.add('drop-target')});
-   b.addEventListener('dragleave',function(){b.classList.remove('drop-target')});
-   b.addEventListener('dragend',function(){dragLayerId=null;b.classList.remove('dragging-layer');b.classList.remove('drop-target')});
-   b.addEventListener('drop',function(ev){
-    ev.preventDefault();b.classList.remove('drop-target');
-    var source=dragLayerId===null?Number(ev.dataTransfer.getData('text/plain')):dragLayerId;
-    dragLayerId=null;if(Number.isInteger(source))moveLayer(source,item.id)
-   });
-   inner.appendChild(b)
+ var all=layerTree(),matches=all.filter(function(item){
+  var name=layerName(item.element);
+  return !query||(name+' '+layerPath(item.id)).toLocaleLowerCase('tr').includes(query)
+ });
+ var box=document.createElement('details');box.className='layer-group';box.open=!!query||groupOpen[page+':layer-tree']!==false;
+ box.addEventListener('toggle',function(){if(!query)groupOpen[page+':layer-tree']=box.open});
+ var summary=document.createElement('summary'),title=document.createElement('span'),count=document.createElement('small');
+ title.textContent='Katman sırası · üstteki önde';count.textContent=matches.length;
+ summary.append(title,count);box.appendChild(summary);
+ var inner=document.createElement('div');inner.className='layer-group-inner';
+ matches.forEach(function(item){
+  var n=item.element,b=document.createElement('button');
+  b.type='button';b.draggable=true;b.dataset.layerId=String(item.id);
+  b.dataset.layerDepth=String(item.depth);
+  b.style.paddingLeft=(7+item.depth*13)+'px';
+  b.className='layer'+(selectedIds.includes(item.id)?' selected':'')+(item.hasChildren?' layer-container':'');
+  var grip=document.createElement('span');grip.className='grip';grip.textContent='⠿';
+  var name=document.createElement('span');name.className='layer-name';
+  name.textContent=(item.hasChildren?'▣ ':'')+layerName(n);
+  b.append(grip,name);
+  b.title=layerPath(item.id)+' · '+(item.hasChildren?'Alt öğeler bu kapsayıcıyla birlikte sıralanır':'Bağımsız katman');
+  b.onclick=function(ev){choose(item.id,ev.shiftKey)};
+  b.oncontextmenu=function(ev){ev.preventDefault();if(!selectedIds.includes(item.id))choose(item.id,false);openContextMenu(ev.clientX,ev.clientY)};
+  b.addEventListener('dragstart',function(ev){dragLayerId=item.id;b.classList.add('dragging-layer');ev.dataTransfer.effectAllowed='move';ev.dataTransfer.setData('text/plain',String(item.id))});
+  b.addEventListener('dragover',function(ev){ev.preventDefault();ev.dataTransfer.dropEffect='move';b.classList.add('drop-target')});
+  b.addEventListener('dragleave',function(){b.classList.remove('drop-target')});
+  b.addEventListener('dragend',function(){dragLayerId=null;b.classList.remove('dragging-layer');b.classList.remove('drop-target')});
+  b.addEventListener('drop',function(ev){
+   ev.preventDefault();b.classList.remove('drop-target');
+   var source=dragLayerId===null?Number(ev.dataTransfer.getData('text/plain')):dragLayerId;
+   dragLayerId=null;
+   var zone=ev.clientY>0?ev.clientY<b.getBoundingClientRect().top+b.offsetHeight/2:true;
+   if(Number.isInteger(source))moveLayer(source,item.id,zone)
   });
-  box.appendChild(inner);out.appendChild(box)
- })
+  inner.appendChild(b)
+ });
+ box.appendChild(inner);out.appendChild(box);out.scrollTop=previousScroll
+}
+function layerName(n){
+ if(n.classList?.contains('veil'))return 'Fotoğraf filtresi · koyu gradyan';
+ if(n.classList?.contains('photo')&&n.tagName==='IMG')return 'Arka plan fotoğrafı';
+ if(n.tagName==='IMG')return n.getAttribute('alt')||'Logo / görsel';
+ var txt=String(n.textContent||'').trim().replace(/\s+/g,' ');
+ return(txt.slice(0,39)||(n.className?.baseVal||n.className||n.tagName.toLowerCase()))
 }
 
 $('groups-open').onclick=function(){document.querySelectorAll('#layers details').forEach(function(x){x.open=true})};
@@ -989,9 +1047,9 @@ $('context-menu').addEventListener('click',function(ev){
  if(action.startsWith('align-')){var bt=document.querySelector('#multi-align [data-align="'+action.slice(6)+'"]')||document.querySelector('#props [data-align="'+action.slice(6)+'"]');if(bt)bt.click();return}
  if(action==='front'||action==='back'){
   selectedIds.slice().forEach(function(i){
-   var peers=peerLayers(i).map(function(x){return x.id}).filter(function(j){return j!==i&&stackTier(nodes()[i])===stackTier(nodes()[j])}).sort(function(a,b){return zOf(a)-zOf(b)||a-b});
+   var peers=peerLayers(i).map(function(x){return x.id}).filter(function(j){return j!==i}).sort(function(a,b){return zOf(a)-zOf(b)||a-b});
    if(!peers.length)return;
-   moveLayer(i,action==='front'?peers.at(-1):peers[0],action==='back');
+   moveLayer(i,action==='front'?peers.at(-1):peers[0],action==='front');
   });return
  }
  if(action==='reset'){
