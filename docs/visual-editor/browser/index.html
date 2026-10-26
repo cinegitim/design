@@ -1226,6 +1226,10 @@ $('importFile').onchange=async function(){
  try{
   if(file.size>16000000)throw new Error('Arşiv 16 MB sınırını aşıyor');
   var raw=JSON.parse(await file.text()),back=codec.parseArchive(raw,slug,pages.length,brand);
+  if(sourceCoverAdded()&&raw.sourcePageSchema!==2){
+   back.versions.forEach(function(v){v.state=discovery.migrateLegacyPhase2CState(v.state)});
+   back.current=discovery.migrateLegacyPhase2CState(back.current)
+  }
   var existing=getDB(),next=Math.max(1,...(existing.versions||[]).map(function(v){return v.version}))+1;
   var items=back.versions.map(function(v){return{version:v.version,note:v.note,state:v.state,time:v.time}});
   if(!items.length||JSON.stringify(items[items.length-1].state)!==JSON.stringify(back.current))items.push({version:1,note:'Taşınan çalışma taslağı',state:back.current,time:''});
