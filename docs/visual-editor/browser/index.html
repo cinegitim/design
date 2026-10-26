@@ -220,11 +220,15 @@ dialog h2{font-size:15px;font-weight:680}
 .catalog-pick input,.catalog-pick select{font-size:11px;height:28px;border:1px solid #3a4b5c;border-radius:5px;background:#111c28;color:#edf3f8;padding:4px 8px;min-width:0}
 .catalog-pick input{width:125px;flex:0 1 125px}
 .catalog-pick select{width:245px;flex:1 1 140px}
+.catalog-pick .catalog-version{width:112px;flex:0 1 112px}
+.catalog-pick .catalog-status{font-size:10px;max-width:120px;white-space:nowrap;color:#b3c9d5;border:1px solid #425566;border-radius:6px;padding:5px 7px}
+.catalog-pick .catalog-status.published{color:#c5eccd;border-color:#39674b}
+@media(max-width:760px){.catalog-pick .catalog-version{width:76px;flex:0 1 76px}.catalog-pick .catalog-status{max-width:90px}}
 header #product{display:none}
 @media(max-width:1100px){.catalog-pick input{width:86px;flex-basis:86px}.catalog-pick select{width:155px}header .controls{font-size:9px}}
 @media(max-width:760px){.catalog-pick{max-width:56vw}.catalog-pick input{width:72px;flex-basis:72px}}
 </style></head><body>
-<header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><div class="catalog-pick"><input type="search" id="catalog-search" aria-label="Tasarımlarda ara" placeholder="Tasarım ara…"><select id="catalog-select" aria-label="Düzenlenecek tasarım"></select></div><a href="../../inventory/" title="Bütün tasarımların ve sürümlerin envanteri">Üretim Envanteri</a><a href="../">← Visual Editor</a></div></header>
+<header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><div class="catalog-pick"><input type="search" id="catalog-search" aria-label="Tasarımlarda ara" placeholder="Tasarım ara…"><select id="catalog-select" aria-label="Düzenlenecek tasarım"></select><select id="catalog-version" class="catalog-version" aria-label="Tasarım sürümü"></select><span id="catalog-status" class="catalog-status" title="Instagram'da yayımlanma ve tasarım inceleme durumu">İncelemede</span></div><a href="../">← Visual Editor</a></div></header>
 <div class="layout" id="workspace"><aside><div class="compact-bar"><h2>Katmanlar</h2><div class="controls"><button class="btn" id="groups-open" title="Tümünü aç">＋</button><button class="btn" id="groups-close" title="Tümünü kapat">−</button></div></div>
 <input id="layer-search" class="sidebar-search" type="search" placeholder="Katman ara…" aria-label="Katmanlarda ara">
 <div id="layers" class="layers"></div>
@@ -643,6 +647,17 @@ Array.from(document.querySelectorAll('[data-align]')).forEach(function(btn){btn.
 
 function copy(o){return JSON.parse(JSON.stringify(o))}
 function getDB(){try{return JSON.parse(localStorage.getItem(key)||'{"versions":[]}')}catch(e){return{versions:[]}}}
+function sourceCoverAdded(){return /^instagram-phase-2c-[a-d]-/.test(slug)}
+function ensureSourcePageSchema(){
+ if(!sourceCoverAdded())return;
+ var raw=localStorage.getItem(key);if(!raw)return;
+ var db=JSON.parse(raw);if(db.sourcePageSchema===2)return;
+ var saved=db.versions||[];if(!Array.isArray(saved))throw Error('Eski sürüm dizisi geçersiz');
+ var next=Object.assign({},db,{sourcePageSchema:2,versions:saved.map(function(v){return Object.assign({},v,{state:discovery.migrateLegacyPhase2CState(v.state)})})});
+ var backupKey=key+':pre-cover-20261026';
+ if(!localStorage.getItem(backupKey))localStorage.setItem(backupKey,raw);
+ localStorage.setItem(key,JSON.stringify(next))
+}
 function allV(){return getDB().versions||[]}
 function nodes(){if(!doc)return[];var selText=codec.selector;return Array.from(doc.querySelectorAll('.slide '+selText))}
 function edit(){var k=page+':'+sel;if(!state.edits[k])state.edits[k]={styles:{},mode:'inherit'};return state.edits[k]}
@@ -1191,7 +1206,7 @@ $('mode').onchange=function(){if(sel<0||this.disabled)return;checkpoint();var e=
 $('color').oninput=function(){if(sel<0||$('mode').disabled)return;if(!colorSessions.direct){checkpoint();colorSessions.direct=true}var e=edit();e.mode='direct';e.color=this.value;patch(nodes()[sel],e);changed()};
 $('color').onchange=function(){colorSessions.direct=false};['paper','ink','red'].forEach(function(k){$(k).oninput=function(){if(!colorSessions[k]){checkpoint();colorSessions[k]=true}state.colors[k]=this.value;norm();changed()};$(k).onchange=function(){colorSessions[k]=false}});
 function download(name,s,type){var a=document.createElement('a'),b=new Blob([s],{type:type});a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},5000)}
-function dump(){return codec.makeArchive(slug,allV(),state,brand)}
+function dump(){var result=codec.makeArchive(slug,allV(),state,brand);if(sourceCoverAdded())result.sourcePageSchema=2;return result}
 function safeStatus(e){
  var message=e&&e.name==='QuotaExceededError'?'Tarayıcı depolaması dolu. Arşivi JSON olarak indir; yeni sürüm bu tarayıcıya kaydedilemedi':String(e&&e.message||e);
  $('status').textContent='İşlem durduruldu: '+message;
@@ -1211,13 +1226,18 @@ $('importFile').onchange=async function(){
  try{
   if(file.size>16000000)throw new Error('Arşiv 16 MB sınırını aşıyor');
   var raw=JSON.parse(await file.text()),back=codec.parseArchive(raw,slug,pages.length,brand);
+  if(sourceCoverAdded()&&raw.sourcePageSchema!==2){
+   back.versions.forEach(function(v){v.state=discovery.migrateLegacyPhase2CState(v.state)});
+   back.current=discovery.migrateLegacyPhase2CState(back.current)
+  }
   var existing=getDB(),next=Math.max(1,...(existing.versions||[]).map(function(v){return v.version}))+1;
   var items=back.versions.map(function(v){return{version:v.version,note:v.note,state:v.state,time:v.time}});
   if(!items.length||JSON.stringify(items[items.length-1].state)!==JSON.stringify(back.current))items.push({version:1,note:'Taşınan çalışma taslağı',state:back.current,time:''});
   if((existing.versions||[]).length+items.length>25||next+items.length>27)throw new Error('25 sürüm sınırı; önce mevcut arşivi yedekleyin');
   if(!confirm(items.length+' sürüm bu tarayıcıya yeni vN kayıtları olarak eklenecek. Mevcut sürümlere dokunulmayacak. Onaylıyor musun?'))return;
   var fresh=items.map(function(v,i){return{version:next+i,note:'İçe aktarıldı: '+String(v.note||'v'+v.version).slice(0,110),state:copy(v.state),time:new Date().toISOString(),importedFrom:v.version}});
-  var updated={versions:(existing.versions||[]).concat(fresh)};
+  var updated=Object.assign({},existing,{versions:(existing.versions||[]).concat(fresh)});
+  if(sourceCoverAdded())updated.sourcePageSchema=2;
   localStorage.setItem(key,JSON.stringify(updated));
   state=copy(fresh[fresh.length-1].state);current=fresh[fresh.length-1].version;dirty=false;savedState=copy(state);history.clear();historyButtons();
   ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
@@ -1239,7 +1259,8 @@ $('confirm').onclick=async function(){
  try{
   var checked=codec.validateState(state,pages.length);
   var item={version:n,note:$('note').value.trim(),state:checked,time:new Date().toISOString()};
-  var updated={versions:(db.versions||[]).concat(item)};
+  var updated=Object.assign({},db,{versions:(db.versions||[]).concat(item)});
+  if(sourceCoverAdded())updated.sourcePageSchema=2;
   if(folder){
    var versions=await folder.getDirectoryHandle('versions',{create:true}),dirname='v'+n;
    try{await versions.getDirectoryHandle(dirname,{create:false});throw new Error(dirname+' klasörü zaten var; üzerine yazılmadı')}
@@ -1268,14 +1289,35 @@ function renderCatalog(filter){
  picker.replaceChildren();
  var families={};
  catalog.forEach(function(item){
-  if(query&&!(item.title+' '+item.id+' '+item.family).toLocaleLowerCase('tr').includes(query))return;
-  if(!families[item.family]){var group=document.createElement('optgroup');group.label=item.family;picker.appendChild(group);families[item.family]=group}
+  var haystack=(item.title+' '+item.id+' '+item.family+' '+(item.category||'')+' '+
+   (item.versions||[]).map(function(v){return v.label+' '+v.id}).join(' ')).toLocaleLowerCase('tr');
+  if(query&&!haystack.includes(query))return;
+  var familyName=(item.brand==='cin-egitim'?'Çin Eğitim':'Asya’da Eğitim')+' · '+(item.category||item.family);
+  if(!families[familyName]){var group=document.createElement('optgroup');group.label=familyName;picker.appendChild(group);families[familyName]=group}
   var option=document.createElement('option');option.value=item.id;
-  option.textContent=item.title+' · '+item.pages.length+(item.kind==='image'?' görsel':' sayfa');
-  families[item.family].appendChild(option)
+  option.textContent=item.title+' · '+(item.versions||[]).length+' sürüm'+
+   (item.lifecycle==='published'?' · Yayımlandı':'');
+  families[familyName].appendChild(option)
  });
- if(catalog.some(function(x){return x.id===previous})&&picker.querySelector('option[value="'+previous+'"]'))picker.value=previous;
- $('catalog-search').title=catalog.length+' tasarım paketi · kaynaklar otomatik keşfedilir'
+ var active=discovery.byId(catalog,previous);
+ if(active&&picker.querySelector('option[value="'+(active.groupId||active.id)+'"]'))picker.value=active.groupId||active.id;
+ $('catalog-search').title=catalog.length+' tekil tasarım ailesi · önceki sürümler tasarım içinde'
+}
+function renderProductVersions(selected){
+ var sel=$('catalog-version'),all=selected.versions||[selected];sel.replaceChildren();
+ all.forEach(function(v){var option=document.createElement('option');option.value=v.id;
+   option.textContent=v.label||'güncel';sel.appendChild(option)});
+ sel.value=selected.id;sel.disabled=all.length<=1;
+ var status=$('catalog-status'),pub=selected.publications||[];
+ var published=selected.lifecycle==='published'&&pub.length>0;
+ var matchVersion=published&&pub.some(function(p){return p.productId===selected.id});
+ var familyOnly=!published&&selected.familyPublications&&selected.familyPublications.length>0;
+ status.textContent=published?(matchVersion?'Yayımlandı':'Yayımlandı · aile'):(familyOnly?'Aile yayımlandı':'İncelemede');
+ status.classList.toggle('published',published||familyOnly);
+ status.title=published?('Instagram paylaşımı: '+pub.map(function(p){return p.url}).join(', ')+
+   (matchVersion?' · sürüm eşleşti':' · yayımlanan kesin sürüm ayrıca doğrulanmalı')):
+   familyOnly?'Tasarım ailesi Instagram\'da yayımlandı, ancak bu sürümün yayımlandığı doğrulanmadı.':
+   'Instagram yayın kaydı henüz doğrulanmadı; tasarım sitesinde bulunması Instagram paylaşımı değildir.'
 }
 function openProduct(productId){
  var selected=discovery.byId(catalog,productId);
@@ -1286,12 +1328,14 @@ function openProduct(productId){
  pages=selected.pages.map(function(p){return new URL('../../'+p,location.href).href});
  state={colors:Object.assign({},defaults),edits:{},groups:{}};current=1;dirty=false;
  history.clear();historyButtons();groupOpen={};PASTEBOARD=320;
+ try{ensureSourcePageSchema()}catch(e){safeStatus(e);return false}
  var versions=allV();
  if(versions.length){current=Math.max(...versions.map(function(x){return x.version}));state=copy(versions.find(function(x){return x.version===current}).state)}
  savedState=copy(state);
  ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
  $('product').textContent=selected.title;
- $('catalog-select').value=slug;
+ $('catalog-select').value=selected.groupId||slug;
+ renderProductVersions(selected);
  renderV();
  var q=new URLSearchParams(location.search);q.set('product',slug);
  window.history.replaceState(null,'',location.pathname+'?'+q.toString()); // URL-only; browser archive storage unchanged.
@@ -1300,7 +1344,12 @@ function openProduct(productId){
 $('catalog-search').oninput=function(){renderCatalog(this.value)};
 $('catalog-select').onchange=function(){
  var old=slug,target=this.value;
- if(dirty&&!confirm('Kaydedilmemiş düzenlemeler var. Yine de tasarımı değiştir?')){this.value=old;return}
+ if(dirty&&!confirm('Kaydedilmemiş düzenlemeler var. Yine de tasarımı değiştir?')){this.value=discovery.byId(catalog,old)?.groupId||old;return}
+ openProduct(target)
+};
+$('catalog-version').onchange=function(){
+ var old=slug,target=this.value;
+ if(dirty&&!confirm('Kaydedilmemiş düzenlemeler var. Sürümü değiştir?')){this.value=old;return}
  openProduct(target)
 };
 async function init(){

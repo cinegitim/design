@@ -79,20 +79,23 @@ console.log(JSON.stringify({files:inv.filesCount,groups:inv.groupsCount,summary:
         summary = json.loads(output.stdout)
         self.assertEqual(summary["files"], 3500)
 
-    def test_index_is_review_only_and_editor_not_silently_filtered(self):
-        page = VIEWER.read_text(encoding="utf8")
+    def test_inventory_is_machine_readable_without_unrequested_ui(self):
+        self.assertFalse(VIEWER.exists(), "The additional inventory interface must not return")
         module = CATALOG.read_text(encoding="utf8")
-        self.assertIn("no_files_moved:true", page)
-        self.assertIn("proposal_only:true", page)
-        self.assertIn("retirement", page.lower() + " retirement")
-        self.assertIn("archive-review-proposal.json", page)
         self.assertIn("snapshot.json", module)
         self.assertIn("function classify(p)", module)
         self.assertNotIn("DELETE FROM", module)
         self.assertNotIn("git rm", module)
         editor = (ROOT / "docs/visual-editor/browser/catalog.js").read_text(encoding="utf8")
         self.assertIn("function fromPaths(paths)", editor)
-        self.assertNotIn("retired_products", editor)
+        self.assertIn("function groupRecords(raw,config)", editor)
+        self.assertIn("product-groups.json", editor)
+        self.assertIn("socialPublication", editor)
+        source = (ROOT / "docs/visual-editor/browser/product-groups.json").read_text(encoding="utf8")
+        self.assertEqual(len(json.loads(source)["groups"]), 14)
+        archive = json.loads((ROOT / "docs/archive/retired-collections.json").read_text(encoding="utf8"))
+        self.assertEqual(sum(x["fileCount"] for x in archive["collections"]), archive["filesTotal"])
+        self.assertEqual(archive["transferState"], "archive-branch-verified-source-paths-preserved")
 
 
 if __name__ == "__main__":

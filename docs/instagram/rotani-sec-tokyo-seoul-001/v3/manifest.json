@@ -1,7 +1,7 @@
 {
-  "title": "Asya'da Eğitim — Rotanı Seç #001 / V2 — Tokyo mu, Seul mü?",
+  "title": "Asya'da Eğitim — Rotanı Seç #001 / V3 — Tokyo mu, Seul mü?",
   "campaign": "Rotanı Seç / 001",
-  "revision": "v2",
+  "revision": "v3",
   "status": "HUMAN CAMPAIGN REVIEW PENDING — NOT SOCIAL-PUBLISHED",
   "dimensions": [
     1080,
@@ -9,7 +9,7 @@
   ],
   "colour_space": "sRGB",
   "production_method": "Licensed documentary photography plus a deterministic measured HTML/CSS/SVG layout. Text geometry is measured in the browser, composited as editable SVG runs, and validated by an automated geometry and contrast audit.",
-  "previous_revision": "../",
+  "previous_revision": "../v2/",
   "exact_copy": {
     "01-admission-letter": [
       "ROTANI SEÇ / 001",
