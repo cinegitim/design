@@ -262,7 +262,73 @@
     "platform": "instagram",
     "profile": "@asyadaegitim",
     "verification": "exact post permalink or trusted publication record required",
-    "posts": []
+    "posts": [
+      {
+        "groupId": "instagram-carousel-01",
+        "productId": null,
+        "url": "https://www.instagram.com/asyadaegitim/p/DePgrvQDdeB/",
+        "publishedAt": "2026-10-08T17:50:43Z",
+        "verified": true,
+        "source": "direct Instagram profile/post and first-slide copy",
+        "matching": "design family confirmed; exact source revision not identified"
+      },
+      {
+        "groupId": "instagram-tsinghua-atlas-2027",
+        "productId": null,
+        "url": "https://www.instagram.com/asyadaegitim/p/DeXR51rDR18/",
+        "publishedAt": "2026-10-11T18:15:30Z",
+        "verified": true,
+        "source": "direct Instagram profile/post caption: Tsinghua",
+        "matching": "family matched; revision unconfirmed"
+      },
+      {
+        "groupId": "instagram-rotani-sec-tokyo-seoul-001",
+        "productId": null,
+        "url": "https://www.instagram.com/asyadaegitim/p/DeZ4bkdDaDr/",
+        "publishedAt": "2026-10-12T18:30:38Z",
+        "verified": true,
+        "source": "direct Instagram profile/post caption: Tokyo mu, Seul mu?",
+        "matching": "family matched; revision unconfirmed"
+      },
+      {
+        "groupId": "instagram-basvuru-rehberi",
+        "productId": null,
+        "url": "https://www.instagram.com/asyadaegitim/p/Decd756DYE9/",
+        "publishedAt": "2026-10-13T18:36:50Z",
+        "verified": true,
+        "source": "direct Instagram post: Chinese and English bachelor/master/PhD programmes",
+        "matching": "family matched; revision unconfirmed"
+      },
+      {
+        "groupId": "instagram-burs-dosyasi-gks-2027-001",
+        "productId": "instagram-burs-dosyasi-gks-2027-001",
+        "url": "https://www.instagram.com/asyadaegitim/p/DekOFQkDe7X/",
+        "publishedAt": "2026-10-16T18:52:14Z",
+        "verified": true,
+        "source": "direct Instagram post cover matching exact manifest copy 'Kore devlet bursunu kaçırdım diye üzülme.'",
+        "matching": "exact content and single version"
+      },
+      {
+        "groupId": null,
+        "productId": null,
+        "url": "https://www.instagram.com/asyadaegitim/p/DepRg6tDbNY/",
+        "publishedAt": null,
+        "verified": true,
+        "source": "direct @asyadaegitim profile post: 'Dünya Çin'e bakıyor. Şanghay'da okumaya ne dersin?'",
+        "matching": "published post but no corresponding proven design package in current Git catalogue"
+      },
+      {
+        "groupId": null,
+        "productId": null,
+        "url": "https://www.instagram.com/asyadaegitim/p/Der8OLnjQWg/",
+        "publishedAt": null,
+        "verified": true,
+        "source": "direct @asyadaegitim profile post: 'Yurtdışı eğitimin tek yönü yok.'",
+        "matching": "published post; thematic overlap with Launch Creative 02, exact artwork match not established"
+      }
+    ],
+    "checkedOn": "2026-10-26",
+    "totalInstagramPostsSeen": 7
   },
   "futureProducts": "unmapped new products remain visible in the active catalog; never silently archived"
 }
