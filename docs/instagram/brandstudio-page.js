@@ -94,11 +94,11 @@
   function resourceType(label,href) {
     var text=(label+" "+href).toLocaleLowerCase("tr")
       .replace(/ı/g,"i").normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-    if(/mobile-324|324.contact|mobile.\\d+.contact|375.469|paket|download|indir|\\.zip(?:$|[?#])|source\\/|\\/editable\\/|\\.svg(?:$|[?#])/.test(text))
+    if(/mobile-324|324.contact|mobile.\d+.contact|375.469|paket|download|indir|\.zip(?:$|[?#])|source\/|\/editable\/|\.svg(?:$|[?#])/.test(text))
       return "sources";
-    if(/v1.v2|v[1-9].v[1-9]|revision.comparison|revizyon karsilastirmasi|surum gecmisi|\\bversiyon\\b|v[1-9].galeri|\\bv1\\b|eski surum|onceki surum/.test(text))
+    if(/v1.v2|v[1-9].v[1-9]|revision.comparison|revizyon karsilastirmasi|surum gecmisi|\bversiyon\b|v[1-9].galeri|\bv1\b|eski surum|onceki surum/.test(text))
       return "history";
-    if(/factual|kaynak raporu|kaynak ve dogrulama|quality.review|quality.review|gorsel qa|kalite incele|caption|atif|credit|fotoraf kaynak|fotograf kaynak|photography|visual.qa|manifest|geometry.audit|exact.copy|\\.(?:md|json)(?:$|[?#])|teknik dogrulama|uretim ve sanat yonetimi|platform.adaptation/.test(text))
+    if(/factual|kaynak raporu|kaynak ve dogrulama|quality.review|quality.review|gorsel qa|kalite incele|caption|atif|credit|fotoraf kaynak|fotograf kaynak|photography|visual.qa|manifest|geometry.audit|exact.copy|\.(?:md|json)(?:$|[?#])|teknik dogrulama|uretim ve sanat yonetimi|platform.adaptation/.test(text))
       return "audit";
     if(/mobile|mobil|contact.sheet|temas sayfa|iletisim sayfa|feed.cover|mockup|onizleme|preview|profil izgarasi|karsilastirma.seridi/.test(text))
       return "preview";
