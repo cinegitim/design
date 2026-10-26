@@ -431,7 +431,7 @@ function setRectangle(n,rect,resize){
  // Static flex/grid items need to retain their original layout space.
  // Converting a footer logo to absolute collapses its parent and moves it.
  var original=sourceNodes[index];
- if(original?.position==='static'&&original.transform==='none'&&!styles.position){
+ if(original&&['static','absolute','relative'].includes(original.position)&&original.transform==='none'&&!styles.position){
   var previous=String(styles.transform||'').match(/^translate\((-?\d+)px,(-?\d+)px\)$/);
   var tx=previous?Number(previous[1]):0,ty=previous?Number(previous[2]):0;
   tx+=Math.round(rect.x-pos(n).x);ty+=Math.round(rect.y-pos(n).y);
@@ -448,7 +448,11 @@ function setRectangle(n,rect,resize){
  if(resize){
   styles.width=Math.round(rect.w)+'px';
   if(!identityImage(n)){styles.height=Math.round(rect.h)+'px';styles['max-width']='none'}
- }else if(!styles.width)styles.width=Math.round(rect.w)+'px';
+ }else {
+  if(!styles.width)styles.width=Math.round(rect.w)+'px';
+  // Inset-based overlays collapse to zero height if their bottom anchor is cleared.
+  if(n.tagName!=='IMG'&&!styles.height)styles.height=Math.round(rect.h)+'px';
+ }
  if(identityImage(n))delete styles.height;
  patch(n,e)
 }
@@ -712,18 +716,39 @@ function layerPath(i){
  var n=nodes()[i],rank=items.findIndex(function(e){return e.id===i})+1;
  return group.label+' / '+n.tagName.toLowerCase()+'-'+rank
 }
-function moveLayer(source,target){
- if(source===target||source===null||target===null)return;
- var sequence=allByStack().filter(function(i){return i!==source}),at=sequence.indexOf(target);
+// Scope z-index updates to DOM siblings; global negative z-index values
+// send photos and text behind the slide background (black canvas).
+function stackTier(n){
+ if(n.parentElement?.classList?.contains('slide')){
+  if(n.classList.contains('photo')&&n.tagName==='IMG')return 0;
+  if(n.classList.contains('veil'))return 1;
+ }
+ return 2
+}
+function peerLayers(i){
+ var ns=nodes(),n=ns[i];if(!n)return [];
+ return ns.map(function(el,id){return{id:id,node:el}}).filter(function(item){return item.node.parentElement===n.parentElement&&!isDeleted(item.id)})
+}
+function moveLayer(source,target,before){
+ if(source===target||!Number.isInteger(source)||!Number.isInteger(target))return;
+ var ns=nodes(),from=ns[source],to=ns[target];if(!editable(from)||!editable(to))return;
+ if(from.parentElement!==to.parentElement){$('status').textContent='Farklı kapsayıcılar arasında sıralama desteklenmiyor; tasarım korunuyor';return}
+ if(stackTier(from)!==stackTier(to)){
+  $('status').textContent='Fotoğraf → filtre → içerik sırası korunuyor. Filtrenin opaklığını ayrı düzenleyebilirsin';return
+ }
+ var peers=peerLayers(source),order=peers.map(function(item){return item.id}).sort(function(a,b){return stackTier(ns[a])-stackTier(ns[b])||zOf(a)-zOf(b)||a-b});
+ if(order.length>30){$('status').textContent='Bu kapsayıcıda çok fazla katman var';return}
+ var sequence=order.filter(function(i){return i!==source}),at=sequence.indexOf(target);
  if(at<0)return;
- sequence.splice(at+1,0,source);
- if(sequence.length>61){$('status').textContent='Katman sınırı aşıldı';return}
+ sequence.splice(at+(before?0:1),0,source);
+ if(order.every(function(id,i){return sequence[i]===id}))return;
  checkpoint();
  sequence.forEach(function(i,index){
   var entry=state.edits[page+':'+i]||(state.edits[page+':'+i]={mode:'inherit',styles:{}});
-  entry.styles['z-index']=String(index-30);patch(nodes()[i],entry)
+  entry.styles||(entry.styles={});
+  entry.styles['z-index']=String(index+1);patch(ns[i],entry)
  });
- dirtyStatus();showSelection();$('status').textContent='Katman sırası değişti'
+ dirtyStatus();showSelection();$('status').textContent='Aynı kapsayıcıda katman sırası değişti'
 }
 function layers(){
  var out=$('layers');out.innerHTML='';
@@ -838,9 +863,8 @@ function showSelection(){
  var ns=nodes(),count=selectedIds.length,n=ns[sel];
  ns.forEach(function(x,i){
   x.style.outline=selectedIds.includes(i)?'3px dashed #ffa95f':'';
-  // Full-cover filters remain visible but do not intercept photo clicks.
-  // Selecting the filter in Layers re-enables direct filter dragging.
-  if(x.classList.contains('veil'))x.style.pointerEvents=selectedIds.includes(i)?'auto':'none';
+  // The gradient is clickable. Repeated clicks cycle filter / underlying photo.
+  if(x.classList.contains('veil'))x.style.pointerEvents='auto';
  });
  $('blank').hidden=count>0;$('props').hidden=count!==1;$('selection-tools').hidden=count<2;
  $('multi-align').hidden=count<2;
@@ -960,9 +984,11 @@ $('context-menu').addEventListener('click',function(ev){
  if(action==='delete'){deleteSelection();return}
  if(action.startsWith('align-')){var bt=document.querySelector('#multi-align [data-align="'+action.slice(6)+'"]')||document.querySelector('#props [data-align="'+action.slice(6)+'"]');if(bt)bt.click();return}
  if(action==='front'||action==='back'){
-  checkpoint();
-  selectedIds.forEach(function(i){var n=nodes()[i],key=page+':'+i,e=state.edits[key]||(state.edits[key]={mode:'inherit',styles:{}});e.styles['z-index']=action==='front'?'20':'-20';patch(n,e)});
-  changed();showSelection();return
+  selectedIds.slice().forEach(function(i){
+   var peers=peerLayers(i).map(function(x){return x.id}).filter(function(j){return j!==i&&stackTier(nodes()[i])===stackTier(nodes()[j])}).sort(function(a,b){return zOf(a)-zOf(b)||a-b});
+   if(!peers.length)return;
+   moveLayer(i,action==='front'?peers.at(-1):peers[0],action==='back');
+  });return
  }
  if(action==='reset'){
   var props=['position','left','top','right','bottom','width','height','margin','max-width'];
@@ -1030,7 +1056,13 @@ function beginInlineText(n,x,y){
 }
 function down(evt){
  closeContextMenu();
- var n=evt.target.closest('[data-edit-index]');
+ var hit=evt.target.closest('[data-edit-index]'),n=hit,cover=null,photo=null;
+ if(hit?.classList.contains('veil')){
+  photo=hit.previousElementSibling;
+  if(!(photo?.tagName==='IMG'&&photo.classList.contains('photo')&&photo.hasAttribute('data-edit-index')))photo=null;
+  if(photo&&selectedIds.includes(Number(photo.dataset.editIndex)))n=photo;
+  cover=hit;
+ }
  if(inlineEditing===n&&!evt.shiftKey){
   // A click while typing returns to layer selection, not caret placement.
   endInlineText();evt.preventDefault();return
@@ -1049,7 +1081,12 @@ function down(evt){
  }
  function up(e){
   doc.removeEventListener('pointermove',move);dragging=false;dragRecorded=false;
-  if(!moved&&wasSelected&&selectedIds.length===1&&textEligible(n))beginInlineText(n,e.clientX,e.clientY);
+  if(!moved&&cover&&photo&&!evt.shiftKey){
+   // First click selects filter; repeated click selects photo, then filter.
+   // While dragging, the selected one remains the drag target.
+   if(n===cover&&wasSelected)choose(Number(photo.dataset.editIndex),false);
+   else if(n===photo)choose(Number(cover.dataset.editIndex),false);
+  }else if(!moved&&wasSelected&&selectedIds.length===1&&textEligible(n))beginInlineText(n,e.clientX,e.clientY);
   if(moved)expandPasteboard()
  }
  doc.addEventListener('pointermove',move);doc.addEventListener('pointerup',up,{once:true});
