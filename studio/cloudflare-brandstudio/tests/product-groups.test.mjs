@@ -154,3 +154,20 @@ test('one actual gallery shows logos, profile images, and platform covers',()=>{
   assert.ok(publishedFiles.has(repoPath),'Gallery references untracked image: '+repoPath);
  }
 });
+
+test('review tiles expose compact, separately accessible icons within each card',()=>{
+ const ws=fs.readFileSync(path.join(root,'docs/workspaces/asyada-egitim/index.html'),'utf8');
+ assert.match(ws,/function quickIcon\(kind\)/);
+ assert.match(ws,/className='quick-action ig'|el\('a','quick-action ig'\)/);
+ assert.match(ws,/el\('a','quick-action edit'\)/);
+ assert.match(ws,/el\('nav','quick-actions'\)/);
+ assert.match(ws,/actions\.append\(editor\)/);
+ assert.match(ws,/wrap\.append\(actions\)/);
+ assert.match(ws,/proof\.setAttribute\('aria-label'/);
+ assert.match(ws,/editor\.setAttribute\('aria-label'/);
+ assert.doesNotMatch(ws,/visual-editor-action/);
+ assert.doesNotMatch(ws,/instagram-proof-link/);
+ assert.match(ws,/const pub=posts\.filter\(p=>pubUrl\(p\)/);
+ assert.match(ws,/tile\.href=url/);
+ assert.match(ws,/tile\.href='logos-and-covers\/'/);
+});
