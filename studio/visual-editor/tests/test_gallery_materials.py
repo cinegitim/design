@@ -87,7 +87,7 @@ class ProductMaterialDrawers(unittest.TestCase):
         for phrase in ("Mobil okunabilirlik", "Revizyon karşılaştırması",
                        "Kaynak, doğrulama ve atıf"):
             self.assertIn(phrase, html)
-        self.assertIn("const mobiles=document.querySelector", html.replace(",", " "))
+        self.assertIn("mobiles=document.querySelector('#mobiles')", html)
         self.assertIn('brandstudio-page.js', html)
         self.assertIn("organizeResources()", self.source)
 
