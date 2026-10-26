@@ -175,9 +175,13 @@ test("compact independent side panels with searchable layer list",()=>{
  assert.ok(first.indexOf('id="fs"')<first.indexOf('id="x"'));
  assert.ok(first.indexOf('id="x"')<first.indexOf('id="y"'));
 });
-test("layer drag reorder persists z-index, supports undo and shows read-only path",()=>{
- for(const token of ["function moveLayer(source,target,before)","b.draggable=true","dragstart","dragover","drop","moveLayer(source,item.id)","entry.styles['z-index']=String(index+1)","checkpoint();","function layerPath(i)"])
+test("layer drag reorder uses actual DOM hierarchy and updates real visual stacking",()=>{
+ for(const token of ["function siblingBranch(source,target)","function moveLayer(source,target,above)","function layerTree()","function layerName(n)","b.draggable=true","dragstart","dragover","drop","moveLayer(source,item.id,zone)","e.styles['z-index']=String(index+1)","checkpoint();","function layerPath(i)"])
   assert.ok(html.includes(token),"Missing stacking control "+token);
+ assert.match(html,/dragLayerId=null;/);
+ assert.match(html,/box\.open=!!query\|\|groupOpen\[page\+':layer-tree'\]!==false/);
+ assert.match(html,/movedButton\?\.scrollIntoView/);
+ assert.match(html,/layerTree\(\)/);
 });
 test("inline click-to-type caret saves only valid segments, with undo",()=>{
  for(const token of ["function beginInlineText(n,x,y)","function endInlineText()","doc.caretRangeFromPoint","n.setAttribute('contenteditable','true')","n.addEventListener('beforeinput'","n.addEventListener('input'","codec.validateState(draft,pages.length)","beginInlineText(n,e.clientX,e.clientY)"])
@@ -321,13 +325,15 @@ test("full-height gradient stays directly clickable and will not collapse during
  assert.match(html,/if\(n===cover&&wasSelected\)choose\(Number\(photo\.dataset\.editIndex\),false\)/);
  assert.match(html,/else if\(n===photo\)choose\(Number\(cover\.dataset\.editIndex\),false\)/);
 });
-test("layer reorder cannot send elements behind the canvas",()=>{
+test("layer reorder supports cross-container groups without negative stacking",()=>{
  assert.match(html,/function peerLayers\(i\)/);
- assert.match(html,/from\.parentElement!==to\.parentElement/);
- assert.match(html,/stackTier\(from\)!==stackTier\(to\)/);
- assert.match(html,/entry\.styles\['z-index'\]=String\(index\+1\)/);
- assert.match(html,/if\(computed\.position==='static'&&!/);
- assert.match(html,/entry\.styles\.position='relative'/);
- assert.doesNotMatch(html,/entry\.styles\['z-index'\]=String\(index-30\)/);
- assert.doesNotMatch(html,/e\.styles\['z-index'\]=action==='front'\?'20':'-20'/);
+ assert.match(html,/var common=p/);
+ assert.match(html,/while\(a\.parentElement!==common\)/);
+ assert.match(html,/while\(b\.parentElement!==common\)/);
+ assert.match(html,/var branch=siblingBranch\(source,target\)/);
+ assert.match(html,/e\.styles\['z-index'\]=String\(index\+1\)/);
+ assert.match(html,/e\.styles\.position='relative'/);
+ assert.match(html,/branch\.grouped/);
+ assert.doesNotMatch(html,/String\(index-30\)/);
+ assert.doesNotMatch(html,/stackTier\(/);
 });
