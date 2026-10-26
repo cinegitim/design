@@ -46,4 +46,78 @@ try{
  }
 }catch(_){}}
 markPublished()})()
+</script>
+<style>
+.family-directory{display:grid;gap:29px;margin-top:18px}
+.family-directory .category-block{min-width:0}
+.family-directory .category-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:8px 0 13px;margin:0 0 14px}
+.family-directory .category-heading h3{margin:0;font:650 clamp(18px,2.5vw,25px) "Source Serif 4",Georgia,serif}
+.family-directory .category-heading small{color:var(--muted);font:12px Jost,system-ui,sans-serif}
+.family-directory .visual-product{min-width:0}
+.family-directory .tile-body .version-meta{font:12px Jost,system-ui,sans-serif;color:var(--muted);display:block;margin:7px 0 0}
+</style>
+<script>(()=>{async function populateFamilies(){
+const section=document.querySelector('.project-section'),original=section?.querySelector('.items'),search=document.getElementById('search'),counter=document.getElementById('counter');
+if(!section||!original||!search)return;
+let response;try{response=await fetch('../../visual-editor/browser/product-groups.json',{cache:'no-store'});if(!response.ok)return}catch(_){return}
+let registry;try{registry=await response.json()}catch(_){return}
+const groups=(registry.groups||[]).filter(g=>g.brand==='asyada-egitim');
+if(groups.length<8)return;
+const published=(registry.socialPublication?.posts||[]).filter(p=>p.verified===true&&p.publishedAt&&/^https:\/\/(?:www\.)?instagram\.com\/asyadaegitim\/p\/[A-Za-z0-9_-]+\/?$/.test(p.url||''));
+const thumbs={
+'carousel-01-v3':'../../instagram/carousel-01-v3/01-cover.png',
+'instagram-carousel-02':'../../instagram/carousel-02/01-cover.png',
+'instagram-phase-2c-a-snu':'../../instagram/phase-2c/a-snu/png/01.png',
+'instagram-phase-2c-b-waseda':'../../instagram/phase-2c/b-waseda/png/01.png',
+'instagram-phase-2c-c-tokyo':'../../instagram/phase-2c/c-tokyo/png/01.png',
+'instagram-phase-2c-d-six-steps':'../../instagram/phase-2c/d-six-steps/png/01.png',
+'asset-instagram-profile-photo':'../../instagram/profile-photo/instagram-profile-1080.png'
+};
+const groupsByCategory=new Map();
+const nodes=[...original.querySelectorAll('a.tile')];
+for(const g of groups){
+const key=g.category||'Sosyal Medya / Diğer',arr=groupsByCategory.get(key)||[];
+let tile=nodes.find(t=>t.dataset.editorProduct===g.currentId);
+if(!tile&&g.currentId==='asset-social-covers-cover-graphics')tile=nodes.find(t=>t.getAttribute('href')?.includes('/social-covers/'));
+let wrap;
+if(tile){wrap=tile.closest('.visual-product')||tile}
+else{
+ const url='../../visual-editor/browser/?product='+encodeURIComponent(g.currentId),pub=published.filter(p=>p.groupId===g.id||p.productId===g.currentId);
+ const text=pub.length?(pub.some(p=>p.productId===g.currentId)?'Instagram’da yayımlandı':'Aile Instagram’da yayımlandı'):'İncelemede';
+ wrap=document.createElement('div');wrap.className='visual-product';
+ tile=document.createElement('a');tile.className='tile';tile.href=url;tile.dataset.editorProduct=g.currentId;
+ const thumb=document.createElement('span');thumb.className='thumb';const img=document.createElement('img');
+ img.src=thumbs[g.currentId]||'../../asyada-seal/canonical-lockups/assets/h-02-primary-horizontal-light.svg';img.loading='lazy';img.alt=g.title+' görsel önizlemesi';img.onerror=()=>{img.onerror=null;img.src='../../asyada-seal/canonical-lockups/assets/h-02-primary-horizontal-light.svg'};thumb.appendChild(img);
+ const body=document.createElement('span');body.className='tile-body';
+ const label=document.createElement('span');label.className='category';label.textContent=key.replace('Sosyal Medya / ','');
+ const title=document.createElement('strong');title.textContent=g.title;
+ const meta=document.createElement('span');meta.className='version-meta';meta.textContent=(g.versions?.length||1)+' sürüm · Güncel: '+(g.versions?.find(v=>v.id===g.currentId)?.label||'güncel');
+ const status=document.createElement('span');status.className='status';status.textContent=text;body.append(label,title,meta,status);tile.append(thumb,body);wrap.append(tile);
+ const editor=document.createElement('a');editor.className='visual-editor-action';editor.href=url;editor.textContent='Visual Editor ile düzenle ↗';wrap.append(editor);
+ if(pub.length){const link=document.createElement('a');link.href=pub[0].url;link.className='instagram-proof-link';link.target='_blank';link.rel='noopener noreferrer';link.textContent='Instagram paylaşımını gör ↗';wrap.append(link)}
+}
+tile.dataset.search=(g.title+' '+g.category+' '+g.id+' '+(g.versions||[]).map(v=>v.label+' '+v.id).join(' ')).toLocaleLowerCase('tr');
+arr.push(wrap);groupsByCategory.set(key,arr)
+}
+const catalogue=document.createElement('div');catalogue.className='family-directory';
+for(const [category,items] of groupsByCategory){
+ const sectionGroup=document.createElement('section');sectionGroup.className='category-block';sectionGroup.dataset.category=category;
+ const heading=document.createElement('div');heading.className='category-heading';const h=document.createElement('h3');h.textContent=category.replace('Sosyal Medya / ','');
+ const count=document.createElement('small');count.textContent=items.length+' tasarım ailesi';heading.append(h,count);
+ const grid=document.createElement('div');grid.className='items';items.forEach(i=>grid.append(i));sectionGroup.append(heading,grid);catalogue.append(sectionGroup)
+}
+original.replaceWith(catalogue);
+const norm=s=>(s||'').toLocaleLowerCase('tr').replace(/ı/g,'i').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const newSearch=search.cloneNode(true);search.replaceWith(newSearch);
+const update=()=>{const q=norm(newSearch.value.trim());let n=0;
+ catalogue.querySelectorAll('.category-block').forEach(cat=>{let match=0;
+ cat.querySelectorAll('.visual-product').forEach(wrapper=>{const item=wrapper.querySelector('.tile');const ok=!q||norm(item?.dataset.search).includes(q);
+ wrapper.hidden=!ok;if(ok){n++;match++}
+ });cat.hidden=match===0
+ });counter.textContent=n+' tasarım ailesi';
+ const empty=document.getElementById('empty');if(empty)empty.hidden=n!==0
+};
+newSearch.addEventListener('input',update);update();
+}
+populateFamilies()})()
 </script></body></html>
