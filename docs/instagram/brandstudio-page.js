@@ -70,8 +70,12 @@
     });
     if(posts.length){
       var exact=posts.some(function(p){return p.productId===versionId});
-      var instagram=action(posts[0].url,exact?"Instagram gönderisini gör":"Instagram gönderisini gör","instagram");
-      instagram.title=exact?"Bu sürüm Instagram'da yayımlandı.":"Tasarım ailesinin Instagram gönderisi; yayımlanan kesin sürüm henüz doğrulanmadı.";
+      var publishedEdition=(group.versions||[]).find(function(v){return v.id===group.publishedVersionId});
+      var label=exact?"Instagram gönderisini gör":(publishedEdition?
+        "Instagram'da yayımlanan "+publishedEdition.label+" sürümünü gör":"Ailenin Instagram gönderisini gör");
+      var instagram=action(posts[0].url,label,"instagram");
+      instagram.title=exact?"Bu sürüm Instagram'da yayımlandı.":(publishedEdition?
+        "Bu sayfa "+versionId+" taslağına ait; yayımlanan sürüm "+publishedEdition.label+".":"Tasarım ailesinin Instagram gönderisi; yayımlanan kesin sürüm henüz doğrulanmadı.");
       actions.insertBefore(instagram,actions.firstChild);
     }
   }).catch(function(){/* Static page and Visual Editor access are still usable without metadata network. */});
