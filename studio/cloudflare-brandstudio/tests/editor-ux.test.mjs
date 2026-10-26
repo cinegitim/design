@@ -326,6 +326,8 @@ test("layer reorder cannot send elements behind the canvas",()=>{
  assert.match(html,/from\.parentElement!==to\.parentElement/);
  assert.match(html,/stackTier\(from\)!==stackTier\(to\)/);
  assert.match(html,/entry\.styles\['z-index'\]=String\(index\+1\)/);
+ assert.match(html,/if\(computed\.position==='static'&&!/);
+ assert.match(html,/entry\.styles\.position='relative'/);
  assert.doesNotMatch(html,/entry\.styles\['z-index'\]=String\(index-30\)/);
  assert.doesNotMatch(html,/e\.styles\['z-index'\]=action==='front'\?'20':'-20'/);
 });
