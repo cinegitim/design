@@ -304,6 +304,11 @@ test("editor retains logo images and veil as selectable independent layers",()=>
  assert.match(source,/class="veil"/);
  assert.match(html,/ux\.containingBlockOrigin\(n,doc\.querySelector\('\.slide'\)\)/);
  assert.match(html,/Fotoğraf filtresi · koyu gradyan/);
+ assert.match(html,/original\?\.position==='static'/);
+ assert.match(html,/styles\.transform='translate\('/);
+ assert.match(html,/var actual=pos\(n\),dx=/);
+ assert.match(portable,/Logo yalnızca orantılı/);
+
  assert.match(html,/x\.classList\.contains\('veil'\).*pointerEvents/);
  assert.match(html,/\(\?:\^\|\-\)logo/);
  assert.match(portable,/function identityArtwork\(el\)/);
