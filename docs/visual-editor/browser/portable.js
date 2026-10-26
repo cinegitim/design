@@ -35,7 +35,7 @@ function state(input,maxPages) {
      if(!ALLOWED_STYLES[k])err('İzin verilmeyen CSS özelliği');
      var v=e.styles[k];if(typeof v!=='string'||v.length>(k==='transform'?110:40))err('Geçersiz CSS değeri');
      var px=/^-?[0-9]{1,5}(?:\.[0-9]{1,2})?px$/,n=Number.parseFloat(v);
-     if(k==='position'){if(v!=='absolute')err('Sadece absolute position destekleniyor')}
+     if(k==='position'){if(v!=='absolute'&&v!=='relative')err('Sadece absolute veya relative position destekleniyor')}
      else if(k==='margin'){if(v!=='0')err('Geçersiz margin')}
      else if(k==='max-width'){if(v!=='none')err('Yalnızca max-width:none destekleniyor')}
      else if(k==='right'||k==='bottom'){if(v!=='auto')err('Yerleşim ankrajı yalnızca auto olabilir')}
