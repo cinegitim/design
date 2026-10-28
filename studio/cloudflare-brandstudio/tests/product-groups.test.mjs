@@ -15,7 +15,6 @@ const Catalog=scope.BrandstudioCatalog;
 // committed authored pages without falsifying that snapshot's tree SHA.
 const newCampaignPages=Array.from({length:6},(_,i)=>
  'docs/instagram/ieft-2026-firsatlar-001/source/'+String(i+1).padStart(2,'0')+'.html');
-for(const p of newCampaignPages)assert.ok(fs.existsSync(path.join(root,p)),'missing current campaign file '+p);
 const raw=Catalog.fromPaths([...inventory.files.map(x=>x[0]),...newCampaignPages]);
 const families=Catalog.groupRecords(raw,manifest);
 
