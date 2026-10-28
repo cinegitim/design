@@ -13,7 +13,7 @@
   "canonical_lockup_id": "D-04/light; D-04/dark",
   "canonical_lockup_sha256": {
     "light": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
-    "dark": "e77d5607426ce7764d4f5d8f5777f6f9f509c77e11a"
+    "dark": "e77d5607426ce7764d4f5df2e781b38476d2b5dccb5cca611d84b6cb2ea1352"
   },
   "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
   "currency": {
@@ -26,5 +26,25 @@
   },
   "social_published": false,
   "authentic_ieft_logo": "assets/ieft-original.png",
-  "note": "No claim of IEFT partnership or official sponsorship. Gallery review is not publication on Instagram."
+  "note": "No claim of IEFT partnership or official sponsorship. Gallery review is not publication on Instagram.",
+  "render_validation": {
+    "browser": "Chrome DevTools, observed in connected browser",
+    "slide_dimensions": [
+      1080,
+      1350
+    ],
+    "slides_rendered": 6,
+    "source_type": "editable HTML and CSS",
+    "confirmed_all_slides": "HTML and CSS loaded; browser screenshot of each slide created; brand assets inspected",
+    "graphics_inspected": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06"
+    ],
+    "human_approval": "pending",
+    "social_media_published": false
+  }
 }
