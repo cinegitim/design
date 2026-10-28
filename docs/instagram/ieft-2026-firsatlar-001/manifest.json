@@ -1,0 +1,30 @@
+{
+  "title": "IEFT Bitti. Fırsatlar Bitmedi.",
+  "status": "HUMAN CREATIVE REVIEW PENDING",
+  "brand": "asyada-egitim",
+  "category": "instagram-carousel",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "slide_count": 6,
+  "source": "source/01.html ... source/06.html",
+  "export": "png/01.png ... png/06.png",
+  "canonical_lockup_id": "D-04/light; D-04/dark",
+  "canonical_lockup_sha256": {
+    "light": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+    "dark": "e77d5607426ce7764d4f5d8f5777f6f9f509c77e11a"
+  },
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "currency": {
+    "rate_date": "2026-10-28",
+    "USD_CNY": 6.669,
+    "GBP_USD": 1.333,
+    "USD_JPY": 157.81,
+    "rounding": "marketing-display, approximately",
+    "source": "https://www.foreignexchangeresource.com/archive.php"
+  },
+  "social_published": false,
+  "authentic_ieft_logo": "assets/ieft-original.png",
+  "note": "No claim of IEFT partnership or official sponsorship. Gallery review is not publication on Instagram."
+}
