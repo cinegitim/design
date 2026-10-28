@@ -1,3 +1,3 @@
-# Creative and QA handoff
+## Validation and review state
 
-Visual intent: Jost 100–900, approved palette #F7F3E9, #BD2120, #1D2027, six intentionally different typographic arrangements. Browser-rendered raster must be inspected at full-size and mobile-size. Canonical D-04 SVGs copied unchanged from approved locked source; never redraw. Cover authentic IEFT logo appears as contextual participant reference, not partnership claim. Slideshow status: human creative review pending. No Instagram post URL registered.
+All six 1080×1350 PNGs were actually rendered via a connected Chrome session from committed editable HTML/CSS; the exact approved D-04 identity and official IEFT logo load. Design inspected at full resolution for the 6 slides. Current strict studio/cloud audit contract is for a legacy SVG/ZIP package, which this browser-first HTML/CSS production does not yet implement; this design remains registered separately as a REVIEW bundle, and audit passing on existing bundles does not attest to full production certification of this new set. No Instagram publication or human aesthetic approval asserted.
