@@ -32,6 +32,8 @@ export class BrandstudioRevisionObject {
    if(payload.product!==product||!Number.isInteger(payload.version)||payload.version<1||payload.version>26)return invalid("Geçersiz kayıt");
    const current=await this.ctx.storage.get("record")||existing;
    if(current.sha!==payload.expectedSha)return invalid("Başka bir oturumda daha yeni değişiklik var",409);
+   // Repeated identical autosaves must not consume history slots or new writes.
+   if(payload.kind!=="new"&&JSON.stringify(current.document.versions?.["v"+payload.version]?.state)===JSON.stringify(payload.state))return json({...current,unchanged:true});
    const next=structuredClone(current.document),at=new Date().toISOString(),v=payload.version;
    if(next.history.length>=MAX_HISTORY)return invalid("Geçmiş sınırına ulaşıldı; arşivleme gerekli",409);
    if(payload.kind==="new"&&next.versions["v"+v])return invalid("Sürüm zaten mevcut",409);
