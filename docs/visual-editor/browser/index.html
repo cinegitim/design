@@ -138,6 +138,11 @@ input[type=color]{height:28px}
 .zoom-controls .icon-btn{width:25px;min-width:25px;height:25px;min-height:25px;background:transparent;border-color:transparent;font-size:15px}
 .zoom-controls .icon-btn:hover:not(:disabled){background:#314252}
 .save-btn{height:29px;min-height:29px;padding:5px 12px}
+#cloud-save[data-state="saved"]{background:#225342;border-color:#327b61;color:#e4fff2}
+#cloud-save[data-state="pending"],#cloud-save[data-state="saving"]{background:#594825;border-color:#8a6933;color:#fff0be}
+#cloud-save[data-state="error"],#cloud-save[data-state="disconnected"]{background:#67312c;border-color:#b65b4b;color:#fff1ef}
+.export-btn{height:29px;min-height:29px;padding:5px 9px}
+#save[hidden],#legacy-storage[hidden],#pending-recover[hidden],#legacy-import[hidden]{display:none!important}
 .toolbar-overflow{position:relative;flex:0 0 auto}
 .toolbar-overflow>summary{list-style:none;display:flex;align-items:center;justify-content:center;min-width:29px;height:29px;padding:0 6px;border:1px solid #3b4859;border-radius:6px;background:#243140;font-size:19px;font-weight:700;line-height:1;cursor:pointer;color:#d5deea}
 .toolbar-overflow>summary::-webkit-details-marker{display:none}
@@ -233,9 +238,10 @@ header #product{display:none}
 @media(max-width:760px){
  .toolbar{overflow-x:auto;scrollbar-width:none;justify-content:flex-start}
  .toolbar>.sidebar-cluster{order:-5}
- #cloud-save{order:-4;flex:none}
- #cloud-new{order:-3;flex:none}
- #save{order:-2;flex:none}
+ #cloud-save{order:-5;flex:none}
+ #cloud-new{order:-4;flex:none}
+ #download-png{order:-3;flex:none}
+ #download-jpeg{order:-2;flex:none}
  .toolbar>.toolbar-spacer{display:none}
  .toolbar .toolbar-overflow{flex:none}
 }
@@ -262,18 +268,18 @@ header #product{display:none}
 <div class="zoom-controls"><button type="button" class="btn icon-btn" id="zoom-out" aria-label="Küçült" title="Uzaklaştır">−</button><select id="zoom" aria-label="Tuval yakınlaştırma"><option value="fit">Sığdır</option><option value="0.25">25%</option><option value="0.4">40%</option><option value="0.5">50%</option><option value="0.75">75%</option><option value="1">100%</option><option value="1.25">125%</option><option value="custom" hidden>Özel</option></select><button type="button" class="btn icon-btn" id="zoom-in" aria-label="Büyüt" title="Yakınlaştır">+</button></div>
 <button type="button" class="btn icon-btn" id="hand" aria-pressed="false" aria-label="Tuvali kaydır" title="El aracı · çalışma alanını kaydır">✥</button>
 <span class="toolbar-spacer"></span>
-<button type="button" class="btn primary save-btn" id="cloud-save" title="Seçili sürüme bulutta kaydet; geçmiş korunur">Buluta kaydet</button>
-<button type="button" class="btn save-btn" id="cloud-new" title="Yeni bulut sürümü oluştur">+ Yeni sürüm</button>
-<button type="button" class="btn" id="save" title="Tarayıcıda geçici bir sürüm yedeği oluştur">Yerel yedek</button>
+<button type="button" class="btn primary save-btn" id="cloud-save" data-state="disconnected" aria-live="polite" title="GitHub kayıt durumu">GitHub'a bağlan</button>
+<button type="button" class="btn save-btn" id="cloud-new" title="Yeni sürüm oluştur">+ Yeni sürüm</button>
+<button type="button" class="btn export-btn" id="download-png">↓ PNG</button>
+<button type="button" class="btn export-btn" id="download-jpeg">↓ JPEG</button>
+<button type="button" class="btn" id="save" hidden>Eski sürüm</button>
 <details class="toolbar-overflow" id="tools-menu"><summary title="Diğer araçlar" aria-label="Diğer araçlar">···</summary><div class="tools-popover">
 <div class="tools-popover-heading">GÖRÜNÜM</div>
 <button type="button" class="menu-btn" id="focus" aria-pressed="false" title="Kenar panelleri gizle">⛶ Odak modu</button>
 <label class="menu-check"><input type="checkbox" id="snap" checked> 8 px ızgaraya hizala</label>
 <div class="tools-popover-heading">DOSYA</div>
 <button type="button" class="menu-btn" id="export">Sürüm arşivini indir</button>
-<div class="tools-popover-heading">GÖRSEL OLARAK İNDİR</div>
-<select id="raster-format" aria-label="Görsel indirme biçimi"><option value="png">PNG · kayıpsız</option><option value="jpeg">JPEG · yüksek kalite</option></select>
-<button type="button" class="menu-btn" id="export-raster">Aktif slaytı indir (1080×1350)</button>
+<div class="tools-popover-heading">GÖRSEL ÇIKTILARI</div><p class="small">PNG/JPEG düğmeleri üstte ve sağ paneldedir.</p>
 <button type="button" class="menu-btn" id="import">Arşivi içe aktar</button>
 </div></details>
 <input type="file" id="importFile" accept=".json,application/json" hidden>
@@ -335,13 +341,14 @@ header #product{display:none}
 <p class="small">GitHub deposunda <code>brandstudio-editor-history</code> dalında saklanır. Bu depo herkese açıktır; gizli bilgiler kaydetmeyin.</p>
 <div class="field"><label>GitHub erişim anahtarı (yalnızca bellekte; kaydedilmez)</label><input id="cloud-token" type="password" autocomplete="off" placeholder="Fine-grained token · Contents: Read and write"></div>
 <div class="controls"><button class="btn" id="cloud-connect">Bağlan</button><button class="btn" id="cloud-refresh">Buluttan yenile</button></div>
-<div class="field"><label>Değişiklik notu</label><input id="cloud-note" type="text" maxlength="140" placeholder="Neyi değiştirdin?"></div>
-<p class="small" id="cloud-status" aria-live="polite">Bulut kayıtları okunuyor…</p>
+<div class="field"><label>Değişiklik notu (isteğe bağlı)</label><input id="cloud-note" type="text" maxlength="140" placeholder="Otomatik kayda eklenecek not"></div>
+<p class="small" id="cloud-status" aria-live="polite">GitHub kayıt durumu denetleniyor…</p>
+<div class="controls"><button class="btn" id="pending-recover" hidden>Gönderilmemiş değişiklikleri kurtar</button><button class="btn" id="legacy-import" hidden>Eski taslağı GitHub'a taşı</button></div>
 <div class="field"><label>Geri dönülebilir değişiklik geçmişi</label><select id="cloud-history"></select></div>
 <div class="controls"><button class="btn" id="cloud-restore">Seçili geçmiş anını tuvale getir</button><button class="btn" id="cloud-original">Orijinal kaynağa dön</button></div>
-<p class="small">Geri yükleme önce tuvalde yapılır; “Buluta kaydet” ile sürümün yeni geçmiş kaydı oluşur. Orijinal kaynak korunur.</p></div>
-<div class="panel"><div class="field"><label>Yerel sürüm yedekleri</label><select id="versions"></select></div><div class="controls"><button class="btn" id="load">Aç</button><button class="btn" id="folder">Klasör seç</button></div><p class="small" id="folderStatus">Klasör seçilmedi</p></div>
-<div class="panel"><h2>Dosyaları indir</h2><div class="controls"><button class="btn" id="css">Aktif slaytın CSS’i</button><button class="btn" id="html">Aktif slaytın HTML’i</button></div><p class="small">Klasör kaydında düzenlenebilir HTML/CSS üretilir. Değiştirdiğin fotoğraflar HTML'e gömülür; değiştirilmemiş görseller kaynak URL'lerinde kalır. PNG çıktısı bu editörde henüz yoktur.</p></div></aside></div>
+<p class="small">Geri yükleme ve düzenlemeler GitHub bağlantısı kurulduğunda otomatik kaydedilir. Kaydedildi onayı yalnızca GitHub yanıtı sonrasında gösterilir. Orijinal kaynak korunur.</p></div>
+<div class="panel" id="legacy-storage" hidden><div class="field"><label>Eski sürüm arşivi</label><select id="versions"></select></div><div class="controls"><button class="btn" id="load">Aç</button><button class="btn" id="folder">Klasör seç</button></div><p class="small" id="folderStatus">Klasör seçilmedi</p></div>
+<div class="panel"><h2>Dosyaları indir</h2><div class="controls"><button class="btn primary" id="side-download-png">↓ PNG indir</button><button class="btn" id="side-download-jpeg">↓ JPEG indir</button></div><div class="controls"><button class="btn" id="css">Aktif slaytın CSS’i</button><button class="btn" id="html">Aktif slaytın HTML’i</button></div><p class="small">PNG kayıpsız, JPEG yüksek kalitedir. Aktif slayt gerçek tasarım ölçüsünde dışa aktarılır. HTML/CSS düzenlenebilir kaynak olarak da indirilebilir.</p></div></aside></div>
 <div id="context-menu" class="context-menu" role="menu" aria-label="Katman işlemleri" hidden>
 <button type="button" role="menuitem" data-action="front">En öne getir <span>↑</span></button>
 <button type="button" role="menuitem" data-action="back">En arkaya gönder <span>↓</span></button>
@@ -375,10 +382,11 @@ function setupSidebars(){
   }
  });
  Array.from(document.querySelectorAll('#props > .panel:not(.primary-properties),aside.right > .panel:not(#selection-tools)')).forEach(function(panel){
+   if(panel.id==='legacy-storage')return;
   var details=document.createElement('details'),summary=document.createElement('summary');
   details.className='inspector-details';summary.textContent=panel.querySelector('h2')?.textContent||(panel.querySelector('#versions')?'Sürümler':panel.querySelector('#mode')?'Metin rengi':'Diğer');
   panel.before(details);details.append(summary,panel);
-  panel.querySelector('h2')?.remove();details.open=panel.id==='photo-tools'||panel.id==='text-tools';
+  panel.querySelector('h2')?.remove();details.open=panel.id==='photo-tools'||panel.id==='text-tools'||!!panel.querySelector('#cloud-token')||!!panel.querySelector('#side-download-png');
  });
 }
 function syncInspectorSections(){
