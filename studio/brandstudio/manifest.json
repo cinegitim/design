@@ -9,7 +9,7 @@
   "source": {
     "account": "iakfiratt",
     "account_id": "b462aa1499215378fe7f671a788c8a3c",
-    "status": "d1-data-exported-and-restored-source-retained-for-safe-cutover",
+    "status": "retired-after-verified-migration-2026-10-30",
     "migration_verified": {
       "editor_archived_records": 1,
       "editor_archived_revision": "legacy-v2",
@@ -17,6 +17,43 @@
       "stage_schema_version": "1",
       "stage_products": 0,
       "stage_versions": 0
+    },
+    "retired_at": "2026-10-30",
+    "retired_resources": {
+      "pages": [
+        "brandstudio-migration"
+      ],
+      "workers": [
+        "brandstudio-stage",
+        "brandstudio-editor-store",
+        "brandstudio-legacy-audit (temporary inspection)"
+      ],
+      "databases": [
+        "brandstudio-editor",
+        "brandstudio-stage"
+      ],
+      "durable_objects": [
+        "brandstudio-editor-store_BrandstudioRevisionObject"
+      ],
+      "access_apps": [
+        "Brandstudio Editor"
+      ]
+    },
+    "last_audit": {
+      "old_durable_objects_with_data": 2,
+      "records": [
+        {
+          "product": "instagram-creative-breakout-bavul-001",
+          "revision": "0882e066-d82d-4d31-9d9f-5aac06b3b2ca",
+          "history": 4
+        },
+        {
+          "product": "brandstudio-internal-smoke-20261029",
+          "revision": "23ef77f3-a485-4c22-b98d-33ce5bb3085f",
+          "history": 2,
+          "test_only": true
+        }
+      ]
     }
   },
   "editor": {
@@ -50,7 +87,7 @@
       "mode": "durable-object-and-d1-dual-storage",
       "d1_database": "brandstudio-editor",
       "table": "editor_revision_backups",
-      "policy": "best-effort D1 mirror with read-repair and retained source on failure",
+      "policy": "best-effort D1 mirror with read-repair; encrypted GitHub offsite archive on a separate provider",
       "status": "live-verified",
       "offsite_github": "live-verified",
       "offsite_github_branch": "brandstudio-editor-history",
@@ -62,7 +99,7 @@
       "disaster_recovery_key": "User recovery key stored separately; do not commit it to GitHub"
     },
     "static_origin": "https://brandstudio-pages-git.pages.dev",
-    "static_origin_status": "Cloudflare Git Pages build successful, catalog 29 of 29 matched, pending live gateway cutover verification",
+    "static_origin_status": "live-verified Cloudflare Pages; authenticated editor GET 200; all 29 catalog entries loaded",
     "static_pages_git": {
       "repository": "cinegitim/design",
       "production_branch": "main",
@@ -79,7 +116,7 @@
     "staging_d1": "brandstudio-stage",
     "pages_project": "brandstudio-pages-git",
     "admin_auth_worker": "brandstudio-admin-auth",
-    "legacy_unused_pages_project": "brandstudio-asyadaegitim"
+    "legacy_unused_pages_project": "brandstudio-asyadaegitim (destination account; not part of source cleanup)"
   },
   "source_paths": [
     "studio/cloudflare-brandstudio/asya-gateway/worker.mjs",
@@ -88,10 +125,6 @@
     "docs/visual-editor/browser/",
     "functions/visual-editor/api/revisions.js"
   ],
-  "status": "migration-in-progress",
-  "pending": [
-    "source-resource-cleanup-after-all-checks",
-    "verify-live-gateway-static-origin",
-    "remove-legacy-source-after-24h-safety-check"
-  ]
+  "status": "cloudflare-account-migration-completed",
+  "pending": []
 }
