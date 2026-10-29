@@ -1493,7 +1493,15 @@ $('cloud-connect').onclick=function(){
 };
 $('cloud-refresh').onclick=function(){if(canLeaveEditing())refreshCloud(slug)};
 function updateRecoveryButtons(){
- var pending=pendingSnapshot(),same=pending&&JSON.stringify(pending.state)===JSON.stringify(cloudData?.versions?.['v'+pending.version]?.state);
+ var pending=pendingSnapshot(),same=false;
+  if(pending&&cloudData?.versions?.['v'+pending.version]){
+   try{
+    // Key order and harmless serialization normalization are not unsaved edits.
+    var raw=codec.validateState(pending.state,pages.length);
+    var remote=codec.validateState(cloudData.versions['v'+pending.version].state,pages.length);
+    same=JSON.stringify(raw)===JSON.stringify(remote)
+   }catch(e){same=false}
+  }
  if(same){clearPending();pending=null}
  $('pending-recover').hidden=!pending;
  var local=allV(),last=local.length?local.reduce(function(a,b){return a.version>b.version?a:b}):null;

@@ -7,11 +7,40 @@ const LIMIT=950000,MAX_HISTORY=240;
 const json=(o,status=200)=>new Response(JSON.stringify(o),{status,headers:{"content-type":"application/json","cache-control":"no-store"}});
 const invalid=(message,status=400)=>json({error:message},status);
 function valid(p){return typeof p==="string"&&p.length<=130&&KEY.test(p)}
+function compactRetryHistory(history){
+ const compacted=[];
+ for(const entry of history){
+  const previous=compacted[compacted.length-1];
+  if(previous&&entry.kind==="autosave"&&previous.kind==="autosave"&&JSON.stringify(entry.state)===JSON.stringify(previous.state)){
+   const old=Number(previous.repeatedAutosaves||1);
+   compacted[compacted.length-1]={...entry,repeatedAutosaves:old+1,firstRepeatedAt:previous.firstRepeatedAt||previous.at};
+  }else compacted.push(entry)
+ }
+ return compacted
+}
 export class BrandstudioRevisionObject {
  constructor(ctx,env){this.ctx=ctx;this.env=env}
  async initial(product){
   const stored=await this.ctx.storage.get("record");
-  if(stored)return stored;
+  if(stored){
+   // Archived all original retry-loop snapshots in GitHub before enabling
+   // this lossless-for-design-state compaction of identical automatic retries.
+   if(stored.document.history.length>=100){
+    const cleaned=compactRetryHistory(stored.document.history);
+    if(cleaned.length<stored.document.history.length){
+     return await this.ctx.storage.transaction(async txn=>{
+      const latest=await txn.get("record");
+      if(!latest)return stored;
+      const cleanedLatest=compactRetryHistory(latest.document.history);
+      if(cleanedLatest.length===latest.document.history.length)return latest;
+      const updated={...latest,document:{...latest.document,history:cleanedLatest}};
+      await txn.put("record",updated);
+      return updated
+     })
+    }
+   }
+   return stored
+  }
   if(product==="instagram-creative-breakout-bavul-001"){
    const value={sha:"legacy-v2",document:structuredClone(RECOVERED_BAVUL)};
    await this.ctx.storage.put("record",value);
