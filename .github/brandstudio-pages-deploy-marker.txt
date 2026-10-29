@@ -1,0 +1,5 @@
+Brandstudio Pages controlled deployment marker
+Requested: 2026-10-29T10:59:00Z
+Purpose: publish merged PR #159 to brandstudio-migration Pages Free
+Reviewed main source merge: 61671bf24479becafa1b9a8ae61f9aabf1463f52
+Trigger: only changes to this marker file (not editor saves or source changes)
