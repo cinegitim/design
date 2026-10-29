@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "group": "Branddesign",
+  "destination": {
+    "account": "asyadaegitim",
+    "account_id": "5f90104db6f24a941c04e974e250cb67",
+    "contact": "info@asyadaegitim.com"
+  },
+  "source": {
+    "account": "iakfiratt",
+    "account_id": "b462aa1499215378fe7f671a788c8a3c",
+    "status": "retained-pending-d1-archive"
+  },
+  "editor": {
+    "origin": "https://studio.asyadaegitim.com",
+    "access_application": "Brandstudio Editor",
+    "allowed_admins": [
+      "info@asyadaegitim.com",
+      "iakfiratt@gmail.com"
+    ],
+    "storage": "brandstudio-editor-store"
+  },
+  "services": {
+    "gateway_worker": "brandstudio-edge",
+    "storage_worker": "brandstudio-editor-store",
+    "staging_worker": "brandstudio-stage",
+    "editor_d1": "brandstudio-editor",
+    "staging_d1": "brandstudio-stage",
+    "pages_project": "brandstudio-asyadaegitim"
+  },
+  "source_paths": [
+    "studio/cloudflare-brandstudio/asya-gateway/worker.mjs",
+    "studio/cloudflare-brandstudio/editor-store/worker.mjs",
+    "studio/cloudflare-brandstudio/src/worker.mjs",
+    "docs/visual-editor/browser/",
+    "functions/visual-editor/api/revisions.js"
+  ],
+  "status": "migration-in-progress",
+  "pending": [
+    "source-stage-d1-row-export",
+    "source-editor-d1-row-export",
+    "live-custom-domain-authenticated-save-test",
+    "reconnect-pages-github",
+    "source-resource-cleanup-after-all-checks"
+  ]
+}
