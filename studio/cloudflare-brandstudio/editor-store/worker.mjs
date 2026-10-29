@@ -19,7 +19,19 @@ function compactRetryHistory(history){
  return compacted
 }
 export class BrandstudioRevisionObject {
- constructor(ctx,env){this.ctx=ctx;this.env=env}
+ constructor(ctx,env){this.ctx=ctx;this.env=env;this.lastArchivedRevision=null}
+ async archiveRevision(record,product){
+  if(!record?.sha||!this.env?.BACKUP_DB||this.lastArchivedRevision===record.sha)return;
+  try{
+   const archive=JSON.stringify(record.document);
+   await this.env.BACKUP_DB.prepare('INSERT OR IGNORE INTO editor_revision_backups(product,revision,body,saved_at) VALUES(?1,?2,?3,?4)').bind(product,record.sha,archive,new Date().toISOString()).run();
+   this.lastArchivedRevision=record.sha;
+  }catch(e){
+   // Retain the authoritative Durable Object write; retry the archive on next GET/POST.
+   console.error('Brandstudio secondary backup pending',String(e?.message||e));
+  }
+ }
+
  async initial(product){
   const stored=await this.ctx.storage.get("record");
   if(stored){
@@ -55,14 +67,20 @@ export class BrandstudioRevisionObject {
   if(!valid(product))return invalid("Geçersiz tasarım");
   try{
    const existing=await this.initial(product);
-   if(request.method==="GET")return json(existing);
+   if(request.method==="GET"){
+    await this.archiveRevision(existing,product);
+    return json(existing);
+   }
    if(request.method!=="POST")return invalid("Desteklenmeyen yöntem",405);
    const payload=await request.json();
    if(payload.product!==product||!Number.isInteger(payload.version)||payload.version<1||payload.version>26)return invalid("Geçersiz kayıt");
    const current=await this.ctx.storage.get("record")||existing;
    if(current.sha!==payload.expectedSha)return invalid("Başka bir oturumda daha yeni değişiklik var",409);
    // Repeated identical autosaves must not consume history slots or new writes.
-   if(payload.kind!=="new"&&JSON.stringify(current.document.versions?.["v"+payload.version]?.state)===JSON.stringify(payload.state))return json({...current,unchanged:true});
+   if(payload.kind!=="new"&&JSON.stringify(current.document.versions?.["v"+payload.version]?.state)===JSON.stringify(payload.state)){
+    await this.archiveRevision(current,product);
+    return json({...current,unchanged:true});
+   }
    const next=structuredClone(current.document),at=new Date().toISOString(),v=payload.version;
    if(next.history.length>=MAX_HISTORY)return invalid("Geçmiş sınırına ulaşıldı; arşivleme gerekli",409);
    if(payload.kind==="new"&&next.versions["v"+v])return invalid("Sürüm zaten mevcut",409);
@@ -85,6 +103,7 @@ export class BrandstudioRevisionObject {
     return item
    });
    if(!result)return invalid("Kayıt çakışması; taslak korunuyor",409);
+   await this.archiveRevision(result,product);
    return json({...result,historyId});
   }catch(e){
    console.error("Brandstudio DO revision operation failed",String(e?.message||e));
