@@ -126,5 +126,21 @@ test('Brandstudio Cloudflare gateway stages password/session auth and routes rev
  const manifest=JSON.parse(fs.readFileSync(path.join(root,'studio/brandstudio/manifest.json'),'utf8'));
  assert.equal(manifest.destination.account,'asyadaegitim');
  assert.equal(manifest.editor.origin,'https://studio.asyadaegitim.com');
- assert.equal(manifest.source.status,'retained-pending-d1-archive');
+ assert.equal(manifest.source.status,'d1-data-exported-and-restored-source-retained-for-safe-cutover');
+});
+
+test('Durable Object revisions always get mirrored to D1 without risking authoritative saves',()=>{
+ const store=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/editor-store/worker.mjs'),'utf8');
+ const cfg=JSON.parse(fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/editor-store/wrangler.json'),'utf8'));
+ assert.ok(cfg.d1_databases.some(x=>x.binding==='BACKUP_DB'&&x.database_name==='brandstudio-editor'));
+ assert.match(store,/async archiveRevision\(record,product\)/);
+ assert.match(store,/INSERT OR IGNORE INTO editor_revision_backups/);
+ assert.match(store,/await this.archiveRevision\(result,product\)/);
+ assert.match(store,/await this.archiveRevision\(existing,product\)/);
+ assert.match(store,/await this.archiveRevision\(current,product\)/);
+ assert.match(store,/Brandstudio secondary backup pending/);
+ assert.match(store,/lastArchivedRevision/);
+ const schema=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/migrations/0002_editor_backup.sql'),'utf8');
+ assert.match(schema,/PRIMARY KEY\(product,revision\)/);
+ assert.match(schema,/CHECK\(json_valid\(body\)\)/);
 });

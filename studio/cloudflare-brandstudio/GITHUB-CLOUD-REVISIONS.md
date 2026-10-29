@@ -6,7 +6,7 @@
 
 Eski `cinegitim.github.io/design/visual-editor/` ve `/browser/` bağlantıları otomatik olarak tek Cloudflare editörüne yönlendirilir. GitHub Pages kaynak tasarımlar ve halka açık galeriler için durur; ayrı bir editör değildir.
 
-**Giriş:** Cloudflare Access, yalnızca kişisel Cloudflare hesabının onaylı e-postası için izinlidir. Oturum süresi 168 saattir. Yeni sayfa açıldığında yeniden GitHub token girilmez; oturum gerektiğinde Cloudflare hesabıyla yenilenir. Access uygulaması tüm `/visual-editor` yolunu ve kayıt API'sini korur.
+**Giriş:** `studio.asyadaegitim.com/admin/login` üzerinden uygulama içi `adminasya` hesabıyla yapılır. HTTPS güvenli, HttpOnly, SameSite=Lax, 365 günlük yenilenen oturum çerezleri kullanılır. Cloudflare Access uygulaması güvenli geçiş sonrasında kaldırıldı; eski Cloudflare Access JWT, aktif kayıt API'sinin bağımlılığı değildir.
 
 **Düzenleme:** Her değişiklik yaklaşık 1,4 saniyelik sakinleşmeden sonra otomatik kaydedilir. Görünür durumlar: Kaydedilecek, Kaydediliyor, Kaydedildi, Kaydedilemedi. Yalnızca sunucu Durable Objects kaydını onaylarsa Kaydedildi denir. İnternet/çakışma sorunlarında geçici kurtarma anı tarayıcıda kalır, başarılı bulut kaydı diye gösterilmez.
 
@@ -15,12 +15,11 @@ Eski `cinegitim.github.io/design/visual-editor/` ve `/browser/` bağlantıları 
 ## Mimari ve güvenlik
 
 - Tek editör origin `studio.asyadaegitim.com`; Asya’da Eğitim Cloudflare `brandstudio-edge` Worker custom domain. Statik varlıklar geçici olarak `cinegitim.github.io/design` üzerinden proxy edilir.
-- Pages Functions: `functions/visual-editor/api/revisions.js`, GET/POST `/visual-editor/api/revisions`.
-- Cloudflare Access Asya’da Eğitim `Asyada Egitim Brandstudio` organizasyonudur; yalnız `info@asyadaegitim.com` ve `iakfiratt@gmail.com` yöneticileri yetkilendirilir.
-- Functions Access JWT `Cf-Access-Jwt-Assertion` imzasını JWKS üzerinden RS256 ile doğrular, `iss`, `aud`, `exp`, `iat` ve e-posta eşleşmesini kontrol eder. Yetkisiz talepler reddedilir; header varlığı tek başına güven sayılmaz.
+- Aktif Worker gateway: `studio/cloudflare-brandstudio/asya-gateway/worker.mjs`, GET/POST `/visual-editor/api/revisions` (uygulama admin oturumuyla korunur). Eski Pages Functions kodu artık canlı yol değildir.
+- Yalnızca `adminasya` uygulama oturumu erişebilir; anonim istekler `401` döndürür. Eski Cloudflare Access JWT doğrulaması ve yetkili e-posta listesi aktif yolda kullanılmaz.
 - Same-origin POST, özel başlık, JSON biçimi, ürün kimliği, durum yapısı ve dosya büyüklüğü kontrolleri vardır. Yanlış beklenen sürüm etag'i ile yazma atomik CAS tarafından engellenir.
 - Aktif kayıt sistemi: `brandstudio-editor-store` SQLite-backed Durable Object (`BRANDSTUDIO_OBJECTS` Pages binding). Ürün başına tutarlı ve atomik kayıt. D1 tabloları sadece eski geçiş arşivi olarak korunur; günlük kayıtta kullanılmaz.
-- GitHub `cinegitim/design` kodun, onaylı logoların ve yayımlanmış kaynakların arşividir; editörün kullanıcısından GitHub PAT istenmez. Önceki `brandstudio-editor-history` dalı silinmez. Bavul v1/v2 tarihi D1'e taşındı.
+- GitHub `cinegitim/design` kodun, onaylı logoların ve yayımlanmış kaynakların arşividir; editörün kullanıcısından GitHub PAT istenmez. Önceki `brandstudio-editor-history` dalı silinmez. Eski Bavul v1/v2 D1 kaydı 29 Ekim 2026 arşiv göçünde hedefte ayrı saklandı; aktif Bavul v2 dört kayıtlı DO tarihçesindedir.
 - Ücretsiz Cloudflare Pages/D1/Access altyapısı tercih edilmiştir; R2, Workers AI ve ücretli render kullanılmaz. Ücretsiz kota aşımı için otomatik ücretli yükseltme yapılmaz.
 - Üretim kaynak HTML'si ve kanonik logo değiştirilmez; editör kaydı sosyal medyada otomatik yayın değildir.
 
@@ -45,3 +44,11 @@ Kaynak iki D1'in tabloları ve şemaları hedefte kuruldu; kaynak hesabın D1 g�
 Cloudflare Pages GitHub kurulumunda `8000011` hatası olduğundan, hedefte Pages projesinin GitHub entegrasyonu ayrıca yeniden yetkilendirilecek. Bu süreçte `brandstudio-edge` Worker, onaylı statik dosyaları GitHub Pages'den sunan geçiş köprüsüdür. Kayıt API'si ve saklama DO'su Asya’da Eğitim Cloudflare hesabındadır. GitHub Actions yalnız manuel çalışır ve kişisel hesabın eski deploy tokenını kullanmaz; yeni hedef token ayrı adla yapılandırılmalıdır.
 
 Kaynak Cloudflare bileşenleri, güvenli kayıt yazma testleri ve veri eşitliği tamamlanana kadar korunur. Eski hesapta `brandstudio-` ile başlamayan hiçbir kaynağa müdahale edilmez.
+
+## İkincil revizyon yedeği (29 Ekim 2026)
+
+Eski kişisel hesaptaki iki D1 veritabanının tam SQL dışa aktarımı alındı ve doğrulandı. Staging veritabanı yalnız `schema_version=1` içeriyordu; `products` ve `product_versions` sıfır satırdı. Eski editör D1'inde Bavul v2 `legacy-v2` revizyonu ve iki tarihçe kaydı vardı. Bu satır yeni hesapta `brandstudio-editor.editor_documents` tablosuna aktarıldı. Daha yeni dört kayıtlı ve `0882e066-d82d-4d31-9d9f-5aac06b3b2ca` revizyonlu DO belgesinin üzerine yazılmadı.
+
+Yeni `brandstudio-editor-store` Worker'ı `BACKUP_DB` D1 bağlantısına sahiptir. Her GET isteğinde veya gerçek POST kaydında DO'daki güncel revizyon, `editor_revision_backups(product, revision, body, saved_at)` tablosuna koşullu eklenir. D1 arşivi kota veya ağ hatası verirse DO kaydı geri alınmaz ve sonraki başarılı GET/POST işleminde tekrar denenir. Günlük editör işleyişi D1'in kota durumuna bağlı değildir.
+
+**Ayrı GitHub / off-site otomatik yedekleme hâlâ gereklidir:** D1 ve Durable Objects aynı Cloudflare hesabında olduğundan hesap düzeyinde bir sorun için yeterli coğrafi sağlayıcı çeşitliliği sağlamaz. Public `cinegitim/design` deposuna yayımlanmamış editör içeriğini otomatik koymak gizlilik riski taşıyabilir; özel GitHub yedek deposu ve gerekli yetkiler kurulmadan bu yapılmayacaktır.
