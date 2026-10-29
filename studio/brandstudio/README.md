@@ -28,3 +28,15 @@ Bu dizin **Brandstudio** sistemine ait Cloudflare kaynaklarının tek envanter n
 **Canlı doğrulama:** İlk admin girişi başarılı; tekrar yüklemede oturum devam ediyor; anonim API 401; yetkili API GET 200; aynı Bavul v2 durumuyla idempotent POST 200 ve `unchanged:true`; dört tarihçe anı ve revizyon kimliği değişmeden korundu. Eski Access uygulaması silindi. Kaynak kişisel Cloudflare hesabının D1 arşiv göçü ayrı ve henüz beklemede.
 
 **Oturum sürekliliği:** Daha önce tanınan cihazların eski `__Host-branddesign_session` çerezleri geçiş sırasında otomatik olarak `__Host-brandstudio_session` biçimine yükseltilir. Mevcut Durable Object kimliği korunur, kayıtlar taşınmaz veya sıfırlanmaz.
+
+## Şifreli GitHub dış yedekleri
+
+Cloudflare `brandstudio-edge` Worker'ında `BRANDSTUDIO_BACKUP_KEY` adlı rastgele 256 bit gizli anahtar saklanır. Yalnızca GitHub'ın resmî OIDC imzası doğrulanmış `cinegitim/design` deposunun `main` dalındaki `.github/workflows/brandstudio-offsite-backup.yml` işi, `/internal/backup?product=...` uç noktasını çağırabilir. Worker, Durable Objects belgesini dışarı göndermeden **AES-256-GCM** ile şifreler. İlgili uç nokta anonim istekler için HTTP 401 döndürür; tasarımın düz JSON'u bu uç noktadan verilmez.
+
+GitHub Actions şifrelenmiş dosyaları yalnızca `brandstudio-editor-history` **arşiv dalına** `docs/visual-editor/browser/cloud-offsite-encrypted/` altına yazar. Aynı revizyon kaydedilmişse yeni commit oluşturmaz. Varsayılan zamanlama günde iki kez, UTC 05.17 ve 17.17'dir; elle `workflow_dispatch` ile de tetiklenebilir. Workflow OIDC, kısa ömürlü JWT ile çalışır; kullanıcı admin şifresi, uzun ömürlü PAT veya Cloudflare API tokenı GitHub Secrets içine konmaz.
+
+**Çok önemli:** Bu GitHub deposu herkese açıktır. Yalnız şifrelenmiş veriler taşınır. Yedek anahtar dosyası GitHub'a yüklenmez; kullanıcının çevrimdışı saklaması gerekir. Anahtar kaybolursa Cloudflare hesabı da kullanılamadığında dış yedekleri çözmek mümkün olmayacaktır.
+
+Çevrimdışı geri yükleme komutu (Node 22 veya üzeri): `node studio/brandstudio/backup/decrypt.mjs <sifreli-yedek.enc.json> <kurtarma-anahtari.txt> <cikti.json>`. Üretilen çıktı, aktif depolamaya kendi kendine yazılmaz; önce doğrulanır ve gerektiğinde kontrollü olarak içe aktarılır.
+
+Canlı devreye alma kontrolü: GitHub Actions'ın ilk başarılı `archive` çalışması, `brandstudio-editor-history` dalına şifreli Bavul yedeği yazılması, aynı SHA için tekrar çalıştırmada commit oluşmaması, anonim /internal/backup -> 401. Bunlar tamamlanmadan dış yedekleme doğrulandı olarak işaretlenmez.
