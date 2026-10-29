@@ -1589,14 +1589,103 @@ $('cloud-original').onclick=function(){
  if(!canLeaveEditing())return;
  applyCloudSnapshot({colors:Object.assign({},defaults),edits:{},groups:{}},current,'Orijinal kaynak haline döndür');
 };
+// html2canvas creates its raster canvas in this (parent) document, but the
+// visual preview and its @font-face rules live in the iframe document. Without
+// installing the same font faces here, canvas silently substitutes a system font.
+function exportFontCSS(sourceDoc){
+ var rules=[],seen=new Set();
+ Array.from(sourceDoc.styleSheets||[]).forEach(function(sheet){
+  try{
+   Array.from(sheet.cssRules||[]).forEach(function(rule){
+    if(rule.type!==CSSRule.FONT_FACE_RULE)return;
+    var base=sheet.href||sourceDoc.baseURI;
+    var css=rule.cssText.replace(/url\(\s*(['"]?)([^'")]+)\1\s*\)/g,function(_,quote,path){
+     try{return 'url('+JSON.stringify(new URL(path,base).href)+')'}
+     catch(e){return 'url('+JSON.stringify(path)+')'}
+    });
+    if(!seen.has(css)){seen.add(css);rules.push(css)}
+   })
+  }catch(e){/* External restricted stylesheet: inline portable fonts remain available. */}
+ });
+ return rules.join('\n')
+}
+function neededExportFonts(sourceDoc,slide){
+ var requests=new Map(),view=sourceDoc.defaultView;
+ Array.from(slide.querySelectorAll('*')).forEach(function(node){
+  if(!node.textContent||!node.textContent.trim())return;
+  var style=view.getComputedStyle(node);
+  if(style.display==='none'||style.visibility==='hidden')return;
+  var key=[style.fontStyle,style.fontWeight,style.fontSize,style.fontFamily].join('|');
+  if(!requests.has(key)){
+   requests.set(key,{
+    spec:(style.fontStyle||'normal')+' '+(style.fontWeight||'400')+' '+(style.fontSize||'16px')+' '+style.fontFamily,
+    text:node.textContent.trim().slice(0,100)
+   })
+  }
+ });
+ return Array.from(requests.values())
+}
+async function prepareRasterAssets(sourceDoc,slide){
+ await sourceDoc.fonts.ready;
+ var css=exportFontCSS(sourceDoc);
+ if(!css)throw Error('Yazı tipi kaynakları bulunamadı; hatalı fontla indirme yapılmadı');
+ var style=document.getElementById('brandstudio-export-fonts');
+ if(!style){
+  style=document.createElement('style');
+  style.id='brandstudio-export-fonts';
+  document.head.appendChild(style)
+ }
+ if(style.textContent!==css)style.textContent=css;
+ var fonts=neededExportFonts(sourceDoc,slide);
+ await Promise.all(fonts.map(function(font){return document.fonts.load(font.spec,font.text)}));
+ await document.fonts.ready;
+ // No rendering before the exact preview assets have been decoded.
+ await Promise.all(Array.from(slide.querySelectorAll('img')).map(async function(img){
+  if(!img.complete||img.naturalWidth===0){
+   if(typeof img.decode==='function')await img.decode();
+   else await new Promise(function(resolve,reject){
+    img.addEventListener('load',resolve,{once:true});
+    img.addEventListener('error',function(){reject(Error('Görsel yüklenemedi'))},{once:true})
+   })
+  }
+  if(!img.naturalWidth)throw Error('Görsel yüklenemedi; eksik görüntüyle indirme yapılmadı')
+ }));
+ // CSS background images may be lazy loaded independently of normal <img>.
+ var images=new Set();
+ Array.from(slide.querySelectorAll('*')).concat([slide]).forEach(function(node){
+  var cs=sourceDoc.defaultView.getComputedStyle(node),bg=cs.backgroundImage;
+  if(bg&&bg!=='none')Array.from(bg.matchAll(/url\(\s*(['"]?)([^'")]+)\1\s*\)/g)).forEach(function(m){
+   try{images.add(new URL(m[2],sourceDoc.baseURI).href)}catch(e){}
+  })
+ });
+ await Promise.all(Array.from(images).map(function(url){
+  return new Promise(function(resolve,reject){
+   var image=new Image();
+   image.crossOrigin='anonymous';
+   image.onload=resolve;
+   image.onerror=function(){reject(Error('Arka plan görseli yüklenemedi'))};
+   image.src=url
+  })
+ }));
+ await new Promise(function(done){requestAnimationFrame(function(){requestAnimationFrame(done)})});
+ return fonts
+}
 async function exportRaster(format){
  if(!globalThis.html2canvas){$('status').textContent='Görsel dönüştürücü yüklenmedi';return}
  var buttons=[$('download-png'),$('download-jpeg'),$('side-download-png'),$('side-download-jpeg')];buttons.forEach(function(b){b.disabled=true});
  $('status').textContent='Aktif slayt '+format.toUpperCase()+' olarak hazırlanıyor…';
  try{
   var slide=doc?.querySelector('.slide');if(!slide)throw Error('Slayt henüz yüklenmedi');
-  await doc.fonts?.ready;
-  var canvas=await html2canvas(slide,{backgroundColor:format==='jpeg'?'#ffffff':null,scale:1,width:DESIGN_W,height:DESIGN_H,useCORS:true,allowTaint:false,logging:false});
+  var fonts=await prepareRasterAssets(doc,slide);
+  var canvas=await html2canvas(slide,{
+   backgroundColor:format==='jpeg'?'#ffffff':null,
+   scale:1,width:DESIGN_W,height:DESIGN_H,
+   useCORS:true,allowTaint:false,logging:false,
+   onclone:async function(clonedDoc){
+    await clonedDoc.fonts.ready;
+    await Promise.all(fonts.map(function(font){return clonedDoc.fonts.load(font.spec,font.text)}))
+   }
+  });
   if(canvas.width!==DESIGN_W||canvas.height!==DESIGN_H)throw Error('Görsel boyutu hatalı');
   var mime=format==='jpeg'?'image/jpeg':'image/png';
   var blob=await new Promise(function(resolve){canvas.toBlob(resolve,mime,format==='jpeg'?.92:undefined)});
