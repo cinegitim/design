@@ -1,0 +1,53 @@
+name: Brandstudio encrypted offsite backups
+
+# Never builds or deploys Pages. Only exports encrypted snapshots and writes
+# to the dedicated historical backup branch; no raw design content is logged.
+on:
+  schedule:
+    - cron: "17 5,17 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/brandstudio-offsite-backup.yml"
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: brandstudio-offsite-encrypted-backup
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout reviewed Brandstudio backup code
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Use Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+      - name: Fetch AES-256-GCM encrypted documents via GitHub OIDC
+        run: node studio/brandstudio/backup/fetch-encrypted.mjs
+      - name: Install snapshots into separate history branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin refs/heads/brandstudio-editor-history:refs/remotes/origin/brandstudio-editor-history
+          git worktree add --detach "$RUNNER_TEMP/brandstudio-offsite-target" origin/brandstudio-editor-history
+          node studio/brandstudio/backup/install-encrypted.mjs \
+            "$RUNNER_TEMP/brandstudio-export" "$RUNNER_TEMP/brandstudio-offsite-target"
+          cd "$RUNNER_TEMP/brandstudio-offsite-target"
+          git checkout -B brandstudio-editor-history
+          git config user.name "brandstudio-backup-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- docs/visual-editor/browser/cloud-offsite-encrypted/
+          if git diff --cached --quiet; then
+            echo "No changed backups. History branch unchanged."
+          else
+            git commit -m "backup(brandstudio): archive encrypted design revisions"
+            git push origin HEAD:refs/heads/brandstudio-editor-history
+          fi
