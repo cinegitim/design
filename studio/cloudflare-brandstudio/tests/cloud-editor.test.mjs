@@ -67,12 +67,12 @@ test('server rejects unauthenticated requests and verifies signed Access JWT',()
  assert.match(backend,/X-Brandstudio-Editor/);
  assert.match(backend,/req\.headers\.get\('Origin'\)!==url\.origin/);
  assert.match(backend,/STORE='BRANDSTUDIO_OBJECTS'/);
- assert.match(backend,/idFromName\\(product\\)/);
- assert.match(backend,/objectFor\\(context,product\\)\\.fetch/);
+ assert.ok(backend.includes('idFromName(product)'));
+ assert.ok(backend.includes('objectFor(context,product).fetch'));
  assert.doesNotMatch(backend,/editor_documents|BRANDSTUDIO_EDITOR/);
  const store=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/editor-store/worker.mjs'),'utf8');
  assert.match(store,/class BrandstudioRevisionObject/);
- assert.match(store,/this\\.ctx\\.storage\\.transaction/);
+ assert.ok(store.includes('this.ctx.storage.transaction'));
  assert.match(store,/brandstudio-editor-history/);
  assert.match(store,/legacy-v2/);
 });
