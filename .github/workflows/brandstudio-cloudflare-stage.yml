@@ -53,6 +53,12 @@ jobs:
           node --check studio/cloudflare-brandstudio/editor-store/worker.mjs
       - name: Brandstudio admin session safety tests
         run: node --test studio/brandstudio/admin-auth.test.mjs
+      - name: Encrypted offsite backup workflow tests and syntax
+        run: |
+          node --check studio/brandstudio/backup/fetch-encrypted.mjs
+          node --check studio/brandstudio/backup/install-encrypted.mjs
+          node --check studio/brandstudio/backup/decrypt.mjs
+          node --test studio/brandstudio/backup/backup.test.mjs
       - name: Access-verified D1 API syntax
         run: node --check functions/visual-editor/api/revisions.js
       - name: Worker API safety tests — no network
