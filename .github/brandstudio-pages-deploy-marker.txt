@@ -1,5 +1,5 @@
 Brandstudio Pages controlled deployment marker
 Requested: 2026-10-29
-Purpose: single private Cloudflare editor with Cloudflare Access and D1 autosave
-Reviewed base: b929e4451ea52d0f77408a6f5ca344d729f20486
-Trigger: only explicit changes to this marker file; browser edits do not redeploy
+Purpose: move autosave to quota-isolated Durable Objects after D1 7500 exhaustion
+Backup: D1 and GitHub emergency v2 recovery records retained
+Trigger: manual marker change only; editor autosaves never rebuild
