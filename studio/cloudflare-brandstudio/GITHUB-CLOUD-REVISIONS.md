@@ -11,13 +11,13 @@ Tarayıcıdaki çalışmalar **kalıcı değildir**. Bulut yazma modu, `cinegiti
 1. GitHub'da ince ayarlı (**fine-grained**) bir kişisel erişim anahtarı oluşturun. Yalnızca `cinegitim/design` deposunu seçin. Depo izinlerinde **Contents: Read and write**, Metadata varsayılan `Read` yeterlidir; admin ve geniş hesap izinleri gereksizdir. GitHub hesabının depoya yazma yetkisi olmalıdır.
 2. Anahtarı yalnızca Visual Editor'ün **GitHub erişim anahtarı** alanına girin, ardından **Bağlan** deyin.
 3. Token tarayıcıdaki **yalnızca geçerli sayfa belleğinde** saklanır, input temizlenir. Kaynak dosyaya, GitHub'daki tasarım JSON'una, localStorage'a, sessionStorage'a veya Cloudflare'a yazılmaz. Sekme kapanınca tekrar girilir.
-4. **Buluta kaydet** seçili vN'nin içeriğini üzerine yazar; eski kayıtlar JSON logunda ve Git commit geçmişinde durur. **+ Yeni sürüm** yalnızca istenirse v(N+1) yaratır. **Geçmişe dön** tarihi state'i tuvale yükler, ardından **Buluta kaydet** yeni bir geçmiş girdisi oluşturur. **Orijinal kaynağa dön** slayt override'larını temizler; onay vermeden kalıcı depoya yazılmaz.
+4. Bağlandıktan sonra düzenlemeler kısa aralıklarla GitHub'a otomatik kaydedilir. Mevcut vN güncellenir; her başarılı kayıtta geçmiş anı ve Git commit'i oluşur. **+ Yeni sürüm** isteğe bağlıdır. Geri yüklemeler de otomatik kaydedilir. "Kaydedildi" yalnızca GitHub onayından sonra görünür. Hata olursa gönderilmemiş değişiklik geçici kurtarma taslağında bekler.
 
-Bulut okunabilir; yeni cihazdan aynı ürün URL'sini açınca bulut vN seçenekleri listelenir. Lokal depoda farklı değişiklikler varsa bunlar silinmez; local ve bulut seçenekleri ayrıca gösterilir. Yazma hatası, yetkisizlik, eşzamanlı değişiklik ya da boyut sınırı başarısızlık olarak raporlanır; sessizce yerel kayıt başarılı denmez.
+Bulut okunabilir; yeni cihazdan aynı ürün URL'sini açınca bulut vN seçenekleri listelenir. Eski tarayıcı taslakları silinmez; yalnız gerekli olduğunda tek seferlik **Eski taslağı GitHub'a taşı** seçeneği görünür. Ayrı yerel kaydetme veya aktif yerel sürüm seçici bulunmaz. Yazma hatası, yetkisizlik, eşzamanlı değişiklik ya da boyut sınırı başarısızlık olarak raporlanır; sessizce yerel kayıt başarılı denmez.
 
 ## PNG / JPEG
 
-**Diğer araçlar → Görsel olarak indir** bölümünden PNG (kayıpsız) veya JPEG (yüksek kalite) seçip **Aktif slaytı indir** deyin. Görüntü aynı sayfada, kullanıcının tarayıcısında `html2canvas 1.4.1` (MIT, repo içine kopyalı) ile üretilir. Çıkış boyutu kaynak slaydın `DESIGN_W × DESIGN_H` ölçüleridir (genellikle 1080 × 1350). Dönüştürme hatalarında sahte dosya üretilmez. PNG/JPEG gerçek görüntülerdir; ancak baskı/Instagram yayımlama öncesi font ve görüntü uyumu kullanıcı tarafından görsel olarak kontrol edilmelidir.
+Üst araç çubuğunda ve sağdaki **Dosyaları indir** bölümünde **PNG indir** ve **JPEG indir** düğmeleri doğrudan görünür. Görüntü aynı sayfada, kullanıcının tarayıcısında `html2canvas 1.4.1` (MIT, repo içine kopyalı) ile üretilir. Çıkış boyutu kaynak slaydın `DESIGN_W × DESIGN_H` ölçüleridir (genellikle 1080 × 1350). Dönüştürme hatalarında sahte dosya üretilmez. PNG/JPEG gerçek görüntülerdir; ancak baskı/Instagram yayımlama öncesi font ve görüntü uyumu kullanıcı tarafından görsel olarak kontrol edilmelidir.
 
 ## Sınırlar
 
@@ -27,7 +27,8 @@ Bulut okunabilir; yeni cihazdan aynı ürün URL'sini açınca bulut vN seçenek
 - Her ürün için en çok 240 geçmiş anı ve 950 KB JSON sınırı; sınırda durulur, eski anlar sessizce silinmez. Git commit'leri korunur.
 - Eşzamanlı revizyonlar SHA üzerinde çakışırsa yazma başarısızdır; karşılıklı kayıt sessizce ezilmez.
 - Yerel v2/v3 kayıtları silinmez, kullanıcı seçerek bulut sürümlerine kaydedebilir.
-- Bulut yazma yetkisi için token girişi gereklidir. Bulut kaydı denemesi olmadan kalıcılık iddia edilmez.
+- GitHub token'ı yalnızca sayfa belleğinde tutulur. Yeni oturumda tekrar bağlanmak gerekir; token olmadan otomatik yazma mümkün değildir. Kaydetme göstergesi bu durumu belirtir. Cihazda kalan gönderilmemiş kurtarma taslağı bulut kaydı değildir.
+- GitHub API yazma işlemi kısa gecikme ve sunucu onayı gerektirir. Kayıt tamamlanmamışsa sayfadan çıkarken uyarı görüntülenir.
 
 ## Test
 
