@@ -18,7 +18,16 @@
       "info@asyadaegitim.com",
       "iakfiratt@gmail.com"
     ],
-    "storage": "brandstudio-editor-store"
+    "storage": "brandstudio-editor-store",
+    "admin_auth": {
+      "status": "staged-not-live",
+      "username": "adminasya",
+      "trusted_browser_session_days": 365,
+      "renew_within_days": 30,
+      "provider": "private Durable Object",
+      "credential_storage": "Cloudflare Worker secrets only; hashed PBKDF2, not GitHub",
+      "temporary_fallback": "Cloudflare Access remains active until admin login is verified"
+    }
   },
   "services": {
     "gateway_worker": "brandstudio-edge",
@@ -26,7 +35,8 @@
     "staging_worker": "brandstudio-stage",
     "editor_d1": "brandstudio-editor",
     "staging_d1": "brandstudio-stage",
-    "pages_project": "brandstudio-asyadaegitim"
+    "pages_project": "brandstudio-asyadaegitim",
+    "admin_auth_worker": "brandstudio-admin-auth"
   },
   "source_paths": [
     "studio/cloudflare-brandstudio/asya-gateway/worker.mjs",
@@ -41,6 +51,9 @@
     "source-editor-d1-row-export",
     "live-custom-domain-authenticated-save-test",
     "reconnect-pages-github",
-    "source-resource-cleanup-after-all-checks"
+    "source-resource-cleanup-after-all-checks",
+    "verify-server-side-admin-verifier-secret",
+    "live-admin-login-and-session-persistence-check",
+    "switch-off-old-access-app-only-after-tests"
   ]
 }
