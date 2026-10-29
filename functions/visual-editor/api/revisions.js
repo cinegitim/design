@@ -3,6 +3,7 @@
 // This is intentionally independent of GitHub PATs, cookies managed by JS, and D1 staging.
 const ISSUER='https://dawn-voice-4b40.cloudflareaccess.com';
 const OWNER='iakfiratt@gmail.com';
+const ACCESS_AUD='78b226d0c73b926ead01a0accd7626a457bc9362966c7537a8a80136e6012f8b';
 const DB='BRANDSTUDIO_EDITOR';
 const KEY=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const enc=new TextEncoder();
@@ -20,12 +21,12 @@ async function keys(){
 }
 async function authorized(request,env){
  const token=request.headers.get('Cf-Access-Jwt-Assertion')||'';
- if(token.length<100||token.length>15000||!env.BRANDSTUDIO_ACCESS_AUD)return false;
+ if(token.length<100||token.length>15000||!ACCESS_AUD)return false;
  const parts=token.split('.');if(parts.length!==3)return false;
  const header=parse(parts[0]),payload=parse(parts[1]);
  if(header.alg!=='RS256'||!header.kid)return false;
  const now=Math.floor(Date.now()/1000),aud=Array.isArray(payload.aud)?payload.aud:[payload.aud];
- if(payload.iss!==ISSUER||!aud.includes(env.BRANDSTUDIO_ACCESS_AUD))return false;
+ if(payload.iss!==ISSUER||!aud.includes(ACCESS_AUD))return false;
  if(!Number.isFinite(payload.exp)||payload.exp<=now||!Number.isFinite(payload.iat)||payload.iat>now+60)return false;
  if(String(payload.email||'').toLowerCase()!==OWNER)return false;
  let list=await keys(),jwk=list.find(x=>x.kid===header.kid);
