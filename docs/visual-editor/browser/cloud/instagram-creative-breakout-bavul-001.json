@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "product": "instagram-creative-breakout-bavul-001",
+  "versions": {
+    "v2": {
+      "state": {
+        "colors": {
+          "paper": "#f7f3e9",
+          "ink": "#1d2027",
+          "red": "#bd2120"
+        },
+        "edits": {
+          "0:2": {
+            "styles": {
+              "display": "none"
+            },
+            "mode": "inherit"
+          },
+          "0:1": {
+            "styles": {
+              "width": "623px",
+              "height": "29px",
+              "max-width": "none",
+              "transform": "translate(0px,0px)"
+            },
+            "mode": "inherit",
+            "segments": [
+              "ASYA'DA EĞİTİM ",
+              "/",
+              " EĞİTİMİN YENİ ROTASI"
+            ]
+          },
+          "0:15": {
+            "styles": {
+              "display": "none"
+            },
+            "mode": "inherit"
+          }
+        },
+        "groups": {}
+      },
+      "updatedAt": "2026-10-29T10:12:21.071Z",
+      "note": "Chrome'da kaydedilmiş v2 (ilk GitHub aktarımı)"
+    }
+  },
+  "history": [
+    {
+      "id": "baseline-v1",
+      "at": "2026-10-29T10:12:21.071Z",
+      "version": 1,
+      "kind": "original",
+      "note": "Kaynak v1: değiştirilmemiş",
+      "state": {
+        "colors": {
+          "paper": "#f7f3e9",
+          "ink": "#1d2027",
+          "red": "#bd2120"
+        },
+        "edits": {},
+        "groups": {}
+      }
+    },
+    {
+      "id": "import-v2-20261029",
+      "at": "2026-10-29T10:12:21.071Z",
+      "version": 2,
+      "kind": "import",
+      "note": "Chrome'da doğrulanmış v2 (sonraki kaydedilmemiş düzenlemeler bu aktarımda yok)",
+      "state": {
+        "colors": {
+          "paper": "#f7f3e9",
+          "ink": "#1d2027",
+          "red": "#bd2120"
+        },
+        "edits": {
+          "0:2": {
+            "styles": {
+              "display": "none"
+            },
+            "mode": "inherit"
+          },
+          "0:1": {
+            "styles": {
+              "width": "623px",
+              "height": "29px",
+              "max-width": "none",
+              "transform": "translate(0px,0px)"
+            },
+            "mode": "inherit",
+            "segments": [
+              "ASYA'DA EĞİTİM ",
+              "/",
+              " EĞİTİMİN YENİ ROTASI"
+            ]
+          },
+          "0:15": {
+            "styles": {
+              "display": "none"
+            },
+            "mode": "inherit"
+          }
+        },
+        "groups": {}
+      }
+    }
+  ],
+  "updatedAt": "2026-10-29T10:12:21.071Z"
+}
