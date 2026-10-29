@@ -154,7 +154,9 @@ test("compact professional UI keeps one-row toolbar and accessible essential act
  assert.match(html,/\.toolbar\{height:43px;min-height:43px;/);
  assert.match(html,/\.toolbar-cluster\{display:flex;/);
  assert.match(html,/\.toolbar-spacer\{flex:1 1 6px/);
- assert.match(html,/class="btn primary save-btn" id="save"/);
+ assert.match(html,/class="btn primary save-btn" id="cloud-save"/);
+ assert.match(html,/class="btn save-btn" id="cloud-new"/);
+ assert.match(html,/id="save" title="Tarayıcıda geçici bir sürüm yedeği/);
  assert.match(html,/class="tools-popover"/);
  assert.match(html,/\.toolbar-overflow>summary\{list-style:none/);
  assert.match(html,/\.slide-tabs\{min-height:39px;height:39px;/);

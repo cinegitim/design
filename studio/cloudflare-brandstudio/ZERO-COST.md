@@ -66,3 +66,9 @@ References:
 - https://developers.cloudflare.com/workers/platform/limits/
 - https://developers.cloudflare.com/d1/platform/pricing/
 - https://developers.cloudflare.com/pages/platform/limits/
+
+## Güncelleme — 29 Ekim 2026: GitHub yetkili bulut düzenleme arşivi
+
+Önceki bölümlerde anlatılan **yerel JSON/kayıt akışı** hâlâ isteğe bağlı yedektir; artık tek seçenek değildir. Tarayıcı editörü ayrıca doğrudan GitHub API üzerinden `brandstudio-editor-history` dalına, kullanıcı tarafından açıkça girilen yalnızca bu repo için Contents:write izni olan bir token ile yazabilir. Token sadece sekme belleğinde tutulur. **Buluta kaydet** mevcut v1/v2 vb. editör düzenlemesinin üzerine kaydeder; her kayıt anlık snapshot ile zaman damgalı geri yükleme günlüğü oluşturur. **+ Yeni sürüm** isteğe bağlıdır. Kaynak HTML ve onaylı logoların `main` sürümlerine dokunulmaz. Bulut dalı herkese açık depodadır. Detay: [GITHUB-CLOUD-REVISIONS.md](GITHUB-CLOUD-REVISIONS.md).
+
+PNG/JPEG görsel çıktıları ücretsiz olarak, tarayıcıda paketlenmiş `html2canvas` ile üretilir; görüntü kalitesi yayımlanmadan önce kontrol edilmelidir. Cloudflare Worker ve D1 yazma API'leri **hâlâ kapalıdır**; GitHub'a doğrudan yazmak Cloudflare'da ücretli kaynak tüketmez.
