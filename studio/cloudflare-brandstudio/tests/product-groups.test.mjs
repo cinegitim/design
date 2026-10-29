@@ -15,13 +15,13 @@ const Catalog=scope.BrandstudioCatalog;
 // committed authored pages without falsifying that snapshot's tree SHA.
 const newCampaignPages=Array.from({length:6},(_,i)=>
  'docs/instagram/ieft-2026-firsatlar-001/source/'+String(i+1).padStart(2,'0')+'.html');
-const raw=Catalog.fromPaths([...inventory.files.map(x=>x[0]),...newCampaignPages]);
+const raw=Catalog.fromPaths([...inventory.files.map(x=>x[0]),...newCampaignPages,'docs/instagram/creative-breakout-bavul-001/source/01.html']);
 const families=Catalog.groupRecords(raw,manifest);
 
 test('current 28 independently discovered versions reduce to 15 usable families',()=>{
- assert.equal(raw.length,28);
- assert.equal(families.length,15);
- assert.equal(new Set(families.map(x=>x.id)).size,15);
+ assert.equal(raw.length,29);
+ assert.equal(families.length,16);
+ assert.equal(new Set(families.map(x=>x.id)).size,16);
  assert.ok(families.every(x=>x.pages.length>0&&Array.isArray(x.versions)&&x.versions.length));
 });
 test('all 27 old product ids either still belong to a family or are explicitly retired',()=>{
@@ -93,7 +93,7 @@ test('Instagram publication requires real post evidence and does not invent a ma
 test('future products not manually mapped remain visible',()=>{
  const rawPlus=[...raw,{id:'instagram-new-product-001',title:'Yeni Tasarım',family:'instagram',kind:'html',pages:['instagram/new-product-001/source/01.html']}];
  const newest=Catalog.groupRecords(rawPlus,manifest);
- assert.equal(newest.length,16);
+ assert.equal(newest.length,17);
  assert.ok(newest.find(x=>x.id==='instagram-new-product-001'));
 });
 test('editor offers actual product version selector; catalog does not show historical experiments',()=>{

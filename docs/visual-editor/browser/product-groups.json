@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "scope": "active-and-versioned",
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "archiveBranch": "archive/brand-identity-history-20261026",
   "notes": "Single product family; defaultId chooses an evidenced published revision when known; currentId remains latest working revision. Never assert which version was published from family-level proof. Legacy deep links to exact versions continue working. Canonical logo files remain protected.",
   "groups": [
@@ -349,6 +349,26 @@
         "Roll-up"
       ],
       "defaultId": "cin-egitim-rollup-rollup-design-a"
+    },
+    {
+      "id": "instagram-creative-breakout-bavul-001",
+      "title": "Bir Bavul. Binlerce İhtimal.",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Tekil Paylaşımlar / Creative Breakout",
+      "currentId": "instagram-creative-breakout-bavul-001",
+      "defaultId": "instagram-creative-breakout-bavul-001",
+      "versions": [
+        {
+          "id": "instagram-creative-breakout-bavul-001",
+          "label": "v1"
+        }
+      ],
+      "categoryPath": [
+        "Sosyal Medya",
+        "Tekil Paylaşımlar",
+        "Creative Breakout"
+      ],
+      "lifecycle": "in-review"
     }
   ],
   "retired": [

@@ -51,6 +51,7 @@ const sources={
  'instagram-basvuru-rehberi':{v:'../../instagram/basvuru-rehberi-china-001/',photo:'../../instagram/basvuru-rehberi-china-001/contact-sheet.png'},
  'instagram-burs-dosyasi-gks-2027-001':{v:'../../instagram/burs-dosyasi-gks-2027-001/',photo:'../../instagram/burs-dosyasi-gks-2027-001/export/01.png'},
  'instagram-rotani-sec-tokyo-seoul-001':{v:'../../instagram/rotani-sec-tokyo-seoul-001/v3/',photo:'../../instagram/rotani-sec-tokyo-seoul-001/v3/final/01-admission-letter.png'},
+ 'instagram-creative-breakout-bavul-001':{v:'../../instagram/creative-breakout-bavul-001/',photo:'../../instagram/creative-breakout-bavul-001/png/01.png'},
  'instagram-ieft-2026-firsatlar-001':{v:'../../instagram/ieft-2026-firsatlar-001/',photo:'../../instagram/ieft-2026-firsatlar-001/png/01.png'},
  'instagram-tsinghua-atlas-2027':{v:'../../instagram/tsinghua-atlas-2027/v2/',photo:'../../instagram/tsinghua-atlas-2027/v2/contact-sheet.png'},
  'instagram-snu':{v:null,photo:'../../instagram/phase-2c/a-snu/png/01.png'},
@@ -109,6 +110,9 @@ async function populate(){
  const priority=['Lansman ve Kampanyalar','Üniversite Tanıtımları','Başvuru ve Burs Rehberleri','Şehir ve Öğrenci Yaşamı'];
  priority.forEach(name=>{const entries=branches.get(name)||[];if(!entries.length)return;const subgroup=el('section','work-subgroup');subgroup.dataset.subcategory=name;subgroup.append(el('h5','',name));const grid=el('div','items');entries.forEach(g=>grid.append(card(g,posts)));subgroup.append(grid);carousel.append(subgroup)});
  top.append(carousel);
+ const singles=groups.filter(g=>g.categoryPath?.[1]==='Tekil Paylaşımlar');
+ if(singles.length){const single=el('div','work-class');single.dataset.level='Tekil Paylaşımlar';single.append(el('h4','','Tekil Paylaşımlar'),el('p','','Bağımsız yaratıcı görsel kampanyaları ve deneysel tekil postlar.'));const branch=el('section','work-subgroup');branch.dataset.subcategory='Creative Breakout';branch.append(el('h5','','Creative Breakout'));const tiles=el('div','items');singles.forEach(g=>tiles.append(card(g,posts)));branch.append(tiles);single.append(branch);top.append(single)}
+
  const identity=el('div','work-class');identity.dataset.level='Kimlik Uygulamaları';identity.append(el('h4','','Kimlik Uygulamaları'),el('p','','Logo, sosyal medya profili ve kapak tasarımları aynı görsel koleksiyonda.'));
  const sub=el('section','work-subgroup');sub.dataset.subcategory='Logolar ve Kapaklar';sub.append(el('h5','','Logolar ve Kapaklar'));const grid=el('div','items');grid.append(logoCard());sub.append(grid);identity.append(sub);top.append(identity);root.append(top);
  legacy.replaceWith(root);const oldField=input;const fresh=input.cloneNode(true);input.replaceWith(fresh);
