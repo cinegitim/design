@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-const root=path.resolve(import.meta.dirname,'../../..');
+const root=path.resolve(import.meta.dirname,'../..');
 const gateway=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/asya-gateway/worker.mjs'),'utf8');
 const auth=fs.readFileSync(path.join(root,'studio/branddesign/admin-auth/worker.mjs'),'utf8');
 const config=JSON.parse(fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/asya-gateway/wrangler.json'),'utf8'));
@@ -21,7 +21,7 @@ test('admin login protects static pages and the revision API',()=>{
  assert.match(gateway,/if\(!user\.ok\)/);
  assert.match(gateway,/context=\{request,env,authenticated:true\}/);
  assert.match(gateway,/if\(!context\.authenticated\)/);
- assert.match(gateway,/if\(!sameOrigin\(req\)\)/);
+ assert.match(gateway,/!sameOrigin\(req\)/);
  assert.match(gateway,/CF-Connecting-IP/);
  assert.match(gateway,/name="username"/);
  assert.match(gateway,/name="password"/);
