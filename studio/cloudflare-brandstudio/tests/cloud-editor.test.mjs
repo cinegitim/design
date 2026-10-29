@@ -112,7 +112,6 @@ test('recovered pending state compares normalized values and does not show false
 test('Branddesign Cloudflare gateway verifies Access JWT and routes revisions to private DO',()=>{
  const edge=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/asya-gateway/worker.mjs'),'utf8');
  assert.ok(edge.includes('polished-flower-7330.cloudflareaccess.com'));
- assert.ok(edge.includes('studio.asyadaegitim.com')===false||edge.includes('studio.asyadaegitim.com'));
  assert.ok(edge.includes('BrandstudioRevisionObject'));
  assert.ok(edge.includes('X-Brandstudio-Editor'));
  assert.ok(edge.includes('Cf-Access-Jwt-Assertion'));
