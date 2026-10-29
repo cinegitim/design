@@ -74,7 +74,7 @@ test('server rejects unauthenticated requests and verifies signed Access JWT',()
  assert.match(store,/class BrandstudioRevisionObject/);
  assert.ok(store.includes('this.ctx.storage.transaction'));
  assert.match(store,/RECOVERED_BAVUL/);
- assert.match(store,/legacy-v2/);
+ assert.doesNotMatch(store,/sha:"legacy-v2"/);
 });
 test('one visible editor, simple autosave and direct PNG/JPEG downloads',()=>{
  assert.match(html,/location\.hostname==='cinegitim\.github\.io'/);
