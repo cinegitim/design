@@ -99,3 +99,12 @@ test('autosave captures a stable input snapshot and normalizes live state only a
  assert.doesNotMatch(store,/fetch\(url,/);
  assert.match(store,/RECOVERED_BAVUL/);
 });
+
+test('recovered pending state compares normalized values and does not show false unsaved work',()=>{
+ assert.match(html,/codec\.validateState\(pending\.state,pages\.length\)/);
+ assert.match(html,/codec\.validateState\(cloudData\.versions\['v'\+pending\.version\]\.state,pages\.length\)/);
+ const store=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/editor-store/worker.mjs'),'utf8');
+ assert.match(store,/function compactRetryHistory/);
+ assert.match(store,/repeatedAutosaves/);
+ assert.match(store,/if\(stored\.document\.history\.length>=100\)/);
+});
