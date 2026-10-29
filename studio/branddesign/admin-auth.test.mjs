@@ -49,3 +49,17 @@ test('private auth DO is isolated from the public gateway and includes rate limi
  assert.match(auth,/await this\.ctx\.storage\.put/);
  assert.match(auth,/new Response\("Not Found",\{status:404\}\)/);
 });
+
+test('browser performs PBKDF2 and server verifies a one-time HMAC proof without server PBKDF2',()=>{
+ assert.match(gateway,/LOGIN_SCRIPT/);
+ assert.match(gateway,/\/admin\/challenge/);
+ assert.match(gateway,/script-src 'nonce-/);
+ assert.match(gateway,/connect-src 'self'/);
+ assert.match(gateway,/crypto\.subtle\.deriveBits/);
+ assert.match(gateway,/crypto\.subtle\.sign\('HMAC'/);
+ assert.match(gateway,/async function correctProof/);
+ assert.match(gateway,/authObject\(env,'consume',clientId/);
+ assert.match(auth,/action==="challenge"\|\|action==="consume"/);
+ assert.match(auth,/this\.ctx\.storage\.delete\(key\)/);
+ assert.doesNotMatch(gateway,/const bits=await crypto\.subtle\.deriveBits\(\{name:'PBKDF2',salt:fromHex\(env/);
+});
