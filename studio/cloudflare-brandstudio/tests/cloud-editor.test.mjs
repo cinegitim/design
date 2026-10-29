@@ -6,106 +6,79 @@ import path from 'node:path';
 const root=path.resolve(import.meta.dirname,'../../..');
 const source=fs.readFileSync(path.join(root,'docs/visual-editor/browser/github-sync.js'),'utf8');
 const html=fs.readFileSync(path.join(root,'docs/visual-editor/browser/index.html'),'utf8');
+const backend=fs.readFileSync(path.join(root,'functions/visual-editor/api/revisions.js'),'utf8');
 function fixture(){
- const data=new Map(),calls=[],auth=[];
- let branch=false,head='basecommit';
+ const data=new Map(),calls=[];
  async function fetch(url,opts={}){
-  const u=new URL(url),pathname=u.pathname.replace('/repos/cinegitim/design','');
-  calls.push([opts.method||'GET',pathname]);
-  auth.push(opts.headers?.Authorization||'');
-  let code=200,body={};
-  if(pathname==='/git/ref/heads/brandstudio-editor-history'){
-    if(!branch)code=404;else body={object:{sha:head}}
-  } else if(pathname==='/git/ref/heads/main')body={object:{sha:'mainsha'}};
-  else if(pathname==='/git/refs'&&opts.method==='POST'){
-    assert.equal(JSON.parse(opts.body).ref,'refs/heads/brandstudio-editor-history');branch=true;
-    body={ref:'refs/heads/brandstudio-editor-history'}
-  } else if(pathname.startsWith('/contents/')){
-    let file=decodeURIComponent(pathname.slice('/contents/'.length));
-    if(opts.method==='PUT'){
-      assert.equal(branch,true);
-      const payload=JSON.parse(opts.body);
-      if(data.has(file)&&payload.sha!==data.get(file).sha){code=409;body={message:'Conflict'}}
-      else if(!data.has(file)&&payload.sha){code=409;body={message:'Conflict'}}
-      else {const sha='sha'+(data.size+calls.length);const text=Buffer.from(payload.content,'base64').toString('utf8');data.set(file,{sha,text});head='commit'+calls.length;body={content:{sha},commit:{sha:head}}}
-    } else if(data.has(file))body={type:'file',sha:data.get(file).sha,content:Buffer.from(data.get(file).text,'utf8').toString('base64')};
-    else code=404;
-  } else throw Error('Unexpected endpoint '+pathname);
-  return new Response(JSON.stringify(body),{status:code,headers:{'content-type':'application/json'}});
+  calls.push({url,method:opts.method,headers:opts.headers});
+  const product=new URL(url,'https://brandstudio-migration.pages.dev').searchParams.get('product');
+  const old=data.get(product);
+  if(opts.method==='GET')return new Response(JSON.stringify(old||{sha:null,document:{schema:1,product,versions:{},history:[]}}),{headers:{'content-type':'application/json'}});
+  if(opts.method!=='POST')throw Error('Unexpected method');
+  const body=JSON.parse(opts.body);
+  if((old?.sha??null)!==body.expectedSha)return new Response(JSON.stringify({error:'Kaydedilemedi'}),{status:409,headers:{'content-type':'application/json'}});
+  const doc=old?structuredClone(old.document):{schema:1,product,versions:{},history:[]};
+  doc.versions['v'+body.version]={state:body.state,note:body.note};
+  doc.history.push({id:'entry-'+(doc.history.length+1),state:body.state,version:body.version,kind:body.kind});
+  const sha='test-revision-'+(doc.history.length);
+  const next={sha,document:doc};
+  data.set(product,next);
+  return new Response(JSON.stringify(next),{headers:{'content-type':'application/json'}})
  }
- const sandbox={fetch,URL,Response,TextEncoder,TextDecoder,structuredClone,btoa,atob,console,Math,Date};
+ const sandbox={fetch,URL,Response,TextEncoder,TextDecoder,structuredClone,btoa,atob,console};
  sandbox.globalThis=sandbox;
  vm.runInNewContext(source,sandbox);
- return{cloud:sandbox.BrandstudioCloud,calls,auth,data};
+ return {cloud:sandbox.BrandstudioCloud,calls,data}
 }
-const state=(n)=>({colors:{paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'},edits:n?{'0:2':{styles:{left:n+'px'},mode:'inherit'}}:{},groups:{}});
-test('GitHub editor cloud rejects writes unless user supplies repo-scoped token',async()=>{
+const state=n=>({colors:{paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'},edits:n?{'0:2':{styles:{left:n+'px'},mode:'inherit'}}:{},groups:{}});
+test('single Cloudflare API, no browser GitHub PAT or direct GitHub write',async()=>{
  const {cloud,calls}=fixture();
- await assert.rejects(cloud.commit({product:'carousel-demo',version:1,state:state(0)}),/access|anahtar/i);
- assert.equal(calls.length,0);
+ assert.equal(cloud.authenticated(),true);
+ const init=await cloud.load('sample');
+ assert.equal(init.sha,null);
+ await cloud.commit({product:'sample',version:1,state:state(1),expectedSha:null});
+ assert.ok(calls.every(c=>c.url.startsWith('/visual-editor/api/revisions?product=')));
+ assert.ok(calls.every(c=>!JSON.stringify(c.headers).includes('Bearer')));
+ assert.doesNotMatch(source,/api\.github\.com|accessToken|localStorage|sessionStorage|document\.cookie/);
 });
-test('source v1 is overwritable and history retains every earlier state',async()=>{
- const {cloud,auth,calls}=fixture();
- cloud.setToken('test-only-token');
- let x=await cloud.commit({product:'carousel-demo',version:1,state:state(18),note:'ilk düzenleme'});
- assert.equal(x.document.history.length,2);
- assert.equal(x.document.history[0].kind,'original');
- assert.equal(x.document.history[1].state.edits['0:2'].styles.left,'18px');
- x=await cloud.commit({product:'carousel-demo',version:1,state:state(42),note:'aynı v1 güncellemesi'});
- assert.equal(x.document.history.length,3);
- assert.equal(x.document.versions.v1.state.edits['0:2'].styles.left,'42px');
- assert.equal(x.document.history[1].state.edits['0:2'].styles.left,'18px');
- assert.equal(x.document.history[0].state.edits['0:2'],undefined);
- assert.ok(auth.filter(Boolean).every(x=>x==='Bearer test-only-token'));
- assert.ok(calls.some(x=>x[0]==='POST'&&x[1]==='/git/refs'));
-});
-test('existing v2 is updated in place; v3 must be created explicitly',async()=>{
- const {cloud}=fixture();cloud.setToken('test-only-token');
- let a=await cloud.commit({product:'carousel-demo',version:2,state:state(20)});
- let b=await cloud.commit({product:'carousel-demo',version:2,state:state(50)});
- assert.deepEqual(Object.keys(b.document.versions),['v2']);
+test('same version save and intentional next version preserve earlier history',async()=>{
+ const {cloud}=fixture();
+ let a=await cloud.commit({product:'sample',version:2,state:state(1),expectedSha:null,kind:'autosave'});
+ let b=await cloud.commit({product:'sample',version:2,state:state(2),expectedSha:a.sha,kind:'autosave'});
+ assert.equal(b.document.versions.v2.state.edits['0:2'].styles.left,'2px');
  assert.equal(b.document.history.length,2);
- let c=await cloud.commit({product:'carousel-demo',version:3,state:state(50),kind:'new'});
- assert.deepEqual(Object.keys(c.document.versions),['v2','v3']);
- const restored=await cloud.commit({product:'carousel-demo',version:2,state:b.document.history[0].state,kind:'restore'});
- assert.equal(restored.document.versions.v2.state.edits['0:2'].styles.left,'20px');
- assert.equal(restored.document.history.at(-1).kind,'restore');
- assert.equal(restored.document.history[0].state.edits['0:2'].styles.left,'20px');
+ let c=await cloud.commit({product:'sample',version:3,state:state(2),expectedSha:b.sha,kind:'new'});
+ assert.equal(Object.keys(c.document.versions).join(','),'v2,v3');
 });
-test('browser editor exposes one cloud save flow and explicit recovery',()=>{
- assert.match(html,/cloudSelected\?'cloud:'\+current/);
- assert.match(html,/opt\.value='cloud:'\+k\.slice\(1\)/);
- assert.match(html,/cloud\.commit\(\{product:product,version:n,state:checked/);
- assert.match(html,/if\(target\.indexOf\('cloud:'\)===0\)/);
- assert.match(html,/renderCloudHistory\(\)/);
- assert.match(html,/function applyCloudSnapshot/);
- assert.match(html,/\$\('cloud-original'\)\.onclick/);
- assert.match(html,/function loadSavedVersion/);
+test('stale writers receive a clear conflict instead of silent overwrite',async()=>{
+ const {cloud}=fixture();
+ const a=await cloud.commit({product:'sample',version:2,state:state(1),expectedSha:null});
+ await assert.rejects(cloud.commit({product:'sample',version:2,state:state(3),expectedSha:'stale'}),/başka bir yerde değişmiş/i);
+ const now=await cloud.load('sample');
+ assert.equal(now.sha,a.sha);
+ assert.equal(now.document.versions.v2.state.edits['0:2'].styles.left,'1px');
+});
+test('server rejects unauthenticated requests and verifies signed Access JWT',()=>{
+ assert.match(backend,/Cf-Access-Jwt-Assertion/);
+ assert.match(backend,/crypto\.subtle\.verify/);
+ assert.match(backend,/OWNER=/);
+ assert.match(backend,/ACCESS_AUD=/);
+ assert.match(backend,/if\(!await authorized/);
+ assert.match(backend,/X-Brandstudio-Editor/);
+ assert.match(backend,/req\.headers\.get\('Origin'\)!==url\.origin/);
+ assert.match(backend,/WHERE product=\? AND revision=\? RETURNING revision/);
+ assert.match(backend,/ON CONFLICT DO NOTHING RETURNING revision/);
+ assert.match(backend,/editor_documents/);
+});
+test('one visible editor, simple autosave and direct PNG/JPEG downloads',()=>{
+ assert.match(html,/location\.hostname==='cinegitim\.github\.io'/);
+ assert.match(html,/brandstudio-migration\.pages\.dev/);
  assert.match(html,/function wakeAutoSave/);
- assert.match(html,/function dirtyStatus\(\).*wakeAutoSave/);
- assert.match(html,/id="pending-recover"/);
- assert.match(html,/id="legacy-import"/);
- assert.match(html,/id="save" hidden/);
- assert.doesNotMatch(html,/id="raster-format"/);
- assert.match(html,/function dump\(\)/);
- assert.doesNotMatch(source,/localStorage|sessionStorage|document\.cookie/);
-});
-test('PNG and JPEG export actual canvases, not renamed HTML',()=>{
+ assert.match(html,/function updateRecoveryButtons/);
  for(const id of ['download-png','download-jpeg','side-download-png','side-download-jpeg'])assert.match(html,new RegExp('id="'+id+'"'));
- assert.match(html,/html2canvas\.min\.js/);
  assert.match(html,/html2canvas\(slide/);
  assert.match(html,/canvas\.toBlob/);
- assert.match(html,/blob\.size<1000/);
- const vendor=fs.readFileSync(path.join(root,'docs/visual-editor/browser/html2canvas.min.js'),'utf8');
- assert.ok(vendor.length>190000);
- assert.match(vendor,/html2canvas/i);
-});
-test('expected cloud SHA protects against concurrent overwrites',async()=>{
- const {cloud}=fixture();cloud.setToken('test-only-token');
- let first=await cloud.commit({product:'carousel-demo',version:2,state:state(10)});
- await assert.rejects(cloud.commit({product:'carousel-demo',version:2,state:state(20),expectedSha:'stale'}),/başka bir oturumda/);
- let snap=await cloud.load('carousel-demo',true);
- assert.equal(snap.document.versions.v2.state.edits['0:2'].styles.left,'10px');
- let next=await cloud.commit({product:'carousel-demo',version:2,state:state(30),expectedSha:first.sha});
- assert.equal(next.document.versions.v2.state.edits['0:2'].styles.left,'30px');
+ assert.match(html,/id="cloud-token"[^>]*type="password"/);
+ assert.doesNotMatch(html,/GitHub erişim anahtarı \(yalnızca bellekte/);
+ assert.doesNotMatch(source,/localStorage|sessionStorage|document\.cookie/);
 });
