@@ -126,7 +126,7 @@ test('Brandstudio Cloudflare gateway stages password/session auth and routes rev
  const manifest=JSON.parse(fs.readFileSync(path.join(root,'studio/brandstudio/manifest.json'),'utf8'));
  assert.equal(manifest.destination.account,'asyadaegitim');
  assert.equal(manifest.editor.origin,'https://studio.asyadaegitim.com');
- assert.equal(manifest.source.status,'retained-pending-d1-archive');
+ assert.equal(manifest.source.status,'d1-data-exported-and-restored-source-retained-for-safe-cutover');
 });
 
 test('Durable Object revisions always get mirrored to D1 without risking authoritative saves',()=>{
