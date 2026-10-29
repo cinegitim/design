@@ -3,6 +3,12 @@ name: Brandstudio Pages — manual zero-cost deployment
 # Never runs automatically: prevent unbounded free-tier build usage.
 on:
   workflow_dispatch:
+  # One explicitly committed marker is an alternative to pressing Run workflow.
+  # Editing designs never triggers a build. Change only this marker to deploy.
+  push:
+    branches: [main]
+    paths:
+      - ".github/brandstudio-pages-deploy-marker.txt"
 
 permissions:
   contents: read
