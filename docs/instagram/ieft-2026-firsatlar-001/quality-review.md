@@ -1,0 +1,3 @@
+## Validation and review state
+
+All six 1080×1350 PNGs were actually rendered via a connected Chrome session from committed editable HTML/CSS; the exact approved D-04 identity and official IEFT logo load. Design inspected at full resolution for the 6 slides. Current strict studio/cloud audit contract is for a legacy SVG/ZIP package, which this browser-first HTML/CSS production does not yet implement; this design remains registered separately as a REVIEW bundle, and audit passing on existing bundles does not attest to full production certification of this new set. No Instagram publication or human aesthetic approval asserted.

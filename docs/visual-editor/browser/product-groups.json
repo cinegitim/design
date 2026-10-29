@@ -1,10 +1,30 @@
 {
   "schema": 1,
   "scope": "active-and-versioned",
-  "updated": "2026-10-26",
+  "updated": "2026-10-28",
   "archiveBranch": "archive/brand-identity-history-20261026",
   "notes": "Single product family; defaultId chooses an evidenced published revision when known; currentId remains latest working revision. Never assert which version was published from family-level proof. Legacy deep links to exact versions continue working. Canonical logo files remain protected.",
   "groups": [
+    {
+      "id": "instagram-ieft-2026-firsatlar-001",
+      "title": "IEFT Sonrası · Fırsatlar Bitmedi",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Karuseller / Lansman ve Kampanyalar",
+      "currentId": "instagram-ieft-2026-firsatlar-001",
+      "defaultId": "instagram-ieft-2026-firsatlar-001",
+      "versions": [
+        {
+          "id": "instagram-ieft-2026-firsatlar-001",
+          "label": "v1"
+        }
+      ],
+      "categoryPath": [
+        "Sosyal Medya",
+        "Karuseller",
+        "Lansman ve Kampanyalar"
+      ],
+      "lifecycle": "in-review"
+    },
     {
       "id": "instagram-carousel-01",
       "title": "Başka Bir Dünya Var",

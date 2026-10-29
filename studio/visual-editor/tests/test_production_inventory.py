@@ -92,7 +92,7 @@ console.log(JSON.stringify({files:inv.filesCount,groups:inv.groupsCount,summary:
         self.assertIn("product-groups.json", editor)
         self.assertIn("socialPublication", editor)
         source = (ROOT / "docs/visual-editor/browser/product-groups.json").read_text(encoding="utf8")
-        self.assertEqual(len(json.loads(source)["groups"]), 14)
+        self.assertEqual(len(json.loads(source)["groups"]), 15)
         archive = json.loads((ROOT / "docs/archive/retired-collections.json").read_text(encoding="utf8"))
         self.assertEqual(sum(x["fileCount"] for x in archive["collections"]), archive["filesTotal"])
         self.assertEqual(archive["transferState"], "archive-branch-verified-source-paths-preserved")
