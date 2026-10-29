@@ -52,7 +52,10 @@
       "table": "editor_revision_backups",
       "policy": "best-effort D1 mirror with read-repair and retained source on failure",
       "status": "staged-for-live-test",
-      "offsite_github": "not-yet-automated"
+      "offsite_github": "encrypted-oidc-scheduled-pending-live-verification",
+      "offsite_github_branch": "brandstudio-editor-history",
+      "offsite_encryption": "AES-256-GCM with independently retained user recovery key; no plaintext in public GitHub",
+      "offsite_schedule": "05:17 and 17:17 UTC"
     }
   },
   "services": {
@@ -75,7 +78,7 @@
   "pending": [
     "reconnect-pages-github",
     "source-resource-cleanup-after-all-checks",
-    "automatic-offsite-github-backup",
-    "confirm-github-pages-reconnect"
+    "confirm-github-pages-reconnect",
+    "verify-first-encrypted-offsite-workflow-run"
   ]
 }
