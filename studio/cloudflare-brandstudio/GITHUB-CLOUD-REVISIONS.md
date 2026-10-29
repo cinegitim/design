@@ -36,7 +36,7 @@ Durable Objects Workers Free planındaki ayrı kotalara bağlıdır; limit aşı
 
 ## 29 Ekim 2026 — Asya’da Eğitim Cloudflare hesabına göç
 
-Hedef hesabımız `info@asyadaegitim.com` (`5f90104db6f24a941c04e974e250cb67`). Kaynak kişisel hesabımız `iakfiratt@gmail.com` (`b462aa1499215378fe7f671a788c8a3c`). Bütün Cloudflare varlıklarının mantıksal envanteri `studio/branddesign/manifest.json` dosyasında tutulur. Kod ve onaylı tasarımlar `cinegitim/design` deposunda kalır.
+Hedef hesabımız `info@asyadaegitim.com` (`5f90104db6f24a941c04e974e250cb67`). Kaynak kişisel hesabımız `iakfiratt@gmail.com` (`b462aa1499215378fe7f671a788c8a3c`). Bütün Cloudflare varlıklarının mantıksal envanteri `studio/brandstudio/manifest.json` dosyasında tutulur. Kod ve onaylı tasarımlar `cinegitim/design` deposunda kalır.
 
 Hedefte `brandstudio-edge` (tek origin `studio.asyadaegitim.com`), `brandstudio-editor-store` (Durable Object), `brandstudio-stage` (D1), `brandstudio-editor` (D1), Zero Trust Access kuruluşu/IdP/uygulaması ve `brandstudio-asyadaegitim` adlı ayrı Pages projesi oluşturuldu. Son etkin Bavul v2 belgesi, dört aktif tarihçe anı ve mevcut kayıt revizyonu yeni DO worker'ın başlangıç verisine işlendi.
 

@@ -1,4 +1,4 @@
-// Branddesign trusted-device sessions. Private Durable Object; no public Worker routes.
+// Brandstudio trusted-device sessions. Private Durable Object; no public Worker routes.
 // Stores only SHA-256 hashes of cryptographically random session tokens.
 const DAY=86400000, YEAR=365*DAY, RENEW=30*DAY, LOCK=15*60000;
 const json=(body,status=200)=>new Response(JSON.stringify(body),{status,headers:{"content-type":"application/json","cache-control":"no-store"}});

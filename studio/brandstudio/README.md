@@ -1,6 +1,6 @@
-# Branddesign — Asya’da Eğitim Cloudflare altyapı grubu
+# Brandstudio — Asya’da Eğitim Cloudflare altyapı grubu
 
-Bu dizin **Branddesign** sistemine ait Cloudflare kaynaklarının tek envanter noktasıdır. Cloudflare hesabında fiziksel klasör bulunmadığından kaynakların adları ve bağlantıları `manifest.json` dosyasından izlenir. Kaynak kodu yeniden kopyalanmaz; halihazırdaki `studio/cloudflare-brandstudio/`, `docs/visual-editor/` ve `functions/visual-editor/` dizinleri esas alınır.
+Bu dizin **Brandstudio** sistemine ait Cloudflare kaynaklarının tek envanter noktasıdır. Cloudflare hesabında fiziksel klasör bulunmadığından kaynakların adları ve bağlantıları `manifest.json` dosyasından izlenir. Kaynak kodu yeniden kopyalanmaz; halihazırdaki `studio/cloudflare-brandstudio/`, `docs/visual-editor/` ve `functions/visual-editor/` dizinleri esas alınır.
 
 **Hedef:** `info@asyadaegitim.com` Cloudflare hesabı (`5f90104db6f24a941c04e974e250cb67`).
 
@@ -21,8 +21,10 @@ Bu dizin **Branddesign** sistemine ait Cloudflare kaynaklarının tek envanter n
 - Kullanıcı adı: `adminasya`; şifrenin kendisi bu depoya **asla** eklenmez.
 - Yeni Cloudflare Worker: `brandstudio-admin-auth`. SQLite-backed private Durable Object her bilgisayar/tarayıcı oturumunun rastgele 256-bit oturum anahtarının yalnız SHA-256 karmasını saklar.
 - `brandstudio-edge` Worker `ADMIN_PBKDF2_SALT` ve `ADMIN_PBKDF2_HASH` adlı Cloudflare **Secret** değişkenlerini kullanır. PBKDF2-SHA256 210.000 tur tarayıcıda hesaplanır; sunucu yalnız kısa süreli ve bir kez geçerli HMAC doğrulama kanıtını kontrol eder. Salt açık, türetilmiş anahtar gizlidir. Hiçbir parola veya doğrulayıcı GitHub'da yayımlanmaz.
-- Her tarayıcıda ilk kez oturum açılır; `__Host-branddesign_session` çerezi `Secure; HttpOnly; SameSite=Lax; Path=/`, 365 gün süreli ve bitmeden son 30 günde otomatik yenilenir. Çerez silinirse veya farklı tarayıcı kullanılırsa yeniden giriş gerekir. IP/fingerprint ile gizli cihaz izlemesi yapılmaz.
+- Her tarayıcıda ilk kez oturum açılır; `__Host-brandstudio_session` çerezi `Secure; HttpOnly; SameSite=Lax; Path=/`, 365 gün süreli ve bitmeden son 30 günde otomatik yenilenir. Çerez silinirse veya farklı tarayıcı kullanılırsa yeniden giriş gerekir. IP/fingerprint ile gizli cihaz izlemesi yapılmaz.
 - Login: `GET /admin/login` ve `POST /admin/login`, yetkisiz sayfalarda girişe yönlendirme, `GET /admin/session` oturum doğrulaması, `POST /admin/logout` oturumu geçersiz kılma. Brute force en fazla 6 başarısız giriş / 15 dakika / kaynak IP.
 - Özel kayıt API'si ve editördeki statik dosyalar aynı oturum denetiminden geçer. Eski Cloudflare Access uygulaması güvenli doğrulamadan sonra kaldırılmıştır.
 
 **Canlı doğrulama:** İlk admin girişi başarılı; tekrar yüklemede oturum devam ediyor; anonim API 401; yetkili API GET 200; aynı Bavul v2 durumuyla idempotent POST 200 ve `unchanged:true`; dört tarihçe anı ve revizyon kimliği değişmeden korundu. Eski Access uygulaması silindi. Kaynak kişisel Cloudflare hesabının D1 arşiv göçü ayrı ve henüz beklemede.
+
+**Oturum sürekliliği:** Daha önce tanınan cihazların eski `__Host-branddesign_session` çerezleri geçiş sırasında otomatik olarak `__Host-brandstudio_session` biçimine yükseltilir. Mevcut Durable Object kimliği korunur, kayıtlar taşınmaz veya sıfırlanmaz.

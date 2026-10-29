@@ -4,9 +4,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 const root=path.resolve(import.meta.dirname,'../..');
 const gateway=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/asya-gateway/worker.mjs'),'utf8');
-const auth=fs.readFileSync(path.join(root,'studio/branddesign/admin-auth/worker.mjs'),'utf8');
+const auth=fs.readFileSync(path.join(root,'studio/brandstudio/admin-auth/worker.mjs'),'utf8');
 const config=JSON.parse(fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/asya-gateway/wrangler.json'),'utf8'));
-const authConfig=JSON.parse(fs.readFileSync(path.join(root,'studio/branddesign/admin-auth/wrangler.json'),'utf8'));
+const authConfig=JSON.parse(fs.readFileSync(path.join(root,'studio/brandstudio/admin-auth/wrangler.json'),'utf8'));
 
 test('no password or verifier ever committed in public code',()=>{
  assert.doesNotMatch(gateway,/1a2b3c4d5e\./);
@@ -29,6 +29,7 @@ test('admin login protects static pages and the revision API',()=>{
  assert.doesNotMatch(gateway,/Cf-Access-Jwt-Assertion/);
 });
 test('trusted browsers use hardened long-lived HttpOnly secure cookies',()=>{
+ assert.match(gateway,/__Host-brandstudio_session/);
  assert.match(gateway,/__Host-branddesign_session/);
  assert.match(gateway,/HttpOnly; Secure; SameSite=Lax/);
  assert.match(gateway,/Max-Age=/);
@@ -62,4 +63,13 @@ test('browser performs PBKDF2 and server verifies a one-time HMAC proof without 
  assert.match(auth,/action==="challenge"\|\|action==="consume"/);
  assert.match(auth,/this\.ctx\.storage\.delete\(key\)/);
  assert.doesNotMatch(gateway,/const bits=await crypto\.subtle\.deriveBits\(\{name:'PBKDF2',salt:fromHex\(env/);
+});
+
+test('legacy trusted sessions continue and are upgraded without database migration',()=>{
+ assert.match(gateway,/LEGACY_COOKIE='__Host-branddesign_session'/);
+ assert.match(gateway,/idFromName\('branddesign-admin'\)/);
+ assert.match(gateway,/attachSession\(new Response\(res\.body/);
+ assert.match(gateway,/expiredLegacyCookie/);
+ assert.match(gateway,/legacy:previous\.legacy/);
+ assert.match(gateway,/brandstudio-admin-login:v1/);
 });

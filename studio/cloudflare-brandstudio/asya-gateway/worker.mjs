@@ -1,8 +1,8 @@
-// Branddesign admin gateway — Asyada Egitim. Username/password + trusted browser sessions.
+// Brandstudio admin gateway — Asyada Egitim. Username/password + trusted browser sessions.
 // No password, derived verifier or token is committed to GitHub.
 const STORE='BRANDSTUDIO_OBJECTS', AUTH='BRANDSTUDIO_AUTH';
 const KEY=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const enc=new TextEncoder(),COOKIE='__Host-branddesign_session';
+const enc=new TextEncoder(),COOKIE='__Host-brandstudio_session',LEGACY_COOKIE='__Host-branddesign_session';
 const YEAR=31536000;
 const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{'content-type':'application/json; charset=utf-8','cache-control':'no-store','x-content-type-options':'nosniff','referrer-policy':'no-referrer'}});
 const hex=bytes=>Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
@@ -10,13 +10,16 @@ function fromHex(s){if(typeof s!=='string'||s.length%2||!/^[a-f0-9]+$/i.test(s))
 async function sha256(x){return hex(new Uint8Array(await crypto.subtle.digest('SHA-256',enc.encode(x))))}
 function sessionToken(req){
  const cookie=req.headers.get('Cookie')||'';
- const match=cookie.match(/(?:^|;\s*)__Host-branddesign_session=([a-f0-9]{64})(?:;|$)/);
- return match?.[1]||null
+ const current=cookie.match(/(?:^|;\s*)__Host-brandstudio_session=([a-f0-9]{64})(?:;|$)/);
+ if(current)return {token:current[1],legacy:false};
+ const previous=cookie.match(/(?:^|;\s*)__Host-branddesign_session=([a-f0-9]{64})(?:;|$)/);
+ return previous?{token:previous[1],legacy:true}:null
 }
 async function authObject(env,action,id,extra={}){
  if(!env[AUTH])throw Error('Auth object binding missing');
+ // Preserve the existing DO identity to retain all previously issued device sessions.
  const ns=env[AUTH],obj=ns.get(ns.idFromName('branddesign-admin'));
- const r=await obj.fetch('https://branddesign.internal/session',{
+ const r=await obj.fetch('https://brandstudio.internal/session',{
   method:'POST',headers:{'content-type':'application/json'},
   body:JSON.stringify({action,id,...extra})
  });
@@ -24,13 +27,23 @@ async function authObject(env,action,id,extra={}){
  return r.json()
 }
 async function session(req,env){
- const token=sessionToken(req);if(!token)return {ok:false};
- const id=await sha256(token);
+ const previous=sessionToken(req);if(!previous)return {ok:false};
+ const token=previous.token,id=await sha256(token);
  const result=await authObject(env,'check',id);
- return result.ok?{ok:true,token,renewed:!!result.renewed}:{ok:false}
+ return result.ok?{ok:true,token,renewed:!!result.renewed,legacy:previous.legacy}:{ok:false}
 }
 function cookieHeader(token,maxAge=YEAR){
  return COOKIE+'='+token+'; Path=/; Max-Age='+maxAge+'; HttpOnly; Secure; SameSite=Lax'
+}
+function expiredLegacyCookie(){
+ return LEGACY_COOKIE+'=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax'
+}
+function attachSession(response,user){
+ if(!user?.ok||(!user.legacy&&!user.renewed))return response;
+ const headers=new Headers(response.headers);
+ headers.append('Set-Cookie',cookieHeader(user.token));
+ if(user.legacy)headers.append('Set-Cookie',expiredLegacyCookie());
+ return new Response(response.body,{status:response.status,headers})
 }
 function sameOrigin(req){
  const url=new URL(req.url);
@@ -67,7 +80,7 @@ const LOGIN_SCRIPT=String.raw`(function(){
    const material=await crypto.subtle.importKey('raw',encoder.encode(password),'PBKDF2',false,['deriveBits']);
    const bits=await crypto.subtle.deriveBits({name:'PBKDF2',salt:toBytes(c.salt),iterations:c.iterations,hash:'SHA-256'},material,256);
    const hmac=await crypto.subtle.importKey('raw',bits,{name:'HMAC',hash:'SHA-256'},false,['sign']);
-   const message=['branddesign-admin-login:v1',c.challenge,username,location.host].join('\n');
+   const message=['brandstudio-admin-login:v1',c.challenge,username,location.host].join('\n');
    const proof=toHex(await crypto.subtle.sign('HMAC',hmac,encoder.encode(message)));
    form.elements.namedItem('password').removeAttribute('name');
    for(const [name,value] of [['challenge',c.challenge],['proof',proof]]){
@@ -82,8 +95,8 @@ const LOGIN_SCRIPT=String.raw`(function(){
 })();`;
 function loginHtml(next,error,nonce){
  const safe=next.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
- return `<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Branddesign · Admin Girişi</title><style>
-:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 20% 10%,#27334b 0,#111927 50%,#0c111b 100%);color:#edf2f8;font:15px/1.5 system-ui,Arial;display:grid;place-items:center;padding:25px}main{width:min(100%,435px);background:#182334;border:1px solid #34415a;box-shadow:0 22px 65px #0007;border-radius:18px;padding:34px}h1{font-size:27px;letter-spacing:-.8px;margin:4px 0 6px}p{color:#abb8cc;margin:0 0 24px}.brand{color:#f6a67e;font-size:12px;letter-spacing:.15em;font-weight:800}label{display:block;margin:16px 0 6px;color:#d5e0ef;font-weight:600;font-size:13px}input{width:100%;border:1px solid #45556d;border-radius:9px;padding:13px;background:#0e1725;color:#fff;font:inherit}input:focus{outline:2px solid #f5a47b;outline-offset:2px}button{margin:25px 0 10px;background:#bd2120;border:0;border-radius:10px;padding:14px;color:white;font:inherit;font-weight:750;width:100%;cursor:pointer}button:disabled{opacity:.65}small{color:#9faec2}aside{color:#ffbeb5;margin-top:12px;font-size:13px}</style></head><body><main><div class="brand">BRANDDESIGN / ADMIN</div><h1>Tekrar hoş geldin.</h1><p>Bu tarayıcıda bir kez giriş yap. Güvenli oturumun sonraki ziyaretlerinde otomatik hatırlanır.</p><form method="post" action="/admin/login"><input type="hidden" name="next" value="${safe}"><label for="username">Kullanıcı adı</label><input id="username" name="username" required autocomplete="username" maxlength="64"><label for="password">Şifre</label><input id="password" name="password" type="password" required autocomplete="current-password"><button type="submit">Admin paneline gir</button></form><aside id="message">${error?'Giriş bilgileri doğrulanamadı veya çok fazla deneme yapıldı.':''}</aside><small>Güvenilen tarayıcı oturumu · 365 günlük yenilenen oturum · Çıkış yaparak sonlandırılabilir</small></main><script nonce="${nonce}">${LOGIN_SCRIPT}</script></body></html>`
+ return `<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Brandstudio · Admin Girişi</title><style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 20% 10%,#27334b 0,#111927 50%,#0c111b 100%);color:#edf2f8;font:15px/1.5 system-ui,Arial;display:grid;place-items:center;padding:25px}main{width:min(100%,435px);background:#182334;border:1px solid #34415a;box-shadow:0 22px 65px #0007;border-radius:18px;padding:34px}h1{font-size:27px;letter-spacing:-.8px;margin:4px 0 6px}p{color:#abb8cc;margin:0 0 24px}.brand{color:#f6a67e;font-size:12px;letter-spacing:.15em;font-weight:800}label{display:block;margin:16px 0 6px;color:#d5e0ef;font-weight:600;font-size:13px}input{width:100%;border:1px solid #45556d;border-radius:9px;padding:13px;background:#0e1725;color:#fff;font:inherit}input:focus{outline:2px solid #f5a47b;outline-offset:2px}button{margin:25px 0 10px;background:#bd2120;border:0;border-radius:10px;padding:14px;color:white;font:inherit;font-weight:750;width:100%;cursor:pointer}button:disabled{opacity:.65}small{color:#9faec2}aside{color:#ffbeb5;margin-top:12px;font-size:13px}</style></head><body><main><div class="brand">BRANDSTUDIO / ADMIN</div><h1>Tekrar hoş geldin.</h1><p>Bu tarayıcıda bir kez giriş yap. Güvenli oturumun sonraki ziyaretlerinde otomatik hatırlanır.</p><form method="post" action="/admin/login"><input type="hidden" name="next" value="${safe}"><label for="username">Kullanıcı adı</label><input id="username" name="username" required autocomplete="username" maxlength="64"><label for="password">Şifre</label><input id="password" name="password" type="password" required autocomplete="current-password"><button type="submit">Admin paneline gir</button></form><aside id="message">${error?'Giriş bilgileri doğrulanamadı veya çok fazla deneme yapıldı.':''}</aside><small>Güvenilen tarayıcı oturumu · 365 günlük yenilenen oturum · Çıkış yaparak sonlandırılabilir</small></main><script nonce="${nonce}">${LOGIN_SCRIPT}</script></body></html>`
 }
 function loginPage(next,error,status=200){
  const nonce=hex(crypto.getRandomValues(new Uint8Array(16)));
@@ -94,7 +107,7 @@ async function correctProof(username,challenge,proof,env,host){
  if(!env.ADMIN_PBKDF2_SALT||!env.ADMIN_PBKDF2_HASH)throw Error('Admin password secret missing');
  if(username!=='adminasya'||!/^[a-f0-9]{64}$/.test(challenge)||!/^[a-f0-9]{64}$/.test(proof))return false;
  const key=await crypto.subtle.importKey('raw',fromHex(env.ADMIN_PBKDF2_HASH),{name:'HMAC',hash:'SHA-256'},false,['sign']);
- const msg=['branddesign-admin-login:v1',challenge,username,host].join('\n');
+ const msg=['brandstudio-admin-login:v1',challenge,username,host].join('\n');
  const expected=new Uint8Array(await crypto.subtle.sign('HMAC',key,enc.encode(msg)));
  const actual=fromHex(proof);let diff=0;
  for(let i=0;i<expected.length;i++)diff|=actual[i]^expected[i];
@@ -103,14 +116,17 @@ async function correctProof(username,challenge,proof,env,host){
 async function handleAdmin(req,env,url){
  if(url.pathname==='/admin/logout'){
   if(req.method!=='POST'||!sameOrigin(req))return json({error:'Güvenli istek gerekli'},403);
-  const token=sessionToken(req);
-  if(token)await authObject(env,'revoke',await sha256(token));
-  return redirect('/admin/login',cookieHeader('',0))
+  const item=sessionToken(req);
+  if(item)await authObject(env,'revoke',await sha256(item.token));
+  const headers=new Headers({Location:'/admin/login','Cache-Control':'no-store'});
+  headers.append('Set-Cookie',cookieHeader('',0));
+  headers.append('Set-Cookie',expiredLegacyCookie());
+  return new Response(null,{status:303,headers})
  }
  if(url.pathname==='/admin/session'){
   if(req.method!=='GET')return json({error:'method'},405);
   const status=await session(req,env);
-  return json({authenticated:status.ok,session:'trusted-device',expiresAfterDays:365})
+  return attachSession(json({authenticated:status.ok,session:'trusted-device',expiresAfterDays:365}),status)
  }
  if(url.pathname==='/admin/challenge'){
   if(req.method!=='GET')return json({error:'method'},405);
@@ -123,7 +139,8 @@ async function handleAdmin(req,env,url){
  }
  if(url.pathname!=='/admin/login'&&url.pathname!=='/admin'&&url.pathname!=='/admin/')return json({error:'Yol bulunamadı'},404);
  if(req.method==='GET'){
-  if((await session(req,env)).ok)return redirect(target(url.searchParams.get('next')));
+  const user=await session(req,env);
+  if(user.ok)return attachSession(redirect(target(url.searchParams.get('next'))),user);
   return loginPage(target(url.searchParams.get('next')),false)
  }
  if(req.method!=='POST'||!sameOrigin(req)||!req.headers.get('content-type')?.startsWith('application/x-www-form-urlencoded'))return json({error:'Güvenli istek gerekli'},403);
@@ -202,8 +219,8 @@ export default {
    }
    if(url.pathname==='/visual-editor/api/revisions'){
     const context={request,env,authenticated:true};
-    if(request.method==='GET')return onRequestGet(context);
-    if(request.method==='POST')return onRequestPost(context);
+    if(request.method==='GET')return attachSession(await onRequestGet(context),user);
+    if(request.method==='POST')return attachSession(await onRequestPost(context),user);
     return json({error:'Desteklenmeyen yöntem'},405)
    }
    const upstreamUrl=new URL(STATIC_ORIGIN+url.pathname+url.search);
@@ -213,10 +230,9 @@ export default {
    headers.set('X-Content-Type-Options','nosniff');
    headers.set('Referrer-Policy','strict-origin-when-cross-origin');
    if(url.pathname.startsWith('/visual-editor/'))headers.set('Cache-Control','no-store');
-   if(user.renewed)headers.append('Set-Cookie',cookieHeader(user.token));
-   return new Response(res.body,{status:res.status,headers});
+   return attachSession(new Response(res.body,{status:res.status,headers}),user);
   }catch(e){
-   console.error('Branddesign gateway unavailable',String(e?.message||e));
+   console.error('Brandstudio gateway unavailable',String(e?.message||e));
    return json({error:'Hizmet geçici olarak kullanılamıyor'},503)
   }
  }
