@@ -51,11 +51,15 @@
       "d1_database": "brandstudio-editor",
       "table": "editor_revision_backups",
       "policy": "best-effort D1 mirror with read-repair and retained source on failure",
-      "status": "staged-for-live-test",
-      "offsite_github": "encrypted-oidc-scheduled-pending-live-verification",
+      "status": "live-verified",
+      "offsite_github": "live-verified",
       "offsite_github_branch": "brandstudio-editor-history",
       "offsite_encryption": "AES-256-GCM with independently retained user recovery key; no plaintext in public GitHub",
-      "offsite_schedule": "05:17 and 17:17 UTC"
+      "offsite_schedule": "05:17 and 17:17 UTC",
+      "verified_revision": "0882e066-d82d-4d31-9d9f-5aac06b3b2ca",
+      "offsite_workflow_run": "https://github.com/cinegitim/design/actions/runs/40957072762",
+      "offsite_branch_head": "65cf0da9985de06c9f4ce36d9fad0d565bd97782",
+      "disaster_recovery_key": "User recovery key stored separately; do not commit it to GitHub"
     }
   },
   "services": {
@@ -77,8 +81,6 @@
   "status": "migration-in-progress",
   "pending": [
     "reconnect-pages-github",
-    "source-resource-cleanup-after-all-checks",
-    "confirm-github-pages-reconnect",
-    "verify-first-encrypted-offsite-workflow-run"
+    "source-resource-cleanup-after-all-checks"
   ]
 }
