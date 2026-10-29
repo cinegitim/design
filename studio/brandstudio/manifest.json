@@ -9,7 +9,15 @@
   "source": {
     "account": "iakfiratt",
     "account_id": "b462aa1499215378fe7f671a788c8a3c",
-    "status": "retained-pending-d1-archive"
+    "status": "d1-data-exported-and-restored-source-retained-for-safe-cutover",
+    "migration_verified": {
+      "editor_archived_records": 1,
+      "editor_archived_revision": "legacy-v2",
+      "editor_archived_history": 2,
+      "stage_schema_version": "1",
+      "stage_products": 0,
+      "stage_versions": 0
+    }
   },
   "editor": {
     "origin": "https://studio.asyadaegitim.com",
@@ -37,6 +45,14 @@
       "cookie": "__Host-brandstudio_session",
       "legacy_cookie": "__Host-branddesign_session (automatic migration)",
       "storage_identity": "kept for backward-compatible sessions"
+    },
+    "backup": {
+      "mode": "durable-object-and-d1-dual-storage",
+      "d1_database": "brandstudio-editor",
+      "table": "editor_revision_backups",
+      "policy": "best-effort D1 mirror with read-repair and retained source on failure",
+      "status": "staged-for-live-test",
+      "offsite_github": "not-yet-automated"
     }
   },
   "services": {
@@ -57,9 +73,9 @@
   ],
   "status": "migration-in-progress",
   "pending": [
-    "source-stage-d1-row-export",
-    "source-editor-d1-row-export",
     "reconnect-pages-github",
-    "source-resource-cleanup-after-all-checks"
+    "source-resource-cleanup-after-all-checks",
+    "automatic-offsite-github-backup",
+    "confirm-github-pages-reconnect"
   ]
 }
