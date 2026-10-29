@@ -52,8 +52,8 @@
         },
         "groups": {}
       },
-      "updatedAt": "2026-10-29T13:36:29.778Z",
-      "note": "Cloudflare ücretsiz D1 kotası dolduğu için tarayıcıdan korunan v2 değişiklikleri"
+      "updatedAt": "2026-10-29T13:54:59.423Z",
+      "note": "D1 kesintisinden sonra kalan son tarayıcı düzenlemesi"
     }
   },
   "history": [
@@ -172,7 +172,64 @@
         "groups": {}
       },
       "sourceTimestamp": "2026-10-29T13:32:29.502Z"
+    },
+    {
+      "id": "emergency-recovery-20261029134705723",
+      "at": "2026-10-29T13:54:59.423Z",
+      "version": 2,
+      "kind": "emergency-recovery",
+      "note": "Son tarayıcı düzenlemesi; kayıp önleme yedeği",
+      "sourceTimestamp": "2026-10-29T13:47:05.723Z",
+      "state": {
+        "colors": {
+          "paper": "#f7f3e9",
+          "ink": "#1d2027",
+          "red": "#bd2120"
+        },
+        "edits": {
+          "0:2": {
+            "styles": {
+              "display": "none"
+            },
+            "mode": "inherit"
+          },
+          "0:1": {
+            "styles": {
+              "width": "623px",
+              "height": "29px",
+              "max-width": "none",
+              "transform": "translate(0px,0px)"
+            },
+            "mode": "inherit",
+            "segments": [
+              "ASYA'DA EĞİTİM ",
+              "/",
+              " EĞİTİMİN YENİ ROTASI"
+            ]
+          },
+          "0:15": {
+            "styles": {
+              "display": "none"
+            },
+            "mode": "inherit"
+          },
+          "0:10": {
+            "mode": "inherit",
+            "styles": {
+              "width": "441px",
+              "height": "52px",
+              "max-width": "none",
+              "transform": "translate(0px,0px)"
+            },
+            "segments": [
+              "ASYA'NIN KAPILARI SANA AÇILSIN ",
+              "↗"
+            ]
+          }
+        },
+        "groups": {}
+      }
     }
   ],
-  "updatedAt": "2026-10-29T13:36:29.784Z"
+  "updatedAt": "2026-10-29T13:54:59.423Z"
 }
