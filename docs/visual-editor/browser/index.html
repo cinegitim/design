@@ -1423,6 +1423,106 @@ $('catalog-version').onchange=function(){
  if(dirty&&!confirm('Kaydedilmemiş düzenlemeler var. Sürümü değiştir?')){this.value=old;return}
  if(!openProduct(target))this.value=old
 };
+
+function renderCloudHistory(){
+ var select=$('cloud-history');select.replaceChildren();
+ var log=cloudData&&cloudData.history||[];
+ if(!log.length){var empty=document.createElement('option');empty.value='';empty.textContent='Henüz bulut geçmişi yok';select.appendChild(empty);return}
+ log.slice().reverse().forEach(function(entry){
+  var o=document.createElement('option');o.value=entry.id;
+  var time=entry.at?new Date(entry.at).toLocaleString('tr-TR'):'ilk kaynak';
+  o.textContent='v'+entry.version+' · '+time+' · '+(entry.kind==='original'?'Özgün kaynak':entry.kind==='restore'?'Geri yükleme':'Kayıt')+(entry.note?' · '+entry.note.slice(0,50):'');
+  select.appendChild(o)
+ })
+}
+async function refreshCloud(product){
+ var ticket=++cloudNonce;$('cloud-status').textContent='GitHub sürüm geçmişi okunuyor…';
+ if(!cloud){$('cloud-status').textContent='GitHub modülü yüklenmedi';return}
+ try{
+  var result=await cloud.load(product,cloud.authenticated());
+  if(ticket!==cloudNonce||slug!==product)return;
+  cloudData=result.document;renderCloudHistory();
+  renderProductVersions(record);
+  var v=Object.keys(cloudData.versions||{}).length;
+  $('cloud-status').textContent=v?'GitHub üzerinde '+v+' sürüm ve '+cloudData.history.length+' geçmiş kaydı mevcut.':'Henüz GitHub bulut sürümü yok; ilk kayıt için bağlanın.'
+ }catch(e){if(ticket===cloudNonce){$('cloud-status').textContent='GitHub okuma hatası: '+e.message}}
+}
+$('cloud-connect').onclick=function(){
+ if(!cloud){$('cloud-status').textContent='GitHub senkronizasyon modülü bulunamadı';return}
+ var input=$('cloud-token'),ok=cloud.setToken(input.value);input.value='';
+ $('cloud-status').textContent=ok?'Bu oturumda GitHub yazma yetkisi hazır. Anahtar yalnızca bellekte tutulur.':'GitHub anahtarı girilmedi';
+ if(ok)refreshCloud(slug)
+};
+$('cloud-refresh').onclick=function(){refreshCloud(slug)};
+async function cloudSaveVersion(n,kind){
+ if(!cloud||!cloud.authenticated()){
+  $('cloud-status').textContent='Buluta kaydetmek için önce GitHub token ile bağlanın. Anahtar hiçbir yere depolanmaz.';return
+ }
+ if(!Number.isInteger(n)||n<1||n>26){$('cloud-status').textContent='Geçersiz sürüm numarası';return}
+ var button=$('cloud-save');button.disabled=true;$('cloud-new').disabled=true;
+ $('cloud-status').textContent='GitHub bulut arşivine yazılıyor…';
+ try{
+  var checked=codec.validateState(state,pages.length);
+  var result=await cloud.commit({product:slug,version:n,state:checked,note:$('cloud-note').value.trim(),kind:kind||'save'});
+  cloudData=result.document;current=n;cloudSelected=true;state=copy(checked);savedState=copy(state);dirty=false;
+  history.clear();historyButtons();renderCloudHistory();renderProductVersions(record);renderV();
+  $('unsaved').textContent='GitHub v'+n+' kaydedildi';
+  $('cloud-status').textContent='✓ v'+n+' GitHub\'a kaydedildi · '+result.document.history.length+' geri alınabilir an · commit '+(result.commit||'').slice(0,10);
+  $('status').textContent='GitHub bulut kaydı başarılı'
+ }catch(e){$('cloud-status').textContent='Kaydedilemedi: '+e.message}
+ finally{button.disabled=false;$('cloud-new').disabled=false}
+}
+$('cloud-save').onclick=function(){cloudSaveVersion(current,'save')};
+$('cloud-new').onclick=function(){
+ var local=allV().map(function(x){return x.version}),remote=Object.keys(cloudData?.versions||{}).map(function(x){return Number(x.slice(1))});
+ var n=Math.max(1,...local,...remote)+1;
+ if(n>26){$('cloud-status').textContent='26 sürüm sınırına ulaşıldı; mevcut vN üzerine kaydedebilirsiniz';return}
+ cloudSaveVersion(n,'new')
+};
+function applyCloudSnapshot(snapshot,version,message){
+ try{
+  state=copy(codec.validateState(snapshot,pages.length));current=version;cloudSelected=true;
+  history.clear();historyButtons();
+  // Preserve original remote saved state as baseline so changes stay marked unsaved.
+  savedState=copy(cloudData?.versions?.['v'+version]?.state||{colors:Object.assign({},defaults),edits:{},groups:{}});
+  ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
+  renderProductVersions(record);dirtyStatus();show(page);
+  $('cloud-status').textContent=message+' · Buluta kaydet ile geçmişe yeni geri yükleme kaydı ekleyin';
+  $('cloud-note').value=message;
+ }catch(e){$('cloud-status').textContent='Geri yükleme başarısız: '+e.message}
+}
+$('cloud-restore').onclick=function(){
+ var id=$('cloud-history').value;
+ var entry=(cloudData?.history||[]).find(function(x){return x.id===id});
+ if(!entry){$('cloud-status').textContent='Önce bir geçmiş anı seçin';return}
+ if(dirty&&!confirm('Kaydedilmemiş düzenlemeler kaybolsun mu?'))return;
+ applyCloudSnapshot(entry.state,entry.version,'Geçmişe dön: '+new Date(entry.at).toLocaleString('tr-TR'))
+};
+$('cloud-original').onclick=function(){
+ if(dirty&&!confirm('Kaydedilmemiş düzenlemeler kaybolsun mu?'))return;
+ applyCloudSnapshot({colors:Object.assign({},defaults),edits:{},groups:{}},current,'Orijinal kaynak haline döndür');
+};
+$('raster-format').onchange=function(){$('export-raster').textContent=this.value==='png'?'Aktif slaytı PNG indir':'Aktif slaytı JPEG indir'};
+$('export-raster').onclick=async function(){
+ if(!globalThis.html2canvas){$('status').textContent='Görsel dönüştürücü yüklenmedi';return}
+ var format=$('raster-format').value,button=this;button.disabled=true;
+ $('status').textContent='Aktif slayt '+format.toUpperCase()+' olarak hazırlanıyor…';
+ try{
+  var slide=doc?.querySelector('.slide');if(!slide)throw Error('Slayt henüz yüklenmedi');
+  await doc.fonts?.ready;
+  var canvas=await html2canvas(slide,{backgroundColor:format==='jpeg'?'#ffffff':null,scale:1,width:DESIGN_W,height:DESIGN_H,useCORS:true,allowTaint:false,logging:false});
+  if(canvas.width!==DESIGN_W||canvas.height!==DESIGN_H)throw Error('Görsel boyutu hatalı');
+  var mime=format==='jpeg'?'image/jpeg':'image/png';
+  var blob=await new Promise(function(resolve){canvas.toBlob(resolve,mime,format==='jpeg'?.92:undefined)});
+  if(!blob||blob.size<1000)throw Error('Görsel çıktısı boş veya engellendi');
+  var a=document.createElement('a'),url=URL.createObjectURL(blob);
+  a.href=url;a.download=slug+'-v'+current+'-slide-'+String(page+1).padStart(2,'0')+'.'+(format==='jpeg'?'jpg':'png');
+  document.body.append(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url)},15000);
+  $('status').textContent=canvas.width+'×'+canvas.height+' '+format.toUpperCase()+' hazır · '+Math.round(blob.size/1024)+' KB'
+ }catch(e){$('status').textContent='Görsel indirme başarısız: '+e.message}
+ finally{button.disabled=false}
+};
+
 async function init(){
  $('status').textContent='Tasarım kataloğu okunuyor…';
  catalog=await discovery.load(new URL('catalog.json',location.href));
