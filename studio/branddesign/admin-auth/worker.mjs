@@ -19,6 +19,19 @@ export class BrandstudioAuthObject {
    if(input.op==="success"){await this.ctx.storage.delete(key);return json({ok:true})}
    return json({ok:false},400)
   }
+  if(action==="challenge"||action==="consume"){
+   if(!/^[0-9a-f]{64}$/.test(id))return json({ok:false},400);
+   const key="challenge:"+id;
+   if(action==="challenge"){
+    const nonce=Array.from(crypto.getRandomValues(new Uint8Array(32)),b=>b.toString(16).padStart(2,"0")).join("");
+    await this.ctx.storage.put(key,{nonce,expiresAt:now+120000});
+    return json({ok:true,challenge:nonce})
+   }
+   const record=await this.ctx.storage.get(key);
+   if(record)await this.ctx.storage.delete(key);
+   if(!record||record.expiresAt<now||record.nonce!==input.challenge)return json({ok:false});
+   return json({ok:true})
+  }
   if(!/^[0-9a-f]{64}$/.test(id))return json({ok:false},400);
   const key="session:"+id;
   if(action==="issue"){
