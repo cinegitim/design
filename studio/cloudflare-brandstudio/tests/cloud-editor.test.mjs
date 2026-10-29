@@ -74,7 +74,7 @@ test('existing v2 is updated in place; v3 must be created explicitly',async()=>{
 });
 test('browser editor labels cloud versions distinctly and preserves local saves',()=>{
  assert.match(html,/cloudSelected\?'cloud:'\+current/);
- assert.match(html,/option\.value='cloud:'\+k\.slice\(1\)/);
+ assert.match(html,/opt\.value='cloud:'\+k\.slice\(1\)/);
  assert.match(html,/cloud\.commit\(\{product:slug,version:n,state:checked/);
  assert.match(html,/if\(target\.indexOf\('cloud:'\)===0\)/);
  assert.match(html,/renderCloudHistory\(\)/);
