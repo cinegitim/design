@@ -56,3 +56,7 @@ Yeni `brandstudio-editor-store` Worker'ı `BACKUP_DB` D1 bağlantısına sahipti
 ## 30 Ekim 2026 — Git Pages kaynağı tamamlandı
 
 Hedef Cloudflare hesabında `brandstudio-pages-git` projesi `cinegitim/design` `main` branch'ına bağlı olarak oluşturuldu. İlk dağıtım kimliği `281548a4-fc59-44bb-aa94-ed143377743e`; build+deploy başarılı. 29 editör kataloğu ürün kimliği birebir doğrulandı. `studio.asyadaegitim.com` Worker'ı `/visual-editor/api/revisions` ve `/admin` yolunu kendi servisinde tutar; sadece statik dosyalar için `https://brandstudio-pages-git.pages.dev` kaynak kullanılır. Ücretsiz kota için `production_deployments_enabled=false`, `preview_deployment_setting=none`, `deployments_enabled=false` olarak kontrol edildi. Eski kişisel hesaba dokunulmadı.
+
+## 30 Ekim 2026 — Kaynak kişisel hesaptaki Brandstudio temizlendi
+
+Eski Pages `brandstudio-migration`, Access `Brandstudio Editor`, Workers `brandstudio-stage` / `brandstudio-editor-store`, iki D1 ve eski Durable Objects namespace resmi sınıf silme migrasyonu ile kaldırıldı. İşlemden önce eski DO üzerindeki tek iki saklanmış nesnenin Bavul v2 (aynı SHA/dört geçmiş) ve bir smoke testi olduğu doğrulandı. Kaynak D1 kayıtları daha önce hedef hesapta arşivlenmişti. Asya’da Eğitim hesabının aktif admin oturumunda HTTP 200, Bavul SHA `0882e066-d82d-4d31-9d9f-5aac06b3b2ca`, dört geçmiş kaydı ve 29 katalog ürünü tekrar doğrulandı. Bu bölüm eski kaynakların silinmesini tamamlar; kişisel hesabın diğer uygulamaları veya hesap genelindeki Zero Trust organizasyonu silinmedi.
