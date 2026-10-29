@@ -26,6 +26,7 @@ jobs:
         with:
           persist-credentials: false
           sparse-checkout: |
+            .github/workflows
             studio/cloudflare-brandstudio
             studio/brandstudio
             functions/visual-editor
