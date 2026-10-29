@@ -60,11 +60,12 @@ async function ensureBranch(){
  catch(e){if(!/eşzamanlı/.test(e.message))throw e}
 }
 function cleanState(s) {return JSON.parse(JSON.stringify(s))}
-async function commit({product,version,state,note="",kind="save"}) {
+async function commit({product,version,state,note="",kind="save",expectedSha}) {
  if(!authenticated())throw Error("GitHub erişim anahtarı gerekli");
  if(!Number.isInteger(version)||version<1||version>26)throw Error("Sürüm 1–26 aralığında olmalı");
  await ensureBranch();
  const {sha,document:prev}=await load(product,true);
+ if(expectedSha!==undefined&&sha!==expectedSha)throw Error("Buluttaki sürüm başka bir oturumda güncellendi; otomatik kayıt durduruldu. Güncel sürümü denetleyin.");
  const doc=structuredClone(prev),now=new Date().toISOString();
  const history=doc.history;
  if(!history.length&&version===1){

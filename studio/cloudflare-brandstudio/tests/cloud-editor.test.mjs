@@ -72,22 +72,26 @@ test('existing v2 is updated in place; v3 must be created explicitly',async()=>{
  assert.equal(restored.document.history.at(-1).kind,'restore');
  assert.equal(restored.document.history[0].state.edits['0:2'].styles.left,'20px');
 });
-test('browser editor labels cloud versions distinctly and preserves local saves',()=>{
+test('browser editor exposes one cloud save flow and explicit recovery',()=>{
  assert.match(html,/cloudSelected\?'cloud:'\+current/);
  assert.match(html,/opt\.value='cloud:'\+k\.slice\(1\)/);
- assert.match(html,/cloud\.commit\(\{product:slug,version:n,state:checked/);
+ assert.match(html,/cloud\.commit\(\{product:product,version:n,state:checked/);
  assert.match(html,/if\(target\.indexOf\('cloud:'\)===0\)/);
  assert.match(html,/renderCloudHistory\(\)/);
  assert.match(html,/function applyCloudSnapshot/);
  assert.match(html,/\$\('cloud-original'\)\.onclick/);
  assert.match(html,/function loadSavedVersion/);
+ assert.match(html,/function wakeAutoSave/);
+ assert.match(html,/function dirtyStatus\(\).*wakeAutoSave/);
+ assert.match(html,/id="pending-recover"/);
+ assert.match(html,/id="legacy-import"/);
+ assert.match(html,/id="save" hidden/);
+ assert.doesNotMatch(html,/id="raster-format"/);
  assert.match(html,/function dump\(\)/);
  assert.doesNotMatch(source,/localStorage|sessionStorage|document\.cookie/);
 });
 test('PNG and JPEG export actual canvases, not renamed HTML',()=>{
- assert.match(html,/id="raster-format"/);
- assert.match(html,/value="png"/);
- assert.match(html,/value="jpeg"/);
+ for(const id of ['download-png','download-jpeg','side-download-png','side-download-jpeg'])assert.match(html,new RegExp('id="'+id+'"'));
  assert.match(html,/html2canvas\.min\.js/);
  assert.match(html,/html2canvas\(slide/);
  assert.match(html,/canvas\.toBlob/);
@@ -95,4 +99,13 @@ test('PNG and JPEG export actual canvases, not renamed HTML',()=>{
  const vendor=fs.readFileSync(path.join(root,'docs/visual-editor/browser/html2canvas.min.js'),'utf8');
  assert.ok(vendor.length>190000);
  assert.match(vendor,/html2canvas/i);
+});
+test('expected cloud SHA protects against concurrent overwrites',async()=>{
+ const {cloud}=fixture();cloud.setToken('test-only-token');
+ let first=await cloud.commit({product:'carousel-demo',version:2,state:state(10)});
+ await assert.rejects(cloud.commit({product:'carousel-demo',version:2,state:state(20),expectedSha:'stale'}),/başka bir oturumda/);
+ let snap=await cloud.load('carousel-demo',true);
+ assert.equal(snap.document.versions.v2.state.edits['0:2'].styles.left,'10px');
+ let next=await cloud.commit({product:'carousel-demo',version:2,state:state(30),expectedSha:first.sha});
+ assert.equal(next.document.versions.v2.state.edits['0:2'].styles.left,'30px');
 });

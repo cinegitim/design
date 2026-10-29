@@ -366,26 +366,22 @@ test("layer reorder supports cross-container groups without negative stacking",(
  assert.doesNotMatch(html,/stackTier\(/);
 });
 
-test("top version selector includes source revisions and browser-saved v2+ without conflating them",()=>{
+test("version selector shows source and GitHub cloud revisions without active local dual-save mode",()=>{
  assert.match(html,/function topVersionValue\(\)/);
- assert.match(html,/cloudSelected\?'cloud:'\+current:current===1\?slug:'browser:'\+current/);
- assert.match(html,/option\.value='browser:'\+v\.version/);
- assert.match(html,/Tarayıcıda kayıtlı/);
+ assert.match(html,/cloudSelected\?'cloud:'\+current/);
+ assert.doesNotMatch(html,/option\.value='browser:'\+v\.version/);
+ assert.match(html,/opt\.value='cloud:'\+k\.slice\(1\)/);
  assert.match(html,/sel\.disabled=sel\.options\.length<=1/);
  assert.match(html,/sel\.value=topVersionValue\(\)/);
  assert.match(html,/function loadSavedVersion\(n\)/);
- assert.match(html,/if\(n!==1&&!v\)/);
- assert.match(html,/if\(dirty&&!confirm\('Kaydedilmemiş düzenlemeler kaybolsun mu\?'\)\)return false/);
- assert.match(html,/if\(record\)renderProductVersions\(record\)/);
+ assert.match(html,/id="legacy-import"/);
 });
-test("saving and importing a browser version refreshes top selector immediately",()=>{
+test("legacy data is kept for migration and GitHub autosave replaces local save button",()=>{
  assert.match(html,/function renderV\(\)/);
  assert.match(html,/if\(record\)renderProductVersions\(record\)/);
  assert.match(html,/localStorage\.setItem\(key,JSON\.stringify\(updated\)\)/);
- assert.match(html,/renderV\(\);\$\('dialog'\)\.close\(\)/);
- assert.match(html,/var old=topVersionValue\(\),target=this\.value/);
- assert.match(html,/if\(target\.indexOf\('browser:'\)===0\)/);
- assert.match(html,/if\(!loadSavedVersion\(Number\(target\.slice\(8\)\)\)\)this\.value=old/);
+ assert.match(html,/id="save" hidden/);
+ assert.match(html,/function wakeAutoSave\(/);
+ assert.match(html,/function updateRecoveryButtons\(/);
  assert.match(html,/if\(target===slug\)/);
- assert.match(html,/if\(!loadSavedVersion\(1\)\)this\.value=old/);
 });

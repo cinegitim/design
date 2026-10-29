@@ -1,5 +1,5 @@
 Brandstudio Pages controlled deployment marker
-Requested: 2026-10-29T10:59:00Z
-Purpose: publish merged PR #159 to brandstudio-migration Pages Free
-Reviewed main source merge: 61671bf24479becafa1b9a8ae61f9aabf1463f52
+Requested: 2026-10-29
+Purpose: publish cloud autosave and visible PNG/JPEG actions, PR #161
+Reviewed base source: 9447ebe680331879fda169276cab82abf65fb296
 Trigger: only changes to this marker file (not editor saves or source changes)
