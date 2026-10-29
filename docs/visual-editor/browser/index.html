@@ -1578,10 +1578,9 @@ $('cloud-original').onclick=function(){
  if(!canLeaveEditing())return;
  applyCloudSnapshot({colors:Object.assign({},defaults),edits:{},groups:{}},current,'Orijinal kaynak haline döndür');
 };
-$('raster-format').onchange=function(){$('export-raster').textContent=this.value==='png'?'Aktif slaytı PNG indir':'Aktif slaytı JPEG indir'};
-$('export-raster').onclick=async function(){
+async function exportRaster(format){
  if(!globalThis.html2canvas){$('status').textContent='Görsel dönüştürücü yüklenmedi';return}
- var format=$('raster-format').value,button=this;button.disabled=true;
+ var buttons=[$('download-png'),$('download-jpeg'),$('side-download-png'),$('side-download-jpeg')];buttons.forEach(function(b){b.disabled=true});
  $('status').textContent='Aktif slayt '+format.toUpperCase()+' olarak hazırlanıyor…';
  try{
   var slide=doc?.querySelector('.slide');if(!slide)throw Error('Slayt henüz yüklenmedi');
@@ -1596,8 +1595,12 @@ $('export-raster').onclick=async function(){
   document.body.append(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url)},15000);
   $('status').textContent=canvas.width+'×'+canvas.height+' '+format.toUpperCase()+' hazır · '+Math.round(blob.size/1024)+' KB'
  }catch(e){$('status').textContent='Görsel indirme başarısız: '+e.message}
- finally{button.disabled=false}
-};
+ finally{buttons.forEach(function(b){b.disabled=false})}
+}
+$('download-png').onclick=function(){exportRaster('png')};
+$('download-jpeg').onclick=function(){exportRaster('jpeg')};
+$('side-download-png').onclick=function(){exportRaster('png')};
+$('side-download-jpeg').onclick=function(){exportRaster('jpeg')};
 
 async function init(){
  $('status').textContent='Tasarım kataloğu okunuyor…';
