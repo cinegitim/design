@@ -1,5 +1,5 @@
 Brandstudio Pages controlled deployment marker
 Requested: 2026-10-29
-Purpose: stop autosave history retry loop and bundle offline Bavul recovery bootstrap
-Storage: Durable Objects with idempotent state writes
-Trigger: explicit release only, not every design edit
+Purpose: clear false unsynced recovery state and compact fully archived duplicate autosave entries
+Archive: eb10d3c16ebb4c1ab8b630b45fd24212a9e026c0
+Storage: private Durable Objects; D1 quota-independent; no new services
