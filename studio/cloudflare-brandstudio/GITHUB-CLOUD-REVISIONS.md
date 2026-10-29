@@ -1,35 +1,29 @@
-# Brandstudio — GitHub bulut sürümleri (2026-10-29)
+# Brandstudio — tek editör ve güvenli otomatik kayıt (2026-10-29)
 
-## Nerede saklanır?
+## Kullanıcı deneyimi
 
-Tarayıcıdaki çalışmalar **kalıcı değildir**. Bulut yazma modu, `cinegitim/design` deposunda **`brandstudio-editor-history`** dalını ve bu daldaki `docs/visual-editor/browser/cloud/<ürün>.json` dosyasını kullanır. İlk yetkili kayıtta dal otomatik açılır. Her bulut kaydı Git commit'i yaratır ve JSON içindeki geri dönülebilir `history` dizisine tam sürüm durumu, tarih ve kullanıcının değişiklik notu ekler.
+**Tek editör:** https://brandstudio-migration.pages.dev/visual-editor/browser/
 
-**Bu repo herkese açıktır**. Aynı şekilde geçmiş dalı ve taslaklar da halka açıktır; bu alana kişisel bilgiler veya sırlar kaydetmeyin. Buluta kaydetmek Instagram paylaşımı, kaynak HTML'i değiştirmek veya PR onayı yerine geçmez. Üretim `main` dalındaki kaynaklar, onaylı logo ve yayımlanan dosyalar otomatik değişmez. Görüntülenen v1 değişiklikleri orijinal dosya üzerinde yıkıcı düzenleme değil, izlenebilir bir **v1 editör düzenlemesidir**. Orijinal kaynak düz durur ve tek eylemle geri getirilebilir.
+Eski `cinegitim.github.io/design/visual-editor/` ve `/browser/` bağlantıları otomatik olarak tek Cloudflare editörüne yönlendirilir. GitHub Pages kaynak tasarımlar ve halka açık galeriler için durur; ayrı bir editör değildir.
 
-## Yetkilendirme
+**Giriş:** Cloudflare Access, yalnızca kişisel Cloudflare hesabının onaylı e-postası için izinlidir. Oturum süresi 168 saattir. Yeni sayfa açıldığında yeniden GitHub token girilmez; oturum gerektiğinde Cloudflare hesabıyla yenilenir. Access uygulaması tüm `/visual-editor` yolunu ve kayıt API'sini korur.
 
-1. GitHub'da ince ayarlı (**fine-grained**) bir kişisel erişim anahtarı oluşturun. Yalnızca `cinegitim/design` deposunu seçin. Depo izinlerinde **Contents: Read and write**, Metadata varsayılan `Read` yeterlidir; admin ve geniş hesap izinleri gereksizdir. GitHub hesabının depoya yazma yetkisi olmalıdır.
-2. Anahtarı yalnızca Visual Editor'ün **GitHub erişim anahtarı** alanına girin, ardından **Bağlan** deyin.
-3. Token tarayıcıdaki **yalnızca geçerli sayfa belleğinde** saklanır, input temizlenir. Kaynak dosyaya, GitHub'daki tasarım JSON'una, localStorage'a, sessionStorage'a veya Cloudflare'a yazılmaz. Sekme kapanınca tekrar girilir.
-4. Bağlandıktan sonra düzenlemeler kısa aralıklarla GitHub'a otomatik kaydedilir. Mevcut vN güncellenir; her başarılı kayıtta geçmiş anı ve Git commit'i oluşur. **+ Yeni sürüm** isteğe bağlıdır. Geri yüklemeler de otomatik kaydedilir. "Kaydedildi" yalnızca GitHub onayından sonra görünür. Hata olursa gönderilmemiş değişiklik geçici kurtarma taslağında bekler.
+**Düzenleme:** Her değişiklik yaklaşık 1,4 saniyelik sakinleşmeden sonra otomatik kaydedilir. Görünür durumlar: Kaydedilecek, Kaydediliyor, Kaydedildi, Kaydedilemedi. Yalnızca sunucu D1 kaydını onaylarsa Kaydedildi denir. İnternet/çakışma sorunlarında geçici kurtarma anı tarayıcıda kalır, başarılı bulut kaydı diye gösterilmez.
 
-Bulut okunabilir; yeni cihazdan aynı ürün URL'sini açınca bulut vN seçenekleri listelenir. Eski tarayıcı taslakları silinmez; yalnız gerekli olduğunda tek seferlik **Eski taslağı GitHub'a taşı** seçeneği görünür. Ayrı yerel kaydetme veya aktif yerel sürüm seçici bulunmaz. Yazma hatası, yetkisizlik, eşzamanlı değişiklik ya da boyut sınırı başarısızlık olarak raporlanır; sessizce yerel kayıt başarılı denmez.
+**Sürümler:** Aynı v2 üzerine yazmak yeni v3 açmaz. `+ Yeni sürüm` isteğe bağlıdır; önceki anlar geri yüklenebilir. PNG ve JPEG doğrudan indirilir.
 
-## PNG / JPEG
+## Mimari ve güvenlik
 
-Üst araç çubuğunda ve sağdaki **Dosyaları indir** bölümünde **PNG indir** ve **JPEG indir** düğmeleri doğrudan görünür. Görüntü aynı sayfada, kullanıcının tarayıcısında `html2canvas 1.4.1` (MIT, repo içine kopyalı) ile üretilir. Çıkış boyutu kaynak slaydın `DESIGN_W × DESIGN_H` ölçüleridir (genellikle 1080 × 1350). Dönüştürme hatalarında sahte dosya üretilmez. PNG/JPEG gerçek görüntülerdir; ancak baskı/Instagram yayımlama öncesi font ve görüntü uyumu kullanıcı tarafından görsel olarak kontrol edilmelidir.
+- Cloudflare Pages `brandstudio-migration` tek UI origin.
+- Pages Functions: `functions/visual-editor/api/revisions.js`, GET/POST `/visual-editor/api/revisions`.
+- Cloudflare Access organizasyonu `Brandstudio Personal`; uygulama `Brandstudio Editor` yalnız kişisel e-posta için Allow. IdP `Personal Cloudflare Login` yalnız hesap üyelerine izin verir.
+- Functions Access JWT `Cf-Access-Jwt-Assertion` imzasını JWKS üzerinden RS256 ile doğrular, `iss`, `aud`, `exp`, `iat` ve e-posta eşleşmesini kontrol eder. Yetkisiz talepler reddedilir; header varlığı tek başına güven sayılmaz.
+- Same-origin POST, özel başlık, JSON biçimi, ürün kimliği, durum yapısı ve dosya büyüklüğü kontrolleri vardır. Yanlış beklenen sürüm etag'i ile yazma atomik CAS tarafından engellenir.
+- Ayrı D1 veritabanı `brandstudio-editor`, tablo `editor_documents`; veri JSON'unda tüm sürüm anları saklanır. En çok 240 geçmiş anı / yaklaşık 950 KB belge. Eski `brandstudio-stage` veritabanına dokunulmaz.
+- GitHub `cinegitim/design` kodun, onaylı logoların ve yayımlanmış kaynakların arşividir; editörün kullanıcısından GitHub PAT istenmez. Önceki `brandstudio-editor-history` dalı silinmez. Bavul v1/v2 tarihi D1'e taşındı.
+- Ücretsiz Cloudflare Pages/D1/Access altyapısı tercih edilmiştir; R2, Workers AI ve ücretli render kullanılmaz. Ücretsiz kota aşımı için otomatik ücretli yükseltme yapılmaz.
+- Üretim kaynak HTML'si ve kanonik logo değiştirilmez; editör kaydı sosyal medyada otomatik yayın değildir.
 
-## Sınırlar
+## Canlı doğrulama
 
-- GitHub bulut kaydı Github Contents API üzerinden kullanıcı tarafından açıkça tetiklenir; ücretli Cloudflare servisleri, Access, R2, AI, tarayıcı render servisi veya D1 **yazma** kullanılmaz.
-- Bulut dalı herkese açık GitHub deposunda tutulur; çalışma taslağı özel tasarlanmış güvenli veritabanı değildir.
-- D1 staging Worker **salt okunur kalır**.
-- Her ürün için en çok 240 geçmiş anı ve 950 KB JSON sınırı; sınırda durulur, eski anlar sessizce silinmez. Git commit'leri korunur.
-- Eşzamanlı revizyonlar SHA üzerinde çakışırsa yazma başarısızdır; karşılıklı kayıt sessizce ezilmez.
-- Yerel v2/v3 kayıtları silinmez, kullanıcı seçerek bulut sürümlerine kaydedebilir.
-- GitHub token'ı yalnızca sayfa belleğinde tutulur. Yeni oturumda tekrar bağlanmak gerekir; token olmadan otomatik yazma mümkün değildir. Kaydetme göstergesi bu durumu belirtir. Cihazda kalan gönderilmemiş kurtarma taslağı bulut kaydı değildir.
-- GitHub API yazma işlemi kısa gecikme ve sunucu onayı gerektirir. Kayıt tamamlanmamışsa sayfadan çıkarken uyarı görüntülenir.
-
-## Test
-
-`node --test studio/cloudflare-brandstudio/tests/cloud-editor.test.mjs`
+CI, API sözdizimi, statik güvenlik ve arayüz testleri; canlıda Access reddi / yetkili erişim, geçmişi okuma, v2 değişikliği, yenileme, eski ana dönüş, PNG/JPEG, kullanıcı girişini yeniden istemeyen ikinci sekme ve GitHub Pages yönlendirmesi kontrol edilmelidir. Yetkili oturum test edilmeden uçtan uca kayıt kesin başarılı kabul edilmez.
