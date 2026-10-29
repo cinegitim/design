@@ -122,7 +122,7 @@ test('Brandstudio Cloudflare gateway stages password/session auth and routes rev
  assert.ok(!edge.includes('Cf-Access-Jwt-Assertion'));
  assert.ok(edge.includes('https://cinegitim.github.io/design'));
  assert.ok(edge.includes('https://brandstudio.internal/revisions'));
- assert.ok(edge.includes("if(request.method==='GET')return onRequestGet(context)"));
+ assert.ok(edge.includes("if(request.method==='GET')return attachSession(await onRequestGet(context),user)"));
  const manifest=JSON.parse(fs.readFileSync(path.join(root,'studio/brandstudio/manifest.json'),'utf8'));
  assert.equal(manifest.destination.account,'asyadaegitim');
  assert.equal(manifest.editor.origin,'https://studio.asyadaegitim.com');
