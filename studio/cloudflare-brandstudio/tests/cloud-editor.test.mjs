@@ -11,7 +11,7 @@ function fixture(){
  const data=new Map(),calls=[];
  async function fetch(url,opts={}){
   calls.push({url,method:opts.method,headers:opts.headers});
-  const product=new URL(url,'https://brandstudio-migration.pages.dev').searchParams.get('product');
+  const product=new URL(url,'https://studio.asyadaegitim.com').searchParams.get('product');
   const old=data.get(product);
   if(opts.method==='GET')return new Response(JSON.stringify(old||{sha:null,document:{schema:1,product,versions:{},history:[]}}),{headers:{'content-type':'application/json'}});
   if(opts.method!=='POST')throw Error('Unexpected method');
@@ -74,11 +74,11 @@ test('server rejects unauthenticated requests and verifies signed Access JWT',()
  assert.match(store,/class BrandstudioRevisionObject/);
  assert.ok(store.includes('this.ctx.storage.transaction'));
  assert.match(store,/RECOVERED_BAVUL/);
- assert.match(store,/legacy-v2/);
+ assert.doesNotMatch(store,/sha:"legacy-v2"/);
 });
 test('one visible editor, simple autosave and direct PNG/JPEG downloads',()=>{
  assert.match(html,/location\.hostname==='cinegitim\.github\.io'/);
- assert.match(html,/brandstudio-migration\.pages\.dev/);
+ assert.ok(html.includes('studio.asyadaegitim.com'));
  assert.match(html,/function wakeAutoSave/);
  assert.match(html,/function updateRecoveryButtons/);
  for(const id of ['download-png','download-jpeg','side-download-png','side-download-jpeg'])assert.match(html,new RegExp('id="'+id+'"'));
@@ -107,4 +107,20 @@ test('recovered pending state compares normalized values and does not show false
  assert.match(store,/function compactRetryHistory/);
  assert.match(store,/repeatedAutosaves/);
  assert.match(store,/if\(stored\.document\.history\.length>=100\)/);
+});
+
+test('Branddesign Cloudflare gateway verifies Access JWT and routes revisions to private DO',()=>{
+ const edge=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/asya-gateway/worker.mjs'),'utf8');
+ assert.ok(edge.includes('polished-flower-7330.cloudflareaccess.com'));
+ const cfg=JSON.parse(fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/asya-gateway/wrangler.json'),'utf8'));
+ assert.equal(cfg.durable_objects.bindings[0].class_name,'BrandstudioRevisionObject');
+ assert.ok(edge.includes('X-Brandstudio-Editor'));
+ assert.ok(edge.includes('Cf-Access-Jwt-Assertion'));
+ assert.ok(edge.includes('https://cinegitim.github.io/design'));
+ assert.ok(edge.includes('https://brandstudio.internal/revisions'));
+ assert.ok(edge.includes("if(request.method==='GET')return onRequestGet(context)"));
+ const manifest=JSON.parse(fs.readFileSync(path.join(root,'studio/branddesign/manifest.json'),'utf8'));
+ assert.equal(manifest.destination.account,'asyadaegitim');
+ assert.equal(manifest.editor.origin,'https://studio.asyadaegitim.com');
+ assert.equal(manifest.source.status,'retained-pending-d1-archive');
 });

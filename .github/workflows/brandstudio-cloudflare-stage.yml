@@ -6,6 +6,7 @@ on:
       - "docs/visual-editor/browser/**"
       - "docs/visual-editor/index.html"
       - "functions/visual-editor/**"
+      - "studio/branddesign/**"
       - ".github/workflows/brandstudio-cloudflare-stage.yml"
   push:
     branches: [main]
@@ -26,6 +27,7 @@ jobs:
           persist-credentials: false
           sparse-checkout: |
             studio/cloudflare-brandstudio
+            studio/branddesign
             functions/visual-editor
             docs/visual-editor
             docs/archive
@@ -44,6 +46,10 @@ jobs:
         run: python3 studio/cloudflare-brandstudio/check_free_only.py
       - name: Portable browser editor state validation and syntax
         run: node --test studio/cloudflare-brandstudio/tests/portable.test.mjs studio/cloudflare-brandstudio/tests/editor-ux.test.mjs studio/cloudflare-brandstudio/tests/editor-flex.test.mjs studio/cloudflare-brandstudio/tests/product-groups.test.mjs studio/cloudflare-brandstudio/tests/cloud-editor.test.mjs
+      - name: Asyada Egitim access gateway and storage syntax
+        run: |
+          node --check studio/cloudflare-brandstudio/asya-gateway/worker.mjs
+          node --check studio/cloudflare-brandstudio/editor-store/worker.mjs
       - name: Access-verified D1 API syntax
         run: node --check functions/visual-editor/api/revisions.js
       - name: Worker API safety tests — no network
