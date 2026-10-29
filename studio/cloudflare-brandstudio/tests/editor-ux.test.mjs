@@ -365,3 +365,27 @@ test("layer reorder supports cross-container groups without negative stacking",(
  assert.doesNotMatch(html,/String\(index-30\)/);
  assert.doesNotMatch(html,/stackTier\(/);
 });
+
+test("top version selector includes source revisions and browser-saved v2+ without conflating them",()=>{
+ assert.match(html,/function topVersionValue\(\)/);
+ assert.match(html,/return current===1\?slug:'browser:'\+current/);
+ assert.match(html,/option\.value='browser:'\+v\.version/);
+ assert.match(html,/Tarayıcıda kayıtlı/);
+ assert.match(html,/sel\.disabled=sel\.options\.length<=1/);
+ assert.match(html,/sel\.value=topVersionValue\(\)/);
+ assert.match(html,/function loadSavedVersion\(n\)/);
+ assert.match(html,/if\(n!==1&&!v\)/);
+ assert.match(html,/if\(dirty&&!confirm\('Kaydedilmemiş düzenlemeler kaybolsun mu\?'\)\)return false/);
+ assert.match(html,/if\(record\)renderProductVersions\(record\)/);
+});
+test("saving and importing a browser version refreshes top selector immediately",()=>{
+ assert.match(html,/function renderV\(\)/);
+ assert.match(html,/if\(record\)renderProductVersions\(record\)/);
+ assert.match(html,/localStorage\.setItem\(key,JSON\.stringify\(updated\)\)/);
+ assert.match(html,/renderV\(\);\$\('dialog'\)\.close\(\)/);
+ assert.match(html,/var old=topVersionValue\(\),target=this\.value/);
+ assert.match(html,/if\(target\.indexOf\('browser:'\)===0\)/);
+ assert.match(html,/if\(!loadSavedVersion\(Number\(target\.slice\(8\)\)\)\)this\.value=old/);
+ assert.match(html,/if\(target===slug\)/);
+ assert.match(html,/if\(!loadSavedVersion\(1\)\)this\.value=old/);
+});
