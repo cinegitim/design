@@ -66,9 +66,15 @@ test('server rejects unauthenticated requests and verifies signed Access JWT',()
  assert.match(backend,/if\(!await authorized/);
  assert.match(backend,/X-Brandstudio-Editor/);
  assert.match(backend,/req\.headers\.get\('Origin'\)!==url\.origin/);
- assert.match(backend,/WHERE product=\? AND revision=\? RETURNING revision/);
- assert.match(backend,/ON CONFLICT DO NOTHING RETURNING revision/);
- assert.match(backend,/editor_documents/);
+ assert.match(backend,/STORE='BRANDSTUDIO_OBJECTS'/);
+ assert.match(backend,/idFromName\\(product\\)/);
+ assert.match(backend,/objectFor\\(context,product\\)\\.fetch/);
+ assert.doesNotMatch(backend,/editor_documents|BRANDSTUDIO_EDITOR/);
+ const store=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/editor-store/worker.mjs'),'utf8');
+ assert.match(store,/class BrandstudioRevisionObject/);
+ assert.match(store,/this\\.ctx\\.storage\\.transaction/);
+ assert.match(store,/brandstudio-editor-history/);
+ assert.match(store,/legacy-v2/);
 });
 test('one visible editor, simple autosave and direct PNG/JPEG downloads',()=>{
  assert.match(html,/location\.hostname==='cinegitim\.github\.io'/);
