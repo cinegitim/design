@@ -40,3 +40,17 @@ GitHub Actions şifrelenmiş dosyaları yalnızca `brandstudio-editor-history` *
 Çevrimdışı geri yükleme komutu (Node 22 veya üzeri): `node studio/brandstudio/backup/decrypt.mjs <sifreli-yedek.enc.json> <kurtarma-anahtari.txt> <cikti.json>`. Üretilen çıktı, aktif depolamaya kendi kendine yazılmaz; önce doğrulanır ve gerektiğinde kontrollü olarak içe aktarılır.
 
 Canlı devreye alma kontrolü: GitHub Actions'ın ilk başarılı `archive` çalışması, `brandstudio-editor-history` dalına şifreli Bavul yedeği yazılması, aynı SHA için tekrar çalıştırmada commit oluşmaması, anonim /internal/backup -> 401. Bunlar tamamlanmadan dış yedekleme doğrulandı olarak işaretlenmez.
+
+## 29 Ekim 2026 — Canlı yedek doğrulamaları
+
+- GitHub Actions yedekleme çalışması: https://github.com/cinegitim/design/actions/runs/40957072762 — **başarılı**.
+- `brandstudio-editor-history` dalında `docs/visual-editor/browser/cloud-offsite-encrypted/instagram-creative-breakout-bavul-001.enc.json` dosyası oluşturuldu ve kontrol edildi. Şifrelenmiş dosyanın revizyonu `0882e066-d82d-4d31-9d9f-5aac06b3b2ca` ve biçimi `brandstudio-aes256gcm-v1`.
+- Yeni D1 `editor_revision_backups` tablosunda Bavul v2 dört geçmiş anı için bir snapshot ve ayrı test ürününün üç gerçek değişiklik/geri yükleme revizyonu doğrulandı. Düzenlemeler DO'da aynı kalıyor.
+- Admin oturumu, canlı editör ve kayıt API'si başarılı. Anonim `/internal/backup` isteği 401 döndürdü.
+- GitHub repo `cinegitim/design` public olduğu için dış yedekler sadece şifreli dosyalardan oluşur. Kullanıcıya verilen rastgele 256-bit kurtarma anahtarı **GitHub'a konmamıştır**.
+
+## Son Cloudflare Pages–GitHub bağlantısı
+
+Cloudflare API, hedef `brandstudio-asyadaegitim` Pages projesine `cinegitim/design` Git kaynağı bağlama denemesinde `8000011` döndürdü. Bu hata hedef hesabın Pages Git kurulumunun yeniden GitHub'da yetkilendirilmesini gerektiriyor. Cloudflare'ın Direct Upload proje türü mevcutsa, bu proje sonradan Git-entegre türe çevrilemez: Git yetkilendirmesi sonrasında **ayrı bir Git-entegre Pages projesi** oluşturulmalıdır. Otomatik build'ler ücretsiz kota için başlangıçta kapatılmalıdır.
+
+Bu işlem tamamlanana kadar `studio.asyadaegitim.com` Worker'ı, GitHub Pages statik tasarımları güvenli geçiş olarak sunar; uygulama oturumu ve kayıtları yalnız Asya’da Eğitim Cloudflare hesabındadır. Eski kişisel hesabın `brandstudio-migration` Pages, Worker, D1, DO ve Access kaynakları **silinmez**. Yeni Pages kaynağı yayımlanıp aynı tasarım/baskı/oturum/kayıt testlerini geçtikten ve güncel tam yedekler doğrulandıktan sonra yalnızca Brandstudio kaynakları temizlenir; diğer kişisel Cloudflare uygulamaları korunur.
