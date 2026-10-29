@@ -73,7 +73,7 @@ test('server rejects unauthenticated requests and verifies signed Access JWT',()
  const store=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/editor-store/worker.mjs'),'utf8');
  assert.match(store,/class BrandstudioRevisionObject/);
  assert.ok(store.includes('this.ctx.storage.transaction'));
- assert.match(store,/brandstudio-editor-history/);
+ assert.match(store,/RECOVERED_BAVUL/);
  assert.match(store,/legacy-v2/);
 });
 test('one visible editor, simple autosave and direct PNG/JPEG downloads',()=>{
