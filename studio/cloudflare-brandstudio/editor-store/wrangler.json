@@ -18,5 +18,12 @@
       ]
     }
   ],
-  "workers_dev": false
+  "workers_dev": false,
+  "d1_databases": [
+    {
+      "binding": "BACKUP_DB",
+      "database_name": "brandstudio-editor",
+      "database_id": "4e24af93-6070-4a13-a645-cb16a7406b43"
+    }
+  ]
 }
