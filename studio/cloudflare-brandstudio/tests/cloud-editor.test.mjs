@@ -112,7 +112,8 @@ test('recovered pending state compares normalized values and does not show false
 test('Branddesign Cloudflare gateway verifies Access JWT and routes revisions to private DO',()=>{
  const edge=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/asya-gateway/worker.mjs'),'utf8');
  assert.ok(edge.includes('polished-flower-7330.cloudflareaccess.com'));
- assert.ok(edge.includes('BrandstudioRevisionObject'));
+ const cfg=JSON.parse(fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/asya-gateway/wrangler.json'),'utf8'));
+ assert.equal(cfg.durable_objects.bindings[0].class_name,'BrandstudioRevisionObject');
  assert.ok(edge.includes('X-Brandstudio-Editor'));
  assert.ok(edge.includes('Cf-Access-Jwt-Assertion'));
  assert.ok(edge.includes('https://cinegitim.github.io/design'));
