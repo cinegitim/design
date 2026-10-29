@@ -144,3 +144,28 @@ test('Durable Object revisions always get mirrored to D1 without risking authori
  assert.match(schema,/PRIMARY KEY\(product,revision\)/);
  assert.match(schema,/CHECK\(json_valid\(body\)\)/);
 });
+
+
+test('raster export registers original iframe font-face rules in parent canvas document',()=>{
+ assert.match(html,/function exportFontCSS\(sourceDoc\)/);
+ assert.match(html,/sourceDoc\.styleSheets/);
+ assert.match(html,/rule\.type!==CSSRule\.FONT_FACE_RULE/);
+ assert.match(html,/new URL\(path,base\)\.href/);
+ assert.match(html,/style\.id='brandstudio-export-fonts'/);
+ assert.match(html,/document\.fonts\.load\(font\.spec,font\.text\)/);
+ assert.match(html,/await document\.fonts\.ready/);
+ assert.match(html,/await sourceDoc\.fonts\.ready/);
+ assert.match(html,/await prepareRasterAssets\(doc,slide\)/);
+ assert.match(html,/onclone:async function\(clonedDoc\)/);
+ assert.match(html,/clonedDoc\.fonts\.load\(font\.spec,font\.text\)/);
+ assert.match(html,/await img\.decode\(\)/);
+ assert.match(html,/canvas\.toBlob\(resolve,mime/);
+ assert.match(html,/width:DESIGN_W,height:DESIGN_H/);
+ assert.match(html,/Görsel indirme başarısız/);
+ assert.doesNotMatch(html,/await doc\.fonts\?\.ready;\s*var canvas=await html2canvas/);
+ const start=html.indexOf('function exportFontCSS(');
+ const end=html.indexOf("$('download-png').onclick",start);
+ assert.ok(start>0&&end>start);
+ // The added inline script must parse independently of the surrounding editor.
+ new vm.Script(html.slice(start,end),{filename:'brandstudio-export.js'});
+});
