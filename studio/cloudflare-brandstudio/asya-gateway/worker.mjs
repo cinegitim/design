@@ -203,12 +203,79 @@ export async function onRequestPost(context){
  }catch(e){console.error('Editor store write failed',String(e?.message||e));return json({error:'Kayıt hizmetine erişilemiyor'},503)}
 }
 
+
+// Only the official cinegitim/design GitHub Actions backup workflow can export backups.
+// Every exported document is AES-256-GCM encrypted before leaving Cloudflare.
+const GITHUB_BACKUP_AUD='brandstudio-backup-v1';
+const GITHUB_JWKS='https://token.actions.githubusercontent.com/.well-known/jwks';
+const GITHUB_BACKUP_WORKFLOW='cinegitim/design/.github/workflows/brandstudio-offsite-backup.yml@refs/heads/main';
+let cachedGithubJwks=null,cachedGithubJwksAt=0;
+function decode64url(str){
+ if(typeof str!=='string'||str.length>16000||!/^[A-Za-z0-9_-]+$/.test(str))throw Error('Invalid base64url');
+ const base=str.replace(/-/g,'+').replace(/_/g,'/')+'='.repeat((4-str.length%4)%4);
+ return Uint8Array.from(atob(base),c=>c.charCodeAt(0))
+}
+function encode64url(bytes){
+ let text='';
+ for(let i=0;i<bytes.length;i+=8192)text+=String.fromCharCode(...bytes.subarray(i,i+8192));
+ return btoa(text).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'')
+}
+async function githubKey(kid){
+ if(!cachedGithubJwks||Date.now()-cachedGithubJwksAt>3600000){
+  const r=await fetch(GITHUB_JWKS,{headers:{Accept:'application/json'},cf:{cacheTtl:3600}});
+  if(!r.ok)throw Error('GitHub public key service unavailable');
+  const set=await r.json();
+  if(!Array.isArray(set.keys))throw Error('Invalid GitHub keys');
+  cachedGithubJwks=set.keys;cachedGithubJwksAt=Date.now()
+ }
+ const k=cachedGithubJwks.find(x=>x.kid===kid&&x.kty==='RSA'&&x.n&&x.e);
+ if(!k)throw Error('Unknown GitHub signing key');
+ return crypto.subtle.importKey('jwk',k,{name:'RSASSA-PKCS1-v1_5',hash:'SHA-256'},false,['verify'])
+}
+async function backupIdentity(request){
+ const auth=request.headers.get('Authorization')||'';
+ if(!auth.startsWith('Bearer ')||auth.length>17000)return false;
+ const token=auth.slice(7),p=token.split('.');
+ if(p.length!==3)return false;
+ try{
+  const header=JSON.parse(new TextDecoder().decode(decode64url(p[0])));
+  const claims=JSON.parse(new TextDecoder().decode(decode64url(p[1])));
+  const now=Math.floor(Date.now()/1000);
+  if(header.alg!=='RS256'||!header.kid||claims.iss!=='https://token.actions.githubusercontent.com'||claims.aud!==GITHUB_BACKUP_AUD)return false;
+  if(typeof claims.exp!=='number'||claims.exp<=now||claims.exp>now+900||typeof claims.iat!=='number'||claims.iat>now+30)return false;
+  if(claims.nbf&&claims.nbf>now+30)return false;
+  if(claims.repository!=='cinegitim/design'||String(claims.repository_id)!=='1401886207'||claims.ref!=='refs/heads/main'||claims.workflow_ref!==GITHUB_BACKUP_WORKFLOW)return false;
+  if(!['schedule','workflow_dispatch','push'].includes(claims.event_name))return false;
+  const key=await githubKey(header.kid);
+  return crypto.subtle.verify('RSASSA-PKCS1-v1_5',key,decode64url(p[2]),enc.encode(p[0]+'.'+p[1]))
+ }catch(e){console.error('Brandstudio backup identity rejected',String(e?.message||e));return false}
+}
+async function encryptedBackup(request,env,url){
+ if(request.method!=='GET')return json({error:'method'},405);
+ if(!(await backupIdentity(request)))return json({error:'Unauthorized'},401);
+ if(!env.BRANDSTUDIO_BACKUP_KEY||!/^[a-f0-9]{64}$/.test(env.BRANDSTUDIO_BACKUP_KEY))return json({error:'Backup encryption unavailable'},503);
+ const product=url.searchParams.get('product');
+ if(!safeProduct(product))return json({error:'Invalid product'},400);
+ const db=env[STORE];
+ const current=await db.get(db.idFromName(product)).fetch('https://brandstudio.internal/revisions?product='+encodeURIComponent(product));
+ if(!current.ok)return json({error:'Backup source unavailable'},503);
+ const document=await current.json();
+ if(!document.sha)return new Response(null,{status:204,headers:{'cache-control':'no-store'}});
+ const plaintext=enc.encode(JSON.stringify(document));
+ if(plaintext.length>1000000)return json({error:'Backup too large'},413);
+ const key=await crypto.subtle.importKey('raw',fromHex(env.BRANDSTUDIO_BACKUP_KEY),{name:'AES-GCM'},false,['encrypt']);
+ const iv=crypto.getRandomValues(new Uint8Array(12));
+ const cipher=await crypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:enc.encode('brandstudio-backup:v1:'+product)},key,plaintext);
+ return json({format:'brandstudio-aes256gcm-v1',product,revision:document.sha,createdAt:new Date().toISOString(),nonce:encode64url(iv),ciphertext:encode64url(new Uint8Array(cipher))})
+}
+
 const STATIC_ORIGIN='https://cinegitim.github.io/design';
 export default {
  async fetch(request,env,ctx){
   const url=new URL(request.url);
   try{
    if(url.pathname==='/favicon.ico')return new Response(null,{status:204});
+   if(url.pathname==='/internal/backup')return encryptedBackup(request,env,url);
    if(url.pathname.startsWith('/admin'))return handleAdmin(request,env,url);
    if(request.method!=='GET'&&request.method!=='HEAD'&&!(url.pathname==='/visual-editor/api/revisions'&&request.method==='POST'))return new Response('Method Not Allowed',{status:405});
    const user=await session(request,env);
