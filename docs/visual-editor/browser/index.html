@@ -379,14 +379,14 @@ var cloud=globalThis.BrandstudioCloud,cloudData=null,cloudSelected=false,cloudNo
  function saveLabel(label,mode){var b=$('cloud-save');b.textContent=label;b.dataset.state=mode;b.title=label}
  function wakeAutoSave(immediate){
   if(!dirty)return;
-  if(!cloud?.authenticated()){saveLabel('! Kaydedilemedi','disconnected');$('cloud-status').textContent='Düzenlemeler GitHub\'a henüz kaydedilmedi. GitHub bağlantısı gerekli.';return}
+  if(!cloud?.authenticated()){saveLabel('! Kaydedilemedi','disconnected');$('cloud-status').textContent='Değişiklikler henüz kaydedilemedi.';return}
   if(!cloudReady){saveLabel('● Bağlantı denetleniyor','pending');return}
   clearTimeout(autoTimer);
   saveLabel('● Kaydedilecek','pending');$('unsaved').textContent='Kaydedilecek…';
   if(autoBusy){autoAgain=true;return}
   autoTimer=setTimeout(function(){autoTimer=null;cloudSaveVersion(current,'autosave')},immediate?30:1400)
  }
- function canLeaveEditing(){if(autoBusy){$('cloud-status').textContent='GitHub kaydı sürüyor; bitince tekrar deneyin.';return false}if(dirty)return confirm('GitHub\'a gönderilmemiş değişiklikler var. Bunlar kurtarma taslağında kalacak. Devam etmek istiyor musunuz?');return true}
+ function canLeaveEditing(){if(autoBusy){$('cloud-status').textContent='Kayıt sürüyor, bitince yeniden deneyin.';return false}if(dirty)return confirm('Henüz kaydedilmemiş değişiklikler var. Bunlar kurtarma taslağında kalacak. Devam etmek istiyor musunuz?');return true}
 
 var zoomLevel=.4,zoomMode='fit',handMode=false,selectionOverlay=null,selectionHandle=null,sourceNodes=[],PASTEBOARD=320,inlineEditing=null,inlineRecorded=false,dragLayerId=null;
 function setupSidebars(){
@@ -1461,8 +1461,8 @@ function renderCloudHistory(){
  })
 }
 async function refreshCloud(product){
- var ticket=++cloudNonce;cloudReady=false;$('cloud-status').textContent='Sürümler yükleniyor…';saveLabel('● GitHub okunuyor','pending');
- if(!cloud){$('cloud-status').textContent='GitHub modülü yüklenmedi';return}
+ var ticket=++cloudNonce;cloudReady=false;$('cloud-status').textContent='Sürümler yükleniyor…';saveLabel('● Yükleniyor','pending');
+ if(!cloud){$('cloud-status').textContent='Kayıt hizmeti kullanılamıyor';return}
  try{
   var result=await cloud.load(product,cloud.authenticated());
   if(ticket!==cloudNonce||slug!==product)return;
@@ -1486,9 +1486,9 @@ async function refreshCloud(product){
  }catch(e){if(ticket===cloudNonce){cloudReady=false;autoLastFailure=true;saveLabel('! Bulut okunamadı','error');$('cloud-status').textContent='Bağlantı hatası: '+e.message}}
 }
 $('cloud-connect').onclick=function(){
- if(!cloud){$('cloud-status').textContent='GitHub senkronizasyon modülü bulunamadı';return}
+ if(!cloud){$('cloud-status').textContent='Kayıt hizmeti bulunamadı';return}
  var input=$('cloud-token'),ok=cloud.setToken(input.value);input.value='';
- $('cloud-status').textContent=ok?'Kayıtlar doğrulanıyor…':'GitHub anahtarı girilmedi';
+ $('cloud-status').textContent=ok?'Kayıtlar doğrulanıyor…':'Giriş yapılmadı';
  if(ok)refreshCloud(slug)
 };
 $('cloud-refresh').onclick=function(){if(canLeaveEditing())refreshCloud(slug)};
@@ -1501,17 +1501,17 @@ function updateRecoveryButtons(){
 }
 $('pending-recover').onclick=function(){
  var pending=pendingSnapshot();if(!pending)return;
- if(!confirm('Gönderilemeyen taslak tuvale geri getirilecek. Bağlantı varsa otomatik GitHub\'a gönderilecek. Devam edilsin mi?'))return;
+ if(!confirm('Gönderilemeyen taslak tuvale geri getirilecek. Bağlantı varsa otomatik buluta gönderilecek. Devam edilsin mi?'))return;
  applyCloudSnapshot(pending.state,pending.version,'Gönderilmemiş düzenleme kurtarıldı');updateRecoveryButtons()
 };
 $('legacy-import').onclick=function(){
  var local=allV(),last=local.length?local.reduce(function(a,b){return a.version>b.version?a:b}):null;
  if(!last)return;
- if(!confirm('Eski tarayıcı taslağı v'+last.version+' olarak GitHub\'a aktarılacak. Önceki bulut geçmişi korunacak. Devam edilsin mi?'))return;
+ if(!confirm('Eski tarayıcı taslağı v'+last.version+' olarak buluta aktarılacak. Önceki bulut geçmişi korunacak. Devam edilsin mi?'))return;
  applyCloudSnapshot(last.state,last.version,'Eski taslak geri yüklendi')
 };
 async function cloudSaveVersion(n,kind){
- if(!cloud||!cloud.authenticated()){saveLabel('! Kaydedilemedi','disconnected');$('cloud-status').textContent='Otomatik kayıt için GitHub bağlantısı gerekli.';return}
+ if(!cloud||!cloud.authenticated()){saveLabel('! Kaydedilemedi','disconnected');$('cloud-status').textContent='Otomatik kayıt için oturum açılmalı.';return}
  if(!cloudReady){saveLabel('● Bulut bekleniyor','pending');return}
  if(!Number.isInteger(n)||n<1||n>26){$('cloud-status').textContent='Geçersiz sürüm numarası';return}
  if(autoBusy){autoAgain=true;return}
@@ -1520,7 +1520,7 @@ async function cloudSaveVersion(n,kind){
  try{checked=codec.validateState(state,pages.length);serialized=JSON.stringify(checked)}
  catch(e){saveLabel('! Geçersiz düzenleme','error');$('cloud-status').textContent=e.message;return}
  autoBusy=true;autoAgain=false;$('cloud-new').disabled=true;
- saveLabel('↻ GitHub\'a yazılıyor','saving');$('cloud-status').textContent='Kaydediliyor…';
+ saveLabel('↻ Kaydediliyor','saving');$('cloud-status').textContent='Kaydediliyor…';
  try{
   var result=await cloud.commit({product:product,version:n,state:checked,note:$('cloud-note').value.trim()||(kind==='autosave'?'Otomatik kayıt':''),kind:kind||'autosave',expectedSha:cloudSha});
   if(slug!==product)return;
@@ -1529,7 +1529,7 @@ async function cloudSaveVersion(n,kind){
   if(!dirty){clearPending();saveLabel('✓ Kaydedildi','saved');$('unsaved').textContent='Tüm değişiklikler kaydedildi'}
   else {rememberPending();saveLabel('● Yeni değişiklik bekliyor','pending');$('unsaved').textContent='Yeni düzenlemeler sırada'}
   renderCloudHistory();renderProductVersions(record);renderV();
-  $('cloud-status').textContent='✓ GitHub onayladı · v'+n+' · '+result.document.history.length+' geçmiş anı · commit '+(result.commit||'').slice(0,10);
+  $('cloud-status').textContent='✓ v'+n+' kaydedildi · '+result.document.history.length+' geçmiş anı';
   $('status').textContent='Kaydedildi';
  }catch(e){
   autoLastFailure=true;dirty=true;rememberPending();saveLabel('! Kaydedilemedi · yeniden dene','error');
@@ -1543,16 +1543,16 @@ async function cloudSaveVersion(n,kind){
 $('cloud-save').onclick=function(){
  if(!cloud?.authenticated()){
   var node=$('cloud-token'),section=node?.closest('details');if(section)section.open=true;node?.focus();
-  $('cloud-status').textContent='GitHub erişim anahtarını girin; ardından her değişiklik otomatik kaydedilir.';
+  $('cloud-status').textContent='Oturum doğrulanamadı. Editörü yeniden açın.';
  }else if(!cloudReady)refreshCloud(slug);
  else if(dirty)cloudSaveVersion(current,'autosave');
- else $('cloud-status').textContent='GitHub güncel · son kayıt doğrulandı'
+ else $('cloud-status').textContent='Tüm değişiklikler kaydedildi.'
 };
 $('cloud-new').onclick=function(){
  if(dirty||autoBusy){$('cloud-status').textContent='Yeni sürüm açmadan önce mevcut kayıt tamamlanmalı.';wakeAutoSave(true);return}
  var remote=Object.keys(cloudData?.versions||{}).map(function(x){return Number(x.slice(1))}),n=Math.max(1,current,...remote)+1;
  if(n>26){$('cloud-status').textContent='26 sürüm sınırına ulaşıldı';return}
- if(!cloud?.authenticated()||!cloudReady){$('cloud-status').textContent='Yeni sürüm için önce GitHub bağlantısı gerekli.';return}
+ if(!cloud?.authenticated()||!cloudReady){$('cloud-status').textContent='Yeni sürüm için oturum açılmalı.';return}
  cloudSaveVersion(n,'new')
 };
 function applyCloudSnapshot(snapshot,version,message){
@@ -1563,7 +1563,7 @@ function applyCloudSnapshot(snapshot,version,message){
   savedState=copy(cloudData?.versions?.['v'+version]?.state||{colors:Object.assign({},defaults),edits:{},groups:{}});
   ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
   renderProductVersions(record);dirtyStatus();show(page);
-  $('cloud-status').textContent=message+' · GitHub\'a otomatik kaydedilecek';
+  $('cloud-status').textContent=message+' · otomatik kaydedilecek';
   $('cloud-note').value=message;
  }catch(e){$('cloud-status').textContent='Geri yükleme başarısız: '+e.message}
 }
