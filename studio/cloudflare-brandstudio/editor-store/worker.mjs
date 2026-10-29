@@ -2,7 +2,7 @@
 // This Worker has no public API; Cloudflare Pages calls the object through a binding.
 // Atomic compare-and-swap and durable history live in this dedicated object store.
 const KEY=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const BASE="https://raw.githubusercontent.com/cinegitim/design/brandstudio-editor-history/docs/visual-editor/browser/cloud/";
+const RECOVERED_BAVUL={"schema":1,"product":"instagram-creative-breakout-bavul-001","versions":{"v2":{"state":{"colors":{"paper":"#f7f3e9","ink":"#1d2027","red":"#bd2120"},"edits":{"0:2":{"styles":{"display":"none"},"mode":"inherit"},"0:1":{"styles":{"width":"623px","height":"29px","max-width":"none","transform":"translate(0px,0px)"},"mode":"inherit","segments":["ASYA'DA EĞİTİM ","/"," EĞİTİMİN YENİ ROTASI"]},"0:15":{"styles":{"display":"none"},"mode":"inherit"},"0:10":{"mode":"inherit","styles":{"width":"441px","height":"52px","max-width":"none","transform":"translate(0px,0px)"},"segments":["ASYA'NIN KAPILARI SANA AÇILSIN ","↗"]}},"groups":{}},"updatedAt":"2026-10-29T13:36:29.778Z","note":"Cloudflare ücretsiz D1 kotası dolduğu için tarayıcıdan korunan v2 değişiklikleri"}},"history":[{"id":"baseline-v1","at":"2026-10-29T10:12:21.071Z","version":1,"kind":"original","note":"Kaynak v1: değiştirilmemiş","state":{"colors":{"paper":"#f7f3e9","ink":"#1d2027","red":"#bd2120"},"edits":{},"groups":{}}},{"id":"import-v2-20261029","at":"2026-10-29T10:12:21.071Z","version":2,"kind":"import","note":"Chrome'da doğrulanmış v2 (sonraki kaydedilmemiş düzenlemeler bu aktarımda yok)","state":{"colors":{"paper":"#f7f3e9","ink":"#1d2027","red":"#bd2120"},"edits":{"0:2":{"styles":{"display":"none"},"mode":"inherit"},"0:1":{"styles":{"width":"623px","height":"29px","max-width":"none","transform":"translate(0px,0px)"},"mode":"inherit","segments":["ASYA'DA EĞİTİM ","/"," EĞİTİMİN YENİ ROTASI"]},"0:15":{"styles":{"display":"none"},"mode":"inherit"}},"groups":{}}},{"id":"emergency-recovery-20261029133229502","at":"2026-10-29T13:36:29.784Z","version":2,"kind":"emergency-recovery","note":"Cloudflare ücretsiz D1 kotası dolduğu için tarayıcıdan korunan v2 değişiklikleri","state":{"colors":{"paper":"#f7f3e9","ink":"#1d2027","red":"#bd2120"},"edits":{"0:2":{"styles":{"display":"none"},"mode":"inherit"},"0:1":{"styles":{"width":"623px","height":"29px","max-width":"none","transform":"translate(0px,0px)"},"mode":"inherit","segments":["ASYA'DA EĞİTİM ","/"," EĞİTİMİN YENİ ROTASI"]},"0:15":{"styles":{"display":"none"},"mode":"inherit"},"0:10":{"mode":"inherit","styles":{"width":"441px","height":"52px","max-width":"none","transform":"translate(0px,0px)"},"segments":["ASYA'NIN KAPILARI SANA AÇILSIN ","↗"]}},"groups":{}},"sourceTimestamp":"2026-10-29T13:32:29.502Z"}],"updatedAt":"2026-10-29T13:36:29.784Z"};
 const LIMIT=950000,MAX_HISTORY=240;
 const json=(o,status=200)=>new Response(JSON.stringify(o),{status,headers:{"content-type":"application/json","cache-control":"no-store"}});
 const invalid=(message,status=400)=>json({error:message},status);
@@ -12,20 +12,14 @@ export class BrandstudioRevisionObject {
  async initial(product){
   const stored=await this.ctx.storage.get("record");
   if(stored)return stored;
-  // Read-only, one-time bootstrap from the archived browser revisions. No PAT needed.
-  const url=BASE+encodeURIComponent(product)+".json";
-  let response;
-  try{response=await fetch(url,{cache:"no-store",redirect:"error"})}
-  catch(e){throw Error("Geçmiş arşivine ulaşılamadı")}
-  if(response.status===404)return {sha:null,document:{schema:1,product,versions:{},history:[]}};
-  if(!response.ok)throw Error("Geçmiş arşivi geçici olarak okunamıyor");
-  const raw=await response.text();
-  if(raw.length>LIMIT)throw Error("Arşiv boyutu sınırı");
-  let doc;try{doc=JSON.parse(raw)}catch(e){throw Error("Arşiv biçimi")}
-  if(doc.schema!==1||doc.product!==product||!doc.versions||!Array.isArray(doc.history))throw Error("Arşiv kimliği uyuşmuyor");
-  const value={sha:product==="instagram-creative-breakout-bavul-001"?"legacy-v2":"initial-archive",document:doc};
-  await this.ctx.storage.put("record",value);
-  return value
+  if(product==="instagram-creative-breakout-bavul-001"){
+   const value={sha:"legacy-v2",document:structuredClone(RECOVERED_BAVUL)};
+   await this.ctx.storage.put("record",value);
+   return value
+  }
+  // Other products have no migrated browser-cloud history; start a new overlay
+  // without introducing runtime dependence on external GitHub or shared D1.
+  return {sha:null,document:{schema:1,product,versions:{},history:[]}}
  }
  async fetch(request){
   const u=new URL(request.url),product=u.searchParams.get("product");
