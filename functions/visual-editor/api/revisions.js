@@ -4,7 +4,7 @@
 const ISSUER='https://dawn-voice-4b40.cloudflareaccess.com';
 const OWNER='iakfiratt@gmail.com';
 const ACCESS_AUD='78b226d0c73b926ead01a0accd7626a457bc9362966c7537a8a80136e6012f8b';
-const DB='BRANDSTUDIO_EDITOR';
+const STORE='BRANDSTUDIO_OBJECTS';
 const KEY=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const enc=new TextEncoder();
 let cachedKeys=null,cachedAt=0;
@@ -36,7 +36,7 @@ async function authorized(request,env){
  return crypto.subtle.verify('RSASSA-PKCS1-v1_5',key,decode(parts[2]),enc.encode(parts[0]+'.'+parts[1]))
 }
 async function guard(context){
- if(!context.env?.[DB])return json({error:'Kayıt hizmeti yapılandırılmamış'},503);
+ if(!context.env?.[STORE])return json({error:'Kayıt hizmeti yapılandırılmamış'},503);
  try{if(!await authorized(context.request,context.env))return json({error:'Oturum açılması gerekiyor'},401)}
  catch(_){return json({error:'Oturum şu anda doğrulanamıyor'},503)}
  return null
@@ -56,30 +56,16 @@ function validateState(s){
  }
  return true
 }
-function snapshot(doc,version,state,note,kind){
- const now=new Date().toISOString();
- if(!doc.versions||!Array.isArray(doc.history))throw Error('Kayıt biçimi geçersiz');
- if(doc.history.length>=240)throw Error('Sürüm geçmişi doldu');
- const key='v'+version;
- if(kind==='new'&&doc.versions[key])throw Error('Bu sürüm zaten mevcut');
- if(!doc.history.length&&version===1){
-  doc.history.push({id:'baseline-v1',at:now,version:1,kind:'original',note:'Değiştirilmemiş kaynak',state:{colors:{paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'},edits:{},groups:{}}});
- }
- doc.versions[key]={state,updatedAt:now,note};
- const id=crypto.randomUUID();
- doc.history.push({id,at:now,version,kind,note,state});
- doc.updatedAt=now;
- if(enc.encode(JSON.stringify(doc)).length>950000)throw Error('Kayıt boyutu sınırı aşıldı');
- return id
+function objectFor(context,product){
+ const binding=context.env[STORE];
+ return binding.get(binding.idFromName(product))
 }
 export async function onRequestGet(context){
  const fail=await guard(context);if(fail)return fail;
  const product=new URL(context.request.url).searchParams.get('product');
  if(!safeProduct(product))return json({error:'Geçersiz tasarım'},400);
- try{
-  const row=await context.env[DB].prepare('SELECT body,revision FROM editor_documents WHERE product=?').bind(product).first();
-  return json({sha:row?.revision??null,document:row?JSON.parse(row.body):{schema:1,product,versions:{},history:[]}})
- }catch(_){return json({error:'Kayıtlar okunamadı'},503)}
+ try{return await objectFor(context,product).fetch('https://brandstudio.internal/revisions?product='+encodeURIComponent(product))}
+ catch(e){console.error('Editor store read failed',String(e?.message||e));return json({error:'Kayıtlar okunamadı'},503)}
 }
 export async function onRequestPost(context){
  const fail=await guard(context);if(fail)return fail;
@@ -90,17 +76,8 @@ export async function onRequestPost(context){
  try{input=JSON.parse(raw)}catch(_){return json({error:'Geçersiz veri'},400)}
  const {product,version,state,expectedSha}=input;
  if(!safeProduct(product)||!Number.isInteger(version)||version<1||version>26||!validateState(state)||!Object.prototype.hasOwnProperty.call(input,'expectedSha')||!(typeof expectedSha==='string'||expectedSha===null))return json({error:'Geçersiz kayıt'},400);
- const note=String(input.note||'').slice(0,140),kind=['autosave','save','new','restore'].includes(input.kind)?input.kind:'autosave';
+ const body=JSON.stringify({product,version,state,expectedSha,note:String(input.note||'').slice(0,140),kind:['autosave','save','new','restore'].includes(input.kind)?input.kind:'autosave'});
  try{
-  const db=context.env[DB];
-  const row=await db.prepare('SELECT body,revision FROM editor_documents WHERE product=?').bind(product).first();
-  if((row?.revision??null)!==expectedSha)return json({error:'Başka bir oturumda daha yeni düzenleme var'},409);
-  const document=row?JSON.parse(row.body):{schema:1,product,versions:{},history:[]};
-  const clean=JSON.parse(JSON.stringify(state));let historyId;
-  try{historyId=snapshot(document,version,clean,note,kind)}catch(e){return json({error:e.message},409)}
-  const next=crypto.randomUUID(),body=JSON.stringify(document),now=new Date().toISOString();
-  const saved=row?await db.prepare('UPDATE editor_documents SET body=?,revision=?,updated_at=? WHERE product=? AND revision=? RETURNING revision').bind(body,next,now,product,expectedSha).first():await db.prepare('INSERT INTO editor_documents(product,body,revision,updated_at) VALUES(?,?,?,?) ON CONFLICT DO NOTHING RETURNING revision').bind(product,body,next,now).first();
-  if(!saved)return json({error:'Kayıt çakışması; değişiklikler korunuyor'},409);
-  return json({sha:next,historyId,document});
- }catch(_){return json({error:'Kayıt hizmetine erişilemiyor'},503)}
+  return await objectFor(context,product).fetch(new Request('https://brandstudio.internal/revisions?product='+encodeURIComponent(product),{method:'POST',headers:{'content-type':'application/json'},body}))
+ }catch(e){console.error('Editor store write failed',String(e?.message||e));return json({error:'Kayıt hizmetine erişilemiyor'},503)}
 }
