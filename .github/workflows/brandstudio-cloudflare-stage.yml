@@ -27,7 +27,7 @@ jobs:
           persist-credentials: false
           sparse-checkout: |
             studio/cloudflare-brandstudio
-            studio/branddesign
+            studio/brandstudio
             functions/visual-editor
             docs/visual-editor
             docs/archive
