@@ -369,7 +369,7 @@ test("layer reorder supports cross-container groups without negative stacking",(
 test("top version selector includes source revisions and browser-saved v2+ without conflating them",()=>{
  assert.match(html,/function topVersionValue\(\)/);
  assert.match(html,/cloudSelected\?'cloud:'\+current:current===1\?slug:'browser:'\+current/);
- assert.match(html,/option\.value='browser:'\+v\.version/);
+ assert.doesNotMatch(html,/option\.value='browser:'\+v\.version/);
  assert.match(html,/Tarayıcıda kayıtlı/);
  assert.match(html,/sel\.disabled=sel\.options\.length<=1/);
  assert.match(html,/sel\.value=topVersionValue\(\)/);
