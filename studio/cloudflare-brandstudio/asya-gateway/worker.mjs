@@ -269,7 +269,7 @@ async function encryptedBackup(request,env,url){
  return json({format:'brandstudio-aes256gcm-v1',product,revision:document.sha,createdAt:new Date().toISOString(),nonce:encode64url(iv),ciphertext:encode64url(new Uint8Array(cipher))})
 }
 
-const STATIC_ORIGIN='https://cinegitim.github.io/design';
+const STATIC_ORIGIN='https://brandstudio-pages-git.pages.dev';
 export default {
  async fetch(request,env,ctx){
   const url=new URL(request.url);

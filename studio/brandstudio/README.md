@@ -8,7 +8,7 @@ Bu dizin **Brandstudio** sistemine ait Cloudflare kaynaklarının tek envanter n
 
 **Kaynak:** `iakfiratt@gmail.com` hesabında eski kaynaklar sıfır veri kaybı doğrulanana kadar korunur. Aktif Bavul v2 kaydının dört geçmiş anı yeni Durable Object worker başlangıcına taşındı. Eski iki D1'in şeması aktarılmıştır fakat kaynak hesapta günlük D1 kota 7500 nedeniyle satırlar alınamamıştır. Bunlar TAM taşınmadan kaynak arşivler silinmeyecektir.
 
-**Yayın:** GitHub `cinegitim/design` kod deposudur. Asya’da Eğitim'deki Pages projesi oluşturuldu, ancak Cloudflare'ın GitHub kurulumunda 8000011 hatası nedeniyle yeni hesabın GitHub bağlantısını yeniden yetkilendirmek gerekir. Bu yapılıncaya kadar yalnızca markalı Cloudflare Worker adresi üzerinden GitHub Pages'deki mevcut onaylı statik içerik proxy edilir. Tek editör ve özel kayıt API'si Asya’da Eğitim hesabında barındırılır.
+**Yayın:** GitHub `cinegitim/design` kod deposudur. `brandstudio-pages-git` Git-entegre Pages projesi Asya’da Eğitim Cloudflare hesabında oluşturuldu; ilk build/deploy başarılıdır. Artık markalı `studio.asyadaegitim.com` Worker'ının statik kaynağı bu Cloudflare Pages projesidir. Admin ve özel kayıt API'si mevcut Worker/DO sisteminde kalır. Ücretsiz kullanım için production/preview otomatik derlemeleri kapalıdır.
 
 **Güvenlik:** Yönetici girişi `adminasya` uygulama hesabıyla yapılır. Önceki Cloudflare Access uygulaması, yeni oturumlar ve API doğrulandıktan sonra kaldırılmıştır. Bağımsız ve gizli Durable Object oturumları kullanılır. Ücretsiz Cloudflare planı ilkedir; ücretli otomatik geçiş veya R2 açılmaz.
 
@@ -54,3 +54,9 @@ Canlı devreye alma kontrolü: GitHub Actions'ın ilk başarılı `archive` çal
 Cloudflare API, hedef `brandstudio-asyadaegitim` Pages projesine `cinegitim/design` Git kaynağı bağlama denemesinde `8000011` döndürdü. Bu hata hedef hesabın Pages Git kurulumunun yeniden GitHub'da yetkilendirilmesini gerektiriyor. Cloudflare'ın Direct Upload proje türü mevcutsa, bu proje sonradan Git-entegre türe çevrilemez: Git yetkilendirmesi sonrasında **ayrı bir Git-entegre Pages projesi** oluşturulmalıdır. Otomatik build'ler ücretsiz kota için başlangıçta kapatılmalıdır.
 
 Bu işlem tamamlanana kadar `studio.asyadaegitim.com` Worker'ı, GitHub Pages statik tasarımları güvenli geçiş olarak sunar; uygulama oturumu ve kayıtları yalnız Asya’da Eğitim Cloudflare hesabındadır. Eski kişisel hesabın `brandstudio-migration` Pages, Worker, D1, DO ve Access kaynakları **silinmez**. Yeni Pages kaynağı yayımlanıp aynı tasarım/baskı/oturum/kayıt testlerini geçtikten ve güncel tam yedekler doğrulandıktan sonra yalnızca Brandstudio kaynakları temizlenir; diğer kişisel Cloudflare uygulamaları korunur.
+
+## 30 Ekim 2026 — Cloudflare Pages Git bağlantısı kuruldu
+
+Cloudflare panelinde **Pages → Import existing Git repository** seçilerek `cinegitim/design` bağlandı. Worker oluşturma akışı yanlış; Pages ayrı oluşturuldu. `brandstudio-pages-git` projesinin üretim dalı `main`, build komutu `python3 studio/cloudflare-brandstudio/build_pages.py`, çıktı `studio/cloudflare-brandstudio/dist`. İlk build/deploy kimliği `281548a4-fc59-44bb-aa94-ed143377743e`, tüm aşamalar başarılı. 29 katalog ürünü yeni Cloudflare Pages ile GitHub Pages arasında birebir eşit; Bavul görselleri ve browser editör JS paketleri HTTP 200 ile geldi. İlk HTML build 2.286 asset yükledi.
+
+Pages kaynağında **production ve preview otomatik deploy kapalı**. Bu, her GitHub push'unda ücretsiz kota tüketimini önler. Yeni editörün statik dosyaları `https://brandstudio-pages-git.pages.dev` adresinden proxy edilir, ancak kullanıcılar yönetim için yalnızca `https://studio.asyadaegitim.com` adresini kullanır. Eski hesap henüz silinmemiştir ve güvenliğin ana sınırı markalı gateway'dir.

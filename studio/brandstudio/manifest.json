@@ -60,6 +60,15 @@
       "offsite_workflow_run": "https://github.com/cinegitim/design/actions/runs/40957072762",
       "offsite_branch_head": "65cf0da9985de06c9f4ce36d9fad0d565bd97782",
       "disaster_recovery_key": "User recovery key stored separately; do not commit it to GitHub"
+    },
+    "static_origin": "https://brandstudio-pages-git.pages.dev",
+    "static_origin_status": "Cloudflare Git Pages build successful, catalog 29 of 29 matched, pending live gateway cutover verification",
+    "static_pages_git": {
+      "repository": "cinegitim/design",
+      "production_branch": "main",
+      "auto_production_builds": false,
+      "auto_preview_builds": false,
+      "manual_deployments": true
     }
   },
   "services": {
@@ -68,8 +77,9 @@
     "staging_worker": "brandstudio-stage",
     "editor_d1": "brandstudio-editor",
     "staging_d1": "brandstudio-stage",
-    "pages_project": "brandstudio-asyadaegitim",
-    "admin_auth_worker": "brandstudio-admin-auth"
+    "pages_project": "brandstudio-pages-git",
+    "admin_auth_worker": "brandstudio-admin-auth",
+    "legacy_unused_pages_project": "brandstudio-asyadaegitim"
   },
   "source_paths": [
     "studio/cloudflare-brandstudio/asya-gateway/worker.mjs",
@@ -80,7 +90,8 @@
   ],
   "status": "migration-in-progress",
   "pending": [
-    "reconnect-pages-github",
-    "source-resource-cleanup-after-all-checks"
+    "source-resource-cleanup-after-all-checks",
+    "verify-live-gateway-static-origin",
+    "remove-legacy-source-after-24h-safety-check"
   ]
 }

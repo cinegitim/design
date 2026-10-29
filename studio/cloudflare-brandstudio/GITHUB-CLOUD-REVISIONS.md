@@ -14,7 +14,7 @@ Eski `cinegitim.github.io/design/visual-editor/` ve `/browser/` bağlantıları 
 
 ## Mimari ve güvenlik
 
-- Tek editör origin `studio.asyadaegitim.com`; Asya’da Eğitim Cloudflare `brandstudio-edge` Worker custom domain. Statik varlıklar geçici olarak `cinegitim.github.io/design` üzerinden proxy edilir.
+- Tek editör origin `studio.asyadaegitim.com`; Asya’da Eğitim Cloudflare `brandstudio-edge` Worker custom domain. Statik varlıklar yeni Git-entegre `brandstudio-pages-git.pages.dev` üzerinden proxy edilir.
 - Aktif Worker gateway: `studio/cloudflare-brandstudio/asya-gateway/worker.mjs`, GET/POST `/visual-editor/api/revisions` (uygulama admin oturumuyla korunur). Eski Pages Functions kodu artık canlı yol değildir.
 - Yalnızca `adminasya` uygulama oturumu erişebilir; anonim istekler `401` döndürür. Eski Cloudflare Access JWT doğrulaması ve yetkili e-posta listesi aktif yolda kullanılmaz.
 - Same-origin POST, özel başlık, JSON biçimi, ürün kimliği, durum yapısı ve dosya büyüklüğü kontrolleri vardır. Yanlış beklenen sürüm etag'i ile yazma atomik CAS tarafından engellenir.
@@ -52,3 +52,7 @@ Eski kişisel hesaptaki iki D1 veritabanının tam SQL dışa aktarımı alınd�
 Yeni `brandstudio-editor-store` Worker'ı `BACKUP_DB` D1 bağlantısına sahiptir. Her GET isteğinde veya gerçek POST kaydında DO'daki güncel revizyon, `editor_revision_backups(product, revision, body, saved_at)` tablosuna koşullu eklenir. D1 arşivi kota veya ağ hatası verirse DO kaydı geri alınmaz ve sonraki başarılı GET/POST işleminde tekrar denenir. Günlük editör işleyişi D1'in kota durumuna bağlı değildir.
 
 **Ayrı GitHub off-site otomatik yedekleme kuruldu ve canlıda doğrulandı:** İki depolama türü aynı Cloudflare hesabında olduğu için AES-256-GCM ile şifrelenmiş revizyonlar da GitHub `brandstudio-editor-history` dalına aktarılır. Yalnızca imzası doğrulanmış GitHub Actions OIDC işi erişebilir. İlk başarılı yedek çalışması: https://github.com/cinegitim/design/actions/runs/40957072762. Public repo yalnızca şifreli veri içerir; çevrimdışı kurtarma anahtarı kullanıcının özel dosyasında kalır.
+
+## 30 Ekim 2026 — Git Pages kaynağı tamamlandı
+
+Hedef Cloudflare hesabında `brandstudio-pages-git` projesi `cinegitim/design` `main` branch'ına bağlı olarak oluşturuldu. İlk dağıtım kimliği `281548a4-fc59-44bb-aa94-ed143377743e`; build+deploy başarılı. 29 editör kataloğu ürün kimliği birebir doğrulandı. `studio.asyadaegitim.com` Worker'ı `/visual-editor/api/revisions` ve `/admin` yolunu kendi servisinde tutar; sadece statik dosyalar için `https://brandstudio-pages-git.pages.dev` kaynak kullanılır. Ücretsiz kota için `production_deployments_enabled=false`, `preview_deployment_setting=none`, `deployments_enabled=false` olarak kontrol edildi. Eski kişisel hesaba dokunulmadı.
