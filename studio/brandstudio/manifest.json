@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "group": "Branddesign",
+  "group": "Brandstudio",
   "destination": {
     "account": "asyadaegitim",
     "account_id": "5f90104db6f24a941c04e974e250cb67",
@@ -33,7 +33,10 @@
         "idempotent_api_post": true,
         "anonymous_api_401": true,
         "versions_preserved": true
-      }
+      },
+      "cookie": "__Host-brandstudio_session",
+      "legacy_cookie": "__Host-branddesign_session (automatic migration)",
+      "storage_identity": "kept for backward-compatible sessions"
     }
   },
   "services": {

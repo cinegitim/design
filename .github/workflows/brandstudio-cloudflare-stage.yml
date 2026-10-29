@@ -6,7 +6,7 @@ on:
       - "docs/visual-editor/browser/**"
       - "docs/visual-editor/index.html"
       - "functions/visual-editor/**"
-      - "studio/branddesign/**"
+      - "studio/brandstudio/**"
       - ".github/workflows/brandstudio-cloudflare-stage.yml"
   push:
     branches: [main]
@@ -27,7 +27,7 @@ jobs:
           persist-credentials: false
           sparse-checkout: |
             studio/cloudflare-brandstudio
-            studio/branddesign
+            studio/brandstudio
             functions/visual-editor
             docs/visual-editor
             docs/archive
@@ -49,10 +49,10 @@ jobs:
       - name: Asyada Egitim access gateway and storage syntax
         run: |
           node --check studio/cloudflare-brandstudio/asya-gateway/worker.mjs
-          node --check studio/branddesign/admin-auth/worker.mjs
+          node --check studio/brandstudio/admin-auth/worker.mjs
           node --check studio/cloudflare-brandstudio/editor-store/worker.mjs
-      - name: Branddesign admin session safety tests
-        run: node --test studio/branddesign/admin-auth.test.mjs
+      - name: Brandstudio admin session safety tests
+        run: node --test studio/brandstudio/admin-auth.test.mjs
       - name: Access-verified D1 API syntax
         run: node --check functions/visual-editor/api/revisions.js
       - name: Worker API safety tests — no network
