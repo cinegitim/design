@@ -49,6 +49,7 @@ jobs:
       - name: Asyada Egitim access gateway and storage syntax
         run: |
           node --check studio/cloudflare-brandstudio/asya-gateway/worker.mjs
+          node --check studio/branddesign/admin-auth/worker.mjs
           node --check studio/cloudflare-brandstudio/editor-store/worker.mjs
       - name: Access-verified D1 API syntax
         run: node --check functions/visual-editor/api/revisions.js
