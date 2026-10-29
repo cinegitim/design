@@ -1,0 +1,21 @@
+{
+  "name": "brandstudio-edge",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": false,
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "BRANDSTUDIO_OBJECTS",
+        "class_name": "BrandstudioRevisionObject",
+        "script_name": "brandstudio-editor-store"
+      }
+    ]
+  },
+  "routes": [
+    {
+      "pattern": "studio.asyadaegitim.com",
+      "custom_domain": true
+    }
+  ]
+}
