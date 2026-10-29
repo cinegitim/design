@@ -1,5 +1,5 @@
 Brandstudio Pages controlled deployment marker
 Requested: 2026-10-29
-Purpose: publish cloud autosave and visible PNG/JPEG actions, PR #161
-Reviewed base source: 9447ebe680331879fda169276cab82abf65fb296
-Trigger: only changes to this marker file (not editor saves or source changes)
+Purpose: single private Cloudflare editor with Cloudflare Access and D1 autosave
+Reviewed base: b929e4451ea52d0f77408a6f5ca344d729f20486
+Trigger: only explicit changes to this marker file; browser edits do not redeploy
