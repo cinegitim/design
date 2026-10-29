@@ -1453,8 +1453,21 @@ async function refreshCloud(product){
   var result=await cloud.load(product,cloud.authenticated());
   if(ticket!==cloudNonce||slug!==product)return;
   cloudData=result.document;renderCloudHistory();
+  var stored=Object.keys(cloudData.versions||{}).filter(function(x){return /^v([1-9]|1[0-9]|2[0-6])$/.test(x)});
+  // New browsers with no local revisions open the latest cloud edition by
+  // default. Never discard local work or a dirty canvas automatically.
+  if(stored.length&&!dirty&&!cloudSelected&&current===1&&!allV().length){
+    var last=Math.max(...stored.map(function(x){return Number(x.slice(1))}));
+    var snap=cloudData.versions['v'+last];
+    if(snap?.state){
+      state=copy(codec.validateState(snap.state,pages.length));current=last;cloudSelected=true;
+      savedState=copy(state);history.clear();historyButtons();
+      ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
+      $('unsaved').textContent='GitHub bulut kaydı yüklendi';show(page)
+    }
+  }
   renderProductVersions(record);
-  var v=Object.keys(cloudData.versions||{}).length;
+  var v=stored.length;
   $('cloud-status').textContent=v?'GitHub üzerinde '+v+' sürüm ve '+cloudData.history.length+' geçmiş kaydı mevcut.':'Henüz GitHub bulut sürümü yok; ilk kayıt için bağlanın.'
  }catch(e){if(ticket===cloudNonce){$('cloud-status').textContent='GitHub okuma hatası: '+e.message}}
 }
