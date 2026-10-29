@@ -46,22 +46,59 @@ function target(value){
  if(s.length>0&&s.length<350&&s.startsWith('/')&&!s.startsWith('//')&&!s.includes('\\')&&!/[\x00-\x1F\x7F]/.test(s))return s;
  return '/visual-editor/browser/'
 }
-function loginHtml(next,error){
+// Password stretching happens in the browser to respect Workers Free 10ms CPU limit.
+// A short-lived, one-use challenge prevents replay of a captured proof.
+const LOGIN_SCRIPT=String.raw`(function(){
+ const form=document.querySelector('form[action="/admin/login"]');
+ const button=form.querySelector('button[type=submit]');
+ const toBytes=s=>Uint8Array.from(s.match(/.{2}/g),x=>parseInt(x,16));
+ const toHex=b=>Array.from(new Uint8Array(b),v=>v.toString(16).padStart(2,'0')).join('');
+ const encoder=new TextEncoder();
+ form.addEventListener('submit',async event=>{
+  event.preventDefault();if(button.disabled)return;
+  const username=form.elements.namedItem('username').value;
+  const password=form.elements.namedItem('password').value;
+  button.disabled=true;button.textContent='Güvenli giriş doğrulanıyor…';
+  try{
+   const req=await fetch('/admin/challenge',{credentials:'same-origin',cache:'no-store'});
+   if(!req.ok)throw Error('Çok fazla deneme veya geçici bağlantı sorunu');
+   const c=await req.json();
+   if(!/^[a-f0-9]{64}$/.test(c.challenge)||!/^[a-f0-9]+$/.test(c.salt))throw Error('Geçersiz doğrulama');
+   const material=await crypto.subtle.importKey('raw',encoder.encode(password),'PBKDF2',false,['deriveBits']);
+   const bits=await crypto.subtle.deriveBits({name:'PBKDF2',salt:toBytes(c.salt),iterations:c.iterations,hash:'SHA-256'},material,256);
+   const hmac=await crypto.subtle.importKey('raw',bits,{name:'HMAC',hash:'SHA-256'},false,['sign']);
+   const message=['branddesign-admin-login:v1',c.challenge,username,location.host].join('\n');
+   const proof=toHex(await crypto.subtle.sign('HMAC',hmac,encoder.encode(message)));
+   form.elements.namedItem('password').removeAttribute('name');
+   for(const [name,value] of [['challenge',c.challenge],['proof',proof]]){
+    const input=document.createElement('input');input.type='hidden';input.name=name;input.value=value;form.append(input)
+   }
+   form.submit()
+  }catch(e){
+   button.disabled=false;button.textContent='Admin paneline gir';
+   document.getElementById('message').textContent='Giriş hazırlanamadı. Lütfen tekrar dene.'
+  }
+ })
+})();`;
+function loginHtml(next,error,nonce){
  const safe=next.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
  return `<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Branddesign · Admin Girişi</title><style>
-:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 20% 10%,#27334b 0,#111927 50%,#0c111b 100%);color:#edf2f8;font:15px/1.5 system-ui,Arial;display:grid;place-items:center;padding:25px}main{width:min(100%,435px);background:#182334;border:1px solid #34415a;box-shadow:0 22px 65px #0007;border-radius:18px;padding:34px}h1{font-size:27px;letter-spacing:-.8px;margin:4px 0 6px}p{color:#abb8cc;margin:0 0 24px}.brand{color:#f6a67e;font-size:12px;letter-spacing:.15em;font-weight:800}label{display:block;margin:16px 0 6px;color:#d5e0ef;font-weight:600;font-size:13px}input{width:100%;border:1px solid #45556d;border-radius:9px;padding:13px;background:#0e1725;color:#fff;font:inherit}input:focus{outline:2px solid #f5a47b;outline-offset:2px}button{margin:25px 0 10px;background:#bd2120;border:0;border-radius:10px;padding:14px;color:white;font:inherit;font-weight:750;width:100%;cursor:pointer}small{color:#9faec2}aside{color:#ffbeb5;margin-top:12px;font-size:13px}</style></head><body><main><div class="brand">BRANDDESIGN / ADMIN</div><h1>Tekrar hoş geldin.</h1><p>Bu tarayıcıda bir kez giriş yap. Güvenli oturumun sonraki ziyaretlerinde otomatik hatırlanır.</p><form method="post" action="/admin/login"><input type="hidden" name="next" value="${safe}"><label for="username">Kullanıcı adı</label><input id="username" name="username" required autocomplete="username" maxlength="64"><label for="password">Şifre</label><input id="password" name="password" type="password" required autocomplete="current-password"><button type="submit">Admin paneline gir</button></form>${error?'<aside>Giriş bilgileri doğrulanamadı veya çok fazla deneme yapıldı.</aside>':''}<small>Güvenilen tarayıcı oturumu · 365 günlük yenilenen oturum · Çıkış yaparak sonlandırılabilir</small></main></body></html>`
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 20% 10%,#27334b 0,#111927 50%,#0c111b 100%);color:#edf2f8;font:15px/1.5 system-ui,Arial;display:grid;place-items:center;padding:25px}main{width:min(100%,435px);background:#182334;border:1px solid #34415a;box-shadow:0 22px 65px #0007;border-radius:18px;padding:34px}h1{font-size:27px;letter-spacing:-.8px;margin:4px 0 6px}p{color:#abb8cc;margin:0 0 24px}.brand{color:#f6a67e;font-size:12px;letter-spacing:.15em;font-weight:800}label{display:block;margin:16px 0 6px;color:#d5e0ef;font-weight:600;font-size:13px}input{width:100%;border:1px solid #45556d;border-radius:9px;padding:13px;background:#0e1725;color:#fff;font:inherit}input:focus{outline:2px solid #f5a47b;outline-offset:2px}button{margin:25px 0 10px;background:#bd2120;border:0;border-radius:10px;padding:14px;color:white;font:inherit;font-weight:750;width:100%;cursor:pointer}button:disabled{opacity:.65}small{color:#9faec2}aside{color:#ffbeb5;margin-top:12px;font-size:13px}</style></head><body><main><div class="brand">BRANDDESIGN / ADMIN</div><h1>Tekrar hoş geldin.</h1><p>Bu tarayıcıda bir kez giriş yap. Güvenli oturumun sonraki ziyaretlerinde otomatik hatırlanır.</p><form method="post" action="/admin/login"><input type="hidden" name="next" value="${safe}"><label for="username">Kullanıcı adı</label><input id="username" name="username" required autocomplete="username" maxlength="64"><label for="password">Şifre</label><input id="password" name="password" type="password" required autocomplete="current-password"><button type="submit">Admin paneline gir</button></form><aside id="message">${error?'Giriş bilgileri doğrulanamadı veya çok fazla deneme yapıldı.':''}</aside><small>Güvenilen tarayıcı oturumu · 365 günlük yenilenen oturum · Çıkış yaparak sonlandırılabilir</small></main><script nonce="${nonce}">${LOGIN_SCRIPT}</script></body></html>`
 }
-function page(html,status=200){
- return new Response(html,{status,headers:{'content-type':'text/html; charset=utf-8','cache-control':'no-store','content-security-policy':"default-src 'none'; style-src 'unsafe-inline'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'",'x-frame-options':'DENY','x-content-type-options':'nosniff'}})
+function loginPage(next,error,status=200){
+ const nonce=hex(crypto.getRandomValues(new Uint8Array(16)));
+ const html=loginHtml(next,error,nonce);
+ return new Response(html,{status,headers:{'content-type':'text/html; charset=utf-8','cache-control':'no-store','content-security-policy':"default-src 'none'; script-src 'nonce-"+nonce+"'; connect-src 'self'; style-src 'unsafe-inline'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'",'x-frame-options':'DENY','x-content-type-options':'nosniff'}})
 }
-async function correctPassword(username,password,env){
+async function correctProof(username,challenge,proof,env,host){
  if(!env.ADMIN_PBKDF2_SALT||!env.ADMIN_PBKDF2_HASH)throw Error('Admin password secret missing');
- const base=await crypto.subtle.importKey('raw',enc.encode(password),'PBKDF2',false,['deriveBits']);
- const bits=await crypto.subtle.deriveBits({name:'PBKDF2',salt:fromHex(env.ADMIN_PBKDF2_SALT),iterations:210000,hash:'SHA-256'},base,256);
- const expected=fromHex(env.ADMIN_PBKDF2_HASH),actual=new Uint8Array(bits);
- if(expected.length!==actual.length)return false;
- let diff=0;for(let i=0;i<actual.length;i++)diff|=actual[i]^expected[i];
- return username==='adminasya'&&diff===0
+ if(username!=='adminasya'||!/^[a-f0-9]{64}$/.test(challenge)||!/^[a-f0-9]{64}$/.test(proof))return false;
+ const key=await crypto.subtle.importKey('raw',fromHex(env.ADMIN_PBKDF2_HASH),{name:'HMAC',hash:'SHA-256'},false,['sign']);
+ const msg=['branddesign-admin-login:v1',challenge,username,host].join('\n');
+ const expected=new Uint8Array(await crypto.subtle.sign('HMAC',key,enc.encode(msg)));
+ const actual=fromHex(proof);let diff=0;
+ for(let i=0;i<expected.length;i++)diff|=actual[i]^expected[i];
+ return diff===0
 }
 async function handleAdmin(req,env,url){
  if(url.pathname==='/admin/logout'){
@@ -73,23 +110,34 @@ async function handleAdmin(req,env,url){
  if(url.pathname==='/admin/session'){
   if(req.method!=='GET')return json({error:'method'},405);
   const status=await session(req,env);
-  return json({authenticated:status.ok,session:'trusted-device',expiresAfterDays:365});
+  return json({authenticated:status.ok,session:'trusted-device',expiresAfterDays:365})
+ }
+ if(url.pathname==='/admin/challenge'){
+  if(req.method!=='GET')return json({error:'method'},405);
+  if(!env.ADMIN_PBKDF2_SALT||!env.ADMIN_PBKDF2_HASH)return json({error:'Giriş yapılandırılmamış'},503);
+  const clientId=await sha256(req.headers.get('CF-Connecting-IP')||'unknown');
+  const check=await authObject(env,'attempt',clientId,{op:'probe'});
+  if(!check.ok)return json({error:'Çok fazla giriş denemesi'},429);
+  const challenge=await authObject(env,'challenge',clientId);
+  return json({challenge:challenge.challenge,salt:env.ADMIN_PBKDF2_SALT,iterations:210000})
  }
  if(url.pathname!=='/admin/login'&&url.pathname!=='/admin'&&url.pathname!=='/admin/')return json({error:'Yol bulunamadı'},404);
  if(req.method==='GET'){
   if((await session(req,env)).ok)return redirect(target(url.searchParams.get('next')));
-  return page(loginHtml(target(url.searchParams.get('next')),false))
+  return loginPage(target(url.searchParams.get('next')),false)
  }
  if(req.method!=='POST'||!sameOrigin(req)||!req.headers.get('content-type')?.startsWith('application/x-www-form-urlencoded'))return json({error:'Güvenli istek gerekli'},403);
  const body=await req.text();
  if(body.length>1600)return json({error:'Çok büyük istek'},413);
  const data=new URLSearchParams(body);
- const username=String(data.get('username')||'').slice(0,64),password=String(data.get('password')||'').slice(0,256);
+ const username=String(data.get('username')||'').slice(0,64);
+ const proof=String(data.get('proof')||'').slice(0,128),challenge=String(data.get('challenge')||'').slice(0,128);
  const clientId=await sha256(req.headers.get('CF-Connecting-IP')||'unknown');
  const ratelimit=await authObject(env,'attempt',clientId,{op:'probe'});
- if(!ratelimit.ok)return page(loginHtml(target(data.get('next')),true),429);
- const valid=await correctPassword(username,password,env);
- if(!valid){await authObject(env,'attempt',clientId,{op:'failed'});return page(loginHtml(target(data.get('next')),true),401)}
+ if(!ratelimit.ok)return loginPage(target(data.get('next')),true,429);
+ const consumed=await authObject(env,'consume',clientId,{challenge});
+ const valid=consumed.ok&&await correctProof(username,challenge,proof,env,url.host);
+ if(!valid){await authObject(env,'attempt',clientId,{op:'failed'});return loginPage(target(data.get('next')),true,401)}
  await authObject(env,'attempt',clientId,{op:'success'});
  const secret=hex(crypto.getRandomValues(new Uint8Array(32)));
  await authObject(env,'issue',await sha256(secret));
