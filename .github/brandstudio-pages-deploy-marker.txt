@@ -1,5 +1,5 @@
 Brandstudio Pages controlled deployment marker
 Requested: 2026-10-29
-Purpose: move autosave to quota-isolated Durable Objects after D1 7500 exhaustion
-Backup: D1 and GitHub emergency v2 recovery records retained
-Trigger: manual marker change only; editor autosaves never rebuild
+Purpose: stop autosave history retry loop and bundle offline Bavul recovery bootstrap
+Storage: Durable Objects with idempotent state writes
+Trigger: explicit release only, not every design edit

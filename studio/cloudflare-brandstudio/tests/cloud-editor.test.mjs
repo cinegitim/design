@@ -73,7 +73,7 @@ test('server rejects unauthenticated requests and verifies signed Access JWT',()
  const store=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/editor-store/worker.mjs'),'utf8');
  assert.match(store,/class BrandstudioRevisionObject/);
  assert.ok(store.includes('this.ctx.storage.transaction'));
- assert.match(store,/brandstudio-editor-history/);
+ assert.match(store,/RECOVERED_BAVUL/);
  assert.match(store,/legacy-v2/);
 });
 test('one visible editor, simple autosave and direct PNG/JPEG downloads',()=>{
@@ -87,4 +87,15 @@ test('one visible editor, simple autosave and direct PNG/JPEG downloads',()=>{
  assert.match(html,/id="cloud-token"[^>]*type="password"/);
  assert.doesNotMatch(html,/GitHub erişim anahtarı \(yalnızca bellekte/);
  assert.doesNotMatch(source,/localStorage|sessionStorage|document\.cookie/);
+});
+
+test('autosave captures a stable input snapshot and normalizes live state only after server acknowledgment',()=>{
+ assert.match(html,/submitted=copy\(state\)/);
+ assert.match(html,/codec\.validateState\(submitted,pages\.length\)/);
+ assert.match(html,/if\(JSON\.stringify\(state\)===serialized\)state=copy\(checked\)/);
+ assert.match(html,/dirty=JSON\.stringify\(state\)!==JSON\.stringify\(savedState\)/);
+ const store=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/editor-store/worker.mjs'),'utf8');
+ assert.match(store,/unchanged:true/);
+ assert.doesNotMatch(store,/fetch\(url,/);
+ assert.match(store,/RECOVERED_BAVUL/);
 });

@@ -1516,16 +1516,19 @@ async function cloudSaveVersion(n,kind){
  if(!Number.isInteger(n)||n<1||n>26){$('cloud-status').textContent='Geçersiz sürüm numarası';return}
  if(autoBusy){autoAgain=true;return}
  clearTimeout(autoTimer);autoTimer=null;
- var product=slug,checked,serialized;
- try{checked=codec.validateState(state,pages.length);serialized=JSON.stringify(checked)}
+ var product=slug,checked,serialized,submitted;
+ try{submitted=copy(state);checked=codec.validateState(submitted,pages.length);serialized=JSON.stringify(submitted)}
  catch(e){saveLabel('! Geçersiz düzenleme','error');$('cloud-status').textContent=e.message;return}
  autoBusy=true;autoAgain=false;$('cloud-new').disabled=true;
  saveLabel('↻ Kaydediliyor','saving');$('cloud-status').textContent='Kaydediliyor…';
  try{
   var result=await cloud.commit({product:product,version:n,state:checked,note:$('cloud-note').value.trim()||(kind==='autosave'?'Otomatik kayıt':''),kind:kind||'autosave',expectedSha:cloudSha});
   if(slug!==product)return;
-  cloudSha=result.sha;cloudData=result.document;current=n;cloudSelected=true;savedState=copy(checked);autoLastFailure=false;
-  dirty=JSON.stringify(state)!==serialized;
+  cloudSha=result.sha;cloudData=result.document;current=n;cloudSelected=true;autoLastFailure=false;
+   // Do not discard edits made while the server request was in flight.
+   if(JSON.stringify(state)===serialized)state=copy(checked);
+   savedState=copy(checked);
+  dirty=JSON.stringify(state)!==JSON.stringify(savedState);
   if(!dirty){clearPending();saveLabel('✓ Kaydedildi','saved');$('unsaved').textContent='Tüm değişiklikler kaydedildi'}
   else {rememberPending();saveLabel('● Yeni değişiklik bekliyor','pending');$('unsaved').textContent='Yeni düzenlemeler sırada'}
   renderCloudHistory();renderProductVersions(record);renderV();
