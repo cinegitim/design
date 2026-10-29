@@ -1247,8 +1247,31 @@ $('importFile').onchange=async function(){
 };
 $('css').onclick=async function(){try{if(!pages.length)throw new Error('Kaynak bulunamadı');var raw=await sourceAt(page);download(slug+'-slide-'+(page+1)+'.css',codec.css(raw,state,page,pages[page]),'text/css')}catch(e){safeStatus(e)}};
 $('html').onclick=async function(){try{if(!pages.length)throw new Error('Kaynak bulunamadı');var raw=await sourceAt(page);download(slug+'-slide-'+(page+1)+'.html',codec.html(raw,pages[page],state,page),'text/html')}catch(e){safeStatus(e)}};
-function renderV(){var v=allV();$('versions').innerHTML='<option value="1">v1 · özgün</option>';v.forEach(function(x){var o=document.createElement('option');o.value=x.version;o.textContent='v'+x.version+' · '+(x.note||'revizyon');$('versions').appendChild(o)});$('versions').value=String(current)}
-$('load').onclick=function(){if(dirty&&!confirm('Kaydedilmemiş düzenlemeler kaybolsun mu?'))return;var n=Number($('versions').value),v=allV().find(function(x){return x.version===n});state=v?copy(v.state):{colors:Object.assign({},defaults),edits:{},groups:{}};current=n;dirty=false;savedState=copy(state);history.clear();historyButtons();['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});$('unsaved').textContent='Değişiklik yok';show(page)};
+function topVersionValue(){return current===1?slug:'browser:'+current}
+function renderV(){
+ var v=allV();$('versions').innerHTML='<option value="1">v1 · özgün kaynak</option>';
+ v.forEach(function(x){var o=document.createElement('option');o.value=x.version;
+  o.textContent='v'+x.version+' · '+(x.note||'revizyon');$('versions').appendChild(o)});
+ $('versions').value=String(current);
+ if(record)renderProductVersions(record)
+}
+function loadSavedVersion(n){
+ if(!Number.isInteger(n)||n<1)return false;
+ var v=n===1?null:allV().find(function(x){return x.version===n});
+ if(n!==1&&!v){$('status').textContent='Tarayıcıda bu sürüm bulunamadı';return false}
+ if(dirty&&!confirm('Kaydedilmemiş düzenlemeler kaybolsun mu?'))return false;
+ state=v?copy(v.state):{colors:Object.assign({},defaults),edits:{},groups:{}};
+ current=n;dirty=false;savedState=copy(state);
+ history.clear();historyButtons();['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
+ $('unsaved').textContent=n===1?'Özgün kaynak yüklendi':'v'+n+' tarayıcı kaydı yüklendi';
+ $('versions').value=String(n);
+ if(record)renderProductVersions(record);
+ show(page);return true
+}
+$('load').onclick=function(){
+ var previous=topVersionValue(),n=Number($('versions').value);
+ if(!loadSavedVersion(n))$('catalog-version').value=previous
+};
 $('folder').onclick=async function(){if(!window.showDirectoryPicker){$('folderStatus').textContent='Bu tarayıcı klasöre kaydetmeyi desteklemiyor';return}try{folder=await window.showDirectoryPicker({mode:'readwrite'});$('folderStatus').textContent=folder.name}catch(e){if(e.name!=='AbortError')$('folderStatus').textContent=e.message}};
 $('save').onclick=function(){var n=Math.max(1,...allV().map(function(v){return v.version}))+1;$('newV').value='v'+n;$('dialog').showModal()};
 $('cancel').onclick=function(){$('dialog').close()};
@@ -1309,7 +1332,15 @@ function renderProductVersions(selected){
  all.forEach(function(v){var option=document.createElement('option');option.value=v.id;
    var isPublished=v.id===selected.publishedVersionId,latest=v.id===selected.currentId;
    option.textContent=(v.label||'güncel')+(isPublished?' · Yayımlandı':(latest&&all.length>1?' · Son taslak':''));sel.appendChild(option)});
- sel.value=selected.id;sel.disabled=all.length<=1;
+ // Source versions are GitHub artifacts; browser revisions are saved locally per
+ // exact source product ID. Keep their identities distinct and visible together.
+ allV().forEach(function(v){
+   var option=document.createElement('option');option.value='browser:'+v.version;
+   option.textContent='v'+v.version+' · Tarayıcıda kayıtlı'+(v.note?' · '+v.note.slice(0,35):'');
+   option.title=v.time?'Kaydedildi: '+new Date(v.time).toLocaleString('tr-TR'):'Bu tarayıcıda kayıtlı sürüm';
+   sel.appendChild(option)
+ });
+ sel.value=topVersionValue();sel.disabled=sel.options.length<=1;
  $('catalog-breadcrumb').textContent=(selected.brand==='cin-egitim'?'Çin Eğitim':'Asya’da Eğitim')+' › '+(selected.categoryPath?.join(' › ')||selected.category||'Diğer');
  var status=$('catalog-status'),pub=selected.publications||[];
  var published=selected.lifecycle==='published'&&pub.length>0;
@@ -1338,7 +1369,6 @@ function openProduct(productId){
  ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
  $('product').textContent=selected.title;
  $('catalog-select').value=selected.groupId||slug;
- renderProductVersions(selected);
  renderV();
  var q=new URLSearchParams(location.search);q.set('product',slug);
  window.history.replaceState(null,'',location.pathname+'?'+q.toString()); // URL-only; browser archive storage unchanged.
@@ -1351,9 +1381,19 @@ $('catalog-select').onchange=function(){
  openProduct(target)
 };
 $('catalog-version').onchange=function(){
- var old=slug,target=this.value;
+ var old=topVersionValue(),target=this.value;
+ if(target.indexOf('browser:')===0){
+   if(!loadSavedVersion(Number(target.slice(8))))this.value=old;
+   return
+ }
+ // Choosing the original source of this product restores its clean v1,
+ // not the newest locally saved revision (which is still available above).
+ if(target===slug){
+   if(!loadSavedVersion(1))this.value=old;
+   return
+ }
  if(dirty&&!confirm('Kaydedilmemiş düzenlemeler var. Sürümü değiştir?')){this.value=old;return}
- openProduct(target)
+ if(!openProduct(target))this.value=old
 };
 async function init(){
  $('status').textContent='Tasarım kataloğu okunuyor…';
