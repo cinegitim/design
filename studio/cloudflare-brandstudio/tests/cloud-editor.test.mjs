@@ -109,13 +109,16 @@ test('recovered pending state compares normalized values and does not show false
  assert.match(store,/if\(stored\.document\.history\.length>=100\)/);
 });
 
-test('Branddesign Cloudflare gateway verifies Access JWT and routes revisions to private DO',()=>{
+test('Branddesign Cloudflare gateway stages password/session auth and routes revisions to private DO',()=>{
  const edge=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/asya-gateway/worker.mjs'),'utf8');
- assert.ok(edge.includes('polished-flower-7330.cloudflareaccess.com'));
+ assert.ok(edge.includes('ADMIN_PBKDF2_HASH'));
+ assert.ok(edge.includes('BRANDSTUDIO_AUTH'));
+ assert.ok(edge.includes('session(request,env)'));
  const cfg=JSON.parse(fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/asya-gateway/wrangler.json'),'utf8'));
  assert.equal(cfg.durable_objects.bindings[0].class_name,'BrandstudioRevisionObject');
  assert.ok(edge.includes('X-Brandstudio-Editor'));
- assert.ok(edge.includes('Cf-Access-Jwt-Assertion'));
+ assert.ok(edge.includes('__Host-branddesign_session'));
+ assert.ok(!edge.includes('Cf-Access-Jwt-Assertion'));
  assert.ok(edge.includes('https://cinegitim.github.io/design'));
  assert.ok(edge.includes('https://brandstudio.internal/revisions'));
  assert.ok(edge.includes("if(request.method==='GET')return onRequestGet(context)"));

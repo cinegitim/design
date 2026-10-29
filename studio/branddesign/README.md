@@ -10,6 +10,19 @@ Bu dizin **Branddesign** sistemine ait Cloudflare kaynaklarının tek envanter n
 
 **Yayın:** GitHub `cinegitim/design` kod deposudur. Asya’da Eğitim'deki Pages projesi oluşturuldu, ancak Cloudflare'ın GitHub kurulumunda 8000011 hatası nedeniyle yeni hesabın GitHub bağlantısını yeniden yetkilendirmek gerekir. Bu yapılıncaya kadar yalnızca markalı Cloudflare Worker adresi üzerinden GitHub Pages'deki mevcut onaylı statik içerik proxy edilir. Tek editör ve özel kayıt API'si Asya’da Eğitim hesabında barındırılır.
 
-**Güvenlik:** Yönetici Access kuralı yalnızca `info@asyadaegitim.com` ve `iakfiratt@gmail.com` e-postaları için; API tarafında Access JWT imzası da doğrulanır. Ücretsiz Cloudflare planı ilkedir; ücretli otomatik geçiş veya R2 açılmaz.
+**Güvenlik:** Yönetici girişi `adminasya` uygulama hesabıyla yapılır. Önceki Cloudflare Access uygulaması, yeni oturumlar ve API doğrulandıktan sonra kaldırılmıştır. Bağımsız ve gizli Durable Object oturumları kullanılır. Ücretsiz Cloudflare planı ilkedir; ücretli otomatik geçiş veya R2 açılmaz.
 
 **Sınırlar:** Asya’da Eğitim'in `website`, `asya-imza-akis-v2` ve diğer mevcut Worker'ları, DNS ve sözleşme verileri bu göç kapsamında değiştirilmez.
+
+## Admin hesabı ve güvenilen bilgisayarlar (canlı)
+
+**Durum:** `studio.asyadaegitim.com` üzerinden giriş canlıda doğrulandı. Ücretsiz Workers'ın 10 ms CPU sınırı nedeniyle PBKDF2 türetme tarayıcıda yapılır; sunucu tek kullanımlık nonce/HMAC imzasını ve kullanıcı adını doğrular. Giriş parolası ağ üzerinden sunucuya iletilmez.
+
+- Kullanıcı adı: `adminasya`; şifrenin kendisi bu depoya **asla** eklenmez.
+- Yeni Cloudflare Worker: `brandstudio-admin-auth`. SQLite-backed private Durable Object her bilgisayar/tarayıcı oturumunun rastgele 256-bit oturum anahtarının yalnız SHA-256 karmasını saklar.
+- `brandstudio-edge` Worker `ADMIN_PBKDF2_SALT` ve `ADMIN_PBKDF2_HASH` adlı Cloudflare **Secret** değişkenlerini kullanır. PBKDF2-SHA256 210.000 tur tarayıcıda hesaplanır; sunucu yalnız kısa süreli ve bir kez geçerli HMAC doğrulama kanıtını kontrol eder. Salt açık, türetilmiş anahtar gizlidir. Hiçbir parola veya doğrulayıcı GitHub'da yayımlanmaz.
+- Her tarayıcıda ilk kez oturum açılır; `__Host-branddesign_session` çerezi `Secure; HttpOnly; SameSite=Lax; Path=/`, 365 gün süreli ve bitmeden son 30 günde otomatik yenilenir. Çerez silinirse veya farklı tarayıcı kullanılırsa yeniden giriş gerekir. IP/fingerprint ile gizli cihaz izlemesi yapılmaz.
+- Login: `GET /admin/login` ve `POST /admin/login`, yetkisiz sayfalarda girişe yönlendirme, `GET /admin/session` oturum doğrulaması, `POST /admin/logout` oturumu geçersiz kılma. Brute force en fazla 6 başarısız giriş / 15 dakika / kaynak IP.
+- Özel kayıt API'si ve editördeki statik dosyalar aynı oturum denetiminden geçer. Eski Cloudflare Access uygulaması güvenli doğrulamadan sonra kaldırılmıştır.
+
+**Canlı doğrulama:** İlk admin girişi başarılı; tekrar yüklemede oturum devam ediyor; anonim API 401; yetkili API GET 200; aynı Bavul v2 durumuyla idempotent POST 200 ve `unchanged:true`; dört tarihçe anı ve revizyon kimliği değişmeden korundu. Eski Access uygulaması silindi. Kaynak kişisel Cloudflare hesabının D1 arşiv göçü ayrı ve henüz beklemede.

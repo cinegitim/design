@@ -13,12 +13,28 @@
   },
   "editor": {
     "origin": "https://studio.asyadaegitim.com",
-    "access_application": "Brandstudio Editor",
+    "access_application": null,
     "allowed_admins": [
-      "info@asyadaegitim.com",
-      "iakfiratt@gmail.com"
+      "adminasya"
     ],
-    "storage": "brandstudio-editor-store"
+    "storage": "brandstudio-editor-store",
+    "admin_auth": {
+      "status": "live-verified",
+      "username": "adminasya",
+      "trusted_browser_session_days": 365,
+      "renew_within_days": 30,
+      "provider": "private Durable Object",
+      "credential_storage": "PBKDF2-SHA256-derived verifier stored in Cloudflare Worker Secrets; browser-side derivation with one-time HMAC challenges",
+      "old_cloudflare_access": "removed",
+      "verified": {
+        "login": true,
+        "reload_persists": true,
+        "authorized_api_get": true,
+        "idempotent_api_post": true,
+        "anonymous_api_401": true,
+        "versions_preserved": true
+      }
+    }
   },
   "services": {
     "gateway_worker": "brandstudio-edge",
@@ -26,7 +42,8 @@
     "staging_worker": "brandstudio-stage",
     "editor_d1": "brandstudio-editor",
     "staging_d1": "brandstudio-stage",
-    "pages_project": "brandstudio-asyadaegitim"
+    "pages_project": "brandstudio-asyadaegitim",
+    "admin_auth_worker": "brandstudio-admin-auth"
   },
   "source_paths": [
     "studio/cloudflare-brandstudio/asya-gateway/worker.mjs",
@@ -39,7 +56,6 @@
   "pending": [
     "source-stage-d1-row-export",
     "source-editor-d1-row-export",
-    "live-custom-domain-authenticated-save-test",
     "reconnect-pages-github",
     "source-resource-cleanup-after-all-checks"
   ]

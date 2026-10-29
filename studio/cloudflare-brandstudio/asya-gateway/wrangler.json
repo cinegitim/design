@@ -9,6 +9,11 @@
         "name": "BRANDSTUDIO_OBJECTS",
         "class_name": "BrandstudioRevisionObject",
         "script_name": "brandstudio-editor-store"
+      },
+      {
+        "name": "BRANDSTUDIO_AUTH",
+        "class_name": "BrandstudioAuthObject",
+        "script_name": "brandstudio-admin-auth"
       }
     ]
   },
