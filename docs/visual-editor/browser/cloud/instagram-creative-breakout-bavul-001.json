@@ -35,12 +35,25 @@
               "display": "none"
             },
             "mode": "inherit"
+          },
+          "0:10": {
+            "mode": "inherit",
+            "styles": {
+              "width": "441px",
+              "height": "52px",
+              "max-width": "none",
+              "transform": "translate(0px,0px)"
+            },
+            "segments": [
+              "ASYA'NIN KAPILARI SANA AÇILSIN ",
+              "↗"
+            ]
           }
         },
         "groups": {}
       },
-      "updatedAt": "2026-10-29T10:12:21.071Z",
-      "note": "Chrome'da kaydedilmiş v2 (ilk GitHub aktarımı)"
+      "updatedAt": "2026-10-29T13:36:29.778Z",
+      "note": "Cloudflare ücretsiz D1 kotası dolduğu için tarayıcıdan korunan v2 değişiklikleri"
     }
   },
   "history": [
@@ -102,7 +115,64 @@
         },
         "groups": {}
       }
+    },
+    {
+      "id": "emergency-recovery-20261029133229502",
+      "at": "2026-10-29T13:36:29.784Z",
+      "version": 2,
+      "kind": "emergency-recovery",
+      "note": "Cloudflare ücretsiz D1 kotası dolduğu için tarayıcıdan korunan v2 değişiklikleri",
+      "state": {
+        "colors": {
+          "paper": "#f7f3e9",
+          "ink": "#1d2027",
+          "red": "#bd2120"
+        },
+        "edits": {
+          "0:2": {
+            "styles": {
+              "display": "none"
+            },
+            "mode": "inherit"
+          },
+          "0:1": {
+            "styles": {
+              "width": "623px",
+              "height": "29px",
+              "max-width": "none",
+              "transform": "translate(0px,0px)"
+            },
+            "mode": "inherit",
+            "segments": [
+              "ASYA'DA EĞİTİM ",
+              "/",
+              " EĞİTİMİN YENİ ROTASI"
+            ]
+          },
+          "0:15": {
+            "styles": {
+              "display": "none"
+            },
+            "mode": "inherit"
+          },
+          "0:10": {
+            "mode": "inherit",
+            "styles": {
+              "width": "441px",
+              "height": "52px",
+              "max-width": "none",
+              "transform": "translate(0px,0px)"
+            },
+            "segments": [
+              "ASYA'NIN KAPILARI SANA AÇILSIN ",
+              "↗"
+            ]
+          }
+        },
+        "groups": {}
+      },
+      "sourceTimestamp": "2026-10-29T13:32:29.502Z"
     }
   ],
-  "updatedAt": "2026-10-29T10:12:21.071Z"
+  "updatedAt": "2026-10-29T13:36:29.784Z"
 }
