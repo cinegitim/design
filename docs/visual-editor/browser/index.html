@@ -371,6 +371,23 @@ var state={colors:Object.assign({},defaults),edits:{},groups:{}},pages=[],page=0
 var codec=globalThis.BrandstudioPortable,ux=globalThis.BrandstudioUX,discovery=globalThis.BrandstudioCatalog,adapter=globalThis.BrandstudioAdapter; if(!codec||!ux||!discovery||!adapter){$('status').textContent='Editör modülü eksik';return}
 var history=ux.createHistory(40),savedState=copy(state),groupOpen={},dragging=false,dragRecorded=false,colorSessions={};
 var cloud=globalThis.BrandstudioCloud,cloudData=null,cloudSelected=false,cloudNonce=0;
+ var cloudSha=null,cloudReady=false,autoTimer=null,autoBusy=false,autoAgain=false,autoLastFailure=false;
+ function pendingKey(product){return 'brandstudio:unsynced:'+product}
+ function pendingSnapshot(){try{return JSON.parse(localStorage.getItem(pendingKey(slug))||'null')}catch(e){return null}}
+ function rememberPending(){try{localStorage.setItem(pendingKey(slug),JSON.stringify({version:current,state:state,at:new Date().toISOString()}))}catch(e){$('cloud-status').textContent='Geçici kurtarma kopyası oluşturulamadı: '+e.message}}
+ function clearPending(){try{localStorage.removeItem(pendingKey(slug))}catch(e){}}
+ function saveLabel(label,mode){var b=$('cloud-save');b.textContent=label;b.dataset.state=mode;b.title=label}
+ function wakeAutoSave(immediate){
+  if(!dirty)return;
+  if(!cloud?.authenticated()){saveLabel('● Bağlan · kaydedilmedi','disconnected');$('cloud-status').textContent='Düzenlemeler GitHub\'a henüz kaydedilmedi. GitHub bağlantısı gerekli.';return}
+  if(!cloudReady){saveLabel('● Bağlantı denetleniyor','pending');return}
+  clearTimeout(autoTimer);
+  saveLabel('● Kaydedilecek','pending');$('unsaved').textContent='GitHub kaydı bekleniyor…';
+  if(autoBusy){autoAgain=true;return}
+  autoTimer=setTimeout(function(){autoTimer=null;cloudSaveVersion(current,'autosave')},immediate?30:1400)
+ }
+ function canLeaveEditing(){if(autoBusy){$('cloud-status').textContent='GitHub kaydı sürüyor; bitince tekrar deneyin.';return false}if(dirty)return confirm('GitHub\'a gönderilmemiş değişiklikler var. Bunlar kurtarma taslağında kalacak. Devam etmek istiyor musunuz?');return true}
+
 var zoomLevel=.4,zoomMode='fit',handMode=false,selectionOverlay=null,selectionHandle=null,sourceNodes=[],PASTEBOARD=320,inlineEditing=null,inlineRecorded=false,dragLayerId=null;
 function setupSidebars(){
  [['toggle-left','left-closed'],['toggle-right','right-closed']].forEach(function(entry){
@@ -904,7 +921,7 @@ $('groups-open').onclick=function(){document.querySelectorAll('#layers details')
 $('groups-close').onclick=function(){document.querySelectorAll('#layers details').forEach(function(x){x.open=false})};
 function historyButtons(){var s=history.status();$('undo').disabled=s.undo===0;$('redo').disabled=s.redo===0}
 function checkpoint(){history.checkpoint(state);historyButtons()}
-function dirtyStatus(){dirty=JSON.stringify(state)!==JSON.stringify(savedState);$('unsaved').textContent=dirty?'Kaydedilmemiş değişiklikler':'Değişiklik yok';historyButtons()}
+function dirtyStatus(){dirty=JSON.stringify(state)!==JSON.stringify(savedState);$('unsaved').textContent=dirty?'GitHub kaydı bekleniyor…':'Değişiklik yok';historyButtons();if(dirty){rememberPending();wakeAutoSave(false)}else if(!autoBusy){clearTimeout(autoTimer);saveLabel(cloud?.authenticated()?'✓ Bulut güncel':'● GitHub\'a bağlan',cloud?.authenticated()?'saved':'disconnected')}}
 function restoreState(value){state=copy(value);['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});refreshPreview();dirtyStatus()}
 $('undo').onclick=function(){var prev=history.undo(state);if(prev){restoreState(prev);$('status').textContent='Son değişiklik geri alındı'}};
 $('redo').onclick=function(){var next=history.redo(state);if(next){restoreState(next);$('status').textContent='Değişiklik yeniden uygulandı'}};
@@ -1340,7 +1357,7 @@ $('confirm').onclick=async function(){
   renderV();$('dialog').close();
  }catch(e){safeStatus(e)}
 };
-window.onbeforeunload=function(e){if(dirty){e.preventDefault();e.returnValue=''}};
+window.onbeforeunload=function(e){if(dirty||autoBusy||autoTimer){e.preventDefault();e.returnValue=''}};
 
 function renderCatalog(filter){
  var picker=$('catalog-select'),query=(filter||'').toLocaleLowerCase('tr'),previous=slug;
