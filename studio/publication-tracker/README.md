@@ -75,3 +75,13 @@ For the administrator's manual-check button to read these 3 channels from Cloudf
 Official direct-provider APIs may be configured later for fuller platform-wide coverage (Facebook: Page-read scopes; LinkedIn: Community Management API; X: restricted/paid read). Do not claim the Voholabs feed proves all posts on those networks. Never enable a paid social API subscription without express instruction.
 
 **No schedules anywhere:** Cloudflare Cron on both `brandstudio-edge` and `brandstudio-publications` remains `[]`. An ordinary page load reads only stored data; no social-network access occurs until the button is clicked.
+
+## Buffer X publishing channel
+
+X content is currently published through the **Buffer** account (separate from the also-connected Voholabs X channel). To enable reliable **read-only sent-post discovery** in the same manual check:
+1. Buffer → Settings → API → create/copy a personal API key (Free API).
+2. In Cloudflare Worker `brandstudio-publications` create a secret named `BUFFER_API_KEY` and paste its value directly into the secret field; never send it through chat or GitHub.
+3. On X selection, the Worker queries `POST https://api.buffer.com` (GraphQL **query** only) with status `sent`, allowed organization `6ae496a36aadaa42fdddc792` and channel `6ae497ec2f1f5ed6481ff706`. Only valid X permalinks with unique design-family anchors are accepted. Other channel posts are rejected.
+4. If both Voholabs and Buffer secrets are present, X can accept results from both allowed publishing channels, but neither sees a post published directly on X using a separate tool. API calls occur only on the admin's click, never in background.
+
+One click incurs at most one REST Voholabs request for selected Facebook/LinkedIn/X and one Buffer GraphQL request for X if configured (plus the existing Meta Instagram read if selected). Do not schedule scans.
