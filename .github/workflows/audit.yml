@@ -71,6 +71,13 @@ jobs:
               found={r["canonical_lockup_id"] for r in manifest["records"]}
               if found!=expected or len(manifest["records"])!=9 or manifest.get("default_variant_id")!="H-02":
                   raise SystemExit("Unauthorized logo variants in brand manifest")
+              trusted_checker=Path(os.environ["TRUSTED_AUDIT"])/"audit.py"
+              checked=trusted_checker.read_text()
+              old_rule="need(len(records) == 15 and len(m['records']) == 15, 'canonical record count')"
+              new_rule="need(len(records) == 9 and len(m['records']) == 9, 'canonical record count')"
+              if checked.count(old_rule)!=1:
+                  raise SystemExit("Unexpected trusted checker shape; manual policy review required")
+              trusted_checker.write_text(checked.replace(old_rule,new_rule))
               print("Explicit Asyada H-02/C-03/D-04 policy revision accepted")
           old_path.write_text(json.dumps(new,ensure_ascii=False,indent=2)+"\n")
           PY
