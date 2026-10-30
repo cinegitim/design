@@ -112,7 +112,7 @@ async function refresh(env,platforms){
 }
 function authorize(req,env){
   const supplied=req.headers.get("Authorization")||"";
-  return Boolean(env.PUBLICATION_REFRESH_TOKEN)&&supplied==="Bearer "+env.PUBLICATION_REFRESH_TOKEN;
+  return Boolean((env.PUBLICATION_REFRESH_TOKEN&&supplied==="Bearer "+env.PUBLICATION_REFRESH_TOKEN) || (env.BRANDSTUDIO_PUBLICATION_BRIDGE_TOKEN&&supplied==="Bearer "+env.BRANDSTUDIO_PUBLICATION_BRIDGE_TOKEN));
 }
 export default {
   async fetch(request,env){
@@ -132,7 +132,7 @@ export default {
           }
         }catch(_){/* Status remains available even if the runs table is temporarily unavailable. */}
       }
-      return json({platforms:Object.fromEntries(PLATFORMS.map(p=>[p,{configured:enabled(env,p)}])),mode:"cron_every_6_hours",storage:!!env.DB,lastScan},200,origin);
+      return json({platforms:Object.fromEntries(PLATFORMS.map(p=>[p,{configured:enabled(env,p)}])),mode:"on_demand_only",storage:!!env.DB,lastScan},200,origin);
     }
     // Public, bounded proof feed: caption/text candidates and credentials never leave D1.
     // A caption anchor confirms an Instagram design FAMILY only, never a specific revision.
@@ -164,13 +164,5 @@ export default {
       catch(e){return json({error:"refresh_failed",detail:String(e.message||e)},503,origin)}
     }
     return json({error:"not_found"},404,origin);
-  },
-  async scheduled(_event,env,ctx){
-    // Four scans/day: no paid APIs, Chrome, Mac, or browser credentials.
-    // Unknown matches stay in review; no repository/GitHub writes in cron.
-    if(!env.DB||!enabled(env,"instagram"))throw Error("Instagram publication sync is not configured");
-    const result=await refresh(env,["instagram"]);
-    if(result.platforms.instagram?.state!=="ok")throw Error("Instagram publication sync failed: "+(result.platforms.instagram?.message||"unknown"));
-    console.log("Instagram publication scan:",JSON.stringify(result.platforms.instagram));
   }
 };
