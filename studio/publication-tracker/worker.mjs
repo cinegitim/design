@@ -76,9 +76,9 @@ async function register(db,post,match){
   VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
   ON CONFLICT(platform,source_id) DO UPDATE SET
   permalink=excluded.permalink,caption=excluded.caption,last_seen_at=excluded.last_seen_at,
-  group_id=CASE WHEN publication_posts.match_status='revision_verified' THEN publication_posts.group_id ELSE excluded.group_id END,
-  match_status=CASE WHEN publication_posts.match_status='revision_verified' THEN publication_posts.match_status ELSE excluded.match_status END,
-  match_score=CASE WHEN publication_posts.match_status='revision_verified' THEN publication_posts.match_score ELSE excluded.match_score END`)
+  group_id=CASE WHEN publication_posts.match_status IN ('revision_verified','family_verified') THEN publication_posts.group_id ELSE excluded.group_id END,
+  match_status=CASE WHEN publication_posts.match_status IN ('revision_verified','family_verified') THEN publication_posts.match_status ELSE excluded.match_status END,
+  match_score=CASE WHEN publication_posts.match_status IN ('revision_verified','family_verified') THEN publication_posts.match_score ELSE excluded.match_score END`)
   .bind(post.platform,post.id,post.url,post.caption||"",post.date||null,match.groupId,null,match.status,match.confidence,post.evidence,t,t).run();
 }
 async function refresh(env,platforms){
@@ -121,7 +121,16 @@ export default {
     if(request.method==="OPTIONS")return new Response(null,{status:204,headers:origin==="https://studio.asyadaegitim.com"?{"Access-Control-Allow-Origin":origin,"Access-Control-Allow-Methods":"GET,POST,OPTIONS","Access-Control-Allow-Headers":"Authorization,Content-Type","Vary":"Origin"}:{}});
     if(url.pathname==="/health")return json({service:"brandstudio-publications",state:"alive",timestamp:NOW()},200,origin);
     if(url.pathname==="/api/status"&&request.method==="GET")
-      return json({platforms:Object.fromEntries(PLATFORMS.map(p=>[p,{configured:enabled(env,p)}])),mode:"on_demand_only",storage:!!env.DB},200,origin);
+      return json({platforms:Object.fromEntries(PLATFORMS.map(p=>[p,{configured:enabled(env,p)}])),mode:"cron_every_6_hours",storage:!!env.DB},200,origin);
+    // Public, bounded proof feed: caption/text candidates and credentials never leave D1.
+    // A caption anchor confirms an Instagram design FAMILY only, never a specific revision.
+    if(url.pathname==="/api/proofs"&&request.method==="GET"){
+      if(!env.DB)return json({error:"database_not_bound"},503,origin);
+      try{
+        const {results}=await env.DB.prepare("SELECT platform,source_id,permalink,published_at,group_id,product_id,match_status FROM publication_posts WHERE platform='instagram' AND match_status='family_verified' AND evidence='official_meta_api' AND group_id IS NOT NULL ORDER BY published_at DESC LIMIT 100").all();
+        return json({posts:results,rule:"verified Meta post + unique caption anchor; family only"},200,origin);
+      }catch(e){return json({error:"database_not_initialized"},503,origin)}
+    }
     if(url.pathname==="/api/posts"&&request.method==="GET"){
       if(!env.DB)return json({error:"database_not_bound"},503,origin);
       const groupId=url.searchParams.get("groupId");
@@ -143,5 +152,13 @@ export default {
       catch(e){return json({error:"refresh_failed",detail:String(e.message||e)},503,origin)}
     }
     return json({error:"not_found"},404,origin);
+  },
+  async scheduled(_event,env,ctx){
+    // Four scans/day: no paid APIs, Chrome, Mac, or browser credentials.
+    // Unknown matches stay in review; no repository/GitHub writes in cron.
+    if(!env.DB||!enabled(env,"instagram"))throw Error("Instagram publication sync is not configured");
+    const result=await refresh(env,["instagram"]);
+    if(result.platforms.instagram?.state!=="ok")throw Error("Instagram publication sync failed: "+(result.platforms.instagram?.message||"unknown"));
+    console.log("Instagram publication scan:",JSON.stringify(result.platforms.instagram));
   }
 };
