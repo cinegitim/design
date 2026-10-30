@@ -15,3 +15,7 @@ Bölüm seçimi ilk yılın ikinci dönemi sonunda; bölüm kontenjan sınırı 
 Uluslararası lisans Regular Fall 2027: 10 Kasım 2026 başlama, 14 Ocak 2027 **18.00 KST**, yani Türkiye saati **12.00**, referans mektubu 21 Ocak 2027: https://admission.kaist.ac.kr/intl-undergraduate/application/ApplicationGuide/ApplicationTimeline
 
 Bu sosyal medya taslağı KAIST'in resmî iletişimi değildir ve onaylanana kadar sosyal medyada yayımlanmaz.
+
+## KAIST Kurumsal Logo (kapak)
+
+İlk slaytta KAIST'in kendi [kurumsal kimlik / UI sayfasından](https://www.kaist.ac.kr/en/html/kaist/011901.html) alınan değiştirilmemiş özgün logo görseli kullanıldı: `assets/kaist-official-logo.gif`. [KAIST'in Korece kurumsal sayfası](https://pr.kaist.ac.kr/kr/html/kaist/010401.html) logosunun tescilli olduğunu ve izinsiz ticari kullanımının sınırlanabileceğini açıkça belirtiyor. Bu taslak KAIST tarafından desteklenmiş/onanmış bir reklam değildir; dışarıda ticari paylaşım yapılmadan önce kullanım koşulları ayrıca değerlendirilmeli veya izin alınmalıdır.
