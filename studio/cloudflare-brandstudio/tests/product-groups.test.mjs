@@ -173,7 +173,7 @@ test('one actual gallery shows logos, profile images, and platform covers',()=>{
 test('review tiles expose compact, separately accessible icons within each card',()=>{
  const ws=fs.readFileSync(path.join(root,'docs/workspaces/asyada-egitim/index.html'),'utf8');
  assert.match(ws,/function quickIcon\(kind\)/);
- assert.match(ws,/className='quick-action ig'|el\('a','quick-action ig'\)/);
+ assert.match(ws,/el\('a','quick-action '\+icon\)/);
  assert.match(ws,/el\('a','quick-action edit'\)/);
  assert.match(ws,/el\('nav','quick-actions'\)/);
  assert.match(ws,/actions\.append\(editor\)/);
