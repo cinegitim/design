@@ -120,8 +120,20 @@ export default {
     const url=new URL(request.url);
     if(request.method==="OPTIONS")return new Response(null,{status:204,headers:origin==="https://studio.asyadaegitim.com"?{"Access-Control-Allow-Origin":origin,"Access-Control-Allow-Methods":"GET,POST,OPTIONS","Access-Control-Allow-Headers":"Authorization,Content-Type","Vary":"Origin"}:{}});
     if(url.pathname==="/health")return json({service:"brandstudio-publications",state:"alive",timestamp:NOW()},200,origin);
-    if(url.pathname==="/api/status"&&request.method==="GET")
-      return json({platforms:Object.fromEntries(PLATFORMS.map(p=>[p,{configured:enabled(env,p)}])),mode:"cron_every_6_hours",storage:!!env.DB},200,origin);
+    if(url.pathname==="/api/status"&&request.method==="GET"){
+      let lastScan=null;
+      if(env.DB){
+        try{
+          const row=await env.DB.prepare("SELECT started_at,finished_at,summary_json FROM publication_runs ORDER BY started_at DESC LIMIT 1").first();
+          if(row){
+            const info=JSON.parse(row.summary_json||"{}");
+            const ig=info.platforms?.instagram||{};
+            lastScan={startedAt:row.started_at,finishedAt:row.finished_at,state:ig.state||"unknown",saved:ig.saved??null,needsReview:ig.needsReview??null};
+          }
+        }catch(_){/* Status remains available even if the runs table is temporarily unavailable. */}
+      }
+      return json({platforms:Object.fromEntries(PLATFORMS.map(p=>[p,{configured:enabled(env,p)}])),mode:"cron_every_6_hours",storage:!!env.DB,lastScan},200,origin);
+    }
     // Public, bounded proof feed: caption/text candidates and credentials never leave D1.
     // A caption anchor confirms an Instagram design FAMILY only, never a specific revision.
     if(url.pathname==="/api/proofs"&&request.method==="GET"){

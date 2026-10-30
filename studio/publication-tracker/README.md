@@ -1,20 +1,24 @@
-# Brandstudio — Publication Tracker (serverless candidate)
+# Brandstudio — Instagram Publication Tracker (production; future providers opt-in)
 
-**Purpose:** On-demand publication discovery without a powered-on Mac, a browser MCP connection, paid social APIs, background polling or creative source changes.
+**Purpose:** Automatic Instagram publication discovery and read-only live Brandstudio proof display without a powered-on Mac, Chrome MCP, or paid social APIs. Facebook, LinkedIn and X remain optional and disconnected.
 
-## Status / release gate
+## Verified deployment (2026-10-30)
 
-Source-only implementation. **NOT connected, NOT deployed and NOT a production-ready automatic publication proof.** Do not show an enabled “Güncelle” control until service health, admin authentication, D1 migration and real Meta/LinkedIn account authorizations are tested. Never claim a platform was checked merely because a source file exists.
-
-This module deliberately avoids editing `docs/visual-editor/browser/product-groups.json`, any prior human publication decisions or historical assets. Its `publication_posts` table is supplemental and cannot silently supersede the existing `socialPublication.posts` proof. To show new records in a product card, add a separate reviewed UI integration after auth.
+- **Production Instagram:** Meta Graph API Professional account via secure Cloudflare Worker secrets; the existing D1 records include **8 real posts: 6 uniquely anchored design-family proofs, 2 unmatched needs-review posts**. Old human-verified exact revision claims remain in the canonical GitHub registry and always take precedence.
+- **Worker:** `brandstudio-publications` in Cloudflare account `5f90104db6f24a941c04e974e250cb67`. D1 `brandstudio-publications` (`397061ae-723c-4070-b6f8-a332e179cd78`) bound as `DB`.
+- **Automatic trigger:** `0 */6 * * *` UTC (03:00, 09:00, 15:00, 21:00 Europe/Istanbul). This is four official Instagram API polls per day, Free-plan only. The first future Cron fire must still be observed in `publication_runs`; an active schedule is not proof that the API always succeeds.
+- **Dynamic UI:** Design workspace, Visual Editor and gallery pages augment the published GitHub registry with `GET /api/proofs`. Only `family_verified` Instagram posts from the official API with a unique natural-language caption anchor appear. No browser token, browser-side API writes, version guessing or automatic canonical-registry commits.
+- **Source of truth:** The GitHub `socialPublication.posts` log continues to be immutable human-verified historical proof; D1 is an additive runtime discovery layer and must never overwrite exact historical decisions.
+- **Safety:** Missing/expired Meta access or network errors never erase old proof. Dashboard can inspect `GET /api/status` and D1 `publication_runs` for last run. Do not declare a scan healthy solely because a Worker is deployed.
 
 ## Service design
 
 - **Meta:** Free official Facebook Page `/{page-id}/posts` plus Instagram Professional `/{ig-user-id}/media`. Create a Meta developer app and authorize an admin of the managed Page; obtain the minimum Page-read/Instagram-read scopes. Requires a Professional Instagram account and Page linkage for Facebook Login. This account-owner authorization must be performed by a person with the permissions. Store access tokens as **Cloudflare Worker secrets**, never in a browser bundle, public repository or ChatGPT message. Review token expiry and refresh before production.
 - **LinkedIn:** Community Management API, **if approved** for `r_organization_social`. Development tier is free, but not automatic access. OAuth by a Company Page admin is mandatory. Add `LINKEDIN_ORG_ID` and short-lived `LINKEDIN_TOKEN` as secure runtime config; implement safe token renewal before production.
 - **X:** Optional best-effort public RSS mirror (allowlisted hosts only) if one remains available; it is **not** an official X API, can break without notice and is not reliable enough to prove absence. Existing real X permalinks captured at publishing time are more dependable. Do not depend on paying for the X API or guarantee RSS access.
-- **Cloudflare:** Workers Free and a dedicated D1 database; **no cron**. POST `/api/refresh` is intentionally blocked without an administrator secret and only retrieves selected platforms on request. Free-tier limits are hard caps; never automatically upgrade.
-- **Match policy:** Text-title family suggestions are candidates, not proofs of an exact revision. `product_id` stays null and uncertain matches stay `needs_review`. The existing exact Instagram revision confirmations must be preserved separately until an explicit reconciliation review.
+- **Cloudflare:** Workers Free and a dedicated D1 database; **one Cron every six hours for Instagram**. POST `/api/refresh` remains blocked without an administrator secret and retrieves selected platforms on demand. Free-tier limits are hard caps; never automatically upgrade.
+- **Match policy:** Only a unique pre-registered caption anchor (or sufficiently distinctive complete title) on an official Instagram post can create a `family_verified` record. This remains **family-level**, never exact-revision proof; `product_id` stays null. Fuzzy candidates stay `family_candidate`/ `needs_review`, invisible to the public proof overlay. New Instagram designs should register a unique 16+ character natural caption phrase under `publicationAnchors` in `docs/visual-editor/browser/product-groups.json`.
+
 - **Data policy:** Never automatically delete prior discovered posts when a platform is blocked, returns errors or has no new results. Avoid a platform “not published” label if scanning was incomplete.
 
 ## D1 database
@@ -29,9 +33,9 @@ Worker name: `brandstudio-publications`. Deploy `worker.mjs` as a module alongsi
 - LinkedIn: `LINKEDIN_ORG_ID`, `LINKEDIN_TOKEN`, `LINKEDIN_VERSION` (e.g. `202609`)
 - optional X: `X_RSS_URL` (a permitted public mirror only; not a credential)
 
-Read-only `GET /health`, `GET /api/status`, `GET /api/posts?groupId=...`; authenticated `POST /api/refresh` with `Authorization: Bearer <refresh secret>` and optional `{"platforms":["instagram","facebook","linkedin","x"]}`. This secret must not be embedded in the public webpage: integrate with existing Brandstudio admin authentication or use a server-side administrator workflow before enabling a public UI button. The first deploy must use test-only connection credentials, not live ones. A request failure must not mark a post as removed.
+Read-only `GET /health`, `GET /api/status`, `GET /api/posts?groupId=...` and public **filtered** `GET /api/proofs`; authenticated `POST /api/refresh` with `Authorization: Bearer <refresh secret>` and optional `{"platforms":["instagram","facebook","linkedin","x"]}`. This secret must not be embedded in the public webpage: integrate with existing Brandstudio admin authentication or use a server-side administrator workflow before enabling a public UI button. The first deploy must use test-only connection credentials, not live ones. A request failure must not mark a post as removed.
 
-## Tests and remaining tasks
+## Future providers and remaining tasks
 
 Run `node --test studio/publication-tracker/match.test.mjs`.
 
@@ -44,3 +48,9 @@ Before connecting to the live Brandstudio UI:
 6. Build a reviewed, logged-in UI button and a read-only public post display. Confirm exact-head CI, PR merge and an explicit Cloudflare Pages deployment.
 
 No source-only PR or CI result constitutes credentials approval, live post discovery or successful deployment.
+
+## Reproducible production configuration
+
+See `wrangler.toml` in this directory. It pins the account, Worker name, D1 database and cron trigger. Secrets `META_IG_ID`, `META_IG_TOKEN` and `PUBLICATION_REFRESH_TOKEN` live in Cloudflare **secret bindings**, not in the repository. For routine uploads, ensure these existing bindings are inherited strictly (the Workers API `bindings_inherit=strict`) and confirm the D1 binding and Cron survive. Do not replace tokens or enable a paid plan.
+
+For release checks: `node --test studio/publication-tracker/match.test.mjs docs/instagram/publication-bridge.test.mjs`; verify Worker deployments include both `fetch` and `scheduled` handlers, review Cron schedules, inspect last `publication_runs` row, and confirm custom-domain Cloudflare Pages deploy is on the exact merged Git commit. Browserless smoke tests do not authorize publishing content to social networks.
