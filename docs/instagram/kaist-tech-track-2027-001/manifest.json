@@ -47,5 +47,14 @@
     "assets/kaist-night.jpg",
     "assets/kaist-entrance.jpg"
   ],
-  "photos_downsampled": true
+  "photos_downsampled": true,
+  "institution_logo": {
+    "path": "assets/kaist-official-logo.gif",
+    "origin": "https://www.kaist.ac.kr/en/img/content/sub01/sym_new_01.gif",
+    "official_ui_page": "https://www.kaist.ac.kr/en/html/kaist/011901.html",
+    "source_format": "GIF",
+    "modified": false,
+    "usage": "KAIST identification on cover, no affiliation claimed",
+    "license_status": "Institutional trademark; official usage restrictions require review before commercial social publication"
+  }
 }
