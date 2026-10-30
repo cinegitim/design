@@ -30,9 +30,22 @@
   ],
   "real_campus_photos": true,
   "generated_campus_photos": false,
-  "external_image_urls": true,
+  "external_image_urls": false,
   "source_links_persist": true,
-  "rendered_exports": "not-yet-completed",
+  "rendered_exports": [
+    "jpeg/01.jpg",
+    "jpeg/02.jpg",
+    "jpeg/03.jpg",
+    "jpeg/04.jpg",
+    "jpeg/05.jpg",
+    "jpeg/06.jpg"
+  ],
   "social_published": false,
-  "creative_approved": false
+  "creative_approved": false,
+  "photo_sources_local": [
+    "assets/kaist-fountains.jpg",
+    "assets/kaist-night.jpg",
+    "assets/kaist-entrance.jpg"
+  ],
+  "photos_downsampled": true
 }
