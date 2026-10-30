@@ -35,7 +35,8 @@ test('H-02 compact display keeps the complete canonical artwork',()=>{
  const h=active.filter(x=>x.variant_id==='H-02');
  assert.equal(h.length,3);
  for(const r of h){
-  assert.equal(r.minimum_supported_display_size.screen_width_px,320);
+  assert.equal(r.minimum_supported_display_size.screen_width_px,528);
+  assert.equal(r.small_digital_minimum_px,320);
   assert.deepEqual(r.recommended_screen_width_px,[360,480]);
   assert.equal(r.minimum_supported_display_size.print_width_mm,110);
   assert.match(r.usage_rules.join(' '),/proportionally/i);
