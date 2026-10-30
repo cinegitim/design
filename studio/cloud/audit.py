@@ -126,7 +126,8 @@ def canonical_assets(root, policy):
     m = load(manifest_path)
     need(m['canonical_seal_sha256'] == c['seal_sha256'], 'seal anchor mismatch')
     records = {r['canonical_lockup_id']: r for r in m['records']}
-    need(len(records) == 15 and len(m['records']) == 15, 'canonical record count')
+    approved = {f'{name}/{colour}' for name in ('H-02', 'P-01', 'F-05') for colour in ('light', 'dark', 'monochrome')}
+    need(set(records) == approved and len(m['records']) == 9, 'canonical approved record set')
     for rec in records.values():
         asset = matched_file(root, rec['canonical_file_path'], rec['sha256'])
         tree = ET.parse(asset).getroot()
