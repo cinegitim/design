@@ -113,7 +113,7 @@ export default {
   async fetch(request,env){
     const origin=request.headers.get("Origin")||"";
     const url=new URL(request.url);
-    if(request.method==="OPTIONS")return json({},204,origin);
+    if(request.method==="OPTIONS")return new Response(null,{status:204,headers:origin==="https://studio.asyadaegitim.com"?{"Access-Control-Allow-Origin":origin,"Access-Control-Allow-Methods":"GET,POST,OPTIONS","Access-Control-Allow-Headers":"Authorization,Content-Type","Vary":"Origin"}:{}});
     if(url.pathname==="/health")return json({service:"brandstudio-publications",state:"alive",timestamp:NOW()},200,origin);
     if(url.pathname==="/api/status"&&request.method==="GET")
       return json({platforms:Object.fromEntries(PLATFORMS.map(p=>[p,{configured:enabled(env,p)}])),mode:"on_demand_only",storage:!!env.DB},200,origin);
