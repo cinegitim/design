@@ -64,7 +64,7 @@
   }
   fetch(registryUrl.href,{cache:"no-store"}).then(function(r){
     if(!r.ok)throw Error("Registry HTTP "+r.status);return r.json()
-  }).then(function(reg){
+  }).then(async function(reg){
     var group=(reg.groups||[]).find(function(g){return (g.versions||[]).some(function(v){return v.id===versionId})});
     if(!group)return;
     workspaceUrl=new URL(group.brand==="cin-egitim"?"workspaces/cin-egitim/":"workspaces/asyada-egitim/",root);
@@ -73,7 +73,11 @@
     crumb(trail,group.title);
     var edition=(group.versions||[]).find(function(v){return v.id===versionId});
     if(edition)crumb(trail,edition.label);
-    var posts=(reg.socialPublication&&reg.socialPublication.posts||[]).filter(function(p){
+    // Shared proof filtering works on all versioned gallery pages; offline keeps manual records.
+    try{await import(new URL("publication-bridge.js",script.src).href)}catch(_){}
+    var verifiedPosts=window.BrandstudioPublicationBridge?await window.BrandstudioPublicationBridge.merged(reg):
+      (reg.socialPublication&&reg.socialPublication.posts||[]);
+    var posts=verifiedPosts.filter(function(p){
       return verified(p)&&(p.productId===versionId||p.groupId===group.id);
     });
     if(posts.length){
