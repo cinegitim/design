@@ -15,7 +15,7 @@ body{background:var(--paper);color:var(--ink);font:15px/1.55 Jost,system-ui,sans
 <a class="tile" href="../../instagram/launch-creative-02/" data-editor-product="instagram-launch-creative-02" data-search="launch creative 02 editoryal kampanya denemesi · 5 slayt karusel incelemede"><span class="thumb"><img src="../../instagram/launch-creative-02/contact-sheet.png" alt="Launch Creative 02 görsel önizlemesi" loading="lazy"></span><span class="tile-body"><span class="category">Karusel</span><strong>Launch Creative 02</strong><p>Editoryal kampanya denemesi · 5 slayt</p><span class="status">İncelemede <span aria-hidden="true">↗</span></span></span></a>
 <a class="tile" href="../../social-covers/" data-search="sosyal medya kapakları x, linkedın ve facebook kapakları kapak tasarımı incelemede"><span class="thumb"><img src="../../asyada-seal/canonical-lockups/assets/h-02-primary-horizontal-light.svg" alt="Sosyal medya kapakları görsel önizlemesi" loading="lazy"></span><span class="tile-body"><span class="category">Kapak tasarımı</span><strong>Sosyal medya kapakları</strong><p>X, LinkedIn ve Facebook kapakları</p><span class="status">İncelemede <span aria-hidden="true">↗</span></span></span></a></div><p class="empty" id="empty" hidden>Bu aramayla eşleşen çalışma bulunamadı.</p></section>
 <aside class="identity-ribbon"><div><strong>Marka kimliği kilitli.</strong><p>Onaylı mühür ve logo ailesi yalnızca kanonik dosyalardan kullanılmalıdır. Mevcut çalışma galerilerinin burada listelenmesi yaratıcı onay anlamına gelmez.</p></div><a href="../../identity/">Kimlik kuralları ↗</a></aside>
-</main><footer class="brand-footer"><span>Asya'da Eğitim · Brandstudio</span><span><a href="../../">Marka seçimi</a> · <a href="https://github.com/cinegitim/design">Kaynak depo</a></span></footer></div><script>(()=>{const field=document.getElementById("search"),cards=[...document.querySelectorAll(".tile")],counter=document.getElementById("counter"),empty=document.getElementById("empty");const norm=s=>s.toLocaleLowerCase("tr").replace(/ı/g,"i").normalize("NFD").replace(/[\u0300-\u036f]/g,"");const update=()=>{const q=norm(field.value.trim());let n=0;for(const card of cards){const match=!q||norm(card.dataset.search).includes(q);card.hidden=!match;if(match)n++}counter.textContent=n+" çalışma";empty.hidden=n!==0;};field.addEventListener("input",update);update();})();</script><style>
+</main><footer class="brand-footer"><span>Asya'da Eğitim · Brandstudio</span><span><a href="../../">Marka seçimi</a> · <a href="https://github.com/cinegitim/design">Kaynak depo</a></span></footer></div><script src="../../instagram/publication-bridge.js"></script><script>(()=>{const field=document.getElementById("search"),cards=[...document.querySelectorAll(".tile")],counter=document.getElementById("counter"),empty=document.getElementById("empty");const norm=s=>s.toLocaleLowerCase("tr").replace(/ı/g,"i").normalize("NFD").replace(/[\u0300-\u036f]/g,"");const update=()=>{const q=norm(field.value.trim());let n=0;for(const card of cards){const match=!q||norm(card.dataset.search).includes(q);card.hidden=!match;if(match)n++}counter.textContent=n+" çalışma";empty.hidden=n!==0;};field.addEventListener("input",update);update();})();</script><style>
 .work-tree{display:grid;gap:38px;margin-top:22px}
 .work-area{border-top:2px solid var(--ink);padding-top:19px}
 .work-area>h3{font:600 clamp(26px,3.5vw,36px)/1.1 "Source Serif 4",Georgia,serif;letter-spacing:-.035em;margin:0 0 14px}
@@ -42,7 +42,7 @@ body{background:var(--paper);color:var(--ink);font:15px/1.55 Jost,system-ui,sans
 </style><script>(()=>{"use strict";
 const host=document.querySelector('.project-section'),legacy=host?.querySelector('.items'),input=document.getElementById('search'),counter=document.getElementById('counter'),empty=document.getElementById('empty');
 if(!host||!legacy||!input)return;
-const pubUrl=p=>p?.verified===true&&p.publishedAt&&/^https:\/\/(?:www\.)?instagram\.com\/asyadaegitim\/p\/[A-Za-z0-9_-]+\/?$/.test(p.url||'');
+const pubUrl=p=>p?.verified===true&&p.publishedAt&&/^https:\/\/(?:www\.)?instagram\.com\/(?:asyadaegitim\/)?(?:p|reel|tv)\/[A-Za-z0-9_-]+\/?$/.test(p.url||'');
 const norm=s=>(s||'').toLocaleLowerCase('tr').replace(/ı/g,'i').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 const sources={
  'instagram-carousel-01': {v:'../../instagram/carousel-01-v2/',photo:'../../instagram/carousel-01-v2/01-cover.png'},
@@ -99,7 +99,7 @@ async function populate(){
  const response=await fetch('../../visual-editor/browser/product-groups.json',{cache:'no-store'});if(!response.ok)return;
  const registry=await response.json();const groups=registry.groups.filter(g=>g.brand==='asyada-egitim'&&g.categoryPath?.[0]==='Sosyal Medya');
  if(groups.length<10)return;
- const posts=registry.socialPublication?.posts||[];
+ const posts=window.BrandstudioPublicationBridge?await window.BrandstudioPublicationBridge.merged(registry):(registry.socialPublication?.posts||[]);
  const root=el('div','work-tree'),top=el('section','work-area');top.dataset.level='Sosyal Medya';
  const head=el('h3','','Sosyal Medya');top.append(head);
  const branches=new Map();
