@@ -61,7 +61,7 @@ test('retired artwork remains for past deliverables but is prohibited in future 
  assert.ok(fs.existsSync(path.join(root,'brands/asyada-egitim/assets/lockups/d-04-small-use-digital-light.svg')));
  assert.match(read('AGENTS.md'),/C-03 and D-04 are retired/);
  assert.match(read('studio/production/chatgpt/EXECUTION.md'),/Eski C-03 ve D-04/);
- assert.match(read('brands/asyada-egitim/decisions/2026-10-30-h02-small-use-retire-c03-d04.md'),/tarihsel/);
+ assert.match(read('brands/asyada-egitim/decisions/2026-10-30-h02-small-use-retire-c03-d04.md'),/Arşiv ayrımı/);
  const verification=json('brands/asyada-egitim/assets/lockups/verification-result.json');
  assert.equal(verification.checked_records,9);
  assert.equal(verification.manifest_sha256,fileSha(manifestPath));
