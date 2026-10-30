@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "id": "instagram-utokyo-design-2027-001",
+  "title": "Tokyo Üniversitesi · Yeni Tasarım Okulu 2027",
+  "brand": "asyada-egitim",
+  "category": "instagram-single-post",
+  "status": "in-review",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "editable_source": "source/01.html",
+  "rendered_output": "jpeg/01.jpg",
+  "output_mime": "image/jpeg",
+  "assets": [
+    {
+      "path": "assets/yasuda-hongo.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Yasuda_Auditorium_-_Hongo_Campus,_the_University_of_Tokyo_-_DDSC04886.JPG",
+      "author": "Daderot",
+      "license": "CC0 1.0"
+    },
+    {
+      "path": "assets/akamon.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Akamon.jpg",
+      "author": "Tomgally",
+      "license": "Public domain"
+    }
+  ],
+  "canonical_logo_id": "V-01",
+  "logo_usage": "seal-only",
+  "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "logo_file": "assets/v01-canonical.svg",
+  "social_published": false,
+  "design_review": "pending",
+  "source_commit": "8cf7c106fdc52a9545301030698fdf5a90752341",
+  "visual_direction": "Real Hongo-campus photos; Japanese editorial red circle and kanji; no generated campus imagery"
+}
