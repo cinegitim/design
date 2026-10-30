@@ -70,13 +70,24 @@ test('source assets and canonical identity paths are preserved in original repos
 });
 test('Instagram publication requires real post evidence and does not invent a matched revision',()=>{
  const published=families.filter(x=>x.lifecycle==='published');
- assert.equal(manifest.socialPublication.totalInstagramPostsSeen,7);
- assert.equal(published.length,5);
+ assert.equal(manifest.socialPublication.totalInstagramPostsSeen,9);
+ assert.equal(published.length,7);
  assert.deepEqual(new Set(published.map(x=>x.id)),new Set([
   'instagram-carousel-01-v2','instagram-tsinghua-atlas-2027-v2','instagram-rotani-sec-tokyo-seoul-001-v3',
-  'instagram-basvuru-rehberi-china-001','instagram-burs-dosyasi-gks-2027-001'
+  'instagram-basvuru-rehberi-china-001','instagram-burs-dosyasi-gks-2027-001',
+  'instagram-ieft-2026-firsatlar-001','instagram-creative-breakout-bavul-001'
  ]));
  assert.ok(families.every(x=>(x.publications||[]).every(p=>p.verified&&p.url.startsWith('https://www.instagram.com/'))));
+ for(const [id,path] of [
+  ['instagram-ieft-2026-firsatlar-001','DfEUKmWFZpF'],
+  ['instagram-creative-breakout-bavul-001','DfHTHD_lTbE']
+ ]){
+  const family=Catalog.byId(families,id);
+  assert.equal(family.lifecycle,'published');
+  assert.equal(family.publications[0].productId,null,'family evidence must not impersonate revision proof');
+  assert.ok(family.publications[0].url.includes('/'+path+'/'));
+ }
+
  const publishedV2=Catalog.byId(families,'instagram-carousel-01-v2');
  assert.equal(publishedV2.lifecycle,'published');
  assert.equal(publishedV2.publications[0].productId,'instagram-carousel-01-v2');
