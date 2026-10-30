@@ -44,15 +44,15 @@ body{background:var(--paper);color:var(--ink);font:15px/1.55 Jost,system-ui,sans
 const host=document.querySelector('.project-section'),legacy=host?.querySelector('.items'),input=document.getElementById('search'),counter=document.getElementById('counter'),empty=document.getElementById('empty');
 if(!host||!legacy||!input)return;
 const pubUrl=p=>{
- if(!p?.verified||!p.publishedAt)return false;
+ if(!p?.verified||!p.publishedAt||typeof p.url!=='string')return false;
  try{
-  const u=new URL(p.url),h=u.hostname.replace(/^www\\./,''),path=u.pathname;
-  if(u.protocol!=='https:')return false;
+  const u=new URL(p.url),h=u.hostname.toLowerCase().replace(/^www[.]/,''),parts=u.pathname.split('/').filter(Boolean);
+  if(u.protocol!=='https:'||u.username||u.password)return false;
   switch(p.platform||'instagram'){
-   case 'instagram':return h==='instagram.com'&&/^\\/(p|reel|tv)\\/[A-Za-z0-9_-]+\\/?$/.test(path);
-   case 'facebook':return (h==='facebook.com'||h==='m.facebook.com')&&/\\/posts\\//.test(path);
-   case 'linkedin':return h==='linkedin.com'&&/\\/feed\\/update\\/urn:li:/.test(path);
-   case 'x':return (h==='x.com'||h==='twitter.com')&&/^\\/[^/]+\\/status\\/\\d+\\/?$/.test(path);
+   case 'instagram':return h==='instagram.com'&&parts.length===2&&['p','reel','tv'].includes(parts[0]);
+   case 'facebook':return ['facebook.com','m.facebook.com'].includes(h)&&u.pathname.includes('/posts/');
+   case 'linkedin':return h==='linkedin.com'&&u.pathname.startsWith('/feed/update/urn:li:');
+   case 'x':return ['x.com','twitter.com'].includes(h)&&parts.length===3&&parts[1]==='status'&&/^[0-9]+$/.test(parts[2]);
    default:return false;
   }
  }catch(_){return false}
