@@ -1,6 +1,7 @@
 import {suggestFamily,validPermalink} from "./match.mjs";
 const PLATFORMS=["instagram","facebook","linkedin","x"];
-const REGISTRY="https://studio.asyadaegitim.com/visual-editor/browser/product-groups.json";
+const REGISTRY="https://cinegitim.github.io/design/visual-editor/browser/product-groups.json";
+const REGISTRY_FALLBACK="https://raw.githubusercontent.com/cinegitim/design/main/docs/visual-editor/browser/product-groups.json";
 const NOW=()=>new Date().toISOString();
 function json(body,status=200,origin=""){
   const headers={"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store","X-Content-Type-Options":"nosniff"};
@@ -83,8 +84,12 @@ async function register(db,post,match){
 async function refresh(env,platforms){
   const summary={startedAt:NOW(),platforms:{},completedAt:null};
   let groups=[];
-  try{const r=await fetchJSON(REGISTRY);groups=r.groups||[];}
-  catch(e){summary.catalogError=String(e.message||e);}
+  try{
+    let data;
+    try { data=await fetchJSON(REGISTRY); if(!Array.isArray(data.groups)) throw Error("Catalog groups missing"); }
+    catch (_primaryError) { data=await fetchJSON(REGISTRY_FALLBACK); if(!Array.isArray(data.groups)) throw Error("Fallback catalog groups missing"); }
+    groups=data.groups;
+  }catch(e){summary.catalogError=String(e.message||e);}
   for(const p of platforms){
     if(!enabled(env,p)){summary.platforms[p]={state:"not_connected"};continue;}
     try{
