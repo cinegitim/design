@@ -1,0 +1,24 @@
+name: Brandstudio publication tracker
+on:
+  pull_request:
+    paths:
+      - "studio/publication-tracker/**"
+      - ".github/workflows/publications-check.yml"
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Syntax-check Worker and matcher
+        run: |
+          node --check studio/publication-tracker/match.mjs
+          node --check studio/publication-tracker/worker.mjs
+      - name: Run independent matching tests
+        run: node --test studio/publication-tracker/match.test.mjs
