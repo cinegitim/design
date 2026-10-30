@@ -27,11 +27,14 @@ export function exactCaptionFamily(post,groups) {
   const matches=[];
   for(const group of groups||[]) {
     if(group.brand!=="asyada-egitim"||!group.id?.startsWith("instagram-"))continue;
-    const phrases=[...(Array.isArray(group.publicationAnchors)?group.publicationAnchors:[]),group.title||""];
-    const exact=phrases.some(text=>{
+    const anchors=Array.isArray(group.publicationAnchors)?group.publicationAnchors:[];
+    // Explicit editorial anchors may be 16 characters (e.g. "Tokyo mu, Seul mu?").
+    // A title-only match requires a longer distinctive phrase.
+    const exact=anchors.some(text=>{
       const phrase=normalizeText(text);
-      return phrase.length>=20 && caption.includes(phrase);
-    });
+      return phrase.length>=16 && caption.includes(phrase);
+    }) || (normalizeText(group.title||"").length>=25 &&
+          caption.includes(normalizeText(group.title||"")));
     if(exact)matches.push(group);
   }
   // More than one eligible family means not safe to automatically link.
