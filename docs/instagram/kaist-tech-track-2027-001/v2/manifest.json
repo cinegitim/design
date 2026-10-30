@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "id": "instagram-kaist-tech-track-2027-001-v2",
+  "brand": "asyada-egitim",
+  "title": "KAIST · Kore Tech Track 2027 · V2 · 6-slide carousel",
+  "category": "instagram-carousel",
+  "status": "in-review",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "slides": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06"
+  ],
+  "editable_source_pattern": "source/{nn}.html",
+  "style": "K-Tech editorial / ivory and dark navy with cyan / large numbers / Jost",
+  "canonical_lockup_id": "H-02/dark",
+  "canonical_lockup_sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "logo_copy": "assets/h02-primary-horizontal-dark.svg",
+  "photo_sources": [
+    "https://commons.wikimedia.org/wiki/File:KAIST_fountains_view.jpg",
+    "https://commons.wikimedia.org/wiki/File:KAIST_campus_at_night.jpg",
+    "https://commons.wikimedia.org/wiki/File:KAIST_Main_entrance.jpg"
+  ],
+  "real_campus_photos": true,
+  "generated_campus_photos": false,
+  "external_image_urls": false,
+  "source_links_persist": true,
+  "rendered_exports": [
+    "jpeg/01.jpg",
+    "jpeg/02.jpg",
+    "jpeg/03.jpg",
+    "jpeg/04.jpg",
+    "jpeg/05.jpg",
+    "jpeg/06.jpg"
+  ],
+  "social_published": false,
+  "creative_approved": false,
+  "photo_sources_local": [
+    "assets/kaist-fountains.jpg",
+    "assets/kaist-night.jpg",
+    "assets/kaist-entrance.jpg"
+  ],
+  "photos_downsampled": true,
+  "institution_logo": {
+    "path": "assets/kaist-official-logo.gif",
+    "origin": "https://www.kaist.ac.kr/en/img/content/sub01/sym_new_01.gif",
+    "official_ui_page": "https://www.kaist.ac.kr/en/html/kaist/011901.html",
+    "source_format": "GIF",
+    "modified": false,
+    "usage": "KAIST identification on cover, no affiliation claimed",
+    "license_status": "Institutional trademark; official usage restrictions require review before commercial social publication"
+  },
+  "version": "v2",
+  "parent_id": "instagram-kaist-tech-track-2027-001",
+  "v2_changed_slides": [
+    "03",
+    "06"
+  ],
+  "v2_unchanged_slides": [
+    "01",
+    "02",
+    "04",
+    "05"
+  ],
+  "source_asset_root": "../assets"
+}
