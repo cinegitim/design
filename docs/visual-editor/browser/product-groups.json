@@ -23,7 +23,10 @@
         "Karuseller",
         "Lansman ve Kampanyalar"
       ],
-      "lifecycle": "in-review"
+      "lifecycle": "in-review",
+      "publicationAnchors": [
+        "IEFT bitti. Eğitim fırsatları bitmedi!"
+      ]
     },
     {
       "id": "instagram-carousel-01",
@@ -52,7 +55,10 @@
         "Lansman ve Kampanyalar"
       ],
       "publishedVersionId": "instagram-carousel-01-v2",
-      "defaultId": "instagram-carousel-01-v2"
+      "defaultId": "instagram-carousel-01-v2",
+      "publicationAnchors": [
+        "Üniversite için başka bir dünya var"
+      ]
     },
     {
       "id": "instagram-carousel-02",
@@ -137,7 +143,10 @@
         "Başvuru ve Burs Rehberleri"
       ],
       "publishedVersionId": "instagram-burs-dosyasi-gks-2027-001",
-      "defaultId": "instagram-burs-dosyasi-gks-2027-001"
+      "defaultId": "instagram-burs-dosyasi-gks-2027-001",
+      "publicationAnchors": [
+        "Kore devlet bursunu kaçırdım diye üzülme"
+      ]
     },
     {
       "id": "instagram-rotani-sec-tokyo-seoul-001",
@@ -165,7 +174,10 @@
         "Karuseller",
         "Şehir ve Öğrenci Yaşamı"
       ],
-      "defaultId": "instagram-rotani-sec-tokyo-seoul-001-v3"
+      "defaultId": "instagram-rotani-sec-tokyo-seoul-001-v3",
+      "publicationAnchors": [
+        "Tokyo mu, Seul mu?"
+      ]
     },
     {
       "id": "instagram-tsinghua-atlas-2027",
@@ -189,7 +201,10 @@
         "Karuseller",
         "Üniversite Tanıtımları"
       ],
-      "defaultId": "instagram-tsinghua-atlas-2027-v2"
+      "defaultId": "instagram-tsinghua-atlas-2027-v2",
+      "publicationAnchors": [
+        "Pekin'de Küresel Ölçekte Bir Akademik Ekosistem"
+      ]
     },
     {
       "id": "instagram-snu",
@@ -368,7 +383,10 @@
         "Tekil Paylaşımlar",
         "Creative Breakout"
       ],
-      "lifecycle": "in-review"
+      "lifecycle": "in-review",
+      "publicationAnchors": [
+        "Bavulunu sen hazırla, rotanı birlikte çizelim!"
+      ]
     },
     {
       "id": "instagram-utokyo-design-2027-001",
