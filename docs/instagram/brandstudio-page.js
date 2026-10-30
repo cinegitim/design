@@ -42,21 +42,34 @@
   var back=document.createElement("a");back.href=workspaceUrl.href;back.textContent="Asya'da Eğitim";trail.append(back);
   var actions=document.createElement("div");actions.className="bs-actions";
   function icon(kind) {
+    if(kind==="facebook")return '<strong aria-hidden="true">f</strong>';
+    if(kind==="linkedin")return '<strong aria-hidden="true">in</strong>';
+    if(kind==="x")return '<strong aria-hidden="true">𝕏</strong>';
     if(kind==="instagram")return '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.8" cy="6.5" r="1.15" fill="currentColor" stroke="none"/></svg>';
     return '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 4.5H20v6.5M20 4.5l-9.2 9.2"/><path d="M18 13v6.5H4.5V6H11"/></svg>';
   }
   function action(href,label,kind) {
     var link=document.createElement("a");link.href=href;link.className="bs-action "+kind;
     link.innerHTML=icon(kind)+"<span></span>";link.lastElementChild.textContent=label;
-    if(kind==="instagram"){link.target="_blank";link.rel="noopener noreferrer"}
+    if(["instagram","facebook","linkedin","x"].includes(kind)){link.target="_blank";link.rel="noopener noreferrer"}
     return link;
   }
   actions.append(action(editorUrl.href,"Visual Editor ile düzenle","editor"));
   bar.append(trail,actions);
   document.body.insertBefore(bar,document.body.firstChild);
   function verified(p){
-    return p&&p.verified===true&&typeof p.publishedAt==="string"&&
-      /^https:\/\/(?:www\.)?instagram\.com\/(?:asyadaegitim\/)?(?:p|reel|tv)\/[A-Za-z0-9_-]+\/?(?:\?.*)?$/.test(p.url||"");
+    if(!p||p.verified!==true||typeof p.publishedAt!=="string")return false;
+    try{
+      var u=new URL(p.url),host=u.hostname.replace(/^www[.]/,"");
+      if(u.protocol!=="https:")return false;
+      switch(p.platform||"instagram"){
+        case "instagram":return host==="instagram.com"&&u.pathname.split("/").filter(Boolean).length===2;
+        case "facebook":return (host==="facebook.com"||host==="m.facebook.com")&&u.pathname.includes("/posts/");
+        case "linkedin":return host==="linkedin.com"&&u.pathname.startsWith("/feed/update/urn:li:");
+        case "x":return (host==="x.com"||host==="twitter.com")&&u.pathname.includes("/status/");
+        default:return false;
+      }
+    }catch(_){return false}
   }
   function crumb(parent,part){
     var sep=document.createElement("span");sep.className="bs-separator";sep.textContent="›";
@@ -83,12 +96,17 @@
     if(posts.length){
       var exact=posts.some(function(p){return p.productId===versionId});
       var publishedEdition=(group.versions||[]).find(function(v){return v.id===group.publishedVersionId});
-      var label=exact?"Instagram gönderisini gör":(publishedEdition?
-        "Instagram'da yayımlanan "+publishedEdition.label+" sürümünü gör":"Ailenin Instagram gönderisini gör");
-      var instagram=action(posts[0].url,label,"instagram");
-      instagram.title=exact?"Bu sürüm Instagram'da yayımlandı.":(publishedEdition?
-        "Bu sayfa "+versionId+" taslağına ait; yayımlanan sürüm "+publishedEdition.label+".":"Tasarım ailesinin Instagram gönderisi; yayımlanan kesin sürüm henüz doğrulanmadı.");
-      actions.insertBefore(instagram,actions.firstChild);
+      var names={instagram:"Instagram",facebook:"Facebook",linkedin:"LinkedIn",x:"X"};
+      Object.keys(names).forEach(function(platform){
+        var post=posts.find(function(p){return (p.platform||"instagram")===platform});
+        if(!post)return;
+        var label=names[platform]+" gönderisini gör";
+        var link=action(post.url,label,platform);
+        link.title=post.productId===versionId?
+          "Bu sürümün yayımlandığı "+names[platform]+" gönderisi":
+          (publishedEdition?"Yayımlanan sürüm "+publishedEdition.label+".":"Tasarım ailesi yayımlandı; kesin sürüm doğrulanmadı.");
+        actions.insertBefore(link,actions.firstChild);
+      });
     }
   }).catch(function(){/* Static page and Visual Editor access are still usable without metadata network. */});
 
