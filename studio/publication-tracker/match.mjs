@@ -18,7 +18,28 @@ export function groupScore(post,group) {
   const precision=common/Math.min(cap.size, Math.max(title.size,6));
   return Math.min(1, (exact?0.40:0)+recall*0.52+precision*0.08);
 }
+// A verified Meta post and a unique, deliberately recorded caption anchor
+// justify a FAMILY-level link; no caption can prove a particular artwork revision.
+export function exactCaptionFamily(post,groups) {
+  if(post.platform && post.platform!=="instagram")return null;
+  const caption=normalizeText(post.caption||"");
+  if(!caption)return null;
+  const matches=[];
+  for(const group of groups||[]) {
+    if(group.brand!=="asyada-egitim"||!group.id?.startsWith("instagram-"))continue;
+    const phrases=[...(Array.isArray(group.publicationAnchors)?group.publicationAnchors:[]),group.title||""];
+    const exact=phrases.some(text=>{
+      const phrase=normalizeText(text);
+      return phrase.length>=20 && caption.includes(phrase);
+    });
+    if(exact)matches.push(group);
+  }
+  // More than one eligible family means not safe to automatically link.
+  return matches.length===1?matches[0].id:null;
+}
 export function suggestFamily(post,groups) {
+  const exact=exactCaptionFamily(post,groups);
+  if(exact)return {groupId:exact,productId:null,confidence:1,status:"family_verified",candidates:[]};
   const scored=(groups||[]).filter(g=>g.brand==="asyada-egitim"&&g.categoryPath?.includes("Karuseller") || (g.brand==="asyada-egitim"&&g.id?.startsWith("instagram-")))
     .map(g=>({id:g.id,title:g.title,score:groupScore(post,g)}))
     .sort((a,b)=>b.score-a.score);
