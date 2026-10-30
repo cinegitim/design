@@ -49,7 +49,7 @@ const pubUrl=p=>{
   const u=new URL(p.url),h=u.hostname.toLowerCase().replace(/^www[.]/,''),parts=u.pathname.split('/').filter(Boolean);
   if(u.protocol!=='https:'||u.username||u.password)return false;
   switch(p.platform||'instagram'){
-   case 'instagram':return h==='instagram.com'&&parts.length===2&&['p','reel','tv'].includes(parts[0]);
+   case 'instagram':return h==='instagram.com'&&((parts.length===2&&['p','reel','tv'].includes(parts[0]))||(parts.length===3&&parts[0]==='asyadaegitim'&&['p','reel','tv'].includes(parts[1])))&&/^[A-Za-z0-9_-]+$/.test(parts[parts.length-1]);
    case 'facebook':return ['facebook.com','m.facebook.com'].includes(h)&&u.pathname.includes('/posts/');
    case 'linkedin':return h==='linkedin.com'&&u.pathname.startsWith('/feed/update/urn:li:');
    case 'x':return ['x.com','twitter.com'].includes(h)&&parts.length===3&&parts[1]==='status'&&/^[0-9]+$/.test(parts[2]);
