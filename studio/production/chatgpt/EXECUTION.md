@@ -128,3 +128,7 @@ Report absent model tokens/cost as unavailable. For ordinary ChatGPT with
 connector-only tools, log only connector-observed evidence; do not pretend
 to have executed recorder.py. "Finished" requires a hashed real artifact;
 a planned/dry-run task is not a finished production.
+
+## Asya'da Eğitim: logo seçimi — 30 Ekim 2026
+
+Yeni üretimlerde `brands/asyada-egitim/brand.json` ve etkin `canonical-lockups.json` manifesti esas alınır. **H-02** tüm olağan yatay/dijital imzalar için varsayılandır. Ayrı bir kompakt logo üretme; onaylı H-02 SVG'sini tamamıyla orantılı küçült (360–480px önerilen, 320px alt sınır; ince İngilizce satırı gerçek boyutta denetle). 320px altında yalnız **V-01 mühür**. Dikey tasarımlarda P-01; resmî çift dilli kompozisyonlarda F-05. Eski C-03 ve D-04 dosyaları yalnızca tarihsel kaynaklarda kalır, yeni üretimlerde seçilemez veya yeniden karıştırılamaz. Ayrıntı: `brands/asyada-egitim/decisions/2026-10-30-h02-small-use-retire-c03-d04.md`.
