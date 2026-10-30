@@ -12,11 +12,16 @@ const manifestPath='brands/asyada-egitim/assets/lockups/canonical-lockups.json';
 const manifest=json(manifestPath);
 const brand=json('brands/asyada-egitim/brand.json');
 const approved=['H-02','P-01','F-05'];
-const ids=new Set(manifest.records.map(x=>x.variant_id));
+const active=manifest.records.filter(x=>x.status==='APPROVED / CANONICAL');
+const retired=manifest.records.filter(x=>x.status==='RETIRED / HISTORY ONLY');
+const ids=new Set(active.map(x=>x.variant_id));
 
 test('only H-02, P-01 and F-05 are active; original SVG hashes are unchanged',()=>{
  assert.deepEqual([...ids].sort(),[...approved].sort());
- assert.equal(manifest.records.length,9);
+ assert.equal(manifest.records.length,15);
+ assert.equal(active.length,9);
+ assert.equal(retired.length,6);
+ assert.deepEqual(new Set(retired.map(x=>x.variant_id)),new Set(['C-03','D-04']));
  assert.deepEqual(brand.canonicalLockups.approvedVariants,approved);
  assert.equal(brand.canonicalLockups.defaultVariant,'H-02');
  assert.deepEqual(manifest.current_variant_ids,approved);
@@ -27,7 +32,7 @@ test('only H-02, P-01 and F-05 are active; original SVG hashes are unchanged',()
  assert.deepEqual(new Set(manifest.retired_variants.map(x=>x.id)),new Set(['C-03','D-04']));
 });
 test('H-02 compact display keeps the complete canonical artwork',()=>{
- const h=manifest.records.filter(x=>x.variant_id==='H-02');
+ const h=active.filter(x=>x.variant_id==='H-02');
  assert.equal(h.length,3);
  for(const r of h){
   assert.equal(r.minimum_supported_display_size.screen_width_px,320);
@@ -63,8 +68,10 @@ test('retired artwork remains for past deliverables but is prohibited in future 
  assert.match(read('studio/production/chatgpt/EXECUTION.md'),/Eski C-03 ve D-04/);
  assert.match(read('brands/asyada-egitim/decisions/2026-10-30-h02-small-use-retire-c03-d04.md'),/Arşiv ayrımı/);
  const verification=json('brands/asyada-egitim/assets/lockups/verification-result.json');
- assert.equal(verification.checked_records,9);
+ assert.equal(verification.checked_records,15);
+ assert.equal(verification.active_records,9);
+ assert.equal(verification.retired_records,6);
  assert.equal(verification.manifest_sha256,fileSha(manifestPath));
- assert.equal(verification.records.length,9);
+ assert.equal(verification.records.length,15);
  assert.deepEqual(json('docs/asyada-seal/canonical-lockups/assets/canonical-lockups.json').records,manifest.records);
 });
