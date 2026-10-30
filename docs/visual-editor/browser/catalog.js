@@ -154,6 +154,10 @@ async function load(url){
   var response=await fetch(registryUrl,{cache:'no-store'});
   if(response.ok)config=await response.json();
  }catch(_){}
+ if(config&&root.BrandstudioPublicationBridge){
+  const posts=await root.BrandstudioPublicationBridge.merged(config);
+  config=Object.assign({},config,{socialPublication:Object.assign({},config.socialPublication||{},{posts:posts})});
+ }
  try{
   var remote=await fetch('https://api.github.com/repos/cinegitim/design/git/trees/main?recursive=1',{headers:{Accept:'application/vnd.github+json'},cache:'no-store'});
   if(remote.ok){

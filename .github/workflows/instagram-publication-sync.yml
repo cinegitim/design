@@ -1,0 +1,58 @@
+name: Brandstudio Instagram publication automation tests
+on:
+  pull_request:
+    paths:
+      - "studio/publication-tracker/**"
+      - "docs/instagram/publication-bridge.*"
+      - "docs/instagram/brandstudio-page.js"
+      - "docs/visual-editor/browser/catalog.js"
+      - "docs/visual-editor/browser/product-groups.json"
+      - "docs/workspaces/asyada-egitim/index.html"
+      - ".github/workflows/instagram-publication-sync.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  proof-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout source (no credentials persisted)
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            studio/publication-tracker/
+            docs/instagram/publication-bridge.js
+            docs/instagram/publication-bridge.test.mjs
+            docs/instagram/brandstudio-page.js
+            docs/visual-editor/browser/catalog.js
+            docs/visual-editor/browser/index.html
+            docs/visual-editor/browser/product-groups.json
+            docs/workspaces/asyada-egitim/index.html
+          sparse-checkout-cone-mode: false
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+      - name: No-network matching and publication proof tests
+        run: node --test studio/publication-tracker/match.test.mjs docs/instagram/publication-bridge.test.mjs
+      - name: Read-only UI and Worker syntax
+        run: |
+          node --check studio/publication-tracker/worker.mjs
+          node --check docs/instagram/brandstudio-page.js
+          node --check docs/instagram/publication-bridge.js
+          node --check docs/visual-editor/browser/catalog.js
+      - name: No browser secrets or unsafe publish-on-fuzzy-match
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          registry=Path('docs/visual-editor/browser/product-groups.json').read_text()
+          bridge=Path('docs/instagram/publication-bridge.js').read_text()
+          worker=Path('studio/publication-tracker/worker.mjs').read_text()
+          assert 'PUBLICATION_REFRESH_TOKEN' not in bridge
+          assert 'META_IG_TOKEN' not in bridge
+          assert 'match_status=\'family_verified\'' in worker
+          assert 'publicationAnchors' in registry
+          assert 'async scheduled(' in worker
+          PY
