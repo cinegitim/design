@@ -63,7 +63,7 @@
       var u=new URL(p.url),host=u.hostname.replace(/^www[.]/,"");
       if(u.protocol!=="https:")return false;
       switch(p.platform||"instagram"){
-        case "instagram":return host==="instagram.com"&&u.pathname.split("/").filter(Boolean).length===2;
+        case "instagram":{var parts=u.pathname.split("/").filter(Boolean);return host==="instagram.com"&&((parts.length===2&&["p","reel","tv"].includes(parts[0]))||(parts.length===3&&parts[0]==="asyadaegitim"&&["p","reel","tv"].includes(parts[1])))&&/^[A-Za-z0-9_-]+$/.test(parts[parts.length-1]);}
         case "facebook":return (host==="facebook.com"||host==="m.facebook.com")&&u.pathname.includes("/posts/");
         case "linkedin":return host==="linkedin.com"&&u.pathname.startsWith("/feed/update/urn:li:");
         case "x":return (host==="x.com"||host==="twitter.com")&&u.pathname.includes("/status/");
