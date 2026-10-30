@@ -81,7 +81,7 @@ test("the X-only check reads Buffer sent posts and rejects other channels",async
    {node:{id:"buffer-1",status:"sent",channelId:"6ae497ec2f1f5ed6481ff706",text:"Tokyo Üniversitesi’nin yeni tasarım okulu Eylül 2027’de açılıyor!",externalLink:"https://x.com/2108217886128910336/status/2116206749296230468",sentAt:"2026-10-30T16:33:01Z"}},
    {node:{id:"wrong-channel",status:"sent",channelId:"OTHER",text:"Tokyo Üniversitesi’nin yeni tasarım okulu",externalLink:"https://x.com/other/status/123",sentAt:"2026-10-30T16:33:01Z"}},
    {node:{id:"fake-url",status:"sent",channelId:"6ae497ec2f1f5ed6481ff706",text:"Tokyo Üniversitesi’nin yeni tasarım okulu",externalLink:"https://evil.example/status/123",sentAt:"2026-10-30T16:33:01Z"}}
-  ]}}}});
+  ]}}});
   throw Error("Unexpected fetch: "+url);
  };
  try{
