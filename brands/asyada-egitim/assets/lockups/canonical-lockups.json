@@ -24,11 +24,9 @@
     "applies_to": [
       "P-01",
       "H-02",
-      "C-03",
       "F-05"
     ]
   },
-  "d_04_rule": "TURKISH ONLY. Do not add English text.",
   "allowed_operations": [
     "proportional scaling",
     "positioning",
@@ -251,17 +249,23 @@
       },
       "format": "bilingual_three_line",
       "usage_rules": [
-        "Wide mastheads, website headers, institutional documents and horizontal signatures.",
+        "Default complete canonical logo for everyday digital and horizontal layouts, including small digital placements; scale as one SVG without altering its seal-to-lettering ratio.",
         "Use this complete SVG as a locked artwork unit; do not reconstruct from separate seal and text geometry.",
         "Allow proportional scaling and positioning only; never stretch, crop, recolour outside the approved colour variant, perspective-warp, trace, smooth or retypeset.",
-        "Respect the embedded clearspace and minimum size. If the space cannot hold an approved lockup, use another approved variant or flag the constraint.",
+        "On screens, prefer 360–480 px. When necessary scale whole SVG down proportionally to 320 px; inspect fine English line at actual output size. Below 320 px use V-01 seal alone. For print keep conservative 110 mm minimum.",
         "Image models may generate backgrounds only; composite this exact SVG afterward and record canonical_lockup_id, canonical_lockup_sha256 and canonical_seal_sha256.",
         "Bilingual lockup uses the shared 881-unit three-line measure."
       ],
       "contrast_caveats": [
         "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
-        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
-      ]
+        "Fine English line may soften at 320–359 px; inspect real-size raster and reject illegible placements, never substitute retired C-03/D-04."
+      ],
+      "recommended_screen_width_px": [
+        360,
+        480
+      ],
+      "small_digital_minimum_px": 320,
+      "small_digital_exception": "Screen-only: proportional H-02 from 320 px with required real-size readability check; preserve original 528px production-audit size for historic deliveries."
     },
     {
       "brand_id": "asyada-egitim",
@@ -304,17 +308,23 @@
       },
       "format": "bilingual_three_line",
       "usage_rules": [
-        "Wide mastheads, website headers, institutional documents and horizontal signatures.",
+        "Default complete canonical logo for everyday digital and horizontal layouts, including small digital placements; scale as one SVG without altering its seal-to-lettering ratio.",
         "Use this complete SVG as a locked artwork unit; do not reconstruct from separate seal and text geometry.",
         "Allow proportional scaling and positioning only; never stretch, crop, recolour outside the approved colour variant, perspective-warp, trace, smooth or retypeset.",
-        "Respect the embedded clearspace and minimum size. If the space cannot hold an approved lockup, use another approved variant or flag the constraint.",
+        "On screens, prefer 360–480 px. When necessary scale whole SVG down proportionally to 320 px; inspect fine English line at actual output size. Below 320 px use V-01 seal alone. For print keep conservative 110 mm minimum.",
         "Image models may generate backgrounds only; composite this exact SVG afterward and record canonical_lockup_id, canonical_lockup_sha256 and canonical_seal_sha256.",
         "Bilingual lockup uses the shared 881-unit three-line measure."
       ],
       "contrast_caveats": [
         "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
-        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
-      ]
+        "Fine English line may soften at 320–359 px; inspect real-size raster and reject illegible placements, never substitute retired C-03/D-04."
+      ],
+      "recommended_screen_width_px": [
+        360,
+        480
+      ],
+      "small_digital_minimum_px": 320,
+      "small_digital_exception": "Screen-only: proportional H-02 from 320 px with required real-size readability check; preserve original 528px production-audit size for historic deliveries."
     },
     {
       "brand_id": "asyada-egitim",
@@ -357,335 +367,23 @@
       },
       "format": "bilingual_three_line",
       "usage_rules": [
-        "Wide mastheads, website headers, institutional documents and horizontal signatures.",
+        "Default complete canonical logo for everyday digital and horizontal layouts, including small digital placements; scale as one SVG without altering its seal-to-lettering ratio.",
         "Use this complete SVG as a locked artwork unit; do not reconstruct from separate seal and text geometry.",
         "Allow proportional scaling and positioning only; never stretch, crop, recolour outside the approved colour variant, perspective-warp, trace, smooth or retypeset.",
-        "Respect the embedded clearspace and minimum size. If the space cannot hold an approved lockup, use another approved variant or flag the constraint.",
+        "On screens, prefer 360–480 px. When necessary scale whole SVG down proportionally to 320 px; inspect fine English line at actual output size. Below 320 px use V-01 seal alone. For print keep conservative 110 mm minimum.",
         "Image models may generate backgrounds only; composite this exact SVG afterward and record canonical_lockup_id, canonical_lockup_sha256 and canonical_seal_sha256.",
         "Bilingual lockup uses the shared 881-unit three-line measure."
       ],
       "contrast_caveats": [
         "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
-        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
-      ]
-    },
-    {
-      "brand_id": "asyada-egitim",
-      "variant_id": "C-03",
-      "variant_name": "Compact",
-      "color_variant": "light",
-      "canonical_lockup_id": "C-03/light",
-      "canonical_file_path": "brands/asyada-egitim/assets/lockups/c-03-compact-light.svg",
-      "sha256": "b23e01c233093cd132ea79a7332a75390bff8fd35b909db05694f2ba441c0a76",
-      "source_review_path": "docs/asyada-seal/final-lockups/assets/C-03-light-0.svg",
-      "source_review_sha256": "40cb19c38ae22a0da61c192a1992e019ab0a76a0c38c42d4c71575cd5cc28960",
-      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "typography": {
-        "turkish": {
-          "family": "Jost",
-          "weight": 550,
-          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
-        },
-        "english": {
-          "family": "Jost",
-          "weight": 350,
-          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
-        },
-        "apostrophe": "Original approved red vector apostrophe from selected outlined source",
-        "runtime_font_dependency": false
-      },
-      "provenance": {
-        "source_wordmark_path": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-        "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
-        "source_final_review_asset": "docs/asyada-seal/final-lockups/assets/C-03-light-0.svg",
-        "approved_review_page": "docs/asyada-seal/final-lockups/index.html"
-      },
-      "approved_alignment": 0,
-      "alignment_scope": "0 for both horizontal and stacked/vertical compositions",
-      "human_approval_date": "2026-10-08",
-      "status": "APPROVED / CANONICAL",
-      "minimum_supported_display_size": {
-        "screen_width_px": 448,
-        "print_width_mm": 95
-      },
-      "format": "bilingual_three_line",
-      "usage_rules": [
-        "Tighter bilingual horizontal uses such as email mastheads and constrained lockup areas.",
-        "Use this complete SVG as a locked artwork unit; do not reconstruct from separate seal and text geometry.",
-        "Allow proportional scaling and positioning only; never stretch, crop, recolour outside the approved colour variant, perspective-warp, trace, smooth or retypeset.",
-        "Respect the embedded clearspace and minimum size. If the space cannot hold an approved lockup, use another approved variant or flag the constraint.",
-        "Image models may generate backgrounds only; composite this exact SVG afterward and record canonical_lockup_id, canonical_lockup_sha256 and canonical_seal_sha256.",
-        "Bilingual lockup uses the shared 881-unit three-line measure."
+        "Fine English line may soften at 320–359 px; inspect real-size raster and reject illegible placements, never substitute retired C-03/D-04."
       ],
-      "contrast_caveats": [
-        "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
-        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
-      ]
-    },
-    {
-      "brand_id": "asyada-egitim",
-      "variant_id": "C-03",
-      "variant_name": "Compact",
-      "color_variant": "dark",
-      "canonical_lockup_id": "C-03/dark",
-      "canonical_file_path": "brands/asyada-egitim/assets/lockups/c-03-compact-dark.svg",
-      "sha256": "7a164350c572b41ce32259206293e44c72fa6b0b76ae7f12ced8a689144c0b5d",
-      "source_review_path": "docs/asyada-seal/final-lockups/assets/C-03-dark-0.svg",
-      "source_review_sha256": "dec324ee29082ee1df210f14d7a66e0ad25eb92c0a44a3d601209f5c15a994a2",
-      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "typography": {
-        "turkish": {
-          "family": "Jost",
-          "weight": 550,
-          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
-        },
-        "english": {
-          "family": "Jost",
-          "weight": 350,
-          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
-        },
-        "apostrophe": "Original approved red vector apostrophe from selected outlined source",
-        "runtime_font_dependency": false
-      },
-      "provenance": {
-        "source_wordmark_path": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-        "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
-        "source_final_review_asset": "docs/asyada-seal/final-lockups/assets/C-03-dark-0.svg",
-        "approved_review_page": "docs/asyada-seal/final-lockups/index.html"
-      },
-      "approved_alignment": 0,
-      "alignment_scope": "0 for both horizontal and stacked/vertical compositions",
-      "human_approval_date": "2026-10-08",
-      "status": "APPROVED / CANONICAL",
-      "minimum_supported_display_size": {
-        "screen_width_px": 448,
-        "print_width_mm": 95
-      },
-      "format": "bilingual_three_line",
-      "usage_rules": [
-        "Tighter bilingual horizontal uses such as email mastheads and constrained lockup areas.",
-        "Use this complete SVG as a locked artwork unit; do not reconstruct from separate seal and text geometry.",
-        "Allow proportional scaling and positioning only; never stretch, crop, recolour outside the approved colour variant, perspective-warp, trace, smooth or retypeset.",
-        "Respect the embedded clearspace and minimum size. If the space cannot hold an approved lockup, use another approved variant or flag the constraint.",
-        "Image models may generate backgrounds only; composite this exact SVG afterward and record canonical_lockup_id, canonical_lockup_sha256 and canonical_seal_sha256.",
-        "Bilingual lockup uses the shared 881-unit three-line measure."
+      "recommended_screen_width_px": [
+        360,
+        480
       ],
-      "contrast_caveats": [
-        "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
-        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
-      ]
-    },
-    {
-      "brand_id": "asyada-egitim",
-      "variant_id": "C-03",
-      "variant_name": "Compact",
-      "color_variant": "monochrome",
-      "canonical_lockup_id": "C-03/monochrome",
-      "canonical_file_path": "brands/asyada-egitim/assets/lockups/c-03-compact-monochrome.svg",
-      "sha256": "a9b6d67cb8b473c90d48010baa64173c9c97f23e15fd64dabd0496a1972ef582",
-      "source_review_path": "docs/asyada-seal/final-lockups/assets/C-03-mono-ink-0.svg",
-      "source_review_sha256": "1df99611e27af17d165beaad7a479de19c35f451708e3f0039b84860ad15f94e",
-      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "typography": {
-        "turkish": {
-          "family": "Jost",
-          "weight": 550,
-          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
-        },
-        "english": {
-          "family": "Jost",
-          "weight": 350,
-          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
-        },
-        "apostrophe": "Original approved red vector apostrophe from selected outlined source",
-        "runtime_font_dependency": false
-      },
-      "provenance": {
-        "source_wordmark_path": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-        "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
-        "source_final_review_asset": "docs/asyada-seal/final-lockups/assets/C-03-mono-ink-0.svg",
-        "approved_review_page": "docs/asyada-seal/final-lockups/index.html"
-      },
-      "approved_alignment": 0,
-      "alignment_scope": "0 for both horizontal and stacked/vertical compositions",
-      "human_approval_date": "2026-10-08",
-      "status": "APPROVED / CANONICAL",
-      "minimum_supported_display_size": {
-        "screen_width_px": 448,
-        "print_width_mm": 95
-      },
-      "format": "bilingual_three_line",
-      "usage_rules": [
-        "Tighter bilingual horizontal uses such as email mastheads and constrained lockup areas.",
-        "Use this complete SVG as a locked artwork unit; do not reconstruct from separate seal and text geometry.",
-        "Allow proportional scaling and positioning only; never stretch, crop, recolour outside the approved colour variant, perspective-warp, trace, smooth or retypeset.",
-        "Respect the embedded clearspace and minimum size. If the space cannot hold an approved lockup, use another approved variant or flag the constraint.",
-        "Image models may generate backgrounds only; composite this exact SVG afterward and record canonical_lockup_id, canonical_lockup_sha256 and canonical_seal_sha256.",
-        "Bilingual lockup uses the shared 881-unit three-line measure."
-      ],
-      "contrast_caveats": [
-        "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
-        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
-      ]
-    },
-    {
-      "brand_id": "asyada-egitim",
-      "variant_id": "D-04",
-      "variant_name": "Small-use digital",
-      "color_variant": "light",
-      "canonical_lockup_id": "D-04/light",
-      "canonical_file_path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-light.svg",
-      "sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
-      "source_review_path": "docs/asyada-seal/final-lockups/assets/D-04-light-0.svg",
-      "source_review_sha256": "6e1c08cfec9c441a390db368461b6f08331b5b0d4b41e52a77693b8819295775",
-      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "typography": {
-        "turkish": {
-          "family": "Jost",
-          "weight": 550,
-          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
-        },
-        "english": {
-          "family": "Jost",
-          "weight": 350,
-          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
-        },
-        "apostrophe": "Original approved red vector apostrophe from selected outlined source",
-        "runtime_font_dependency": false
-      },
-      "provenance": {
-        "source_wordmark_path": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-        "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
-        "source_final_review_asset": "docs/asyada-seal/final-lockups/assets/D-04-light-0.svg",
-        "approved_review_page": "docs/asyada-seal/final-lockups/index.html"
-      },
-      "approved_alignment": 0,
-      "alignment_scope": "0 for both horizontal and stacked/vertical compositions",
-      "human_approval_date": "2026-10-08",
-      "status": "APPROVED / CANONICAL",
-      "minimum_supported_display_size": {
-        "screen_width_px": 200,
-        "print_width_mm": 45
-      },
-      "format": "turkish_two_line_only",
-      "usage_rules": [
-        "Small digital signatures and mobile navigation; Turkish only by approval; use seal-only below this size.",
-        "Use this complete SVG as a locked artwork unit; do not reconstruct from separate seal and text geometry.",
-        "Allow proportional scaling and positioning only; never stretch, crop, recolour outside the approved colour variant, perspective-warp, trace, smooth or retypeset.",
-        "Respect the embedded clearspace and minimum size. If the space cannot hold an approved lockup, use another approved variant or flag the constraint.",
-        "Image models may generate backgrounds only; composite this exact SVG afterward and record canonical_lockup_id, canonical_lockup_sha256 and canonical_seal_sha256.",
-        "D-04 is Turkish only; do not add English text."
-      ],
-      "contrast_caveats": [
-        "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
-        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
-      ]
-    },
-    {
-      "brand_id": "asyada-egitim",
-      "variant_id": "D-04",
-      "variant_name": "Small-use digital",
-      "color_variant": "dark",
-      "canonical_lockup_id": "D-04/dark",
-      "canonical_file_path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-dark.svg",
-      "sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
-      "source_review_path": "docs/asyada-seal/final-lockups/assets/D-04-dark-0.svg",
-      "source_review_sha256": "de7f4c0e99c2152795e12b3a58827feba37ae6816eb156cc3ef87aee34aa9f47",
-      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "typography": {
-        "turkish": {
-          "family": "Jost",
-          "weight": 550,
-          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
-        },
-        "english": {
-          "family": "Jost",
-          "weight": 350,
-          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
-        },
-        "apostrophe": "Original approved red vector apostrophe from selected outlined source",
-        "runtime_font_dependency": false
-      },
-      "provenance": {
-        "source_wordmark_path": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-        "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
-        "source_final_review_asset": "docs/asyada-seal/final-lockups/assets/D-04-dark-0.svg",
-        "approved_review_page": "docs/asyada-seal/final-lockups/index.html"
-      },
-      "approved_alignment": 0,
-      "alignment_scope": "0 for both horizontal and stacked/vertical compositions",
-      "human_approval_date": "2026-10-08",
-      "status": "APPROVED / CANONICAL",
-      "minimum_supported_display_size": {
-        "screen_width_px": 200,
-        "print_width_mm": 45
-      },
-      "format": "turkish_two_line_only",
-      "usage_rules": [
-        "Small digital signatures and mobile navigation; Turkish only by approval; use seal-only below this size.",
-        "Use this complete SVG as a locked artwork unit; do not reconstruct from separate seal and text geometry.",
-        "Allow proportional scaling and positioning only; never stretch, crop, recolour outside the approved colour variant, perspective-warp, trace, smooth or retypeset.",
-        "Respect the embedded clearspace and minimum size. If the space cannot hold an approved lockup, use another approved variant or flag the constraint.",
-        "Image models may generate backgrounds only; composite this exact SVG afterward and record canonical_lockup_id, canonical_lockup_sha256 and canonical_seal_sha256.",
-        "D-04 is Turkish only; do not add English text."
-      ],
-      "contrast_caveats": [
-        "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
-        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
-      ]
-    },
-    {
-      "brand_id": "asyada-egitim",
-      "variant_id": "D-04",
-      "variant_name": "Small-use digital",
-      "color_variant": "monochrome",
-      "canonical_lockup_id": "D-04/monochrome",
-      "canonical_file_path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-monochrome.svg",
-      "sha256": "662bd107264ec2e658313ab6de781b38476d2b5dccb5cca611d84b6cb2ea1352",
-      "source_review_path": "docs/asyada-seal/final-lockups/assets/D-04-mono-ink-0.svg",
-      "source_review_sha256": "93e3fb22ca9fee4e6cf313a43f849eb6b1768d3b795aa3df1e07461e0f667a85",
-      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-      "typography": {
-        "turkish": {
-          "family": "Jost",
-          "weight": 550,
-          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
-        },
-        "english": {
-          "family": "Jost",
-          "weight": 350,
-          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
-        },
-        "apostrophe": "Original approved red vector apostrophe from selected outlined source",
-        "runtime_font_dependency": false
-      },
-      "provenance": {
-        "source_wordmark_path": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-        "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
-        "source_final_review_asset": "docs/asyada-seal/final-lockups/assets/D-04-mono-ink-0.svg",
-        "approved_review_page": "docs/asyada-seal/final-lockups/index.html"
-      },
-      "approved_alignment": 0,
-      "alignment_scope": "0 for both horizontal and stacked/vertical compositions",
-      "human_approval_date": "2026-10-08",
-      "status": "APPROVED / CANONICAL",
-      "minimum_supported_display_size": {
-        "screen_width_px": 200,
-        "print_width_mm": 45
-      },
-      "format": "turkish_two_line_only",
-      "usage_rules": [
-        "Small digital signatures and mobile navigation; Turkish only by approval; use seal-only below this size.",
-        "Use this complete SVG as a locked artwork unit; do not reconstruct from separate seal and text geometry.",
-        "Allow proportional scaling and positioning only; never stretch, crop, recolour outside the approved colour variant, perspective-warp, trace, smooth or retypeset.",
-        "Respect the embedded clearspace and minimum size. If the space cannot hold an approved lockup, use another approved variant or flag the constraint.",
-        "Image models may generate backgrounds only; composite this exact SVG afterward and record canonical_lockup_id, canonical_lockup_sha256 and canonical_seal_sha256.",
-        "D-04 is Turkish only; do not add English text."
-      ],
-      "contrast_caveats": [
-        "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
-        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
-      ]
+      "small_digital_minimum_px": 320,
+      "small_digital_exception": "Screen-only: proportional H-02 from 320 px with required real-size readability check; preserve original 528px production-audit size for historic deliveries."
     },
     {
       "brand_id": "asyada-egitim",
@@ -845,7 +543,335 @@
         "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
         "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
       ]
+    },
+    {
+      "brand_id": "asyada-egitim",
+      "variant_id": "C-03",
+      "variant_name": "Compact",
+      "color_variant": "light",
+      "canonical_lockup_id": "C-03/light",
+      "canonical_file_path": "brands/asyada-egitim/assets/lockups/c-03-compact-light.svg",
+      "sha256": "b23e01c233093cd132ea79a7332a75390bff8fd35b909db05694f2ba441c0a76",
+      "source_review_path": "docs/asyada-seal/final-lockups/assets/C-03-light-0.svg",
+      "source_review_sha256": "40cb19c38ae22a0da61c192a1992e019ab0a76a0c38c42d4c71575cd5cc28960",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "typography": {
+        "turkish": {
+          "family": "Jost",
+          "weight": 550,
+          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
+        },
+        "english": {
+          "family": "Jost",
+          "weight": 350,
+          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
+        },
+        "apostrophe": "Original approved red vector apostrophe from selected outlined source",
+        "runtime_font_dependency": false
+      },
+      "provenance": {
+        "source_wordmark_path": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
+        "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+        "source_final_review_asset": "docs/asyada-seal/final-lockups/assets/C-03-light-0.svg",
+        "approved_review_page": "docs/asyada-seal/final-lockups/index.html"
+      },
+      "approved_alignment": 0,
+      "alignment_scope": "0 for both horizontal and stacked/vertical compositions",
+      "human_approval_date": "2026-10-08",
+      "status": "RETIRED / HISTORY ONLY",
+      "minimum_supported_display_size": {
+        "screen_width_px": 448,
+        "print_width_mm": 95
+      },
+      "format": "bilingual_three_line",
+      "usage_rules": [
+        "Retained solely to reproduce historical designs and archived outputs. Do not select this asset in new production."
+      ],
+      "contrast_caveats": [
+        "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
+        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
+      ],
+      "retired_on": "2026-10-30"
+    },
+    {
+      "brand_id": "asyada-egitim",
+      "variant_id": "C-03",
+      "variant_name": "Compact",
+      "color_variant": "dark",
+      "canonical_lockup_id": "C-03/dark",
+      "canonical_file_path": "brands/asyada-egitim/assets/lockups/c-03-compact-dark.svg",
+      "sha256": "7a164350c572b41ce32259206293e44c72fa6b0b76ae7f12ced8a689144c0b5d",
+      "source_review_path": "docs/asyada-seal/final-lockups/assets/C-03-dark-0.svg",
+      "source_review_sha256": "dec324ee29082ee1df210f14d7a66e0ad25eb92c0a44a3d601209f5c15a994a2",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "typography": {
+        "turkish": {
+          "family": "Jost",
+          "weight": 550,
+          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
+        },
+        "english": {
+          "family": "Jost",
+          "weight": 350,
+          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
+        },
+        "apostrophe": "Original approved red vector apostrophe from selected outlined source",
+        "runtime_font_dependency": false
+      },
+      "provenance": {
+        "source_wordmark_path": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
+        "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+        "source_final_review_asset": "docs/asyada-seal/final-lockups/assets/C-03-dark-0.svg",
+        "approved_review_page": "docs/asyada-seal/final-lockups/index.html"
+      },
+      "approved_alignment": 0,
+      "alignment_scope": "0 for both horizontal and stacked/vertical compositions",
+      "human_approval_date": "2026-10-08",
+      "status": "RETIRED / HISTORY ONLY",
+      "minimum_supported_display_size": {
+        "screen_width_px": 448,
+        "print_width_mm": 95
+      },
+      "format": "bilingual_three_line",
+      "usage_rules": [
+        "Retained solely to reproduce historical designs and archived outputs. Do not select this asset in new production."
+      ],
+      "contrast_caveats": [
+        "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
+        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
+      ],
+      "retired_on": "2026-10-30"
+    },
+    {
+      "brand_id": "asyada-egitim",
+      "variant_id": "C-03",
+      "variant_name": "Compact",
+      "color_variant": "monochrome",
+      "canonical_lockup_id": "C-03/monochrome",
+      "canonical_file_path": "brands/asyada-egitim/assets/lockups/c-03-compact-monochrome.svg",
+      "sha256": "a9b6d67cb8b473c90d48010baa64173c9c97f23e15fd64dabd0496a1972ef582",
+      "source_review_path": "docs/asyada-seal/final-lockups/assets/C-03-mono-ink-0.svg",
+      "source_review_sha256": "1df99611e27af17d165beaad7a479de19c35f451708e3f0039b84860ad15f94e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "typography": {
+        "turkish": {
+          "family": "Jost",
+          "weight": 550,
+          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
+        },
+        "english": {
+          "family": "Jost",
+          "weight": 350,
+          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
+        },
+        "apostrophe": "Original approved red vector apostrophe from selected outlined source",
+        "runtime_font_dependency": false
+      },
+      "provenance": {
+        "source_wordmark_path": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
+        "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+        "source_final_review_asset": "docs/asyada-seal/final-lockups/assets/C-03-mono-ink-0.svg",
+        "approved_review_page": "docs/asyada-seal/final-lockups/index.html"
+      },
+      "approved_alignment": 0,
+      "alignment_scope": "0 for both horizontal and stacked/vertical compositions",
+      "human_approval_date": "2026-10-08",
+      "status": "RETIRED / HISTORY ONLY",
+      "minimum_supported_display_size": {
+        "screen_width_px": 448,
+        "print_width_mm": 95
+      },
+      "format": "bilingual_three_line",
+      "usage_rules": [
+        "Retained solely to reproduce historical designs and archived outputs. Do not select this asset in new production."
+      ],
+      "contrast_caveats": [
+        "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
+        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
+      ],
+      "retired_on": "2026-10-30"
+    },
+    {
+      "brand_id": "asyada-egitim",
+      "variant_id": "D-04",
+      "variant_name": "Small-use digital",
+      "color_variant": "light",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_file_path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-light.svg",
+      "sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "source_review_path": "docs/asyada-seal/final-lockups/assets/D-04-light-0.svg",
+      "source_review_sha256": "6e1c08cfec9c441a390db368461b6f08331b5b0d4b41e52a77693b8819295775",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "typography": {
+        "turkish": {
+          "family": "Jost",
+          "weight": 550,
+          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
+        },
+        "english": {
+          "family": "Jost",
+          "weight": 350,
+          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
+        },
+        "apostrophe": "Original approved red vector apostrophe from selected outlined source",
+        "runtime_font_dependency": false
+      },
+      "provenance": {
+        "source_wordmark_path": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
+        "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+        "source_final_review_asset": "docs/asyada-seal/final-lockups/assets/D-04-light-0.svg",
+        "approved_review_page": "docs/asyada-seal/final-lockups/index.html"
+      },
+      "approved_alignment": 0,
+      "alignment_scope": "0 for both horizontal and stacked/vertical compositions",
+      "human_approval_date": "2026-10-08",
+      "status": "RETIRED / HISTORY ONLY",
+      "minimum_supported_display_size": {
+        "screen_width_px": 200,
+        "print_width_mm": 45
+      },
+      "format": "turkish_two_line_only",
+      "usage_rules": [
+        "Retained solely to reproduce historical designs and archived outputs. Do not select this asset in new production."
+      ],
+      "contrast_caveats": [
+        "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
+        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
+      ],
+      "retired_on": "2026-10-30"
+    },
+    {
+      "brand_id": "asyada-egitim",
+      "variant_id": "D-04",
+      "variant_name": "Small-use digital",
+      "color_variant": "dark",
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_file_path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-dark.svg",
+      "sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "source_review_path": "docs/asyada-seal/final-lockups/assets/D-04-dark-0.svg",
+      "source_review_sha256": "de7f4c0e99c2152795e12b3a58827feba37ae6816eb156cc3ef87aee34aa9f47",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "typography": {
+        "turkish": {
+          "family": "Jost",
+          "weight": 550,
+          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
+        },
+        "english": {
+          "family": "Jost",
+          "weight": 350,
+          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
+        },
+        "apostrophe": "Original approved red vector apostrophe from selected outlined source",
+        "runtime_font_dependency": false
+      },
+      "provenance": {
+        "source_wordmark_path": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
+        "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+        "source_final_review_asset": "docs/asyada-seal/final-lockups/assets/D-04-dark-0.svg",
+        "approved_review_page": "docs/asyada-seal/final-lockups/index.html"
+      },
+      "approved_alignment": 0,
+      "alignment_scope": "0 for both horizontal and stacked/vertical compositions",
+      "human_approval_date": "2026-10-08",
+      "status": "RETIRED / HISTORY ONLY",
+      "minimum_supported_display_size": {
+        "screen_width_px": 200,
+        "print_width_mm": 45
+      },
+      "format": "turkish_two_line_only",
+      "usage_rules": [
+        "Retained solely to reproduce historical designs and archived outputs. Do not select this asset in new production."
+      ],
+      "contrast_caveats": [
+        "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
+        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
+      ],
+      "retired_on": "2026-10-30"
+    },
+    {
+      "brand_id": "asyada-egitim",
+      "variant_id": "D-04",
+      "variant_name": "Small-use digital",
+      "color_variant": "monochrome",
+      "canonical_lockup_id": "D-04/monochrome",
+      "canonical_file_path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-monochrome.svg",
+      "sha256": "662bd107264ec2e658313ab6de781b38476d2b5dccb5cca611d84b6cb2ea1352",
+      "source_review_path": "docs/asyada-seal/final-lockups/assets/D-04-mono-ink-0.svg",
+      "source_review_sha256": "93e3fb22ca9fee4e6cf313a43f849eb6b1768d3b795aa3df1e07461e0f667a85",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "typography": {
+        "turkish": {
+          "family": "Jost",
+          "weight": 550,
+          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
+        },
+        "english": {
+          "family": "Jost",
+          "weight": 350,
+          "source": "Approved outlined paths from tr550-en350-wordmark.svg"
+        },
+        "apostrophe": "Original approved red vector apostrophe from selected outlined source",
+        "runtime_font_dependency": false
+      },
+      "provenance": {
+        "source_wordmark_path": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
+        "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+        "source_final_review_asset": "docs/asyada-seal/final-lockups/assets/D-04-mono-ink-0.svg",
+        "approved_review_page": "docs/asyada-seal/final-lockups/index.html"
+      },
+      "approved_alignment": 0,
+      "alignment_scope": "0 for both horizontal and stacked/vertical compositions",
+      "human_approval_date": "2026-10-08",
+      "status": "RETIRED / HISTORY ONLY",
+      "minimum_supported_display_size": {
+        "screen_width_px": 200,
+        "print_width_mm": 45
+      },
+      "format": "turkish_two_line_only",
+      "usage_rules": [
+        "Retained solely to reproduce historical designs and archived outputs. Do not select this asset in new production."
+      ],
+      "contrast_caveats": [
+        "Red apostrophe on dark background is intentionally retained from approval; use monochrome only when a one-colour high-contrast signature is required.",
+        "Fine English line depends on normal antialiasing at minimum size; do not disable antialiasing or shrink below minimum."
+      ],
+      "retired_on": "2026-10-30"
     }
   ],
-  "manifest_sha256_sidecar": "a944967075f3fd695b018003a2d8e47c70f70476f2964011f79b2bc42f11db61"
+  "small_digital_rule": "For new everyday digital applications use unchanged H-02 proportionally at 360-480 px (allowed screen exception down to 320 px with real-size legibility QA). Historical production-audit minimum remains 528 px; print minimum 110 mm. Below 320 px seal V-01 only. Never use retired C-03/D-04.",
+  "policy_revision_date": "2026-10-30",
+  "current_variant_ids": [
+    "H-02",
+    "P-01",
+    "F-05"
+  ],
+  "default_variant_id": "H-02",
+  "retired_variants": [
+    {
+      "id": "C-03",
+      "retired_on": "2026-10-30",
+      "reason": "Seal too small relative to lettering; superseded by proportionally scaled H-02.",
+      "history": "Historical SVG assets retained at original path, not for new production."
+    },
+    {
+      "id": "D-04",
+      "retired_on": "2026-10-30",
+      "reason": "Seal too small relative to lettering at digital sizes; superseded by proportionally scaled H-02.",
+      "history": "Historical SVG assets retained at original path, not for new production."
+    }
+  ],
+  "previous_manifest_sha256": "a944967075f3fd695b018003a2d8e47c70f70476f2964011f79b2bc42f11db61",
+  "active_record_ids": [
+    "P-01/light",
+    "P-01/dark",
+    "P-01/monochrome",
+    "H-02/light",
+    "H-02/dark",
+    "H-02/monochrome",
+    "F-05/light",
+    "F-05/dark",
+    "F-05/monochrome"
+  ],
+  "historical_records_retained": true
 }

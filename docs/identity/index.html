@@ -37,7 +37,7 @@ h2{font-size:clamp(26px,4vw,42px);letter-spacing:-.03em;margin:8px 0 6px}
 .mode.dark{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .mode.mono{background:#fff}
 .mode .mark{height:260px;display:grid;place-items:center}
-.mode .mark img{width:100%;height:100%;max-height:250px;object-fit:contain}
+.mode .mark img{width:100%;height:100%;max-height:250px;object-fit:contain}.small-preview .mode .mark{height:140px}.small-preview .mode .mark img{width:min(100%,320px);height:auto;max-height:130px}
 .mode figcaption{font-size:12px;color:var(--muted);margin-top:10px}
 .mode.dark figcaption{color:#d9d1bf}
 .mode code{font-size:11px;overflow-wrap:anywhere}
@@ -74,7 +74,7 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:22px;font-si
     <img class="seal" src="../asyada-seal/assets/v01-canonical.svg" alt="Onaylı kanonik mühür V-01">
     <div>
       <h1>Onaylı kimlik</h1>
-      <p class="lede">Mühür, wordmark ve beş kilit. Geometri değişmedi, yeniden çizim yok — bu sayfadaki her SVG, manifestteki kanonik dosyaların birebir aynısı.</p>
+      <p class="lede">Mühür, wordmark ve üç güncel kilit. Günlük kullanımda H-02 yatay imza tercih edilir; küçük dijitalde aynı onaylı SVG orantılı ölçeklendirilir. Tarihsel C-03/D-04 uygulamaları üretimden kaldırıldı.</p>
       <div class="badges"><span class="badge">APPROVED / CANONICAL &middot; 2026-10-08</span></div>
     </div>
   </div>
@@ -86,10 +86,10 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:22px;font-si
   </div>
 
   <section id="lockups">
-    <div class="kicker">BEŞ KİLİT &middot; ÜÇ RENK VARYANTI</div>
+    <div class="kicker">ÜÇ GÜNCEL KİLİT &middot; ÜÇ RENK VARYANTI</div>
     <h2>Kilit ailesi</h2>
-    <p class="sub">Burası onaylı logo ailesinin tek kamusal sunum sayfasıdır. Üretim için yetkili dosyalar <code>brands/asyada-egitim/assets/lockups/</code> altında manifest ve SHA-256 doğrulamasıyla korunur. Bu sayfadaki gösterimler üretim kaynağı değildir.</p>
-    <p class="sub">Her karttaki görseller kanonik dosyalardır. D-04 yalnızca Türkçe'dir; İngilizce eklenemez.</p>
+    <p class="sub">Burası üretimde kullanılacak güncel logo ailesinin tek kamusal sunum sayfasıdır. Üretim için yetkili dosyalar <code>brands/asyada-egitim/assets/lockups/</code> altında manifest ve SHA-256 doğrulamasıyla korunur. Bu sayfadaki gösterimler üretim kaynağı değildir.</p>
+    <p class="sub">Her karttaki görseller mevcut onaylı SVG dosyalarıdır. C-03 ve D-04 kullanım dışıdır; geriye dönük kaynakları arşivde kalır.</p>
 
     <div class="lockup" id="P-01">
       <h3>P-01 &middot; Primary stacked</h3>
@@ -103,7 +103,7 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:22px;font-si
 
     <div class="lockup" id="H-02">
       <h3>H-02 &middot; Primary horizontal</h3>
-      <p class="rule">Web başlıkları ve yatay imzalar &middot; Minimum 528px / 110mm</p>
+      <p class="rule">Günlük ve yatay dijital imzalar &middot; 360–480px önerilen, 320px alt sınır (ekranda) / baskıda 110mm</p>
       <div class="modes">
         <figure class="mode"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/h-02-primary-horizontal-light.svg" alt="H-02 light"></div><figcaption>light &middot; <code>18b0b2b3a5ad&hellip;</code></figcaption></figure>
         <figure class="mode dark"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/h-02-primary-horizontal-dark.svg" alt="H-02 dark"></div><figcaption>dark &middot; <code>c9eb55f95a60&hellip;</code></figcaption></figure>
@@ -111,24 +111,15 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:22px;font-si
       </div>
     </div>
 
-    <div class="lockup" id="C-03">
-      <h3>C-03 &middot; Compact</h3>
-      <p class="rule">E-posta ve dar alanlar &middot; Minimum 448px / 95mm</p>
-      <div class="modes">
-        <figure class="mode"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/c-03-compact-light.svg" alt="C-03 light"></div><figcaption>light &middot; <code>b23e01c23309&hellip;</code></figcaption></figure>
-        <figure class="mode dark"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/c-03-compact-dark.svg" alt="C-03 dark"></div><figcaption>dark &middot; <code>7a164350c572&hellip;</code></figcaption></figure>
-        <figure class="mode mono"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/c-03-compact-monochrome.svg" alt="C-03 monochrome"></div><figcaption>monochrome &middot; <code>a9b6d67cb8b4&hellip;</code></figcaption></figure>
+    <div class="lockup" id="small-digital">
+      <h3>H-02 &middot; Küçük dijital kullanım</h3>
+      <p class="rule">Yeni logo üretmiyoruz: H-02'nin aynı vektörünü orantılı olarak küçültüyoruz. Varsayılan 360–480px; dar kullanımda 320px'e kadar. Daha küçük alanlarda yalnızca V-01 mühür. C-03/D-04 artık onaylı seçenek değildir.</p>
+      <div class="modes small-preview">
+        <figure class="mode"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/h-02-primary-horizontal-light.svg" alt="H-02 açık zeminde küçültülmüş kullanım"></div><figcaption>H-02/light &middot; oranı korunmuş kompakt gösterim</figcaption></figure>
+        <figure class="mode dark"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/h-02-primary-horizontal-dark.svg" alt="H-02 koyu zeminde küçültülmüş kullanım"></div><figcaption>H-02/dark &middot; oranı korunmuş kompakt gösterim</figcaption></figure>
+        <figure class="mode mono"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/h-02-primary-horizontal-monochrome.svg" alt="H-02 tek renk kompakt gösterim"></div><figcaption>H-02/monochrome &middot; oranı korunmuş kompakt gösterim</figcaption></figure>
       </div>
-    </div>
-
-    <div class="lockup" id="D-04">
-      <h3>D-04 &middot; Small-use / digital</h3>
-      <p class="rule">Küçük dijital imzalar — YALNIZCA TÜRKÇE &middot; Minimum 200px / 45mm &middot; Altında yalnızca mühür kullanılır</p>
-      <div class="modes">
-        <figure class="mode"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/d-04-small-use-digital-light.svg" alt="D-04 light"></div><figcaption>light &middot; <code>2ff2263dcdab&hellip;</code></figcaption></figure>
-        <figure class="mode dark"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/d-04-small-use-digital-dark.svg" alt="D-04 dark"></div><figcaption>dark &middot; <code>e77d5607426c&hellip;</code></figcaption></figure>
-        <figure class="mode mono"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/d-04-small-use-digital-monochrome.svg" alt="D-04 monochrome"></div><figcaption>monochrome &middot; <code>662bd107264e&hellip;</code></figcaption></figure>
-      </div>
+      <p class="rule">Küçültme öncesi/sonrası mühür–yazı oranları aynıdır. Başka seal, font, yeniden çizilmiş sözcük veya değişmiş viewBox kullanılmaz. İngilizce ince satırın okunabilirliğini gerçek boyutta kontrol et.</p>
     </div>
 
     <div class="lockup" id="F-05">
@@ -147,18 +138,16 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:22px;font-si
     <h2>Minimum boyut ve clearspace</h2>
     <table class="spec">
       <tr><th>Kilit</th><th>Ekran min.</th><th>Baskı min.</th><th>Not</th></tr>
-      <tr><td>P-01</td><td>352px</td><td>75mm</td><td>Varsayılan dikey imza</td></tr>
-      <tr><td>H-02</td><td>528px</td><td>110mm</td><td>Geniş başlıklar</td></tr>
-      <tr><td>C-03</td><td>448px</td><td>95mm</td><td>Sıkı yatay kullanımlar</td></tr>
-      <tr><td>D-04</td><td>200px</td><td>45mm</td><td>Yalnızca Türkçe; altında mühür-tek</td></tr>
-      <tr><td>F-05</td><td>352px</td><td>75mm</td><td>Törensel</td></tr>
+      <tr><td>H-02</td><td>320px (360–480px önerilir)</td><td>110mm</td><td>Varsayılan dijital/yatay imza; gerçek boyutta okunurluk kontrolü</td></tr>
+      <tr><td>P-01</td><td>352px</td><td>75mm</td><td>Dikey ve ortalı tasarımlar</td></tr>
+      <tr><td>F-05</td><td>352px</td><td>75mm</td><td>Resmî çift dilli tasarımlar</td></tr>
     </table>
     <p class="sub" style="margin-top:14px">Clearspace her kilidin SVG çerçevesine gömülü (70 birim). Orantılı ölçek ve konum dışında değişiklik yok: esnetme, kırpma, perspektif, yeniden renklendirme ve görüntü modeliyle üretim yasak. Her nihai çıktının manifestosu <code>canonical_lockup_id</code>, <code>canonical_lockup_sha256</code> ve <code>canonical_seal_sha256</code> kaydeder. Üretim kapısı: <code>python3 studio/tools/verify_asyada_canonical_lockups.py</code>.</p>
     <div class="manifest">
       <b>APPROVED / CANONICAL &middot; 2026-10-08</b><br>
       Mühür SHA-256: <code>8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a</code><br>
-      Manifest SHA-256: <code>60fb1f6d105fa7c3d47e349ee75b191c023491967b75412a0323ba003b7ed351</code><br>
-      Hizalama: yatay 0 / dikey 0 &middot; Ortak ölçü: 881 birim (P-01, H-02, C-03, F-05)<br>
+      Güncel manifest SHA-256: <code>8a6a7f85fbabcd497f0a3032aa335150fedebc6646e7e767980bfa73d4c5ca06</code><br>
+      Hizalama: yatay 0 / dikey 0 &middot; Ortak ölçü: 881 birim (P-01, H-02, F-05)<br>
       <a href="../asyada-seal/canonical-lockups/assets/canonical-lockups.json">Makine-manifest (JSON) &rarr;</a> &middot;
       <a href="../asyada-seal/canonical-lockups/assets/verification-result.json">Doğrulama raporu (JSON) &rarr;</a> &middot;
       <a href="#lockups">Onaylı logo ailesi &rarr;</a>
@@ -187,7 +176,7 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:22px;font-si
       <p><a href="../asyada-seal/wordmark/">Referans denetimi &rarr;</a> &middot; <a href="../asyada-seal/vector-review/">Vektör incelemesi (tarihsel) &rarr;</a></p></div></details>
 
     <details class="hist"><summary><span class="st old">ARŞİV</span> Kilit sistemi ve birleşik geometri <small>— 5 varyant, W=881</small></summary>
-      <div class="body"><p>Beş yapısal dizilim; üç satır tek ölçüde. Tutarlılık deneyi (16 çıktı) model sınırlarını belgeledi.</p>
+      <div class="body"><p>Önceki beş yapısal dizilim; güncel üretimde H-02, P-01, F-05 kalır. Üç satır tek ölçüde. Tutarlılık deneyi (16 çıktı) model sınırlarını belgeledi.</p>
       <p><a href="../asyada-seal/lockups/">Kilit sistemi &rarr;</a> &middot; <a href="../asyada-seal/unified/">Birleşik geometri &rarr;</a> &middot; <a href="../asyada-seal/consistency/">Tutarlılık deneyi &rarr;</a> &middot; <a href="../asyada-seal/smooth/">Pürüzsüz kontur (arşiv) &rarr;</a></p></div></details>
 
     <details class="hist"><summary><span class="st ok">SEÇİLDİ</span> Tipografi ağırlık çalışması <small>— Jost 550 TR / 350 EN</small></summary>
@@ -200,7 +189,7 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:22px;font-si
       <p><a href="../asyada-seal/final-lockups/">Final incelemesi &rarr;</a></p></div></details>
 
     <details class="hist" open><summary><span class="st ok">CANONICAL</span> Kanonik kilit manifestosu <small>— 2026-10-08, üretim kaynağı</small></summary>
-      <div class="body"><p>15 SVG + makine manifestosu + doğrulayıcı. Gelecek tüm markalı çıktılar manifestteki tam SVG'leri kullanır.</p>
+      <div class="body"><p>9 güncel SVG + makine manifestosu + doğrulayıcı. C-03/D-04 tarihsel kaynaklara ayrıldı. Gelecek markalı çıktılar yalnız güncel manifestteki tam SVG'leri kullanır.</p>
       <p><a href="#lockups">Onaylı logo ailesi &rarr;</a> &middot; <a href="../asyada-seal/visual-system-phase-1/">Faz 1 prototipleri (tarihsel referans) &rarr;</a></p></div></details>
   </section>
 

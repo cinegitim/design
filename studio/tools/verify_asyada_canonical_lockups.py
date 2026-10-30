@@ -58,6 +58,18 @@ def main() -> None:
     seen = {r.get("canonical_lockup_id") for r in records}
     if seen != expected_ids or len(records) != 15:
         fail(f"approved combination set mismatch: {sorted(seen)}")
+    if manifest.get("default_variant_id") != "H-02":
+        fail("H-02 must be default")
+    if manifest.get("current_variant_ids") != ["H-02", "P-01", "F-05"]:
+        fail("only the three current lockups may be approved")
+    if {x.get("id") for x in manifest.get("retired_variants", [])} != {"C-03", "D-04"}:
+        fail("retired lockup statuses are missing")
+    active_ids = {f"{v}/{c}" for v in ["H-02","P-01","F-05"] for c in ["light","dark","monochrome"]}
+    retired_ids = expected_ids - active_ids
+    if {r["canonical_lockup_id"] for r in records if r.get("status") == "APPROVED / CANONICAL"} != active_ids:
+        fail("active canonical logo membership mismatch")
+    if {r["canonical_lockup_id"] for r in records if r.get("status") == "RETIRED / HISTORY ONLY"} != retired_ids:
+        fail("retired historical logo membership mismatch")
     checked = []
     for rec in records:
         path = ROOT / rec["canonical_file_path"]
@@ -76,8 +88,6 @@ def main() -> None:
         expected = TURKISH_GLYPHS if rec["variant_id"] == "D-04" else FULL_GLYPHS
         if glyphs != expected:
             fail(f"{path}: glyph/diacritic sequence mismatch: {glyphs!r}")
-        if rec["variant_id"] == "D-04" and "EDUCATION" in glyphs:
-            fail(f"{path}: D-04 incorrectly contains English")
         # Seal must be embedded as a nested original 400:370 SVG with the manifest SHA.
         nested = [e for e in root.iter(f"{{{NS}}}svg") if e.get("data-canonical-logo-sha256")]
         if len(nested) != 1 or nested[0].get("data-canonical-logo-sha256") != SEAL_SHA:
@@ -107,6 +117,11 @@ def main() -> None:
         fail("experimental assets referenced in production: " + "; ".join(bad_refs))
     result = {
         "status": "PASS",
+        "policy_revision_date": manifest.get("policy_revision_date"),
+        "active_variant_ids": manifest.get("current_variant_ids"),
+        "retired_variant_ids": ["C-03", "D-04"],
+        "active_records": 9,
+        "retired_records": 6,
         "canonical_status": "APPROVED / CANONICAL",
         "checked_records": len(checked),
         "canonical_seal_sha256": SEAL_SHA,

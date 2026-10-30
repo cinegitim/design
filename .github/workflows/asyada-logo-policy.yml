@@ -1,0 +1,53 @@
+name: Asya'da Egitim active logo policy
+on:
+  pull_request:
+    paths:
+      - "AGENTS.md"
+      - "brands/asyada-egitim/brand.json"
+      - "brands/asyada-egitim/assets/lockups/**"
+      - "brands/asyada-egitim/decisions/**"
+      - "docs/workspaces/asyada-egitim/logos-and-covers/**"
+      - "docs/identity/**"
+      - "docs/asyada-seal/canonical-lockups/assets/**"
+      - "studio/tools/verify_asyada_canonical_lockups.py"
+      - "studio/tools/test_asyada_active_logo_policy.mjs"
+      - "studio/production/chatgpt/EXECUTION.md"
+      - ".github/workflows/asyada-logo-policy.yml"
+  push:
+    branches: [main]
+    paths:
+      - "brands/asyada-egitim/brand.json"
+      - "brands/asyada-egitim/assets/lockups/canonical-lockups.json"
+      - ".github/workflows/asyada-logo-policy.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  approved-lockups:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Checkout logo contract and active galleries only
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            AGENTS.md
+            brands/asyada-egitim/brand.json
+            brands/asyada-egitim/assets/lockups/
+            brands/asyada-egitim/decisions/2026-10-30-h02-small-use-retire-c03-d04.md
+            docs/workspaces/asyada-egitim/logos-and-covers/index.html
+            docs/identity/index.html
+            docs/asyada-seal/canonical-lockups/assets/
+            studio/tools/test_asyada_active_logo_policy.mjs
+            studio/tools/verify_asyada_canonical_lockups.py
+            studio/production/chatgpt/EXECUTION.md
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+      - name: Verify current logo list, checksums, sizes, and archived compatibility
+        run: node --test studio/tools/test_asyada_active_logo_policy.mjs
+      - name: Python verifier syntax
+        run: python3 -c "import ast; ast.parse(open('studio/tools/verify_asyada_canonical_lockups.py', encoding='utf-8').read())"

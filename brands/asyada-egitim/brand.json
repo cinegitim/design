@@ -43,7 +43,7 @@
     "status": "APPROVED / CANONICAL",
     "approvedOn": "2026-10-08",
     "manifest": "brands/asyada-egitim/assets/lockups/canonical-lockups.json",
-    "manifestSha256": "60fb1f6d105fa7c3d47e349ee75b191c023491967b75412a0323ba003b7ed351",
+    "manifestSha256": "8a6a7f85fbabcd497f0a3032aa335150fedebc6646e7e767980bfa73d4c5ca06",
     "sourceReview": "docs/asyada-seal/final-lockups/",
     "canonicalSealSha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
     "typography": {
@@ -56,11 +56,9 @@
       "stackedVertical": 0
     },
     "approvedVariants": [
-      "C-03",
-      "D-04",
-      "F-05",
       "H-02",
-      "P-01"
+      "P-01",
+      "F-05"
     ],
     "approvedColorVariants": [
       "dark",
@@ -105,36 +103,6 @@
         "sha256": "6d551532099e8d948570a2c76275f388bbef7db32635fb20c9c83cab8cd1e92b"
       },
       {
-        "canonical_lockup_id": "C-03/light",
-        "path": "brands/asyada-egitim/assets/lockups/c-03-compact-light.svg",
-        "sha256": "b23e01c233093cd132ea79a7332a75390bff8fd35b909db05694f2ba441c0a76"
-      },
-      {
-        "canonical_lockup_id": "C-03/dark",
-        "path": "brands/asyada-egitim/assets/lockups/c-03-compact-dark.svg",
-        "sha256": "7a164350c572b41ce32259206293e44c72fa6b0b76ae7f12ced8a689144c0b5d"
-      },
-      {
-        "canonical_lockup_id": "C-03/monochrome",
-        "path": "brands/asyada-egitim/assets/lockups/c-03-compact-monochrome.svg",
-        "sha256": "a9b6d67cb8b473c90d48010baa64173c9c97f23e15fd64dabd0496a1972ef582"
-      },
-      {
-        "canonical_lockup_id": "D-04/light",
-        "path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-light.svg",
-        "sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e"
-      },
-      {
-        "canonical_lockup_id": "D-04/dark",
-        "path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-dark.svg",
-        "sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335"
-      },
-      {
-        "canonical_lockup_id": "D-04/monochrome",
-        "path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-monochrome.svg",
-        "sha256": "662bd107264ec2e658313ab6de781b38476d2b5dccb5cca611d84b6cb2ea1352"
-      },
-      {
         "canonical_lockup_id": "F-05/light",
         "path": "brands/asyada-egitim/assets/lockups/f-05-formal-bilingual-light.svg",
         "sha256": "e1892f677d491f6e0e2491d6c8f3ad1b0d269ed9f1a16df98ea0b6329ceff810"
@@ -149,6 +117,28 @@
         "path": "brands/asyada-egitim/assets/lockups/f-05-formal-bilingual-monochrome.svg",
         "sha256": "5a7b2a17459da2545045409fd6791eeec36578f487ffb074b8d059ebb2df3cc0"
       }
+    ],
+    "usagePolicyRevisedOn": "2026-10-30",
+    "defaultVariant": "H-02",
+    "smallDigital": {
+      "variant": "H-02",
+      "method": "Proportionally scale complete canonical SVG",
+      "recommendedWidthPx": [
+        360,
+        480
+      ],
+      "minWidthPx": 320,
+      "belowMinimum": "Use V-01 seal only",
+      "printMinWidthMm": 110,
+      "retired": [
+        "C-03",
+        "D-04"
+      ],
+      "legibilityCheck": "Required at actual output dimensions"
+    },
+    "retiredVariants": [
+      "C-03",
+      "D-04"
     ]
   }
 }
