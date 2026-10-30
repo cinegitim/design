@@ -33,7 +33,7 @@ body{background:var(--paper);color:var(--ink);font:15px/1.55 Jost,system-ui,sans
 .work-tree .design-card.has-actions .tile-body .status{max-width:calc(100% - 100px);min-height:41px;align-items:center;font-size:12px;line-height:1.35}
 .work-tree .quick-actions{position:absolute;right:14px;bottom:14px;display:flex;gap:7px;align-items:center;z-index:2}
 .work-tree .quick-action{width:37px;height:37px;display:grid;place-items:center;flex-shrink:0;border:1px solid #c6b7a6;border-radius:10px;background:#fffdf7;color:#1d2027;text-decoration:none;box-shadow:0 1px 5px #1d202711;transition:background .15s,border-color .15s}
-.work-tree .quick-action.ig{color:#ba2441;border-color:#d8b3bc}
+.work-tree .quick-action.fb{color:#2269bf}.work-tree .quick-action.li{color:#0a66c2}.work-tree .quick-action.x{color:#1e2430}.work-tree .quick-action strong{font-size:17px;line-height:1;font-family:system-ui,sans-serif}.work-tree .quick-action.ig{color:#ba2441;border-color:#d8b3bc}
 .work-tree .quick-action.edit{color:#bd2120;border-color:#daa5a0}
 .work-tree .quick-action:hover{background:#f2e8dc;border-color:#bd2120}
 .work-tree .quick-action:focus-visible{outline:3px solid #bd2120;outline-offset:3px}
@@ -43,7 +43,20 @@ body{background:var(--paper);color:var(--ink);font:15px/1.55 Jost,system-ui,sans
 </style><script>(()=>{"use strict";
 const host=document.querySelector('.project-section'),legacy=host?.querySelector('.items'),input=document.getElementById('search'),counter=document.getElementById('counter'),empty=document.getElementById('empty');
 if(!host||!legacy||!input)return;
-const pubUrl=p=>p?.verified===true&&p.publishedAt&&/^https:\/\/(?:www\.)?instagram\.com\/(?:asyadaegitim\/)?(?:p|reel|tv)\/[A-Za-z0-9_-]+\/?$/.test(p.url||'');
+const pubUrl=p=>{
+ if(!p?.verified||!p.publishedAt)return false;
+ try{
+  const u=new URL(p.url),h=u.hostname.replace(/^www\\./,''),path=u.pathname;
+  if(u.protocol!=='https:')return false;
+  switch(p.platform||'instagram'){
+   case 'instagram':return h==='instagram.com'&&/^\\/(p|reel|tv)\\/[A-Za-z0-9_-]+\\/?$/.test(path);
+   case 'facebook':return (h==='facebook.com'||h==='m.facebook.com')&&/\\/posts\\//.test(path);
+   case 'linkedin':return h==='linkedin.com'&&/\\/feed\\/update\\/urn:li:/.test(path);
+   case 'x':return (h==='x.com'||h==='twitter.com')&&/^\\/[^/]+\\/status\\/\\d+\\/?$/.test(path);
+   default:return false;
+  }
+ }catch(_){return false}
+};
 const norm=s=>(s||'').toLocaleLowerCase('tr').replace(/ı/g,'i').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 const sources={
  'instagram-carousel-01': {v:'../../instagram/carousel-01-v2/',photo:'../../instagram/carousel-01-v2/01-cover.png'},
@@ -62,6 +75,9 @@ const sources={
 };
 function el(tag,cls,txt){const x=document.createElement(tag);if(cls)x.className=cls;if(txt!==undefined)x.textContent=txt;return x}
 function quickIcon(kind){
+ if(kind==='fb')return '<strong aria-hidden="true">f</strong>';
+ if(kind==='li')return '<strong aria-hidden="true">in</strong>';
+ if(kind==='x')return '<strong aria-hidden="true">𝕏</strong>';
  if(kind==='ig')return '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.8" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>';
  return '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 4.5H20v6.5M20 4.5l-9.2 9.2"/><path d="M18 13v6.5H4.5V6H11"/></svg>'
 }
@@ -78,10 +94,14 @@ function card(g,posts){
  const status=el('span','status'+(pub.length?' published':''),pub.length?(exact?'Yayımlandı · '+version:'Yayımlandı · sürüm belirtilmedi'):'İncelemede');
  body.append(cat,title,meta,status);tile.append(thumb,body);wrap.append(tile);
  const actions=el('nav','quick-actions');actions.setAttribute('aria-label',g.title+' hızlı işlemler');
- if(pub.length){
-  const proof=el('a','quick-action ig');proof.href=pub[0].url;proof.target='_blank';proof.rel='noopener noreferrer';
-  const label=exact?'Instagram gönderisini gör':'Instagram gönderisini gör; yayımlanan sürüm henüz eşleşmedi';
-  proof.setAttribute('aria-label',label);proof.title=label;proof.innerHTML=quickIcon('ig');actions.append(proof)
+ const names={instagram:'Instagram',facebook:'Facebook',linkedin:'LinkedIn',x:'X'};
+ for(const platform of Object.keys(names)){
+  const item=pub.find(p=>(p.platform||'instagram')===platform);
+  if(!item)continue;
+  const icon=platform==='instagram'?'ig':platform==='facebook'?'fb':platform==='linkedin'?'li':'x';
+  const proof=el('a','quick-action '+icon);proof.href=item.url;proof.target='_blank';proof.rel='noopener noreferrer';
+  const label=names[platform]+' gönderisini gör'+(item.productId===id?'':' (tam tasarım sürümü doğrulanmadı)');
+  proof.setAttribute('aria-label',label);proof.title=label;proof.innerHTML=quickIcon(icon);actions.append(proof);
  }
  const editor=el('a','quick-action edit');editor.href='../../visual-editor/browser/?product='+encodeURIComponent(id);
  editor.setAttribute('aria-label',g.title+' · Visual Editor ile düzenle');editor.title='Visual Editor ile düzenle';editor.innerHTML=quickIcon('edit');actions.append(editor);
