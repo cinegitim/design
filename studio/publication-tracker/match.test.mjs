@@ -41,3 +41,9 @@ test("a generic or ambiguous anchor cannot auto-publish",()=>{
 test("only official target account posts qualify as publications at the API boundary",()=>{
  assert.equal(exactCaptionFamily({platform:"facebook",caption:"IEFT bitti. Eğitim fırsatları bitmedi!"},[{id:"instagram-ieft",brand:"asyada-egitim",publicationAnchors:["IEFT bitti. Eğitim fırsatları bitmedi!"]}]),null);
 });
+
+test("short unique editorial anchor is valid while short generic title alone is not",()=>{
+ const gs=[{id:"instagram-tokyo-seoul",brand:"asyada-egitim",title:"Tokyo ve Seul",publicationAnchors:["Tokyo mu, Seul mu?"]}];
+ assert.equal(exactCaptionFamily({platform:"instagram",caption:"Tokyo mu, Seul mu? Şehri seç, nedenini yaz."},gs),"instagram-tokyo-seoul");
+ assert.equal(exactCaptionFamily({platform:"instagram",caption:"Tokyo ve Seul"},[{id:"instagram-tokyo-seoul",brand:"asyada-egitim",title:"Tokyo ve Seul"}]),null);
+});
