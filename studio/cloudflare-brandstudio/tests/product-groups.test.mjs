@@ -15,12 +15,12 @@ const Catalog=scope.BrandstudioCatalog;
 // committed authored pages without falsifying that snapshot's tree SHA.
 const newCampaignPages=Array.from({length:6},(_,i)=>
  'docs/instagram/ieft-2026-firsatlar-001/source/'+String(i+1).padStart(2,'0')+'.html');
-const raw=Catalog.fromPaths([...inventory.files.map(x=>x[0]),...newCampaignPages,'docs/instagram/creative-breakout-bavul-001/source/01.html']);
+const raw=Catalog.fromPaths([...inventory.files.map(x=>x[0]),...newCampaignPages,'docs/instagram/creative-breakout-bavul-001/source/01.html','docs/instagram/utokyo-design-2027-001/source/01.html']);
 const families=Catalog.groupRecords(raw,manifest);
 
-test('current 28 independently discovered versions reduce to 15 usable families',()=>{
- assert.equal(raw.length,29);
- assert.equal(families.length,16);
+test('current authored product versions map into distinct usable families',()=>{
+ assert.equal(raw.length,30);
+ assert.equal(families.length,17);
  assert.equal(new Set(families.map(x=>x.id)).size,16);
  assert.ok(families.every(x=>x.pages.length>0&&Array.isArray(x.versions)&&x.versions.length));
 });
@@ -93,7 +93,7 @@ test('Instagram publication requires real post evidence and does not invent a ma
 test('future products not manually mapped remain visible',()=>{
  const rawPlus=[...raw,{id:'instagram-new-product-001',title:'Yeni Tasarım',family:'instagram',kind:'html',pages:['instagram/new-product-001/source/01.html']}];
  const newest=Catalog.groupRecords(rawPlus,manifest);
- assert.equal(newest.length,17);
+ assert.equal(newest.length,18);
  assert.ok(newest.find(x=>x.id==='instagram-new-product-001'));
 });
 test('editor offers actual product version selector; catalog does not show historical experiments',()=>{
@@ -146,7 +146,7 @@ test('design taxonomy has subcategories nested within carousels',()=>{
 test('one actual gallery shows logos, profile images, and platform covers',()=>{
  const folder=path.join(root,'docs/workspaces/asyada-egitim/logos-and-covers');
  const html=fs.readFileSync(path.join(folder,'index.html'),'utf8');
- assert.match(html,/Onaylı logo ailesi/);
+ assert.match(html,/Güncel logo ailesi/);
  assert.match(html,/Sosyal medya profil görselleri/);
  assert.match(html,/Sosyal medya kapakları/);
  assert.doesNotMatch(html,/location\.replace\(/);
