@@ -137,6 +137,32 @@ async function handleAdmin(req,env,url){
   const challenge=await authObject(env,'challenge',clientId);
   return json({challenge:challenge.challenge,salt:env.ADMIN_PBKDF2_SALT,iterations:210000})
  }
+ // The production gallery is authenticated; only the administrator can request a new scan.
+ // A server-side Worker-to-Worker service binding keeps every credential outside browsers.
+ if(url.pathname==='/admin/publications/status'||url.pathname==='/admin/publications/refresh'){
+  const refresh=url.pathname.endsWith('/refresh');
+  if(req.method!==(refresh?'POST':'GET'))return json({error:'Yöntem desteklenmiyor'},405);
+  if(refresh&&!sameOrigin(req))return json({error:'Güvenli istek gerekli'},403);
+  const user=await session(req,env);
+  if(!user.ok)return json({error:'Admin girişi gerekli'},401);
+  if(!env.PUBLICATION_TRACKER||!env.BRANDSTUDIO_PUBLICATION_BRIDGE_TOKEN)
+   return attachSession(json({error:'Yayın denetim servisi yapılandırılmamış'},503),user);
+  try{
+   const resource=refresh?'refresh':'status';
+   const result=await env.PUBLICATION_TRACKER.fetch('https://brandstudio-publications.internal/api/'+resource,{
+    method:refresh?'POST':'GET',
+    headers:refresh?{'Authorization':'Bearer '+env.BRANDSTUDIO_PUBLICATION_BRIDGE_TOKEN,'Content-Type':'application/json'}:{Accept:'application/json'},
+    body:refresh?JSON.stringify({platforms:['instagram']}):undefined
+   });
+   const body=await result.json();
+   if(refresh&&body?.platforms?.instagram?.state!=='ok')
+    return attachSession(json({error:'Instagram denetimi tamamlanamadı',details:body?.platforms?.instagram?.message||body?.error||'Bilinmeyen hata'},502),user);
+   return attachSession(json(body,result.status),user);
+  }catch(err){
+   console.error('Publication check failed:',String(err?.message||err));
+   return attachSession(json({error:'Instagram denetim servisine ulaşılamadı'},502),user);
+  }
+ }
  if(url.pathname!=='/admin/login'&&url.pathname!=='/admin'&&url.pathname!=='/admin/')return json({error:'Yol bulunamadı'},404);
  if(req.method==='GET'){
   const user=await session(req,env);
