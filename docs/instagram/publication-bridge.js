@@ -1,43 +1,48 @@
-/* Brandstudio: read-only, Chrome-free Instagram publication proof overlay.
-   The official API and Cloudflare D1 remain separate from canonical GitHub decisions.
-   No token is sent to the browser, and candidate matches never mark a product published. */
+/* Read-only multi-channel publication proof overlay. No platform keys in browser. */
 (function(root){
 "use strict";
 const ENDPOINT="https://brandstudio-publications.lucky-truth-c0b3.workers.dev/api/proofs";
+function platformOf(p){return p.platform||"instagram"}
 function validProof(p,groups){
- if(!p||p.platform!=="instagram"||p.match_status!=="family_verified"||p.product_id!=null||
+ if(!p||p.match_status!=="family_verified"||p.product_id!=null||
     !p.group_id||!groups.some(g=>g.id===p.group_id)||!p.published_at)return false;
  if(typeof p.permalink!=="string")return false;
  try{
-  const u=new URL(p.permalink);
-  return u.protocol==="https:"&&["instagram.com","www.instagram.com"].includes(u.hostname)&&
-   /^\/(p|reel|tv)\/[A-Za-z0-9_-]+\/?$/.test(u.pathname)&&!u.username&&!u.password&&!u.search&&!u.hash;
+  const u=new URL(p.permalink),h=u.hostname.toLowerCase().replace(/^www\./,""),path=u.pathname;
+  if(u.protocol!=="https:"||u.username||u.password||u.hash||u.search)return false;
+  switch(p.platform){
+   case "instagram":return h==="instagram.com"&&/^\/(p|reel|tv)\/[A-Za-z0-9_-]+\/?$/.test(path);
+   case "facebook":return (h==="facebook.com"||h==="m.facebook.com")&&
+     (/\/posts\//.test(path)||/\/permalink\//.test(path));
+   case "linkedin":return h==="linkedin.com"&&/^\/feed\/update\/urn:li:(?:share|ugcPost):\d+\/?$/.test(path);
+   case "x":return (h==="x.com"||h==="twitter.com")&&/^\/[^/]+\/status\/\d+\/?$/.test(path);
+   default:return false;
+  }
  }catch(_){return false}
 }
 async function get(registry){
- const groups=registry&&Array.isArray(registry.groups)?registry.groups:[];
+ const groups=Array.isArray(registry?.groups)?registry.groups:[];
  if(!groups.length)return [];
  try{
   const r=await fetch(ENDPOINT,{cache:"no-store",signal:AbortSignal.timeout(4500)});
   if(!r.ok)return [];
   const data=await r.json();
   if(!Array.isArray(data.posts))return [];
-  return data.posts.filter(p=>validProof(p,groups)).slice(0,100).map(p=>({
-   groupId:p.group_id,productId:null,url:p.permalink,publishedAt:p.published_at,verified:true,
-   source:"Official Meta API via Cloudflare D1; unique caption anchor",
-   matching:"verified publication at design-family level; revision not established"
+  return data.posts.filter(p=>validProof(p,groups)).slice(0,150).map(p=>({
+   platform:p.platform,groupId:p.group_id,productId:null,url:p.permalink,publishedAt:p.published_at,
+   verified:true,source:p.platform==="instagram"?"Official Meta API":"Voholabs verified published post",
+   matching:"family-level publication; exact design version not established"
   }));
  }catch(_){return []}
 }
 async function merged(registry){
- const existing=registry?.socialPublication?.posts||[];
+ const prior=(registry?.socialPublication?.posts||[]).map(p=>Object.assign({platform:"instagram"},p));
  const additional=await get(registry);
- const keys=new Set(existing.map(p=>(p.url||"").match(/\/(?:p|reel|tv)\/([A-Za-z0-9_-]+)/)?.[1]).filter(Boolean));
- return existing.concat(additional.filter(p=>{
-  const id=p.url.match(/\/(?:p|reel|tv)\/([A-Za-z0-9_-]+)/)?.[1];
-  if(!id||keys.has(id))return false;
-  keys.add(id);return true;
+ const seen=new Set(prior.map(p=>platformOf(p)+":"+(p.url||"").replace(/\/$/,"")));
+ return prior.concat(additional.filter(p=>{
+  const key=platformOf(p)+":"+(p.url||"").replace(/\/$/,"");
+  if(seen.has(key))return false;seen.add(key);return true;
  }));
 }
-root.BrandstudioPublicationBridge={get,merged,validProof};
+root.BrandstudioPublicationBridge={get,merged,validProof,platformOf};
 })(typeof window!=="undefined"?window:globalThis);
