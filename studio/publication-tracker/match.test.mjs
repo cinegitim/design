@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {normalizeText,validPermalink,suggestFamily} from "./match.mjs";
+import {normalizeText,validPermalink,suggestFamily,exactCaptionFamily} from "./match.mjs";
 const groups=[
  {id:"instagram-tsinghua-atlas-2027",brand:"asyada-egitim",title:"Tsinghua Atlas 2027",versions:[{id:"tsinghua-v1"},{id:"tsinghua-v2"}]},
  {id:"instagram-rotani-sec-tokyo-seoul-001",brand:"asyada-egitim",title:"Rotanı Seç · Tokyo mu, Seul mü?",versions:[{id:"tokyo-v3"}]},
@@ -25,4 +25,19 @@ test("URL validation rejects unrelated hosts and arbitrary links",()=>{
  assert.equal(validPermalink("instagram","https://www.instagram.com/p/DePgrvQDdeB/"),true);
  assert.equal(validPermalink("instagram","javascript:alert(1)"),false);
  assert.equal(validPermalink("linkedin","https://www.linkedin.com/feed/update/urn:li:share:123456/"),true);
+});
+
+test("unique declared caption anchor establishes only the family",()=>{
+ const gs=[...groups,{id:"instagram-ieft",title:"IEFT Sonrası · Fırsatlar Bitmedi",brand:"asyada-egitim",publicationAnchors:["IEFT bitti. Eğitim fırsatları bitmedi!"]}];
+ const p={platform:"instagram",caption:"IEFT bitti. Eğitim fırsatları bitmedi! Daha fazla fırsat için yazın."};
+ assert.equal(exactCaptionFamily(p,gs),"instagram-ieft");
+ assert.deepEqual(Object.fromEntries(Object.entries(suggestFamily(p,gs)).filter(([k])=>["groupId","productId","status"].includes(k))),{groupId:"instagram-ieft",productId:null,status:"family_verified"});
+});
+test("a generic or ambiguous anchor cannot auto-publish",()=>{
+ const gs=[{id:"instagram-a",title:"Birinci",brand:"asyada-egitim",publicationAnchors:["Çok özel bir üniversite fırsatı"]},{id:"instagram-b",title:"İkinci",brand:"asyada-egitim",publicationAnchors:["Çok özel bir üniversite fırsatı"]}];
+ assert.equal(exactCaptionFamily({platform:"instagram",caption:"Çok özel bir üniversite fırsatı"},gs),null);
+ assert.equal(suggestFamily({caption:"Yeni fırsatlar"},gs).status,"needs_review");
+});
+test("only official target account posts qualify as publications at the API boundary",()=>{
+ assert.equal(exactCaptionFamily({platform:"facebook",caption:"IEFT bitti. Eğitim fırsatları bitmedi!"},[{id:"instagram-ieft",brand:"asyada-egitim",publicationAnchors:["IEFT bitti. Eğitim fırsatları bitmedi!"]}]),null);
 });
