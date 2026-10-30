@@ -4,7 +4,7 @@
     "seal": "brands/asyada-egitim/assets/v01-canonical.svg",
     "seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
     "manifest": "brands/asyada-egitim/assets/lockups/canonical-lockups.json",
-    "manifest_sha256": "7c00e53ac9882bcc3f8a8b878e4ca50cbe26ee99c7cd71cbe1c79983fe3f1eb3"
+    "manifest_sha256": "c37b3bffd73d844aa7cb1b8dc6d9d2f9c0ffd09926e088a6e55f1b2ba0df8206"
   },
   "preservation": {
     "manifest": "studio/archive/local-preservation.json",
