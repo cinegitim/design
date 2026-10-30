@@ -69,3 +69,35 @@ test("without a Voholabs key the source is disabled and no request is made",asyn
   assert.equal(requests,0);
  }finally{globalThis.fetch=originalFetch}
 });
+
+test("the X-only check reads Buffer sent posts and rejects other channels",async()=>{
+ const db=fakeDB(),calls=[];
+ globalThis.fetch=async(url,options)=>{
+  calls.push(String(url));
+  if(String(url).includes("product-groups.json"))return Response.json({groups:[{
+   ...group,publicationAnchors:["Tokyo Üniversitesi’nin yeni tasarım okulu"]
+  }]});
+  if(String(url)==="https://api.buffer.com")return Response.json({data:{posts:{edges:[
+   {node:{id:"buffer-1",status:"sent",channelId:"6ae497ec2f1f5ed6481ff706",text:"Tokyo Üniversitesi’nin yeni tasarım okulu Eylül 2027’de açılıyor!",externalLink:"https://x.com/2108217886128910336/status/2116206749296230468",sentAt:"2026-10-30T16:33:01Z"}},
+   {node:{id:"wrong-channel",status:"sent",channelId:"OTHER",text:"Tokyo Üniversitesi’nin yeni tasarım okulu",externalLink:"https://x.com/other/status/123",sentAt:"2026-10-30T16:33:01Z"}},
+   {node:{id:"fake-url",status:"sent",channelId:"6ae497ec2f1f5ed6481ff706",text:"Tokyo Üniversitesi’nin yeni tasarım okulu",externalLink:"https://evil.example/status/123",sentAt:"2026-10-30T16:33:01Z"}}
+  ]}}}});
+  throw Error("Unexpected fetch: "+url);
+ };
+ try{
+  const env={DB:db,BUFFER_API_KEY:"test-buffer-token",BRANDSTUDIO_PUBLICATION_BRIDGE_TOKEN:"test-admin-secret"};
+  const req=new Request("https://brandstudio-publications.test/api/refresh",{
+   method:"POST",headers:{"Authorization":"Bearer test-admin-secret"},body:JSON.stringify({platforms:["x"]})
+  });
+  const res=await worker.fetch(req,env);
+  const result=await res.json();
+  assert.equal(res.status,200);
+  assert.equal(result.platforms.x.fetched,1);
+  assert.equal(result.platforms.x.saved,1);
+  assert.equal(result.platforms.x.source,"buffer_api");
+  assert.equal(db.writes.length,1);
+  assert.equal(db.writes[0][7],"family_verified");
+  assert.equal(calls.filter(u=>u==="https://api.buffer.com").length,1);
+  assert.equal(calls.some(u=>u.includes("voholabs.com")),false);
+ }finally{globalThis.fetch=originalFetch}
+});
