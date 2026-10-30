@@ -40,7 +40,7 @@ class PagesEntryTests(unittest.TestCase):
         groups = [g for g in config["groups"] if g["brand"] == "asyada-egitim"
                   and g.get("categoryPath", [None, None])[1] == "Karuseller"]
         self.assertEqual(len(groups), 13)
-        self.assertEqual(len({g["id"] for g in groups}), 12)
+        self.assertEqual(len({g["id"] for g in groups}), 13)
         for group in groups:
             default_id = group["defaultId"]
             self.assertIn(default_id, by_id, f"{group['id']} has no matching source")
