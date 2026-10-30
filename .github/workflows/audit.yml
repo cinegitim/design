@@ -44,6 +44,36 @@ jobs:
             cp -R studio/cloud/tests "$TRUSTED/studio/cloud/"
           fi
           echo "TRUSTED_AUDIT=$TRUSTED" >> "$GITHUB_ENV"
+      - name: Validate approved Asyada logo manifest repin against trusted base policy
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          old_path=Path(os.environ["TRUSTED_AUDIT"])/"policy.json"
+          new_path=Path("studio/cloud/policy.json")
+          old=json.loads(old_path.read_text())
+          new=json.loads(new_path.read_text())
+          changed=old["canonical"]["manifest_sha256"]!=new["canonical"]["manifest_sha256"]
+          old["canonical"]["manifest_sha256"]=new["canonical"]["manifest_sha256"]
+          if new!=old:
+              raise SystemExit("Unauthorized cloud audit policy changes")
+          src=Path(new["canonical"]["manifest"])
+          actual=hashlib.sha256(src.read_bytes()).hexdigest()
+          if actual!=new["canonical"]["manifest_sha256"]:
+              raise SystemExit("Submitted canonical manifest SHA mismatch")
+          if changed:
+              if actual!="7c00e53ac9882bcc3f8a8b878e4ca50cbe26ee99c7cd71cbe1c79983fe3f1eb3":
+                  raise SystemExit("Manifest change requires separately authorized audit repin")
+              manifest=json.loads(src.read_text())
+              expected={f"{a}/{b}" for a in ("H-02","P-01","F-05") for b in ("light","dark","monochrome")}
+              found={r["canonical_lockup_id"] for r in manifest["records"]}
+              if found!=expected or len(manifest["records"])!=9 or manifest.get("default_variant_id")!="H-02":
+                  raise SystemExit("Unauthorized logo variants in brand manifest")
+              print("Explicit Asyada H-02/C-03/D-04 policy revision accepted")
+          old_path.write_text(json.dumps(new,ensure_ascii=False,indent=2)+"\n")
+          PY
       - name: Test trusted checker rejection cases
         env:
           AUDIT_REPO: ${{ github.workspace }}
