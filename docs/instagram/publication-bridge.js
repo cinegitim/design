@@ -38,10 +38,18 @@ async function get(registry){
 async function merged(registry){
  const prior=(registry?.socialPublication?.posts||[]).map(p=>Object.assign({platform:"instagram"},p));
  const additional=await get(registry);
- const seen=new Set(prior.map(p=>platformOf(p)+":"+(p.url||"").replace(/\/$/,"")));
+ function key(p){
+  const platform=platformOf(p),url=String(p.url||"");
+  if(platform==="instagram"){
+   const found=url.match(/\/(?:p|reel|tv)\/([A-Za-z0-9_-]+)/);
+   if(found)return platform+":"+found[1];
+  }
+  return platform+":"+url.replace(/\/$/,"");
+ }
+ const seen=new Set(prior.map(key));
  return prior.concat(additional.filter(p=>{
-  const key=platformOf(p)+":"+(p.url||"").replace(/\/$/,"");
-  if(seen.has(key))return false;seen.add(key);return true;
+  const keyValue=key(p);
+  if(seen.has(keyValue))return false;seen.add(keyValue);return true;
  }));
 }
 root.BrandstudioPublicationBridge={get,merged,validProof,platformOf};
