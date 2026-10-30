@@ -244,7 +244,7 @@
       "human_approval_date": "2026-10-08",
       "status": "APPROVED / CANONICAL",
       "minimum_supported_display_size": {
-        "screen_width_px": 320,
+        "screen_width_px": 528,
         "print_width_mm": 110
       },
       "format": "bilingual_three_line",
@@ -263,7 +263,9 @@
       "recommended_screen_width_px": [
         360,
         480
-      ]
+      ],
+      "small_digital_minimum_px": 320,
+      "small_digital_exception": "Screen-only: proportional H-02 from 320 px with required real-size readability check; preserve original 528px production-audit size for historic deliveries."
     },
     {
       "brand_id": "asyada-egitim",
@@ -301,7 +303,7 @@
       "human_approval_date": "2026-10-08",
       "status": "APPROVED / CANONICAL",
       "minimum_supported_display_size": {
-        "screen_width_px": 320,
+        "screen_width_px": 528,
         "print_width_mm": 110
       },
       "format": "bilingual_three_line",
@@ -320,7 +322,9 @@
       "recommended_screen_width_px": [
         360,
         480
-      ]
+      ],
+      "small_digital_minimum_px": 320,
+      "small_digital_exception": "Screen-only: proportional H-02 from 320 px with required real-size readability check; preserve original 528px production-audit size for historic deliveries."
     },
     {
       "brand_id": "asyada-egitim",
@@ -358,7 +362,7 @@
       "human_approval_date": "2026-10-08",
       "status": "APPROVED / CANONICAL",
       "minimum_supported_display_size": {
-        "screen_width_px": 320,
+        "screen_width_px": 528,
         "print_width_mm": 110
       },
       "format": "bilingual_three_line",
@@ -377,7 +381,9 @@
       "recommended_screen_width_px": [
         360,
         480
-      ]
+      ],
+      "small_digital_minimum_px": 320,
+      "small_digital_exception": "Screen-only: proportional H-02 from 320 px with required real-size readability check; preserve original 528px production-audit size for historic deliveries."
     },
     {
       "brand_id": "asyada-egitim",
@@ -833,7 +839,7 @@
       "retired_on": "2026-10-30"
     }
   ],
-  "small_digital_rule": "H-02 only, proportionally scaled as a complete canonical vector (recommended 360–480 screen px; lower 320 px with real-size legibility check); below 320 px use V-01 seal only. Never use retired C-03 or D-04.",
+  "small_digital_rule": "For new everyday digital applications use unchanged H-02 proportionally at 360-480 px (allowed screen exception down to 320 px with real-size legibility QA). Historical production-audit minimum remains 528 px; print minimum 110 mm. Below 320 px seal V-01 only. Never use retired C-03/D-04.",
   "policy_revision_date": "2026-10-30",
   "current_variant_ids": [
     "H-02",
