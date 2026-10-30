@@ -169,3 +169,24 @@ test('raster export registers original iframe font-face rules in parent canvas d
  // The added inline script must parse independently of the surrounding editor.
  new vm.Script(html.slice(start,end),{filename:'brandstudio-export.js'});
 });
+
+
+test('canonical SVG brand lockups are composited from the preview image, not re-rasterized by html2canvas',()=>{
+ assert.match(html,/function vectorExportOverlays\(sourceDoc,slide\)/);
+ assert.match(html,/function paintVectorExportOverlays\(canvas,overlays\)/);
+ assert.match(html,/new URL\(src,sourceDoc\.baseURI\)\.pathname/);
+ assert.match(html,/img\.naturalWidth/);
+ assert.match(html,/style\.objectFit/);
+ assert.match(html,/style\.objectPosition/);
+ assert.match(html,/ctx\.setTransform\(1,0,0,1,0,0\)/);
+ assert.match(html,/ctx\.drawImage\(o\.image,x,y,renderedWidth,renderedHeight\)/);
+ assert.match(html,/ctx\.imageSmoothingQuality='high'/);
+ assert.match(html,/var vectors=vectorExportOverlays\(doc,slide\)/);
+ assert.match(html,/images\[o\.index\]\.style\.visibility='hidden'/);
+ assert.match(html,/paintVectorExportOverlays\(canvas,vectors\)/);
+ assert.ok(html.indexOf('paintVectorExportOverlays(canvas,vectors)')<html.indexOf('canvas.toBlob(resolve,mime'));
+ const start=html.indexOf('function vectorExportOverlays(');
+ const end=html.indexOf('async function exportRaster(format)',start);
+ assert.ok(start>0&&end>start);
+ new vm.Script(html.slice(start,end),{filename:'brandstudio-svg-export.js'});
+});
