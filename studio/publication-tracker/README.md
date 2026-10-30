@@ -1,6 +1,6 @@
 # Brandstudio — Instagram Publication Tracker (production; future providers opt-in)
 
-**Purpose:** On-demand Instagram publication discovery and read-only live Brandstudio proof display without a powered-on Mac, Chrome MCP, or paid social APIs. Facebook, LinkedIn and X remain optional and disconnected.
+**Purpose:** On-demand Instagram publication discovery and read-only live Brandstudio proof display without a powered-on Mac, Chrome MCP, or paid social APIs. Facebook, LinkedIn and X use optional, manually triggered source connectors; they stay disabled until authorization is configured.
 
 ## Verified deployment (2026-10-30)
 
@@ -61,3 +61,17 @@ For release checks: `node --test studio/publication-tracker/match.test.mjs docs/
 - Backend: `brandstudio-edge` has a `PUBLICATION_TRACKER` service binding to `brandstudio-publications` and a private `BRANDSTUDIO_PUBLICATION_BRIDGE_TOKEN` secret. The tracker Worker has the matching secret and retains its other existing bindings. Never commit or log the shared value. The forwarder always uses `platforms: ['instagram']` and ignores client choices.
 - `GET /admin/publications/status` returns last-scan metadata from D1 (no Instagram request). A successful click refreshes the gallery to display newly verified family links. Candidate matches remain review-only.
 - Cloudflare Workers Free + D1 Free; no automation, webhook, chargeable provider or recurring schedule. Confirm `GET /api/status` says `on_demand_only` and `/schedules` is `[]` after any Worker deployment.
+
+## On-demand Facebook, LinkedIn and X via Voholabs
+
+The Asya'da Eğitim Voholabs workspace already has 4 connected publishing channels (Instagram, Facebook, LinkedIn Page, X). The free public REST API at `https://studio.voholabs.com/api/public/v1/posts` can read **only posts managed by that Voholabs workspace**, returning published state, release URL, caption, date and originating channel. It cannot certify posts uploaded separately through Fedica, Buffer, Meta Business Suite, X or LinkedIn itself.
+
+For the administrator's manual-check button to read these 3 channels from Cloudflare:
+1. In Voholabs Studio → Settings → Connect Agent, copy the existing REST **API Key**.
+2. In Cloudflare Worker `brandstudio-publications` → Settings → Variables and Secrets, create a secret named `VOHOLABS_API_KEY` and paste its value there directly. **Never paste this key into chat, GitHub, or browser source.** This same key permits write actions in Voholabs; the integration uses it **only for GET** and it must stay server-side. Rotate via Voholabs Settings if compromised.
+3. The Worker lists a bounded recent date range only when at least one of Facebook, LinkedIn or X is selected and the administrator presses **Yayınları denetle**. It filters to the exact connected Asya'da Eğitim Voholabs channel IDs, state `PUBLISHED`, authentic provider-host permalinks and unique caption anchors. A Voholabs API failure must not erase prior records.
+4. Only verified design-family matches are added to the public read-only `/api/proofs` feed, tagged by platform. Unmatched or ambiguous records stay for review. A family publication never establishes which rendered revision was published.
+
+Official direct-provider APIs may be configured later for fuller platform-wide coverage (Facebook: Page-read scopes; LinkedIn: Community Management API; X: restricted/paid read). Do not claim the Voholabs feed proves all posts on those networks. Never enable a paid social API subscription without express instruction.
+
+**No schedules anywhere:** Cloudflare Cron on both `brandstudio-edge` and `brandstudio-publications` remains `[]`. An ordinary page load reads only stored data; no social-network access occurs until the button is clicked.
