@@ -21,7 +21,7 @@ function enabled(env,platform){
   if(platform==="instagram")return Boolean(env.META_IG_ID&&(env.META_IG_TOKEN||env.META_PAGE_TOKEN));
   if(platform==="facebook")return Boolean((env.META_PAGE_ID&&env.META_PAGE_TOKEN)||viaVoholabs(env,platform));
   if(platform==="linkedin")return Boolean((env.LINKEDIN_ORG_ID&&env.LINKEDIN_TOKEN)||viaVoholabs(env,platform));
-  if(platform==="x")return Boolean(env.X_RSS_URL||viaVoholabs(env,platform));
+  if(platform==="x")return Boolean(env.BUFFER_API_KEY||env.X_RSS_URL||viaVoholabs(env,platform));
   return false;
 }
 async function fetchJSON(url,headers={}){
@@ -88,6 +88,32 @@ async function readVoholabs(env,platforms){
  }
  return records;
 }
+async function readBufferX(env){
+ const query=`query SentXPosts {
+  posts(first: 50,input:{
+   organizationId:"6ae496a36aadaa42fdddc792",
+   filter:{status:[sent],channelIds:["6ae497ec2f1f5ed6481ff706"]},
+   sort:[{field:createdAt,direction:desc}]
+  }){
+   edges{node{id text sentAt externalLink channelId status}}
+   pageInfo{hasNextPage endCursor}
+  }
+ }`;
+ const res=await fetch("https://api.buffer.com",{
+  method:"POST",headers:{Accept:"application/json","Content-Type":"application/json","Authorization":"Bearer "+env.BUFFER_API_KEY},
+  body:JSON.stringify({query}),signal:AbortSignal.timeout(12000)
+ });
+ if(!res.ok)throw Error("Buffer source HTTP "+res.status);
+ const data=await res.json();
+ if(data.errors?.length)throw Error("Buffer GraphQL read error");
+ if(!Array.isArray(data.data?.posts?.edges))throw Error("Buffer posts format invalid");
+ return data.data.posts.edges.map(x=>x.node).filter(p=>p&&p.status==="sent"&&
+  p.channelId==="6ae497ec2f1f5ed6481ff706"&&p.id&&p.externalLink&&
+  validPermalink("x",p.externalLink)).map(p=>({
+   platform:"x",id:"buffer:"+String(p.id),url:p.externalLink,
+   caption:String(p.text||"").slice(0,6000),date:p.sentAt||null,evidence:"buffer_api"
+ }));
+}
 function plainXml(s){return s.replace(/<!\[CDATA\[|\]\]>/g,"").replace(/<[^>]+>/g," ").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/\s+/g," ").trim();}
 async function readXFeed(env){
   const feed=new URL(env.X_RSS_URL);
@@ -141,6 +167,10 @@ async function refresh(env,platforms){
       // Instagram always uses the official API. The remaining channels use
       // Voholabs only if that account is connected and its key is installed.
       if(p==="instagram"){posts=await readMeta(env,p);source="official_meta_api"}
+      else if(p==="x" && env.BUFFER_API_KEY){
+        posts=await readBufferX(env);source="buffer_api";
+        if(voholabs?.x?.length)posts=posts.concat(voholabs.x);
+      }
       else if(viaVoholabs(env,p)){
         if(voholabsError)throw Error("Voholabs source unavailable: "+voholabsError);
         posts=voholabs[p]||[];source="voholabs_api";
@@ -186,14 +216,14 @@ export default {
           }
         }catch(_){/* Status remains available even if the runs table is temporarily unavailable. */}
       }
-      return json({platforms:Object.fromEntries(PLATFORMS.map(p=>[p,{configured:enabled(env,p),source:p==="instagram"?"official_meta_api":viaVoholabs(env,p)?"voholabs_api":enabled(env,p)?"direct":"not_connected"}])),mode:"on_demand_only",storage:!!env.DB,lastScan},200,origin);
+      return json({platforms:Object.fromEntries(PLATFORMS.map(p=>[p,{configured:enabled(env,p),source:p==="instagram"?"official_meta_api":p==="x"&&env.BUFFER_API_KEY?"buffer_api":viaVoholabs(env,p)?"voholabs_api":enabled(env,p)?"direct":"not_connected"}])),mode:"on_demand_only",storage:!!env.DB,lastScan},200,origin);
     }
     // Public, bounded proof feed: caption/text candidates and credentials never leave D1.
     // A caption anchor confirms an Instagram design FAMILY only, never a specific revision.
     if(url.pathname==="/api/proofs"&&request.method==="GET"){
       if(!env.DB)return json({error:"database_not_bound"},503,origin);
       try{
-        const {results}=await env.DB.prepare("SELECT platform,source_id,permalink,published_at,group_id,product_id,match_status FROM publication_posts WHERE match_status='family_verified' AND evidence IN ('official_meta_api','voholabs_api','official_linkedin_api') AND group_id IS NOT NULL ORDER BY published_at DESC LIMIT 150").all();
+        const {results}=await env.DB.prepare("SELECT platform,source_id,permalink,published_at,group_id,product_id,match_status FROM publication_posts WHERE match_status='family_verified' AND evidence IN ('official_meta_api','voholabs_api','buffer_api','official_linkedin_api') AND group_id IS NOT NULL ORDER BY published_at DESC LIMIT 150").all();
         return json({posts:results,rule:"verified platform publication record plus unique caption anchor; family only"},200,origin);
       }catch(e){return json({error:"database_not_initialized"},503,origin)}
     }
