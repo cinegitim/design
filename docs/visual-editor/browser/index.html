@@ -228,7 +228,7 @@ dialog h2{font-size:15px;font-weight:680}
 .catalog-pick select{width:245px;flex:1 1 140px}
 .catalog-pick .catalog-version{width:112px;flex:0 1 112px}
 .catalog-pick .catalog-status{font-size:10px;max-width:120px;white-space:nowrap;color:#b3c9d5;border:1px solid #425566;border-radius:6px;padding:5px 7px}
-.catalog-pick .catalog-status.published{color:#c5eccd;border-color:#39674b}
+.catalog-pick .catalog-status.published{color:#c5eccd;border-color:#39674b}.catalog-pick .catalog-proof{font-size:10px;white-space:nowrap;color:#c5eccd;text-underline-offset:3px;flex-shrink:0}.catalog-pick .catalog-proof[hidden]{display:none}
 .catalog-breadcrumb{font:10px/1.45 system-ui,sans-serif;color:#a5b3c2;max-width:310px;flex:1 1 180px;overflow-wrap:anywhere}
 @media(max-width:760px){.catalog-pick .catalog-version{width:76px;flex:0 1 76px}.catalog-pick .catalog-status{max-width:90px}}
 header #product{display:none}
@@ -247,7 +247,7 @@ header #product{display:none}
  .toolbar .toolbar-overflow{flex:none}
 }
 </style></head><body>
-<header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><div class="catalog-pick"><input type="search" id="catalog-search" aria-label="Tasarımlarda ara" placeholder="Tasarım ara…"><select id="catalog-select" aria-label="Düzenlenecek tasarım"></select><select id="catalog-version" class="catalog-version" aria-label="Tasarım sürümü"></select><span id="catalog-status" class="catalog-status" title="Instagram'da yayımlanma ve tasarım inceleme durumu">İncelemede</span><span id="catalog-breadcrumb" class="catalog-breadcrumb" aria-live="polite"></span></div><a href="../">← Visual Editor</a></div></header>
+<header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><div class="catalog-pick"><input type="search" id="catalog-search" aria-label="Tasarımlarda ara" placeholder="Tasarım ara…"><select id="catalog-select" aria-label="Düzenlenecek tasarım"></select><select id="catalog-version" class="catalog-version" aria-label="Tasarım sürümü"></select><span id="catalog-status" class="catalog-status" title="Instagram'da yayımlanma ve tasarım inceleme durumu">İncelemede</span><a id="catalog-proof" class="catalog-proof" target="_blank" rel="noopener noreferrer" hidden>Instagram ↗</a><span id="catalog-breadcrumb" class="catalog-breadcrumb" aria-live="polite"></span></div><a href="../">← Visual Editor</a></div></header>
 <div class="layout" id="workspace"><aside><div class="compact-bar"><h2>Katmanlar</h2><div class="controls"><button class="btn" id="groups-open" title="Tümünü aç">＋</button><button class="btn" id="groups-close" title="Tümünü kapat">−</button></div></div>
 <input id="layer-search" class="sidebar-search" type="search" placeholder="Katman ara…" aria-label="Katmanlarda ara">
 <div id="layers" class="layers"></div>
@@ -1401,7 +1401,15 @@ function renderProductVersions(selected){
  status.title=published?('Instagram paylaşımı: '+pub.map(function(p){return p.url}).join(', ')+
    (matchVersion?' · sürüm eşleşti':' · yayımlanan kesin sürüm ayrıca doğrulanmalı')):
    familyOnly?'Tasarım ailesi Instagram\'da yayımlandı, ancak bu sürümün yayımlandığı doğrulanmadı.':
-   'Instagram yayın kaydı henüz doğrulanmadı; tasarım sitesinde bulunması Instagram paylaşımı değildir.'
+   'Instagram yayın kaydı henüz doğrulanmadı; tasarım sitesinde bulunması Instagram paylaşımı değildir.';
+ var proofLink=$('catalog-proof');
+ var familyPosts=pub.concat(selected.familyPublications||[]);
+ var verifiedPost=familyPosts.find(function(p){return p&&p.verified===true&&p.publishedAt&&
+   /^https:\/\/(?:www\.)?instagram\.com\/(?:asyadaegitim\/)?(?:p|reel|tv)\/[A-Za-z0-9_-]+\/?(?:\?.*)?$/.test(p.url||'')});
+ if(verifiedPost){proofLink.href=verifiedPost.url;proofLink.hidden=false;
+   proofLink.title=verifiedPost.productId===selected.id?'Bu sürümün yayımlandığı Instagram gönderisi':'Tasarım ailesinin Instagram gönderisi; kesin sürüm ayrıca doğrulanmalı';
+   proofLink.setAttribute('aria-label',proofLink.title)}
+ else{proofLink.hidden=true;proofLink.removeAttribute('href')}
 }
 function openProduct(productId){
  var selected=discovery.byId(catalog,productId);
