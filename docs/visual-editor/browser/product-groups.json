@@ -457,7 +457,7 @@
         "groupId": null,
         "productId": null,
         "url": "https://www.instagram.com/asyadaegitim/p/DepRg6tDbNY/",
-        "publishedAt": null,
+        "publishedAt": "2026-10-18T17:58:25Z",
         "verified": true,
         "source": "direct @asyadaegitim profile post: 'Dünya Çin'e bakıyor. Şanghay'da okumaya ne dersin?'",
         "matching": "published post but no corresponding proven design package in current Git catalogue"
@@ -466,14 +466,33 @@
         "groupId": null,
         "productId": null,
         "url": "https://www.instagram.com/asyadaegitim/p/Der8OLnjQWg/",
-        "publishedAt": null,
+        "publishedAt": "2026-10-19T18:50:05Z",
         "verified": true,
         "source": "direct @asyadaegitim profile post: 'Yurtdışı eğitimin tek yönü yok.'",
         "matching": "published post; thematic overlap with Launch Creative 02, exact artwork match not established"
+      },
+      {
+        "groupId": "instagram-ieft-2026-firsatlar-001",
+        "productId": null,
+        "url": "https://www.instagram.com/asyadaegitim/p/DfEUKmWFZpF/",
+        "publishedAt": "2026-10-29T06:01:08Z",
+        "verified": true,
+        "source": "Meta Graph API Instagram publication on 2026-10-29; caption matches the IEFT campaign design family",
+        "matching": "publication verified at family level; exact exported design revision not independently verified"
+      },
+      {
+        "groupId": "instagram-creative-breakout-bavul-001",
+        "productId": null,
+        "url": "https://www.instagram.com/asyadaegitim/p/DfHTHD_lTbE/",
+        "publishedAt": "2026-10-30T09:49:44Z",
+        "verified": true,
+        "source": "Meta Graph API Instagram publication on 2026-10-30; caption matches the luggage campaign design family",
+        "matching": "publication verified at family level; exact exported design revision not independently verified"
       }
     ],
-    "checkedOn": "2026-10-26",
-    "totalInstagramPostsSeen": 7
+    "checkedOn": "2026-10-30",
+    "totalInstagramPostsSeen": 9,
+    "lastApiBatchCount": 8
   },
   "futureProducts": "unmapped new products remain visible in the active catalog; never silently archived",
   "taxonomy": {
