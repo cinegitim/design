@@ -1670,6 +1670,70 @@ async function prepareRasterAssets(sourceDoc,slide){
  await new Promise(function(done){requestAnimationFrame(function(){requestAnimationFrame(done)})});
  return fonts
 }
+// Keep approved vector logos as vectors all the way to the final PNG/JPEG canvas.
+// html2canvas paints SVG <img> elements through its own image pipeline, which can
+// distort logo detail. Draw the original, already decoded SVG image directly on
+// the completed bitmap at the *preview's* geometry instead.
+function vectorExportOverlays(sourceDoc,slide){
+ var slideBounds=slide.getBoundingClientRect(),overlays=[];
+ Array.from(slide.querySelectorAll('img')).forEach(function(img,index){
+  var src=img.currentSrc||img.getAttribute('src')||'';
+  var isSvg=/^data:image\/svg\+xml/i.test(src);
+  if(!isSvg){try{isSvg=/\.svg$/i.test(new URL(src,sourceDoc.baseURI).pathname)}catch(e){}}
+  if(!isSvg)return;
+  var style=sourceDoc.defaultView.getComputedStyle(img);
+  if(style.display==='none'||style.visibility==='hidden'||Number(style.opacity)===0)return;
+  if(style.transform!=='none'||style.rotate!=='none')return; // Unusual transformed assets retain normal renderer.
+  var b=img.getBoundingClientRect();
+  if(!img.complete||!img.naturalWidth||!img.naturalHeight||!b.width||!b.height)
+   throw Error('Vektör logo yüklenemedi; bozuk logo ile çıktı alınmadı');
+  overlays.push({
+   index:index,image:img,x:b.left-slideBounds.left,y:b.top-slideBounds.top,
+   width:b.width,height:b.height,naturalWidth:img.naturalWidth,
+   naturalHeight:img.naturalHeight,fit:style.objectFit||'fill',
+   position:style.objectPosition||'50% 50%',opacity:Number(style.opacity)
+  })
+ });
+ return overlays
+}
+function exportVectorPosition(value,available,axis){
+ var positions=String(value||'50% 50%').trim().split(/\s+/);
+ var part=positions[axis]||'50%';
+ if(positions.length===1)part=axis===0?positions[0]:'50%';
+ var labels={left:'0%',top:'0%',center:'50%',right:'100%',bottom:'100%'};
+ part=labels[part]||part;
+ if(/^-?[\d.]+%$/.test(part))return available*Number.parseFloat(part)/100;
+ if(/^-?[\d.]+px$/.test(part))return Number.parseFloat(part);
+ return available/2
+}
+function paintVectorExportOverlays(canvas,overlays){
+ if(!overlays.length)return;
+ var ctx=canvas.getContext('2d');
+ ctx.save();
+ // html2canvas leaves the 2D context translated to the source iframe's
+ // screen coordinates; overlays must use *canvas* coordinates instead.
+ ctx.setTransform(1,0,0,1,0,0);
+ ctx.globalCompositeOperation='source-over';
+ ctx.imageSmoothingEnabled=true;
+ ctx.imageSmoothingQuality='high';
+ try{
+  overlays.forEach(function(o){
+   var ratioX=o.width/o.naturalWidth,ratioY=o.height/o.naturalHeight;
+   var factor=o.fit==='cover'?Math.max(ratioX,ratioY):Math.min(ratioX,ratioY);
+   if(o.fit==='scale-down')factor=Math.min(factor,1);
+   var renderedWidth=o.fit==='fill'?o.width:o.fit==='none'?o.naturalWidth:o.naturalWidth*factor;
+   var renderedHeight=o.fit==='fill'?o.height:o.fit==='none'?o.naturalHeight:o.naturalHeight*factor;
+   var x=o.x+exportVectorPosition(o.position,o.width-renderedWidth,0);
+   var y=o.y+exportVectorPosition(o.position,o.height-renderedHeight,1);
+   ctx.save();
+   ctx.globalAlpha=Number.isFinite(o.opacity)?o.opacity:1;
+   ctx.beginPath();ctx.rect(o.x,o.y,o.width,o.height);ctx.clip();
+   ctx.drawImage(o.image,x,y,renderedWidth,renderedHeight);
+   ctx.restore()
+  })
+ }finally{ctx.restore()}
+}
+
 async function exportRaster(format){
  if(!globalThis.html2canvas){$('status').textContent='Görsel dönüştürücü yüklenmedi';return}
  var buttons=[$('download-png'),$('download-jpeg'),$('side-download-png'),$('side-download-jpeg')];buttons.forEach(function(b){b.disabled=true});
@@ -1677,16 +1741,25 @@ async function exportRaster(format){
  try{
   var slide=doc?.querySelector('.slide');if(!slide)throw Error('Slayt henüz yüklenmedi');
   var fonts=await prepareRasterAssets(doc,slide);
+  var vectors=vectorExportOverlays(doc,slide);
   var canvas=await html2canvas(slide,{
    backgroundColor:format==='jpeg'?'#ffffff':null,
    scale:1,width:DESIGN_W,height:DESIGN_H,
    useCORS:true,allowTaint:false,logging:false,
    onclone:async function(clonedDoc){
     await clonedDoc.fonts.ready;
-    await Promise.all(fonts.map(function(font){return clonedDoc.fonts.load(font.spec,font.text)}))
+    await Promise.all(fonts.map(function(font){return clonedDoc.fonts.load(font.spec,font.text)}));
+    var clone=clonedDoc.querySelector('.slide');
+    if(!clone&&vectors.length)throw Error('Vektör logo katmanı kopyalanamadı');
+    var images=clone?Array.from(clone.querySelectorAll('img')):[];
+    vectors.forEach(function(o){
+     if(!images[o.index])throw Error('Vektör logo konumu doğrulanamadı');
+     images[o.index].style.visibility='hidden'
+    })
    }
   });
   if(canvas.width!==DESIGN_W||canvas.height!==DESIGN_H)throw Error('Görsel boyutu hatalı');
+  paintVectorExportOverlays(canvas,vectors);
   var mime=format==='jpeg'?'image/jpeg':'image/png';
   var blob=await new Promise(function(resolve){canvas.toBlob(resolve,mime,format==='jpeg'?.92:undefined)});
   if(!blob||blob.size<1000)throw Error('Görsel çıktısı boş veya engellendi');
