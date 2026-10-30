@@ -1,0 +1,13 @@
+# Free-only Instagram discovery: Cloudflare Worker + D1, no browser or paid APIs.
+name = "brandstudio-publications"
+account_id = "5f90104db6f24a941c04e974e250cb67"
+main = "./worker.mjs"
+compatibility_date = "2026-10-30"
+
+[triggers]
+crons = ["0 */6 * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "brandstudio-publications"
+database_id = "397061ae-723c-4070-b6f8-a332e179cd78"
