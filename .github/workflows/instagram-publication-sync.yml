@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - "studio/publication-tracker/**"
+      - "studio/cloudflare-brandstudio/asya-gateway/worker.mjs"
+      - "docs/workspaces/asyada-egitim/**"
       - "docs/instagram/publication-bridge.*"
       - "docs/instagram/brandstudio-page.js"
       - "docs/visual-editor/browser/catalog.js"
@@ -23,6 +25,8 @@ jobs:
           persist-credentials: false
           sparse-checkout: |
             studio/publication-tracker/
+            studio/cloudflare-brandstudio/asya-gateway/worker.mjs
+            docs/workspaces/asyada-egitim/publication-check.js
             docs/instagram/publication-bridge.js
             docs/instagram/publication-bridge.test.mjs
             docs/instagram/brandstudio-page.js
@@ -36,10 +40,12 @@ jobs:
         with:
           node-version: "22"
       - name: No-network matching and publication proof tests
-        run: node --test studio/publication-tracker/match.test.mjs docs/instagram/publication-bridge.test.mjs
+        run: node --test studio/publication-tracker/match.test.mjs studio/publication-tracker/manual-check.test.mjs docs/instagram/publication-bridge.test.mjs
       - name: Read-only UI and Worker syntax
         run: |
           node --check studio/publication-tracker/worker.mjs
+          node --check studio/cloudflare-brandstudio/asya-gateway/worker.mjs
+          node --check docs/workspaces/asyada-egitim/publication-check.js
           node --check docs/instagram/brandstudio-page.js
           node --check docs/instagram/publication-bridge.js
           node --check docs/visual-editor/browser/catalog.js
@@ -54,5 +60,6 @@ jobs:
           assert 'META_IG_TOKEN' not in bridge
           assert 'match_status=\'family_verified\'' in worker
           assert 'publicationAnchors' in registry
-          assert 'async scheduled(' in worker
+          assert 'async scheduled(' not in worker
+          assert 'mode:"on_demand_only"' in worker
           PY
