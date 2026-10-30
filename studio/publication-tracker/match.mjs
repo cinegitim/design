@@ -21,7 +21,7 @@ export function groupScore(post,group) {
 // A verified Meta post and a unique, deliberately recorded caption anchor
 // justify a FAMILY-level link; no caption can prove a particular artwork revision.
 export function exactCaptionFamily(post,groups) {
-  if(post.platform && post.platform!=="instagram")return null;
+  if(post.platform && !["instagram","facebook","linkedin","x"].includes(post.platform))return null;
   const caption=normalizeText(post.caption||"");
   if(!caption)return null;
   const matches=[];
