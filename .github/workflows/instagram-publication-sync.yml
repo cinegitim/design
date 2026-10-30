@@ -54,5 +54,6 @@ jobs:
           assert 'META_IG_TOKEN' not in bridge
           assert 'match_status=\'family_verified\'' in worker
           assert 'publicationAnchors' in registry
-          assert 'async scheduled(' in worker
+          assert 'async scheduled(' not in worker
+          assert 'mode:"on_demand_only"' in worker
           PY
