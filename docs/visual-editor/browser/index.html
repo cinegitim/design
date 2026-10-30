@@ -1398,10 +1398,10 @@ function renderProductVersions(selected){
  var familyOnly=!published&&selected.familyPublications&&selected.familyPublications.length>0;
  status.textContent=published?(matchVersion?'Yayımlandı':'Yayımlandı · aile'):(familyOnly?'Aile yayımlandı':'İncelemede');
  status.classList.toggle('published',published||familyOnly);
- status.title=published?('Instagram paylaşımı: '+pub.map(function(p){return p.url}).join(', ')+
+ status.title=published?('Sosyal medya paylaşımı: '+pub.map(function(p){return p.url}).join(', ')+
    (matchVersion?' · sürüm eşleşti':' · yayımlanan kesin sürüm ayrıca doğrulanmalı')):
-   familyOnly?'Tasarım ailesi Instagram\'da yayımlandı, ancak bu sürümün yayımlandığı doğrulanmadı.':
-   'Instagram yayın kaydı henüz doğrulanmadı; tasarım sitesinde bulunması Instagram paylaşımı değildir.';
+   familyOnly?'Tasarım ailesinin sosyal medya yayını var; bu sürüm ayrıca doğrulanmalı.':
+   'Sosyal medya yayın kaydı henüz doğrulanmadı; tasarım sitesinde bulunması bir paylaşım değildir.';
  var proofLink=$('catalog-proof');
  var familyPosts=pub.concat(selected.familyPublications||[]);
  var verifiedPost=familyPosts.find(function(p){return p&&p.verified===true&&p.publishedAt&&
