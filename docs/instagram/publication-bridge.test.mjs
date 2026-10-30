@@ -27,3 +27,18 @@ test('unavailable API preserves original registry proof only',async()=>{
  const out=await root.BrandstudioPublicationBridge.merged({...registry,socialPublication:{posts:[{url:'https://www.instagram.com/p/ORIGINAL/',verified:true}]}});
  assert.equal(out.length,1);root.fetch=stale;
 });
+
+test("Facebook LinkedIn and X publication links are accepted only from their own domains",async()=>{
+ const previous=root.fetch;
+ root.fetch=async()=>({ok:true,json:async()=>({posts:[
+  {platform:'facebook',group_id:'instagram-known',product_id:null,match_status:'family_verified',permalink:'https://www.facebook.com/122117876091502048/posts/122117876079502048',published_at:'2026-10-30T16:31:00Z'},
+  {platform:'linkedin',group_id:'instagram-known',product_id:null,match_status:'family_verified',permalink:'https://www.linkedin.com/feed/update/urn:li:share:7521972429041168384',published_at:'2026-10-30T16:31:00Z'},
+  {platform:'x',group_id:'instagram-known',product_id:null,match_status:'family_verified',permalink:'https://x.com/asyadaegitim/status/1234567890',published_at:'2026-10-30T16:31:00Z'},
+  {platform:'facebook',group_id:'instagram-known',product_id:null,match_status:'family_verified',permalink:'https://bad.example/posts/123',published_at:'2026-10-30T16:31:00Z'}
+ ]})});
+ try{
+  const out=await root.BrandstudioPublicationBridge.merged(registry);
+  assert.equal(out.length,3);
+  assert.deepEqual([...out.map(p=>p.platform)].sort(),['facebook','linkedin','x']);
+ }finally{root.fetch=previous}
+});
