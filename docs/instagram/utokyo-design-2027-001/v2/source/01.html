@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><title>Tokyo Üniversitesi · College of Design · Brandstudio v2</title><style>
+@font-face{font-family:Jost;src:url("../../../tsinghua-atlas-2027/v2/assets/Jost-VF.ttf") format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
+*{box-sizing:border-box}
+html,body{width:1080px;height:1350px;margin:0;overflow:hidden}
+body{background:#f7f3e9;color:#152331;font-family:Jost,Arial,sans-serif}
+#poster{position:relative;width:1080px;height:1350px;overflow:hidden;background:#f7f3e9}
+.mast{height:430px;position:relative;padding:35px 61px 15px;overflow:hidden}
+.mast:before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 79% 46%,rgba(211,183,167,.28),transparent 36%),repeating-linear-gradient(10deg,transparent 0 34px,rgba(25,35,45,.02) 35px 36px);opacity:.75}
+.topline{position:relative;z-index:4;display:flex;justify-content:space-between;align-items:center;font-size:17px;font-weight:800;letter-spacing:2.5px;color:#bc2229;height:32px}
+.topline .univ{color:#172733;letter-spacing:.2px;font-size:17px}
+.divider{position:relative;z-index:4;height:1px;background:#1926336e;margin:12px 0 14px}
+.sun{position:absolute;z-index:0;width:345px;height:345px;right:-72px;top:98px;border-radius:50%;background:#b92328}
+.sun:after{content:'';position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 45% 20%,#ffcfbf24,transparent 65%)}
+.jp-vertical{position:absolute;right:25px;top:129px;color:white;writing-mode:vertical-rl;font:20px 'Noto Serif CJK JP',serif;letter-spacing:6px;z-index:2}
+.headlines{position:relative;z-index:2;margin-top:18px;font-weight:870;letter-spacing:-4.4px;line-height:.94}
+.headlines .uni-a{font-size:80px}
+.headlines .uni-b{font-size:69px}
+.headlines .design-a{font-size:56px;color:#b72127;margin-top:15px}
+.headlines .design-b{font-size:55px;color:#b72127;margin-top:4px}
+.program{position:relative;z-index:3;display:flex;flex-direction:column;gap:1px;margin-top:16px;border-left:7px solid #bf2327;padding-left:15px;line-height:1.15}
+.program strong{font-size:20px;letter-spacing:1.5px;font-weight:800}
+.program small{font-size:16px;letter-spacing:1.05px;color:#55616e;font-weight:700}
+.photos{height:380px;background:#182834;border-top:8px solid #b82127;border-bottom:8px solid #b82127;padding:9px;display:grid;grid-template-columns:2.12fr 1fr;gap:9px}
+.photo{position:relative;margin:0;overflow:hidden;background:#25343b}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.045) saturate(.96)}
+.photo.large img{object-position:center 48%}
+.photo.small img{object-position:center 49%}
+.photo:after{content:'';position:absolute;inset:58% 0 0;background:linear-gradient(transparent,#111c27d8)}
+.photo figcaption{position:absolute;z-index:2;bottom:11px;left:15px;right:9px;color:white;font-weight:800;letter-spacing:.6px;font-size:15px}
+.photo figcaption span{display:block;font-size:12px;opacity:.86;font-weight:600;letter-spacing:1.4px;margin-top:2px}
+.section-number{position:absolute;top:15px;left:17px;z-index:2;background:#f7f3e9;padding:8px 10px;font-size:14px;font-weight:800;color:#b52328}
+.facts{height:160px;background:#f5efe6;padding:13px 61px;display:flex;align-items:center;gap:25px}
+.five{display:flex;gap:15px;align-items:center;flex:1.2}
+.five .n{font-size:135px;font-weight:840;letter-spacing:-7px;line-height:1;color:#b82127}
+.five .copy{font-size:27px;font-weight:830;letter-spacing:-.6px;line-height:1.05}
+.features{flex:1;border-left:1px solid #a6a09a;padding:11px 0 11px 33px}
+.feature{font-size:20px;font-weight:810;line-height:2.15;white-space:nowrap}
+.feature:before{content:'';display:inline-block;width:10px;height:10px;background:#bb262c;margin-right:14px;vertical-align:2px}
+.burs{height:125px;background:#b92026;color:#fff;padding:12px 61px;position:relative}
+.burs .kicker{font-size:17px;font-weight:800;letter-spacing:2px;line-height:1.3}
+.burs .amount{font-size:61px;font-weight:880;line-height:1.01;letter-spacing:-2px;margin-top:1px}
+.burs .amount small{font-size:28px;letter-spacing:0;font-weight:780}
+.burs .secondary{font-size:16px;font-weight:700;letter-spacing:.35px}
+.burs .kanji{position:absolute;right:62px;top:18px;font:22px 'Noto Serif CJK JP',serif;opacity:.68}
+.bottom{height:255px;background:#152532;color:#fff}
+.bottom-row{height:221px;display:grid;grid-template-columns:620px 460px}
+.deadline{background:#a71e27;color:#fff;padding:14px 36px 4px 61px;position:relative}
+.deadline .label{font-size:23px;letter-spacing:4px;font-weight:790}
+.deadline .date{display:flex;align-items:baseline;gap:16px;white-space:nowrap;font-weight:890;letter-spacing:-3px;line-height:1.02;margin-top:2px}
+.deadline .date .day{font-size:113px}
+.deadline .date .month{font-size:69px}
+.deadline .year{font-size:43px;font-weight:790;letter-spacing:1px;line-height:1.05;margin-top:-3px}
+.deadline .clock{font-size:14px;font-weight:700;letter-spacing:.6px;margin-top:3px}
+.brand-area{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:7px;background:#152532;padding:8px 20px 13px 16px}
+.brand-area img{display:block;width:380px;height:auto;max-height:156px;object-fit:contain}
+.brand-area .url{font-size:17px;letter-spacing:.3px;font-weight:600;color:#eee4dc;margin-top:-4px}
+.fine{height:34px;display:flex;align-items:center;padding:0 45px 0 61px;border-top:1px solid #e7d6c533;color:#e1dedb;font-size:11px;font-weight:500;letter-spacing:.05px;white-space:nowrap}
+</style></head><body><main id="poster">
+<header class="mast"><div class="topline"><span>JAPONYA · EYLÜL 2027</span><span class="univ">東京大学 — THE UNIVERSITY OF TOKYO</span></div><div class="divider"></div><div class="sun"></div><span class="jp-vertical">新しいデザイン教育</span>
+<div class="headlines"><div class="uni-a">TOKYO</div><div class="uni-b">ÜNİVERSİTESİ</div><div class="design-a">YENİ TASARIM</div><div class="design-b">OKULUNU AÇIYOR.</div></div>
+<div class="program"><strong>UTOKYO COLLEGE OF DESIGN</strong><small>2027 İLK ÖĞRENCİ ALIMI · 100 KONTENJAN</small></div></header>
+<section class="photos"><figure class="photo large"><img src="../../assets/yasuda-hongo.jpg" alt="Tokyo Üniversitesi Hongo Kampüsü Yasuda Salonu"><span class="section-number">01 / HONGO</span><figcaption>YASUDA AUDITORIUM<span>TOKYO ÜNİVERSİTESİ KAMPÜSÜ</span></figcaption></figure><figure class="photo small"><img src="../../assets/akamon.jpg" alt="Tokyo Üniversitesi Akamon tarihî kırmızı kapı"><span class="section-number">02 / AKAMON</span><figcaption>AKAMON · 赤門<span>TARİHÎ KIRMIZI KAPI</span></figcaption></figure></section>
+<section class="facts"><div class="five"><span class="n">5</span><div class="copy">YILDA<br>LİSANS +<br>YÜKSEK LİSANS</div></div><div class="features"><div class="feature">TAMAMEN İNGİLİZCE</div><div class="feature">UZUN DÖNEM STAJ</div></div></section>
+<section class="burs"><span class="kanji">奨学金</span><div class="kicker">İHTİYAÇ TEMELLİ BURS SEÇENEĞİ</div><div class="amount">¥2,4 <small>MİLYON / YIL</small></div><div class="secondary">≈ 15.200 USD (30.10.2026 kuru) · Uygunluk şartlarına bağlıdır</div></section>
+<footer class="bottom"><div class="bottom-row"><div class="deadline"><div class="label">SON BAŞVURU</div><div class="date"><span class="day">5</span><span class="month">KASIM</span></div><div class="year">2026</div><div class="clock">11.00 TÜRKİYE · 17.00 JAPONYA SAATİ</div></div><div class="brand-area"><img src="../assets/h02-primary-horizontal-dark.svg" alt="Asya'da Eğitim — onaylı H-02 tam logo ve tipografi"><span class="url">asyadaegitim.com</span></div></div><div class="fine">* Program resmî onay sürecindedir. Burs başvuru ve değerlendirmeye tabidir. Fotoğraflar Hongo Kampüsü'nü gösterir.</div></footer>
+</main></body></html>
