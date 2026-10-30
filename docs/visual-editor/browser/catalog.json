@@ -439,5 +439,19 @@
       "instagram/kaist-tech-track-2027-001/source/05.html",
       "instagram/kaist-tech-track-2027-001/source/06.html"
     ]
+  },
+  {
+    "id": "instagram-kaist-tech-track-2027-001-v2",
+    "title": "KAIST · Kore Tech Track · V2 · 6 Slayt",
+    "family": "instagram",
+    "kind": "html",
+    "pages": [
+      "instagram/kaist-tech-track-2027-001/v2/source/01.html",
+      "instagram/kaist-tech-track-2027-001/v2/source/02.html",
+      "instagram/kaist-tech-track-2027-001/v2/source/03.html",
+      "instagram/kaist-tech-track-2027-001/v2/source/04.html",
+      "instagram/kaist-tech-track-2027-001/v2/source/05.html",
+      "instagram/kaist-tech-track-2027-001/v2/source/06.html"
+    ]
   }
 ]

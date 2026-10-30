@@ -15,11 +15,11 @@ const Catalog=scope.BrandstudioCatalog;
 // committed authored pages without falsifying that snapshot's tree SHA.
 const newCampaignPages=Array.from({length:6},(_,i)=>
  'docs/instagram/ieft-2026-firsatlar-001/source/'+String(i+1).padStart(2,'0')+'.html');
-const raw=Catalog.fromPaths([...inventory.files.map(x=>x[0]),...newCampaignPages,'docs/instagram/creative-breakout-bavul-001/source/01.html','docs/instagram/utokyo-design-2027-001/source/01.html','docs/instagram/utokyo-design-2027-001/v2/source/01.html',...Array.from({length:6},(_,i)=>'docs/instagram/kaist-tech-track-2027-001/source/'+String(i+1).padStart(2,'0')+'.html')]);
+const raw=Catalog.fromPaths([...inventory.files.map(x=>x[0]),...newCampaignPages,'docs/instagram/creative-breakout-bavul-001/source/01.html','docs/instagram/utokyo-design-2027-001/source/01.html','docs/instagram/utokyo-design-2027-001/v2/source/01.html',...Array.from({length:6},(_,i)=>'docs/instagram/kaist-tech-track-2027-001/source/'+String(i+1).padStart(2,'0')+'.html'),...Array.from({length:6},(_,i)=>'docs/instagram/kaist-tech-track-2027-001/v2/source/'+String(i+1).padStart(2,'0')+'.html')]);
 const families=Catalog.groupRecords(raw,manifest);
 
 test('current authored product versions map into distinct usable families',()=>{
- assert.equal(raw.length,32);
+ assert.equal(raw.length,33);
  assert.equal(families.length,18);
  assert.equal(new Set(families.map(x=>x.id)).size,18);
  assert.ok(families.every(x=>x.pages.length>0&&Array.isArray(x.versions)&&x.versions.length));
