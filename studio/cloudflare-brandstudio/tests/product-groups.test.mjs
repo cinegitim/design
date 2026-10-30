@@ -21,7 +21,7 @@ const families=Catalog.groupRecords(raw,manifest);
 test('current authored product versions map into distinct usable families',()=>{
  assert.equal(raw.length,30);
  assert.equal(families.length,17);
- assert.equal(new Set(families.map(x=>x.id)).size,16);
+ assert.equal(new Set(families.map(x=>x.id)).size,17);
  assert.ok(families.every(x=>x.pages.length>0&&Array.isArray(x.versions)&&x.versions.length));
 });
 test('all 27 old product ids either still belong to a family or are explicitly retired',()=>{
