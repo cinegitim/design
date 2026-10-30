@@ -410,7 +410,11 @@
         "Tekil Paylaşımlar",
         "Üniversite Fırsatları"
       ],
-      "lifecycle": "in-review"
+      "lifecycle": "in-review",
+      "publicationAnchors": [
+        "UTokyo College of Design",
+        "Tokyo Üniversitesi’nin yeni tasarım okulu"
+      ]
     }
   ],
   "retired": [

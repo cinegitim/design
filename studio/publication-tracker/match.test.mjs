@@ -38,8 +38,9 @@ test("a generic or ambiguous anchor cannot auto-publish",()=>{
  assert.equal(exactCaptionFamily({platform:"instagram",caption:"Çok özel bir üniversite fırsatı"},gs),null);
  assert.equal(suggestFamily({caption:"Yeni fırsatlar"},gs).status,"needs_review");
 });
-test("only official target account posts qualify as publications at the API boundary",()=>{
- assert.equal(exactCaptionFamily({platform:"facebook",caption:"IEFT bitti. Eğitim fırsatları bitmedi!"},[{id:"instagram-ieft",brand:"asyada-egitim",publicationAnchors:["IEFT bitti. Eğitim fırsatları bitmedi!"]}]),null);
+test("recognized platform records can use unique anchors, unknown platforms cannot",()=>{
+ assert.equal(exactCaptionFamily({platform:"facebook",caption:"IEFT bitti. Eğitim fırsatları bitmedi!"},[{id:"instagram-ieft",brand:"asyada-egitim",publicationAnchors:["IEFT bitti. Eğitim fırsatları bitmedi!"]}]),"instagram-ieft");
+ assert.equal(exactCaptionFamily({platform:"evil",caption:"IEFT bitti. Eğitim fırsatları bitmedi!"},[{id:"instagram-ieft",brand:"asyada-egitim",publicationAnchors:["IEFT bitti. Eğitim fırsatları bitmedi!"]}]),null);
 });
 
 test("short unique editorial anchor is valid while short generic title alone is not",()=>{

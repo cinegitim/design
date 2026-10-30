@@ -18,7 +18,7 @@ function mock(){
  const env={
   BRANDSTUDIO_PUBLICATION_BRIDGE_TOKEN:"dummy-test-credential",
   BRANDSTUDIO_AUTH:{idFromName:()=>({}),get:()=>({fetch:async()=>Response.json({ok:true})})},
-  PUBLICATION_TRACKER:{fetch:async (url,options)=>{called++;request={url,options};return Response.json(options.method==="POST"?{platforms:{instagram:{state:"ok",fetched:8,saved:8,needsReview:2}},completedAt:"2026-10-30T15:00:00Z"}:{mode:"on_demand_only",lastScan:null})}}
+  PUBLICATION_TRACKER:{fetch:async (url,options)=>{called++;request={url,options};return Response.json(options.method==="POST"?{platforms:Object.fromEntries(JSON.parse(options.body).platforms.map(p=>[p,{state:"ok",fetched:8,saved:8,needsReview:2}])),completedAt:"2026-10-30T15:00:00Z"}:{mode:"on_demand_only",lastScan:null,platforms:{instagram:{configured:true},facebook:{configured:false},linkedin:{configured:false},x:{configured:false}}})}}
  };
  return {env,count:()=>called,last:()=>request};
 }
@@ -40,9 +40,9 @@ test("manual refresh denies missing or external Origin even with an admin cookie
  }
  assert.equal(m.count(),0);
 });
-test("manual refresh uses existing admin session, server-side token, and Instagram-only scope",async()=>{
+test("manual refresh uses admin session, server-side token, and requested bounded platform scope",async()=>{
  const m=mock();
- const r=await scope.gateway.fetch(new Request(ORIGIN+"/admin/publications/refresh",{method:"POST",headers:{Origin:ORIGIN,Cookie:COOKIE}}),m.env,{});
+ const r=await scope.gateway.fetch(new Request(ORIGIN+"/admin/publications/refresh",{method:"POST",headers:{Origin:ORIGIN,Cookie:COOKIE},body:JSON.stringify({platforms:["instagram"]})}),m.env,{});
  assert.equal(r.status,200);
  const payload=await r.json();
  assert.equal(payload.platforms.instagram.fetched,8);
@@ -64,4 +64,22 @@ test("browser only posts on user click; controls are present but hidden until ad
  assert.doesNotMatch(browser,/PUBLICATION_REFRESH_TOKEN|BRANDSTUDIO_PUBLICATION_BRIDGE_TOKEN|META_IG_TOKEN|setInterval|setTimeout\s*\(/);
  assert.match(html,/id="publication-check"[^>]*hidden/);
  assert.match(html,/publication-check\.js/);
+});
+
+test("selected social providers are passed only when admin requests them",async()=>{
+ const m=mock();
+ const request=new Request(ORIGIN+"/admin/publications/refresh",{method:"POST",headers:{Origin:ORIGIN,Cookie:COOKIE},
+ body:JSON.stringify({platforms:["facebook","linkedin","x"]})});
+ const r=await scope.gateway.fetch(request,m.env,{});
+ assert.equal(r.status,200);
+ assert.deepEqual(JSON.parse(m.last().options.body).platforms,["facebook","linkedin","x"]);
+});
+test("unknown or duplicate social platforms never reach the tracking worker",async()=>{
+ for(const platforms of [["tiktok"],["facebook","facebook"],[],["instagram","facebook","linkedin","x","tiktok"]]){
+  const m=mock();
+  const request=new Request(ORIGIN+"/admin/publications/refresh",{method:"POST",headers:{Origin:ORIGIN,Cookie:COOKIE},
+   body:JSON.stringify({platforms})});
+  const r=await scope.gateway.fetch(request,m.env,{});
+  assert.equal(r.status,400);assert.equal(m.count(),0);
+ }
 });

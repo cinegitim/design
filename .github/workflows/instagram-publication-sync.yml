@@ -40,7 +40,7 @@ jobs:
         with:
           node-version: "22"
       - name: No-network matching and publication proof tests
-        run: node --test studio/publication-tracker/match.test.mjs studio/publication-tracker/manual-check.test.mjs docs/instagram/publication-bridge.test.mjs
+        run: node --test studio/publication-tracker/match.test.mjs studio/publication-tracker/manual-check.test.mjs studio/publication-tracker/voholabs.test.mjs docs/instagram/publication-bridge.test.mjs
       - name: Read-only UI and Worker syntax
         run: |
           node --check studio/publication-tracker/worker.mjs

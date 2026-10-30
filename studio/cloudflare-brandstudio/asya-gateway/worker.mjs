@@ -149,14 +149,25 @@ async function handleAdmin(req,env,url){
    return attachSession(json({error:'Yayın denetim servisi yapılandırılmamış'},503),user);
   try{
    const resource=refresh?'refresh':'status';
+   let selected=['instagram'];
+   if(refresh){
+    const raw=await req.text();
+    if(raw.length>800)return json({error:'İstek çok büyük'},413);
+    let parsed;try{parsed=JSON.parse(raw)}catch(_){return json({error:'Geçersiz istek'},400)}
+    selected=parsed?.platforms;
+    const allowed=['instagram','facebook','linkedin','x'];
+    if(!Array.isArray(selected)||selected.length<1||selected.length>4||
+       selected.some(x=>!allowed.includes(x))||new Set(selected).size!==selected.length)
+       return json({error:'Geçersiz platform seçimi'},400);
+   }
    const result=await env.PUBLICATION_TRACKER.fetch('https://brandstudio-publications.internal/api/'+resource,{
     method:refresh?'POST':'GET',
     headers:refresh?{'Authorization':'Bearer '+env.BRANDSTUDIO_PUBLICATION_BRIDGE_TOKEN,'Content-Type':'application/json'}:{Accept:'application/json'},
-    body:refresh?JSON.stringify({platforms:['instagram']}):undefined
+    body:refresh?JSON.stringify({platforms:selected}):undefined
    });
    const body=await result.json();
-   if(refresh&&body?.platforms?.instagram?.state!=='ok')
-    return attachSession(json({error:'Instagram denetimi tamamlanamadı',details:body?.platforms?.instagram?.message||body?.error||'Bilinmeyen hata'},502),user);
+   if(refresh && !selected.some(p=>body?.platforms?.[p]?.state==='ok'))
+    return attachSession(json({error:'Seçilen platformlarda denetim tamamlanamadı',details:selected.map(p=>p+': '+(body?.platforms?.[p]?.message||body?.platforms?.[p]?.state||body?.error||'Bilinmeyen hata')).join('; ')},502),user);
    return attachSession(json(body,result.status),user);
   }catch(err){
    console.error('Publication check failed:',String(err?.message||err));
