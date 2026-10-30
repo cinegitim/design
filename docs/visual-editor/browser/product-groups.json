@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "scope": "active-and-versioned",
-  "updated": "2026-10-29",
+  "updated": "2026-10-30",
   "archiveBranch": "archive/brand-identity-history-20261026",
   "notes": "Single product family; defaultId chooses an evidenced published revision when known; currentId remains latest working revision. Never assert which version was published from family-level proof. Legacy deep links to exact versions continue working. Canonical logo files remain protected.",
   "groups": [
@@ -367,6 +367,26 @@
         "Sosyal Medya",
         "Tekil Paylaşımlar",
         "Creative Breakout"
+      ],
+      "lifecycle": "in-review"
+    },
+    {
+      "id": "instagram-utokyo-design-2027-001",
+      "title": "Tokyo Üniversitesi · Yeni Tasarım Okulu 2027",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Tekil Paylaşımlar / Üniversite Fırsatları",
+      "currentId": "instagram-utokyo-design-2027-001",
+      "defaultId": "instagram-utokyo-design-2027-001",
+      "versions": [
+        {
+          "id": "instagram-utokyo-design-2027-001",
+          "label": "v1"
+        }
+      ],
+      "categoryPath": [
+        "Sosyal Medya",
+        "Tekil Paylaşımlar",
+        "Üniversite Fırsatları"
       ],
       "lifecycle": "in-review"
     }
