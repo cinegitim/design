@@ -1,5 +1,11 @@
 # AI Brand Studio — shared GitHub source / OpenCode + Work/Codex
 
+## Instagram publication sync (Chrome-free)
+
+- When creating a new Instagram design, register its unique, natural-language **caption anchor** in `docs/visual-editor/browser/product-groups.json` as `publicationAnchors: ["..."]`; choose an actual distinctive phrase present in its proposed final caption, without adding a tracking token or altering the human-approved copy. Prefer a 20+ character unique phrase. If no reliable anchor is available, leave this field unset and send the later post to human review.
+- The `brandstudio-publications` Cloudflare Worker polls the official Meta Instagram API four times daily with a Free-plan Cron Trigger, stores results in isolated D1, and exposes a **read-only, credential-free** `/api/proofs` feed containing only uniquely anchored, official post permalinks. Browser pages may overlay these family-level links; they must not write to the canonical registry, presume a revision, or treat text-only fuzzy candidates as published. Original verified manual records always take precedence.
+- An Instagram account token or cron failure must not erase prior proof or falsely mark unpublished items. Never put Meta or refresh tokens in GitHub files, Pages, or browser JavaScript.
+
 ## Brandstudio public gallery UI and publication-proof contract
 
 - Workspace carousel cards are **one clickable review tile** plus compact, keyboard-accessible Instagram and Visual Editor **icon links inside the same card** (not separate full-width action blocks). Never nest clickable anchors inside another `<a>`; use sibling links inside the card container, each with an accessible label. Clicking the tile itself opens the design detail page. Show the Instagram icon only when a verified public post permalink is registered.
