@@ -54,10 +54,16 @@ def main() -> None:
     if manifest.get("canonical_seal_sha256") != SEAL_SHA:
         fail("manifest seal SHA mismatch")
     records = manifest.get("records", [])
-    expected_ids = {f"{v}/{c}" for v in ["P-01", "H-02", "C-03", "D-04", "F-05"] for c in ["light", "dark", "monochrome"]}
+    expected_ids = {f"{v}/{c}" for v in ["P-01", "H-02", "F-05"] for c in ["light", "dark", "monochrome"]}
     seen = {r.get("canonical_lockup_id") for r in records}
-    if seen != expected_ids or len(records) != 15:
+    if seen != expected_ids or len(records) != 9:
         fail(f"approved combination set mismatch: {sorted(seen)}")
+    if manifest.get("default_variant_id") != "H-02":
+        fail("H-02 must be default")
+    if manifest.get("current_variant_ids") != ["H-02", "P-01", "F-05"]:
+        fail("only the three current lockups may be approved")
+    if {x.get("id") for x in manifest.get("retired_variants", [])} != {"C-03", "D-04"}:
+        fail("retired lockup statuses are missing")
     checked = []
     for rec in records:
         path = ROOT / rec["canonical_file_path"]
@@ -73,11 +79,9 @@ def main() -> None:
         if list(root.iter(f"{{{NS}}}image")):
             fail(f"{path}: contains SVG <image>")
         glyphs = "".join(p.get("data-glyph", "") for p in root_paths(root) if p.get("data-glyph"))
-        expected = TURKISH_GLYPHS if rec["variant_id"] == "D-04" else FULL_GLYPHS
+        expected = FULL_GLYPHS
         if glyphs != expected:
             fail(f"{path}: glyph/diacritic sequence mismatch: {glyphs!r}")
-        if rec["variant_id"] == "D-04" and "EDUCATION" in glyphs:
-            fail(f"{path}: D-04 incorrectly contains English")
         # Seal must be embedded as a nested original 400:370 SVG with the manifest SHA.
         nested = [e for e in root.iter(f"{{{NS}}}svg") if e.get("data-canonical-logo-sha256")]
         if len(nested) != 1 or nested[0].get("data-canonical-logo-sha256") != SEAL_SHA:
@@ -107,6 +111,9 @@ def main() -> None:
         fail("experimental assets referenced in production: " + "; ".join(bad_refs))
     result = {
         "status": "PASS",
+        "policy_revision_date": manifest.get("policy_revision_date"),
+        "active_variant_ids": manifest.get("current_variant_ids"),
+        "retired_variant_ids": ["C-03", "D-04"],
         "canonical_status": "APPROVED / CANONICAL",
         "checked_records": len(checked),
         "canonical_seal_sha256": SEAL_SHA,
