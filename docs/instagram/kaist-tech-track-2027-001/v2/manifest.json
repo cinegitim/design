@@ -22,7 +22,7 @@
   "canonical_lockup_id": "H-02/dark",
   "canonical_lockup_sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7",
   "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
-  "logo_copy": "assets/h02-primary-horizontal-dark.svg",
+  "logo_copy": "../assets/h02-primary-horizontal-dark.svg",
   "photo_sources": [
     "https://commons.wikimedia.org/wiki/File:KAIST_fountains_view.jpg",
     "https://commons.wikimedia.org/wiki/File:KAIST_campus_at_night.jpg",
@@ -43,13 +43,13 @@
   "social_published": false,
   "creative_approved": false,
   "photo_sources_local": [
-    "assets/kaist-fountains.jpg",
-    "assets/kaist-night.jpg",
-    "assets/kaist-entrance.jpg"
+    "../assets/kaist-fountains.jpg",
+    "../assets/kaist-night.jpg",
+    "../assets/kaist-entrance.jpg"
   ],
   "photos_downsampled": true,
   "institution_logo": {
-    "path": "assets/kaist-official-logo.gif",
+    "path": "../assets/kaist-official-logo.gif",
     "origin": "https://www.kaist.ac.kr/en/img/content/sub01/sym_new_01.gif",
     "official_ui_page": "https://www.kaist.ac.kr/en/html/kaist/011901.html",
     "source_format": "GIF",
@@ -69,5 +69,7 @@
     "04",
     "05"
   ],
-  "source_asset_root": "../assets"
+  "source_asset_root": "../assets",
+  "version_note": "03 and 06 recomposed in editable HTML/CSS, other slides retain previous design; no image-generation substitution",
+  "production_source": "Brandstudio / cinegitim/design"
 }
