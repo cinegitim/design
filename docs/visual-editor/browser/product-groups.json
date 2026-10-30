@@ -375,12 +375,16 @@
       "title": "Tokyo Üniversitesi · Yeni Tasarım Okulu 2027",
       "brand": "asyada-egitim",
       "category": "Sosyal Medya / Tekil Paylaşımlar / Üniversite Fırsatları",
-      "currentId": "instagram-utokyo-design-2027-001",
+      "currentId": "instagram-utokyo-design-2027-001-v2",
       "defaultId": "instagram-utokyo-design-2027-001",
       "versions": [
         {
           "id": "instagram-utokyo-design-2027-001",
           "label": "v1"
+        },
+        {
+          "id": "instagram-utokyo-design-2027-001-v2",
+          "label": "v2 · Jost / H-02 / son başvuru"
         }
       ],
       "categoryPath": [
