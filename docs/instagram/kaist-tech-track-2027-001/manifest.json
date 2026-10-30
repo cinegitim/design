@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "id": "instagram-kaist-tech-track-2027-001",
+  "brand": "asyada-egitim",
+  "title": "KAIST · Kore Tech Track 2027 · 6-slide carousel",
+  "category": "instagram-carousel",
+  "status": "in-review",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "slides": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06"
+  ],
+  "editable_source_pattern": "source/{nn}.html",
+  "style": "K-Tech editorial / deep navy, cyan, Jost",
+  "canonical_lockup_id": "H-02/dark",
+  "canonical_lockup_sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "logo_copy": "assets/h02-primary-horizontal-dark.svg",
+  "photo_sources": [
+    "https://commons.wikimedia.org/wiki/File:KAIST_fountains_view.jpg",
+    "https://commons.wikimedia.org/wiki/File:KAIST_campus_at_night.jpg",
+    "https://commons.wikimedia.org/wiki/File:KAIST_Main_entrance.jpg"
+  ],
+  "real_campus_photos": true,
+  "generated_campus_photos": false,
+  "external_image_urls": false,
+  "source_links_persist": true,
+  "rendered_exports": [
+    "jpeg/01.jpg",
+    "jpeg/02.jpg",
+    "jpeg/03.jpg",
+    "jpeg/04.jpg",
+    "jpeg/05.jpg",
+    "jpeg/06.jpg"
+  ],
+  "social_published": false,
+  "creative_approved": false,
+  "photo_sources_local": [
+    "assets/kaist-fountains.jpg",
+    "assets/kaist-night.jpg",
+    "assets/kaist-entrance.jpg"
+  ],
+  "photos_downsampled": true
+}

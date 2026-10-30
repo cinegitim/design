@@ -415,6 +415,30 @@
         "UTokyo College of Design",
         "Tokyo Üniversitesi’nin yeni tasarım okulu"
       ]
+    },
+    {
+      "id": "instagram-kaist-tech-track-2027-001",
+      "title": "KAIST · Kore Tech Track · 2027",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Karuseller / Üniversite Fırsatları",
+      "currentId": "instagram-kaist-tech-track-2027-001",
+      "defaultId": "instagram-kaist-tech-track-2027-001",
+      "versions": [
+        {
+          "id": "instagram-kaist-tech-track-2027-001",
+          "label": "v1 · 6 slayt"
+        }
+      ],
+      "categoryPath": [
+        "Sosyal Medya",
+        "Karuseller",
+        "Üniversite Fırsatları"
+      ],
+      "lifecycle": "in-review",
+      "publicationAnchors": [
+        "KAIST'te 2027 burslu lisans fırsatları",
+        "KAIST başvurunu birlikte planlayalım."
+      ]
     }
   ],
   "retired": [

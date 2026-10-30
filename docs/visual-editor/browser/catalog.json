@@ -425,5 +425,19 @@
     "pages": [
       "instagram/utokyo-design-2027-001/v2/source/01.html"
     ]
+  },
+  {
+    "id": "instagram-kaist-tech-track-2027-001",
+    "title": "KAIST · Güney Kore'de 2027 burslu lisans · Kore Tech Track",
+    "family": "instagram",
+    "kind": "html",
+    "pages": [
+      "instagram/kaist-tech-track-2027-001/source/01.html",
+      "instagram/kaist-tech-track-2027-001/source/02.html",
+      "instagram/kaist-tech-track-2027-001/source/03.html",
+      "instagram/kaist-tech-track-2027-001/source/04.html",
+      "instagram/kaist-tech-track-2027-001/source/05.html",
+      "instagram/kaist-tech-track-2027-001/source/06.html"
+    ]
   }
 ]
