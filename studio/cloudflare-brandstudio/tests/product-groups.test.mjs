@@ -143,7 +143,7 @@ test('published revision v2 is the default, while latest v3 remains directly sel
 });
 test('design taxonomy has subcategories nested within carousels',()=>{
  const carousel=manifest.groups.filter(g=>g.categoryPath?.[1]==='Karuseller');
- assert.equal(carousel.length,12);
+ assert.equal(carousel.length,13);
  assert.ok(new Set(carousel.map(g=>g.categoryPath[2])).size>=4);
  assert.ok(carousel.every(g=>g.categoryPath[0]==='Sosyal Medya'));
  assert.equal(manifest.groups.filter(g=>g.categoryPath?.[2]==='Logolar ve Kapaklar').length,2);
