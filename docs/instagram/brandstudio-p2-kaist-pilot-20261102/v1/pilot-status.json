@@ -6,7 +6,7 @@
   "source_host_execution_verified": false,
   "target_executor": "opencode",
   "target_git_branch_created": true,
-  "target_github_commit": "285d85dfcaf307c05f5c922d89f91ae7c06f1264",
+  "target_github_commit": "1b5fd6ca37c81f6c9770ca964ee4228e78047d20",
   "target_local_git_head_reported": "e1893e2c1d214eb50ee6b949642ca0d2d5bb36b3",
   "target_git_transport_verified": true,
   "target_local_artifact_sha256_verified": true,
@@ -23,5 +23,6 @@
     "local-agent-runtime-attestation-not-independently-confirmed",
     "no-work-codex-second-host",
     "no-render-pixel-qa"
-  ]
+  ],
+  "browser_layout_checked": true
 }

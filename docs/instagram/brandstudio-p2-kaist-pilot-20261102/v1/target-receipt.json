@@ -3,7 +3,7 @@
   "task_id": "brandstudio-p2-kaist-20261102",
   "executor": "opencode",
   "base_sha": "f44b775d9e52b736facf6d57706ffbf2b0e6ab69",
-  "head_sha": "285d85dfcaf307c05f5c922d89f91ae7c06f1264",
+  "head_sha": "1b5fd6ca37c81f6c9770ca964ee4228e78047d20",
   "branch": "publish/opencode-opencode-p2-kaist-20261102",
   "changed_paths": [
     "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/opencode-output/RECOVERY.md",
@@ -25,8 +25,8 @@
     "direct-push-permission-denied"
   ],
   "evidence_refs": [
-    "github:commit:285d85dfcaf307c05f5c922d89f91ae7c06f1264",
     "local:sha256:5c29a53d8b42c89fda5ab118127afb91fd9ef066b7d291576e0624097dfc843d",
-    "local:head:e1893e2c1d214eb50ee6b949642ca0d2d5bb36b3"
+    "local:head:e1893e2c1d214eb50ee6b949642ca0d2d5bb36b3",
+    "github:commit:1b5fd6ca37c81f6c9770ca964ee4228e78047d20"
   ]
 }

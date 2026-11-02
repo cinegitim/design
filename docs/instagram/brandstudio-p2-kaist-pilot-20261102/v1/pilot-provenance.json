@@ -11,9 +11,11 @@
   "recovery": {
     "executor": "chatgpt-chat",
     "action": "authenticated-github-connector-copy-and-repair-four-asset-links",
-    "commit_sha": "285d85dfcaf307c05f5c922d89f91ae7c06f1264",
-    "corrected_html_sha256": "5b6e54b60ea0bfe1c50df9fc3d569e22332e2ca70687f291959ee3882528fce3",
-    "source_commit_sha": "f50318d619d7a46a7b4504dd0efaefd03c1265b2"
+    "commit_sha": "1b5fd6ca37c81f6c9770ca964ee4228e78047d20",
+    "corrected_html_sha256": "317400ce87798d198515bcb45e9bbae38cb8f6fac1cf00d4531366f1d467b3e7",
+    "source_commit_sha": "f50318d619d7a46a7b4504dd0efaefd03c1265b2",
+    "initial_import_commit": "285d85dfcaf307c05f5c922d89f91ae7c06f1264",
+    "browser_overflow_adjusted": true
   },
   "verification": {
     "git_transport_verified": true,
@@ -22,6 +24,7 @@
     "local_opencode_runtime_independently_attested": false,
     "full_render_pixel_inspection": false,
     "creative_approved": false,
-    "social_published": false
+    "social_published": false,
+    "browser_layout_all_sections_visible": true
   }
 }
