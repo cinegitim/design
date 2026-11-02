@@ -246,6 +246,14 @@ header #product{display:none}
  .toolbar>.toolbar-spacer{display:none}
  .toolbar .toolbar-overflow{flex:none}
 }
+/* Production provenance is outside the editable artboard. */
+.production-credit{border-top:1px solid #293647;background:#0d1622;color:#a9bbc9;min-height:34px;padding:8px 16px;font-size:11px;line-height:1.5;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.production-credit #production-agent{flex:1;min-width:180px}.production-credit details{max-width:100%;flex:0 1 420px}
+.production-credit summary{cursor:pointer;color:#b9c9d8;white-space:nowrap}
+.production-credit ol{list-style:none;padding:5px 0 0;margin:5px 0 0;display:grid;gap:6px}
+.production-credit li{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between}
+.production-credit a{color:#a6c8ee;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:650px){.production-credit{display:block;padding:9px 12px}.production-credit details{margin-top:5px}.production-credit summary{white-space:normal}}
 </style></head><body>
 <header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><div class="catalog-pick"><input type="search" id="catalog-search" aria-label="Tasarımlarda ara" placeholder="Tasarım ara…"><select id="catalog-select" aria-label="Düzenlenecek tasarım"></select><select id="catalog-version" class="catalog-version" aria-label="Tasarım sürümü"></select><span id="catalog-status" class="catalog-status" title="Instagram'da yayımlanma ve tasarım inceleme durumu">İncelemede</span><a id="catalog-proof" class="catalog-proof" target="_blank" rel="noopener noreferrer" hidden>Instagram ↗</a><span id="catalog-other-proofs" class="catalog-other-proofs"></span><span id="catalog-breadcrumb" class="catalog-breadcrumb" aria-live="polite"></span></div><a href="../">← Visual Editor</a></div></header>
 <div class="layout" id="workspace"><aside><div class="compact-bar"><h2>Katmanlar</h2><div class="controls"><button class="btn" id="groups-open" title="Tümünü aç">＋</button><button class="btn" id="groups-close" title="Tümünü kapat">−</button></div></div>
@@ -349,6 +357,12 @@ header #product{display:none}
 </div>
 <div class="panel" id="legacy-storage" hidden><div class="field"><label>Eski sürüm arşivi</label><select id="versions"></select></div><div class="controls"><button class="btn" id="load">Aç</button><button class="btn" id="folder">Klasör seç</button></div><p class="small" id="folderStatus">Klasör seçilmedi</p></div>
 <div class="panel"><h2>Dosyaları indir</h2><div class="controls"><button class="btn primary" id="side-download-png">↓ PNG indir</button><button class="btn" id="side-download-jpeg">↓ JPEG indir</button></div><div class="controls"><button class="btn" id="css">Aktif slaytın CSS’i</button><button class="btn" id="html">Aktif slaytın HTML’i</button></div><p class="small">PNG kayıpsız, JPEG yüksek kalitedir. Aktif slayt gerçek tasarım ölçüsünde dışa aktarılır. HTML/CSS düzenlenebilir kaynak olarak da indirilebilir.</p></div></aside></div>
+<footer class="production-credit" id="production-credit" aria-label="Bu tasarımın üretim künyesi">
+ <span id="production-agent" aria-live="polite">Üretim künyesi · Ajan bilgisi belgelenmedi</span>
+ <details id="production-timeline"><summary>Üretim zaman çizelgesi</summary>
+  <ol id="production-events"><li>Bu sürüm için belgelenmiş üretim olayı yok.</li></ol>
+ </details>
+</footer>
 <div id="context-menu" class="context-menu" role="menu" aria-label="Katman işlemleri" hidden>
 <button type="button" role="menuitem" data-action="front">En öne getir <span>↑</span></button>
 <button type="button" role="menuitem" data-action="back">En arkaya gönder <span>↓</span></button>
@@ -358,12 +372,25 @@ header #product{display:none}
 <hr><button type="button" role="menuitem" data-action="undo">Geri al <span>⌘Z</span></button></div>
 <dialog id="dialog"><h2>Yeni sürüm oluştur</h2><p>Orijinal <b>v1</b> korunur. Yeni sürüm için onay gerekiyor.</p><div class="field"><label>Versiyon</label><input id="newV" readonly></div><div class="field"><label>Revizyon notu</label><input id="note" maxlength="140" placeholder="örn. başlık sola alındı"></div><div class="controls"><button class="btn primary" id="confirm">Kaydet</button><button class="btn" id="cancel">Vazgeç</button></div></dialog>
 <script src="../../instagram/publication-bridge.js"></script><script src="catalog.js"></script><script src="adapter.js"></script><script src="portable.js"></script>
-<script src="ux.js"></script><script src="github-sync.js"></script><script src="html2canvas.min.js"></script>
+<script src="provenance.js"></script><script src="ux.js"></script><script src="github-sync.js"></script><script src="html2canvas.min.js"></script>
 <script>
 (function(){
 'use strict';
 var $=function(id){return document.getElementById(id)};
 var q=new URLSearchParams(location.search),slug=q.get('product')||'carousel-01-v3';
+
+ var provenanceIndex={schema_version:1,products:{}};
+ function updateProvenance(selected){
+  if(!selected||!globalThis.BrandstudioProvenance)return;
+  globalThis.BrandstudioProvenance.render($('production-credit'),
+    globalThis.BrandstudioProvenance.entry(provenanceIndex,selected.id));
+ }
+ fetch('provenance.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null})
+  .then(function(data){if(data&&data.schema_version===1&&data.products&&typeof data.products==='object'){
+     provenanceIndex=data;
+     if(record)updateProvenance(record);
+   }}).catch(function(){/* Legacy product may have no provenance index. */});
+
 if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)){$('status').textContent='Geçersiz ürün';return}
 var base=new URL('../../instagram/'+slug+'/source/',location.href);
 var key='brandstudio:browser:'+slug,catalog=[],record=null,pageKinds=[],sourceCache={},loadNonce=0,DESIGN_W=1080,DESIGN_H=1350,brand='asyada-egitim',defaults={paper:'#f7f3e9',ink:'#1d2027',red:'#bd2120'};
@@ -1379,6 +1406,7 @@ function renderCatalog(filter){
  $('catalog-search').title=catalog.length+' tekil tasarım ailesi · önceki sürümler tasarım içinde'
 }
 function renderProductVersions(selected){
+ updateProvenance(selected);
  var sel=$('catalog-version'),all=selected.versions||[selected];sel.replaceChildren();
  all.forEach(function(v){var option=document.createElement('option');option.value=v.id;
    var isPublished=v.id===selected.publishedVersionId,latest=v.id===selected.currentId;
@@ -1441,6 +1469,7 @@ function openProduct(productId){
  savedState=copy(state);
  ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
  $('product').textContent=selected.title;
+  updateProvenance(selected);
  $('catalog-select').value=selected.groupId||slug;
  renderV();
  var q=new URLSearchParams(location.search);q.set('product',slug);
