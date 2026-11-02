@@ -125,3 +125,17 @@ dry-run into a completed design, and it cannot verify remote PR/CI data
 without an actual GitHub tool observation. Public summaries must omit
 the user brief. No local run or public record is required for read-only
 routing tests.
+
+## P1 optional portable advisory contracts (2026-11-02)
+
+The **existing route planner and this bootstrap remain the default**. For tasks
+that explicitly opt into the approved Brandstudio 3.0 P1 protocol, read
+[`contracts/README.md`](contracts/README.md). Portable v1 TaskSpec,
+CapabilityReport, TaskReceipt and OutputManifest JSON schemas live at
+`studio/production/contracts/schemas/`. The on-demand validator and candidate
+route CLI is `studio/production/contracts_cli.py`. It is **advisory only**: it
+does not run agents, create images, render pages, save revision records or
+publish. If a capability is unknown or unsupported, the proposed job is blocked
+without automatic paid fallback. The canonical brand locks, Visual Editor,
+code-first HTML/CSS/SVG production, existing on-demand publication checks and
+human review gates are unchanged. 
