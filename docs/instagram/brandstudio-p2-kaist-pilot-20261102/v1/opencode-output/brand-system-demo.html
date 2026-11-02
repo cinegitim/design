@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Brand Studio P2 — Asya'da Eğitim · KAIST Pilot Demo</title>
+<link rel="stylesheet" href="../../../kaist-tech-track-2027-001/v2/assets/style.css">
+<style>
+/* Brand Studio P2 Pilot — OpenCode Executor Demo */
+/* This is a NEW pilot output directory, does not modify existing V2 designs. */
+
+.demo-root {
+  width: 1080px;
+  height: 1350px;
+  position: relative;
+  font-family: Jost, Arial, sans-serif;
+  background: #071c30;
+  color: #eff9ff;
+  overflow: hidden;
+}
+
+.demo-root:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#71c6ff08 1px, transparent 1px),
+    linear-gradient(90deg, #71c6ff07 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.demo-header {
+  position: absolute;
+  z-index: 10;
+  left: 56px; right: 56px; top: 34px;
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #8fd9ec88;
+  padding-bottom: 12px;
+  color: #bbecff;
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: 3px;
+}
+
+.demo-header .hangul {
+  letter-spacing: 4px;
+  font-size: 17px;
+}
+
+.demo-main {
+  position: absolute;
+  top: 120px;
+  left: 58px;
+  right: 58px;
+  z-index: 4;
+}
+
+.demo-title {
+  font-size: 76px;
+  font-weight: 850;
+  letter-spacing: -3px;
+  line-height: 1.04;
+  margin: 0 0 12px;
+}
+
+.demo-subtitle {
+  font-size: 28px;
+  line-height: 1.3;
+  color: #5ed9ff;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.demo-section {
+  margin-bottom: 36px;
+}
+
+.demo-section-title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #5ed9ff;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.demo-card {
+  background: #0b304a;
+  border: 1px solid #59d6fc80;
+  padding: 24px;
+  min-height: 160px;
+}
+
+.demo-card h3 {
+  font-size: 32px;
+  font-weight: 850;
+  color: #5dddff;
+  margin: 0 0 8px;
+  letter-spacing: -1px;
+}
+
+.demo-card p {
+  font-size: 18px;
+  line-height: 1.35;
+  color: #c4d6e0;
+  margin: 0;
+}
+
+.demo-lockup-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.demo-lockup-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #b8eaff;
+  letter-spacing: 2px;
+  min-width: 140px;
+}
+
+.demo-lockup-svg {
+  width: 332px;
+  height: auto;
+  max-height: 87px;
+  object-fit: contain;
+  flex: none;
+  background: #071e31;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.demo-footer {
+  position: absolute;
+  z-index: 12;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 110px;
+  background: #061a2beF;
+  border-top: 1px solid #7de1ff55;
+  display: flex;
+  align-items: center;
+  padding: 0 58px;
+  gap: 25px;
+}
+
+.demo-footer img {
+  width: 332px;
+  height: auto;
+  max-height: 87px;
+  object-fit: contain;
+  flex: none;
+}
+
+.demo-footer .foot-rule {
+  height: 1px;
+  background: #78cffc77;
+  flex: 1;
+}
+
+.demo-footer .count {
+  border: 1px solid #a7dff2a0;
+  border-radius: 40px;
+  padding: 7px 13px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.demo-pilot-badge {
+  position: absolute;
+  top: 90px;
+  right: 56px;
+  z-index: 20;
+  background: #5ed9ff;
+  color: #071c30;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  border-radius: 99px;
+}
+
+</style>
+</head>
+<body>
+<main class="demo-root">
+  <header class="demo-header">
+    <span>BRANDSTUDIO P2 / KAIST PILOT / OPENCODE</span>
+    <span class="hangul">아시아 교육 · 브랜드 시스템 데모</span>
+  </header>
+
+  <div class="demo-pilot-badge">OPENCODE P2 HANDOFF</div>
+
+  <div class="demo-main">
+    <h1 class="demo-title">BRAND SYSTEM<br>DEMONSTRATION</h1>
+    <p class="demo-subtitle">Asya'da Eğitim canonical lockups applied to KAIST Tech Track 2027 content</p>
+
+    <section class="demo-section">
+      <div class="demo-section-title">Canonical Lockup Variants (Approved)</div>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>H-02</h3>
+          <p>Primary horizontal · bilingual · 3-line measure</p>
+        </div>
+        <div class="demo-card">
+          <h3>P-01</h3>
+          <p>Primary stacked · bilingual · formal default</p>
+        </div>
+        <div class="demo-card">
+          <h3>F-05</h3>
+          <p>Formal bilingual · centered crest emphasis</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section">
+      <div class="demo-section-title">H-02 / dark — as used in KAIST V2 slides 03 & 06</div>
+      <div class="demo-lockup-row">
+        <span class="demo-lockup-label">Canonical ID:</span>
+        <img class="demo-lockup-svg" src="../../../kaist-tech-track-2027-001/assets/h02-primary-horizontal-dark.svg" alt="H-02 dark lockup">
+        <span class="demo-lockup-label">SHA-256: c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7</span>
+      </div>
+    </section>
+
+    <section class="demo-section">
+      <div class="demo-section-title">V-01 Seal — locked asset (SHA-256 verified)</div>
+      <div class="demo-lockup-row">
+        <span class="demo-lockup-label">Canonical ID:</span>
+        <img class="demo-lockup-svg" src="../../../basvuru-rehberi-china-001/assets/v01-canonical.svg" alt="V-01 canonical seal">
+        <span class="demo-lockup-label">SHA-256: 8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a</span>
+      </div>
+    </section>
+
+    <section class="demo-section">
+      <div class="demo-section-title">Pilot Scope & Constraints</div>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>No V2 Modification</h3>
+          <p>Existing slides 01–06 unchanged; this demo is a separate pilot output.</p>
+        </div>
+        <div class="demo-card">
+          <h3>No Paid APIs</h3>
+          <p>Zero image-generation calls; pure HTML/CSS editable source only.</p>
+        </div>
+        <div class="demo-card">
+          <h3>Locked Assets Only</h3>
+          <p>Only approved H-02, P-01, F-05, V-01 from canonical manifest used.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section">
+      <div class="demo-section-title">Handoff Chain</div>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>P1 Source</h3>
+          <p>chatgpt-chat · f50318d619d7a46a7b4504dd0efaefd03c1265b2</p>
+        </div>
+        <div class="demo-card">
+          <h3>P2 Target</h3>
+          <p>opencode · publish/opencode-opencode-p2-kaist-20261102</p>
+        </div>
+        <div class="demo-card">
+          <h3>Next</h3>
+          <p>Work/Codex · independent runtime verification required</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="demo-footer">
+    <img src="../../../kaist-tech-track-2027-001/assets/h02-primary-horizontal-dark.svg" alt="Asya'da Eğitim onaylı tam H-02 logo">
+    <span class="foot-rule"></span>
+    <span class="count">P2 / 01</span>
+  </footer>
+</main>
+</body>
+</html>
