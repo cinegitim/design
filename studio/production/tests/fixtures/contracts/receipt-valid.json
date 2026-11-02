@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "task_id": "brandstudio-p1-test-001",
+  "executor": "opencode",
+  "base_sha": "a4e2b9b48ab61bb0f3444dfbec20e58b213a8bb5",
+  "head_sha": null,
+  "branch": "publish/opencode-p1-test",
+  "changed_paths": [
+    "docs/instagram/p1-test/v1/source/slide1.html"
+  ],
+  "actual_tools": [
+    "filesystem",
+    "terminal"
+  ],
+  "failure_codes": [],
+  "evidence_refs": []
+}

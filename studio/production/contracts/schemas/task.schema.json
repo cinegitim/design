@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TaskSpec v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^brandstudio-[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 130
+    },
+    "brand_slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 100
+    },
+    "category": {
+      "enum": [
+        "instagram-carousel",
+        "social-post",
+        "identity-application",
+        "print-catalog",
+        "web-design",
+        "new-identity"
+      ]
+    },
+    "brief_ref": {
+      "type": "string",
+      "anyOf": [
+        {
+          "pattern": "^private:[a-z0-9][a-z0-9-]{0,100}$"
+        },
+        {
+          "pattern": "^repo:(?:docs|brands|studio)/[A-Za-z0-9][A-Za-z0-9._/-]*$"
+        }
+      ],
+      "maxLength": 400
+    },
+    "base_sha": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "output_ref": {
+      "type": "string",
+      "pattern": "^docs/[A-Za-z0-9][A-Za-z0-9._/-]*$",
+      "maxLength": 400,
+      "not": {
+        "pattern": "(?:^|/)\\.\\.?(/|$)|//|\\\\|[?&#]"
+      }
+    },
+    "style_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 100
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "required_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+      },
+      "uniqueItems": true,
+      "minItems": 1,
+      "maxItems": 60
+    },
+    "allowed_executors": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "opencode",
+          "codex",
+          "chatgpt-work",
+          "chatgpt-chat",
+          "antigravity"
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 1,
+      "maxItems": 5
+    },
+    "max_parallel": {
+      "type": "integer",
+      "enum": [
+        1,
+        2
+      ]
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "currency",
+        "new_paid_api",
+        "image_calls_max",
+        "auto_retry"
+      ],
+      "properties": {
+        "currency": {
+          "const": "USD"
+        },
+        "new_paid_api": {
+          "const": false
+        },
+        "image_calls_max": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "auto_retry": {
+          "const": false
+        }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "creative",
+        "brand_identity",
+        "social_publish",
+        "parallel_approved"
+      ],
+      "properties": {
+        "creative": {
+          "const": "pending"
+        },
+        "brand_identity": {
+          "const": "inherit-approved-assets"
+        },
+        "social_publish": {
+          "const": false
+        },
+        "parallel_approved": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "task_id",
+    "brand_slug",
+    "category",
+    "brief_ref",
+    "base_sha",
+    "output_ref",
+    "style_id",
+    "required_capabilities",
+    "allowed_executors",
+    "max_parallel",
+    "budget",
+    "approval"
+  ]
+}
