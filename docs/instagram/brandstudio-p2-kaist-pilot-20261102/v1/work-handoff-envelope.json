@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "task_id": "brandstudio-p2-kaist-20261102",
+  "source_executor": "opencode",
+  "target_executor": "chatgpt-work",
+  "source_branch": "publish/opencode-opencode-p2-kaist-20261102",
+  "source_head_sha": "1b5fd6ca37c81f6c9770ca964ee4228e78047d20",
+  "original_base_sha": "f44b775d9e52b736facf6d57706ffbf2b0e6ab69",
+  "target_branch": "work/brandstudio-p2-kaist-20261102",
+  "output_ref": "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1",
+  "receipt_ref": "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-target-receipt.json",
+  "observed_via": "github-connector",
+  "target_observed_via": "github-connector",
+  "status": "received"
+}

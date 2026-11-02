@@ -20,9 +20,16 @@
   "social_published": false,
   "cloudflare_write_performed": false,
   "blockers": [
-    "local-agent-runtime-attestation-not-independently-confirmed",
-    "no-work-codex-second-host",
-    "no-render-pixel-qa"
+    "local-opencode-agent-host-not-independently-attested",
+    "no-independent-model-host-attestation",
+    "no-raster-pixel-qa-or-human-creative-approval"
   ],
-  "browser_layout_checked": true
+  "browser_layout_checked": true,
+  "work_receiver_branch": "work/brandstudio-p2-kaist-20261102",
+  "work_receiver_github_head": "84abbeb55a88354288c98f2e1fc4ace3205179ab",
+  "work_receiver_transport_verified": true,
+  "work_receiver_receipt_present": true,
+  "work_browser_harness_pass": true,
+  "work_standalone_assets_pass": true,
+  "multi_executor_repository_handoff_verified": true
 }
