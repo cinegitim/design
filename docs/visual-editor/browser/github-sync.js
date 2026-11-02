@@ -1,5 +1,5 @@
 /* Brandstudio cloud revisions client — one private Cloudflare editor.
-   Cloudflare Access authenticates the browser with a normal long-lived session;
+   Cloudflare Access controls entry; the separate Brandstudio admin session authorizes cloud revisions;
    the application never asks for or stores GitHub access tokens. */
 (function(root){
 "use strict";

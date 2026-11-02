@@ -198,11 +198,28 @@ async function handleAdmin(req,env,url){
  return redirect(target(data.get('next')),cookieHeader(secret))
 }
 function safeProduct(p){return typeof p==='string'&&p.length<=130&&KEY.test(p)}
+function validateDesignStyle(x){
+ if(!x||typeof x!=='object'||Array.isArray(x))return false;
+ const fields=['schema','brand','category','style_id','style_version','style_source_blob_sha','preset_id','lockup_id','lockup_sha256','seal_sha256','approval_status','font_family','palette','variation','overrides','source_path'];
+ if(Object.keys(x).length!==fields.length||fields.some(k=>!Object.prototype.hasOwnProperty.call(x,k)))return false;
+ const slug=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+ if(x.schema!==1||!['brand','category','style_id','preset_id'].every(k=>slug.test(x[k]||'')))return false;
+ if(!/^\d{1,2}\.\d{1,2}\.\d{1,2}$/.test(x.style_version||'')||!/^[a-f0-9]{40}$/.test(x.style_source_blob_sha||''))return false;
+ if(!/^(?:H-02|P-01|F-05)\/(?:light|dark|monochrome)$/.test(x.lockup_id||'')||!['lockup_sha256','seal_sha256'].every(k=>/^[a-f0-9]{64}$/.test(x[k]||'')))return false;
+ if(!['review-only','approved','locked'].includes(x.approval_status)||x.font_family!=='Jost')return false;
+ if(!x.palette||typeof x.palette!=='object'||Array.isArray(x.palette)||Object.keys(x.palette).length!==3||!['paper','ink','red'].every(k=>/^#[a-f\d]{6}$/i.test(x.palette[k]||'')))return false;
+ if(!x.variation||typeof x.variation!=='object'||Array.isArray(x.variation)||Object.keys(x.variation).length<1||Object.keys(x.variation).length>12||!x.overrides||typeof x.overrides!=='object'||Array.isArray(x.overrides)||Object.keys(x.overrides).length>12)return false;
+ for(const obj of [x.variation,x.overrides])
+  for(const [axis,val] of Object.entries(obj))
+   if(!/^[a-z][a-z0-9_]{1,30}$/.test(axis)||typeof val!=='string'||val.length>64||!slug.test(val))return false;
+ return x.source_path==='brands/'+x.brand+'/styles/'+x.category+'/'+x.style_id+'/style.json';
+}
 function validateState(s){
  if(!s||typeof s!=='object'||Array.isArray(s)||!s.colors||!s.edits||!s.groups)return false;
  if(!['paper','ink','red'].every(k=>/^#[a-f\d]{6}$/i.test(s.colors[k]||'')))return false;
  if(typeof s.edits!=='object'||Array.isArray(s.edits)||Object.keys(s.edits).length>800)return false;
  if(typeof s.groups!=='object'||Array.isArray(s.groups))return false;
+ if(s.designStyle!==undefined&&!validateDesignStyle(s.designStyle))return false;
  for(const [key,edit] of Object.entries(s.edits)){
   if(!/^\d{1,3}:\d{1,4}$/.test(key)||!edit||typeof edit!=='object')return false;
   if(edit.styles&&(!edit.styles||typeof edit.styles!=='object'||Array.isArray(edit.styles)||Object.keys(edit.styles).length>80))return false;
