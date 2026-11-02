@@ -85,6 +85,14 @@ def validate_document(kind: str, document: dict, *, root: Path) -> None:
         if document["max_parallel"] == 2 and not document["approval"]["parallel_approved"]:
             raise ValueError("Parallel execution requires human approval")
     elif kind == "task-receipt":
+        branch = document["branch"]
+        if branch is not None:
+            parts = branch.split("/")
+            if (".." in branch or "//" in branch or any(
+                not _COMPONENT.fullmatch(part) or part.endswith((".lock", "."))
+                for part in parts
+            )):
+                raise ValueError("Unsafe handoff branch reference")
         for value in document["changed_paths"]:
             _repo_path(value, root, _ROOTS)
     elif kind == "output-manifest":
@@ -122,6 +130,10 @@ def validate_bundle(
     if manifest is not None:
         if manifest["task_id"] != task["task_id"]:
             raise ValueError("Output manifest task mismatch")
+        if task["brand_slug"] == "asyada-egitim" and manifest["lockup"] is not None:
+            # C-03/D-04 are explicitly retired brand variants; no new use.
+            if manifest["lockup"]["canonical_id"].split("/")[0] in {"C-03", "D-04"}:
+                raise ValueError("Retired brand lockup cannot be used")
         prefix = task["output_ref"].rstrip("/") + "/"
         for path in list(manifest["editable_sources"]) + [render["path"] for render in manifest["renders"]]:
             if not path.startswith(prefix):
