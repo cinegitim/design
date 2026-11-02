@@ -4,6 +4,9 @@ on:
     paths:
       - "studio/cloudflare-brandstudio/**"
       - "docs/visual-editor/browser/**"
+      - "brands/asyada-egitim/styles/**"
+      - "brands/asyada-egitim/assets/lockups/**"
+      - "brands/asyada-egitim/assets/v01-canonical.svg"
       - "docs/visual-editor/index.html"
       - "functions/visual-editor/**"
       - "studio/brandstudio/**"
