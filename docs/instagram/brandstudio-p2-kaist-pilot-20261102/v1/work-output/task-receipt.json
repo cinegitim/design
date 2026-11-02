@@ -2,7 +2,7 @@
   "schema_version": 1,
   "task_id": "brandstudio-p2-kaist-20261102",
   "executor": "chatgpt-work",
-  "base_sha": "1b5fd6ca37c81f6c9770ca964ee4228e78047d20",
+  "base_sha": "f44b775d9e52b736facf6d57706ffbf2b0e6ab69",
   "branch": "work/brandstudio-p2-kaist-20261102",
   "changed_paths": [
     "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/brand-system-demo.html",
@@ -12,8 +12,15 @@
     "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/task-receipt.json",
     "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/handoff-envelope.json"
   ],
-  "actual_tools": ["github-read", "github-write", "connected-chrome"],
-  "failure_codes": ["raw-github-content-served-as-text", "no-dedicated-render-ci"],
+  "actual_tools": [
+    "github-read",
+    "github-write",
+    "connected-chrome"
+  ],
+  "failure_codes": [
+    "raw-github-content-served-as-text",
+    "no-dedicated-render-ci"
+  ],
   "evidence_refs": [
     "github:commit:1b5fd6ca37c81f6c9770ca964ee4228e78047d20",
     "github:branch:work/brandstudio-p2-kaist-20261102",
@@ -23,13 +30,5 @@
     "github:workflow-run:41440207675",
     "github:workflow-job:125259872850"
   ],
-  "ci": {
-    "workflow": "audit",
-    "run_id": 41440207675,
-    "run_number": 425,
-    "job_id": 125259872850,
-    "job": "submitted-files",
-    "conclusion": "success",
-    "scope": "repository audit only; explicitly no build or render"
-  }
+  "head_sha": null
 }
