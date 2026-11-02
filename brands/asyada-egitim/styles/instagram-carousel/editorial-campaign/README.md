@@ -1,4 +1,4 @@
-# Editorial Campaign — candidate style family (v0.1.0)
+# Editorial Campaign — candidate style family (v0.1.1)
 
 **Brand:** `asyada-egitim` · **Category:** `instagram-carousel` · **Style ID:** `editorial-campaign` · **State:** `review-only`.
 
@@ -15,7 +15,7 @@ These are **candidate references**, not four locked templates. Their review mani
 
 ## Visual grammar
 
-**Must be recognisable:** strong Jost display type; editorial information hierarchy; alternating image/type counterpoint; measured negative space and clear separation of primary message, support, and CTA; exact manifest-listed `P-01` or `D-04` SVG; familiar cream (#F7F3E9), ink (#1D2027) and crimson (#BD2120) anchors. Only the identity itself is canonical; the visual grammar is a proposed campaign layer.
+**Must be recognisable:** strong Jost display type; editorial information hierarchy; alternating image/type counterpoint; measured negative space and clear separation of primary message, support, and CTA; exact manifest-listed `H-02` or `P-01` SVG; familiar cream (#F7F3E9), ink (#1D2027) and crimson (#BD2120) anchors. Only the identity itself is canonical; the visual grammar is a proposed campaign layer.
 
 **May vary:** cover archetype, background rhythm, image window/crop, alignment, content density, location of lines/meta, CTA presentation, photo density, and the balance between photographic and type-led slides. `interior_bias` is only a bias; mixed sequencing is encouraged. The logo may move to a safe position, but may never deform or be retypeset.
 
@@ -53,7 +53,7 @@ The router prints a **candidate plan**. It does not build a carousel, select a m
 
 ## Controlled reproducibility trial — not yet executed
 
-Produce **three separate five-slide carousels**, each as editable HTML/CSS/SVG + real browser-rendered 1080×1350 PNG, using the real `P-01` or `D-04` complete SVG and preserved photo provenance:
+Produce **three separate five-slide carousels**, each as editable HTML/CSS/SVG + real browser-rendered 1080×1350 PNG, using the real `H-02` or `P-01` complete SVG and preserved photo provenance:
 
 1. **A / baseline:** "Neden Asya'da üniversite okumalı?" — `institutional-paper`; paper-led and informative.
 2. **B / content change:** "Japonya'da öğrenci hayatı" — **the same `institutional-paper` preset**; examine whether the visual family survives a different topic and longer image-led content.
@@ -102,3 +102,13 @@ an **exact D-04/light** SVG, SHA-256
 is **not part of this PR** and remains review-only. Supporting fonts still use
 an Inter fallback, and photos are illustrative rather than verified campuses.
 Do not infer independent repeatability or visual approval from these technical checks.
+
+## Portable cross-agent style bundle (v0.1.1)
+
+All agents resolve and verify the **same** versioned repository-based contract; their agent/runtime identity is captured separately in a TaskReceipt. The historical D-04 logo is retired and not a permitted output lockup. The candidate style remains **review-only**, so these choices do not automatically grant creative approval.
+
+```sh
+python3 studio/production/style_pack.py --brand asyada-egitim --category instagram-carousel --style editorial-campaign --preset institutional-paper --lockup H-02/dark
+```
+
+The JSON pack includes approved full SVG identity with byte-exact SHA-256, Jost typography, shared cream/red/ink tokens, selected preset and optional variation axes, and human-approval flags. It does **not** draw a slide or commit a GitHub version; generation and Visual Editor checkpoints are separate steps.

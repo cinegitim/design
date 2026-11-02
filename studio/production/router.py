@@ -8,6 +8,7 @@ import re
 from pathlib import Path
 
 from style_catalog import list_styles, resolve_style
+from style_pack import build_style_pack
 
 ROOT = Path(__file__).resolve().parents[2]
 CONFIG = Path(__file__).with_name("routes.json")
@@ -56,6 +57,10 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
     style = resolve_style(root=root, brand=brand, category=category,
                           style_id=style_id, preset_id=preset_id,
                           variation_overrides=variation_overrides)
+    style_pack = (build_style_pack(
+        root=root, brand=brand, category=category, style_id=style_id,
+        preset_id=preset_id, variation_overrides=variation_overrides,
+    ) if style is not None else None)
     return {
         "schema_version": config["schema_version"],
         "mode": "read-only-dry-run",
@@ -69,6 +74,7 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
         },
         "task": {"brand": brand, "category": category},
         "style": style,
+        "style_pack": style_pack,
         "production_policy": dict(production_policy),
         "route": {
             "id": selected["id"],
@@ -82,7 +88,12 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
             ".agents/skills/brand-studio/SKILL.md",
             *config["categories"][category],
             *selected.get("references", []),
-            *([style["definition_path"], style["definition_path"].replace("style.json", "README.md")] if style else []),
+            *([style["definition_path"], style["definition_path"].replace("style.json", "README.md"),
+               "studio/production/style_pack.py",
+               style_pack["sources"]["brand_path"],
+               style_pack["sources"]["lockup_manifest"],
+               style_pack["identity"]["lockup_path"],
+               style_pack["identity"]["seal_path"]] if style else []),
             "studio/workflow/PUBLISHING.md",
         ],
         "telemetry": {"collected": False, "run_id": None},

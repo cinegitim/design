@@ -36,3 +36,7 @@ checks, resolve technical conflicts/corrections, rerun checks, then merge withou
 an additional confirmation when all checks pass and no substantive blocker remains.
 An explicit user hold leaves that PR open. Creative/identity approval, locked-artwork
 changes and social publication remain separate human gates; CI is not aesthetic approval.
+
+### Portable visual style selection
+
+For `asyada-egitim` production, read the selected brand/category/style/preset/variation from root `AGENTS.md`, `studio/production/style_catalog.py` and `studio/production/style_pack.py`. `studio/production/router.py` includes the independently verified `style_pack` regardless of executor; logos must match canonical SHA-256, palette and Jost may not drift. The editorial style remains review-only. Do not invent a new design-language choice or silently substitute a retired lockup.
