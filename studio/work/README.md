@@ -170,3 +170,7 @@ Observed migration evidence and unresolved capabilities:
 Official environment references, distinct from this session's observed tool set:
 - https://learn.chatgpt.com/docs/environments/cloud-environments
 - https://learn.chatgpt.com/docs/environments/git-worktrees
+
+## Unified visual language for Work and Codex
+
+Before production for an existing approved brand, select `Brand → Category → Style family → Preset → variations` explicitly; run `python3 studio/production/style_pack.py --brand asyada-egitim --category instagram-carousel --style editorial-campaign --preset institutional-paper --lockup H-02/dark` and preserve its JSON contract in the production manifest. `studio/production/router.py` returns the same `style_pack` for all executors. This review-only visual family is a repeatable proposal, **not** a creative approval. Retired D-04/C-03 logos are rejected; no logos or brand fonts should be regenerated.

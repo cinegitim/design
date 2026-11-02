@@ -116,3 +116,7 @@ Read `references/applications.md`, `references/image-production.md` + the canoni
 - [ ] No AI-rendered typography or wordmarks; ChatGPT backend untouched unless explicitly authorized
 - [ ] `brand-system.md` exists and is complete before any application is made
 - [ ] Every application traces to a system token (no orphan colors/fonts/devices)
+
+### Cross-agent portable style pack
+
+For existing `asyada-egitim` applications, read root `AGENTS.md` and resolve chosen category/style/preset and axes with `studio/production/style_pack.py` before creating any artwork. Treat `style_pack` from `studio/production/router.py` as identical contract across OpenCode, Work, Codex and connected ChatGPT; verify SHA-256 of actual canonical SVG bytes. D-04/C-03 are retired. Do not treat review-only campaign style as creative approval.
