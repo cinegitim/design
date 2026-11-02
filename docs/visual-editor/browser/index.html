@@ -254,6 +254,16 @@ header #product{display:none}
 .production-credit li{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between}
 .production-credit a{color:#a6c8ee;text-decoration:underline;text-underline-offset:2px}
 @media(max-width:650px){.production-credit{display:block;padding:9px 12px}.production-credit details{margin-top:5px}.production-credit summary{white-space:normal}}
+
+/* Style picker annotates production; it never alters existing artboards. */
+#design-language-panel .panel{display:grid;gap:8px}
+#design-language-panel .field{margin:0}
+#design-language-panel select{width:100%;min-width:0;max-width:100%;background:#111c28;border:1px solid #435568;border-radius:5px;color:#eaf0f5;padding:6px}
+#design-language-panel .style-axes{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+#design-language-panel .style-axes label{font-size:10px;color:#b9c9da;display:grid;gap:3px}
+#design-language-panel .style-actions{display:flex;gap:6px;flex-wrap:wrap}
+#design-language-panel .style-actions .btn{font-size:11px}
+#design-language-panel #style-status{font-size:11px;line-height:1.5;overflow-wrap:anywhere}
 </style></head><body>
 <header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><div class="catalog-pick"><input type="search" id="catalog-search" aria-label="Tasarımlarda ara" placeholder="Tasarım ara…"><select id="catalog-select" aria-label="Düzenlenecek tasarım"></select><select id="catalog-version" class="catalog-version" aria-label="Tasarım sürümü"></select><span id="catalog-status" class="catalog-status" title="Instagram'da yayımlanma ve tasarım inceleme durumu">İncelemede</span><a id="catalog-proof" class="catalog-proof" target="_blank" rel="noopener noreferrer" hidden>Instagram ↗</a><span id="catalog-other-proofs" class="catalog-other-proofs"></span><span id="catalog-breadcrumb" class="catalog-breadcrumb" aria-live="polite"></span></div><a href="../">← Visual Editor</a></div></header>
 <div class="layout" id="workspace"><aside><div class="compact-bar"><h2>Katmanlar</h2><div class="controls"><button class="btn" id="groups-open" title="Tümünü aç">＋</button><button class="btn" id="groups-close" title="Tümünü kapat">−</button></div></div>
@@ -295,6 +305,16 @@ header #product{display:none}
 </div>
 <nav class="slide-tabs" aria-label="Slaytlar" id="slide-tabs"></nav><div class="canvas" id="canvas"><div class="ruler-stage" id="ruler-stage"><div id="ruler-corner" aria-hidden="true"></div><canvas id="ruler-x" aria-label="Tuvalin üst dış kenarındaki yatay cetvel"></canvas><canvas id="ruler-y" aria-label="Tuvalin sol dış kenarındaki dikey cetvel"></canvas><div class="frame" id="frame"><iframe id="preview" title="Düzenlenebilir karusel" sandbox="allow-same-origin"></iframe><div id="pan-shield" class="pan-shield" hidden></div></div></div></div><div class="bottom"><span id="status">Kaynak denetleniyor</span> · <span id="unsaved">Değişiklik yok</span></div></main>
 <aside class="right"><h2>Özellikler</h2>
+<details class="inspector-details" id="design-language-panel"><summary>Tasarım dili ve varyasyonlar</summary>
+<div class="panel">
+<p class="small">GitHub’daki ortak stile göre <strong>sonraki üretim için seçim</strong>. Mevcut görsel kendiliğinden yeniden tasarlanmaz.</p>
+<div class="field"><label for="style-category">Kategori</label><select id="style-category" aria-label="Tasarım kategorisi"></select></div>
+<div class="field"><label for="style-family">Tasarım dili</label><select id="style-family" aria-label="Tasarım dili"></select></div>
+<div class="field"><label for="style-preset">Alt varyasyon</label><select id="style-preset" aria-label="Alt varyasyon"></select></div>
+<div class="field"><label for="style-logo">Onaylı logo</label><select id="style-logo" aria-label="Kanonik logo"></select></div>
+<details><summary>İnce ayarlar</summary><div class="style-axes" id="style-axes"></div></details>
+<div class="style-actions"><button type="button" class="btn primary" id="style-save">Seçimi sürüme kaydet</button><button type="button" class="btn" id="style-export">GitHub üretim fişi ↓</button></div>
+<p id="style-status" class="small" aria-live="polite">Stil kataloğu yükleniyor…</p></div></details>
 <div class="panel" id="selection-tools" hidden><strong id="selection-summary" aria-live="polite"></strong>
 
 <div class="group-tools"><button class="btn" id="link-group" type="button">Grup oluştur</button><button class="btn" id="unlink-group" type="button">Grubu çöz</button></div>
@@ -371,7 +391,7 @@ header #product{display:none}
 <button type="button" role="menuitem" data-action="reset">Konum / boyutu sıfırla</button><hr><button type="button" role="menuitem" data-action="delete">Sil <span>⌫</span></button>
 <hr><button type="button" role="menuitem" data-action="undo">Geri al <span>⌘Z</span></button></div>
 <dialog id="dialog"><h2>Yeni sürüm oluştur</h2><p>Orijinal <b>v1</b> korunur. Yeni sürüm için onay gerekiyor.</p><div class="field"><label>Versiyon</label><input id="newV" readonly></div><div class="field"><label>Revizyon notu</label><input id="note" maxlength="140" placeholder="örn. başlık sola alındı"></div><div class="controls"><button class="btn primary" id="confirm">Kaydet</button><button class="btn" id="cancel">Vazgeç</button></div></dialog>
-<script src="../../instagram/publication-bridge.js"></script><script src="catalog.js"></script><script src="adapter.js"></script><script src="portable.js"></script>
+<script src="../../instagram/publication-bridge.js"></script><script src="catalog.js"></script><script src="style-selection.js"></script><script src="style-ui.js"></script><script src="adapter.js"></script><script src="portable.js"></script>
 <script src="provenance.js"></script><script src="ux.js"></script><script src="github-sync.js"></script><script src="html2canvas.min.js"></script>
 <script>
 (function(){
@@ -398,6 +418,7 @@ var state={colors:Object.assign({},defaults),edits:{},groups:{}},pages=[],page=0
 var codec=globalThis.BrandstudioPortable,ux=globalThis.BrandstudioUX,discovery=globalThis.BrandstudioCatalog,adapter=globalThis.BrandstudioAdapter; if(!codec||!ux||!discovery||!adapter){$('status').textContent='Editör modülü eksik';return}
 var history=ux.createHistory(40),savedState=copy(state),groupOpen={},dragging=false,dragRecorded=false,colorSessions={};
 var cloud=globalThis.BrandstudioCloud,cloudData=null,cloudSelected=false,cloudNonce=0;
+ var styleModule=globalThis.BrandstudioStyleSelection,styleUI=null;
  var cloudSha=null,cloudReady=false,autoTimer=null,autoBusy=false,autoAgain=false,autoLastFailure=false;
  function pendingKey(product){return 'brandstudio:unsynced:'+product}
  function pendingSnapshot(){try{return JSON.parse(localStorage.getItem(pendingKey(slug))||'null')}catch(e){return null}}
