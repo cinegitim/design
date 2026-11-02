@@ -110,3 +110,28 @@ test("editor has opt-in picker and does not automatically restyle existing slide
  assert.ok(html.includes("styleModule.productionBrief"));
  assert.doesNotMatch(script,/fetch\(|api\.github\.com|cloudflare\.com/);
 });
+
+test("Cloudflare gateway permits valid style revision and rejects forged style fields",async()=>{
+ const {onRequestPost}=await import("../asya-gateway/worker.mjs");
+ const selection=S.resolve(registry,baseline());
+ let forwarded=false;
+ const env={BRANDSTUDIO_OBJECTS:{idFromName:x=>x,get:()=>({fetch:async req=>{forwarded=true;return new Response(await req.text(),{status:200})}})}};
+ const state={colors:{paper:"#f7f3e9",ink:"#1d2027",red:"#bd2120"},edits:{},groups:{},designStyle:selection};
+ const post=async data=>{
+  forwarded=false;
+  const req=new Request("https://studio.asyadaegitim.com/visual-editor/api/revisions?product=carousel-01-v3",{
+   method:"POST",headers:{"origin":"https://studio.asyadaegitim.com","X-Brandstudio-Editor":"1","Content-Type":"application/json"},
+   body:JSON.stringify({product:"carousel-01-v3",version:2,state:data,expectedSha:null})
+  });
+  const response=await onRequestPost({authenticated:true,request:req,env});
+  return {status:response.status,forwarded};
+ };
+ const yes=await post(state);
+ assert.equal(yes.status,200);assert.equal(yes.forwarded,true);
+ for(const bad of [
+  {...state,designStyle:{...selection,lockup_id:"D-04/dark"}},
+  {...state,designStyle:{...selection,style_version:"<script>"}},
+  {...state,designStyle:{...selection,variation:{bad:"javascript:alert(1)"}}},
+  {...state,designStyle:{...selection,unknown:"extra"}}
+ ]){const no=await post(bad);assert.equal(no.status,400);assert.equal(no.forwarded,false)}
+});
