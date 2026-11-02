@@ -1,7 +1,7 @@
 # Brandstudio 3.0 — Modüler Çok-Ajanlı Tasarım Sistemi (Tasarım Şartnamesi)
 
 **Tarih:** 2026-11-02  
-**Durum:** REVIEW-ONLY — kullanıcı mimari yaklaşım B'yi seçti; ayrıntılı şartname ve uygulama henüz onaylanmadı.  
+**Durum:** APPROVED — 2026-11-02 tarihinde kullanıcı yaklaşım B'yi ve bu teknik şartnameyi onayladı. P1 uygulama planı ayrıca incelenir.  
 **Kapsam:** `cinegitim/design` deposundaki mevcut Brandstudio sisteminin kesintisiz, aşamalı dönüşümü.  
 **Dayanak:** 2026-11-02 salt okunur depo/Cloudflare incelemesi; `AGENTS.md`, `studio/production/`, `studio/work/`, `studio/cloud/`, `studio/cloudflare-brandstudio/`, `studio/brandstudio/`, `studio/workflow/PUBLISHING.md`, `brands/`, `docs/visual-editor/`, `.opencode/`, `.agents/`.
 
@@ -180,4 +180,4 @@ Geliştirici varsayılanları: Python stdlib+JSON Schema destekleyecek test edil
 
 **Kullanıcı onayına sunulan tek mimari karar:** Öncelik mevcut marka üretim sisteminin bütünlüğü ve mevcut panelin devamlılığıdır; yeni görev arayüzü P4'e ertelenir. Kullanıcı görsel paneli P2'den önce isterse fazların sırası değişir ve tasarım yeniden gözden geçirilir.
 
-**Onay kapısı:** Bu belge yazılmış ve incelemeye sunulmuştur, **henüz kullanıcı tarafından onaylanmamıştır**. Onaydan sonra Superpowers `writing-plans` ile P1 için ayrı, test-odaklı uygulama planı yazılacak; ardından yazılım değişikliklerine geçilecektir.
+**Onay kaydı:** Kullanıcı 2026-11-02 tarihinde “Onaylıyorum” diyerek bu mimariyi onayladı. P1 test-odaklı uygulama planı ayrı incelenir; uygulama kodu kendi izole PR'larında doğrulanır.
