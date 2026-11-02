@@ -1,6 +1,6 @@
 # Brandstudio 3.0 — P2 Cross-Executor Handoff Design
 
-**Date:** 2026-11-02. **Status:** DRAFT FOR P2 REVIEW. Parent Brandstudio 3.0 modular approach B approved and P1 merged. This document pins the P2 scope; creating this document does not assert that OpenCode or Work has executed a task.
+**Date:** 2026-11-02. **Status:** APPROVED — kullanıcı P2 tasarımını onayladı ve üretici ajan künyesi/zaman çizelgesini ek kapsam olarak istedi. Parent Brandstudio 3.0 modular approach B approved and P1 merged. This document pins the P2 scope; creating this document does not assert that OpenCode or Work has executed a task.
 
 ## Intent
 
@@ -91,4 +91,23 @@ Checked repo reality: local independent clone handoff **already has a simulated 
 
 Remaining only real-world limitation: no tool in this conversation has been confirmed to launch the user's local OpenCode process or a dedicated ChatGPT Work cloud computer. The design requires truthful fail-closed receipts rather than assigning model or host names by convention. When such a runtime becomes available, the P2c/P2d host evidence can be obtained without redesigning this protocol.
 
-**Approval:** P2 protocol and pilot scope are presented for explicit user design approval. The broader B architecture and P1 implementation approvals do not imply authorization to deploy or rewrite the existing production UI.
+**Approval recorded:** On 2026-11-02 user approved the P2 protocol with the addition of a discreet per-product agent credit and production timeline on the **bottom of the Brandstudio product/editor page**. This is not authorization for social publishing, modifying artwork or bypassing technical checks.
+
+## Approved addition — production credit and bottom-of-page timeline
+
+**User goal:** identify which AI agent actually produced each deliverable or revision; allow inspection of the production sequence without cluttering the editor or embedding technical metadata into exported artwork.
+
+**Placement:** at the end of the Brandstudio browser editor product page, **outside** the editable 1080×1350 canvas, not inside any slide export and not in the global top toolbar. A single muted, compact provenance line stays visible after scrolling to the bottom. The expanded timeline is collapsed by default (native accessible `<details>`), keyboard-operable and mobile-friendly.
+
+**Compact credit:** show a verified executor (e.g. OpenCode, ChatGPT Work, Codex) or "Ajan bilgisi belgelenmedi" if evidence is absent; optionally display associated abbreviated commit and verification label. Do not infer an agent from folder names, branches, image metadata, or this chat's identity. An ordinary ChatGPT connector action is *not* an observed Work agent execution.
+
+**Expanded chronology:** chronological steps such as brief → research → code/HTML → render → QA → revision, showing only those with evidence: `at` (UTC), `role`, `executor`, `status`, safe GitHub commit/PR reference and one short description. Missing timestamps remain "Bilinmiyor" rather than fabricated. Each entry distinguishes reported from verified observations; no false "published", "approved", or "rendered" state.
+
+**Data:** small, explicitly public safe JSON for each design version, versioned and linkable to its P1 TaskReceipt / OutputManifest / P2 handoff envelope. No private brief, user identity, keys, provider tokens, raw prompts or hidden signed URLs. Historic KAIST V2 has no independently verified model/agent attribution: display **unrecorded** rather than retroactively assigning OpenCode or Codex.
+
+**UI limits:** do not introduce new always-on API, Cloudflare Worker, Queue, paid request, heavy network fetches, new database or dependency. Provenance is read-only; the existing editor autosave, cloud version history, app auth and visual timeline are separate. The footer must not shift/change exported slide pixels or interfere with edit/focus mode.
+
+**Rollout:** treat this as a narrow P2 UI adapter ahead of the larger P4 task dashboard; create separate regression tests for per-product switching, unknown origin, XSS/URL sanitization, correct chronological ordering, mobile/keyboard disclosure, no network polling, and no layout changes inside the exported iframe. Existing P4 project still owns all richer editing and task control actions.
+
+**Architecture chosen by implementer:** static read-only product-version provenance index + tiny renderer module is preferable to querying the repository/Cloudflare APIs for each product; evaluate index generation from actual manifests or handoff receipts in the implementation plan. Historical records without verified authors remain explicitly unknown.
+
