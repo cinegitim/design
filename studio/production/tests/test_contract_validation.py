@@ -87,5 +87,21 @@ class ContractValidationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_bundle(fixture("task-valid.json"), None, None, doc, root=P.parents[1])
 
+
+    def test_reject_retired_asyada_lockup_in_manifest(self):
+        from contracts.validation import validate_bundle
+        doc = fixture("manifest-prepared.json")
+        doc["lockup"]["canonical_id"] = "C-03/light"
+        with self.assertRaises(ValueError):
+            validate_bundle(fixture("task-valid.json"), None, None, doc, root=P.parents[1])
+
+    def test_reject_unsafe_handoff_branch_names(self):
+        from contracts.validation import validate_document
+        for branch in ("feature/../main", "feature//main", "main..bad", "feature/main.lock"):
+            receipt = fixture("receipt-valid.json")
+            receipt["branch"] = branch
+            with self.subTest(branch=branch), self.assertRaises(ValueError):
+                validate_document("task-receipt", receipt, root=P.parents[1])
+
 if __name__ == "__main__":
     unittest.main()
