@@ -420,7 +420,16 @@ var history=ux.createHistory(40),savedState=copy(state),groupOpen={},dragging=fa
 var cloud=globalThis.BrandstudioCloud,cloudData=null,cloudSelected=false,cloudNonce=0;
  var styleModule=globalThis.BrandstudioStyleSelection,styleUI=null;
  var cloudSha=null,cloudReady=false,autoTimer=null,autoBusy=false,autoAgain=false,autoLastFailure=false;
- function pendingKey(product){return 'brandstudio:unsynced:'+product}
+ if(styleModule&&globalThis.BrandstudioStyleUI){
+ styleUI=globalThis.BrandstudioStyleUI.create({
+  module:styleModule,
+  getContext:function(){return{brand:brand,record:record,state:state,slug:slug,current:current}},
+  commit:function(selection){if(JSON.stringify(state.designStyle)!==JSON.stringify(selection)){checkpoint();state.designStyle=selection;dirtyStatus()}},
+  exportBrief:function(selection){var brief=styleModule.productionBrief({selection:selection,product:slug,version:current});
+   download(slug+'-v'+current+'-production-brief.json',JSON.stringify(brief,null,2)+'\n','application/json')}
+ })
+}
+function pendingKey(product){return 'brandstudio:unsynced:'+product}
  function pendingSnapshot(){try{return JSON.parse(localStorage.getItem(pendingKey(slug))||'null')}catch(e){return null}}
  function rememberPending(){try{localStorage.setItem(pendingKey(slug),JSON.stringify({version:current,state:state,at:new Date().toISOString()}))}catch(e){$('cloud-status').textContent='Geçici kurtarma kopyası oluşturulamadı: '+e.message}}
  function clearPending(){try{localStorage.removeItem(pendingKey(slug))}catch(e){}}
@@ -970,7 +979,7 @@ $('groups-close').onclick=function(){document.querySelectorAll('#layers details'
 function historyButtons(){var s=history.status();$('undo').disabled=s.undo===0;$('redo').disabled=s.redo===0}
 function checkpoint(){history.checkpoint(state);historyButtons()}
 function dirtyStatus(){dirty=JSON.stringify(state)!==JSON.stringify(savedState);$('unsaved').textContent=dirty?'Kaydedilecek…':'Değişiklik yok';historyButtons();if(dirty){rememberPending();wakeAutoSave(false)}else if(!autoBusy){clearTimeout(autoTimer);saveLabel(cloud?.authenticated()?'✓ Kaydedildi':'Bağlanıyor',cloud?.authenticated()?'saved':'disconnected')}}
-function restoreState(value){state=copy(value);['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});refreshPreview();dirtyStatus()}
+function restoreState(value){state=copy(value);styleUI?.sync();['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});refreshPreview();dirtyStatus()}
 $('undo').onclick=function(){var prev=history.undo(state);if(prev){restoreState(prev);$('status').textContent='Son değişiklik geri alındı'}};
 $('redo').onclick=function(){var next=history.redo(state);if(next){restoreState(next);$('status').textContent='Değişiklik yeniden uygulandı'}};
 function renderTabs(){var target=$('slide-tabs');target.innerHTML='';for(var i=0;i<pages.length;i++){var b=document.createElement('button');b.type='button';b.textContent=String(i+1).padStart(2,'0');b.className=i===page?'active':'';if(i===page)b.setAttribute('aria-current','step');b.setAttribute('aria-label',(i+1)+'. slaytı aç');(function(index){b.onclick=function(){show(index)}})(i);target.appendChild(b)}}
@@ -1362,7 +1371,7 @@ function loadSavedVersion(n){
  state=v?copy(v.state):{colors:Object.assign({},defaults),edits:{},groups:{}};
  current=n;cloudSelected=false;dirty=false;savedState=copy(state);
  history.clear();historyButtons();['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
- $('unsaved').textContent=n===1?'Özgün kaynak yüklendi':'v'+n+' tarayıcı kaydı yüklendi';
+ styleUI?.sync();$('unsaved').textContent=n===1?'Özgün kaynak yüklendi':'v'+n+' tarayıcı kaydı yüklendi';
  $('versions').value=String(n);
  if(record)renderProductVersions(record);
  show(page);return true
@@ -1495,7 +1504,7 @@ function openProduct(productId){
  renderV();
  var q=new URLSearchParams(location.search);q.set('product',slug);
  window.history.replaceState(null,'',location.pathname+'?'+q.toString()); // URL-only; browser archive storage unchanged.
- show(0);refreshCloud(slug);return true
+ styleUI?.sync();show(0);refreshCloud(slug);return true
 }
 $('catalog-search').oninput=function(){renderCatalog(this.value)};
 $('catalog-select').onchange=function(){
@@ -1552,7 +1561,7 @@ async function refreshCloud(product){
       state=copy(codec.validateState(snap.state,pages.length));current=last;cloudSelected=true;
       savedState=copy(state);history.clear();historyButtons();
       ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
-      $('unsaved').textContent='Kayıtlı sürüm açıldı';show(page)
+      styleUI?.sync();$('unsaved').textContent='Kayıtlı sürüm açıldı';show(page)
     }
   }
   renderProductVersions(record);
@@ -1614,7 +1623,7 @@ async function cloudSaveVersion(n,kind){
   dirty=JSON.stringify(state)!==JSON.stringify(savedState);
   if(!dirty){clearPending();saveLabel('✓ Kaydedildi','saved');$('unsaved').textContent='Tüm değişiklikler kaydedildi'}
   else {rememberPending();saveLabel('● Yeni değişiklik bekliyor','pending');$('unsaved').textContent='Yeni düzenlemeler sırada'}
-  renderCloudHistory();renderProductVersions(record);renderV();
+  styleUI?.sync();renderCloudHistory();renderProductVersions(record);renderV();
   $('cloud-status').textContent='✓ v'+n+' kaydedildi · '+result.document.history.length+' geçmiş anı';
   $('status').textContent='Kaydedildi';
  }catch(e){
@@ -1648,7 +1657,7 @@ function applyCloudSnapshot(snapshot,version,message){
   // Preserve original remote saved state as baseline so changes stay marked unsaved.
   savedState=copy(cloudData?.versions?.['v'+version]?.state||{colors:Object.assign({},defaults),edits:{},groups:{}});
   ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
-  renderProductVersions(record);dirtyStatus();show(page);
+  styleUI?.sync();renderProductVersions(record);dirtyStatus();show(page);
   $('cloud-status').textContent=message+' · otomatik kaydedilecek';
   $('cloud-note').value=message;
  }catch(e){$('cloud-status').textContent='Geri yükleme başarısız: '+e.message}
@@ -1851,6 +1860,10 @@ $('side-download-png').onclick=function(){exportRaster('png')};
 $('side-download-jpeg').onclick=function(){exportRaster('jpeg')};
 
 async function init(){
+ try{var styleResponse=await fetch('style-registry.json',{cache:'no-store'});if(!styleResponse.ok)throw Error('HTTP '+styleResponse.status);
+     styleUI?.setRegistry(await styleResponse.json())}
+ catch(e){$('style-status').textContent='Stil kataloğu alınamadı: '+e.message}
+
  $('status').textContent='Tasarım kataloğu okunuyor…';
  catalog=await discovery.load(new URL('catalog.json',location.href));
  if(!catalog.length){$('status').textContent='Tasarım kataloğu açılamadı';return}
