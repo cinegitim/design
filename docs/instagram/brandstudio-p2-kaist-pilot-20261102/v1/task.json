@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "task_id": "brandstudio-p2-kaist-20261102",
+  "brand_slug": "asyada-egitim",
+  "category": "instagram-carousel",
+  "brief_ref": "repo:docs/superpowers/specs/2026-11-02-brandstudio-p2-handoff-design.md",
+  "base_sha": "f44b775d9e52b736facf6d57706ffbf2b0e6ab69",
+  "output_ref": "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1",
+  "style_id": null,
+  "required_capabilities": [
+    "github-read"
+  ],
+  "allowed_executors": [
+    "chatgpt-chat",
+    "opencode",
+    "chatgpt-work"
+  ],
+  "max_parallel": 1,
+  "budget": {
+    "currency": "USD",
+    "new_paid_api": false,
+    "image_calls_max": 0,
+    "auto_retry": false
+  },
+  "approval": {
+    "creative": "pending",
+    "brand_identity": "inherit-approved-assets",
+    "social_publish": false,
+    "parallel_approved": false
+  }
+}

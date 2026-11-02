@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "task_id": "brandstudio-p2-kaist-20261102",
+  "source_git_verified": true,
+  "source_host_execution_verified": false,
+  "source_executor_reported": "chatgpt-chat",
+  "source_only_scope": "read-only KAIST V2 review note",
+  "target_executor": "opencode",
+  "target_git_branch_created": false,
+  "target_host_execution_verified": false,
+  "target_receipt_present": false,
+  "dual_host_pilot_complete": false,
+  "creative_approved": false,
+  "render_output_created": false,
+  "social_published": false,
+  "cloudflare_write_performed": false,
+  "blockers": [
+    "no-observed-opencode-runtime",
+    "no-observed-dedicated-work-runtime"
+  ]
+}

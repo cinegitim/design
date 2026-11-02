@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "task_id": "brandstudio-p2-kaist-20261102",
+  "executor": "chatgpt-chat",
+  "base_sha": "f44b775d9e52b736facf6d57706ffbf2b0e6ab69",
+  "head_sha": "f50318d619d7a46a7b4504dd0efaefd03c1265b2",
+  "branch": "publish/chatgpt-chat-brandstudio-p2-kaist-20261102",
+  "changed_paths": [
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/source-audit.md"
+  ],
+  "actual_tools": [
+    "github-read",
+    "github-write"
+  ],
+  "failure_codes": [],
+  "evidence_refs": [
+    "git:commit:f50318d619d7a46a7b4504dd0efaefd03c1265b2"
+  ]
+}
