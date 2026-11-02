@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080, initial-scale=1">
+<title>Brandstudio P2 — KAIST Pilot · Work independent QA</title>
+<style>
+@font-face{font-family:Jost;src:url("../../../tsinghua-atlas-2027/v2/assets/Jost-VF.ttf") format("truetype");font-weight:100 900;font-display:swap}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:1080px;height:1350px;overflow:hidden}
+body{font-family:Jost,Arial,sans-serif;background:#071c30;color:#eff9ff}
+.canvas{position:relative;width:1080px;height:1350px;overflow:hidden;background:#071c30}
+.canvas:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#71c6ff08 1px,transparent 1px),linear-gradient(90deg,#71c6ff07 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:1}
+.header{position:absolute;z-index:5;top:28px;left:56px;right:56px;height:38px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #8fd9ec88;padding-bottom:10px;color:#bbecff;font-size:15px;font-weight:650;letter-spacing:2.4px}
+.header .hangul{letter-spacing:3px;font-size:16px}
+.badge{position:absolute;z-index:8;top:76px;right:56px;background:#5ed9ff;color:#071c30;padding:6px 13px;border-radius:99px;font-size:12px;font-weight:800;letter-spacing:1px}
+.main{position:absolute;z-index:3;top:112px;left:58px;right:58px}
+.title{margin:0 0 8px;font-size:64px;line-height:1.02;letter-spacing:-2.5px;font-weight:850}
+.subtitle{margin:0 0 20px;color:#5ed9ff;font-size:23px;line-height:1.26;font-weight:600;max-width:920px}
+.section{margin:0 0 17px}
+.section-title{margin:0 0 8px;color:#5ed9ff;font-size:17px;line-height:1.2;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{min-height:111px;padding:14px 16px;background:#0b304a;border:1px solid #59d6fc80}
+.card h3{margin:0 0 4px;color:#5dddff;font-size:24px;line-height:1.12;font-weight:850}
+.card p{margin:0;color:#c4d6e0;font-size:15px;line-height:1.25}
+.lockup-row{display:grid;grid-template-columns:145px 300px 1fr;align-items:center;gap:14px;margin-top:7px;min-height:68px}
+.label{color:#b8eaff;font-size:14px;font-weight:700;letter-spacing:1px}
+.logo-frame{height:66px;display:flex;align-items:center;justify-content:center;padding:5px 10px;background:#071e31;border-radius:4px}
+.logo-frame img{display:block;max-width:100%;max-height:56px;object-fit:contain}
+.hash{color:#a9cfdf;font-size:11px;line-height:1.25;overflow-wrap:anywhere}
+.footer{position:absolute;z-index:6;left:0;right:0;bottom:0;height:86px;padding:0 58px;display:flex;align-items:center;gap:24px;background:#061a2bef;border-top:1px solid #7de1ff55}
+.footer img{width:235px;height:62px;object-fit:contain;flex:none}
+.rule{height:1px;flex:1;background:#78cffc77}
+.count{padding:6px 12px;border:1px solid #a7dff2a0;border-radius:40px;font-size:17px;font-weight:700;letter-spacing:1px}
+</style>
+</head>
+<body>
+<main class="canvas">
+<header class="header"><span>BRANDSTUDIO P2 / KAIST PILOT</span><span class="hangul">아시아 교육 · 브랜드 시스템 데모</span></header>
+<div class="badge">CHATGPT WORK · INDEPENDENT QA</div>
+<div class="main">
+<h1 class="title">BRAND SYSTEM<br>DEMONSTRATION</h1>
+<p class="subtitle">Asya'da Eğitim canonical lockups applied to KAIST Tech Track 2027 content</p>
+<section class="section"><h2 class="section-title">Canonical lockup variants · approved assets</h2><div class="grid">
+<article class="card"><h3>H-02</h3><p>Primary horizontal · bilingual · 3-line measure</p></article>
+<article class="card"><h3>P-01</h3><p>Primary stacked · bilingual · formal default</p></article>
+<article class="card"><h3>F-05</h3><p>Formal bilingual · centered crest emphasis</p></article>
+</div></section>
+<section class="section"><h2 class="section-title">H-02 / dark · canonical logo bytes preserved</h2><div class="lockup-row">
+<span class="label">Canonical ID<br>H-02 / dark</span>
+<div class="logo-frame"><img src="../../../../../brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-dark.svg" alt="Approved H-02 dark canonical logo"></div>
+<span class="hash">Asset SHA-256<br>c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7</span>
+</div></section>
+<section class="section"><h2 class="section-title">V-01 seal · approved asset</h2><div class="lockup-row">
+<span class="label">Canonical ID<br>V-01</span>
+<div class="logo-frame"><img src="../../../../../brands/asyada-egitim/assets/v01-canonical.svg" alt="Approved V-01 canonical seal"></div>
+<span class="hash">Asset SHA-256<br>8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a</span>
+</div></section>
+<section class="section"><h2 class="section-title">Pilot scope & constraints</h2><div class="grid">
+<article class="card"><h3>V2 preserved</h3><p>Six existing KAIST V2 slides are outside this Work-only output.</p></article>
+<article class="card"><h3>No paid APIs</h3><p>No external paid service or image-generation call used for this QA pass.</p></article>
+<article class="card"><h3>Asset integrity</h3><p>Approved H-02 and V-01 repository assets are referenced directly.</p></article>
+</div></section>
+<section class="section"><h2 class="section-title">Verified handoff chain</h2><div class="grid">
+<article class="card"><h3>P1 · ChatGPT</h3><p>Source HEAD f50318d619d7a46a7b4504dd0efaefd03c1265b2</p></article>
+<article class="card"><h3>P2 · OpenCode</h3><p>Target HEAD 1b5fd6ca37c81f6c9770ca964ee4228e78047d20</p></article>
+<article class="card"><h3>Receiver · Work</h3><p>Independent source review, canonical-asset checks and runtime QA.</p></article>
+</div></section>
+</div>
+<footer class="footer"><img src="../../../../../brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-dark.svg" alt="Approved Asya'da Eğitim H-02 logo"><span class="rule"></span><span class="count">P2 / 01</span></footer>
+</main>
+</body>
+</html>
