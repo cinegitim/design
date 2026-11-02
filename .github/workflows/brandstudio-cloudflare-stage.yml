@@ -31,6 +31,9 @@ jobs:
             studio/brandstudio
             functions/visual-editor
             docs/visual-editor
+            brands/asyada-egitim/assets/lockups
+            brands/asyada-egitim/styles
+            brands/asyada-egitim/assets/v01-canonical.svg
             docs/archive
             docs/inventory
             docs/workspaces/asyada-egitim
