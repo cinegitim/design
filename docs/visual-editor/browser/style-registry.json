@@ -1,0 +1,190 @@
+{
+  "schema": 1,
+  "repository": "cinegitim/design",
+  "brand": "asyada-egitim",
+  "categories": [
+    {
+      "id": "instagram-carousel",
+      "label": "Instagram karusel",
+      "registered": true
+    },
+    {
+      "id": "social-post",
+      "label": "Tekil sosyal medya",
+      "registered": false
+    },
+    {
+      "id": "identity-application",
+      "label": "Kurumsal uygulama",
+      "registered": false
+    },
+    {
+      "id": "print-catalog",
+      "label": "Baskı / katalog",
+      "registered": false
+    },
+    {
+      "id": "web-design",
+      "label": "Web tasarımı",
+      "registered": false
+    },
+    {
+      "id": "new-identity",
+      "label": "Yeni marka kimliği",
+      "registered": false
+    }
+  ],
+  "styles": [
+    {
+      "style_id": "editorial-campaign",
+      "name": "Editorial Campaign",
+      "brand": "asyada-egitim",
+      "category": "instagram-carousel",
+      "version": "0.1.1",
+      "status": "review-only",
+      "source_path": "brands/asyada-egitim/styles/instagram-carousel/editorial-campaign/style.json",
+      "source_blob_sha": "fc37855c1f5b87bf334ed1573358d08a5efb7cd2",
+      "description": "A large-type, modular editorial campaign language: Jost hierarchy, deliberate negative space and text/photo counterpoint. Different slide rhythms remain recognizably related.",
+      "default_preset": "institutional-paper",
+      "presets": {
+        "institutional-paper": {
+          "label": "Kurumsal krem",
+          "summary": "Paper is the main surface; moderate photos, balanced informational rhythm.",
+          "variants": {
+            "color_mode": "paper-dominant",
+            "layout_rhythm": "balanced",
+            "cover_archetype": "statement",
+            "interior_bias": "mixed",
+            "photo_density": "medium",
+            "cta_presentation": "soft-consultation"
+          }
+        },
+        "campaign-dynamic": {
+          "label": "Dinamik kampanya",
+          "summary": "Alternating photo windows and typographic contrasts with paper/red alternation.",
+          "variants": {
+            "color_mode": "paper-red-balanced",
+            "layout_rhythm": "dynamic",
+            "cover_archetype": "split-photo",
+            "interior_bias": "mixed",
+            "photo_density": "medium",
+            "cta_presentation": "direct-appointment"
+          }
+        },
+        "photo-editorial": {
+          "label": "Fotoğraf odaklı editoryal",
+          "summary": "Large documentary-looking image areas integrated with generous paper-based typography.",
+          "variants": {
+            "color_mode": "paper-dominant",
+            "layout_rhythm": "photo-led",
+            "cover_archetype": "image-window",
+            "interior_bias": "editorial-photo",
+            "photo_density": "high",
+            "cta_presentation": "soft-consultation"
+          }
+        },
+        "ink-accent": {
+          "label": "Kontrast vurgulu",
+          "summary": "Controlled ink contrasts and large type, with paper returning across the sequence.",
+          "variants": {
+            "color_mode": "dark-contrast-accented",
+            "layout_rhythm": "type-led",
+            "cover_archetype": "dark-contrast",
+            "interior_bias": "question-answer",
+            "photo_density": "low",
+            "cta_presentation": "profile-visit"
+          }
+        }
+      },
+      "variation_axes": {
+        "color_mode": {
+          "default": "paper-dominant",
+          "options": [
+            "paper-dominant",
+            "paper-red-balanced",
+            "dark-contrast-accented"
+          ],
+          "description": "Sequence-level distribution, not a fixed single-slide background."
+        },
+        "layout_rhythm": {
+          "default": "balanced",
+          "options": [
+            "balanced",
+            "dynamic",
+            "type-led",
+            "photo-led"
+          ],
+          "description": "Editorial cadence, never a single hard-coded template."
+        },
+        "cover_archetype": {
+          "default": "statement",
+          "options": [
+            "statement",
+            "split-photo",
+            "image-window",
+            "dark-contrast"
+          ],
+          "description": "The opening composition only."
+        },
+        "interior_bias": {
+          "default": "mixed",
+          "options": [
+            "mixed",
+            "question-answer",
+            "list-photo",
+            "comparison-grid",
+            "editorial-photo"
+          ],
+          "description": "A bias, not every slide's single layout."
+        },
+        "photo_density": {
+          "default": "medium",
+          "options": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "description": "Total photo prominence; optional imagery must be sourced or authorized."
+        },
+        "cta_presentation": {
+          "default": "soft-consultation",
+          "options": [
+            "soft-consultation",
+            "direct-appointment",
+            "profile-visit"
+          ],
+          "description": "Changes visual emphasis, never exact approved CTA wording."
+        }
+      },
+      "palette": {
+        "paper": "#F7F3E9",
+        "red": "#BD2120",
+        "ink": "#1D2027"
+      },
+      "font_family": "Jost",
+      "lockups": [
+        {
+          "id": "H-02/dark",
+          "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-dark.svg",
+          "sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7"
+        },
+        {
+          "id": "H-02/light",
+          "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
+          "sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a"
+        },
+        {
+          "id": "P-01/dark",
+          "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-dark.svg",
+          "sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f"
+        },
+        {
+          "id": "P-01/light",
+          "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-light.svg",
+          "sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2"
+        }
+      ],
+      "seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    }
+  ]
+}
