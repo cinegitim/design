@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "task_id": "brandstudio-p2-kaist-20261102",
+  "executor": "chatgpt-work",
+  "base_sha": "f44b775d9e52b736facf6d57706ffbf2b0e6ab69",
+  "head_sha": "84abbeb55a88354288c98f2e1fc4ace3205179ab",
+  "branch": "work/brandstudio-p2-kaist-20261102",
+  "changed_paths": [
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/WORK-QA.md",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/brand-system-demo.html",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/handoff-envelope.json",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/opencode-render-harness.html",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/render-frame.html",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/task-receipt.json"
+  ],
+  "actual_tools": [
+    "github-read",
+    "github-write",
+    "connected-chrome"
+  ],
+  "failure_codes": [
+    "no-dedicated-render-ci"
+  ],
+  "evidence_refs": [
+    "github:commit:84abbeb55a88354288c98f2e1fc4ace3205179ab",
+    "github:branch:work/brandstudio-p2-kaist-20261102",
+    "github:workflow-run:41440654235",
+    "browser:1080x1350-render-harness"
+  ]
+}

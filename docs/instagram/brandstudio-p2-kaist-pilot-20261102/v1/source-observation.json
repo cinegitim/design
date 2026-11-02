@@ -1,0 +1,12 @@
+{
+  "observed_from": "github-connector",
+  "repository": "cinegitim/design",
+  "branch": "publish/chatgpt-chat-brandstudio-p2-kaist-20261102",
+  "head_sha": "f50318d619d7a46a7b4504dd0efaefd03c1265b2",
+  "base_sha": "f44b775d9e52b736facf6d57706ffbf2b0e6ab69",
+  "observed_at": "2026-11-02T08:38:37Z",
+  "changed_paths": [
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/source-audit.md"
+  ],
+  "commit_page": "https://github.com/cinegitim/design/commit/f50318d619d7a46a7b4504dd0efaefd03c1265b2"
+}
