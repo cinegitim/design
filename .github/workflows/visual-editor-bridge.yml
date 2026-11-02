@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - "studio/visual-editor/**"
+      - "studio/cloudflare-brandstudio/tests/provenance.test.mjs"
       - "docs/visual-editor/**"
       - "docs/workspaces/asyada-egitim/index.html"
       - "docs/index.html"
@@ -15,6 +16,7 @@ on:
     branches: [main]
     paths:
       - "studio/visual-editor/**"
+      - "studio/cloudflare-brandstudio/tests/provenance.test.mjs"
       - "docs/visual-editor/**"
       - "docs/instagram/brandstudio-page.js"
       - "docs/instagram/**/index.html"
@@ -36,3 +38,5 @@ jobs:
           python-version: "3.12"
       - name: Verify optional bridge, immutable product checks and Pages entrypoints
         run: python3 -I -B -m unittest discover -s studio/visual-editor/tests -v
+      - name: Verify browser editor agent provenance UI
+        run: node --test studio/cloudflare-brandstudio/tests/provenance.test.mjs
