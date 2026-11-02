@@ -22,7 +22,7 @@
 - P1 is **read-only advisory**: no model calls, file/PR writes, render, image generation, Cloudflare writes, social post, credential lookup or automatic fallbacks. No migration of existing historical output manifests in P1.
 - Existing `router.plan(...)` signature, JSON keys, CLI output and all tests in `studio/production/tests/test_router.py` must remain unchanged and passing.
 - Preserve existing GitHub `submitted-files` independent audit and `studio/work/recording` semantics. New P1 checks only supplement them and do **not** confer aesthetic/identity approval, rendered quality, or production readiness.
-- The first PR includes only contract schemas, code, tests, docs and a path-filtered CI check. It does not change `studio.asyadaegitim.com`, Pages origins, editor records, pipelines, or brand assets.
+- The first PR includes only contract schemas, code, tests, docs and a small update to the existing production-test CI. It does not change `studio.asyadaegitim.com`, Pages origins, editor records, pipelines, or brand assets.
 
 ## File structure: responsibilities and boundaries
 
@@ -44,7 +44,7 @@
 | `studio/production/tests/test_contract_states.py` | Authorization/evidence and invalid transitions |
 | `studio/production/tests/test_advisory.py` | Same brief on OpenCode/Work route, honest capability gaps, legacy parity |
 | `studio/production/tests/test_contract_cli.py` | CLI return codes/outputs and no private payload echo |
-| `.github/workflows/brandstudio-contracts.yml` | Path-filtered non-render P1 CI; `audit.yml` remains authoritative |
+| `.github/workflows/brandstudio-recorder-tests.yml` (modify) | Extend existing sparse, non-render CI for P1; preserve recorder job identity; `audit.yml` stays authoritative |
 | `studio/production/contracts/README.md` | Canonical schema field meanings, P2 handoff usage and limitations |
 | `studio/production/BOOTSTRAP.md` | Link to optional advisory P1 mode; v1 CLI remains the default |
 
@@ -81,7 +81,7 @@ Five boundary cases **must have executable tests in their owning task**, not jus
 - [ ] **Step 1: Write schema tests and clean fixtures.** Tests: `test_all_schema_files_conform_to_draft_2020_12`, `test_all_fixture_documents_validate`, `test_extra_fields_wrong_version_and_missing_evidence_rejected`, `test_prepared_manifest_requires_render_and_editable_source`, `test_accepted_manifest_requires_human_reference`. Assert `Draft202012Validator.check_schema(...)` and `Draft202012Validator(...).validate(...)`.
 - [ ] **Step 2: Run red test.** `python3 -m unittest studio.production.tests.test_contract_schemas -v` → FAIL for missing schemas/exports.
 - [ ] **Step 3: Implement the listed JSON schemas, fixtures, `SCHEMA_PATHS` and pinned package.** Existing `router.py` and `routes.json` must not change.
-- [ ] **Step 4: Install/test isolated dependency and verify green.** `python3 -m pip install -r studio/production/contracts/requirements.txt` in a temporary virtual environment, then `python3 -m unittest studio.production.tests.test_contract_schemas -v` → 0 failures.
+- [ ] **Step 4: Install/test isolated dependency and verify green.** `python3 -m venv /tmp/brandstudio-p1-venv && /tmp/brandstudio-p1-venv/bin/python -m pip install -r studio/production/contracts/requirements.txt && /tmp/brandstudio-p1-venv/bin/python -m unittest studio.production.tests.test_contract_schemas -v` → 0 failures. For all later tasks run tests via the same temporary venv Python; create a clean uniquely named venv if the named path was already present.
 - [ ] **Step 5: Commit.** `git add studio/production/contracts studio/production/tests/fixtures/contracts studio/production/tests/test_contract_schemas.py && git commit -m "feat: add portable Brandstudio v1 contract schemas"`.
 
 ### Task 2: Validate safely across JSON Schema and repository context
@@ -151,7 +151,7 @@ Five boundary cases **must have executable tests in their owning task**, not jus
 - Create: `studio/production/contracts_cli.py`
 - Create: `studio/production/tests/test_contract_cli.py`
 - Create: `studio/production/contracts/README.md`
-- Create: `.github/workflows/brandstudio-contracts.yml`
+- Modify: `.github/workflows/brandstudio-recorder-tests.yml` (retain existing workflow/job names, triggers and check identity)
 - Modify: `studio/production/BOOTSTRAP.md` (small optional P1 section; leave existing steps intact).
 
 **Interfaces:**
@@ -161,15 +161,15 @@ Five boundary cases **must have executable tests in their owning task**, not jus
   - `python3 studio/production/contracts_cli.py route --task /safe/path/task.json --report /safe/path/report.json --root .`
   - `python3 studio/production/contracts_cli.py transition --from creative_review --to accepted --actor human --evidence-ref review:approval-id`
 - Output on success: strict JSON with mode/eligibility/state; on errors: nonzero exit, short safe error code/field (never source bytes, file contents, credential URLs). File read length limit **256 KiB** and JSON depth limit **32**, duplicate JSON keys rejected, UTF-8 only. Reject float NaN/Infinity and malformed ISO dates. JSON Schema `format` must use a format checker; the cross-record semantic checker is not a substitute for schema checks.
-- `brandstudio-contracts.yml` only triggers when `studio/production/contracts/**`, `studio/production/advisory.py`, `studio/production/contracts_cli.py`, `studio/production/tests/**`, `studio/production/router.py`, `studio/production/routes.json`, `studio/production/BOOTSTRAP.md`, or that workflow changes. Use Python 3.12, install pinned public `jsonschema` package, run all `studio/production/tests` via `unittest`. No model/render/browser calls, no production/cloud credentials. Existing `audit.yml` stays as-is. **Do not mark new path-filtered workflow mandatory in branch protection** until missing-check behavior is assessed.
+- Existing `.github/workflows/brandstudio-recorder-tests.yml` **already** triggers on `studio/production/**` and runs **all** `studio/production/tests` from a sparse checkout. New tests importing `jsonschema` would otherwise break this existing workflow. **Modify this one workflow, do not create a redundant workflow:** preserve workflow and `recorder` job names and path filter, setup Python 3.12, install the pinned `studio/production/contracts/requirements.txt`, and run the same unittest discovery command. Keep the sparse checkout brand fixture sufficient; avoid the 2GB full checkout. No render/model/browser/network credentials; leave `audit.yml` unchanged.
 - Docs include 2 demonstrated executor report examples and a blocked-case, real vs claimed capability distinction, schema versioning rules, receipt vs recorder boundaries, a safe migration/rollback note and a link to the approved spec.
 
 - [ ] **Step 1: Write CLI tests** `test_validate_valid_task_exit_zero`, `test_route_work_missing_capability_blocked`, `test_bad_json_duplicate_keys_oversized_and_deep_input_rejected`, `test_utf8_secret_is_not_echoed`, `test_transition_rejects_ci_creative_approval`; assert subprocess exit codes and stdout/stderr content.
 - [ ] **Step 2: Run red tests.** `python3 -m unittest studio.production.tests.test_contract_cli -v` → FAIL on missing CLI.
 - [ ] **Step 3: Implement CLI** with direct reused functions, size/depth/duplicate checks and strictly allowlisted error messages. Keep all user-facing output fields secret-free.
-- [ ] **Step 4: Add workflow and docs**; test workflow syntax with a YAML parser in reviewer environment (do not misrepresent text-only inspection as YAML compilation). Document P1 advisory-only limitations; keep README and PUBLISHING rules untouched.
+- [ ] **Step 4: Update existing recorder-tests workflow and docs**; confirm existing workflow and job names remain stable, validate YAML with an available parser, test the sparse-checkout file set, and document P1 advisory-only limitations. Keep root README and PUBLISHING rules untouched.
 - [ ] **Step 5: Run full P1 and legacy tests** `python3 -m unittest discover -s studio/production/tests -v` → 0 failures; `python3 -m unittest discover -s studio/cloud/tests -v` → 0 failures; `python3 -m unittest discover -s studio/work/tests -v` → 0 failures. Independently run `python3 studio/cloud/audit.py --root .` → exit 0. Verify fixture probe from OpenCode and Work paths and CLI blocked-case output with no user data.
-- [ ] **Step 6: Commit.** `git add studio/production/contracts_cli.py studio/production/tests/test_contract_cli.py studio/production/contracts/README.md studio/production/BOOTSTRAP.md .github/workflows/brandstudio-contracts.yml && git commit -m "feat: document and test advisory contracts via CLI and CI"`.
+- [ ] **Step 6: Commit.** `git add studio/production/contracts_cli.py studio/production/tests/test_contract_cli.py studio/production/contracts/README.md studio/production/BOOTSTRAP.md .github/workflows/brandstudio-recorder-tests.yml && git commit -m "feat: document and test advisory contracts via CLI and CI"`.
 
 ## Spec coverage and deferred work (explicit)
 
@@ -184,7 +184,7 @@ Five boundary cases **must have executable tests in their owning task**, not jus
 
 - Every named interface is produced by an earlier task: `SCHEMA_PATHS → validate_document/validate_bundle → next_state → propose → contracts_cli`.
 - Five Review Focus inputs have tests in Tasks 2, 4, 2, 3, 5 respectively.
-- `TaskSpec` vs router category mismatch checked in Task 2, evidence report vs route eligibility checked in Task 4, schema dependencies isolated to P1.
+- `TaskSpec` vs router category mismatch checked in Task 2, evidence report vs route eligibility checked in Task 4, schema dependencies isolated to P1. Existing production recorder CI must install the new test-only dependency before unchanged unittest discovery; this is why the existing workflow is modified instead of adding a second one.
 - Test setup uses a temporary Python environment; do not assume the existing user/CI host has `jsonschema`.
 - P1 work must be reviewed on the exact checked PR HEAD, with `submitted-files` audit separate from the new contract check. No aesthetic green signal.
 - A reviewer's concerns about adding a dependency should be resolved before implementation by comparing stdlib-limited schema-validation risks, not by silently downgrading JSON Schema conformance.
