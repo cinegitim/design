@@ -26,3 +26,13 @@ Bu işlem yalnızca yayımlanmış görsellere erişir; özel git dalına, yerel
 
 ## Üreticiler için
 Her teslimatın gerçek düzenlenebilir kaynaklarını da yayımlayın. `AGENTS.md` ve `studio/production/BOOTSTRAP.md` üretim sözleşmesinin ilgili paragraflarını okuyun. Yeni bir ürün için ek editör JS'ı, manuel kayıt veya ücretli backend kurulmaz.
+
+## Ortak tasarım dili seçimi (GitHub sözleşmesi)
+
+Visual Editor sağdaki **Tasarım dili ve varyasyonlar** panelini açın. Kategori → kayıtlı tasarım dili → alt varyasyon → kanonik logo ve isteğe bağlı ince ayarları seçin. Mevcut sürümü görsel olarak otomatik değiştirmez; sonraki üretimin *niyet kaydıdır*. Kullanılabilir tek aile şu anda `asyada-egitim / instagram-carousel / editorial-campaign v0.1.1` olup **review-only** statüsündedir. Kayıtlı dört preset vardır; diğer kategoriler açıkça “stil yok” gösterilir. H-02/P-01 SVG dosyaları, Jost ve kurumsal renkler GitHub kanonik sözleşmesiyle eşleşir.
+
+**Seçimi sürüme kaydet**, editörün mevcut Cloudflare Durable Object sürüm durumuna `designStyle` bilgisini ekler. Otomatik kayıt, çakışma (409), geçmişe dönüş, arşiv içe/dışa aktarma ve 26 sürüm sınırı aynen geçerlidir. Kaydetme yalnız Cloudflare'da başarılı dönüş aldıktan sonra “✓ Kaydedildi” der. Önceki sürümlerde `designStyle` bulunmayabilir; bu normaldir ve stil tahmini yapılmaz. Cloudflare Access ve mevcut ayrı admin oturumu gereklidir.
+
+**GitHub üretim fişi ↓** yalnızca `*-production-brief.json` indirir; GitHub'a doğrudan commit/PR göndermez, böyle bir iddiada bulunmaz. Sonraki adımda görev alan ajan bu fişi `studio/production/style_pack.py` ile doğrular, kendi GitHub dalında düzenlenebilir HTML/CSS/SVG ve gerçek sürüm PR kaydını oluşturur. Böylece bulut taslağı ile doğrulanmış GitHub üretim sürümü karıştırılmaz. İnsan kreatif onayı ve sosyal medya yayın izni bağımsızdır; sadece stil seçilmesi hiçbir şeyi yayınlamaz.
+
+Şu anda otomatik GitHub PR gönderen bir sunucu işlevi mevcut değildir; bu yetki ayrıca, sunucuda saklanan yetkili kimlikle ve geri alınabilir bir iş akışıyla kurulacaktır. Erişim korumalı `studio.asyadaegitim.com` editörü ile herkese açık `pages.dev`/GitHub Pages statik tasarım kaynaklarını birbirine karıştırmayın.
