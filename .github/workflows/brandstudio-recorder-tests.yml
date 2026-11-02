@@ -26,6 +26,10 @@ jobs:
             brands/asyada-egitim/styles/
           sparse-checkout-cone-mode: false
       - name: Python interpreter
-        run: python3 --version
-      - name: Execute read-only stdlib tests
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - name: Install isolated P1 schema validator for test suite
+        run: python3 -m pip install -r studio/production/contracts/requirements.txt
+      - name: Execute existing and P1 offline production tests
         run: python3 -m unittest discover -s studio/production/tests -v
