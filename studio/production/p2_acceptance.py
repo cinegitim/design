@@ -109,7 +109,7 @@ def check_records(task, source_receipt, work_draft_receipt, target_receipt,
         final_envelope["target_branch"] != target_receipt["branch"] or
         final_envelope["source_executor"] != source_receipt["executor"] or
         final_envelope["target_executor"] != target_receipt["executor"] or
-        final_envelope["receipt_ref"] != PILOT + "/work-target-receipt.json" or
+        not final_envelope["receipt_ref"].startswith(task["output_ref"].rstrip("/") + "/") or
         source_observation.get("head_sha") != source_head or
         target_observation.get("head_sha") != work_head or
         target_observation.get("base_sha") != source_head or
@@ -288,6 +288,8 @@ def run(work_root: Path, coordinator_root: Path, git_root: Path,
     check_records(task, source_receipt, work_draft, target_receipt, draft_env,
                   final_env, source_obs, target_obs, root=work_root,
                   source_head=source_head, work_head=work_head)
+    if final_env["receipt_ref"] != PILOT + "/work-target-receipt.json":
+        raise GateError("P2_COORDINATOR_RECEIPT_REF_MISMATCH")
     check_assets(work_root)
     work_render = render_one(work_root, PILOT + "/work-output/brand-system-demo.html",
                              ".canvas", ".section", ".footer")
