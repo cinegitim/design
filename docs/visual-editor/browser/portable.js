@@ -101,7 +101,24 @@ function state(input,maxPages) {
      });
    });
  });
- return{colors:colors,edits:edits,groups:groups};
+ var out={colors:colors,edits:edits,groups:groups};
+ if(input.designStyle!==undefined){
+  var x=input.designStyle;
+  var fields=['schema','brand','category','style_id','style_version','style_source_blob_sha','preset_id','lockup_id','lockup_sha256','seal_sha256','approval_status','font_family','palette','variation','overrides','source_path'];
+  if(!plain(x)||Object.keys(x).length!==fields.length||fields.some(function(k){return !Object.prototype.hasOwnProperty.call(x,k)}))err('Geçersiz tasarım dili kaydı');
+  if(x.schema!==1||!['brand','category','style_id','preset_id'].every(function(k){return SLUG.test(x[k]||'')}))err('Geçersiz tasarım dili kimliği');
+  if(!/^[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}$/.test(x.style_version||'')||!/^[a-f0-9]{40}$/.test(x.style_source_blob_sha||''))err('Geçersiz tasarım dili sürümü');
+  if(!/^(?:H-02|P-01|F-05)\/(?:light|dark|monochrome)$/.test(x.lockup_id||'')||!['lockup_sha256','seal_sha256'].every(function(k){return /^[a-f0-9]{64}$/.test(x[k]||'')}))err('Geçersiz kanonik logo');
+  if(!['review-only','approved','locked'].includes(x.approval_status)||x.font_family!=='Jost')err('Geçersiz stil durumu/fontu');
+  if(!plain(x.palette)||Object.keys(x.palette).length!==3||!Object.keys(COLORS).every(function(k){return HEX.test(x.palette[k]||'')}))err('Geçersiz stil paleti');
+  if(!plain(x.variation)||Object.keys(x.variation).length<1||Object.keys(x.variation).length>12||!plain(x.overrides)||Object.keys(x.overrides).length>12)err('Geçersiz stil varyasyonları');
+  [x.variation,x.overrides].forEach(function(obj){Object.entries(obj).forEach(function(pair){
+   if(!/^[a-z][a-z0-9_]{1,30}$/.test(pair[0])||typeof pair[1]!=='string'||!SLUG.test(pair[1])||pair[1].length>64)err('Geçersiz varyasyon alanı');
+  })});
+  if(typeof x.source_path!=='string'||x.source_path!=='brands/'+x.brand+'/styles/'+x.category+'/'+x.style_id+'/style.json')err('Geçersiz stil kaynağı');
+  out.designStyle=JSON.parse(JSON.stringify(x));
+ }
+ return out;
 }
 function archive(product,versions,current,brand) {
  if(!SLUG.test(product))err('Geçersiz ürün');
