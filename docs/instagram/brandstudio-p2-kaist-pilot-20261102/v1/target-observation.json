@@ -1,0 +1,19 @@
+{
+  "observed_from": "github-connector",
+  "repository": "cinegitim/design",
+  "branch": "publish/opencode-opencode-p2-kaist-20261102",
+  "base_sha": "f50318d619d7a46a7b4504dd0efaefd03c1265b2",
+  "head_sha": "285d85dfcaf307c05f5c922d89f91ae7c06f1264",
+  "verified_git_parent": "f50318d619d7a46a7b4504dd0efaefd03c1265b2",
+  "changed_paths": [
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/opencode-output/RECOVERY.md",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/opencode-output/brand-system-demo.html",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/opencode-output/brand-system-demo.html.sha256",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/opencode-output/original/brand-system-demo.html",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/opencode-output/original/brand-system-demo.html.sha256",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/opencode-output/original/submitted-handoff-envelope.json",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/opencode-output/original/submitted-task-receipt.json"
+  ],
+  "commit_url": "https://github.com/cinegitim/design/commit/285d85dfcaf307c05f5c922d89f91ae7c06f1264",
+  "local_unpushed_git_head_reported": "e1893e2c1d214eb50ee6b949642ca0d2d5bb36b3"
+}

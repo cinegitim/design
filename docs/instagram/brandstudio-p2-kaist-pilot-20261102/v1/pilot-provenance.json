@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "task_id": "brandstudio-p2-kaist-20261102",
+  "source_artifact": {
+    "local_author_agent": "opencode",
+    "author_verification": "reported-with-local-git-ref-and-content-hash",
+    "local_head": "e1893e2c1d214eb50ee6b949642ca0d2d5bb36b3",
+    "html_sha256": "5c29a53d8b42c89fda5ab118127afb91fd9ef066b7d291576e0624097dfc843d",
+    "html_utf8_bytes": 7186
+  },
+  "recovery": {
+    "executor": "chatgpt-chat",
+    "action": "authenticated-github-connector-copy-and-repair-four-asset-links",
+    "commit_sha": "285d85dfcaf307c05f5c922d89f91ae7c06f1264",
+    "corrected_html_sha256": "5b6e54b60ea0bfe1c50df9fc3d569e22332e2ca70687f291959ee3882528fce3",
+    "source_commit_sha": "f50318d619d7a46a7b4504dd0efaefd03c1265b2"
+  },
+  "verification": {
+    "git_transport_verified": true,
+    "source_file_sha256_verified": true,
+    "asset_paths_loaded_in_local_chrome": true,
+    "local_opencode_runtime_independently_attested": false,
+    "full_render_pixel_inspection": false,
+    "creative_approved": false,
+    "social_published": false
+  }
+}
