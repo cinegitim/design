@@ -19,8 +19,8 @@ STYLE = "editorial-campaign"
 
 class StylePackTests(unittest.TestCase):
     def pack(self, **kw):
-        return build_style_pack(root=ROOT, brand=BRAND, category=CAT,
-                                style_id=STYLE, **kw)
+        options = {"brand": BRAND, "category": CAT, "style_id": STYLE, **kw}
+        return build_style_pack(root=ROOT, **options)
 
     def test_identical_contract_across_two_agents(self):
         first = self.pack(preset_id="institutional-paper", executor="opencode")
