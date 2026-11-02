@@ -102,5 +102,17 @@ class StylePackTests(unittest.TestCase):
                 self.pack(**bad)
 
 
+    def test_router_delivers_identical_verified_pack_to_work_and_opencode(self):
+        from router import plan
+        cfg = json.loads((P / "routes.json").read_text(encoding="utf-8"))
+        opts = {"root": ROOT, "config": cfg, "brand": BRAND,
+                "category": CAT, "style_id": STYLE,
+                "preset_id": "campaign-dynamic"}
+        code = plan(executor="opencode", capabilities={"filesystem", "terminal"}, **opts)
+        work = plan(executor="chatgpt-work", capabilities={"github-read"}, **opts)
+        self.assertEqual(code["style_pack"], work["style_pack"])
+        self.assertTrue(verify_style_pack(work["style_pack"], root=ROOT))
+        self.assertIn(work["style_pack"]["identity"]["lockup_path"], work["load"])
+
 if __name__ == "__main__":
     unittest.main()
