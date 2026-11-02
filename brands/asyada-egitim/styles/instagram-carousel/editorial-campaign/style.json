@@ -4,12 +4,12 @@
   "name": "Editorial Campaign",
   "brand": "asyada-egitim",
   "category": "instagram-carousel",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "status": "review-only",
   "approval": {
     "human_style_approval": false,
     "canonical_brand_identity_unchanged": true,
-    "notes": "Reference campaigns are human-review-pending; this is a proposed reusable visual family, not an approved replacement brand system."
+    "notes": "Review-only visual language. Exact H-02/P-01 logo records and Jost family are approved brand assets; the campaign visual style is not human-approved."
   },
   "description": "A large-type, modular editorial campaign language: Jost hierarchy, deliberate negative space and text/photo counterpoint. Different slide rhythms remain recognizably related.",
   "source_of_truth": {
@@ -53,14 +53,14 @@
   "hard_locks": {
     "identity": "Exact pre-approved V-01 identity only; never reconstruct, redraw, typeset or transform a canonical lockup.",
     "lockup_options": [
-      "P-01/light",
+      "H-02/dark",
+      "H-02/light",
       "P-01/dark",
-      "D-04/light",
-      "D-04/dark"
+      "P-01/light"
     ],
     "lockup_preference": {
-      "cover": "P-01",
-      "interior": "D-04 or P-01 only when minimum width and clearspace pass"
+      "cover": "H-02/dark",
+      "interior": "H-02/dark or H-02/light; P-01 when space allows; always use the exact approved complete SVG"
     },
     "minimum_width_from_manifest": true,
     "typeface": "Jost (campaign production family; not a new canonical brand typography approval)",
@@ -265,10 +265,10 @@
     "identity_gate": {
       "composite_logo_required": true,
       "allowed_approved_lockups": [
-        "P-01/light",
+        "H-02/dark",
+        "H-02/light",
         "P-01/dark",
-        "D-04/light",
-        "D-04/dark"
+        "P-01/light"
       ],
       "reject_seal_only_for_carousel": true,
       "reject_retypeset_brand_name": true,
