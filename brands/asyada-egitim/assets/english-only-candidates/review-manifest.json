@@ -3,14 +3,14 @@
   "brand": "asyada-egitim",
   "english_name": "Education in Asia",
   "status": "REVIEW_ONLY_HUMAN_APPROVAL_PENDING",
-  "source_main_commit": "7a6e7bebf7c315f2a9b573cf367e16968e64465a",
+  "source_main_commit": "06aa6419969313d3b19d1ef9e1863dbb29748866",
   "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
   "source_lockups": [
     "H-02",
     "P-01"
   ],
   "source_wordmark": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-  "method": "Reuse original complete embedded seal byte-for-byte and authentic outlined English Jost 350 glyph paths from canonical lockups; reflow into EDUCATION / IN ASIA with optical kerning (-25 source units per sequential glyph) and 2.8-unit rounded stroke for comparable headline visual weight. These are new review-only arrangements, not approved canonical geometry.",
+  "method": "Recompute authentic Education in Asia letter outlines at variable-font axis Jost wght=550 from the SAME Jost VF as the Turkish canonical headline. Baseline/vertical spacing: 209/409 SVG wordmark coordinates, using the original H-02/P-01 seal transforms and 20 native-unit letter gaps. No 350-weight path scaling, stroke, faux bold, runtime font substitution or image-model lettering. Only English-only review lockup wordmark/canvas geometry changes; complete canonical seal subtree retained byte-identically.",
   "variation_ids": [
     "H-EN-02",
     "P-EN-01"
@@ -33,5 +33,14 @@
   ],
   "public_review": "docs/identity/english-only/index.html",
   "next_gate": "Human inspection and approval before promotion to canonical manifest, hash locking, usage rules and verification tests",
-  "visual_review_notes": "Revision 2: first native browser screenshot showed English letters much thinner/spacier than current bold Turkish headliner; path-preserving optical adjustment applied, needs human aesthetic approval."
+  "visual_review_notes": "Revision 3, 2026-11-03: following user feedback that typography did not match, recreated Jost 550 English glyph outlines from original variable font at 200 native units (140px nominal cap), preserved all seal geometry, rendered all 6 color/layout combinations in real Chrome. Replaces the incorrect Jost 350 paths plus fake stroke technique in previous revision.",
+  "source_weighted_font": "docs/instagram/launch-creative-02/assets/Jost-VF.ttf",
+  "english_headline_weight": 550,
+  "original_turkish_headline_weight": 550,
+  "english_headline_cap_native_px": 139,
+  "color_variants": [
+    "light",
+    "dark",
+    "monochrome"
+  ]
 }
