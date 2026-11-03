@@ -3,14 +3,14 @@
   "brand": "asyada-egitim",
   "english_name": "Education in Asia",
   "status": "REVIEW_ONLY_HUMAN_APPROVAL_PENDING",
-  "source_main_commit": "06aa6419969313d3b19d1ef9e1863dbb29748866",
+  "source_main_commit": "71b339a20370b546f293e4f859e16c086629adc5",
   "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
   "source_lockups": [
     "H-02",
     "P-01"
   ],
   "source_wordmark": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-  "method": "Recompute authentic Education in Asia letter outlines at variable-font axis Jost wght=550 from the SAME Jost VF as the Turkish canonical headline. Baseline/vertical spacing: 209/409 SVG wordmark coordinates, using the original H-02/P-01 seal transforms and 20 native-unit letter gaps. No 350-weight path scaling, stroke, faux bold, runtime font substitution or image-model lettering. Only English-only review lockup wordmark/canvas geometry changes; complete canonical seal subtree retained byte-identically.",
+  "method": "Edit only the English-only review wordmark SVGs. Preserve V-01 seal byte-identically per source H-02/P-01 and tone. Reuse exact approved Turkish Jost 550 vector contours for A,S,D,E,T and derive missing English letters U,C,I,O,N from the same Jost-VF variable font at weight 550, without faux strokes, rasterization or image-generation. Two lines: EDUCATION; underneath smaller IN and optically dominant ASIA. Exact lower total width equals EDUCATION width; bottom ASIA scale generated from glyph measurements rather than horizontal distortion.",
   "variation_ids": [
     "H-EN-02",
     "P-EN-01"
@@ -33,7 +33,7 @@
   ],
   "public_review": "docs/identity/english-only/index.html",
   "next_gate": "Human inspection and approval before promotion to canonical manifest, hash locking, usage rules and verification tests",
-  "visual_review_notes": "Revision 3, 2026-11-03: following user feedback that typography did not match, recreated Jost 550 English glyph outlines from original variable font at 200 native units (140px nominal cap), preserved all seal geometry, rendered all 6 color/layout combinations in real Chrome. Replaces the incorrect Jost 350 paths plus fake stroke technique in previous revision.",
+  "visual_review_notes": "V4: Corrected hierarchy after user instructions: small IN beside large ASIA, entire lower line fills EDUCATION width. Exact source seal trees byte-identical, 5 visible glyph contours copied directly from approved Jost 550 Turkish lockup, remaining letters from the actual Jost VF at the same weight. All 6 SVG modes rendered successfully as raw vectors in Chrome. No ImageGen source images used.",
   "source_weighted_font": "docs/instagram/launch-creative-02/assets/Jost-VF.ttf",
   "english_headline_weight": 550,
   "original_turkish_headline_weight": 550,
@@ -42,5 +42,35 @@
     "light",
     "dark",
     "monochrome"
-  ]
+  ],
+  "version": "v4-layout-hierarchy",
+  "layout": {
+    "topLine": "EDUCATION",
+    "bottomLine": [
+      "IN",
+      "ASIA"
+    ],
+    "nativeFontSize": 200,
+    "weight": 550,
+    "upperBaseline": 209,
+    "asiaBaseline": 495,
+    "inBaseline": 433.86094731832287,
+    "tracking": {
+      "EDUCATION": 20,
+      "IN": 16,
+      "ASIA": 35
+    },
+    "scale": {
+      "IN": 0.95,
+      "ASIA": 1.8106375489999018
+    },
+    "width": {
+      "EDUCATION": 1127.2830638885498,
+      "IN": 160.36000108718872,
+      "ASIA": 928.9230628013611,
+      "gap": 38,
+      "lowerTotal": 1127.2830638885498
+    },
+    "aesthetic_status": "HUMAN_REVIEW_REQUIRED"
+  }
 }
