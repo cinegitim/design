@@ -91,9 +91,9 @@ test('retired artwork remains for past deliverables but is prohibited in future 
 });
 
 
-test('English V5 lighter main and five-country subtitle: source seal, vectors, mirrors and dot alignment',()=>{
+test('English V6 canonical alignment, lighter main and five-country subtitle: source seal, vectors, mirrors and dot alignment',()=>{
  const review=json('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json');
- assert.equal(review.version,'v5-lighter-type-countries');
+ assert.equal(review.version,'v6-canonical-lockup-bounds');
  assert.equal(review.english_headline_weight,450);
  assert.equal(review.country_line_font_weight,350);
  assert.equal(review.country_separator_count,4);
@@ -110,13 +110,20 @@ test('English V5 lighter main and five-country subtitle: source seal, vectors, m
    assert.equal(svg,publicFile);
    assert.equal(seal(svg),seal(source));
    const meta=JSON.parse(svg.split('<metadata>')[1].split('</metadata>')[0]);
-   assert.equal(meta.version,'v5-lighter-type-countries');
+   assert.equal(meta.version,'v6-canonical-lockup-bounds');
    assert.equal(meta.status,'REVIEW_ONLY_HUMAN_APPROVAL_PENDING');
    assert.equal(meta.mainWeight,450);
    assert.equal(meta.taglineWeight,350);
    assert.equal(meta.sourceCanonicalLockup,layout.parent+'-'+tone+'.svg');
    assert.ok(meta.metrics.tagWidth<=meta.metrics.topWidth);
    assert.ok(meta.metrics.lowerWidth<meta.metrics.topWidth);
+   assert.ok(Math.abs(meta.metrics.asiaScale-1.10)<0.00001);
+   assert.ok(Math.abs(meta.metrics.inScale-0.88)<0.00001);
+   assert.equal(meta.metrics.lowerBaseline,409);
+   assert.equal(meta.metrics.countryBaseline,495);
+   assert.ok(Math.abs(meta.metrics.rootCanvasHeight-(layout.stem.startsWith('h-')?587.56787109:1003.79998779))<0.0001);
+   assert.ok(meta.metrics.line2VisualTop>meta.metrics.line1VisualBottom);
+   assert.ok(meta.metrics.countryVisualTop>meta.metrics.line2VisualBottom);
    assert.match(svg,/data-wordmark="english-v5-jost-450"/);
    assert.deepEqual([...svg.matchAll(/data-country="([^"]+)"/g)].map(x=>x[1]),['CHINA','HONG KONG','JAPAN','SINGAPORE','SOUTH KOREA']);
    const bullets=[...svg.matchAll(/<circle data-country-dot="\d"[^>]*>/g)].map(x=>x[0]);
@@ -125,6 +132,30 @@ test('English V5 lighter main and five-country subtitle: source seal, vectors, m
    assert.ok(bullets.every(x=>x.includes('fill="'+(tone==='monochrome'?'#1D2027':'#BD2120')+'"')));
    assert.ok(!svg.includes('<text'));
    assert.ok(!svg.includes('<image'));
+  }
+ }
+});
+
+
+test('English V6 uses canonical Turkish lockup canvas heights and baselines without changing the glyph outlines',()=>{
+ const manifest=json('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json');
+ assert.equal(manifest.version,'v6-canonical-lockup-bounds');
+ assert.equal(manifest.alignment.targetMainLineBaseline,209);
+ assert.equal(manifest.alignment.targetSecondLineBaseline,409);
+ assert.equal(manifest.alignment.targetCountryBaseline,495);
+ for(const stem of ['h-en-02-horizontal','p-en-01-stacked']){
+  for(const tone of ['light','dark','monochrome']){
+   const s=read('brands/asyada-egitim/assets/english-only-candidates/'+stem+'-'+tone+'.svg');
+   const m=JSON.parse(s.split('<metadata>')[1].split('</metadata>')[0]);
+   assert.equal(m.version,'v6-canonical-lockup-bounds');
+   assert.ok(m.metrics.asiaScale<=1.10);
+   assert.ok(m.metrics.inScale<=0.88);
+   assert.ok(m.metrics.countryVisualBottom<=502.05);
+   assert.ok(m.metrics.line2VisualBottom<=412);
+   const tag=s.match(/<g data-line="COUNTRIES"[^>]*>/)?.[0];
+   const asia=s.match(/<g data-line="ASIA"[^>]*>/)?.[0];
+   assert.match(tag,/ 495\)/);
+   assert.match(asia,/ 409\)/);
   }
  }
 });

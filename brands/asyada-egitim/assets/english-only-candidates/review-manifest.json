@@ -3,14 +3,14 @@
   "brand": "asyada-egitim",
   "english_name": "Education in Asia",
   "status": "REVIEW_ONLY_HUMAN_APPROVAL_PENDING",
-  "source_main_commit": "baebfd8aea1b6c63d66b8943a0f2e2df0f791fa0",
+  "source_main_commit": "8105a61b79994e547dfb49fdfd649f6abcdcd960",
   "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
   "source_lockups": [
     "H-02",
     "P-01"
   ],
   "source_wordmark": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-  "method": "Original approved nested V-01 seal copied exactly without change. Regenerate both English-only headline lines from the repository source variable Jost font at genuine weight wght=450, lighter than the previous wght=550 without faux stroke. Recompute ASIA optical kerning from contour silhouettes; keep IN smaller and ASIA dominant. Add a single line of 5 country names in uppercase Jost wght=350 derived as real vector paths, with four red circular separators, vertically centered with the letter capline. In monochrome use monochrome dots. No runtime fonts, image generation or raster.",
+  "method": "Preserve both original H-02/P-01 canonical seal trees byte-identically and preserve authentic outlined Jost wght=450 (main) and 350 (country line). Change only English candidate wordmark positioning and candidate outer canvas height: ASIA scale 1.10x vs original main headline, IN scale 0.88x, bottom baseline y=409, country subtitle baseline y=495 and headline baseline y=209, replicating Turkish canonical line baselines and approved overall canvas heights. Both lower words centered as a single unit under EDUCATION. No font, glyph path, color, seal or approved canonical file modifications.",
   "variation_ids": [
     "H-EN-02",
     "P-EN-01"
@@ -33,7 +33,7 @@
   ],
   "public_review": "docs/identity/english-only/index.html",
   "next_gate": "Human inspection and approval before promotion to canonical manifest, hash locking, usage rules and verification tests",
-  "visual_review_notes": "V5 2026-11-03: user says the primary lettering is too bold and requests small country-name subline, as in approved Turkish logo's small English subtitle. True Jost 450 main, true Jost 350 country names, four centered red dots, precise approved SVG seal retained. Rendered all six SVG modes successfully in Chrome; candidate only.",
+  "visual_review_notes": "V6: user requested that the oversize ASIA, all type and small country subtitle fit into original Turkish lockup alignment, with ASIA no longer protruding. Preview in Chrome: both H-EN-02 and P-EN-01 3 tones each render properly. Main Jost450, subtitle Jost350, red dots and original seal all preserved. Main three baselines 209/409/495 as in approved Turkish logo. REVIEW ONLY; human approval pending.",
   "source_weighted_font": "docs/instagram/launch-creative-02/assets/Jost-VF.ttf",
   "english_headline_weight": 450,
   "original_turkish_headline_weight": 550,
@@ -43,7 +43,7 @@
     "dark",
     "monochrome"
   ],
-  "version": "v5-lighter-type-countries",
+  "version": "v6-canonical-lockup-bounds",
   "layout": {
     "topLine": "EDUCATION",
     "bottomLine": [
@@ -81,5 +81,20 @@
   "country_separator_count": 4,
   "country_separator_color": "#BD2120",
   "country_separator_align": "vertical center of 350-weight uppercase label cap height",
-  "country_separator_monochrome": "single-ink monochrome equivalent"
+  "country_separator_monochrome": "single-ink monochrome equivalent",
+  "alignment": {
+    "reference": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg and p-01-primary-stacked-light.svg",
+    "targetMainLineBaseline": 209,
+    "targetSecondLineBaseline": 409,
+    "targetCountryBaseline": 495,
+    "asiaSizeRelativeToHeadline": 1.1,
+    "inSizeRelativeToHeadline": 0.88,
+    "centeredLowerLine": true,
+    "canonicalCanvasHeight": {
+      "horizontal": 587.56787109,
+      "stacked": 1003.79998779
+    },
+    "originalApprovedFilesModified": false,
+    "logoStatus": "REVIEW_ONLY_HUMAN_APPROVAL_PENDING"
+  }
 }
