@@ -51,6 +51,11 @@ async function storedRevision(env,product,version,expectedSha){
 function validPRUrl(value){
  return typeof value==='string'&&/^https:\/\/github\.com\/cinegitim\/design\/pull\/[1-9]\d*$/.test(value);
 }
+export function reviewPrStatus(context){
+ if(!context.authenticated)return out({error:'Admin girişi gerekli'},401);
+ return out({enabled:typeof context.env?.GITHUB_PR_TOKEN==='string'&&context.env.GITHUB_PR_TOKEN.length>=20,
+  repo:REPO,mode:'draft-review-only'});
+}
 export async function submitEditorReview(context){
  const {request:req,env,authenticated}=context;
  if(!authenticated)return out({error:'Admin girişi gerekli'},401);
