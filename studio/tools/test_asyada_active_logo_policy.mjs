@@ -47,7 +47,8 @@ test('H-02 compact display keeps the complete canonical artwork',()=>{
 });
 test('active galleries remove C-03 and D-04 cards and display H-02 compact examples',()=>{
  const page=read('docs/workspaces/asyada-egitim/logos-and-covers/index.html');
- const logo=page.slice(page.indexOf('<section class="section" id="logos">'),page.indexOf('<section class="section" id="profile">'));
+ const englishStart=page.indexOf('<section class="section" id="english-logo">');
+ const logo=page.slice(page.indexOf('<section class="section" id="logos">'),englishStart>=0?englishStart:page.indexOf('<section class="section" id="profile">'));
  assert.ok(logo.includes('H-02 · Temel yatay imza'));
  assert.ok(logo.includes('id="logos"'));
  assert.ok(logo.includes('id="profile"')===false);
@@ -56,11 +57,23 @@ test('active galleries remove C-03 and D-04 cards and display H-02 compact examp
  assert.ok(logo.includes('h-02-primary-horizontal-dark.svg'));
  assert.ok(!/src="[^"]*(c-03|d-04)/i.test(logo));
  assert.equal((logo.match(/class="card(?: feature)?"/g)||[]).length,3);
+ if(englishStart>=0){
+  const review=page.slice(englishStart,page.indexOf('<section class="section" id="profile">'));
+  assert.match(review,/Görsel onay bekliyor/);
+  assert.match(review,/H-EN-02/);
+  assert.match(review,/P-EN-01/);
+ }
  const identity=read('docs/identity/index.html');
- const active=identity.slice(identity.indexOf('<section id="lockups">'),identity.indexOf('<section id="rules">'));
+ const englishIdentityStart=identity.indexOf('<section id="english-logo">');
+ const active=identity.slice(identity.indexOf('<section id="lockups">'),englishIdentityStart>=0?englishIdentityStart:identity.indexOf('<section id="rules">'));
  assert.ok(active.includes('id="small-digital"'));
  assert.ok(!active.includes('id="C-03"')&&!active.includes('id="D-04"'));
  assert.ok(identity.includes('320px'));
+ if(englishIdentityStart>=0){
+  const review=identity.slice(englishIdentityStart,identity.indexOf('<section id="rules">'));
+  assert.match(review,/henüz üretim için onaylı kimlik değildir/);
+  assert.match(review,/english-only\/assets\/h-en-02-horizontal-light.svg/);
+ }
 });
 test('retired artwork remains for past deliverables but is prohibited in future production',()=>{
  assert.ok(fs.existsSync(path.join(root,'brands/asyada-egitim/assets/lockups/c-03-compact-light.svg')));
