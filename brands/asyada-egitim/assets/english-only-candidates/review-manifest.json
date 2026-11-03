@@ -10,7 +10,7 @@
     "P-01"
   ],
   "source_wordmark": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-  "method": "Edit only the English-only review wordmark SVGs. Preserve V-01 seal byte-identically per source H-02/P-01 and tone. Reuse exact approved Turkish Jost 550 vector contours for A,S,D,E,T and derive missing English letters U,C,I,O,N from the same Jost-VF variable font at weight 550, without faux strokes, rasterization or image-generation. Two lines: EDUCATION; underneath smaller IN and optically dominant ASIA. Exact lower total width equals EDUCATION width; bottom ASIA scale generated from glyph measurements rather than horizontal distortion.",
+  "method": "Preserve approved V-01 seal byte-identically and unchanged exact Jost 550 glyph contours. Derive pairwise optical kerning shifts for ASIA from silhouette-based minimum contour clearances (AS:-28, SI:-12, IA:-14 source units) producing equal ~8.4-8.6 unit minimum gaps. Retain original ASIA scale, font weight and all path d values. Recenter entire IN ASIA line under EDUCATION without changing the IN/ASIA word gap. The second line is ~90.5% of the first-line width; no distortion or fake-bold.",
   "variation_ids": [
     "H-EN-02",
     "P-EN-01"
@@ -33,7 +33,7 @@
   ],
   "public_review": "docs/identity/english-only/index.html",
   "next_gate": "Human inspection and approval before promotion to canonical manifest, hash locking, usage rules and verification tests",
-  "visual_review_notes": "V4.1: after user confirmed the typography, narrowed ASIA internal letter tracking from 35 to 20 native units; expanded the same Jost 550 outlined glyphs uniformly to maintain exact EDUCATION/IN ASIA total width; adjusted second-line baselines so text doesn't collide. The seal remains unchanged byte for byte. Review-only until approved.",
+  "visual_review_notes": "V4.2 — user requested genuinely tighter, optically equal ASIA spacing. Minimum contour clearance equalized across AS, SI, IA; original glyph paths, seal byte markup, Jost 550 and scale remain fixed. The IN+ASIA line is recentered together to avoid accidentally widening the word gap. Not a canonical change.",
   "source_weighted_font": "docs/instagram/launch-creative-02/assets/Jost-VF.ttf",
   "english_headline_weight": 550,
   "original_turkish_headline_weight": 550,
@@ -43,7 +43,7 @@
     "dark",
     "monochrome"
   ],
-  "version": "v4.1-asia-spacing",
+  "version": "v4.2-optical-kerning",
   "layout": {
     "topLine": "EDUCATION",
     "bottomLine": [
@@ -62,16 +62,31 @@
     },
     "scale": {
       "IN": 0.95,
-      "ASIA": 1.9847237553929866
+      "ASIA": 1.98472376
     },
     "width": {
       "EDUCATION": 1127.2830638885498,
       "IN": 160.36000108718872,
-      "ASIA": 928.9230628013611,
+      "ASIA": 821.7479797613611,
       "gap": 38,
-      "lowerTotal": 1127.2830638885498
+      "lowerTotal": 1020.1079808485498,
+      "lowerWidthRatio": 0.9049262013479553,
+      "centerOffset": 53.58754152
     },
-    "aesthetic_status": "HUMAN_REVIEW_REQUIRED"
+    "aesthetic_status": "HUMAN_REVIEW_REQUIRED",
+    "opticalKerning": {
+      "pairOffsetsNative": {
+        "AS": -28,
+        "SI": -12,
+        "IA": -14
+      },
+      "minimumGapNative": {
+        "AS": 8.500244,
+        "SI": 8.635964,
+        "IA": 8.399999
+      }
+    },
+    "rule": "center the full IN ASIA line under EDUCATION; preserve IN/ASIA gap and source contours"
   },
   "aesthetic_status": "HUMAN_REVIEW_REQUIRED"
 }
