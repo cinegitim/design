@@ -72,6 +72,11 @@ def build_public_catalog(root: Path) -> dict:
             raise ValueError("Logo allowlist drift")
         if s["font_family"] != "Jost":
             raise ValueError("Typography drift")
+        if s.get("seal_sha256") != canonical["canonical_seal_sha256"]:
+            raise ValueError("Canonical seal digest drift")
+        seal = (root / canonical["canonical_seal_path"]).resolve()
+        if not seal.is_relative_to(root) or not seal.is_file() or hashlib.sha256(seal.read_bytes()).hexdigest() != s["seal_sha256"]:
+            raise ValueError("Canonical seal bytes changed")
         for logo in s["lockups"]:
             record = records.get(logo["id"])
             if not record or record["sha256"] != logo["sha256"] or record["canonical_file_path"] != logo["path"]:
@@ -91,6 +96,7 @@ def build_public_catalog(root: Path) -> dict:
             "presets": [{"id": key, "label": value["label"]} for key, value in s["presets"].items()],
             "axes": list(s["variation_axes"]),
             "lockups": [x["id"] for x in s["lockups"]],
+            "lockup_assets": [{"id": x["id"], "path": x["path"], "sha256": x["sha256"]} for x in s["lockups"]],
         })
     for category in registry["categories"]:
         count = sum(s["category"] == category["id"] for s in styles)
@@ -125,6 +131,7 @@ def build_public_catalog(root: Path) -> dict:
         "brand": {"id": "asyada-egitim", "name": "Asya'da Eğitim"},
         "brand_identity": {
             "status": "approved-canonical", "seal_id": "V-01",
+            "seal_sha256": canonical["canonical_seal_sha256"],
             "font": "Jost", "palette": styles[0]["palette"] if styles else {},
             "canonical_manifest": brand["canonicalLockups"]["manifest"],
             "logo_generation_allowed": False,

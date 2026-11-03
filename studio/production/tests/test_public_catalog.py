@@ -46,6 +46,9 @@ class PublicCatalogTests(unittest.TestCase):
         actual = (ROOT / "docs/system/catalog.json").read_text(encoding="utf-8")
         self.assertEqual(expected, actual)
         self.assertEqual(self.data["brand_identity"]["font"], "Jost")
+        self.assertEqual(len(self.data["brand_identity"]["seal_sha256"]), 64)
+        self.assertTrue(all(len(x["sha256"]) == 64 and x["path"].startswith("brands/")
+                            for x in self.data["styles"][0]["lockup_assets"]))
 
     def test_ui_provides_real_navigation_and_honest_generation_brief(self):
         page = (ROOT / "docs/system/index.html").read_text(encoding="utf-8")
