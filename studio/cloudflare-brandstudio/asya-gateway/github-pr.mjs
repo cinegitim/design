@@ -81,7 +81,7 @@ export async function submitEditorReview(context){
    url:prior.html_url,number:prior.number,branch,revision:expectedSha,existing:true});
   // A dangling branch may indicate partial upstream failure; do not overwrite or rebase it.
   let found=false;
-  try{await github(token,'/git/ref/heads/'+encodeURIComponent(branch));found=true}
+  try{await github(token,'/git/ref/heads/'+branch);found=true}
   catch(e){if(!(e instanceof GithubFailure&&e.status===404))throw e}
   if(found)return out({error:'Bu sürüm için GitHub dalı var ancak PR doğrulanamadı; manuel inceleme gerekli'},409);
   const base=await github(token,'/git/ref/heads/main');
