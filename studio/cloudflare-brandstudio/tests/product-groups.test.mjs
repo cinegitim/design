@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {execFileSync} from 'node:child_process';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import path from 'node:path';
@@ -166,7 +167,14 @@ test('one actual gallery shows logos, profile images, and platform covers',()=>{
  const publishedFiles=new Set(inventory.files.map(f=>f[0]));
  for(const rel of src){
   const repoPath=path.relative(root,path.resolve(folder,rel)).split(path.sep).join('/');
-  assert.ok(publishedFiles.has(repoPath),'Gallery references untracked image: '+repoPath);
+  if(!publishedFiles.has(repoPath)){
+   // The immutable inventory was pinned on 2026-10-26. Newer committed files
+   // must be checked against Git's actual index, not falsely rejected as absent.
+   assert.ok(!repoPath.startsWith('..'),'Gallery reference escapes repository: '+repoPath);
+   assert.ok(fs.existsSync(path.join(root,repoPath)),'Gallery image missing: '+repoPath);
+   const tracked=execFileSync('git',['-C',root,'ls-files','--error-unmatch','--',repoPath],{encoding:'utf8'});
+   assert.equal(tracked.trim(),repoPath,'Gallery reference not tracked by Git: '+repoPath);
+  }
  }
 });
 
