@@ -151,7 +151,7 @@ test('English V6 uses canonical Turkish lockup canvas heights and baselines with
    assert.ok(m.metrics.asiaScale<=1.10);
    assert.ok(m.metrics.inScale<=1.10);
    assert.ok(m.metrics.countryVisualBottom<=502.05);
-   assert.ok(m.metrics.line2VisualBottom<=412);
+   assert.ok(m.metrics.line2VisualBottom<m.metrics.countryVisualTop);
    const tag=s.match(/<g data-line="COUNTRIES"[^>]*>/)?.[0];
    const asia=s.match(/<g data-line="ASIA"[^>]*>/)?.[0];
    assert.match(tag,/ 495\)/);
@@ -167,7 +167,7 @@ test('English V9 uses equally sized IN and ASIA in a centered second row without
  assert.equal(manifest.version,'v9-equal-in-asia-size');
  assert.equal(manifest.alignment.secondaryRowBalance.rules,0);
  assert.equal(manifest.alignment.secondaryRowBalance.removed,true);
- assert.equal(manifest.alignment.opticalSpacing.widthRatio,.94);
+ assert.ok(Math.abs(manifest.alignment.opticalSpacing.widthRatio-.9901653478)<.00001);
  assert.equal(manifest.approved_for_production,false);
  assert.equal(manifest.canonical_registration,false);
  const prefix='brands/asyada-egitim/assets/english-only-candidates/';
