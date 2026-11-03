@@ -1,0 +1,37 @@
+{
+  "schema": "brandstudio-english-logo-review-v1",
+  "brand": "asyada-egitim",
+  "english_name": "Education in Asia",
+  "status": "REVIEW_ONLY_HUMAN_APPROVAL_PENDING",
+  "source_main_commit": "7a6e7bebf7c315f2a9b573cf367e16968e64465a",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "source_lockups": [
+    "H-02",
+    "P-01"
+  ],
+  "source_wordmark": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
+  "method": "Reuse original complete embedded seal byte-for-byte and authentic outlined English Jost 350 glyph paths from canonical lockups; reflow into EDUCATION / IN ASIA with optical kerning (-25 source units per sequential glyph) and 2.8-unit rounded stroke for comparable headline visual weight. These are new review-only arrangements, not approved canonical geometry.",
+  "variation_ids": [
+    "H-EN-02",
+    "P-EN-01"
+  ],
+  "colors": [
+    "light",
+    "dark",
+    "monochrome"
+  ],
+  "approved_for_production": false,
+  "canonical_registration": false,
+  "existing_canonical_files_modified": false,
+  "assets": [
+    "brands/asyada-egitim/assets/english-only-candidates/h-en-02-horizontal-light.svg",
+    "brands/asyada-egitim/assets/english-only-candidates/h-en-02-horizontal-dark.svg",
+    "brands/asyada-egitim/assets/english-only-candidates/h-en-02-horizontal-monochrome.svg",
+    "brands/asyada-egitim/assets/english-only-candidates/p-en-01-stacked-light.svg",
+    "brands/asyada-egitim/assets/english-only-candidates/p-en-01-stacked-dark.svg",
+    "brands/asyada-egitim/assets/english-only-candidates/p-en-01-stacked-monochrome.svg"
+  ],
+  "public_review": "docs/identity/english-only/index.html",
+  "next_gate": "Human inspection and approval before promotion to canonical manifest, hash locking, usage rules and verification tests",
+  "visual_review_notes": "Revision 2: first native browser screenshot showed English letters much thinner/spacier than current bold Turkish headliner; path-preserving optical adjustment applied, needs human aesthetic approval."
+}
