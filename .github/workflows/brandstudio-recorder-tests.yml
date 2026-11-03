@@ -4,6 +4,10 @@ on:
   pull_request:
     paths:
       - "studio/production/**"
+      - "docs/system/**"
+      - "docs/index.html"
+      - "docs/workspaces/asyada-egitim/index.html"
+      - "docs/visual-editor/browser/style-registry.json"
       - "brands/asyada-egitim/styles/**"
       - ".github/workflows/brandstudio-recorder-tests.yml"
   workflow_dispatch:
@@ -22,6 +26,10 @@ jobs:
           persist-credentials: false
           sparse-checkout: |
             studio/production/
+            docs/system/
+            docs/index.html
+            docs/workspaces/asyada-egitim/index.html
+            docs/visual-editor/browser/style-registry.json
             brands/asyada-egitim/brand.json
             brands/asyada-egitim/styles/
             brands/asyada-egitim/assets/lockups/
@@ -35,3 +43,5 @@ jobs:
         run: python3 -m pip install -r studio/production/contracts/requirements.txt
       - name: Execute existing and P1 offline production tests
         run: python3 -m unittest discover -s studio/production/tests -v
+      - name: Fail closed if public system catalog differs from canonical GitHub sources
+        run: python3 studio/production/public_catalog.py --check
