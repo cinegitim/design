@@ -110,7 +110,7 @@ test('English-only review uses real Jost 550 outlines and unmodified approved se
  }
 });
 
-test('English v4 wordmark fills lower line with smaller IN, dominant ASIA and exact approved SVG seal',()=>{
+test('English v4 wordmark centers lower line with smaller IN, dominant ASIA and exact approved SVG seal',()=>{
  const variants=['h-en-02-horizontal','p-en-01-stacked'];
  const tones=['light','dark','monochrome'];
  for(const stem of variants)for(const tone of tones){
@@ -118,14 +118,14 @@ test('English v4 wordmark fills lower line with smaller IN, dominant ASIA and ex
   const match=svg.match(/<metadata>([\s\S]*?)<\/metadata>/);
   assert.ok(match,'metadata required');
   const m=JSON.parse(match[1]);
-  assert.equal(m.version,'v4.1-asia-spacing');
+  assert.equal(m.version,'v4.2-optical-kerning');
   assert.equal(m.letterSpacing.ASIA,20);
   assert.ok(m.ASIAScale>1.95 && m.ASIAScale<2.05);
   assert.equal(m.fontWeight,550);
   assert.deepEqual(m.bottom,['IN','ASIA']);
   assert.ok(m.INScale < 1);
   assert.ok(m.ASIAScale > 1.6 && m.ASIAScale < 2.1);
-  assert.ok(Math.abs(m.layoutMetrics.EDUCATION-m.layoutMetrics.lowerTotal)<0.001);
+  assert.ok(Math.abs((m.layoutMetrics.EDUCATION-m.layoutMetrics.lowerTotal)/2-m.layoutMetrics.centerOffset)<0.001);
   assert.equal(m.canonicalSealSha256,'8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a');
   for(const [line,count] of [['EDUCATION',9],['IN',2],['ASIA',4]]){
    const segment=svg.match(new RegExp('<g data-line="'+line+'"[^>]*>([\\s\\S]*?)<\\/g>'));
@@ -141,19 +141,46 @@ test('English v4 wordmark fills lower line with smaller IN, dominant ASIA and ex
 
 // V4.1 kerning correction: SVG path outlines and canonical seal remain untouched;
 // only ASIA glyph positions, its uniform scale and vertical baseline may differ.
-test('English V4.1 ASIA characters are closer without altering Jost 550 geometry',()=>{
+test('English V4.2 ASIA characters are closer without altering Jost 550 geometry',()=>{
   const m=JSON.parse(read('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json'));
-  assert.equal(m.version,'v4.1-asia-spacing');
+  assert.equal(m.version,'v4.2-optical-kerning');
   assert.equal(m.layout.tracking.ASIA,20);
-  assert.ok(Math.abs(m.layout.width.EDUCATION-m.layout.width.lowerTotal)<0.001);
+  assert.ok(Math.abs((m.layout.width.EDUCATION-m.layout.width.lowerTotal)/2-m.layout.width.centerOffset)<0.001);
   for(const layout of ['h-en-02-horizontal','p-en-01-stacked'])for(const tone of ['light','dark','monochrome']){
     const svg=read('brands/asyada-egitim/assets/english-only-candidates/'+layout+'-'+tone+'.svg');
     const mstart=svg.indexOf('<metadata>')+10, mend=svg.indexOf('</metadata>');
     const meta=JSON.parse(svg.slice(mstart,mend));
-    assert.equal(meta.version,'v4.1-asia-spacing');
+    assert.equal(meta.version,'v4.2-optical-kerning');
     assert.equal(meta.letterSpacing.ASIA,20);
     assert.equal(meta.fontWeight,550);
     assert.equal(meta.status,'REVIEW_ONLY_HUMAN_APPROVAL_PENDING');
     assert.match(svg,/<g data-line="ASIA"/);
   }
+});
+
+test('English V4.2 optical kerning keeps equal minimum gaps, unchanged outlines and whole-line centering',()=>{
+ const source=json('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json');
+ assert.equal(source.version,'v4.2-optical-kerning');
+ assert.deepEqual(source.layout.opticalKerning.pairOffsetsNative,{AS:-28,SI:-12,IA:-14});
+ const gaps=Object.values(source.layout.opticalKerning.minimumGapNative);
+ assert.ok(Math.max(...gaps)-Math.min(...gaps)<0.3);
+ for(const stem of ['h-en-02-horizontal','p-en-01-stacked'])for(const tone of ['light','dark','monochrome']){
+  const s=read('brands/asyada-egitim/assets/english-only-candidates/'+stem+'-'+tone+'.svg');
+  const meta=JSON.parse(s.split('<metadata>')[1].split('</metadata>')[0]);
+  const opt=meta.opticalKerning;
+  assert.equal(meta.fontWeight,550);
+  assert.equal(meta.version,'v4.2-optical-kerning');
+  assert.equal(opt.scaleUnchanged,true);
+  assert.equal(opt.sealUnchanged,true);
+  assert.equal(opt.recenteredTogether,true);
+  assert.ok(meta.layoutMetrics.lowerWidthRatio>0.90&&meta.layoutMetrics.lowerWidthRatio<0.92);
+  assert.ok(Math.abs(meta.layoutMetrics.centerOffset-(meta.layoutMetrics.EDUCATION-meta.layoutMetrics.lowerTotal)/2)<0.001);
+  const xs=[...s.matchAll(/<g data-line="ASIA"[^>]*>([\s\S]*?)<\/g>/g)];
+  assert.equal(xs.length,1);
+  const positions=[...xs[0][1].matchAll(/transform="translate\(([-\d.]+) 0\)"/g)].map(x=>+x[1]);
+  assert.equal(positions.length,4);
+  assert.ok(Math.abs(positions[1]-131.500244)<0.001);
+  assert.ok(Math.abs(positions[2]-242.136208)<0.001);
+  assert.ok(Math.abs(positions[3]-274.536207)<0.001);
+ }
 });
