@@ -44,8 +44,20 @@ async function openReviewPr({product,version,expectedSha}){
  return data
 }
 
+async function reviewPrAvailable(){
+ try{
+  const response=await fetch("/visual-editor/api/github-pr",{
+   method:"GET",credentials:"same-origin",cache:"no-store",redirect:"follow",
+   headers:{"Accept":"application/json"}
+  });
+  if(!response.ok||!(response.headers.get("content-type")||"").includes("application/json"))return false;
+  const data=await response.json();
+  return data.enabled===true&&data.repo==="cinegitim/design"&&data.mode==="draft-review-only"
+ }catch(_){return false}
+}
+
 root.BrandstudioCloud={
- load,commit,openReviewPr,
+ load,commit,openReviewPr,reviewPrAvailable,
  authenticated:()=>true,
  setToken:()=>true,
  MAX_HISTORY:240
