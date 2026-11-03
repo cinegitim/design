@@ -99,6 +99,30 @@ class RouterTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.route(model_verified=True)
 
+    def test_model_family_guidance_is_executor_neutral_not_runtime_attestation(self):
+        for executor, capabilities in (
+            ("chatgpt-work", {"github-read"}),
+            ("opencode", {"filesystem", "terminal"}),
+            ("antigravity", {"filesystem", "terminal"}),
+            ("codex", {"filesystem", "terminal"}),
+            ("chatgpt-chat", {"github-read"}),
+        ):
+            with self.subTest(executor=executor):
+                r = self.route(executor=executor, capabilities=capabilities,
+                               model_family="gemini", model_id="unverified-runtime")
+                self.assertEqual(r["model_advisory"]["id"], "gemini")
+                self.assertIs(r["model_advisory"]["capabilities_verified"], False)
+                self.assertIsNone(r["runtime"]["model_verified"])
+                self.assertIn("studio/production/model-families.json", r["load"])
+
+    def test_model_name_never_silently_selects_an_advisory_family(self):
+        r = self.route(model_id="gpt-6")
+        self.assertIsNone(r["model_advisory"])
+        self.assertNotIn("studio/production/model-families.json", r["load"])
+        for wrong in ("unknown", "../claude", "GPT"):
+            with self.subTest(wrong=wrong), self.assertRaises(ValueError):
+                self.route(model_family=wrong)
+
     def test_unknown_category_or_brand_rejected(self):
         with self.assertRaises(ValueError):
             self.route(category="unknown")

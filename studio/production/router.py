@@ -15,12 +15,32 @@ CONFIG = Path(__file__).with_name("routes.json")
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 
+def advisory_family(root: Path, family_id: str | None) -> dict | None:
+    """Read explicit model-family guidance, never infer capabilities from a name."""
+    if family_id is None:
+        return None
+    if not isinstance(family_id, str) or not SLUG.fullmatch(family_id):
+        raise ValueError("Invalid model-family ID")
+    path = root / "studio/production/model-families.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if data.get("schema_version") != 1:
+        raise ValueError("Unknown model-family schema")
+    matches = [x for x in data["model_families"] if x["id"] == family_id]
+    if len(matches) != 1 or matches[0].get("status") != "advisory" or matches[0].get("capabilities_verified") is not False:
+        raise ValueError("Unknown or unverified model-family guidance")
+    x = matches[0]
+    return {"id": x["id"], "name": x["name"], "status": "advisory",
+            "capabilities_verified": False, "emphasis": dict(x["emphasis"])}
+
+
+
 def plan(*, root: Path, config: dict, executor: str, brand: str,
          category: str, capabilities: set[str],
          model_id: str | None = None, model_verified: bool = False,
          requested_effort: str | None = None, style_id: str | None = None,
          preset_id: str | None = None,
-         variation_overrides: dict[str, str] | None = None) -> dict:
+         variation_overrides: dict[str, str] | None = None,
+         model_family: str | None = None) -> dict:
     """Select a candidate strategy using explicitly observed runtime capabilities."""
     if category not in config["categories"]:
         raise ValueError(f"Unknown category: {category}")
@@ -54,6 +74,7 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
     if selected is None:
         raise ValueError("Missing fallback profile")
     production_policy = config.get("production_policies", {}).get(category, {})
+    model_advisory = advisory_family(root, model_family)
     style = resolve_style(root=root, brand=brand, category=category,
                           style_id=style_id, preset_id=preset_id,
                           variation_overrides=variation_overrides)
@@ -75,6 +96,7 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
         "task": {"brand": brand, "category": category},
         "style": style,
         "style_pack": style_pack,
+        "model_advisory": model_advisory,
         "production_policy": dict(production_policy),
         "route": {
             "id": selected["id"],
@@ -88,6 +110,7 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
             ".agents/skills/brand-studio/SKILL.md",
             *config["categories"][category],
             *selected.get("references", []),
+            *(["studio/production/model-families.json"] if model_advisory else []),
             *([style["definition_path"], style["definition_path"].replace("style.json", "README.md"),
                "studio/production/style_pack.py",
                style_pack["sources"]["brand_path"],
@@ -109,6 +132,9 @@ def plan(*, root: Path, config: dict, executor: str, brand: str,
         ) + (
             ["Image-only access supports raster layers, not a complete editable/rendered branded carousel."]
             if selected["id"] == "chat-image-v1" and category == "instagram-carousel" else []
+        ) + (
+            ["Model-family advice does not verify the actual model or available capabilities."]
+            if model_advisory else []
         ),
     }
 
@@ -125,6 +151,7 @@ def main() -> int:
                         help="Repeatable controlled variation override")
     parser.add_argument("--list-styles", action="store_true",
                         help="List style families scoped to the requested brand/category")
+    parser.add_argument("--model-family", help="Explicit advisory family (GPT, Gemini, Claude, GLM, Qwen); never a verified runtime model")
     parser.add_argument("--model-id")
     parser.add_argument("--model-verified", action="store_true")
     parser.add_argument("--requested-effort", choices=["instant", "medium", "high", "extra-high", "pro"])
@@ -151,6 +178,7 @@ def main() -> int:
             model_verified=args.model_verified,
             requested_effort=args.requested_effort,
             style_id=args.style, preset_id=args.preset, variation_overrides=overrides,
+            model_family=args.model_family,
         )
     except (ValueError, KeyError, OSError, json.JSONDecodeError) as exc:
         parser.error(str(exc))

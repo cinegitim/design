@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Brandstudio tasarım dilleri, kategori varyasyonları ve doğrulanabilir çoklu ajan üretim profilleri.">
+  <title>Brandstudio · Tasarım Sistemi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#library">İçeriğe geç</a>
+  <header class="mast"><div class="container mast-inner">
+    <a class="brand" href="../"><img src="../asyada-seal/assets/v01-canonical.svg" alt="Asya'da Eğitim onaylı mühür"><span>Brandstudio.</span> / Tasarım Sistemi</a>
+    <nav class="mainnav" aria-label="Brandstudio ana gezinme">
+      <a href="../workspaces/asyada-egitim/">Üretim arşivi</a>
+      <a href="#library" aria-current="page">Tasarım Kütüphanesi</a>
+      <a href="#production">Üretim Merkezi</a>
+      <a href="../visual-editor/browser/">Visual Editor</a>
+      <a href="https://github.com/cinegitim/design">GitHub</a>
+    </nav>
+  </div></header>
+  <main class="container">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">Asya'da Eğitim / Marka kuralları / Üretim sistemi</div>
+        <h1>Bir marka.<br>Birçok yaratıcı yol.</h1>
+        <p class="lead">Marka kimliği değişmez; tasarım dilleri, kompozisyonlar ve üretici ajanlar değişebilir. Her üretim aynı sürümlü GitHub kurallarına dayanır.</p>
+      </div>
+      <div class="overview" aria-label="Sistem özeti">
+        <div class="meters">
+          <div><strong id="metric-categories">—</strong><small>Kategori</small></div>
+          <div><strong id="metric-styles">—</strong><small>Tanımlı tasarım dili</small></div>
+          <div><strong id="metric-executors">—</strong><small>Çalışma profili</small></div>
+          <div><strong id="metric-models">—</strong><small>LLM ailesi rehberi</small></div>
+        </div>
+        <p class="note">Katalog canlı model çalıştırmaz. Onaysız stiller ve doğrulanmamış yetenekler açıkça belirtilir.</p>
+      </div>
+    </div>
+    <nav class="sectionnav" aria-label="Sistem bölümleri"><a href="#library">01 · Tasarım Kütüphanesi</a><a href="#production">02 · Üretim Merkezi</a><a href="#pipeline">03 · Teslim Akışı</a></nav>
+
+    <section id="library" class="block" aria-labelledby="library-heading">
+      <div class="section-head"><div>
+        <span class="eyebrow">01 / Tasarım Kütüphanesi</span>
+        <h2 id="library-heading">Kategoriler ve tasarım dilleri</h2>
+        <p>Kurumsal logo, Jost ve marka paleti bütün stiller için sabit. Görsel düzen ve fotoğraf kullanımı seçilen tasarım diline göre çeşitlenebilir.</p>
+      </div><a class="link" href="../workspaces/asyada-egitim/">Mevcut tasarımları aç ↗</a></div>
+      <div class="library-grid">
+        <div id="category-list" class="category-stack stack" role="group" aria-label="Tasarım kategorileri"></div>
+        <div id="style-detail" class="panel" aria-live="polite"><p class="description">Tasarım kayıtları yükleniyor…</p></div>
+      </div>
+    </section>
+
+    <section id="production" class="block" aria-labelledby="production-heading">
+      <div class="section-head"><div>
+        <span class="eyebrow">02 / Üretim Merkezi</span>
+        <h2 id="production-heading">Ajan ve model kurallarını birleştir</h2>
+        <p>Önce kategori ve tasarım dilini, sonra çalışma ortamını ve LLM ailesini seç. Ortam profili ile model rehberi birbirinden ayrıdır; gerçek yetenekler çalıştırma sırasında doğrulanır.</p>
+      </div><a class="link" href="https://github.com/cinegitim/design/tree/main/studio/production">Kaynak kurallar ↗</a></div>
+      <div class="work-grid">
+        <div class="panel">
+          <div class="field-grid">
+            <div class="field"><label for="category-picker">Kategori</label><select id="category-picker"></select></div>
+            <div class="field"><label for="style-picker">Tasarım dili</label><select id="style-picker"></select></div>
+            <div class="field"><label for="preset-picker">Alt varyasyon</label><select id="preset-picker"></select></div>
+            <div class="field"><label for="executor-picker">Çalışma ortamı / ajan</label><select id="executor-picker"></select></div>
+            <div class="field"><label for="model-picker">LLM ailesi (rehber)</label><select id="model-picker"></select></div>
+          </div>
+          <div class="detail" id="production-status" aria-live="polite">Üretim profilleri yükleniyor…</div>
+          <div class="buttons"><button class="btn" id="copy-brief" type="button" disabled>Üretim fişini kopyala</button><a class="btn btn-secondary" href="../visual-editor/browser/">Visual Editor'ü aç</a></div>
+          <p class="feedback" id="copy-feedback" role="status" aria-live="polite"></p>
+          <p class="micro">Fişi kopyalamak bir ajan çalıştırmaz; GitHub dalı veya PR açmaz. Gerçek üretim başladığında kaynaklar ve onaylar ilgili PR’da kaydedilir.</p>
+        </div>
+        <div class="panel">
+          <span class="eyebrow">Değişmeyen marka kimliği</span>
+          <h3>Her üretimde aynı temel.</h3>
+          <div class="meta"><span>Onaylı V-01 mühür</span><span>H-02 / P-01 kanonik logolar</span><span>Jost</span></div>
+          <div id="identity-palette" class="swatches" aria-label="Onaylı palet"></div>
+          <p class="description">LLM veya ajan değiştirmek logoyu yeniden oluşturma, markanın yazı tipini değiştirme ya da kullanıcı onayı olmadan yayımlama hakkı vermez.</p>
+          <p class="source">Kaynak: <a href="https://github.com/cinegitim/design/blob/main/brands/asyada-egitim/brand.json">Onaylı marka kaydı</a> · <a href="https://github.com/cinegitim/design/blob/main/studio/production/routes.json">Üretim yönlendirmesi</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pipeline" class="block" aria-labelledby="pipeline-heading">
+      <div class="section-head"><div><span class="eyebrow">03 / Teslim Akışı</span><h2 id="pipeline-heading">Tasarımdan yayına, kayıplı geçiş olmadan.</h2><p>Her durum farklı kanıta dayanır. Bir bulut taslağı GitHub sürümü değildir; GitHub sürümü de sosyal medya yayını anlamına gelmez.</p></div></div>
+      <div class="pipeline">
+        <div class="step"><b>01 · ÜRETİM</b><h3>Seçim ve kaynak</h3><p>Stil paketi + gerçek ajan yetenekleri + düzenlenebilir HTML/CSS/SVG. Onaylı logo dosyası aynen kullanılır.</p></div>
+        <div class="step"><b>02 · DÜZENLEME</b><h3>Visual Editor</h3><p>Bulut taslakları, sürüm geçmişi ve önceki çalışmaya dönebilme. Henüz GitHub PR değil.</p></div>
+        <div class="step"><b>03 · KAYNAK SÜRÜMÜ</b><h3>GitHub PR</h3><p>İlgili dal, kaynak dosyaları, otomatik kalite kontrolü ve açık kreatif onay durumu.</p></div>
+        <div class="step"><b>04 · YAYIN KANITI</b><h3>Platform doğrulaması</h3><p>Doğrulanmış paylaşım bağlantısı. Aile düzeyi eşleşme, tam sürüm eşleşmesiyle karıştırılmaz.</p></div>
+      </div>
+    </section>
+  </main>
+  <footer class="container footer"><span>Brandstudio · Asya'da Eğitim · Kaynak odaklı tasarım sistemi</span><span><a href="../">Markalar</a> · <a href="../workspaces/asyada-egitim/">Üretim arşivi</a> · <a href="https://github.com/cinegitim/design">GitHub</a></span></footer>
+</body>
+</html>

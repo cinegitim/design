@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "purpose": "advisory model-family overlays; real runtime abilities and model identity must be verified per session",
+  "model_families": [
+    {
+      "id": "gpt",
+      "name": "GPT",
+      "status": "advisory",
+      "capabilities_verified": false,
+      "emphasis": {
+        "code": "Kod ve teslim fişi üret; mevcut HTML/CSS/SVG kaynaklarını çalıştırılabilir testlerle doğrula.",
+        "image": "Görsel üretimi yalnız izinli fotoğraf, illüstrasyon ve arka plan katmanlarıyla sınırla; logoyu kanonik SVG'den ekle."
+      }
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "status": "advisory",
+      "capabilities_verified": false,
+      "emphasis": {
+        "code": "Kullanılabilen gerçek araçları tespit et; kod kaynaklarını aynı kanonik stil sözleşmesi ve GitHub PR kanıtlarıyla teslim et.",
+        "image": "Kompozisyon ve görsel referanslar üzerinde çalış; resmî logoyu asla yeniden çizme veya tipografisini üretme."
+      }
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "status": "advisory",
+      "capabilities_verified": false,
+      "emphasis": {
+        "code": "Uzun biçimli tasarım kaynaklarını küçük doğrulanabilir değişikliklere ayır; mevcut editör ve sürüm geçmişini koru.",
+        "image": "Görsel yeteneği gerçekten mevcutsa yalnız izinli görsel katmanlarda kullan; onaylı kimliği kodla kompozitle."
+      }
+    },
+    {
+      "id": "glm",
+      "name": "GLM",
+      "status": "advisory",
+      "capabilities_verified": false,
+      "emphasis": {
+        "code": "Kısıtlı araç ortamında bile stil paketini ve teslim alanlarını eksiksiz koru; uygulanmamış testleri geçti sayma.",
+        "image": "Desteklenmeyen görsel yeteneği varsayma; gerekirse yalnız kaynak/brief üret, görseli taklit etme."
+      }
+    },
+    {
+      "id": "qwen",
+      "name": "Qwen",
+      "status": "advisory",
+      "capabilities_verified": false,
+      "emphasis": {
+        "code": "Kanıta dayalı üretim planı ve düzenlenebilir kaynak sağla; render yoksa eksikliği açık kaydet.",
+        "image": "Görsel çıktıyı model adından varsayma; özgün kompozisyon üretimine izin varsa kullan, marka imzasını değiştirme."
+      }
+    },
+    {
+      "id": "other",
+      "name": "Diğer / doğrulanmamış",
+      "status": "advisory",
+      "capabilities_verified": false,
+      "emphasis": {
+        "code": "Model kimliği ve yetenekleri doğrulanmadan gelişmiş araçları varsayma; ancak taşınabilir sözleşmeyi izle.",
+        "image": "Görsel oluşturma yeteneği doğrulanmadıkça yalnız tasarım brief'i ve düzenlenebilir kaynak üret."
+      }
+    }
+  ]
+}

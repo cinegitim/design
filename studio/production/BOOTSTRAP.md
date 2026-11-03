@@ -139,3 +139,7 @@ publish. If a capability is unknown or unsupported, the proposed job is blocked
 without automatic paid fallback. The canonical brand locks, Visual Editor,
 code-first HTML/CSS/SVG production, existing on-demand publication checks and
 human review gates are unchanged. 
+
+## Explicit model-family overlays (separate from executor)
+
+`studio/production/model-families.json` has optional, portable GPT/Gemini/Claude/GLM/Qwen/other guidance. Supply `--model-family <id>` to the read-only router only on explicit choice; this is never a verified model identity, capability scan, an automatic provider switch or permission to bypass the canonical style pack. The generated System Hub brief contains the selected executor and model family separately. Real execution must check tools and GitHub write access independently.
