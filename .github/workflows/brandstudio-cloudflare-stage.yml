@@ -39,6 +39,7 @@ jobs:
             docs/visual-editor
             docs/system
             docs/index.html
+            docs/identity/english-only
             brands/asyada-egitim/assets/lockups
             brands/asyada-egitim/styles
             brands/asyada-egitim/assets/v01-canonical.svg
