@@ -93,7 +93,7 @@ test('retired artwork remains for past deliverables but is prohibited in future 
 
 test('English V6 canonical alignment, lighter main and five-country subtitle: source seal, vectors, mirrors and dot alignment',()=>{
  const review=json('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json');
- assert.equal(review.version,'v8-no-rules-spaced-type');
+ assert.equal(review.version,'v9-equal-in-asia-size');
  assert.equal(review.english_headline_weight,450);
  assert.equal(review.country_line_font_weight,350);
  assert.equal(review.country_separator_count,4);
@@ -110,7 +110,7 @@ test('English V6 canonical alignment, lighter main and five-country subtitle: so
    assert.equal(svg,publicFile);
    assert.equal(seal(svg),seal(source));
    const meta=JSON.parse(svg.split('<metadata>')[1].split('</metadata>')[0]);
-   assert.equal(meta.version,'v8-no-rules-spaced-type');
+   assert.equal(meta.version,'v9-equal-in-asia-size');
    assert.equal(meta.status,'REVIEW_ONLY_HUMAN_APPROVAL_PENDING');
    assert.equal(meta.mainWeight,450);
    assert.equal(meta.taglineWeight,350);
@@ -118,7 +118,7 @@ test('English V6 canonical alignment, lighter main and five-country subtitle: so
    assert.ok(meta.metrics.tagWidth<=meta.metrics.topWidth);
    assert.ok(meta.metrics.lowerWidth<meta.metrics.topWidth);
    assert.ok(Math.abs(meta.metrics.asiaScale-1.10)<0.00001);
-   assert.ok(Math.abs(meta.metrics.inScale-0.88)<0.00001);
+   assert.ok(Math.abs(meta.metrics.inScale-1.10)<0.00001);
    assert.equal(meta.metrics.lowerBaseline,409);
    assert.equal(meta.metrics.countryBaseline,495);
    assert.ok(Math.abs(meta.metrics.rootCanvasHeight-(layout.stem.startsWith('h-')?587.56787109:1003.79998779))<0.0001);
@@ -139,7 +139,7 @@ test('English V6 canonical alignment, lighter main and five-country subtitle: so
 
 test('English V6 uses canonical Turkish lockup canvas heights and baselines without changing the glyph outlines',()=>{
  const manifest=json('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json');
- assert.equal(manifest.version,'v8-no-rules-spaced-type');
+ assert.equal(manifest.version,'v9-equal-in-asia-size');
  assert.equal(manifest.alignment.targetMainLineBaseline,209);
  assert.equal(manifest.alignment.targetSecondLineBaseline,409);
  assert.equal(manifest.alignment.targetCountryBaseline,495);
@@ -147,9 +147,9 @@ test('English V6 uses canonical Turkish lockup canvas heights and baselines with
   for(const tone of ['light','dark','monochrome']){
    const s=read('brands/asyada-egitim/assets/english-only-candidates/'+stem+'-'+tone+'.svg');
    const m=JSON.parse(s.split('<metadata>')[1].split('</metadata>')[0]);
-   assert.equal(m.version,'v8-no-rules-spaced-type');
+   assert.equal(m.version,'v9-equal-in-asia-size');
    assert.ok(m.metrics.asiaScale<=1.10);
-   assert.ok(m.metrics.inScale<=0.88);
+   assert.ok(m.metrics.inScale<=1.10);
    assert.ok(m.metrics.countryVisualBottom<=502.05);
    assert.ok(m.metrics.line2VisualBottom<=412);
    const tag=s.match(/<g data-line="COUNTRIES"[^>]*>/)?.[0];
@@ -162,9 +162,9 @@ test('English V6 uses canonical Turkish lockup canvas heights and baselines with
 
 
 
-test('English V8 uses wide, centered IN ASIA without decorative rules or glyph distortion',()=>{
+test('English V9 uses equally sized IN and ASIA in a centered second row without decorative rules or glyph distortion',()=>{
  const manifest=json('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json');
- assert.equal(manifest.version,'v8-no-rules-spaced-type');
+ assert.equal(manifest.version,'v9-equal-in-asia-size');
  assert.equal(manifest.alignment.secondaryRowBalance.rules,0);
  assert.equal(manifest.alignment.secondaryRowBalance.removed,true);
  assert.equal(manifest.alignment.opticalSpacing.widthRatio,.94);
@@ -179,14 +179,14 @@ test('English V8 uses wide, centered IN ASIA without decorative rules or glyph d
     assert.equal(svg,mirror);
     assert.equal(seal(svg),seal(old));
     const m=JSON.parse(svg.split('<metadata>')[1].split('</metadata>')[0]);
-    assert.equal(m.version,'v8-no-rules-spaced-type');
+    assert.equal(m.version,'v9-equal-in-asia-size');
     assert.equal(m.status,'REVIEW_ONLY_HUMAN_APPROVAL_PENDING');
     assert.equal(m.mainWeight,450);
     assert.equal(m.taglineWeight,350);
     assert.equal(m.opticalSpacing.letterShapesUnchanged,true);
     assert.ok(m.opticalSpacing.targetRenderedClearance>90&&m.opticalSpacing.targetRenderedClearance<95);
     assert.ok(m.opticalSpacing.wordGapRendered>120&&m.opticalSpacing.wordGapRendered<130);
-    assert.ok(Math.abs(m.metrics.lowerWidth/m.metrics.topWidth-.94)<.00001);
+    assert.ok(Math.abs(m.metrics.lowerWidth/m.metrics.topWidth-.9901653478)<.00001);
     assert.ok(Math.abs(m.metrics.centerPad-(m.metrics.topWidth-m.metrics.lowerWidth)/2)<.001);
     assert.equal(m.metrics.secondaryRowRules,null);
     assert.equal((svg.match(/data-rule=/g)||[]).length,0);
@@ -194,5 +194,33 @@ test('English V8 uses wide, centered IN ASIA without decorative rules or glyph d
     assert.equal((svg.match(/data-country-dot=/g)||[]).length,4);
     assert.ok(!svg.includes('<text')&&!svg.includes('<image'));
    }
+ }
+});
+
+
+test('English V9 IN and ASIA have identical 1.10 scale and baseline, with V-01 seal unchanged',()=>{
+ const manifest=json('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json');
+ assert.equal(manifest.version,'v9-equal-in-asia-size');
+ assert.equal(manifest.alignment.equalSecondLine.IN,1.1);
+ assert.equal(manifest.alignment.equalSecondLine.ASIA,1.1);
+ assert.equal(manifest.alignment.equalSecondLine.baseline,409);
+ for(const stem of ['h-en-02-horizontal','p-en-01-stacked']){
+  for(const tone of ['light','dark','monochrome']){
+   const svg=read('brands/asyada-egitim/assets/english-only-candidates/'+stem+'-'+tone+'.svg');
+   const meta=JSON.parse(svg.split('<metadata>')[1].split('</metadata>')[0]);
+   assert.equal(meta.version,'v9-equal-in-asia-size');
+   assert.equal(meta.metrics.inScale,meta.metrics.asiaScale);
+   assert.equal(meta.metrics.inScale,1.1);
+   assert.equal(meta.metrics.inBaseline,meta.metrics.lowerBaseline);
+   assert.equal(meta.equalSecondLine.sizeMatch,true);
+   assert.equal(meta.equalSecondLine.originalWordGapPreserved,true);
+   assert.ok(Math.abs(meta.metrics.lowerWidth/meta.metrics.topWidth-.9901653478)<.00001);
+   const inTag=svg.match(/<g data-line="IN"[^>]*>/)?.[0]||'';
+   const asiaTag=svg.match(/<g data-line="ASIA"[^>]*>/)?.[0]||'';
+   assert.match(inTag,/ 409\) scale\(1\.10000000\)/);
+   assert.match(asiaTag,/ 409\) scale\(1\.10000000\)/);
+   assert.equal((svg.match(/data-rule=/g)||[]).length,0);
+   assert.equal((svg.match(/data-country-dot=/g)||[]).length,4);
+  }
  }
 });

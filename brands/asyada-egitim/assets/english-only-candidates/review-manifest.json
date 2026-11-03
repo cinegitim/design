@@ -3,14 +3,14 @@
   "brand": "asyada-egitim",
   "english_name": "Education in Asia",
   "status": "REVIEW_ONLY_HUMAN_APPROVAL_PENDING",
-  "source_main_commit": "89153a342ea9022afd35895a771106f2252b4c47",
+  "source_main_commit": "a61bd92002073dbc6f24e22e0f6ad916603ae7f2",
   "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
   "source_lockups": [
     "H-02",
     "P-01"
   ],
   "source_wordmark": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-  "method": "Brandstudio SVG-only revision: remove both decorative flanking lines entirely, preserve the byte-identical approved V-01 nested seal and all real Jost 450 headline/Jost 350 country glyph path data. Spread glyph positions of IN (1 pair) and ASIA (3 pairs) using 94% of EDUCATION's line width, 4 equal minimum rendered optical clearances and a 1.35x larger inter-word gap. Center the bottom phrase beneath EDUCATION. Preserve canvas dimensions, letter heights, baselines, five-country subtitle with 4 dots and approved Turkish/bilingual logos.",
+  "method": "Preserve exact approved V-01 embedded seal, outlined Jost 450 main and Jost 350 country SVG glyph path geometry. Make IN and ASIA exactly the same scale 1.10 and same baseline 409 (IN previously 0.88). Keep all glyph translations within each word unchanged, all intra-word optical gaps and inter-word gap unchanged; recenter the entire now 99.0165% wide lower line under EDUCATION. No decoration lines or image generation. No canonical assets changed.",
   "variation_ids": [
     "H-EN-02",
     "P-EN-01"
@@ -33,7 +33,7 @@
   ],
   "public_review": "docs/identity/english-only/index.html",
   "next_gate": "Human inspection and approval before promotion to canonical manifest, hash locking, usage rules and verification tests",
-  "visual_review_notes": "V8: after user explicitly requested no lines, far more letter spacing and a clean layout like the original logo. Compared 90%, 94%, 98% lower-line width SVG alternatives in actual Chrome; selected 94% for wider but bounded text. All graphics originate solely from existing SVG Brandstudio assets; no generated images, no new emblem.",
+  "visual_review_notes": "V9: user asked that IN be the same size as ASIA. Browser SVG side-by-side verified both at 1.10 and y=409, glyph outlines intact and line stays centered. Old V8 retained in website history; six independent review variants/mirrors updated, still review-only.",
   "source_weighted_font": "docs/instagram/launch-creative-02/assets/Jost-VF.ttf",
   "english_headline_weight": 450,
   "original_turkish_headline_weight": 550,
@@ -43,7 +43,7 @@
     "dark",
     "monochrome"
   ],
-  "version": "v8-no-rules-spaced-type",
+  "version": "v9-equal-in-asia-size",
   "layout": {
     "topLine": "EDUCATION",
     "bottomLine": [
@@ -62,7 +62,7 @@
     "fontTagline": "Jost",
     "weightTagline": 350,
     "caseTagline": "uppercase for consistency with the canonical small English subtitle",
-    "hierarchy": "IN smaller, ASIA dominant",
+    "hierarchy": "IN and ASIA equal size, same baseline and weight",
     "taglineAlignment": "centered under wordmark",
     "countryDotCount": 4,
     "sealIntegrity": "byte-identical source nested V-01",
@@ -88,7 +88,7 @@
     "targetSecondLineBaseline": 409,
     "targetCountryBaseline": 495,
     "asiaSizeRelativeToHeadline": 1.1,
-    "inSizeRelativeToHeadline": 0.88,
+    "inSizeRelativeToHeadline": 1.1,
     "centeredLowerLine": true,
     "canonicalCanvasHeight": {
       "horizontal": 587.56787109,
@@ -105,10 +105,16 @@
     },
     "opticalSpacing": {
       "targetRenderedClearance": 92.06280373831775,
-      "interWordGap": 124.28478504672897,
-      "widthRatio": 0.94,
+      "interWordGap": 124.284789,
+      "widthRatio": 0.9901653478213167,
       "widthReference": "EDUCATION",
-      "noFontDistortion": true
+      "noFontDistortion": true,
+      "wordGapUnchanged": true
+    },
+    "equalSecondLine": {
+      "IN": 1.1,
+      "ASIA": 1.1,
+      "baseline": 409
     }
   }
 }
