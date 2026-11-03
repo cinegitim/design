@@ -33,7 +33,7 @@
   ],
   "public_review": "docs/identity/english-only/index.html",
   "next_gate": "Human inspection and approval before promotion to canonical manifest, hash locking, usage rules and verification tests",
-  "visual_review_notes": "V4: Corrected hierarchy after user instructions: small IN beside large ASIA, entire lower line fills EDUCATION width. Exact source seal trees byte-identical, 5 visible glyph contours copied directly from approved Jost 550 Turkish lockup, remaining letters from the actual Jost VF at the same weight. All 6 SVG modes rendered successfully as raw vectors in Chrome. No ImageGen source images used.",
+  "visual_review_notes": "V4.1: after user confirmed the typography, narrowed ASIA internal letter tracking from 35 to 20 native units; expanded the same Jost 550 outlined glyphs uniformly to maintain exact EDUCATION/IN ASIA total width; adjusted second-line baselines so text doesn't collide. The seal remains unchanged byte for byte. Review-only until approved.",
   "source_weighted_font": "docs/instagram/launch-creative-02/assets/Jost-VF.ttf",
   "english_headline_weight": 550,
   "original_turkish_headline_weight": 550,
@@ -43,7 +43,7 @@
     "dark",
     "monochrome"
   ],
-  "version": "v4-layout-hierarchy",
+  "version": "v4.1-asia-spacing",
   "layout": {
     "topLine": "EDUCATION",
     "bottomLine": [
@@ -53,16 +53,16 @@
     "nativeFontSize": 200,
     "weight": 550,
     "upperBaseline": 209,
-    "asiaBaseline": 495,
-    "inBaseline": 433.86094731832287,
+    "asiaBaseline": 520.767871634135,
+    "inBaseline": 446.7448828170675,
     "tracking": {
       "EDUCATION": 20,
       "IN": 16,
-      "ASIA": 35
+      "ASIA": 20
     },
     "scale": {
       "IN": 0.95,
-      "ASIA": 1.8106375489999018
+      "ASIA": 1.9847237553929866
     },
     "width": {
       "EDUCATION": 1127.2830638885498,
@@ -72,5 +72,6 @@
       "lowerTotal": 1127.2830638885498
     },
     "aesthetic_status": "HUMAN_REVIEW_REQUIRED"
-  }
+  },
+  "aesthetic_status": "HUMAN_REVIEW_REQUIRED"
 }

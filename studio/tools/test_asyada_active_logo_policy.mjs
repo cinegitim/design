@@ -118,7 +118,9 @@ test('English v4 wordmark fills lower line with smaller IN, dominant ASIA and ex
   const match=svg.match(/<metadata>([\s\S]*?)<\/metadata>/);
   assert.ok(match,'metadata required');
   const m=JSON.parse(match[1]);
-  assert.equal(m.version,'v4-layout-hierarchy');
+  assert.equal(m.version,'v4.1-asia-spacing');
+  assert.equal(m.letterSpacing.ASIA,20);
+  assert.ok(m.ASIAScale>1.95 && m.ASIAScale<2.05);
   assert.equal(m.fontWeight,550);
   assert.deepEqual(m.bottom,['IN','ASIA']);
   assert.ok(m.INScale < 1);
@@ -135,4 +137,22 @@ test('English v4 wordmark fills lower line with smaller IN, dominant ASIA and ex
   assert.ok(!svg.includes('<image'));
   assert.ok(!svg.includes('<text'));
  }
+});
+
+// V4.1 kerning correction: SVG path outlines and canonical seal remain untouched;
+// only ASIA glyph positions, its uniform scale and vertical baseline may differ.
+test('English V4.1 ASIA characters are closer without altering Jost 550 geometry',()=>{
+  const m=JSON.parse(read('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json'));
+  assert.equal(m.version,'v4.1-asia-spacing');
+  assert.equal(m.layout.tracking.ASIA,20);
+  assert.ok(Math.abs(m.layout.width.EDUCATION-m.layout.width.lowerTotal)<0.001);
+  for(const layout of ['h-en-02-horizontal','p-en-01-stacked'])for(const tone of ['light','dark','monochrome']){
+    const svg=read('brands/asyada-egitim/assets/english-only-candidates/'+layout+'-'+tone+'.svg');
+    const meta=JSON.parse(svg.match(/<metadata>([\\s\\S]*?)<\\/metadata>/)[1]);
+    assert.equal(meta.version,'v4.1-asia-spacing');
+    assert.equal(meta.letterSpacing.ASIA,20);
+    assert.equal(meta.fontWeight,550);
+    assert.equal(meta.status,'REVIEW_ONLY_HUMAN_APPROVAL_PENDING');
+    assert.match(svg,/<g data-line="ASIA"/);
+  }
 });
