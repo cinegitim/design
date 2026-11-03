@@ -24,8 +24,40 @@ async function commit({product,version,state,note="",kind="autosave",expectedSha
  if(!Number.isInteger(version)||version<1||version>26)throw Error("Sürüm numarası geçersiz");
  return request("POST",product,{product,version,state,note,kind,expectedSha})
 }
+async function openReviewPr({product,version,expectedSha}){
+ if(!RE.test(product)||!Number.isInteger(version)||version<1||version>26||
+    !/^[a-f0-9-]{36}$/i.test(expectedSha||''))throw Error("Kaydedilmiş geçerli sürüm gerekli");
+ let response;
+ try{
+  response=await fetch("/visual-editor/api/github-pr",{
+   method:"POST",credentials:"same-origin",cache:"no-store",redirect:"follow",
+   headers:{"content-type":"application/json","X-Brandstudio-Editor":"1"},
+   body:JSON.stringify({product,version,expectedSha,acknowledgePublicRepository:true})
+  })
+ }catch(e){throw Error("GitHub bağlantısı kurulamadı: "+e.message)}
+ if(!(response.headers.get("content-type")||"").includes("application/json"))
+  throw Error("Admin oturumu gerekli. Editörü yeniden açın.");
+ const data=await response.json();
+ if(!response.ok)throw Error(data.error||"GitHub inceleme PR'ı oluşturulamadı");
+ if(!/^https:\/\/github\.com\/cinegitim\/design\/pull\/[1-9]\d*$/.test(data.url||""))
+  throw Error("GitHub PR yanıtı doğrulanamadı");
+ return data
+}
+
+async function reviewPrAvailable(){
+ try{
+  const response=await fetch("/visual-editor/api/github-pr",{
+   method:"GET",credentials:"same-origin",cache:"no-store",redirect:"follow",
+   headers:{"Accept":"application/json"}
+  });
+  if(!response.ok||!(response.headers.get("content-type")||"").includes("application/json"))return false;
+  const data=await response.json();
+  return data.enabled===true&&data.repo==="cinegitim/design"&&data.mode==="draft-review-only"
+ }catch(_){return false}
+}
+
 root.BrandstudioCloud={
- load,commit,
+ load,commit,openReviewPr,reviewPrAvailable,
  authenticated:()=>true,
  setToken:()=>true,
  MAX_HISTORY:240

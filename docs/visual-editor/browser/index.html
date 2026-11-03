@@ -313,7 +313,8 @@ header #product{display:none}
 <div class="field"><label for="style-preset">Alt varyasyon</label><select id="style-preset" aria-label="Alt varyasyon"></select></div>
 <div class="field"><label for="style-logo">Onaylı logo</label><select id="style-logo" aria-label="Kanonik logo"></select></div>
 <details><summary>İnce ayarlar</summary><div class="style-axes" id="style-axes"></div></details>
-<div class="style-actions"><button type="button" class="btn primary" id="style-save">Seçimi sürüme kaydet</button><button type="button" class="btn" id="style-export">GitHub üretim fişi ↓</button></div>
+<div class="style-actions"><button type="button" class="btn primary" id="style-save">Seçimi sürüme kaydet</button><button type="button" class="btn" id="style-export">GitHub üretim fişi ↓</button><button type="button" class="btn" id="style-pr" hidden>Kaydedilmiş sürümü PR’a gönder</button></div>
+<p id="style-pr-status" class="small" aria-live="polite" hidden>Yalnız buluta kaydedilmiş sürümler GitHub inceleme PR’ına gönderilir. GitHub deposu herkese açıktır.</p>
 <p id="style-status" class="small" aria-live="polite">Stil kataloğu yükleniyor…</p></div></details>
 <div class="panel" id="selection-tools" hidden><strong id="selection-summary" aria-live="polite"></strong>
 
@@ -429,6 +430,43 @@ var cloud=globalThis.BrandstudioCloud,cloudData=null,cloudSelected=false,cloudNo
    download(slug+'-v'+current+'-production-brief.json',JSON.stringify(brief,null,2)+'\n','application/json')}
  })
 }
+// Optional capability: hide action until the authenticated gateway is deployed and configured.
+(async function(){
+ const button=$('style-pr'),note=$('style-pr-status');
+ button.hidden=true;button.style.display='none';note.hidden=true;
+ const enabled=!!(cloud?.reviewPrAvailable)&&await cloud.reviewPrAvailable();
+ button.hidden=!enabled;button.style.display=enabled?'':'none';note.hidden=!enabled;
+})();
+// Explicit human action: create a *draft review PR* from the persisted cloud version.
+var reviewPrBusy=false;
+$('style-pr').onclick=async function(){
+ const button=this,output=$('style-pr-status');
+ if(reviewPrBusy)return;
+ const product=slug,version=current,sha=cloudSha;
+ const stored=cloudData?.versions?.['v'+version]?.state;
+ if(!cloudReady||!cloud?.openReviewPr||!cloudSelected||!sha||!stored){
+  output.textContent='Önce bulutta kayıtlı sürümü açın veya kaydedin.';return
+ }
+ if(dirty||autoBusy||JSON.stringify(state)!==JSON.stringify(stored)){
+  output.textContent='Göndermeden önce değişikliklerin buluta kaydedilmesi gerekiyor.';
+  if(dirty)wakeAutoSave(true);
+  return
+ }
+ if(!confirm('v'+version+' sürümünün kayıtlı tasarım durumu HERKESE AÇIK cinegitim/design deposunda inceleme PR’ına eklenecek. Görsel/veri içeriğinin paylaşımına onaylıyor musunuz? Yayın yapılmaz.'))return;
+ reviewPrBusy=true;button.disabled=true;output.textContent='GitHub inceleme PR’ı hazırlanıyor…';
+ try{
+  const result=await cloud.openReviewPr({product,version,expectedSha:sha});
+  if(slug!==product)return;
+  output.replaceChildren();
+  const a=document.createElement('a');
+  a.href=result.url;a.target='_blank';a.rel='noopener noreferrer';
+  a.textContent='PR #'+result.number;
+  output.append(result.status==='merged'?'Önceden birleştirilmiş: ':result.existing?'Mevcut kayıt: ':'İnceleme PR’ı oluşturuldu: ',a,
+   ' · Bu işlem sosyal medyada yayın veya kreatif onay değildir.');
+ }catch(e){
+  if(slug===product)output.textContent='PR oluşturulamadı: '+e.message;
+ }finally{reviewPrBusy=false;button.disabled=false}
+};
 function pendingKey(product){return 'brandstudio:unsynced:'+product}
  function pendingSnapshot(){try{return JSON.parse(localStorage.getItem(pendingKey(slug))||'null')}catch(e){return null}}
  function rememberPending(){try{localStorage.setItem(pendingKey(slug),JSON.stringify({version:current,state:state,at:new Date().toISOString()}))}catch(e){$('cloud-status').textContent='Geçici kurtarma kopyası oluşturulamadı: '+e.message}}

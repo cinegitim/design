@@ -10,7 +10,8 @@ const html=fs.readFileSync(new URL("../../docs/workspaces/asyada-egitim/index.ht
 const worker=fs.readFileSync(new URL("./worker.mjs",import.meta.url),"utf8");
 const config=fs.readFileSync(new URL("./wrangler.toml",import.meta.url),"utf8");
 const scope={crypto:webcrypto,TextEncoder,TextDecoder,Headers,Request,Response,URL,URLSearchParams,console,fetch:()=>{throw Error("unexpected upstream call")}};
-vm.runInNewContext(code.replace(/^export /gm,"").replace("default {","globalThis.gateway = {"),scope);
+// This legacy harness evaluates only the gateway inline code; imported module behavior has separate tests.
+vm.runInNewContext(code.replace(/^import .*;\s*$/gm,"").replace(/^export /gm,"").replace("default {","globalThis.gateway = {"),scope);
 const ORIGIN="https://studio.asyadaegitim.com";
 const COOKIE="__Host-brandstudio_session="+ "a".repeat(64);
 function mock(){
