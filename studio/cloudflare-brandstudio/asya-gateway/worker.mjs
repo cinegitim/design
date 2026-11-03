@@ -1,4 +1,4 @@
-import {submitEditorReview} from './github-pr.mjs';
+import {submitEditorReview,reviewPrStatus} from './github-pr.mjs';
 // Brandstudio admin gateway — Asyada Egitim. Username/password + trusted browser sessions.
 // No password, derived verifier or token is committed to GitHub.
 const STORE='BRANDSTUDIO_OBJECTS', AUTH='BRANDSTUDIO_AUTH';
@@ -339,7 +339,10 @@ export default {
     const next=target(url.pathname+url.search);
     return redirect('/admin/login?next='+encodeURIComponent(next))
    }
-   if(url.pathname==='/visual-editor/api/github-pr')return attachSession(await submitEditorReview({request,env,authenticated:true}),user);
+   if(url.pathname==='/visual-editor/api/github-pr'){
+    if(request.method==='GET')return attachSession(reviewPrStatus({request,env,authenticated:true}),user);
+    return attachSession(await submitEditorReview({request,env,authenticated:true}),user)
+   }
    if(url.pathname==='/visual-editor/api/revisions'){
     const context={request,env,authenticated:true};
     if(request.method==='GET')return attachSession(await onRequestGet(context),user);
