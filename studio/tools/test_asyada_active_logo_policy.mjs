@@ -148,7 +148,8 @@ test('English V4.1 ASIA characters are closer without altering Jost 550 geometry
   assert.ok(Math.abs(m.layout.width.EDUCATION-m.layout.width.lowerTotal)<0.001);
   for(const layout of ['h-en-02-horizontal','p-en-01-stacked'])for(const tone of ['light','dark','monochrome']){
     const svg=read('brands/asyada-egitim/assets/english-only-candidates/'+layout+'-'+tone+'.svg');
-    const meta=JSON.parse(svg.match(/<metadata>([\\s\\S]*?)<\\/metadata>/)[1]);
+    const mstart=svg.indexOf('<metadata>')+10, mend=svg.indexOf('</metadata>');
+    const meta=JSON.parse(svg.slice(mstart,mend));
     assert.equal(meta.version,'v4.1-asia-spacing');
     assert.equal(meta.letterSpacing.ASIA,20);
     assert.equal(meta.fontWeight,550);
