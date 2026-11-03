@@ -109,3 +109,30 @@ test('English-only review uses real Jost 550 outlines and unmodified approved se
   }
  }
 });
+
+test('English v4 wordmark fills lower line with smaller IN, dominant ASIA and exact approved SVG seal',()=>{
+ const variants=['h-en-02-horizontal','p-en-01-stacked'];
+ const tones=['light','dark','monochrome'];
+ for(const stem of variants)for(const tone of tones){
+  const svg=read('brands/asyada-egitim/assets/english-only-candidates/'+stem+'-'+tone+'.svg');
+  const match=svg.match(/<metadata>([\s\S]*?)<\/metadata>/);
+  assert.ok(match,'metadata required');
+  const m=JSON.parse(match[1]);
+  assert.equal(m.version,'v4-layout-hierarchy');
+  assert.equal(m.fontWeight,550);
+  assert.deepEqual(m.bottom,['IN','ASIA']);
+  assert.ok(m.INScale < 1);
+  assert.ok(m.ASIAScale > 1.6 && m.ASIAScale < 2.1);
+  assert.ok(Math.abs(m.layoutMetrics.EDUCATION-m.layoutMetrics.lowerTotal)<0.001);
+  assert.equal(m.canonicalSealSha256,'8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a');
+  for(const [line,count] of [['EDUCATION',9],['IN',2],['ASIA',4]]){
+   const segment=svg.match(new RegExp('<g data-line="'+line+'"[^>]*>([\\s\\S]*?)<\\/g>'));
+   assert.ok(segment,'Missing line '+line);
+   assert.equal((segment[1].match(/data-glyph=/g)||[]).length,count);
+  }
+  assert.ok(svg.includes('data-outline-source="locked-Jost550-path"'));
+  assert.ok(svg.includes('data-outline-source="original-JostVF-wght550"'));
+  assert.ok(!svg.includes('<image'));
+  assert.ok(!svg.includes('<text'));
+ }
+});
