@@ -3,14 +3,14 @@
   "brand": "asyada-egitim",
   "english_name": "Education in Asia",
   "status": "REVIEW_ONLY_HUMAN_APPROVAL_PENDING",
-  "source_main_commit": "0f30d930f4dcfb8e68a111e9d9d0426b515f8098",
+  "source_main_commit": "bb89ce82f528cc54b3d9e5ebda81b0dc27515dd4",
   "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
   "source_lockups": [
     "H-02",
     "P-01"
   ],
   "source_wordmark": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-  "method": "Preserve the exact approved nested V-01 seal, all real outlined Jost 450 headline/350 subtitle glyph path data, heading/subheading font sizes, 209/409/495 baselines and approved canonical vertical canvas heights. Balance the otherwise empty IN ASIA row without stretching type by adding two hairline rules at y=325, symmetrically between the natural IN ASIA phrase and the outer EDUCATION width. Use brand red for color variants and monochrome ink for monochrome candidate. Still review-only; no new official lockup.",
+  "method": "Only change SVG path translations for glyphs in IN and ASIA so that all adjacent pairs IN, AS, SI, IA have 19 wordmark-coordinate units of closest visible contour gap after their fixed native scale. Preserve 38-unit word gap and actual Jost 450/350 SVG path data. Recenter IN ASIA and shorten existing decorative red flanking rules symmetrically. Do not change canonical V-01 seal, fonts, canvas, colors, countries or approved Turkish logo.",
   "variation_ids": [
     "H-EN-02",
     "P-EN-01"
@@ -33,7 +33,7 @@
   ],
   "public_review": "docs/identity/english-only/index.html",
   "next_gate": "Human inspection and approval before promotion to canonical manifest, hash locking, usage rules and verification tests",
-  "visual_review_notes": "V7: after user feedback that the IN ASIA line has too much unused lateral space, use symmetrical short thin rules to visually fill each margin without re-enlarging ASIA, changing kerning or distorting Jost outlines. Six vector variants, original seal unchanged, comparison retained for previous V6.",
+  "visual_review_notes": "V7.1: user requests slightly more and visually even letterspacing. Browser preview compared 17, 19 and 21 rendered units; 19 chosen. V7 prior is available as side-by-side SVG. Review-only.",
   "source_weighted_font": "docs/instagram/launch-creative-02/assets/Jost-VF.ttf",
   "english_headline_weight": 450,
   "original_turkish_headline_weight": 550,
@@ -43,7 +43,7 @@
     "dark",
     "monochrome"
   ],
-  "version": "v7-balanced-secondary-row",
+  "version": "v7.1-even-optical-tracking",
   "layout": {
     "topLine": "EDUCATION",
     "bottomLine": [
@@ -106,6 +106,17 @@
       "respectsTypeAndSeal": true,
       "baselineChanges": false,
       "oldCandidateAvailableInGitHistory": true
+    },
+    "opticalSpacing": {
+      "targetRenderedClearance": 19,
+      "sourceRenderedClearances": {
+        "IN": 15.312,
+        "AS": 9.35,
+        "SI": 9.35,
+        "IA": 7.15
+      },
+      "interWordGap": 38,
+      "noFontDistortion": true
     }
   }
 }
