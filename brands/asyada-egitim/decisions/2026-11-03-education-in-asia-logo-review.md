@@ -9,3 +9,5 @@ Variants: H-EN-02 and P-EN-01 × light/dark/monochrome. Review: `docs/identity/e
 After visual approval, establish the English-only identity independently: hash-lock reviewed SVGs, register approved variants in brand metadata/manifest, add verification tests and validated small-size usage guidance. Continue using H-02/P-01/F-05 for current production until then.
 
 Optical review revision 2: English letter outlines remain sourced from the approved English line, but candidate-only kerning is tightened by 25 source units between glyphs and a 2.8-unit rounded stroke optically increases weight. P-EN-01 crop/viewBox is adjusted to the shorter two-line wordmark. These adjustments are **not** asserted to reproduce Jost 550 geometry or to be a newly approved lockup.
+
+Horizontal refinement: shift the English text +42 source units within the unchanged original H-02 wordmark coordinate frame to preserve the original seal-to-text optical gap; the seal itself remains untouched.
