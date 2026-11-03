@@ -7,3 +7,5 @@ English display name: **Education in Asia**. Do not change any current approved 
 Variants: H-EN-02 and P-EN-01 × light/dark/monochrome. Review: `docs/identity/english-only/index.html`. Proposed source: `brands/asyada-egitim/assets/english-only-candidates/`.
 
 After visual approval, establish the English-only identity independently: hash-lock reviewed SVGs, register approved variants in brand metadata/manifest, add verification tests and validated small-size usage guidance. Continue using H-02/P-01/F-05 for current production until then.
+
+Optical review revision 2: English letter outlines remain sourced from the approved English line, but candidate-only kerning is tightened by 25 source units between glyphs and a 2.8-unit rounded stroke optically increases weight. P-EN-01 crop/viewBox is adjusted to the shorter two-line wordmark. These adjustments are **not** asserted to reproduce Jost 550 geometry or to be a newly approved lockup.

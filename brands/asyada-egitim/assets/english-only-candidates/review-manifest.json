@@ -10,7 +10,7 @@
     "P-01"
   ],
   "source_wordmark": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-  "method": "Reuse original complete embedded seal and exact approved English Jost 350 glyph outlines. Select original 9+6 glyph sequences, compose as EDUCATION / IN ASIA with affine SVG layout; no font dependency or AI-generated lettering.",
+  "method": "Reuse original complete embedded seal byte-for-byte and authentic outlined English Jost 350 glyph paths from canonical lockups; reflow into EDUCATION / IN ASIA with optical kerning (-25 source units per sequential glyph) and 2.8-unit rounded stroke for comparable headline visual weight. These are new review-only arrangements, not approved canonical geometry.",
   "variation_ids": [
     "H-EN-02",
     "P-EN-01"
@@ -32,5 +32,6 @@
     "brands/asyada-egitim/assets/english-only-candidates/p-en-01-stacked-monochrome.svg"
   ],
   "public_review": "docs/identity/english-only/index.html",
-  "next_gate": "Human inspection and approval before promotion to canonical manifest, hash locking, usage rules and verification tests"
+  "next_gate": "Human inspection and approval before promotion to canonical manifest, hash locking, usage rules and verification tests",
+  "visual_review_notes": "Revision 2: first native browser screenshot showed English letters much thinner/spacier than current bold Turkish headliner; path-preserving optical adjustment applied, needs human aesthetic approval."
 }
