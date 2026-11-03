@@ -3,14 +3,14 @@
   "brand": "asyada-egitim",
   "english_name": "Education in Asia",
   "status": "REVIEW_ONLY_HUMAN_APPROVAL_PENDING",
-  "source_main_commit": "71b339a20370b546f293e4f859e16c086629adc5",
+  "source_main_commit": "baebfd8aea1b6c63d66b8943a0f2e2df0f791fa0",
   "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
   "source_lockups": [
     "H-02",
     "P-01"
   ],
   "source_wordmark": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-  "method": "Preserve approved V-01 seal byte-identically and unchanged exact Jost 550 glyph contours. Derive pairwise optical kerning shifts for ASIA from silhouette-based minimum contour clearances (AS:-28, SI:-12, IA:-14 source units) producing equal ~8.4-8.6 unit minimum gaps. Retain original ASIA scale, font weight and all path d values. Recenter entire IN ASIA line under EDUCATION without changing the IN/ASIA word gap. The second line is ~90.5% of the first-line width; no distortion or fake-bold.",
+  "method": "Original approved nested V-01 seal copied exactly without change. Regenerate both English-only headline lines from the repository source variable Jost font at genuine weight wght=450, lighter than the previous wght=550 without faux stroke. Recompute ASIA optical kerning from contour silhouettes; keep IN smaller and ASIA dominant. Add a single line of 5 country names in uppercase Jost wght=350 derived as real vector paths, with four red circular separators, vertically centered with the letter capline. In monochrome use monochrome dots. No runtime fonts, image generation or raster.",
   "variation_ids": [
     "H-EN-02",
     "P-EN-01"
@@ -33,9 +33,9 @@
   ],
   "public_review": "docs/identity/english-only/index.html",
   "next_gate": "Human inspection and approval before promotion to canonical manifest, hash locking, usage rules and verification tests",
-  "visual_review_notes": "V4.2 — user requested genuinely tighter, optically equal ASIA spacing. Minimum contour clearance equalized across AS, SI, IA; original glyph paths, seal byte markup, Jost 550 and scale remain fixed. The IN+ASIA line is recentered together to avoid accidentally widening the word gap. Not a canonical change.",
+  "visual_review_notes": "V5 2026-11-03: user says the primary lettering is too bold and requests small country-name subline, as in approved Turkish logo's small English subtitle. True Jost 450 main, true Jost 350 country names, four centered red dots, precise approved SVG seal retained. Rendered all six SVG modes successfully in Chrome; candidate only.",
   "source_weighted_font": "docs/instagram/launch-creative-02/assets/Jost-VF.ttf",
-  "english_headline_weight": 550,
+  "english_headline_weight": 450,
   "original_turkish_headline_weight": 550,
   "english_headline_cap_native_px": 139,
   "color_variants": [
@@ -43,50 +43,43 @@
     "dark",
     "monochrome"
   ],
-  "version": "v4.2-optical-kerning",
+  "version": "v5-lighter-type-countries",
   "layout": {
     "topLine": "EDUCATION",
     "bottomLine": [
       "IN",
       "ASIA"
     ],
-    "nativeFontSize": 200,
-    "weight": 550,
-    "upperBaseline": 209,
-    "asiaBaseline": 520.767871634135,
-    "inBaseline": 446.7448828170675,
-    "tracking": {
-      "EDUCATION": 20,
-      "IN": 16,
-      "ASIA": 20
-    },
-    "scale": {
-      "IN": 0.95,
-      "ASIA": 1.98472376
-    },
-    "width": {
-      "EDUCATION": 1127.2830638885498,
-      "IN": 160.36000108718872,
-      "ASIA": 821.7479797613611,
-      "gap": 38,
-      "lowerTotal": 1020.1079808485498,
-      "lowerWidthRatio": 0.9049262013479553,
-      "centerOffset": 53.58754152
-    },
-    "aesthetic_status": "HUMAN_REVIEW_REQUIRED",
-    "opticalKerning": {
-      "pairOffsetsNative": {
-        "AS": -28,
-        "SI": -12,
-        "IA": -14
-      },
-      "minimumGapNative": {
-        "AS": 8.500244,
-        "SI": 8.635964,
-        "IA": 8.399999
-      }
-    },
-    "rule": "center the full IN ASIA line under EDUCATION; preserve IN/ASIA gap and source contours"
+    "tagline": [
+      "China",
+      "Hong Kong",
+      "Japan",
+      "Singapore",
+      "South Korea"
+    ],
+    "fontMain": "Jost",
+    "weightMain": 450,
+    "fontTagline": "Jost",
+    "weightTagline": 350,
+    "caseTagline": "uppercase for consistency with the canonical small English subtitle",
+    "hierarchy": "IN smaller, ASIA dominant",
+    "taglineAlignment": "centered under wordmark",
+    "countryDotCount": 4,
+    "sealIntegrity": "byte-identical source nested V-01",
+    "previewStatus": "HUMAN_REVIEW_PENDING"
   },
-  "aesthetic_status": "HUMAN_REVIEW_REQUIRED"
+  "aesthetic_status": "HUMAN_REVIEW_REQUIRED",
+  "country_line_font_weight": 350,
+  "country_line_style": "Like approved canonical Turkish bilingual English subtitle: small airy letterspacing, lightweight Jost",
+  "country_labels": [
+    "China",
+    "Hong Kong",
+    "Japan",
+    "Singapore",
+    "South Korea"
+  ],
+  "country_separator_count": 4,
+  "country_separator_color": "#BD2120",
+  "country_separator_align": "vertical center of 350-weight uppercase label cap height",
+  "country_separator_monochrome": "single-ink monochrome equivalent"
 }
