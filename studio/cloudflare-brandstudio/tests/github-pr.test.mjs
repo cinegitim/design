@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import fs from 'node:fs';
 import path from 'node:path';
-import {submitEditorReview} from '../asya-gateway/github-pr.mjs';
+import {submitEditorReview,reviewPrStatus} from '../asya-gateway/github-pr.mjs';
 
 const PRODUCT='instagram-kaist-tech-track-2027-001-v2';
 const REV='0882e066-d82d-4d31-9d9f-5aac06b3b2ca';
@@ -26,6 +26,16 @@ test('auth, same origin, exact consent and secret are mandatory',async()=>{
  assert.equal((await submitEditorReview(context(payload({product:'../bad'})))).status,400);
  assert.equal((await submitEditorReview(context(payload({version:27})))).status,400);
  assert.equal((await submitEditorReview(context(payload(),{GITHUB_PR_TOKEN:undefined}))).status,503);
+});
+
+test('capability status is authenticated and reveals only a boolean, not credentials',async()=>{
+ const active=await reviewPrStatus(context());assert.equal(active.status,200);
+ const data=await active.json();assert.equal(data.enabled,true);assert.equal(data.mode,'draft-review-only');
+ assert.ok(!JSON.stringify(data).includes(TOK));
+ const missing=await reviewPrStatus(context(payload(),{GITHUB_PR_TOKEN:undefined}));
+ assert.equal((await missing.json()).enabled,false);
+ const anon=context();anon.authenticated=false;
+ assert.equal((await reviewPrStatus(anon)).status,401);
 });
 
 test('stale or unsaved cloud revision cannot open PR',async()=>{
@@ -89,6 +99,8 @@ test('PR credentials remain server side; editor has explicit, unsaved-state guar
  const html=fs.readFileSync(path.join(root,'docs/visual-editor/browser/index.html'),'utf8');
  const gateway=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/asya-gateway/worker.mjs'),'utf8');
  assert.ok(client.includes('openReviewPr'));
+ assert.ok(client.includes('reviewPrAvailable'));
+ assert.ok(html.includes("button.style.display=enabled?'':'none'"));
  assert.doesNotMatch(client,/api\.github\.com|GITHUB_PR_TOKEN/);
  assert.ok(html.includes('id="style-pr"'));
  assert.ok(html.includes('id="style-pr-status"'));
