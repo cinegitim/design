@@ -97,14 +97,14 @@ test('English-only review uses real Jost 550 outlines and unmodified approved se
    const proposal=read('brands/asyada-egitim/assets/english-only-candidates/'+name);
    const publicFile=read('docs/identity/english-only/assets/'+name);
    const canonical=read('brands/asyada-egitim/assets/lockups/'+layout.parent+'-'+tone+'.svg');
-   const seal=svg=>svg.match(/<svg viewBox="0 0 400 370"[\\s\\S]*?<\\/svg>/)?.[0];
+   const seal=svg=>{const begin=svg.indexOf('<svg viewBox="0 0 400 370"');return svg.slice(begin,svg.indexOf('</svg>',begin)+6);};
    assert.equal(proposal,publicFile);
    assert.equal(seal(proposal),seal(canonical));
    assert.match(proposal,/true-jost-550-english-review/);
    assert.match(proposal,/"fontWeight":550/);
    assert.match(proposal,/REVIEW_ONLY_HUMAN_APPROVAL_PENDING/);
    assert.ok(!/stroke-width="2.8"/.test(proposal));
-   assert.ok(!/<text(?:\\s|>)/.test(proposal));
+   assert.ok(!proposal.includes('<text'));
    assert.equal([...proposal.matchAll(/data-glyph="([A-Z])"/g)].map(x=>x[1]).join(''),'EDUCATIONINASIA');
   }
  }
