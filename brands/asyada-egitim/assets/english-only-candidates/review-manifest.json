@@ -3,14 +3,14 @@
   "brand": "asyada-egitim",
   "english_name": "Education in Asia",
   "status": "REVIEW_ONLY_HUMAN_APPROVAL_PENDING",
-  "source_main_commit": "8105a61b79994e547dfb49fdfd649f6abcdcd960",
+  "source_main_commit": "0f30d930f4dcfb8e68a111e9d9d0426b515f8098",
   "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
   "source_lockups": [
     "H-02",
     "P-01"
   ],
   "source_wordmark": "docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg",
-  "method": "Preserve both original H-02/P-01 canonical seal trees byte-identically and preserve authentic outlined Jost wght=450 (main) and 350 (country line). Change only English candidate wordmark positioning and candidate outer canvas height: ASIA scale 1.10x vs original main headline, IN scale 0.88x, bottom baseline y=409, country subtitle baseline y=495 and headline baseline y=209, replicating Turkish canonical line baselines and approved overall canvas heights. Both lower words centered as a single unit under EDUCATION. No font, glyph path, color, seal or approved canonical file modifications.",
+  "method": "Preserve the exact approved nested V-01 seal, all real outlined Jost 450 headline/350 subtitle glyph path data, heading/subheading font sizes, 209/409/495 baselines and approved canonical vertical canvas heights. Balance the otherwise empty IN ASIA row without stretching type by adding two hairline rules at y=325, symmetrically between the natural IN ASIA phrase and the outer EDUCATION width. Use brand red for color variants and monochrome ink for monochrome candidate. Still review-only; no new official lockup.",
   "variation_ids": [
     "H-EN-02",
     "P-EN-01"
@@ -33,7 +33,7 @@
   ],
   "public_review": "docs/identity/english-only/index.html",
   "next_gate": "Human inspection and approval before promotion to canonical manifest, hash locking, usage rules and verification tests",
-  "visual_review_notes": "V6: user requested that the oversize ASIA, all type and small country subtitle fit into original Turkish lockup alignment, with ASIA no longer protruding. Preview in Chrome: both H-EN-02 and P-EN-01 3 tones each render properly. Main Jost450, subtitle Jost350, red dots and original seal all preserved. Main three baselines 209/409/495 as in approved Turkish logo. REVIEW ONLY; human approval pending.",
+  "visual_review_notes": "V7: after user feedback that the IN ASIA line has too much unused lateral space, use symmetrical short thin rules to visually fill each margin without re-enlarging ASIA, changing kerning or distorting Jost outlines. Six vector variants, original seal unchanged, comparison retained for previous V6.",
   "source_weighted_font": "docs/instagram/launch-creative-02/assets/Jost-VF.ttf",
   "english_headline_weight": 450,
   "original_turkish_headline_weight": 550,
@@ -43,7 +43,7 @@
     "dark",
     "monochrome"
   ],
-  "version": "v6-canonical-lockup-bounds",
+  "version": "v7-balanced-secondary-row",
   "layout": {
     "topLine": "EDUCATION",
     "bottomLine": [
@@ -95,6 +95,17 @@
       "stacked": 1003.79998779
     },
     "originalApprovedFilesModified": false,
-    "logoStatus": "REVIEW_ONLY_HUMAN_APPROVAL_PENDING"
+    "logoStatus": "REVIEW_ONLY_HUMAN_APPROVAL_PENDING",
+    "secondaryRowBalance": {
+      "treatment": "symmetric hairline rules, not stretched lettering",
+      "y": 325,
+      "strokeWidth": 2.8,
+      "rules": 2,
+      "red": "#BD2120",
+      "monochromeInk": "#1D2027",
+      "respectsTypeAndSeal": true,
+      "baselineChanges": false,
+      "oldCandidateAvailableInGitHistory": true
+    }
   }
 }
