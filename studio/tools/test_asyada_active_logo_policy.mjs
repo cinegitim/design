@@ -93,7 +93,7 @@ test('retired artwork remains for past deliverables but is prohibited in future 
 
 test('English V6 canonical alignment, lighter main and five-country subtitle: source seal, vectors, mirrors and dot alignment',()=>{
  const review=json('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json');
- assert.equal(review.version,'v6-canonical-lockup-bounds');
+ assert.equal(review.version,'v7-balanced-secondary-row');
  assert.equal(review.english_headline_weight,450);
  assert.equal(review.country_line_font_weight,350);
  assert.equal(review.country_separator_count,4);
@@ -110,7 +110,7 @@ test('English V6 canonical alignment, lighter main and five-country subtitle: so
    assert.equal(svg,publicFile);
    assert.equal(seal(svg),seal(source));
    const meta=JSON.parse(svg.split('<metadata>')[1].split('</metadata>')[0]);
-   assert.equal(meta.version,'v6-canonical-lockup-bounds');
+   assert.equal(meta.version,'v7-balanced-secondary-row');
    assert.equal(meta.status,'REVIEW_ONLY_HUMAN_APPROVAL_PENDING');
    assert.equal(meta.mainWeight,450);
    assert.equal(meta.taglineWeight,350);
@@ -139,7 +139,7 @@ test('English V6 canonical alignment, lighter main and five-country subtitle: so
 
 test('English V6 uses canonical Turkish lockup canvas heights and baselines without changing the glyph outlines',()=>{
  const manifest=json('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json');
- assert.equal(manifest.version,'v6-canonical-lockup-bounds');
+ assert.equal(manifest.version,'v7-balanced-secondary-row');
  assert.equal(manifest.alignment.targetMainLineBaseline,209);
  assert.equal(manifest.alignment.targetSecondLineBaseline,409);
  assert.equal(manifest.alignment.targetCountryBaseline,495);
@@ -147,7 +147,7 @@ test('English V6 uses canonical Turkish lockup canvas heights and baselines with
   for(const tone of ['light','dark','monochrome']){
    const s=read('brands/asyada-egitim/assets/english-only-candidates/'+stem+'-'+tone+'.svg');
    const m=JSON.parse(s.split('<metadata>')[1].split('</metadata>')[0]);
-   assert.equal(m.version,'v6-canonical-lockup-bounds');
+   assert.equal(m.version,'v7-balanced-secondary-row');
    assert.ok(m.metrics.asiaScale<=1.10);
    assert.ok(m.metrics.inScale<=0.88);
    assert.ok(m.metrics.countryVisualBottom<=502.05);
@@ -157,5 +157,34 @@ test('English V6 uses canonical Turkish lockup canvas heights and baselines with
    assert.match(tag,/ 495\)/);
    assert.match(asia,/ 409\)/);
   }
+ }
+});
+
+
+test('English V7 balances the second line with symmetric strokes but never changes approved seal geometry',()=>{
+ const manifest=json('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json');
+ assert.equal(manifest.version,'v7-balanced-secondary-row');
+ assert.equal(manifest.alignment.secondaryRowBalance.rules,2);
+ for(const stem of ['h-en-02-horizontal','p-en-01-stacked'])for(const tone of ['light','dark','monochrome']){
+   const file=stem+'-'+tone+'.svg',svg=read('brands/asyada-egitim/assets/english-only-candidates/'+file);
+   const info=JSON.parse(svg.split('<metadata>')[1].split('</metadata>')[0]);
+   assert.equal(info.version,'v7-balanced-secondary-row');
+   assert.equal(info.mainWeight,450);
+   assert.equal(info.taglineWeight,350);
+   assert.equal(info.metrics.asiaScale,1.10);
+   assert.equal(info.metrics.inScale,.88);
+   assert.equal(info.metrics.lowerBaseline,409);
+   assert.equal(info.metrics.countryBaseline,495);
+   const rules=info.metrics.secondaryRowRules;
+   assert.equal(rules.y,325);
+   assert.equal(rules.strokeWidth,2.8);
+   assert.ok(Math.abs(rules.lengthLeft-rules.lengthRight)<.002);
+   assert.ok(rules.lengthLeft>100);
+   assert.equal(rules.stroke,tone==='monochrome'?'#1D2027':'#BD2120');
+   assert.equal((svg.match(/data-rule=/g)||[]).length,2);
+   assert.equal((svg.match(/data-country-dot=/g)||[]).length,4);
+   assert.ok(svg.includes('data-secondary-line-balance="flanking-rules"'));
+   assert.ok(!svg.includes('<text'));
+   assert.ok(!svg.includes('<image'));
  }
 });
