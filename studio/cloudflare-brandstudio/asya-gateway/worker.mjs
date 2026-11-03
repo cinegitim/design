@@ -1,3 +1,4 @@
+import {submitEditorReview} from './github-pr.mjs';
 // Brandstudio admin gateway — Asyada Egitim. Username/password + trusted browser sessions.
 // No password, derived verifier or token is committed to GitHub.
 const STORE='BRANDSTUDIO_OBJECTS', AUTH='BRANDSTUDIO_AUTH';
@@ -331,13 +332,14 @@ export default {
    if(url.pathname==='/favicon.ico')return new Response(null,{status:204});
    if(url.pathname==='/internal/backup')return encryptedBackup(request,env,url);
    if(url.pathname.startsWith('/admin'))return handleAdmin(request,env,url);
-   if(request.method!=='GET'&&request.method!=='HEAD'&&!(url.pathname==='/visual-editor/api/revisions'&&request.method==='POST'))return new Response('Method Not Allowed',{status:405});
+   if(request.method!=='GET'&&request.method!=='HEAD'&&!(request.method==='POST'&&['/visual-editor/api/revisions','/visual-editor/api/github-pr'].includes(url.pathname)))return new Response('Method Not Allowed',{status:405});
    const user=await session(request,env);
    if(!user.ok){
-    if(url.pathname==='/visual-editor/api/revisions')return json({error:'Admin girişi gerekli'},401);
+    if(url.pathname.startsWith('/visual-editor/api/'))return json({error:'Admin girişi gerekli'},401);
     const next=target(url.pathname+url.search);
     return redirect('/admin/login?next='+encodeURIComponent(next))
    }
+   if(url.pathname==='/visual-editor/api/github-pr')return attachSession(await submitEditorReview({request,env,authenticated:true}),user);
    if(url.pathname==='/visual-editor/api/revisions'){
     const context={request,env,authenticated:true};
     if(request.method==='GET')return attachSession(await onRequestGet(context),user);
