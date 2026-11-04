@@ -10,6 +10,11 @@ on:
       - "studio/production/tests/test_finalized_audit.py"
       - ".github/workflows/brandstudio-finalized-audit.yml"
   workflow_dispatch:
+    inputs:
+      package:
+        description: 'Product/revision to check (e.g. product-id/0123456789ab)'
+        type: string
+        required: true
 
 permissions:
   contents: read
@@ -39,6 +44,7 @@ jobs:
         shell: bash
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PACKAGE: ${{ inputs.package }}
         run: |
           set -euo pipefail
           CHECKER="$RUNNER_TEMP/brandstudio-finalized-audit.py"
@@ -54,8 +60,9 @@ jobs:
               cp studio/production/finalized_audit.py "$CHECKER"
             fi
           else
-            # Manual request: inspect existing packages, bounded to five packages.
-            find studio/production/finalized -name manifest.json -type f > "$RUNNER_TEMP/brandstudio-changed.txt" || true
+            # Manual run remains one-product only; never crawl all archived designs.
+            [[ "$PACKAGE" =~ ^[a-z0-9]+(-[a-z0-9]+)*/[a-f0-9]{12}$ ]]
+            echo "studio/production/finalized/$PACKAGE/manifest.json" > "$RUNNER_TEMP/brandstudio-changed.txt"
             cp studio/production/finalized_audit.py "$CHECKER"
           fi
           echo "BRANDSTUDIO_CHECKER=$CHECKER" >> "$GITHUB_ENV"
