@@ -239,7 +239,11 @@ function patch(el,edit){
 function sourceDocument(html,sourceUrl,selectedState,index) {
  var doc=new DOMParser().parseFromString(html,'text/html');
  var slide=doc.querySelector('.slide');if(!slide)err('HTML slayt yapısı bulunamadı');
- var base=doc.createElement('base');base.href=sourceUrl;doc.head.insertBefore(base,doc.head.firstChild);
+ // Approved generated source versions already contain their pinned relative asset base.
+ // Preserve that base when the newly minted version is edited again in Visual Editor.
+ if(!doc.head.querySelector('base')){
+  var base=doc.createElement('base');base.href=sourceUrl;doc.head.insertBefore(base,doc.head.firstChild)
+ }
  detachLogo(doc);installFonts(doc,sourceUrl);
  Object.entries(selectedState.colors).forEach(function(p){doc.documentElement.style.setProperty('--'+p[0],p[1])});
  doc.querySelectorAll('style').forEach(function(el){el.textContent=el.textContent.replace(/#F7F3E9/gi,'var(--paper)').replace(/#1D2027/gi,'var(--ink)').replace(/#BD2120/gi,'var(--red)')});

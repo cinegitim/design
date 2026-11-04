@@ -380,7 +380,11 @@ header #product{display:none}
 <p class="small">Düzenleme ve sürüm kayıtları Cloudflare'da kalır. İş bittiğinde bütün kaydedilmiş sürümleri ve kaynaklarını tek taslak PR ile GitHub'a aktar. Sosyal medya yayını yapılmaz.</p>
 <p class="small" id="finalize-preview" aria-live="polite">Sürümler yükleniyor…</p>
 <div class="controls"><button type="button" class="btn primary" id="finalize-product" disabled>Tasarımı tamamla ve GitHub'a toplu aktar</button></div>
-<p class="small" id="finalize-status" aria-live="polite">Aktarım başlatılmadı.</p></div>
+<p class="small" id="finalize-status" aria-live="polite">Aktarım başlatılmadı.</p>
+<hr>
+<p class="small">Toplu teslim GitHub'da denetlenip birleştirildiğinde, beğendiğin sürüm için önceki kaynakları koruyan <strong>yeni bir GitHub kaynak sürümü</strong> oluşturabilirsin. Yeni sürüm de ayrı taslak PR olarak incelemeye sunulur.</p>
+<div class="controls"><button type="button" class="btn" id="promote-version" disabled>Yeni kaynak sürümü oluştur</button></div>
+<p class="small" id="promote-status" aria-live="polite">Önce toplu teslim PR'ını GitHub'da birleştir.</p></div>
 <div class="panel" id="legacy-storage" hidden><div class="field"><label>Eski sürüm arşivi</label><select id="versions"></select></div><div class="controls"><button class="btn" id="load">Aç</button><button class="btn" id="folder">Klasör seç</button></div><p class="small" id="folderStatus">Klasör seçilmedi</p></div>
 <div class="panel"><h2>Dosyaları indir</h2><div class="controls"><button class="btn primary" id="side-download-png">↓ PNG indir</button><button class="btn" id="side-download-jpeg">↓ JPEG indir</button></div><div class="controls"><button class="btn" id="css">Aktif slaytın CSS’i</button><button class="btn" id="html">Aktif slaytın HTML’i</button></div><p class="small">PNG kayıpsız, JPEG yüksek kalitedir. Aktif slayt gerçek tasarım ölçüsünde dışa aktarılır. HTML/CSS düzenlenebilir kaynak olarak da indirilebilir.</p></div></aside></div>
 <footer class="production-credit" id="production-credit" aria-label="Bu tasarımın üretim künyesi">
@@ -436,7 +440,12 @@ var cloud=globalThis.BrandstudioCloud,cloudData=null,cloudSelected=false,cloudNo
  })
 }
 // GitHub is a single explicit handoff of a finished product, never an autosave target.
-var finalizeAllowed=false,finalizeBusy=false;
+var finalizeAllowed=false,finalizeBusy=false,promoteAllowed=false,promoteBusy=false;
+(async function(){
+ promoteAllowed=!!(cloud?.promoteAvailable)&&await cloud.promoteAvailable();
+ renderFinalizeSummary();
+ if(!promoteAllowed)$('promote-status').textContent='Yeni kaynak sürümü hizmeti henüz etkin değil.';
+})();
 (async function(){
  finalizeAllowed=!!(cloud?.finalizeAvailable)&&await cloud.finalizeAvailable();
  renderFinalizeSummary();
@@ -454,6 +463,8 @@ function renderFinalizeSummary(){
    ' slayt · '+(ns.length*pages.length*2)+' HTML/CSS çıktısı · Aday: v'+current
   :'Bu ürünün bulutta kaydedilmiş sürümü yok.')+(dirty?' Önce değişiklikleri elle kaydet.':'');
  $('finalize-product').disabled=!ready;
+ $('promote-version').disabled=!(promoteAllowed&&cloudReady&&cloudSha&&cloudSelected&&
+  ns.includes(current)&&!dirty&&!autoBusy&&!finalizeBusy&&!promoteBusy&&record?.kind==='html');
 }
 $('finalize-product').onclick=async function(){
  if(finalizeBusy)return;
@@ -499,6 +510,33 @@ $('finalize-product').onclick=async function(){
    ' · '+result.versions+' sürüm · İncelemede; yayımlanmadı.');
  }catch(e){if(slug===product)$('finalize-status').textContent='Aktarım yapılmadı: '+e.message}
  finally{finalizeBusy=false;$('cloud-save').disabled=false;$('cloud-new').disabled=false;renderFinalizeSummary()}
+};
+// A second, explicit operation. Never create new source versions on manual editor saves.
+$('promote-version').onclick=async function(){
+ if(promoteBusy)return;
+ const product=slug,revision=cloudSha,selectedVersion=current;
+ if(!promoteAllowed||!cloudReady||!cloudSelected||dirty||autoBusy||finalizeBusy||
+  !cloudData?.versions?.['v'+selectedVersion]?.state){
+  $('promote-status').textContent='Önce beğendiğin sürümü buluta kaydet.';return
+ }
+ if(!confirm(record.title+' için yeni GitHub kaynak sürümü hazırlanacak.\n\n'+
+  'Ön koşul: Bu ürünün toplu teslim PR’ı GitHub’da birleştirilmiş olmalı.\n'+
+  'Önceki HTML/CSS kaynakları korunacak; kaynaklara yeni vN sürümü eklenecek.\n'+
+  'GitHub’da ayrıca incelenecek ayrı bir TASLAK PR oluşturulacak.\n'+
+  'Sosyal medya yayını veya otomatik PR birleştirmesi yapılmayacak.\n\nOnaylıyor musun?'))return;
+ promoteBusy=true;renderFinalizeSummary();
+ $('promote-status').textContent='Birleştirilmiş teslim ve yeni kaynak sürümü doğrulanıyor…';
+ try{
+  const result=await cloud.promoteVersion({product,expectedSha:revision,selectedVersion});
+  if(slug!==product)return;
+  const link=document.createElement('a'),node=$('promote-status');
+  link.href=result.url;link.target='_blank';link.rel='noopener noreferrer';
+  link.textContent='PR #'+result.number;
+  node.replaceChildren(result.existing?'Daha önce oluşturulmuş kaynak sürümü: ':'Yeni kaynak sürümü taslak PR: ',
+   link,' · '+result.newProduct+' · inceleme ve birleştirme bekleniyor.');
+ }catch(e){
+  if(slug===product)$('promote-status').textContent='Kaynaklara yazılmadı: '+e.message
+ }finally{promoteBusy=false;renderFinalizeSummary()}
 };
 function pendingKey(product){return 'brandstudio:unsynced:'+product}
 function pendingSnapshot(){try{return JSON.parse(localStorage.getItem(pendingKey(slug))||'null')}catch(e){return null}}
