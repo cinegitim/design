@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "kind": "brandstudio-product-finalization",
+  "product": "brandstudio-audit-probe-20261104",
+  "title": "Synthetic CI probe — not real design",
+  "brand": "asyada-egitim",
+  "selectedVersion": 1,
+  "versions": [
+    1
+  ],
+  "revision": "9f87e54c-233a-4000-8000-000000000000",
+  "exportedAt": "2026-11-04T10:00:00.000Z",
+  "source": {
+    "repository": "cinegitim/design",
+    "baseCommit": "6d7efecf7312db2d3d32667594013316e21c7def",
+    "paths": [
+      "docs/instagram/kaist-tech-track-2027-001/v2/source/01.html"
+    ]
+  },
+  "files": {
+    "renderedSlides": 2,
+    "versionStates": 1,
+    "history": "history.json"
+  },
+  "review": {
+    "creative": "pending",
+    "socialPublished": false,
+    "sourceAuditRequired": true
+  },
+  "explanation": "Ephemeral read-only CI performance check. Never merge or publish."
+}
