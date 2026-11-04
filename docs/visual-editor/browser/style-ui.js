@@ -57,7 +57,7 @@ function create({module,getContext,commit,exportBrief}){
   if(!category)$("style-category").selectedIndex=-1;
   fillFamilies(chosen);
   $("style-export").disabled=!chosen;
-  if(chosen)status("Çalışma alanında seçili · "+chosen.style_id+" / "+chosen.preset_id+" · "+chosen.approval_status+" · GitHub PR yok");
+  if(chosen)status("Çalışma alanında seçili · "+chosen.style_id+" / "+chosen.preset_id+" · "+chosen.approval_status+"");
  }
  function read(){
   const ctx=getContext(),s=find();
@@ -77,7 +77,7 @@ function create({module,getContext,commit,exportBrief}){
  $("style-save").addEventListener("click",()=>{
   try{const selection=read();commit(selection);
    $("style-export").disabled=false;
-   status("Stil uygulandı, ancak buluta kaydedilmedi. Üstteki kayıt düğmelerini kullanın · "+selection.approval_status+" · GitHub PR henüz yok")
+   status("Stil uygulandı, ancak buluta kaydedilmedi. Üstteki kayıt düğmelerini kullanın · "+selection.approval_status+"")
   }catch(e){status("Stil uygulanamadı: "+e.message)}
  });
  $("style-export").addEventListener("click",()=>{
