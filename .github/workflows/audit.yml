@@ -1,8 +1,14 @@
 name: audit
 on:
+  # Product-only handoffs use the dedicated bounded validator, not the full repo audit.
+  # Mixed PRs (source/code + product package) still trigger this independent audit.
   pull_request:
+    paths-ignore:
+      - 'studio/production/finalized/**'
   push:
     branches: [main]
+    paths-ignore:
+      - 'studio/production/finalized/**'
   workflow_dispatch:
 permissions:
   contents: read

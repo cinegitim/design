@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - "studio/production/**"
+      # Exclude completed product packages; they have their own bounded review.
+      - "!studio/production/finalized/**"
       - "docs/system/**"
       - "docs/index.html"
       - "docs/workspaces/asyada-egitim/index.html"
