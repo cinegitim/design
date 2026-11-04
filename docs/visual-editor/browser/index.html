@@ -287,8 +287,8 @@ header #product{display:none}
 <div class="zoom-controls"><button type="button" class="btn icon-btn" id="zoom-out" aria-label="Küçült" title="Uzaklaştır">−</button><select id="zoom" aria-label="Tuval yakınlaştırma"><option value="fit">Sığdır</option><option value="0.25">25%</option><option value="0.4">40%</option><option value="0.5">50%</option><option value="0.75">75%</option><option value="1">100%</option><option value="1.25">125%</option><option value="custom" hidden>Özel</option></select><button type="button" class="btn icon-btn" id="zoom-in" aria-label="Büyüt" title="Yakınlaştır">+</button></div>
 <button type="button" class="btn icon-btn" id="hand" aria-pressed="false" aria-label="Tuvali kaydır" title="El aracı · çalışma alanını kaydır">✥</button>
 <span class="toolbar-spacer"></span>
-<button type="button" class="btn primary save-btn" id="cloud-save" data-state="disconnected" aria-live="polite" title="Cloudflare bulut sürüm kayıt durumu">Bulut kaydı</button>
-<button type="button" class="btn save-btn" id="cloud-new" title="Yeni sürüm oluştur">+ Yeni sürüm</button>
+<button type="button" class="btn primary save-btn" id="cloud-save" data-state="saved" aria-live="polite" title="Yalnızca tıklanınca mevcut sürüme kaydeder">Mevcut sürümü kaydet</button>
+<button type="button" class="btn save-btn" id="cloud-new" title="Mevcut düzenlemeleri yeni sürüm olarak kaydeder">+ Yeni sürüm olarak kaydet</button>
 <button type="button" class="btn export-btn" id="download-png">↓ PNG</button>
 <button type="button" class="btn export-btn" id="download-jpeg">↓ JPEG</button>
 <button type="button" class="btn" id="save" hidden>Eski sürüm</button>
@@ -313,7 +313,7 @@ header #product{display:none}
 <div class="field"><label for="style-preset">Alt varyasyon</label><select id="style-preset" aria-label="Alt varyasyon"></select></div>
 <div class="field"><label for="style-logo">Onaylı logo</label><select id="style-logo" aria-label="Kanonik logo"></select></div>
 <details><summary>İnce ayarlar</summary><div class="style-axes" id="style-axes"></div></details>
-<div class="style-actions"><button type="button" class="btn primary" id="style-save">Seçimi sürüme kaydet</button><button type="button" class="btn" id="style-export">GitHub üretim fişi ↓</button><button type="button" class="btn" id="style-pr" hidden>Kaydedilmiş sürümü PR’a gönder</button></div>
+<div class="style-actions"><button type="button" class="btn primary" id="style-save">Stili düzenlemeye uygula</button><button type="button" class="btn" id="style-export">GitHub üretim fişi ↓</button><button type="button" class="btn" id="style-pr" hidden>Kaydedilmiş sürümü PR’a gönder</button></div>
 <p id="style-pr-status" class="small" aria-live="polite" hidden>Yalnız buluta kaydedilmiş sürümler GitHub inceleme PR’ına gönderilir. GitHub deposu herkese açıktır.</p>
 <p id="style-status" class="small" aria-live="polite">Stil kataloğu yükleniyor…</p></div></details>
 <div class="panel" id="selection-tools" hidden><strong id="selection-summary" aria-live="polite"></strong>
@@ -373,7 +373,7 @@ header #product{display:none}
 <div class="controls"><button class="btn" id="pending-recover" hidden>Kaydedilmemiş düzenlemeyi kurtar</button><button class="btn" id="legacy-import" hidden>Önceki taslağı getir</button></div>
 <div class="field"><label>Önceki kayıtlar</label><select id="cloud-history"></select></div>
 <div class="controls"><button class="btn" id="cloud-restore">Seçili kayda dön</button><button class="btn" id="cloud-original">Özgün tasarıma dön</button></div>
-<p class="small">Düzenlemeler ve geri yüklemeler otomatik kaydedilir. Önceki sürümlere buradan dönebilirsin.</p>
+<p class="small">Düzenlemeler ve geri yüklemeler yalnızca açık sekmede kalır. Kalıcılaştırmak için “Mevcut sürümü kaydet” veya “Yeni sürüm olarak kaydet” düğmesini kullan. Kaydetmeden ayrılırsan değişiklikler kaybolur.</p>
 <div hidden aria-hidden="true"><input id="cloud-token" type="password" autocomplete="off"><button id="cloud-connect">Bağlan</button><button id="cloud-refresh">Yenile</button></div>
 </div>
 <div class="panel" id="legacy-storage" hidden><div class="field"><label>Eski sürüm arşivi</label><select id="versions"></select></div><div class="controls"><button class="btn" id="load">Aç</button><button class="btn" id="folder">Klasör seç</button></div><p class="small" id="folderStatus">Klasör seçilmedi</p></div>
@@ -420,7 +420,7 @@ var codec=globalThis.BrandstudioPortable,ux=globalThis.BrandstudioUX,discovery=g
 var history=ux.createHistory(40),savedState=copy(state),groupOpen={},dragging=false,dragRecorded=false,colorSessions={};
 var cloud=globalThis.BrandstudioCloud,cloudData=null,cloudSelected=false,cloudNonce=0;
  var styleModule=globalThis.BrandstudioStyleSelection,styleUI=null;
- var cloudSha=null,cloudReady=false,autoTimer=null,autoBusy=false,autoAgain=false,autoLastFailure=false;
+ var cloudSha=null,cloudReady=false,autoBusy=false,autoLastFailure=false;
  if(styleModule&&globalThis.BrandstudioStyleUI){
  styleUI=globalThis.BrandstudioStyleUI.create({
   module:styleModule,
@@ -449,7 +449,6 @@ $('style-pr').onclick=async function(){
  }
  if(dirty||autoBusy||JSON.stringify(state)!==JSON.stringify(stored)){
   output.textContent='Göndermeden önce değişikliklerin buluta kaydedilmesi gerekiyor.';
-  if(dirty)wakeAutoSave(true);
   return
  }
  if(!confirm('v'+version+' sürümünün kayıtlı tasarım durumu HERKESE AÇIK cinegitim/design deposunda inceleme PR’ına eklenecek. Görsel/veri içeriğinin paylaşımına onaylıyor musunuz? Yayın yapılmaz.'))return;
@@ -468,20 +467,23 @@ $('style-pr').onclick=async function(){
  }finally{reviewPrBusy=false;button.disabled=false}
 };
 function pendingKey(product){return 'brandstudio:unsynced:'+product}
- function pendingSnapshot(){try{return JSON.parse(localStorage.getItem(pendingKey(slug))||'null')}catch(e){return null}}
- function rememberPending(){try{localStorage.setItem(pendingKey(slug),JSON.stringify({version:current,state:state,at:new Date().toISOString()}))}catch(e){$('cloud-status').textContent='Geçici kurtarma kopyası oluşturulamadı: '+e.message}}
- function clearPending(){try{localStorage.removeItem(pendingKey(slug))}catch(e){}}
- function saveLabel(label,mode){var b=$('cloud-save');b.textContent=label;b.dataset.state=mode;b.title=label}
- function wakeAutoSave(immediate){
-  if(!dirty)return;
-  if(!cloud?.authenticated()){saveLabel('! Kaydedilemedi','disconnected');$('cloud-status').textContent='Değişiklikler henüz kaydedilemedi.';return}
-  if(!cloudReady){saveLabel('● Bağlantı denetleniyor','pending');return}
-  clearTimeout(autoTimer);
-  saveLabel('● Kaydedilecek','pending');$('unsaved').textContent='Kaydedilecek…';
-  if(autoBusy){autoAgain=true;return}
-  autoTimer=setTimeout(function(){autoTimer=null;cloudSaveVersion(current,'autosave')},immediate?30:1400)
- }
- function canLeaveEditing(){if(autoBusy){$('cloud-status').textContent='Kayıt sürüyor, bitince yeniden deneyin.';return false}if(dirty)return confirm('Henüz kaydedilmemiş değişiklikler var. Bunlar kurtarma taslağında kalacak. Devam etmek istiyor musunuz?');return true}
+function pendingSnapshot(){try{return JSON.parse(localStorage.getItem(pendingKey(slug))||'null')}catch(e){return null}}
+// Legacy recovery copies can still be opened; no new automatic copies are created.
+function clearPending(){try{localStorage.removeItem(pendingKey(slug))}catch(e){}}
+function saveLabel(label,mode){
+ var b=$('cloud-save');
+ b.textContent=mode==='saving'?'↻ Kaydediliyor':'Mevcut sürümü kaydet';
+ b.dataset.state=mode;b.title=label;
+}
+function markUnsaved(){
+ $('unsaved').textContent='Kaydedilmedi · yalnızca açık sekmede';
+ saveLabel('Değişiklikleri mevcut sürüme kaydet','pending')
+}
+function canLeaveEditing(){
+ if(autoBusy){$('cloud-status').textContent='Kayıt devam ediyor, tamamlanınca yeniden deneyin.';return false}
+ if(dirty)return confirm('Kaydedilmemiş düzenlemeler bu sekmeden ayrılınca kaybolacak. Kaydetmeden devam edilsin mi?');
+ return true
+}
 
 var zoomLevel=.4,zoomMode='fit',handMode=false,selectionOverlay=null,selectionHandle=null,sourceNodes=[],PASTEBOARD=320,inlineEditing=null,inlineRecorded=false,dragLayerId=null;
 function setupSidebars(){
@@ -1016,7 +1018,7 @@ $('groups-open').onclick=function(){document.querySelectorAll('#layers details')
 $('groups-close').onclick=function(){document.querySelectorAll('#layers details').forEach(function(x){x.open=false})};
 function historyButtons(){var s=history.status();$('undo').disabled=s.undo===0;$('redo').disabled=s.redo===0}
 function checkpoint(){history.checkpoint(state);historyButtons()}
-function dirtyStatus(){dirty=JSON.stringify(state)!==JSON.stringify(savedState);$('unsaved').textContent=dirty?'Kaydedilecek…':'Değişiklik yok';historyButtons();if(dirty){rememberPending();wakeAutoSave(false)}else if(!autoBusy){clearTimeout(autoTimer);saveLabel(cloud?.authenticated()?'✓ Kaydedildi':'Bağlanıyor',cloud?.authenticated()?'saved':'disconnected')}}
+function dirtyStatus(){dirty=JSON.stringify(state)!==JSON.stringify(savedState);historyButtons();if(dirty)markUnsaved();else if(!autoBusy){$('unsaved').textContent='Değişiklik yok';saveLabel('Değişiklik yok · mevcut sürümü kaydet','saved')}}
 function restoreState(value){state=copy(value);styleUI?.sync();['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});refreshPreview();dirtyStatus()}
 $('undo').onclick=function(){var prev=history.undo(state);if(prev){restoreState(prev);$('status').textContent='Son değişiklik geri alındı'}};
 $('redo').onclick=function(){var next=history.redo(state);if(next){restoreState(next);$('status').textContent='Değişiklik yeniden uygulandı'}};
@@ -1452,7 +1454,7 @@ $('confirm').onclick=async function(){
   renderV();$('dialog').close();
  }catch(e){safeStatus(e)}
 };
-window.onbeforeunload=function(e){if(dirty||autoBusy||autoTimer){e.preventDefault();e.returnValue=''}};
+window.onbeforeunload=function(e){if(dirty||autoBusy){e.preventDefault();e.returnValue=''}};
 
 function renderCatalog(filter){
  var picker=$('catalog-select'),query=(filter||'').toLocaleLowerCase('tr'),previous=slug;
@@ -1529,7 +1531,7 @@ function openProduct(productId){
  if(!selected)return false;
  slug=selected.id;record=selected;brand=slug==='carousel-01-v3'?'asyada-egitim':
    selected.family==='cin-egitim'?'cin-egitim':selected.family==='asya-egitim'?'asya-egitim':'asyada-egitim';
- clearTimeout(autoTimer);autoTimer=null;key='brandstudio:browser:'+slug;folder=null;sourceCache={};cloudData=null;cloudSha=null;cloudReady=false;cloudSelected=false;pageKinds=selected.pages.map(function(){return selected.kind});
+ key='brandstudio:browser:'+slug;folder=null;sourceCache={};cloudData=null;cloudSha=null;cloudReady=false;cloudSelected=false;pageKinds=selected.pages.map(function(){return selected.kind});
  pages=selected.pages.map(function(p){return new URL('../../'+p,location.href).href});
  state={colors:Object.assign({},defaults),edits:{},groups:{}};current=1;dirty=false;
  history.clear();historyButtons();groupOpen={};PASTEBOARD=320;
@@ -1604,7 +1606,7 @@ async function refreshCloud(product){
   }
   renderProductVersions(record);
   var v=stored.length;
-  $('cloud-status').textContent=v?'Kaydedilmiş '+v+' sürüm ve '+cloudData.history.length+' geçmiş kaydı mevcut.':'Henüz kayıt yok.';updateRecoveryButtons();if(dirty)wakeAutoSave(false);else saveLabel(cloud.authenticated()?'✓ Kaydedildi':'Bağlanıyor',cloud.authenticated()?'saved':'disconnected')
+  $('cloud-status').textContent=v?'Kaydedilmiş '+v+' sürüm ve '+cloudData.history.length+' geçmiş kaydı mevcut.':'Henüz kayıt yok.';updateRecoveryButtons();if(dirty)markUnsaved();else saveLabel('Mevcut sürümü kaydet','saved')
  }catch(e){if(ticket===cloudNonce){cloudReady=false;autoLastFailure=true;saveLabel('! Bulut okunamadı','error');$('cloud-status').textContent='Bağlantı hatası: '+e.message}}
 }
 $('cloud-connect').onclick=function(){
@@ -1631,61 +1633,62 @@ function updateRecoveryButtons(){
 }
 $('pending-recover').onclick=function(){
  var pending=pendingSnapshot();if(!pending)return;
- if(!confirm('Gönderilemeyen taslak tuvale geri getirilecek. Bağlantı varsa otomatik buluta gönderilecek. Devam edilsin mi?'))return;
+ if(!confirm('Eski kurtarma taslağı çalışma alanına açılacak. Buluta ancak elle kaydedersen gönderilir. Devam edilsin mi?'))return;
  applyCloudSnapshot(pending.state,pending.version,'Gönderilmemiş düzenleme kurtarıldı');updateRecoveryButtons()
 };
 $('legacy-import').onclick=function(){
  var local=allV(),last=local.length?local.reduce(function(a,b){return a.version>b.version?a:b}):null;
  if(!last)return;
- if(!confirm('Eski tarayıcı taslağı v'+last.version+' olarak buluta aktarılacak. Önceki bulut geçmişi korunacak. Devam edilsin mi?'))return;
+ if(!confirm('Eski tarayıcı taslağı çalışma alanına açılacak. Buluta ancak elle kaydedersen gönderilir. Devam edilsin mi?'))return;
  applyCloudSnapshot(last.state,last.version,'Eski taslak geri yüklendi')
 };
 async function cloudSaveVersion(n,kind){
- if(!cloud||!cloud.authenticated()){saveLabel('! Kaydedilemedi','disconnected');$('cloud-status').textContent='Otomatik kayıt için oturum açılmalı.';return}
- if(!cloudReady){saveLabel('● Bulut bekleniyor','pending');return}
+ if(!cloud||!cloud.authenticated()){saveLabel('Oturum açılmalı','disconnected');$('cloud-status').textContent='Elle kaydetmek için oturum açılmalı.';return}
+ if(!cloudReady){$('cloud-status').textContent='Bulut bağlantısı henüz hazır değil.';return}
  if(!Number.isInteger(n)||n<1||n>26){$('cloud-status').textContent='Geçersiz sürüm numarası';return}
- if(autoBusy){autoAgain=true;return}
- clearTimeout(autoTimer);autoTimer=null;
- var product=slug,checked,serialized,submitted;
- try{submitted=copy(state);checked=codec.validateState(submitted,pages.length);serialized=JSON.stringify(submitted)}
- catch(e){saveLabel('! Geçersiz düzenleme','error');$('cloud-status').textContent=e.message;return}
- autoBusy=true;autoAgain=false;$('cloud-new').disabled=true;
- saveLabel('↻ Kaydediliyor','saving');$('cloud-status').textContent='Kaydediliyor…';
+ if(autoBusy){$('cloud-status').textContent='Bir kayıt devam ediyor; tamamlanınca tekrar deneyin.';return}
+ var product=slug,checked,serialized;
+ try{checked=codec.validateState(copy(state),pages.length);serialized=JSON.stringify(checked)}
+ catch(e){saveLabel('Geçersiz düzenleme','error');$('cloud-status').textContent=e.message;return}
+ autoBusy=true;autoLastFailure=false;$('cloud-save').disabled=true;$('cloud-new').disabled=true;
+ saveLabel('Kaydediliyor','saving');$('cloud-status').textContent='Kaydediliyor…';
  try{
-  var result=await cloud.commit({product:product,version:n,state:checked,note:$('cloud-note').value.trim()||(kind==='autosave'?'Otomatik kayıt':''),kind:kind||'autosave',expectedSha:cloudSha});
+  var result=await cloud.commit({product:product,version:n,state:checked,
+   note:$('cloud-note').value.trim()||(kind==='new'?'Yeni sürüm olarak kaydedildi':'Mevcut sürüme elle kaydedildi'),
+   kind:kind==='new'?'new':'save',expectedSha:cloudSha});
   if(slug!==product)return;
-  cloudSha=result.sha;cloudData=result.document;current=n;cloudSelected=true;autoLastFailure=false;
-   // Do not discard edits made while the server request was in flight.
-   if(JSON.stringify(state)===serialized)state=copy(checked);
-   savedState=copy(checked);
+  cloudSha=result.sha;cloudData=result.document;current=n;cloudSelected=true;
+  // In-flight edits remain unsaved; a second explicit save is always required.
+  if(JSON.stringify(state)===serialized)state=copy(checked);
+  savedState=copy(checked);
   dirty=JSON.stringify(state)!==JSON.stringify(savedState);
-  if(!dirty){clearPending();saveLabel('✓ Kaydedildi','saved');$('unsaved').textContent='Tüm değişiklikler kaydedildi'}
-  else {rememberPending();saveLabel('● Yeni değişiklik bekliyor','pending');$('unsaved').textContent='Yeni düzenlemeler sırada'}
+  if(!dirty){clearPending();$('unsaved').textContent='✓ v'+n+' kaydedildi';saveLabel('Mevcut sürümü kaydet','saved')}
+  else markUnsaved();
   styleUI?.sync();renderCloudHistory();renderProductVersions(record);renderV();
-  $('cloud-status').textContent='✓ v'+n+' kaydedildi · '+result.document.history.length+' geçmiş anı';
+  $('cloud-status').textContent='✓ v'+n+' elle kaydedildi · '+result.document.history.length+' geçmiş kaydı';
   $('status').textContent='Kaydedildi';
  }catch(e){
-  autoLastFailure=true;dirty=true;rememberPending();saveLabel('! Kaydedilemedi · yeniden dene','error');
-  $('unsaved').textContent='Kaydedilemedi — tekrar deneyin';
+  autoLastFailure=true;dirty=true;
+  saveLabel('Kaydedilemedi · yeniden dene','error');
+  $('unsaved').textContent='Kaydedilemedi · yalnızca açık sekmede';
   $('cloud-status').textContent='Kaydedilemedi: '+e.message
  }finally{
-  autoBusy=false;$('cloud-new').disabled=false;
-  if(!autoLastFailure&&(dirty||autoAgain))wakeAutoSave(true)
+  autoBusy=false;$('cloud-save').disabled=false;$('cloud-new').disabled=false;
+  if(dirty&&!autoLastFailure)markUnsaved()
  }
 }
 $('cloud-save').onclick=function(){
- if(!cloud?.authenticated()){
-  var node=$('cloud-token'),section=node?.closest('details');if(section)section.open=true;node?.focus();
-  $('cloud-status').textContent='Oturum doğrulanamadı. Editörü yeniden açın.';
- }else if(!cloudReady)refreshCloud(slug);
- else if(dirty)cloudSaveVersion(current,'autosave');
- else $('cloud-status').textContent='Tüm değişiklikler kaydedildi.'
+ if(!cloud?.authenticated()){$('cloud-status').textContent='Oturum doğrulanamadı. Editörü yeniden açın.';return}
+ if(!cloudReady){refreshCloud(slug);return}
+ if(dirty||!cloudSelected||!cloudData?.versions?.['v'+current])cloudSaveVersion(current,'save');
+ else $('cloud-status').textContent='Mevcut sürümde kaydedilecek yeni değişiklik yok.'
 };
 $('cloud-new').onclick=function(){
- if(dirty||autoBusy){$('cloud-status').textContent='Yeni sürüm açmadan önce mevcut kayıt tamamlanmalı.';wakeAutoSave(true);return}
- var remote=Object.keys(cloudData?.versions||{}).map(function(x){return Number(x.slice(1))}),n=Math.max(1,current,...remote)+1;
+ if(autoBusy){$('cloud-status').textContent='Önce devam eden kayıt tamamlansın.';return}
+ if(!cloud?.authenticated()||!cloudReady){$('cloud-status').textContent='Yeni sürüm için önce bulut bağlantısı gerekli.';return}
+ var remote=Object.keys(cloudData?.versions||{}).map(function(x){return Number(x.slice(1))});
+ var n=Math.max(1,current,...remote)+1;
  if(n>26){$('cloud-status').textContent='26 sürüm sınırına ulaşıldı';return}
- if(!cloud?.authenticated()||!cloudReady){$('cloud-status').textContent='Yeni sürüm için oturum açılmalı.';return}
  cloudSaveVersion(n,'new')
 };
 function applyCloudSnapshot(snapshot,version,message){
@@ -1696,7 +1699,7 @@ function applyCloudSnapshot(snapshot,version,message){
   savedState=copy(cloudData?.versions?.['v'+version]?.state||{colors:Object.assign({},defaults),edits:{},groups:{}});
   ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
   styleUI?.sync();renderProductVersions(record);dirtyStatus();show(page);
-  $('cloud-status').textContent=message+' · otomatik kaydedilecek';
+  $('cloud-status').textContent=message+' · değişiklikleri korumak için elle kaydedin';
   $('cloud-note').value=message;
  }catch(e){$('cloud-status').textContent='Geri yükleme başarısız: '+e.message}
 }

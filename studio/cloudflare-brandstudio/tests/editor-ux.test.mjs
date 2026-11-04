@@ -376,12 +376,18 @@ test("version selector shows source and GitHub cloud revisions without active lo
  assert.match(html,/function loadSavedVersion\(n\)/);
  assert.match(html,/id="legacy-import"/);
 });
-test("legacy data is kept for migration and GitHub autosave replaces local save button",()=>{
+test("legacy data stays available, but only explicit cloud save buttons persist edits",()=>{
  assert.match(html,/function renderV\(\)/);
  assert.match(html,/if\(record\)renderProductVersions\(record\)/);
  assert.match(html,/localStorage\.setItem\(key,JSON\.stringify\(updated\)\)/);
  assert.match(html,/id="save" hidden/);
- assert.match(html,/function wakeAutoSave\(/);
+ assert.match(html,/function markUnsaved\(/);
  assert.match(html,/function updateRecoveryButtons\(/);
+ assert.match(html,/function pendingSnapshot\(/);
+ assert.doesNotMatch(html,/function wakeAutoSave\(/);
+ assert.doesNotMatch(html,/rememberPending\(/);
  assert.match(html,/if\(target===slug\)/);
+ assert.match(html,/Stili düzenlemeye uygula/);
+ assert.match(html,/Kaydedilmedi · yalnızca açık sekmede/);
 });
+
