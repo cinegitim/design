@@ -59,7 +59,7 @@ test('active galleries remove C-03 and D-04 cards and display H-02 compact examp
  assert.equal((logo.match(/class="card(?: feature)?"/g)||[]).length,3);
  if(englishStart>=0){
   const review=page.slice(englishStart,page.indexOf('<section class="section" id="profile">'));
-  assert.match(review,/Görsel onay bekliyor/);
+  assert.match(review,/APPROVED \/ CANONICAL/);
   assert.match(review,/H-EN-02/);
   assert.match(review,/P-EN-01/);
  }
@@ -71,8 +71,8 @@ test('active galleries remove C-03 and D-04 cards and display H-02 compact examp
  assert.ok(identity.includes('320px'));
  if(englishIdentityStart>=0){
   const review=identity.slice(englishIdentityStart,identity.indexOf('<section id="rules">'));
-  assert.match(review,/henüz üretim için onaylı kimlik değildir/);
-  assert.match(review,/english-only\/assets\/h-en-02-horizontal-light.svg/);
+  assert.match(review,/approved canonical signature/);
+  assert.match(review,/canonical-lockups\/assets\/h-en-02-horizontal-light.svg/);
  }
 });
 test('retired artwork remains for past deliverables but is prohibited in future production',()=>{
@@ -91,136 +91,100 @@ test('retired artwork remains for past deliverables but is prohibited in future 
 });
 
 
-test('English V6 canonical alignment, lighter main and five-country subtitle: source seal, vectors, mirrors and dot alignment',()=>{
- const review=json('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json');
- assert.equal(review.version,'v9-equal-in-asia-size');
- assert.equal(review.english_headline_weight,450);
- assert.equal(review.country_line_font_weight,350);
- assert.equal(review.country_separator_count,4);
- assert.deepEqual(review.country_labels,['China','Hong Kong','Japan','Singapore','South Korea']);
- assert.equal(review.approved_for_production,false);
- assert.equal(review.canonical_registration,false);
- for(const layout of [{stem:'h-en-02-horizontal',parent:'h-02-primary-horizontal'},{stem:'p-en-01-stacked',parent:'p-01-primary-stacked'}]){
-  for(const tone of ['light','dark','monochrome']){
-   const name=layout.stem+'-'+tone+'.svg';
-   const file='brands/asyada-egitim/assets/english-only-candidates/'+name;
-   const svg=read(file),publicFile=read('docs/identity/english-only/assets/'+name);
-   const source=read('brands/asyada-egitim/assets/lockups/'+layout.parent+'-'+tone+'.svg');
-   const seal=x=>{const i=x.indexOf('<svg viewBox="0 0 400 370"');return x.slice(i,x.indexOf('</svg>',i)+6);};
-   assert.equal(svg,publicFile);
-   assert.equal(seal(svg),seal(source));
-   const meta=JSON.parse(svg.split('<metadata>')[1].split('</metadata>')[0]);
-   assert.equal(meta.version,'v9-equal-in-asia-size');
-   assert.equal(meta.status,'REVIEW_ONLY_HUMAN_APPROVAL_PENDING');
-   assert.equal(meta.mainWeight,450);
-   assert.equal(meta.taglineWeight,350);
-   assert.equal(meta.sourceCanonicalLockup,layout.parent+'-'+tone+'.svg');
-   assert.ok(meta.metrics.tagWidth<=meta.metrics.topWidth);
-   assert.ok(meta.metrics.lowerWidth<meta.metrics.topWidth);
-   assert.ok(Math.abs(meta.metrics.asiaScale-1.10)<0.00001);
-   assert.ok(Math.abs(meta.metrics.inScale-1.10)<0.00001);
-   assert.equal(meta.metrics.lowerBaseline,409);
-   assert.equal(meta.metrics.countryBaseline,495);
-   assert.ok(Math.abs(meta.metrics.rootCanvasHeight-(layout.stem.startsWith('h-')?587.56787109:1003.79998779))<0.0001);
-   assert.ok(meta.metrics.line2VisualTop>meta.metrics.line1VisualBottom);
-   assert.ok(meta.metrics.countryVisualTop>meta.metrics.line2VisualBottom);
-   assert.match(svg,/data-wordmark="english-v5-jost-450"/);
-   assert.deepEqual([...svg.matchAll(/data-country="([^"]+)"/g)].map(x=>x[1]),['CHINA','HONG KONG','JAPAN','SINGAPORE','SOUTH KOREA']);
-   const bullets=[...svg.matchAll(/<circle data-country-dot="\d"[^>]*>/g)].map(x=>x[0]);
-   assert.equal(bullets.length,4);
-   assert.ok(bullets.every(x=>x.includes('cy="-12.3"')));
-   assert.ok(bullets.every(x=>x.includes('fill="'+(tone==='monochrome'?'#1D2027':'#BD2120')+'"')));
-   assert.ok(!svg.includes('<text'));
-   assert.ok(!svg.includes('<image'));
-  }
+
+const englishManifestPath='brands/asyada-egitim/assets/lockups/canonical-english-lockups.json';
+const englishManifest=json(englishManifestPath);
+const englishActive=englishManifest.records.filter(r=>r.status==='APPROVED / CANONICAL');
+const englishSeal=x=>{const i=x.indexOf('<svg viewBox="0 0 400 370"');return x.slice(i,x.indexOf('</svg>',i)+6);};
+
+test('English V9 is human-approved as a separate canonical language family, same brand root',()=>{
+ assert.equal(englishManifest.status,'APPROVED / CANONICAL');
+ assert.equal(englishManifest.human_approval_date,'2026-11-04');
+ assert.equal(englishManifest.language,'en');
+ assert.equal(englishManifest.design_version,'v9-equal-in-asia-size');
+ assert.equal(englishManifest.default_variant_id,'H-EN-02');
+ assert.deepEqual(englishManifest.current_variant_ids,['H-EN-02','P-EN-01']);
+ assert.equal(englishManifest.canonical_seal_sha256,manifest.canonical_seal_sha256);
+ assert.equal(englishManifest.turkish_canonical_manifest,manifestPath);
+ assert.equal(englishManifest.shared_assets_directory,'brands/asyada-egitim/assets/lockups/');
+ assert.equal(englishActive.length,6);
+ assert.equal(brand.canonicalLockups.byLanguage.tr.manifest,manifestPath);
+ assert.equal(brand.canonicalLockups.byLanguage.en.manifest,englishManifestPath);
+ assert.equal(brand.canonicalLockups.byLanguage.tr.manifestSha256,fileSha(manifestPath));
+ assert.equal(brand.canonicalLockups.byLanguage.en.manifestSha256,fileSha(englishManifestPath));
+ assert.equal(brand.canonicalLockups.languageSelectionDefault,'tr');
+ assert.equal(read('brands/asyada-egitim/assets/lockups/canonical-english-lockups.sha256').trim().split(/\s+/)[0],fileSha(englishManifestPath));
+ assert.equal(read('docs/asyada-seal/canonical-lockups/assets/canonical-english-lockups.json'),read(englishManifestPath));
+ assert.equal(read('docs/asyada-seal/canonical-lockups/assets/canonical-english-lockups.sha256'),read('brands/asyada-egitim/assets/lockups/canonical-english-lockups.sha256'));
+ assert.deepEqual(new Set(englishActive.map(x=>x.variant_id)),new Set(['H-EN-02','P-EN-01']));
+ assert.deepEqual(new Set(englishActive.map(x=>x.color_variant)),new Set(['light','dark','monochrome']));
+ assert.ok(new Set([...active.map(x=>x.canonical_lockup_id),...englishActive.map(x=>x.canonical_lockup_id)]).size===15);
+});
+
+test('Six approved English SVGs preserve the exact Turkish V-01 seal, SHA, letter geometry and mirrors',()=>{
+ for(const record of englishActive){
+  const f=record.canonical_file_path,mirror=record.public_mirror_path,svg=read(f);
+  const color=record.color_variant;
+  const canonical=(record.variant_id==='H-EN-02'?'h-02-primary-horizontal':'p-01-primary-stacked')+'-'+color+'.svg';
+  const tr=read('brands/asyada-egitim/assets/lockups/'+canonical);
+  assert.equal(fileSha(f),record.sha256);
+  assert.equal(fileSha(mirror),record.sha256);
+  assert.equal(svg,read(mirror));
+  assert.equal(englishSeal(svg),englishSeal(tr));
+  assert.equal(record.canonical_seal_sha256,englishManifest.canonical_seal_sha256);
+  const metadata=JSON.parse(svg.split('<metadata>')[1].split('</metadata>')[0]);
+  assert.equal(metadata.status,'APPROVED / CANONICAL');
+  assert.equal(metadata.approvedOn,'2026-11-04');
+  assert.equal(metadata.designVersion,'v9-equal-in-asia-size');
+  assert.equal(metadata.canonicalLockupId,record.canonical_lockup_id);
+  assert.equal(metadata.canonicalFilePath,f);
+  assert.equal(metadata.mainWeight,450);
+  assert.equal(metadata.taglineWeight,350);
+  assert.equal(metadata.metrics.inScale,1.1);
+  assert.equal(metadata.metrics.asiaScale,1.1);
+  assert.equal(metadata.metrics.inBaseline,409);
+  assert.equal(metadata.metrics.lowerBaseline,409);
+  assert.ok(Math.abs(metadata.metrics.lowerWidth/metadata.metrics.topWidth-.9901653478)<.00001);
+  const inTag=svg.match(/<g data-line="IN"[^>]*>/)?.[0]||'';
+  const asiaTag=svg.match(/<g data-line="ASIA"[^>]*>/)?.[0]||'';
+  assert.match(inTag,/ 409\) scale\(1\.10000000\)/);
+  assert.match(asiaTag,/ 409\) scale\(1\.10000000\)/);
+  assert.deepEqual([...svg.matchAll(/data-country="([^"]+)"/g)].map(x=>x[1]),['CHINA','HONG KONG','JAPAN','SINGAPORE','SOUTH KOREA']);
+  assert.equal((svg.match(/data-country-dot=/g)||[]).length,4);
+  assert.ok(!svg.includes('data-rule='));
+  assert.ok(!svg.includes('<image'));
+  assert.ok(!svg.includes('<text'));
+  assert.ok(!svg.includes('REVIEW_ONLY_HUMAN_APPROVAL_PENDING'));
+  assert.match(svg,/approved canonical English logo/);
  }
 });
 
-
-test('English V6 uses canonical Turkish lockup canvas heights and baselines without changing the glyph outlines',()=>{
- const manifest=json('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json');
- assert.equal(manifest.version,'v9-equal-in-asia-size');
- assert.equal(manifest.alignment.targetMainLineBaseline,209);
- assert.equal(manifest.alignment.targetSecondLineBaseline,409);
- assert.equal(manifest.alignment.targetCountryBaseline,495);
- for(const stem of ['h-en-02-horizontal','p-en-01-stacked']){
-  for(const tone of ['light','dark','monochrome']){
-   const s=read('brands/asyada-egitim/assets/english-only-candidates/'+stem+'-'+tone+'.svg');
-   const m=JSON.parse(s.split('<metadata>')[1].split('</metadata>')[0]);
-   assert.equal(m.version,'v9-equal-in-asia-size');
-   assert.ok(m.metrics.asiaScale<=1.10);
-   assert.ok(m.metrics.inScale<=1.10);
-   assert.ok(m.metrics.countryVisualBottom<=502.05);
-   assert.ok(m.metrics.line2VisualBottom<m.metrics.countryVisualTop);
-   const tag=s.match(/<g data-line="COUNTRIES"[^>]*>/)?.[0];
-   const asia=s.match(/<g data-line="ASIA"[^>]*>/)?.[0];
-   assert.match(tag,/ 495\)/);
-   assert.match(asia,/ 409\)/);
-  }
+test('Public Brandstudio separates Türkçe / English headings while removing previous English review SVGs',()=>{
+ const identity=read('docs/identity/index.html');
+ const studio=read('docs/workspaces/asyada-egitim/logos-and-covers/index.html');
+ assert.match(identity,/<h2>Türkçe logo<\/h2>/);
+ assert.match(identity,/<h2>English logo<\/h2>/);
+ assert.match(studio,/<h2>Türkçe logo<\/h2>/);
+ assert.match(studio,/<h2>English logo<\/h2>/);
+ assert.match(identity,/href="#lockups"/);
+ assert.match(identity,/href="#english-logo"/);
+ assert.match(studio,/href="#logos"/);
+ assert.match(studio,/href="#english-logo"/);
+ assert.match(identity,/H-EN-02/);
+ assert.match(identity,/P-EN-01/);
+ assert.match(studio,/APPROVED \/ CANONICAL/);
+ assert.ok(!identity.includes('english-only/assets/'));
+ assert.ok(!studio.includes('identity/english-only/assets/'));
+ assert.ok(!identity.includes('henüz üretim için onaylı kimlik değildir'));
+ assert.ok(!studio.includes('Görsel onay bekliyor'));
+ const redirect=read('docs/identity/english-only/index.html');
+ assert.match(redirect,/\.\.\/#english-logo/);
+ const obsolete=['brands/asyada-egitim/assets/english-only-candidates/review-manifest.json'];
+ for(const stem of ['h-en-02-horizontal','p-en-01-stacked'])for(const tone of ['light','dark','monochrome']){
+  const file=stem+'-'+tone+'.svg';
+  obsolete.push('brands/asyada-egitim/assets/english-only-candidates/'+file);
+  obsolete.push('docs/identity/english-only/assets/'+file);
  }
-});
-
-
-
-test('English V9 uses equally sized IN and ASIA in a centered second row without decorative rules or glyph distortion',()=>{
- const manifest=json('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json');
- assert.equal(manifest.version,'v9-equal-in-asia-size');
- assert.equal(manifest.alignment.secondaryRowBalance.rules,0);
- assert.equal(manifest.alignment.secondaryRowBalance.removed,true);
- assert.ok(Math.abs(manifest.alignment.opticalSpacing.widthRatio-.9901653478)<.00001);
- assert.equal(manifest.approved_for_production,false);
- assert.equal(manifest.canonical_registration,false);
- const prefix='brands/asyada-egitim/assets/english-only-candidates/';
- for(const pair of [{stem:'h-en-02-horizontal',canonical:'h-02-primary-horizontal'},{stem:'p-en-01-stacked',canonical:'p-01-primary-stacked'}]){
-   for(const tone of ['light','dark','monochrome']){
-    const name=pair.stem+'-'+tone+'.svg',svg=read(prefix+name),mirror=read('docs/identity/english-only/assets/'+name);
-    const old=read('brands/asyada-egitim/assets/lockups/'+pair.canonical+'-'+tone+'.svg');
-    const seal=s=>{const i=s.indexOf('<svg viewBox="0 0 400 370"');return s.slice(i,s.indexOf('</svg>',i)+6);};
-    assert.equal(svg,mirror);
-    assert.equal(seal(svg),seal(old));
-    const m=JSON.parse(svg.split('<metadata>')[1].split('</metadata>')[0]);
-    assert.equal(m.version,'v9-equal-in-asia-size');
-    assert.equal(m.status,'REVIEW_ONLY_HUMAN_APPROVAL_PENDING');
-    assert.equal(m.mainWeight,450);
-    assert.equal(m.taglineWeight,350);
-    assert.equal(m.opticalSpacing.letterShapesUnchanged,true);
-    assert.ok(m.opticalSpacing.targetRenderedClearance>90&&m.opticalSpacing.targetRenderedClearance<95);
-    assert.ok(m.opticalSpacing.wordGapRendered>120&&m.opticalSpacing.wordGapRendered<130);
-    assert.ok(Math.abs(m.metrics.lowerWidth/m.metrics.topWidth-.9901653478)<.00001);
-    assert.ok(Math.abs(m.metrics.centerPad-(m.metrics.topWidth-m.metrics.lowerWidth)/2)<.001);
-    assert.equal(m.metrics.secondaryRowRules,null);
-    assert.equal((svg.match(/data-rule=/g)||[]).length,0);
-    assert.ok(!svg.includes('data-secondary-line-balance'));
-    assert.equal((svg.match(/data-country-dot=/g)||[]).length,4);
-    assert.ok(!svg.includes('<text')&&!svg.includes('<image'));
-   }
- }
-});
-
-
-test('English V9 IN and ASIA have identical 1.10 scale and baseline, with V-01 seal unchanged',()=>{
- const manifest=json('brands/asyada-egitim/assets/english-only-candidates/review-manifest.json');
- assert.equal(manifest.version,'v9-equal-in-asia-size');
- assert.equal(manifest.alignment.equalSecondLine.IN,1.1);
- assert.equal(manifest.alignment.equalSecondLine.ASIA,1.1);
- assert.equal(manifest.alignment.equalSecondLine.baseline,409);
- for(const stem of ['h-en-02-horizontal','p-en-01-stacked']){
-  for(const tone of ['light','dark','monochrome']){
-   const svg=read('brands/asyada-egitim/assets/english-only-candidates/'+stem+'-'+tone+'.svg');
-   const meta=JSON.parse(svg.split('<metadata>')[1].split('</metadata>')[0]);
-   assert.equal(meta.version,'v9-equal-in-asia-size');
-   assert.equal(meta.metrics.inScale,meta.metrics.asiaScale);
-   assert.equal(meta.metrics.inScale,1.1);
-   assert.equal(meta.metrics.inBaseline,meta.metrics.lowerBaseline);
-   assert.equal(meta.equalSecondLine.sizeMatch,true);
-   assert.equal(meta.equalSecondLine.originalWordGapPreserved,true);
-   assert.ok(Math.abs(meta.metrics.lowerWidth/meta.metrics.topWidth-.9901653478)<.00001);
-   const inTag=svg.match(/<g data-line="IN"[^>]*>/)?.[0]||'';
-   const asiaTag=svg.match(/<g data-line="ASIA"[^>]*>/)?.[0]||'';
-   assert.match(inTag,/ 409\) scale\(1\.10000000\)/);
-   assert.match(asiaTag,/ 409\) scale\(1\.10000000\)/);
-   assert.equal((svg.match(/data-rule=/g)||[]).length,0);
-   assert.equal((svg.match(/data-country-dot=/g)||[]).length,4);
-  }
- }
+ for(const rev of ['v6','v7','v71','v8'])obsolete.push('docs/identity/english-only/history/'+rev+'-horizontal-light.svg');
+ for(const old of obsolete)assert.ok(!fs.existsSync(path.join(root,old)),'Obsolete English review SVG remains: '+old);
 });
