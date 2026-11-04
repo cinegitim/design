@@ -76,10 +76,13 @@ test('server rejects unauthenticated requests and verifies signed Access JWT',()
  assert.match(store,/RECOVERED_BAVUL/);
  assert.doesNotMatch(store,/sha:"legacy-v2"/);
 });
-test('one visible editor, simple autosave and direct PNG/JPEG downloads',()=>{
+test('one visible editor uses manual cloud saves and direct PNG/JPEG downloads',()=>{
  assert.match(html,/location\.hostname==='cinegitim\.github\.io'/);
  assert.ok(html.includes('studio.asyadaegitim.com'));
- assert.match(html,/function wakeAutoSave/);
+ assert.match(html,/id="cloud-save"[^>]*>Mevcut sürümü kaydet<\/button>/);
+ assert.match(html,/id="cloud-new"[^>]*>\+ Yeni sürüm olarak kaydet<\/button>/);
+ assert.doesNotMatch(html,/function wakeAutoSave|autoTimer|rememberPending/);
+ assert.match(html,/function markUnsaved\(/);
  assert.match(html,/function updateRecoveryButtons/);
  for(const id of ['download-png','download-jpeg','side-download-png','side-download-jpeg'])assert.match(html,new RegExp('id="'+id+'"'));
  assert.match(html,/html2canvas\(slide/);
@@ -89,11 +92,17 @@ test('one visible editor, simple autosave and direct PNG/JPEG downloads',()=>{
  assert.doesNotMatch(source,/localStorage|sessionStorage|document\.cookie/);
 });
 
-test('autosave captures a stable input snapshot and normalizes live state only after server acknowledgment',()=>{
- assert.match(html,/submitted=copy\(state\)/);
- assert.match(html,/codec\.validateState\(submitted,pages\.length\)/);
+test('manual save snapshots state only when user clicks overwrite or save-as-new',()=>{
+ assert.match(html,/checked=codec\.validateState\(copy\(state\),pages\.length\)/);
  assert.match(html,/if\(JSON\.stringify\(state\)===serialized\)state=copy\(checked\)/);
  assert.match(html,/dirty=JSON\.stringify\(state\)!==JSON\.stringify\(savedState\)/);
+ assert.match(html,/kind:kind==='new'\?'new':'save'/);
+ assert.match(html,/cloudSaveVersion\(current,'save'\)/);
+ assert.match(html,/cloudSaveVersion\(n,'new'\)/);
+ assert.equal((html.match(/cloudSaveVersion\(/g)||[]).length,3);
+ assert.match(html,/window\.onbeforeunload=function\(e\)\{if\(dirty\|\|autoBusy\)/);
+ assert.doesNotMatch(html,/localStorage\.setItem\(pendingKey\(/);
+ assert.doesNotMatch(html,/if\(dirty\)wakeAutoSave\(true\)/);
  const store=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/editor-store/worker.mjs'),'utf8');
  assert.match(store,/unchanged:true/);
  assert.doesNotMatch(store,/fetch\(url,/);
