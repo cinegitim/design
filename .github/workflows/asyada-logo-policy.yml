@@ -4,6 +4,7 @@ on:
     paths:
       - "AGENTS.md"
       - "brands/asyada-egitim/brand.json"
+      - "brands/asyada-egitim/status.md"
       - "brands/asyada-egitim/assets/lockups/**"
       - "brands/asyada-egitim/assets/english-only-candidates/**"
       - "brands/asyada-egitim/decisions/**"
@@ -41,7 +42,7 @@ jobs:
             brands/asyada-egitim/decisions/2026-10-30-h02-small-use-retire-c03-d04.md
             docs/workspaces/asyada-egitim/logos-and-covers/index.html
             docs/identity/index.html
-            docs/identity/english-only/assets/
+            docs/identity/english-only/
             docs/asyada-seal/canonical-lockups/assets/
             studio/tools/test_asyada_active_logo_policy.mjs
             studio/tools/verify_asyada_canonical_lockups.py

@@ -158,7 +158,8 @@ test('design taxonomy has subcategories nested within carousels',()=>{
 test('one actual gallery shows logos, profile images, and platform covers',()=>{
  const folder=path.join(root,'docs/workspaces/asyada-egitim/logos-and-covers');
  const html=fs.readFileSync(path.join(folder,'index.html'),'utf8');
- assert.match(html,/Güncel logo ailesi/);
+ assert.match(html,/<h2>Türkçe logo<\/h2>/);
+ assert.match(html,/<h2>English logo<\/h2>/);
  assert.match(html,/Sosyal medya profil görselleri/);
  assert.match(html,/Sosyal medya kapakları/);
  assert.doesNotMatch(html,/location\.replace\(/);

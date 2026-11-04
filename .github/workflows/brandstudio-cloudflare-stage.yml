@@ -40,6 +40,7 @@ jobs:
             docs/system
             docs/index.html
             docs/identity/english-only
+            docs/asyada-seal/canonical-lockups
             brands/asyada-egitim/assets/lockups
             brands/asyada-egitim/styles
             brands/asyada-egitim/assets/v01-canonical.svg

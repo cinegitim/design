@@ -5,6 +5,8 @@ lockup manifests; studio/production/BOOTSTRAP.md; existing publishing rules.
 This document **does not** install Work or Codex, select a model/effort, or grant
 permissions. The user's complete natural-language brief is preserved unchanged.
 
+**Asya’da Eğitim language lockups (approved 2026-11-04):** Resolve `logo_language=tr` from `brands/asyada-egitim/assets/lockups/canonical-lockups.json` or `logo_language=en` from the same directory’s `canonical-english-lockups.json`. English V9 uses canonical H-EN-02/P-EN-01 full SVGs, Jost 450/350 and the exact original V-01 seal. Use a single approved locked file, never deleted English review assets or image-generated lettering; record the language and canonical SVG SHA-256 in production metadata. Both languages appear on one Brandstudio identity page, not in unrelated projects.
+
 ## Surface decision
 
 1. Identify the **actual experience**: standard ChatGPT chat, ChatGPT Work, or
