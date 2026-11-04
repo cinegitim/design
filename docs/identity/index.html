@@ -23,7 +23,7 @@ h1{font-size:clamp(38px,6vw,72px);line-height:1.02;letter-spacing:-.04em}
 .lede{font-size:18px;max-width:60ch;margin-top:14px}
 .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 .badge{font-size:12px;letter-spacing:.08em;font-weight:500;border-radius:999px;padding:8px 18px;border:1px solid var(--ink);background:var(--ink);color:var(--paper)}
-.wordband{margin-top:34px;background:var(--card);border:1px solid var(--ink);border-radius:14px;padding:30px}
+.language-picker{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 20px}.language-picker a{flex:1 1 270px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 17px;border:1px solid var(--ink);border-radius:12px;text-decoration:none;background:var(--card);font-size:16px;font-weight:600}.language-picker a:hover,.language-picker a:focus-visible{border-color:var(--red);color:var(--red)}.language-picker small{font-size:11px;font-weight:500;color:var(--muted)}section{scroll-margin-top:24px}.wordband{margin-top:34px;background:var(--card);border:1px solid var(--ink);border-radius:14px;padding:30px}
 .wordband img{width:min(640px,100%);height:auto;display:block}
 section{margin-top:70px}
 .kicker{font-size:12px;letter-spacing:.16em;color:var(--muted);font-weight:500}
@@ -74,21 +74,22 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:22px;font-si
     <img class="seal" src="../asyada-seal/assets/v01-canonical.svg" alt="Onaylı kanonik mühür V-01">
     <div>
       <h1>Onaylı kimlik</h1>
-      <p class="lede">Mühür, wordmark ve üç güncel kilit. Günlük kullanımda H-02 yatay imza tercih edilir; küçük dijitalde aynı onaylı SVG orantılı ölçeklendirilir. Tarihsel C-03/D-04 uygulamaları üretimden kaldırıldı.</p>
-      <div class="badges"><span class="badge">APPROVED / CANONICAL &middot; 2026-10-08</span></div>
+      <p class="lede">Tek onaylı V-01 mühür, iki resmî dil ailesi. Türkçe ve İngilizce logolar aynı marka kaynağında korunur; üretimde metnin diline uygun tam SVG seçilir. Yazılar ve mühür ayrı ayrı yeniden oluşturulmaz.</p>
+      <div class="badges"><span class="badge">TÜRKÇE ONAYLI · 2026-10-08</span><span class="badge">ENGLISH APPROVED · 2026-11-04</span></div>
     </div>
   </div>
 
+  <nav class="language-picker" aria-label="Onaylı logo dili"><a href="#lockups"><span>Türkçe logo</span><small>Asya’da Eğitim · 2026-10-08</small></a><a href="#english-logo"><span>English logo</span><small>Education in Asia · 2026-11-04</small></a></nav>
   <div class="wordband">
-    <div class="kicker">WORDMARK &middot; JOST 550 TR / JOST 350 EN &middot; DIŞ ÇİZGİ (OUTLINE), ÇALIŞMA ZAMANI FONT BAĞIMLILIĞI YOK</div>
+    <div class="kicker">TÜRKÇE / RESMÎ ÇİFT DİLLİ WORDMARK &middot; JOST 550 TR / JOST 350 EN &middot; DIŞ ÇİZGİ (OUTLINE), ÇALIŞMA ZAMANI FONT BAĞIMLILIĞI YOK</div>
     <img src="../asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg" alt="Onaylı wordmark: ASYA'DA EĞİTİM / EDUCATION IN ASIA">
     <p class="sub" style="margin-top:14px">Üç satır tek ölçüde (881 birim), orijinal kırmızı kesme işareti korunuyor. Kaynak: <code>docs/asyada-seal/typography-weights/assets/tr550-en350-wordmark.svg</code> (SHA <code>668c0026&hellip;</code>).</p>
   </div>
 
   <section id="lockups">
-    <div class="kicker">ÜÇ GÜNCEL KİLİT &middot; ÜÇ RENK VARYANTI</div>
-    <h2>Kilit ailesi</h2>
-    <p class="sub">Burası üretimde kullanılacak güncel logo ailesinin tek kamusal sunum sayfasıdır. Üretim için yetkili dosyalar <code>brands/asyada-egitim/assets/lockups/</code> altında manifest ve SHA-256 doğrulamasıyla korunur. Bu sayfadaki gösterimler üretim kaynağı değildir.</p>
+    <div class="kicker">TÜRKÇE MARKA KİMLİĞİ · ASYA’DA EĞİTİM</div>
+    <h2>Türkçe logo</h2>
+    <p class="sub">Türkçe ve resmî çift dilli imzalar için onaylı aile H-02, P-01 ve F-05’tir. İngilizce tek dilli kimlik için aşağıdaki ayrı <a href="#english-logo">English logo</a> ailesi kullanılır. Üretim için yetkili dosyalar <code>brands/asyada-egitim/assets/lockups/</code> altında manifest ve SHA-256 doğrulamasıyla korunur. Bu sayfadaki gösterimler üretim kaynağı değildir.</p>
     <p class="sub">Her karttaki görseller mevcut onaylı SVG dosyalarıdır. C-03 ve D-04 kullanım dışıdır; geriye dönük kaynakları arşivde kalır.</p>
 
     <div class="lockup" id="P-01">
@@ -133,16 +134,17 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:22px;font-si
     </div>
   </section>
 
-  <section id="english-logo">
-    <div class="kicker">İNGİLİZCE LOGO · EDUCATION IN ASIA</div>
-    <h2>English-only logo adayları</h2>
-    <p class="sub">Türkçe ve çift dilli kanonik logoların yanında, onaylı V-01 mührünü birebir koruyan ve Türkçe onaylı logonun satır ölçülerine geri döndürülmüş iki İngilizce-only V9 inceleme yerleşimi. IN ve ASIA aynı Jost harf boyutuna getirildi ve çizgisiz alt satır EDUCATION genişliğiyle neredeyse eşit olacak şekilde ortalandı; Jost 450 ana başlık, Jost 350 ülkeler satırı; ASIA EDUCATION ile benzer harf yüksekliğinde, IN ve ASIA eşit büyüklükte ve tüm alt satır ortalanmış. China · Hong Kong · Japan · Singapore · South Korea kırmızı noktalarla ayrılmıştır. Orijinal mühür birebir korunur. <strong>Görsel onay bekliyor; henüz üretim için onaylı kimlik değildir.</strong></p>
-    <div class="modes">
-      <figure class="mode"><div class="mark"><img loading="lazy" src="english-only/assets/h-en-02-horizontal-light.svg" alt="Education in Asia yatay logo adayı"></div><figcaption>H-EN-02 · yatay / açık</figcaption></figure>
-      <figure class="mode dark"><div class="mark"><img loading="lazy" src="english-only/assets/h-en-02-horizontal-dark.svg" alt="Education in Asia koyu yatay logo adayı"></div><figcaption>H-EN-02 · yatay / koyu</figcaption></figure>
-      <figure class="mode"><div class="mark"><img loading="lazy" src="english-only/assets/p-en-01-stacked-light.svg" alt="Education in Asia dikey logo adayı"></div><figcaption>P-EN-01 · dikey / açık</figcaption></figure>
-    </div>
-    <p class="sub" style="margin-top:18px"><a href="english-only/">Türkçe logo ile yan yana incele, altı SVG sürümünü aç →</a></p>
+  <section id="english-logo" lang="en">
+    <div class="kicker">ENGLISH BRAND IDENTITY · EDUCATION IN ASIA · APPROVED 2026-11-04</div>
+    <h2>English logo</h2>
+    <p class="sub">The English-only Education in Asia wordmark is now an <strong>approved canonical signature</strong>. It shares the exact V-01 emblem with the Turkish identity, but has its own locked Jost 450 EDUCATION / IN ASIA wordmark and small Jost 350 country line. IN and ASIA are the same size. The approved six variants are shown below; do not reconstruct them from Turkish bilingual lettering.</p>
+    <div class="lockup" id="H-EN-02"><h3>H-EN-02 · English horizontal</h3><p class="rule">Default English horizontal/digital signature; inspect the fine country subtitle at actual usage size</p><div class="modes"><figure class="mode"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/h-en-02-horizontal-light.svg" alt="H-EN-02 · English horizontal · Açık"></div><figcaption>Açık · <a href="../asyada-seal/canonical-lockups/assets/h-en-02-horizontal-light.svg" target="_blank" rel="noopener">Onaylı SVG’yi aç</a></figcaption></figure>
+<figure class="mode dark"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/h-en-02-horizontal-dark.svg" alt="H-EN-02 · English horizontal · Koyu"></div><figcaption>Koyu · <a href="../asyada-seal/canonical-lockups/assets/h-en-02-horizontal-dark.svg" target="_blank" rel="noopener">Onaylı SVG’yi aç</a></figcaption></figure>
+<figure class="mode mono"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/h-en-02-horizontal-monochrome.svg" alt="H-EN-02 · English horizontal · Tek renk"></div><figcaption>Tek renk · <a href="../asyada-seal/canonical-lockups/assets/h-en-02-horizontal-monochrome.svg" target="_blank" rel="noopener">Onaylı SVG’yi aç</a></figcaption></figure></div></div>
+    <div class="lockup" id="P-EN-01"><h3>P-EN-01 · English stacked</h3><p class="rule">English vertical/centered signature with the same locked emblem and letterforms</p><div class="modes"><figure class="mode"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/p-en-01-stacked-light.svg" alt="P-EN-01 · English stacked · Açık"></div><figcaption>Açık · <a href="../asyada-seal/canonical-lockups/assets/p-en-01-stacked-light.svg" target="_blank" rel="noopener">Onaylı SVG’yi aç</a></figcaption></figure>
+<figure class="mode dark"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/p-en-01-stacked-dark.svg" alt="P-EN-01 · English stacked · Koyu"></div><figcaption>Koyu · <a href="../asyada-seal/canonical-lockups/assets/p-en-01-stacked-dark.svg" target="_blank" rel="noopener">Onaylı SVG’yi aç</a></figcaption></figure>
+<figure class="mode mono"><div class="mark"><img loading="lazy" src="../asyada-seal/canonical-lockups/assets/p-en-01-stacked-monochrome.svg" alt="P-EN-01 · English stacked · Tek renk"></div><figcaption>Tek renk · <a href="../asyada-seal/canonical-lockups/assets/p-en-01-stacked-monochrome.svg" target="_blank" rel="noopener">Onaylı SVG’yi aç</a></figcaption></figure></div></div>
+    <p class="sub" style="margin-top:22px">Both language families are stored under <code>brands/asyada-egitim/assets/lockups/</code>. Separate English SHA-256 identity record: <a href="../asyada-seal/canonical-lockups/assets/canonical-english-lockups.json">English canonical manifest (JSON)</a>. The original Turkish canonical files are unchanged.</p>
   </section>
 
   <section id="rules">
@@ -153,8 +155,10 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:22px;font-si
       <tr><td>H-02</td><td>320px (360–480px önerilir)</td><td>110mm</td><td>Varsayılan dijital/yatay imza; gerçek boyutta okunurluk kontrolü</td></tr>
       <tr><td>P-01</td><td>352px</td><td>75mm</td><td>Dikey ve ortalı tasarımlar</td></tr>
       <tr><td>F-05</td><td>352px</td><td>75mm</td><td>Resmî çift dilli tasarımlar</td></tr>
+      <tr><td>H-EN-02</td><td>528px ihtiyatlı öneri</td><td>Gerçek kullanım boyutunda kontrol</td><td>English logo; ülke satırı okunaklı olmalı</td></tr>
+      <tr><td>P-EN-01</td><td>352px ihtiyatlı öneri</td><td>Gerçek kullanım boyutunda kontrol</td><td>English stacked; ülke satırını kontrol et</td></tr>
     </table>
-    <p class="sub" style="margin-top:14px">Clearspace her kilidin SVG çerçevesine gömülü (70 birim). Orantılı ölçek ve konum dışında değişiklik yok: esnetme, kırpma, perspektif, yeniden renklendirme ve görüntü modeliyle üretim yasak. Her nihai çıktının manifestosu <code>canonical_lockup_id</code>, <code>canonical_lockup_sha256</code> ve <code>canonical_seal_sha256</code> kaydeder. Üretim kapısı: <code>python3 studio/tools/verify_asyada_canonical_lockups.py</code>.</p>
+    <p class="sub" style="margin-top:14px">Clearspace her kilidin SVG çerçevesine gömülü (70 birim). Orantılı ölçek ve konum dışında değişiklik yok: esnetme, kırpma, perspektif, yeniden renklendirme ve görüntü modeliyle üretim yasak. Her nihai çıktının manifestosu <code>canonical_lockup_id</code>, <code>canonical_lockup_sha256</code> ve <code>canonical_seal_sha256</code> kaydeder. Türkçe doğrulayıcı: <code>python3 studio/tools/verify_asyada_canonical_lockups.py</code>; İngilizce için onaylı İngilizce manifest SHA-256 ve logo-politikası testleri uygulanır. Her çıktı ayrıca <code>logo_language</code> (tr/en) kaydeder.</p>
     <div class="manifest">
       <b>APPROVED / CANONICAL &middot; 2026-10-08</b><br>
       Mühür SHA-256: <code>8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a</code><br>
@@ -162,7 +166,13 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:22px;font-si
       Hizalama: yatay 0 / dikey 0 &middot; Ortak ölçü: 881 birim (P-01, H-02, F-05)<br>
       <a href="../asyada-seal/canonical-lockups/assets/canonical-lockups.json">Makine-manifest (JSON) &rarr;</a> &middot;
       <a href="../asyada-seal/canonical-lockups/assets/verification-result.json">Doğrulama raporu (JSON) &rarr;</a> &middot;
-      <a href="#lockups">Onaylı logo ailesi &rarr;</a>
+      <a href="#lockups">Türkçe logo ailesi &rarr;</a>
+    </div>
+    <div class="manifest">
+      <b>ENGLISH APPROVED / CANONICAL &middot; 2026-11-04</b><br>
+      H-EN-02 / P-EN-01 &middot; light, dark, monochrome &middot; Jost 450 / 350<br>
+      English canonical manifest SHA-256: <code>f8379cfc30602121d2fd773edd7297cf0d576c4cdd262c71077b504db95f9c7d</code><br>
+      <a href="../asyada-seal/canonical-lockups/assets/canonical-english-lockups.json">English manifest (JSON) &rarr;</a> &middot; <a href="#english-logo">English logo &rarr;</a>
     </div>
   </section>
 
@@ -205,7 +215,7 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:22px;font-si
       <p><a href="#lockups">Onaylı logo ailesi &rarr;</a> &middot; <a href="../asyada-seal/visual-system-phase-1/">Faz 1 prototipleri (tarihsel referans) &rarr;</a></p></div></details>
   </section>
 
-  <footer><span>Asya'da Eğitim Brand Studio &middot; Kimlik APPROVED / CANONICAL</span><span><a href="../">Panel</a> &middot; <a href="../instagram/">Instagram</a> &middot; <a href="../archive/">Arşiv</a></span></footer>
+  <footer><span>Asya'da Eğitim · Education in Asia &middot; İki dilde APPROVED / CANONICAL</span><span><a href="../">Panel</a> &middot; <a href="../instagram/">Instagram</a> &middot; <a href="../archive/">Arşiv</a></span></footer>
 </div>
 </body>
 </html>
