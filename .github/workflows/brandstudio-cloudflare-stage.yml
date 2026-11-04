@@ -59,12 +59,13 @@ jobs:
       - name: Reject variable-cost service bindings and unsafe free-tier overrides
         run: python3 studio/cloudflare-brandstudio/check_free_only.py
       - name: Portable browser editor state validation and syntax
-        run: node --check docs/system/app.js && node --test studio/cloudflare-brandstudio/tests/system-hub.test.mjs studio/cloudflare-brandstudio/tests/style-picker.test.mjs studio/cloudflare-brandstudio/tests/portable.test.mjs studio/cloudflare-brandstudio/tests/editor-ux.test.mjs studio/cloudflare-brandstudio/tests/editor-flex.test.mjs studio/cloudflare-brandstudio/tests/product-groups.test.mjs studio/cloudflare-brandstudio/tests/cloud-editor.test.mjs studio/cloudflare-brandstudio/tests/github-pr.test.mjs studio/cloudflare-brandstudio/tests/github-finalize.test.mjs
+        run: node --check docs/system/app.js && node --test studio/cloudflare-brandstudio/tests/system-hub.test.mjs studio/cloudflare-brandstudio/tests/style-picker.test.mjs studio/cloudflare-brandstudio/tests/portable.test.mjs studio/cloudflare-brandstudio/tests/editor-ux.test.mjs studio/cloudflare-brandstudio/tests/editor-flex.test.mjs studio/cloudflare-brandstudio/tests/product-groups.test.mjs studio/cloudflare-brandstudio/tests/cloud-editor.test.mjs studio/cloudflare-brandstudio/tests/github-pr.test.mjs studio/cloudflare-brandstudio/tests/github-finalize.test.mjs studio/cloudflare-brandstudio/tests/github-promote.test.mjs
       - name: Asyada Egitim access gateway and storage syntax
         run: |
           node --check studio/cloudflare-brandstudio/asya-gateway/worker.mjs
           node --check studio/cloudflare-brandstudio/asya-gateway/github-pr.mjs
           node --check studio/cloudflare-brandstudio/asya-gateway/github-finalize.mjs
+          node --check studio/cloudflare-brandstudio/asya-gateway/github-promote.mjs
           node --check studio/brandstudio/admin-auth/worker.mjs
           node --check studio/cloudflare-brandstudio/editor-store/worker.mjs
       - name: Brandstudio admin session safety tests
