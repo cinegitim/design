@@ -47,7 +47,7 @@ test('H-02 compact display keeps the complete canonical artwork',()=>{
 });
 test('active galleries remove C-03 and D-04 cards and display H-02 compact examples',()=>{
  const page=read('docs/workspaces/asyada-egitim/logos-and-covers/index.html');
- const englishStart=page.indexOf('<section class="section" id="english-logo">');
+ const englishStart=page.indexOf('<section class="section" id="english-logo"');
  const logo=page.slice(page.indexOf('<section class="section" id="logos">'),englishStart>=0?englishStart:page.indexOf('<section class="section" id="profile">'));
  assert.ok(logo.includes('H-02 · Temel yatay imza'));
  assert.ok(logo.includes('id="logos"'));
@@ -64,7 +64,7 @@ test('active galleries remove C-03 and D-04 cards and display H-02 compact examp
   assert.match(review,/P-EN-01/);
  }
  const identity=read('docs/identity/index.html');
- const englishIdentityStart=identity.indexOf('<section id="english-logo">');
+ const englishIdentityStart=identity.indexOf('<section id="english-logo"');
  const active=identity.slice(identity.indexOf('<section id="lockups">'),englishIdentityStart>=0?englishIdentityStart:identity.indexOf('<section id="rules">'));
  assert.ok(active.includes('id="small-digital"'));
  assert.ok(!active.includes('id="C-03"')&&!active.includes('id="D-04"'));
