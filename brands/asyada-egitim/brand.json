@@ -139,6 +139,43 @@
     "retiredVariants": [
       "C-03",
       "D-04"
-    ]
+    ],
+    "byLanguage": {
+      "tr": {
+        "label": "Türkçe logo",
+        "language": "tr",
+        "scope": "Turkish and approved formal bilingual signatures",
+        "manifest": "brands/asyada-egitim/assets/lockups/canonical-lockups.json",
+        "manifestSha256": "8a6a7f85fbabcd497f0a3032aa335150fedebc6646e7e767980bfa73d4c5ca06",
+        "defaultVariant": "H-02",
+        "approvedVariants": [
+          "H-02",
+          "P-01",
+          "F-05"
+        ],
+        "approvedOn": "2026-10-08"
+      },
+      "en": {
+        "label": "English logo",
+        "language": "en",
+        "scope": "English-only Education in Asia signatures",
+        "manifest": "brands/asyada-egitim/assets/lockups/canonical-english-lockups.json",
+        "manifestSha256": "f8379cfc30602121d2fd773edd7297cf0d576c4cdd262c71077b504db95f9c7d",
+        "defaultVariant": "H-EN-02",
+        "approvedVariants": [
+          "H-EN-02",
+          "P-EN-01"
+        ],
+        "approvedOn": "2026-11-04",
+        "approvedColorVariants": [
+          "light",
+          "dark",
+          "monochrome"
+        ],
+        "sha256Field": "canonical_lockup_sha256"
+      }
+    },
+    "languageSelectionDefault": "tr",
+    "languageSelectionRule": "Explicitly select tr or en per design/product content. Keep Turkish/bilingual H-02/P-01/F-05 and English-only H-EN-02/P-EN-01 as separate language families sharing the same approved V-01 emblem, directory and site; never combine glyphs or use obsolete English review assets."
   }
 }

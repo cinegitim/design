@@ -1,5 +1,17 @@
 # Brand Status (operational state — updated only on explicit human decisions)
 
+## Language-specific canonical logos — current (2026-11-04)
+
+The user approved the complete English-only **Education in Asia V9** on 2026-11-04.
+Both languages share the same approved V-01 seal and **one canonical source directory**, `assets/lockups/`, but are separate lockup families:
+
+- **Türkçe (tr):** existing H-02, P-01 and F-05 bilingual/Turkish brand signatures, Jost 550/350, approved 2026-10-08. Original `assets/lockups/canonical-lockups.json` and hashes remain unchanged.
+- **English (en):** H-EN-02 horizontal (default) and P-EN-01 stacked, light/dark/monochrome, Jost 450 main and 350 five-country subtitle, approved 2026-11-04. Authority: `assets/lockups/canonical-english-lockups.json`, checksum `f8379cfc30602121d2fd773edd7297cf0d576c4cdd262c71077b504db95f9c7d`.
+- Choose the intended language before selecting a complete, unchanged canonical SVG. The English line within a bilingual Turkish logo is not the approved English-only logo.
+- Brandstudio presents both language families on `docs/identity/index.html` and `docs/workspaces/asyada-egitim/logos-and-covers/index.html` under distinct headings. No separate review gallery or active older English logo versions remain.
+- Old English V6–V8.1/V9 review **SVG copies** were removed from the working repository; historic Git commits and decision records remain auditable. Do not restore obsolete review SVGs to production or generation workflows.
+
+
 - Workflow stage: **canonical seal and complete lockup family locked** (human approval 2026-10-08; metadata reconciled 2026-10-10)
 - Client-approved territory: the seal. Territory/world exploration closed.
 - Client-approved visual direction: **V-01**
