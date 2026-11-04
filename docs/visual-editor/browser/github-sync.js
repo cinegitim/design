@@ -56,8 +56,31 @@ async function reviewPrAvailable(){
  }catch(_){return false}
 }
 
+async function finalizeAvailable(){
+ try{
+  const r=await fetch('/visual-editor/api/finalize',{method:'GET',credentials:'same-origin',cache:'no-store',headers:{Accept:'application/json'}});
+  if(!r.ok||!(r.headers.get('content-type')||'').includes('application/json'))return false;
+  const data=await r.json();
+  return data.enabled===true&&data.repo==='cinegitim/design'&&data.mode==='product-bulk-draft-review'
+ }catch(_){return false}
+}
+async function finalizeProduct({product,expectedSha,selectedVersion,sourcePages,files}){
+ if(!RE.test(product)||!/^[0-9a-f-]{36}$/i.test(expectedSha||'')||!Number.isInteger(selectedVersion)||
+    !Array.isArray(sourcePages)||!Array.isArray(files))throw Error('Geçersiz tamamlanmış ürün paketi');
+ let r;
+ try{r=await fetch('/visual-editor/api/finalize',{method:'POST',credentials:'same-origin',cache:'no-store',
+  headers:{'content-type':'application/json','X-Brandstudio-Editor':'1'},
+  body:JSON.stringify({product,expectedSha,selectedVersion,sourcePages,files,acknowledgePublicRepository:true})})}
+ catch(e){throw Error('GitHub toplu aktarımına bağlanılamadı: '+e.message)}
+ if(!(r.headers.get('content-type')||'').includes('application/json'))throw Error('Admin oturumu gerekli');
+ const data=await r.json();
+ if(!r.ok)throw Error(data.error||'Toplu aktarım başarısız');
+ if(!/^https:\/\/github\.com\/cinegitim\/design\/pull\/[1-9]\d*$/.test(data.url||''))throw Error('GitHub PR adresi geçersiz');
+ return data
+}
+
 root.BrandstudioCloud={
- load,commit,openReviewPr,reviewPrAvailable,
+ load,commit,openReviewPr,reviewPrAvailable,finalizeAvailable,finalizeProduct,
  authenticated:()=>true,
  setToken:()=>true,
  MAX_HISTORY:240

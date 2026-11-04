@@ -93,18 +93,16 @@ test('repeated click returns existing PR without another branch or write',async(
  }finally{globalThis.fetch=old}
 });
 
-test('PR credentials remain server side; editor has explicit, unsaved-state guarded UI',()=>{
+test('legacy single-version endpoint remains server-side; UI uses only product-wide handoff',()=>{
  const root=path.resolve(import.meta.dirname,'../../..');
  const client=fs.readFileSync(path.join(root,'docs/visual-editor/browser/github-sync.js'),'utf8');
  const html=fs.readFileSync(path.join(root,'docs/visual-editor/browser/index.html'),'utf8');
  const gateway=fs.readFileSync(path.join(root,'studio/cloudflare-brandstudio/asya-gateway/worker.mjs'),'utf8');
  assert.ok(client.includes('openReviewPr'));
- assert.ok(client.includes('reviewPrAvailable'));
- assert.ok(html.includes("button.style.display=enabled?'':'none'"));
+ assert.ok(client.includes('finalizeProduct'));
+ assert.ok(html.includes('id="finalize-product"'));
+ assert.doesNotMatch(html,/id="style-pr"/);
  assert.doesNotMatch(client,/api\.github\.com|GITHUB_PR_TOKEN/);
- assert.ok(html.includes('id="style-pr"'));
- assert.ok(html.includes('id="style-pr-status"'));
- assert.match(html,/if\(dirty\|\|autoBusy\|\|JSON\.stringify\(state\)!==JSON\.stringify\(stored\)\)/);
- assert.ok(html.includes("confirm('v'+version"));
  assert.match(gateway,/submitEditorReview\(\{request,env,authenticated:true\}\)/);
+ assert.match(gateway,/submitProductFinalization\(\{request,env,authenticated:true\}\)/);
 });
