@@ -79,8 +79,32 @@ async function finalizeProduct({product,expectedSha,selectedVersion,sourcePages,
  return data
 }
 
+// Promotion is a separate deliberate action AFTER the finalized-product PR is merged.
+// The browser never supplies source HTML or a GitHub token to promotion.
+async function promoteAvailable(){
+ try{
+  const r=await fetch('/visual-editor/api/promote',{method:'GET',credentials:'same-origin',cache:'no-store',headers:{Accept:'application/json'}});
+  if(!r.ok||!(r.headers.get('content-type')||'').includes('application/json'))return false;
+  const d=await r.json();
+  return d.enabled===true&&d.repo==='cinegitim/design'&&d.mode==='immutable-new-source-version'
+ }catch(_){return false}
+}
+async function promoteVersion({product,expectedSha,selectedVersion}){
+ if(!RE.test(product)||!/^[a-f0-9-]{36}$/i.test(expectedSha||'')||!Number.isInteger(selectedVersion))throw Error('Geçersiz kaynak sürümü');
+ let r;
+ try{r=await fetch('/visual-editor/api/promote',{method:'POST',credentials:'same-origin',cache:'no-store',
+  headers:{'content-type':'application/json','X-Brandstudio-Editor':'1'},
+  body:JSON.stringify({product,expectedSha,selectedVersion,acknowledgeNewGitHubVersion:true})})}
+ catch(e){throw Error('GitHub yeni sürüm bağlantısı: '+e.message)}
+ if(!(r.headers.get('content-type')||'').includes('application/json'))throw Error('Admin oturumu gerekli');
+ const d=await r.json();
+ if(!r.ok)throw Error(d.error||'Yeni kaynak sürümü oluşturulamadı');
+ if(!/^https:\/\/github\.com\/cinegitim\/design\/pull\/[1-9]\d*$/.test(d.url||''))throw Error('GitHub PR yanıtı geçersiz');
+ return d
+}
+
 root.BrandstudioCloud={
- load,commit,openReviewPr,reviewPrAvailable,finalizeAvailable,finalizeProduct,
+ load,commit,openReviewPr,reviewPrAvailable,finalizeAvailable,finalizeProduct,promoteAvailable,promoteVersion,
  authenticated:()=>true,
  setToken:()=>true,
  MAX_HISTORY:240
