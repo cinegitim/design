@@ -46,7 +46,7 @@ function create({module,getContext,commit,exportBrief}){
   const maySave=eligible(ctx)&&category==="instagram-carousel"&&styles.length>0;
   $("style-save").disabled=!maySave;
   if(!maySave)status("Bu ürün için kayıtlı tasarım dili yok. Mevcut tasarım korunuyor.");
-  else if(!saved)status("Stil adayı · seçim henüz sürümde kayıtlı değil. İnsan kreatif onayı gerekiyor.");
+  else if(!saved)status("Stil adayı · henüz çalışma alanına uygulanmadı. İnsan kreatif onayı gerekiyor.");
  }
  function sync(){
   if(!registry||!module){status("Stil kataloğu yüklenemedi.");$("style-save").disabled=true;$("style-export").disabled=true;return}
@@ -57,7 +57,7 @@ function create({module,getContext,commit,exportBrief}){
   if(!category)$("style-category").selectedIndex=-1;
   fillFamilies(chosen);
   $("style-export").disabled=!chosen;
-  if(chosen)status("Sürümde kayıtlı · "+chosen.style_id+" / "+chosen.preset_id+" · "+chosen.approval_status+" · GitHub PR yok");
+  if(chosen)status("Çalışma alanında seçili · "+chosen.style_id+" / "+chosen.preset_id+" · "+chosen.approval_status+" · GitHub PR yok");
  }
  function read(){
   const ctx=getContext(),s=find();
@@ -72,18 +72,18 @@ function create({module,getContext,commit,exportBrief}){
     preset_id:$("style-preset").value,lockup_id:$("style-logo").value,overrides});
  }
  $("style-category").addEventListener("change",()=>fillFamilies(null));
- $("style-family").addEventListener("change",()=>{fillPresets(null);status("Seçim henüz sürümde kayıtlı değil.")});
- $("style-preset").addEventListener("change",()=>{axes(find(),null);status("Varyasyonu sürüme kaydetmek için butona basın.")});
+ $("style-family").addEventListener("change",()=>{fillPresets(null);status("Seçim henüz çalışma alanına uygulanmadı.")});
+ $("style-preset").addEventListener("change",()=>{axes(find(),null);status("Varyasyonu düzenlemeye uygulamak için butona basın.")});
  $("style-save").addEventListener("click",()=>{
   try{const selection=read();commit(selection);
    $("style-export").disabled=false;
-   status("Seçim bulut sürümüne kaydedilecek · "+selection.approval_status+" · GitHub PR henüz yok")
-  }catch(e){status("Kaydedilemedi: "+e.message)}
+   status("Stil uygulandı, ancak buluta kaydedilmedi. Üstteki kayıt düğmelerini kullanın · "+selection.approval_status+" · GitHub PR henüz yok")
+  }catch(e){status("Stil uygulanamadı: "+e.message)}
  });
  $("style-export").addEventListener("click",()=>{
   try{
    const ctx=getContext(),selection=ctx.state?.designStyle;
-   if(!selection)throw Error("Önce seçimi sürüme kaydedin");
+   if(!selection)throw Error("Önce stili çalışma alanına uygulayın");
    module.validate(registry,selection);
    exportBrief(selection,ctx);
    status("Üretim fişi indirildi · GitHub PR henüz açılmadı. Bir ajan bu fişi PR'a eklemeli.")
