@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yeni Ufuk × ASYA Manifestosu · Brandstudio Editable Cover</title>
+<style>
+@font-face{font-family:Jost;src:url("../../../assets/Jost-VF.ttf") format("truetype");font-weight:100 900;font-display:swap}
+:root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120}
+*{box-sizing:border-box}html,body{margin:0}body{font-family:Jost,Arial,sans-serif;background:var(--paper);overflow:hidden}
+.canvas{position:relative;isolation:isolate;overflow:hidden;background:var(--paper);width:1500px;height:500px}
+.photo{position:absolute;overflow:hidden;background:#172128}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.85) contrast(1.12) brightness(.88)}
+.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,26,34,.03),rgba(14,26,36,.36))}
+.lockup{position:absolute;display:block;object-fit:contain;z-index:4}
+.micro{position:absolute;z-index:4;letter-spacing:.16em;font-weight:650;white-space:nowrap}
+.title{position:absolute;z-index:4;font-weight:750;letter-spacing:-.065em;line-height:.98;margin:0;white-space:nowrap}
+.title span{color:var(--red)}
+.line{position:absolute;z-index:3;background:var(--red)}
+.folio{position:absolute;z-index:4;letter-spacing:.15em;font-size:18px;font-weight:600;white-space:nowrap}
+.outline{position:absolute;z-index:2;font-weight:850;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.54);letter-spacing:-.08em;line-height:1;white-space:nowrap}
+.tiny-mark{position:absolute;z-index:5;font-size:12px;font-weight:600;letter-spacing:.16em}
+.canvas.x .photo{inset:0 0 0 675px;clip-path:polygon(11% 0,100% 0,100% 100%,0 100%)}
+.canvas.x .photo img{object-position:50% 57%}
+.canvas.x .photo:after{background:linear-gradient(0deg,rgba(12,24,36,.74),transparent 54%),linear-gradient(90deg,transparent 22%,rgba(19,24,33,.15))}
+.canvas.x .lockup{width:355px;left:75px;top:40px}
+.canvas.x .micro{left:77px;top:185px;font-size:21px;color:var(--ink)}
+.canvas.x .title{left:74px;top:224px;font-size:82px;color:var(--ink)}
+.canvas.x .title .second{color:var(--ink)}
+.canvas.x .line{left:317px;top:434px;width:92px;height:7px}
+.canvas.x .outline{right:40px;bottom:95px;font-size:182px}
+.canvas.x .folio{right:64px;bottom:38px;color:#fff;font-size:15px;letter-spacing:.1em}
+.canvas.x .tiny-mark{left:325px;bottom:36px;color:#6c635d}
+.canvas.linkedin .photo{inset:0 auto 0 0;width:690px;clip-path:polygon(0 0,100% 0,92% 100%,0 100%)}
+.canvas.linkedin .photo img{object-position:50% 53%}
+.canvas.linkedin .photo:after{background:linear-gradient(90deg,rgba(17,28,35,.3),rgba(17,28,35,.12))}
+.canvas.linkedin .outline{left:40px;bottom:20px;font-size:168px;-webkit-text-stroke:1.3px rgba(255,255,255,.58)}
+.canvas.linkedin .lockup{right:56px;top:15px;width:334px}
+.canvas.linkedin .micro{left:714px;top:34px;font-size:16px;color:var(--red)}
+.canvas.linkedin .title{left:710px;top:145px;font-size:52px;letter-spacing:-.05em;color:var(--ink)}
+.canvas.linkedin .title .second{color:var(--red)}
+.canvas.linkedin .folio{right:61px;bottom:19px;color:#68615a;font-size:13px}
+.canvas.facebook-desktop .photo,.canvas.facebook-mobile .photo{top:0;bottom:0;left:0;width:950px;clip-path:polygon(0 0,100% 0,90% 100%,0 100%)}
+.canvas.facebook-desktop .photo img,.canvas.facebook-mobile .photo img{object-position:50% 50%;filter:saturate(.84) contrast(1.05) brightness(.82)}
+.canvas.facebook-desktop .photo:after,.canvas.facebook-mobile .photo:after{background:linear-gradient(0deg,rgba(13,21,27,.65),transparent 56%)}
+.canvas.facebook-desktop .outline,.canvas.facebook-mobile .outline{left:80px;bottom:93px;font-size:205px}
+.canvas.facebook-desktop .lockup,.canvas.facebook-mobile .lockup{width:400px;right:104px;top:62px}
+.canvas.facebook-desktop .micro,.canvas.facebook-mobile .micro{left:965px;top:240px;font-size:21px;color:var(--red)}
+.canvas.facebook-desktop .title,.canvas.facebook-mobile .title{left:960px;top:281px;font-size:78px;color:var(--ink)}
+.canvas.facebook-desktop .line,.canvas.facebook-mobile .line{left:966px;bottom:83px;width:108px;height:8px}
+.canvas.facebook-desktop .folio,.canvas.facebook-mobile .folio{left:360px;bottom:43px;color:#fff;font-size:17px}
+.canvas.facebook-mobile .photo{width:978px}
+.canvas.facebook-mobile .lockup{top:82px}
+.canvas.facebook-mobile .micro{top:275px}
+.canvas.facebook-mobile .title{top:315px}
+.canvas.facebook-mobile .line{bottom:98px}
+.canvas.facebook-mobile .folio{bottom:51px;left:360px}
+.canvas.facebook-mobile .outline{bottom:108px}
+</style></head><body>
+<div id="cover" class="canvas" role="img" aria-label="Asya'da Eğitim kapak tasarımı: Yeni Ufuk ve ASYA Manifestosu, onaylı logo ve gerçek Asya üniversitesi fotoğrafı.">
+  <div class="photo"><img id="campus" alt="Gerçek Asya üniversitesi kampüs mimarisi"></div>
+  <div class="outline" aria-hidden="true">ASYA</div>
+  <img class="lockup" src="../assets/h02-light.svg" alt="Asya'da Eğitim — onaylı kurumsal logo H-02/light">
+  <div class="micro">ÜNİVERSİTE İÇİN</div>
+  <h1 class="title"><span>BAŞKA BİR</span><br><span class="second">DÜNYA VAR.</span></h1>
+  <div class="line" aria-hidden="true"></div>
+  <div class="folio">ÇİN · JAPONYA · GÜNEY KORE · SİNGAPUR · HONG KONG</div>
+  <div class="tiny-mark">ASYA'DA EĞİTİM / EDITORIAL 01</div>
+</div>
+<script>
+(function(){
+  const valid={"x":[1500,500],"linkedin":[1512,256],"facebook-desktop":[1702,617],"facebook-mobile":[1704,710]};
+  const requested=new URLSearchParams(location.search).get("platform");
+  const platform=Object.prototype.hasOwnProperty.call(valid,requested)?requested:"x";
+  const [w,h]=valid[platform],cover=document.getElementById("cover");
+  cover.classList.add(platform);cover.style.width=w+"px";cover.style.height=h+"px";
+  const photo=platform.startsWith("facebook")
+    ? "../../../../instagram/tsinghua-atlas-2027/assets/tsinghua-main-building.jpg"
+    : "../../../../instagram/kaist-tech-track-2027-001/assets/kaist-night.jpg";
+  document.getElementById("campus").src=photo;
+  document.title="Yeni Ufuk × ASYA Manifestosu · "+platform;
+  // Keep LinkedIn headline and subtitle safely inside narrow 1512×256 canvas.
+  if(platform==="linkedin"){document.querySelector(".micro").textContent="ÜNİVERSİTE İÇİN";document.querySelector(".title").innerHTML="BAŞKA BİR <span class='second'>DÜNYA VAR.</span>";document.querySelector(".folio").textContent="ASYA'DA EĞİTİM · 5 ÜLKE";}
+  // Place profile-overlay-sensitive content on Facebook's right-hand editorial panel.
+  if(platform.startsWith("facebook")){document.querySelector(".micro").textContent="ÜNİVERSİTE İÇİN";document.querySelector(".folio").textContent="ÇİN · JAPONYA · GÜNEY KORE · SİNGAPUR · HONG KONG";document.querySelector(".tiny-mark").remove();}
+  if(platform==="x"){document.querySelector(".folio").textContent="ÇİN · JAPONYA · GÜNEY KORE · SİNGAPUR · HONG KONG";}
+}());
+</script></body></html>

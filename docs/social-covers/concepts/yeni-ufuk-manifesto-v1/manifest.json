@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "brand": "asyada-egitim",
+  "id": "social-covers-new-horizon-manifesto-v1",
+  "status": "review-only",
+  "title": "Yeni Ufuk × ASYA Manifestosu",
+  "slogan": "Üniversite için başka bir dünya var.",
+  "date": "2026-11-05",
+  "category": "social-cover",
+  "strategy": "code-first editorial image + large Jost typography; no image-generation",
+  "canonical_lockup_id": "H-02/light",
+  "canonical_lockup_source": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
+  "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "source": "source/cover.html",
+  "copy": "assets/h02-light.svg",
+  "platforms": [
+    {
+      "id": "x",
+      "size": [
+        1500,
+        500
+      ]
+    },
+    {
+      "id": "linkedin",
+      "size": [
+        1512,
+        256
+      ]
+    },
+    {
+      "id": "facebook-desktop",
+      "size": [
+        1702,
+        617
+      ]
+    },
+    {
+      "id": "facebook-mobile",
+      "size": [
+        1704,
+        710
+      ]
+    }
+  ],
+  "photography": [
+    {
+      "file": "docs/instagram/kaist-tech-track-2027-001/assets/kaist-night.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:KAIST_campus_at_night.jpg",
+      "credit": "AhmadElq, 2019",
+      "license": "CC BY-SA 4.0",
+      "used_for": [
+        "x",
+        "linkedin"
+      ]
+    },
+    {
+      "file": "docs/instagram/tsinghua-atlas-2027/assets/tsinghua-main-building.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Main_building_of_Tsinghua_University_2.JPG",
+      "credit": "Soramimi, 2015",
+      "license": "CC BY-SA 4.0",
+      "used_for": [
+        "facebook-desktop",
+        "facebook-mobile"
+      ]
+    }
+  ],
+  "renders": "not yet generated",
+  "inspected_as_raster": false,
+  "creative_approved": false,
+  "social_published": false,
+  "notes": "Shared editorial art direction approved by user; individual artwork remains subject to visual approval and device crop testing. Existing social cover versions are preserved."
+}
