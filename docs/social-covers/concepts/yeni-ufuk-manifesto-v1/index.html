@@ -42,5 +42,5 @@ section{margin-top:48px}h2{font-size:26px;letter-spacing:-.025em;margin:0}.meta{
 function fit(){document.querySelectorAll(".stage").forEach(stage=>{const w=+stage.dataset.w,h=+stage.dataset.h,scale=Math.min(1,stage.clientWidth/w),frame=stage.querySelector("iframe");stage.style.height=(h*scale)+"px";frame.style.width=w+"px";frame.style.height=h+"px";frame.style.transform="scale("+scale+")";});}
 new ResizeObserver(fit).observe(document.querySelector("main"));window.addEventListener("load",fit);fit();
 </script>
-<script src="../../../instagram/brandstudio-page.js" data-product-id="asset-social-covers-cover-graphics"></script>
+
 </body></html>
