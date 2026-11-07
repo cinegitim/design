@@ -313,7 +313,7 @@ header #product{display:none}
 <div class="field"><label for="style-preset">Alt varyasyon</label><select id="style-preset" aria-label="Alt varyasyon"></select></div>
 <div class="field"><label for="style-logo">Onaylı logo</label><select id="style-logo" aria-label="Kanonik logo"></select></div>
 <details><summary>İnce ayarlar</summary><div class="style-axes" id="style-axes"></div></details>
-<div class="style-actions"><button type="button" class="btn primary" id="style-save">Stili düzenlemeye uygula</button><button type="button" class="btn" id="style-export">GitHub üretim fişi ↓</button></div>
+<div class="style-actions"><button type="button" class="btn primary" id="style-save">Stili düzenlemeye uygula</button><button type="button" class="btn" id="style-export">GitHub üretim fişi ↓</button><button type="button" class="btn" id="style-copy" disabled>Ajan komutunu kopyala</button></div>
 
 <p id="style-status" class="small" aria-live="polite">Stil kataloğu yükleniyor…</p></div></details>
 <div class="panel" id="selection-tools" hidden><strong id="selection-summary" aria-live="polite"></strong>
@@ -435,6 +435,7 @@ var cloud=globalThis.BrandstudioCloud,cloudData=null,cloudSelected=false,cloudNo
   module:styleModule,
   getContext:function(){return{brand:brand,record:record,state:state,slug:slug,current:current}},
   commit:function(selection){if(JSON.stringify(state.designStyle)!==JSON.stringify(selection)){checkpoint();state.designStyle=selection;dirtyStatus()}},
+  copyPrompt:async function(prompt){if(!navigator.clipboard?.writeText)throw Error("Tarayıcı panoya yazmayı desteklemiyor");await navigator.clipboard.writeText(prompt)},
   exportBrief:function(selection){var brief=styleModule.productionBrief({selection:selection,product:slug,version:current});
    download(slug+'-v'+current+'-production-brief.json',JSON.stringify(brief,null,2)+'\n','application/json')}
  })
