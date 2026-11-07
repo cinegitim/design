@@ -29,9 +29,9 @@ application, print asset or web-design production in this repository:
 Category and visual style are independent. When given an explicit style, resolve the exact brand/category-scoped manifest with `studio/production/style_catalog.py` or verify it manually from connected GitHub; presets and variation overrides are bounded by `variation_axes`. An unselected style remains null. Do not turn a review-only style into brand approval or bypass fixed SVG/HTML/Chromium production rules.
 
 When the operator supplies the copied Visual Editor production prompt or
-\`brandstudio-visual-editor\` JSON, follow
-\`studio/production/AGENT_STYLE_HANDOFF.md\` and validate the exact JSON
-with \`studio/production/editor_handoff.py\` when a checkout/Python are
+`brandstudio-visual-editor` JSON, follow
+`studio/production/AGENT_STYLE_HANDOFF.md` and validate the exact JSON
+with `studio/production/editor_handoff.py` when a checkout/Python are
 actually available. Treat the verified style pack as a fixed source
 contract while retaining the user brief and creative variation. Missing
 checkout or changed Git blobs means verification is unproven; do not
