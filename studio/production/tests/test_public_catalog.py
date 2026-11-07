@@ -17,7 +17,9 @@ class PublicCatalogTests(unittest.TestCase):
         routes = json.loads((ROOT / "studio/production/routes.json").read_text())
         self.assertEqual({x["id"] for x in self.data["categories"]}, set(routes["categories"]))
         self.assertEqual(len(self.data["categories"]), 6)
-        self.assertEqual(sum(c["style_count"] for c in self.data["categories"]), 1)
+        self.assertEqual(sum(c["style_count"] for c in self.data["categories"]), 3)
+        self.assertEqual({x["id"] for x in self.data["styles"]}, {"editorial-campaign", "data-atlas", "conceptual-breakout"})
+        self.assertTrue(all(x["status"] == "review-only" and not x["production_approved"] for x in self.data["styles"]))
         self.assertEqual(self.data["styles"][0]["status"], "review-only")
         self.assertFalse(self.data["styles"][0]["production_approved"])
 
