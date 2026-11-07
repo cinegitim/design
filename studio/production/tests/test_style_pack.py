@@ -95,6 +95,32 @@ class StylePackTests(unittest.TestCase):
         self.assertEqual(item["status"], "review-only")
         self.assertNotIn("D-04", json.dumps(item))
 
+    def test_three_independent_families_share_exact_canonical_identity(self):
+        from style_catalog import list_styles
+        styles = list_styles(root=ROOT, brand=BRAND, category=CAT)
+        self.assertEqual({x["style_id"] for x in styles},
+                         {"editorial-campaign", "data-atlas", "conceptual-breakout"})
+        baseline = self.pack()
+        specs = {
+            "data-atlas": ("metrics-overview", "structure"),
+            "conceptual-breakout": ("object-metaphor", "visual_metaphor"),
+        }
+        for style_id, (preset, axis) in specs.items():
+            with self.subTest(style=style_id):
+                pack = build_style_pack(root=ROOT, brand=BRAND, category=CAT,
+                                        style_id=style_id, preset_id=preset)
+                self.assertTrue(verify_style_pack(pack, root=ROOT))
+                self.assertEqual(pack["identity"], baseline["identity"])
+                self.assertEqual(pack["typography"], baseline["typography"])
+                self.assertEqual(pack["palette"], baseline["palette"])
+                self.assertFalse(pack["style"]["production_approved"])
+                self.assertIn(axis, pack["style"]["variation"])
+                self.assertNotEqual(pack["style"]["variation"],
+                                    baseline["style"]["variation"])
+        with self.assertRaises(ValueError):
+            build_style_pack(root=ROOT, brand=BRAND, category=CAT,
+                             style_id="data-atlas", preset_id="object-metaphor")
+
     def test_build_rejects_unknown_style_and_variation(self):
         for bad in ({"style_id": "unregistered"}, {"preset_id": "wrong"},
                     {"variation_overrides": {"color_mode": "pink"}}):
