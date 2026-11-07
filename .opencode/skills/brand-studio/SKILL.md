@@ -22,8 +22,8 @@ methodology, locked artwork and human gates are identical in both executors.
 ## When a style is selected in Visual Editor
 
 If a task arrives with a copied Brandstudio agent prompt or its JSON production
-brief, read \`studio/production/AGENT_STYLE_HANDOFF.md\` and run the
-stdlib-only \`python3 studio/production/editor_handoff.py --brief PATH\`
+brief, read `studio/production/AGENT_STYLE_HANDOFF.md` and run the
+stdlib-only `python3 studio/production/editor_handoff.py --brief PATH`
 inside the actual checked-out repository. Keep its canonical style, logo
 bytes, palette and typography locked while allowing the selected variation
 axes and original user brief. This handoff does not grant human creative
