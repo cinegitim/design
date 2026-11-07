@@ -8,7 +8,7 @@ function options(select,records,wanted){
  if(records.some(x=>x.value===wanted))select.value=wanted;
  select.disabled=!records.length;
 }
-function create({module,getContext,commit,exportBrief}){
+function create({module,getContext,commit,exportBrief,copyPrompt}){
  let registry=null;
  const status=message=>$("style-status").textContent=message;
  const eligible=ctx=>!!ctx.record&&ctx.record.family==="instagram"&&ctx.record.kind==="html"&&
@@ -49,7 +49,7 @@ function create({module,getContext,commit,exportBrief}){
   else if(!saved)status("Stil adayı · henüz çalışma alanına uygulanmadı. İnsan kreatif onayı gerekiyor.");
  }
  function sync(){
-  if(!registry||!module){status("Stil kataloğu yüklenemedi.");$("style-save").disabled=true;$("style-export").disabled=true;return}
+  if(!registry||!module){status("Stil kataloğu yüklenemedi.");$("style-save").disabled=true;$("style-export").disabled=true;$("style-copy").disabled=true;return}
   const ctx=getContext();let chosen=ctx.state?.designStyle||null;
   if(chosen){try{module.validate(registry,chosen)}catch(e){status("Kayıtlı stil güncel katalogla eşleşmiyor: "+e.message);chosen=null}}
   const category=chosen?.category||(eligible(ctx)?"instagram-carousel":null);
@@ -57,6 +57,7 @@ function create({module,getContext,commit,exportBrief}){
   if(!category)$("style-category").selectedIndex=-1;
   fillFamilies(chosen);
   $("style-export").disabled=!chosen;
+  $("style-copy").disabled=!chosen;
   if(chosen)status("Çalışma alanında seçili · "+chosen.style_id+" / "+chosen.preset_id+" · "+chosen.approval_status+"");
  }
  function read(){
@@ -89,7 +90,20 @@ function create({module,getContext,commit,exportBrief}){
    status("Üretim fişi indirildi · GitHub PR henüz açılmadı. Bir ajan bu fişi PR'a eklemeli.")
   }catch(e){status("Üretim fişi hazırlanamadı: "+e.message)}
  });
- $("style-save").disabled=true;$("style-export").disabled=true;
+ $("style-copy").addEventListener("click",async()=>{
+  const button=$("style-copy");button.disabled=true;
+  try{
+   const ctx=getContext(),selected=ctx.state?.designStyle;
+   if(!selected)throw Error("Önce stili çalışma alanına uygulayın");
+   module.validate(registry,selected);
+   if(typeof copyPrompt!=="function")throw Error("Pano desteği mevcut değil");
+   const prompt=module.agentPrompt(registry,{selection:selected,product:ctx.slug,version:ctx.current});
+   await copyPrompt(prompt);
+   status("Ajan komutu panoya kopyalandı · aynı kilitli marka kuralları, seçili stil ve kaynak SHA kimliği ile. Üretim veya PR başlatılmadı.");
+  }catch(e){status("Ajan komutu kopyalanamadı: "+e.message+" · alternatif: üretim fişini indir.")}
+  finally{button.disabled=false;sync()}
+ });
+ $("style-save").disabled=true;$("style-export").disabled=true;$("style-copy").disabled=true;
  return{setRegistry(value){if(!value||value.schema!==1||!Array.isArray(value.styles))throw Error("Geçersiz stil kataloğu");registry=value;sync()},sync};
 }
 root.BrandstudioStyleUI={create};
