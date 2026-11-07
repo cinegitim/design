@@ -264,6 +264,24 @@ header #product{display:none}
 #design-language-panel .style-actions{display:flex;gap:6px;flex-wrap:wrap}
 #design-language-panel .style-actions .btn{font-size:11px}
 #design-language-panel #style-status{font-size:11px;line-height:1.5;overflow-wrap:anywhere}
+/* A category contains multiple independent style families, each with presets. */
+#design-language-panel .style-choices{display:grid;grid-template-columns:1fr;gap:6px;max-height:300px;overflow-y:auto;scrollbar-gutter:stable}
+#design-language-panel .style-choice{width:100%;display:flex;gap:10px;align-items:center;text-align:left;background:#142335;border:1px solid #435568;border-radius:9px;padding:8px;color:#eaf0f5;min-width:0;cursor:pointer}
+#design-language-panel .style-choice[aria-pressed="true"]{border-color:#e3b585;background:#243045;box-shadow:inset 3px 0 #e3b585}
+#design-language-panel .style-choice:focus-visible{outline:2px solid #e3b585;outline-offset:2px}
+#design-language-panel .style-choice-copy{min-width:0;display:grid;gap:3px}
+#design-language-panel .style-choice-copy strong{font-size:11px;line-height:1.25}
+#design-language-panel .style-choice-copy small{font-size:9px;color:#bac8d8}
+#design-language-panel .style-mini{display:grid;place-items:center;position:relative;width:44px;height:51px;min-width:44px;overflow:hidden;background:#f7f3e9;border-radius:3px;border:1px solid #bbb0a3}
+#design-language-panel .style-mini:before,#design-language-panel .style-mini:after{content:"";position:absolute;display:block}
+#design-language-panel .style-mini[data-style="editorial-campaign"]:before{left:5px;top:7px;width:22px;height:10px;background:#1d2027;box-shadow:0 14px #1d2027}
+#design-language-panel .style-mini[data-style="editorial-campaign"]:after{right:4px;bottom:5px;width:15px;height:23px;background:#bd2120}
+#design-language-panel .style-mini[data-style="data-atlas"]:before{inset:6px 5px 19px;background:repeating-linear-gradient(90deg,#1d2027 0 2px,transparent 2px 11px),repeating-linear-gradient(0deg,transparent 0 8px,#1d2027 8px 9px);opacity:.8}
+#design-language-panel .style-mini[data-style="data-atlas"]:after{left:6px;right:6px;bottom:6px;height:9px;background:linear-gradient(90deg,#bd2120 25%,transparent 25% 35%,#1d2027 35% 75%,transparent 75%)}
+#design-language-panel .style-mini[data-style="conceptual-breakout"]:before{left:-10px;top:14px;width:58px;height:18px;background:#bd2120;transform:rotate(-32deg)}
+#design-language-panel .style-mini[data-style="conceptual-breakout"]:after{left:17px;top:7px;width:13px;height:34px;border:4px solid #1d2027;border-radius:100%}
+#design-language-panel #style-choice-description{line-height:1.45;min-height:26px;overflow-wrap:anywhere}
+
 </style></head><body>
 <header><h1>Brandstudio <span class="badge">Tarayıcı Editörü · ücretsiz</span></h1><div class="controls"><span id="product">Ürün yükleniyor</span><div class="catalog-pick"><input type="search" id="catalog-search" aria-label="Tasarımlarda ara" placeholder="Tasarım ara…"><select id="catalog-select" aria-label="Düzenlenecek tasarım"></select><select id="catalog-version" class="catalog-version" aria-label="Tasarım sürümü"></select><span id="catalog-status" class="catalog-status" title="Instagram'da yayımlanma ve tasarım inceleme durumu">İncelemede</span><a id="catalog-proof" class="catalog-proof" target="_blank" rel="noopener noreferrer" hidden>Instagram ↗</a><span id="catalog-other-proofs" class="catalog-other-proofs"></span><span id="catalog-breadcrumb" class="catalog-breadcrumb" aria-live="polite"></span></div><a href="../../system/">Tasarım Sistemi</a><a href="../">← Visual Editor</a></div></header>
 <div class="layout" id="workspace"><aside><div class="compact-bar"><h2>Katmanlar</h2><div class="controls"><button class="btn" id="groups-open" title="Tümünü aç">＋</button><button class="btn" id="groups-close" title="Tümünü kapat">−</button></div></div>
@@ -310,6 +328,8 @@ header #product{display:none}
 <p class="small">GitHub’daki ortak stile göre <strong>sonraki üretim için seçim</strong>. Mevcut görsel kendiliğinden yeniden tasarlanmaz.</p>
 <div class="field"><label for="style-category">Kategori</label><select id="style-category" aria-label="Tasarım kategorisi"></select></div>
 <div class="field"><label for="style-family">Tasarım dili</label><select id="style-family" aria-label="Tasarım dili"></select></div>
+<div id="style-choices" class="style-choices" role="group" aria-label="Bu kategoriye ait tasarım tarzları"></div>
+<p class="small" id="style-choice-description" aria-live="polite">Bu kategori için kayıtlı tarzlar yükleniyor…</p>
 <div class="field"><label for="style-preset">Alt varyasyon</label><select id="style-preset" aria-label="Alt varyasyon"></select></div>
 <div class="field"><label for="style-logo">Onaylı logo</label><select id="style-logo" aria-label="Kanonik logo"></select></div>
 <details><summary>İnce ayarlar</summary><div class="style-axes" id="style-axes"></div></details>
