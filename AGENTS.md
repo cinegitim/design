@@ -3,9 +3,9 @@
 ## Shared Visual Editor style handoff (agent-neutral; opt-in)
 
 When a user provides a Visual Editor **Ajan komutunu kopyala** prompt or its
-JSON production brief, follow \`studio/production/AGENT_STYLE_HANDOFF.md\`
+JSON production brief, follow `studio/production/AGENT_STYLE_HANDOFF.md`
 before generating artwork. For a capable checkout, run the read-only
-\`python3 studio/production/editor_handoff.py --brief PATH\` to compare the
+`python3 studio/production/editor_handoff.py --brief PATH` to compare the
 selected style/preset/axes with the exact canonical Git blob and locked SVG
 SHA-256. An executor without filesystem access must say verification is
 unavailable, not invent it. This does **not** approve a review-only style,
