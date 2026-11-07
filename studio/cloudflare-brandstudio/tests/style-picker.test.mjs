@@ -144,7 +144,7 @@ test("copyable agent instructions contain exactly the same verified JSON selecti
  const expected=S.productionBrief(args);
  const between=prompt.split("JSON_PAYLOAD_START\n")[1]?.split("\nJSON_PAYLOAD_END")[0];
  assert.ok(between,"Expected a machine-readable brief in copied prompt");
- assert.deepEqual(JSON.parse(between),expected);
+ assert.deepEqual(JSON.parse(between),JSON.parse(JSON.stringify(expected)));
  assert.match(prompt,/studio\/production\/editor_handoff\.py --brief/);
  assert.match(prompt,/AGENTS\.md/);
  assert.match(prompt,/review-only/);
@@ -165,7 +165,7 @@ test("editor lets users copy a style handoff without running or autosaving it",(
  const ui=fs.readFileSync(path.join(browser,"style-ui.js"),"utf8");
  for(const id of ["style-copy","style-save","style-export"])
   assert.match(html,new RegExp('id="'+id+'"'));
- assert.match(html,/navigator\.clipboard\?\.writeText\(prompt\)/);
+ assert.match(html,/navigator\.clipboard\.writeText\(prompt\)/);
  assert.match(ui,/module\.agentPrompt\(registry,/);
  assert.match(ui,/style-copy/);
  assert.doesNotMatch(ui,/api\.github\.com|POST|\/api\/revisions/);
