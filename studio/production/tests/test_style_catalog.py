@@ -20,7 +20,9 @@ CATEGORY = "instagram-carousel"
 class StyleCatalogTests(unittest.TestCase):
     def test_exact_brand_category_registry(self):
         items = list_styles(root=ROOT, brand=BRAND, category=CATEGORY)
-        self.assertEqual([s["style_id"] for s in items], ["editorial-campaign"])
+        self.assertEqual([s["style_id"] for s in items],
+                         ["conceptual-breakout", "data-atlas", "editorial-campaign"])
+        self.assertTrue(all(s["status"] == "review-only" for s in items))
         self.assertEqual(items[0]["status"], "review-only")
         self.assertEqual(len(items[0]["preset_ids"]), 4)
         self.assertEqual(list_styles(root=ROOT, brand=BRAND, category="social-post"), [])
