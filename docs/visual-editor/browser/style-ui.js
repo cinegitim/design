@@ -101,7 +101,7 @@ function create({module,getContext,commit,exportBrief,copyPrompt}){
    await copyPrompt(prompt);
    status("Ajan komutu panoya kopyalandı · aynı kilitli marka kuralları, seçili stil ve kaynak SHA kimliği ile. Üretim veya PR başlatılmadı.");
   }catch(e){status("Ajan komutu kopyalanamadı: "+e.message+" · alternatif: üretim fişini indir.")}
-  finally{button.disabled=false;sync()}
+  finally{button.disabled=!Boolean(getContext().state?.designStyle)}
  });
  $("style-save").disabled=true;$("style-export").disabled=true;$("style-copy").disabled=true;
  return{setRegistry(value){if(!value||value.schema!==1||!Array.isArray(value.styles))throw Error("Geçersiz stil kataloğu");registry=value;sync()},sync};
