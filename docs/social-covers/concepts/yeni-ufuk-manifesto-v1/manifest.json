@@ -5,9 +5,9 @@
   "status": "review-only",
   "title": "Yeni Ufuk × ASYA Manifestosu",
   "slogan": "Üniversite için başka bir dünya var.",
-  "date": "2026-11-05",
+  "date": "2026-11-07",
   "category": "social-cover",
-  "strategy": "code-first editorial image + large Jost typography; no image-generation",
+  "strategy": "AI-generated campus photo layer + deterministic HTML/CSS typography and exact canonical H-02 SVG lockup",
   "canonical_lockup_id": "H-02/light",
   "canonical_lockup_source": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
   "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
@@ -44,31 +44,24 @@
       ]
     }
   ],
-  "photography": [
-    {
-      "file": "docs/instagram/kaist-tech-track-2027-001/assets/kaist-night.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:KAIST_campus_at_night.jpg",
-      "credit": "AhmadElq, 2019",
-      "license": "CC BY-SA 4.0",
-      "used_for": [
-        "x",
-        "linkedin"
-      ]
-    },
-    {
-      "file": "docs/instagram/tsinghua-atlas-2027/assets/tsinghua-main-building.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Main_building_of_Tsinghua_University_2.JPG",
-      "credit": "Soramimi, 2015",
-      "license": "CC BY-SA 4.0",
-      "used_for": [
-        "facebook-desktop",
-        "facebook-mobile"
-      ]
-    }
-  ],
+  "photography": [],
   "renders": "not yet generated",
   "inspected_as_raster": false,
   "creative_approved": false,
   "social_published": false,
-  "notes": "Shared editorial art direction approved by user; individual artwork remains subject to visual approval and device crop testing. Existing social cover versions are preserved."
+  "notes": "Older KAIST and Tsinghua image references removed from all four live cover source layouts. Single generated source image supplies the visual layer; verified H-02 logo SVG and Jost DOM text are kept separate. Review/QA required before social publication.",
+  "version": "v2 — AI generated international campus visual replacement",
+  "imagery": {
+    "path": "assets/international-campus-ai-v2.jpg",
+    "source": "ChatGPT generated image in this conversation, final diverse international student campus scene",
+    "representation": "conceptual composite; not an actual named university campus",
+    "format": "JPEG",
+    "github_blob_sha": "1f85dd1de2f385bb8d2f21b6732aa214f7ce6a3b",
+    "used_for": [
+      "x",
+      "linkedin",
+      "facebook-desktop",
+      "facebook-mobile"
+    ]
+  }
 }

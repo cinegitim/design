@@ -53,9 +53,40 @@
 .canvas.facebook-mobile .line{bottom:98px}
 .canvas.facebook-mobile .folio{bottom:51px;left:360px}
 .canvas.facebook-mobile .outline{bottom:108px}
+
+/* v2: one AI-made visual layer; canonical logo & Jost text remain real DOM elements. */
+.photo,.canvas.x .photo,.canvas.linkedin .photo,.canvas.facebook-desktop .photo,.canvas.facebook-mobile .photo{inset:0!important;width:100%!important;clip-path:none!important}
+.photo img,.canvas.x .photo img,.canvas.linkedin .photo img,.canvas.facebook-desktop .photo img,.canvas.facebook-mobile .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:none!important}
+.photo:after,.canvas.x .photo:after,.canvas.linkedin .photo:after,.canvas.facebook-desktop .photo:after,.canvas.facebook-mobile .photo:after{
+content:"";position:absolute;inset:0;display:block!important;
+background:linear-gradient(90deg,rgba(247,243,233,.28) 0%,rgba(247,243,233,.08) 37%,transparent 58%)!important
+}
+.outline,.tiny-mark,.line{display:none!important}
+.canvas.x .lockup{left:67px;top:35px;width:342px}
+.canvas.x .micro{left:76px;top:180px;font-size:20px;color:var(--ink)}
+.canvas.x .title{left:70px;top:220px;font-size:73px;color:#8e181a;line-height:1.03;letter-spacing:-.053em}
+.canvas.x .title span,.canvas.x .title .second{color:#8e181a}
+.canvas.x .folio{left:325px;right:auto;bottom:24px;color:#F7F3E9;font-size:12px;text-shadow:0 1px 5px #1D2027}
+.canvas.linkedin .photo img{object-position:48% 50%}
+.canvas.linkedin .lockup{left:56px;right:auto;top:12px;width:310px}
+.canvas.linkedin .micro{left:66px;top:131px;font-size:16px;color:var(--ink)}
+.canvas.linkedin .title{left:62px;top:169px;font-size:47px;letter-spacing:-.052em;line-height:1;color:#8e181a}
+.canvas.linkedin .title span,.canvas.linkedin .title .second{color:#8e181a}
+.canvas.linkedin .folio{left:67px;right:auto;bottom:12px;font-size:12px;color:#514843}
+.canvas.facebook-desktop .photo img{object-position:50% 50%}
+.canvas.facebook-mobile .photo img{object-position:57% 50%}
+.canvas.facebook-desktop .lockup,.canvas.facebook-mobile .lockup{left:74px;right:auto;top:40px;width:385px}
+.canvas.facebook-desktop .micro,.canvas.facebook-mobile .micro{left:84px;top:216px;font-size:22px;color:var(--ink)}
+.canvas.facebook-desktop .title,.canvas.facebook-mobile .title{left:77px;top:262px;font-size:76px;line-height:1.03;letter-spacing:-.052em;color:#8e181a}
+.canvas.facebook-desktop .title span,.canvas.facebook-mobile .title span,.canvas.facebook-desktop .title .second,.canvas.facebook-mobile .title .second{color:#8e181a}
+.canvas.facebook-desktop .folio,.canvas.facebook-mobile .folio{left:355px;right:auto;bottom:28px;font-size:14px;color:#fff;text-shadow:0 1px 5px #1D2027}
+.canvas.facebook-mobile .lockup{top:62px}
+.canvas.facebook-mobile .micro{top:226px}
+.canvas.facebook-mobile .title{top:274px}
+.canvas.facebook-mobile .folio{bottom:40px}
 </style></head><body>
-<div id="cover" class="canvas" role="img" aria-label="Asya'da Eğitim kapak tasarımı: Yeni Ufuk ve ASYA Manifestosu, onaylı logo ve gerçek Asya üniversitesi fotoğrafı.">
-  <div class="photo"><img id="campus" alt="Gerçek Asya üniversitesi kampüs mimarisi"></div>
+<div id="cover" class="canvas" role="img" aria-label="Asya'da Eğitim kapak tasarımı: Yeni Ufuk ve ASYA Manifestosu, onaylı logo ve yapay zekâ üretimi uluslararası kampüs görseli.">
+  <div class="photo"><img id="campus" alt="Asya'da uluslararası üniversite yaşamını temsil eden yapay zekâ üretimi kampüs sahnesi"></div>
   <div class="outline" aria-hidden="true">ASYA</div>
   <img class="lockup" src="../assets/h02-light.svg" alt="Asya'da Eğitim — onaylı kurumsal logo H-02/light">
   <div class="micro">ÜNİVERSİTE İÇİN</div>
@@ -71,9 +102,7 @@
   const platform=Object.prototype.hasOwnProperty.call(valid,requested)?requested:"x";
   const [w,h]=valid[platform],cover=document.getElementById("cover");
   cover.classList.add(platform);cover.style.width=w+"px";cover.style.height=h+"px";
-  const photo=platform.startsWith("facebook")
-    ? "../../../../instagram/tsinghua-atlas-2027/assets/tsinghua-main-building.jpg"
-    : "../../../../instagram/kaist-tech-track-2027-001/assets/kaist-night.jpg";
+  const photo="../assets/international-campus-ai-v2.jpg";
   document.getElementById("campus").src=photo;
   document.title="Yeni Ufuk × ASYA Manifestosu · "+platform;
   // Keep LinkedIn headline and subtitle safely inside narrow 1512×256 canvas.
