@@ -19,6 +19,18 @@ The OpenCode backend/model names below apply only in OpenCode; Work/Codex use
 the thin adapter and tool mapping in `studio/work/README.md`. The creative
 methodology, locked artwork and human gates are identical in both executors.
 
+## When a style is selected in Visual Editor
+
+If a task arrives with a copied Brandstudio agent prompt or its JSON production
+brief, read `studio/production/AGENT_STYLE_HANDOFF.md` and run the
+stdlib-only `python3 studio/production/editor_handoff.py --brief PATH`
+inside the actual checked-out repository. Keep its canonical style, logo
+bytes, palette and typography locked while allowing the selected variation
+axes and original user brief. This handoff does not grant human creative
+approval or authorize automatic PRs, merges or social publishing. Do not
+use the Pollinations/image workflow to recreate a complete branded slide
+in place of editable HTML/CSS/SVG.
+
 ## Principles (from reference synthesis)
 
 Adapted and improved for OpenCode from four reference projects — kept their strongest workflows, removed their weaknesses:

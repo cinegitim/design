@@ -1,5 +1,17 @@
 # AI Brand Studio — shared GitHub source / OpenCode + Work/Codex
 
+## Shared Visual Editor style handoff (agent-neutral; opt-in)
+
+When a user provides a Visual Editor **Ajan komutunu kopyala** prompt or its
+JSON production brief, follow `studio/production/AGENT_STYLE_HANDOFF.md`
+before generating artwork. For a capable checkout, run the read-only
+`python3 studio/production/editor_handoff.py --brief PATH` to compare the
+selected style/preset/axes with the exact canonical Git blob and locked SVG
+SHA-256. An executor without filesystem access must say verification is
+unavailable, not invent it. This does **not** approve a review-only style,
+repaint existing artboards, publish, or write to GitHub. Never silently
+substitute an alternate category, font, color, approved logo, or user copy.
+
 ## Instagram publication sync (Chrome-free)
 
 - When creating a new Instagram design, register its unique, natural-language **caption anchor** in `docs/visual-editor/browser/product-groups.json` as `publicationAnchors: ["..."]`; choose an actual distinctive phrase present in its proposed final caption, without adding a tracking token or altering the human-approved copy. Prefer a 20+ character unique phrase. If no reliable anchor is available, leave this field unset and send the later post to human review.
