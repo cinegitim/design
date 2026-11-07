@@ -119,8 +119,13 @@ def project(root: Path) -> tuple[dict, dict]:
             "lockups": lockups, "seal_sha256": manifest["canonical_seal_sha256"]
         })
         result_system.append({
-            "id": style_id, "name": s["name"], **common,
-            "production_approved": s["status"] in {"approved", "locked"},
+            "id": style_id, "name": s["name"],
+            "category": category, "brand": BRAND,
+            "version": s["version"], "status": s["status"],
+            "production_approved": s["status"] == "approved" and
+                                   s["approval"]["human_style_approval"] is True,
+            "description": s["description"],
+            "source_path": definition, "source_blob_sha": sha,
             "palette": s["hard_locks"]["palette_tokens"], "font": "Jost",
             "presets": [{"id": pid, "label": p["label"]}
                         for pid, p in s["presets"].items()],
