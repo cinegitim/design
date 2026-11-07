@@ -9,10 +9,13 @@ const data=JSON.parse(read("docs/system/catalog.json"));
 const page=read("docs/system/index.html");
 const app=read("docs/system/app.js");
 
-test("system hub has six categories but only real registered designs",()=>{
+test("system hub has category-specific independent style families",()=>{
  assert.equal(data.schema,1);
  assert.equal(data.categories.length,6);
- assert.equal(data.styles.length,1);
+ assert.equal(data.styles.length,3);
+ assert.equal(data.categories.find(x=>x.id==="instagram-carousel").style_count,3);
+ assert.deepEqual(data.styles.map(x=>x.id),["editorial-campaign","data-atlas","conceptual-breakout"]);
+ assert.ok(data.styles.every(x=>x.status==="review-only"&&x.production_approved===false));
  assert.equal(data.styles[0].status,"review-only");
  assert.equal(data.styles[0].production_approved,false);
  assert.ok(data.categories.some(x=>x.id==="social-post"&&x.style_count===0));
@@ -39,4 +42,18 @@ test("client copies only an honest PR-ready brief",()=>{
  assert.match(app,/not-submitted/);
  assert.match(app,/model_capabilities_verified:false/);
  assert.doesNotMatch(app,/api\.github\.com|fetch\("\/admin\/|postMessage.*password|auto_publish/);
+});
+
+
+test("style family cards switch product style selection without creating templates or writes",()=>{
+ const css=read("docs/system/style.css");
+ assert.match(app,/style-family-grid/);
+ assert.match(app,/style-family-card/);
+ assert.match(app,/aria-pressed/);
+ assert.match(app,/activeStyle=s.id/);
+ assert.match(app,/updatePresets\(\);drawStyle\(\)/);
+ assert.match(app,/found.length\+" bağımsız tasarım dili/);
+ for(const id of ["editorial-campaign","data-atlas","conceptual-breakout"])
+  assert.ok(css.includes('data-style="'+id+'"]'));
+ assert.doesNotMatch(app,/fetch\([^)]*,\s*\{\s*method:\s*["']POST/);
 });
