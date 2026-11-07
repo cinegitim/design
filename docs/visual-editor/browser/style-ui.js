@@ -17,6 +17,36 @@ function create({module,getContext,commit,exportBrief,copyPrompt}){
   const c=getContext();
   return x.brand===c.brand&&x.category===$("style-category").value&&x.style_id===$("style-family").value;
  })||null;
+ function pending(){ $("style-export").disabled=true;$("style-copy").disabled=true }
+ function drawChoices(records){
+  const host=$("style-choices"),details=$("style-choice-description");
+  host.replaceChildren();
+  const selected=find();
+  if(!records.length){details.textContent="Henüz kayıtlı tarz yok. Mevcut tasarım korunuyor.";return}
+  for(const spec of records){
+   const button=document.createElement("button");
+   button.type="button";button.className="style-choice";
+   button.setAttribute("aria-pressed",String(spec.style_id===selected?.style_id));
+   button.setAttribute("aria-label",spec.name+" — "+Object.keys(spec.presets).length+" alt varyasyon — "+(spec.status==="review-only"?"İncelemede":spec.status));
+   const mini=document.createElement("span");mini.className="style-mini";
+   mini.dataset.style=spec.style_id;mini.setAttribute("aria-hidden","true");
+   const info=document.createElement("span");info.className="style-choice-copy";
+   const name=document.createElement("strong");name.textContent=spec.name;
+   const meta=document.createElement("small");
+   meta.textContent=Object.keys(spec.presets).length+" alt varyasyon · "+(spec.status==="review-only"?"İncelemede":spec.status);
+   info.append(name,meta);button.append(mini,info);
+   button.addEventListener("click",()=>{
+    if($("style-family").value===spec.style_id)return;
+    $("style-family").value=spec.style_id;
+    fillPresets(null);drawChoices(records);pending();
+    status("Tarz adayı değişti: "+spec.name+". Çalışma alanına uygulamak için düğmeye basın.");
+   });
+   host.append(button);
+  }
+  if(selected){
+   details.textContent=selected.description+" · "+Object.keys(selected.presets).length+" alt varyasyon. Bu çizimler gerçek tasarım önizlemesi değil, şematik tarz işaretleridir.";
+  }
+ }
  function axes(spec,selected){
   const node=$("style-axes");node.replaceChildren();
   if(!spec)return;
@@ -42,7 +72,7 @@ function create({module,getContext,commit,exportBrief,copyPrompt}){
   const styles=(registry?.styles||[]).filter(s=>s.brand===ctx.brand&&s.category===category);
   options($("style-family"),styles.map(s=>({value:s.style_id,label:s.name+" · "+s.status})),
     saved?.style_id||styles[0]?.style_id);
-  fillPresets(saved);
+  fillPresets(saved);drawChoices(styles);
   const maySave=eligible(ctx)&&category==="instagram-carousel"&&styles.length>0;
   $("style-save").disabled=!maySave;
   if(!maySave)status("Bu ürün için kayıtlı tasarım dili yok. Mevcut tasarım korunuyor.");
@@ -72,9 +102,15 @@ function create({module,getContext,commit,exportBrief,copyPrompt}){
   return module.resolve(registry,{brand:ctx.brand,category:s.category,style_id:s.style_id,
     preset_id:$("style-preset").value,lockup_id:$("style-logo").value,overrides});
  }
- $("style-category").addEventListener("change",()=>fillFamilies(null));
- $("style-family").addEventListener("change",()=>{fillPresets(null);status("Seçim henüz çalışma alanına uygulanmadı.")});
- $("style-preset").addEventListener("change",()=>{axes(find(),null);status("Varyasyonu düzenlemeye uygulamak için butona basın.")});
+ $("style-category").addEventListener("change",()=>{fillFamilies(null);pending()});
+ $("style-family").addEventListener("change",()=>{
+  fillPresets(null);
+  drawChoices((registry?.styles||[]).filter(x=>x.brand===getContext().brand&&x.category===$("style-category").value));
+  pending();status("Tarz adayı değişti. Çalışma alanına uygulamak için butona basın.")
+ });
+ $("style-preset").addEventListener("change",()=>{axes(find(),null);pending();status("Alt varyasyonu uygulamak için butona basın.")});
+ $("style-axes").addEventListener("change",()=>{pending();status("İnce ayarlar değişti; stili yeniden uygula.")});
+ $("style-logo").addEventListener("change",()=>{pending();status("Onaylı logo varyantı değişti; stili yeniden uygula.")});
  $("style-save").addEventListener("click",()=>{
   try{const selection=read();commit(selection);
    $("style-export").disabled=false;$("style-copy").disabled=false;
