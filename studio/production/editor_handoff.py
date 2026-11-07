@@ -49,9 +49,10 @@ def verify_brief(brief: dict, root: Path = ROOT) -> dict:
              "A copied brief cannot claim a GitHub delivery")
     required(brief["approval"] == {"creative": "pending", "social_published": False},
              "An agent handoff cannot approve creativity or publication")
-    required(isinstance(brief["instruction"], str)
-             and brief["instruction"].startswith("Use the exact canonical style pack"),
-             "Invalid instruction provenance")
+    required(brief["instruction"] == (
+        "Use the exact canonical style pack and SVGs; create a separate GitHub branch and PR; "
+        "verify all brand and render gates. Do not infer creative or social approval."
+    ), "Invalid instruction provenance")
     selection = brief["selection"]
     required(type(selection) is dict and set(selection) == {
         "schema", "brand", "category", "style_id", "style_version",
