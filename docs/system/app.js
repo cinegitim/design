@@ -3,16 +3,68 @@
 "use strict";
 const el=id=>document.getElementById(id);
 const node=(tag,cls,content)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(content!==undefined)n.textContent=String(content);return n};
-let data,category="instagram-carousel";
+let data,category="instagram-carousel",activeStyle=null;
 function options(select,items,preferred){select.replaceChildren();items.forEach(x=>{const opt=node("option","",x.label);opt.value=x.value;select.appendChild(opt)});if(items.some(x=>x.value===preferred))select.value=preferred;select.disabled=items.length===0}
 function styles(cat){return data.styles.filter(x=>x.category===cat&&x.brand===data.brand.id)}
 function selectedStyle(){return styles(el("category-picker").value).find(x=>x.id===el("style-picker").value)}
 function colorChip(label,value){const x=node("div","swatch"),b=node("b");if(/^#[0-9a-f]{6}$/i.test(value))b.style.backgroundColor=value;x.append(b,node("span","",label+" · "+value));return x}
 function drawCategories(){const host=el("category-list");host.replaceChildren();data.categories.forEach(c=>{const btn=node("button","category");btn.type="button";btn.setAttribute("aria-pressed",String(c.id===category));const left=node("span");left.append(node("strong","",c.label),node("small","",c.style_count?c.style_count+" tasarım dili kayıtlı":"Henüz stil kaydı yok"));btn.append(left,node("span","mini",c.style_count?"Kayıtlı":"Hazırlanacak"));btn.addEventListener("click",()=>chooseCategory(c.id));host.append(btn)})}
-function drawStyle(){const host=el("style-detail"),found=styles(category);host.replaceChildren();if(!found.length){const c=data.categories.find(x=>x.id===category),empty=node("div","empty");empty.append(node("span","eyebrow","Kategori / Henüz stil yok"),node("h3","",c?.label||category),node("p","","Bu kategori tanımlı ancak kayıtlı tasarım dili henüz bulunmuyor. Başka bir markanın stilini otomatik kullanamayız."));const a=node("a","link","Yeni stil ekleme kaynakları ↗");a.href="https://github.com/cinegitim/design/tree/main/brands/asyada-egitim/styles";empty.append(a);host.append(empty);return}
-found.forEach(s=>{host.append(node("span","eyebrow","Tasarım dili / "+s.category),node("h3","",s.name));const m=node("div","meta");m.append(node("span","","v"+s.version),node("span","",s.production_approved?"Onaylı":"İncelemede"),node("span","",s.font));host.append(m,node("p","description",s.description));const colors=node("div","swatches");["paper","red","ink"].forEach(k=>{if(s.palette[k])colors.append(colorChip(k,s.palette[k]))});host.append(colors,node("div","eyebrow","Kayıtlı alt varyasyonlar"));const presets=node("div","presets");s.presets.forEach(p=>{const tile=node("div","preset");tile.append(node("i"),node("strong","",p.label));presets.append(tile)});host.append(presets,node("p","description","Kimlik kilidi: "+s.lockups.join(" · ")+" · renk ve yazı tipi aynı kalır."));const wrap=node("p","source"),a=node("a","","Kanonik stil kaynağını GitHub'da aç ↗");a.href="https://github.com/cinegitim/design/blob/main/"+s.source_path;wrap.append(a);host.append(wrap)})}
-function chooseCategory(id){category=id;drawCategories();drawStyle();el("category-picker").value=id;updateStyleOptions()}
-function updateStyleOptions(){const found=styles(el("category-picker").value);options(el("style-picker"),found.map(s=>({value:s.id,label:s.name+" · "+s.status})),found[0]?.id);updatePresets()}
+function drawStyle(){
+ const host=el("style-detail"),found=styles(category);host.replaceChildren();
+ if(!found.length){
+  const c=data.categories.find(x=>x.id===category),empty=node("div","empty");
+  empty.append(node("span","eyebrow","Kategori / Henüz kayıtlı tarz yok"),
+   node("h3","",c?.label||category),
+   node("p","","Bu kategorinin altında birden fazla bağımsız tasarım tarzı yer alabilir. Henüz gerçek kaynak dosyasıyla tanımlanmış tarz bulunmuyor."));
+  const a=node("a","link","Yeni tarz ekleme kaynakları ↗");a.href="https://github.com/cinegitim/design/tree/main/brands/asyada-egitim/styles";
+  empty.append(a);host.append(empty);return
+ }
+ const selected=found.find(s=>s.id===activeStyle)||found[0];activeStyle=selected.id;
+ host.append(node("span","eyebrow","Kategori → Tasarım tarzı → Alt varyasyon"),
+   node("h3","",data.categories.find(c=>c.id===category)?.label||category),
+   node("p","description",found.length+" bağımsız tasarım dili. Görsel dil seçimi markanın kanonik logo, font ve renklerini değiştirmez."));
+ const grid=node("div","style-family-grid");grid.setAttribute("role","group");grid.setAttribute("aria-label","Kategoriye ait tasarım tarzları");
+ for(const s of found){
+  const btn=node("button","style-family-card");btn.type="button";
+  btn.setAttribute("aria-pressed",String(s.id===selected.id));
+  btn.setAttribute("aria-label",s.name+" · "+s.presets.length+" alt varyasyon · "+(s.production_approved?"Onaylı":"İncelemede"));
+  const visual=node("span","style-family-visual");visual.dataset.style=s.id;visual.setAttribute("aria-hidden","true");
+  const copy=node("span","style-family-copy");
+  copy.append(node("strong","",s.name),
+   node("small","",s.presets.length+" alt varyasyon · "+(s.production_approved?"Onaylı":"İncelemede")));
+  btn.append(visual,copy);
+  btn.addEventListener("click",()=>{
+   if(activeStyle===s.id)return;
+   activeStyle=s.id;
+   el("category-picker").value=category;
+   el("style-picker").value=s.id;
+   updatePresets();drawStyle()
+  });
+  grid.append(btn)
+ }
+ host.append(grid);
+ const focus=node("div","style-focus");
+ focus.append(node("span","eyebrow","Seçili tasarım dili"),
+  node("h3","",selected.name),node("p","description",selected.description));
+ const m=node("div","meta");
+ m.append(node("span","","v"+selected.version),
+  node("span","",selected.production_approved?"Kreatif tarz onaylı":"İncelemede; henüz kreatif onay yok"),
+  node("span","",selected.font));
+ focus.append(m);
+ const colors=node("div","swatches");
+ for(const key of ["paper","red","ink"])if(selected.palette[key])colors.append(colorChip(key,selected.palette[key]));
+ focus.append(colors,node("div","eyebrow","Bu tarza ait alt varyasyonlar"));
+ const presets=node("div","presets");
+ for(const preset of selected.presets){
+  const tile=node("div","preset");tile.append(node("i"),node("strong","",preset.label));presets.append(tile)
+ }
+ focus.append(presets,node("p","description","Marka kimliği sabit: "+selected.lockups.join(" · ")+" · Jost ve onaylı renkler."));
+ const source=node("p","source"),link=node("a","","Stil tanımını GitHub’da aç ↗");
+ link.href="https://github.com/cinegitim/design/blob/main/"+selected.source_path;
+ source.append(link);focus.append(source);host.append(focus)
+}
+function chooseCategory(id){category=id;activeStyle=null;drawCategories();el("category-picker").value=id;updateStyleOptions();drawStyle()}
+function updateStyleOptions(){const found=styles(el("category-picker").value);options(el("style-picker"),found.map(s=>({value:s.id,label:s.name+" · "+s.status})),activeStyle||found[0]?.id);updatePresets()}
 function updatePresets(){const s=selectedStyle();options(el("preset-picker"),s?s.presets.map(p=>({value:p.id,label:p.label})):[],s?.presets[0]?.id);updateInfo()}
 function updateInfo(){if(!data)return;const s=selectedStyle(),route=data.executors.find(x=>x.id===el("executor-picker").value),model=data.model_families.find(x=>x.id===el("model-picker").value),host=el("production-status");host.replaceChildren();el("copy-brief").disabled=!(s&&route&&model);if(!s){host.append(node("p","","Bu kategoride kayıtlı tasarım dili yok. Önce marka kapsamına uygun bir stil eklenmeli."));return}host.append(node("strong","",s.name+" · "+s.status),node("p","","Ortam: "+(route?.executor||"—")+" ("+(route?.strategy||"—")+"). Model: "+(model?.name||"—")+". Yetenekler oturumda doğrulanır."),node("p","","Onaylı SVG, Jost, kurumsal palet ve kreatif onay şartı her modelde geçerli."))}
 function makeBrief(){const s=selectedStyle(),route=data.executors.find(x=>x.id===el("executor-picker").value),model=data.model_families.find(x=>x.id===el("model-picker").value),preset=el("preset-picker").value;if(!s||!route||!model||!s.presets.some(p=>p.id===preset))throw Error("Kayıtlı stil ve üretim profili seçin.");return{
@@ -32,7 +84,7 @@ options(el("executor-picker"),data.executors.map(x=>({value:x.id,label:x.executo
 options(el("model-picker"),data.model_families.map(x=>({value:x.id,label:x.name+" · rehber"})),"gpt");
 updateStyleOptions();
 el("category-picker").addEventListener("change",()=>chooseCategory(el("category-picker").value));
-el("style-picker").addEventListener("change",updatePresets);
+el("style-picker").addEventListener("change",()=>{activeStyle=el("style-picker").value;updatePresets();drawStyle()});
 ["preset-picker","executor-picker","model-picker"].forEach(id=>el(id).addEventListener("change",updateInfo));
 el("copy-brief").addEventListener("click",copyBrief);
 }catch(e){el("production-status").textContent="Katalog yüklenemedi: "+e.message;el("style-detail").textContent="Tasarım sistemi şu anda kullanılamıyor."}}

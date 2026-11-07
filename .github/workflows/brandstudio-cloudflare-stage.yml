@@ -35,6 +35,7 @@ jobs:
             .github/workflows
             studio/cloudflare-brandstudio
             studio/brandstudio
+            studio/production/style_registry_sync.py
             functions/visual-editor
             docs/visual-editor
             docs/system
@@ -58,6 +59,8 @@ jobs:
           python-version: "3.12"
       - name: Reject variable-cost service bindings and unsafe free-tier overrides
         run: python3 studio/cloudflare-brandstudio/check_free_only.py
+      - name: Verify category-to-style snapshots from canonical sources
+        run: python -I -B studio/production/style_registry_sync.py --check
       - name: Portable browser editor state validation and syntax
         run: node --check docs/system/app.js && node --test studio/cloudflare-brandstudio/tests/system-hub.test.mjs studio/cloudflare-brandstudio/tests/style-picker.test.mjs studio/cloudflare-brandstudio/tests/portable.test.mjs studio/cloudflare-brandstudio/tests/editor-ux.test.mjs studio/cloudflare-brandstudio/tests/editor-flex.test.mjs studio/cloudflare-brandstudio/tests/product-groups.test.mjs studio/cloudflare-brandstudio/tests/cloud-editor.test.mjs studio/cloudflare-brandstudio/tests/github-pr.test.mjs studio/cloudflare-brandstudio/tests/github-finalize.test.mjs studio/cloudflare-brandstudio/tests/github-promote.test.mjs
       - name: Asyada Egitim access gateway and storage syntax

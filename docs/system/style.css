@@ -65,3 +65,25 @@ section.block{padding:32px 0 50px;scroll-margin-top:72px;border-bottom:1px solid
 @media(max-width:700px){.container{width:calc(100% - 30px)}.mast-inner{padding:13px 0;display:block}.mainnav{margin-top:12px;gap:14px}.hero{grid-template-columns:1fr;padding-top:36px}.hero h1{font-size:42px}.library-grid{grid-template-columns:1fr}.category-stack{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.field-grid{grid-template-columns:1fr}.section-head{display:block}.section-head .link{display:inline-block;margin-top:12px}.sectionnav{gap:14px}.panel{padding:18px}.step{min-height:135px}}
 @media(max-width:420px){.category-stack{grid-template-columns:1fr}.presets{grid-template-columns:1fr}.pipeline{grid-template-columns:1fr}.hero h1{font-size:36px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+
+/* A category is a container for multiple visual grammar families. The samples
+   below are deliberate schematic markers, not rendered design/artwork claims. */
+.style-family-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin:16px 0 20px}
+.style-family-card{min-width:0;text-align:left;display:grid;gap:8px;padding:10px;background:#fffdf8;border:1px solid var(--line);border-radius:10px;color:var(--ink);transition:border-color .12s,background .12s}
+.style-family-card:hover{border-color:#ad9883}
+.style-family-card[aria-pressed="true"]{background:#fff6e9;border-color:var(--red);box-shadow:inset 0 0 0 1px var(--red)}
+.style-family-copy{display:grid;gap:3px}
+.style-family-copy strong{font-size:13px;line-height:1.2}
+.style-family-copy small{font-size:10px;color:var(--muted)}
+.style-family-visual{position:relative;display:block;width:100%;height:86px;overflow:hidden;background:var(--paper);border:1px solid var(--line);border-radius:5px}
+.style-family-visual:before,.style-family-visual:after{content:"";position:absolute}
+.style-family-visual[data-style="editorial-campaign"]:before{width:48%;height:14px;top:17px;left:10px;background:var(--ink);box-shadow:0 23px 0 -3px var(--ink)}
+.style-family-visual[data-style="editorial-campaign"]:after{width:28%;height:60px;top:12px;right:9px;background:var(--red)}
+.style-family-visual[data-style="data-atlas"]:before{inset:12px 14px 34px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 23%),repeating-linear-gradient(0deg,transparent 0 13px,var(--ink) 13px 14px)}
+.style-family-visual[data-style="data-atlas"]:after{left:14px;right:14px;bottom:11px;height:14px;background:linear-gradient(90deg,var(--red) 0 26%,transparent 26% 31%,var(--ink) 31% 60%,transparent 60% 65%,var(--ink) 65% 86%,transparent 86%)}
+.style-family-visual[data-style="conceptual-breakout"]:before{left:-18px;top:26px;width:125%;height:29px;background:var(--red);transform:rotate(-17deg)}
+.style-family-visual[data-style="conceptual-breakout"]:after{width:55px;height:55px;border:9px solid var(--ink);border-radius:100%;top:9px;right:16%}
+.style-focus{border-top:1px solid var(--line);padding-top:17px}
+.style-focus h3{font-size:24px;margin:6px 0 8px}
+@media(max-width:700px){.style-family-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

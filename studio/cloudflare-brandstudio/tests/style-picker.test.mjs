@@ -171,3 +171,84 @@ test("editor lets users copy a style handoff without running or autosaving it",(
  assert.doesNotMatch(ui,/api\.github\.com|POST|\/api\/revisions/);
  assert.doesNotMatch(script,/fetch\(|api\.github\.com|cloudflare\.com/);
 });
+
+
+test("one category now carries three independently verified style families",()=>{
+ const ids=registry.styles.filter(x=>x.category==="instagram-carousel").map(x=>x.style_id);
+ assert.deepEqual(ids,["editorial-campaign","data-atlas","conceptual-breakout"]);
+ const manifestIds=new Set();
+ const hub=JSON.parse(fs.readFileSync(path.join(root,"docs/system/catalog.json"),"utf8"));
+ const sysStyles=hub.styles.filter(x=>x.category==="instagram-carousel");
+ assert.equal(hub.categories.find(x=>x.id==="instagram-carousel").style_count,ids.length);
+ assert.deepEqual(sysStyles.map(x=>x.id),ids);
+ const hashes=new Set();
+ for(const x of registry.styles){
+  assert.equal(x.status,"review-only");
+  assert.equal(x.font_family,"Jost");
+  assert.equal(x.seal_sha256,style.seal_sha256);
+  assert.deepEqual(x.palette,style.palette);
+  assert.ok(Object.keys(x.presets).length>=3);
+  const source=fs.readFileSync(path.join(root,x.source_path));
+  const blob=crypto.createHash("sha1").update(Buffer.concat([Buffer.from("blob "+source.length+"\0"),source])).digest("hex");
+  assert.equal(x.source_blob_sha,blob);
+  const manifest=JSON.parse(source.toString());
+  assert.equal(manifest.style_id,x.style_id);
+  assert.equal(manifest.brand,x.brand);
+  assert.equal(manifest.category,x.category);
+  assert.deepEqual(x.presets,manifest.presets);
+  assert.deepEqual(x.variation_axes,manifest.variation_axes);
+  assert.deepEqual(x.lockups.map(a=>a.id),manifest.hard_locks.lockup_options);
+  assert.ok(!hashes.has(blob));hashes.add(blob);
+  const y=sysStyles.find(s=>s.id===x.style_id);
+  assert.equal(y.source_blob_sha,blob);
+  assert.equal(y.production_approved,false);
+  assert.deepEqual(y.presets.map(p=>p.id),Object.keys(manifest.presets));
+  assert.deepEqual(y.axes,Object.keys(manifest.variation_axes));
+  for(const lockup of x.lockups){
+   const digest=crypto.createHash("sha256").update(fs.readFileSync(path.join(root,lockup.path))).digest("hex");
+   assert.equal(digest,lockup.sha256);
+  }
+  manifestIds.add(x.style_id);
+ }
+ assert.equal(manifestIds.size,3);
+});
+
+test("different style families keep locked identity but have distinct visual grammar",()=>{
+ const make=(style_id,preset_id)=>S.resolve(registry,{
+  brand:"asyada-egitim",category:"instagram-carousel",style_id,preset_id,lockup_id:"H-02/dark",overrides:{}});
+ const editorial=make("editorial-campaign","institutional-paper");
+ const atlas=make("data-atlas","metrics-overview");
+ const concept=make("conceptual-breakout","object-metaphor");
+ for(const x of [atlas,concept]){
+  assert.equal(x.lockup_sha256,editorial.lockup_sha256);
+  assert.equal(x.seal_sha256,editorial.seal_sha256);
+  assert.deepEqual(x.palette,editorial.palette);
+  assert.equal(x.font_family,"Jost");
+  assert.equal(x.approval_status,"review-only");
+  assert.ok(S.validate(registry,x));
+  const prompt=S.agentPrompt(registry,{selection:x,product:"instagram-kaist-tech-track-2027-001-v2",version:2});
+  assert.ok(prompt.includes(x.style_source_blob_sha));
+  assert.ok(prompt.includes(x.style_id));
+ }
+ assert.ok("structure" in atlas.variation);
+ assert.ok(!("structure" in editorial.variation));
+ assert.ok("visual_metaphor" in concept.variation);
+ assert.ok(!("visual_metaphor" in atlas.variation));
+ for(const bad of [
+  {style_id:"unknown",preset_id:"x"},
+  {style_id:"data-atlas",preset_id:"object-metaphor"},
+  {style_id:"conceptual-breakout",preset_id:"metrics-overview"}
+ ])assert.throws(()=>make(bad.style_id,bad.preset_id));
+});
+
+test("editor offers category > distinct style cards > preset without autorestylng",()=>{
+ const html=fs.readFileSync(path.join(browser,"index.html"),"utf8");
+ const ui=fs.readFileSync(path.join(browser,"style-ui.js"),"utf8");
+ for(const id of ["style-category","style-family","style-choices","style-preset","style-choice-description"])
+  assert.ok(html.includes('id="'+id+'"'));
+ assert.match(ui,/aria-pressed/);
+ assert.match(ui,/function drawChoices/);
+ assert.match(ui,/spec\.presets/);
+ assert.match(ui,/fillPresets\(null\);drawChoices\(records\);pending\(\)/);
+ assert.doesNotMatch(ui,/fetch\(|api\.github\.com/);
+});
