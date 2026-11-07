@@ -49,8 +49,8 @@
   "inspected_as_raster": false,
   "creative_approved": false,
   "social_published": false,
-  "notes": "Older KAIST and Tsinghua image references removed from all four live cover source layouts. Single generated source image supplies the visual layer; verified H-02 logo SVG and Jost DOM text are kept separate. Review/QA required before social publication.",
-  "version": "v2 — AI generated international campus visual replacement",
+  "notes": "Older KAIST and Tsinghua image references removed from all four live cover source layouts. Single generated source image supplies the visual layer; verified H-02 logo SVG and Jost DOM text are kept separate. Review/QA required before social publication. v3 improves title and country-list legibility across all platform layouts; platform-specific positions remain independently editable.",
+  "version": "v3 — legibility panels and high-contrast five-country strips",
   "imagery": {
     "path": "assets/international-campus-ai-v2.jpg",
     "source": "ChatGPT generated image in this conversation, final diverse international student campus scene",
@@ -63,5 +63,17 @@
       "facebook-desktop",
       "facebook-mobile"
     ]
+  },
+  "readability": {
+    "panel": "semi-opaque warm-cream background behind editable copy",
+    "country_strip": "opaque dark-ink surface with larger Jost lettering, all five countries displayed on every platform",
+    "variants": [
+      "x",
+      "linkedin",
+      "facebook-desktop",
+      "facebook-mobile"
+    ],
+    "logo": "canonical H-02/light unchanged",
+    "image": "existing international-campus-ai-v2.jpg unchanged"
   }
 }
