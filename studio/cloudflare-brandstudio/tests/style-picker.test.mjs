@@ -135,3 +135,39 @@ test("Cloudflare gateway permits valid style revision and rejects forged style f
   {...state,designStyle:{...selection,unknown:"extra"}}
  ]){const no=await post(bad);assert.equal(no.status,400);assert.equal(no.forwarded,false)}
 });
+
+
+test("copyable agent instructions contain exactly the same verified JSON selection",()=>{
+ const selected=S.resolve(registry,baseline());
+ const args={selection:selected,product:"instagram-kaist-tech-track-2027-001-v2",version:3};
+ const prompt=S.agentPrompt(registry,args);
+ const expected=S.productionBrief(args);
+ const between=prompt.split("JSON_PAYLOAD_START\n")[1]?.split("\nJSON_PAYLOAD_END")[0];
+ assert.ok(between,"Expected a machine-readable brief in copied prompt");
+ assert.deepEqual(JSON.parse(between),expected);
+ assert.match(prompt,/studio\/production\/editor_handoff\.py --brief/);
+ assert.match(prompt,/AGENTS\.md/);
+ assert.match(prompt,/review-only/);
+ assert.match(prompt,/SHA-256/);
+ assert.match(prompt,/Kullanıcının asıl brief'ini/);
+ assert.doesNotMatch(prompt,/github_pat_|GITHUB_PR_TOKEN/);
+ assert.equal(expected.approval.creative,"pending");
+ assert.equal(expected.github.status,"not-submitted");
+ for(const altered of [
+  {...selected,lockup_sha256:"0".repeat(64)},
+  {...selected,approval_status:"approved"},
+  {...selected,font_family:"Arial"}
+ ])assert.throws(()=>S.agentPrompt(registry,{...args,selection:altered}));
+});
+
+test("editor lets users copy a style handoff without running or autosaving it",()=>{
+ const html=fs.readFileSync(path.join(browser,"index.html"),"utf8");
+ const ui=fs.readFileSync(path.join(browser,"style-ui.js"),"utf8");
+ for(const id of ["style-copy","style-save","style-export"])
+  assert.match(html,new RegExp('id="'+id+'"'));
+ assert.match(html,/navigator\.clipboard\?\.writeText\(prompt\)/);
+ assert.match(ui,/module\.agentPrompt\(registry,/);
+ assert.match(ui,/style-copy/);
+ assert.doesNotMatch(ui,/api\.github\.com|POST|\/api\/revisions/);
+ assert.doesNotMatch(script,/fetch\(|api\.github\.com|cloudflare\.com/);
+});
