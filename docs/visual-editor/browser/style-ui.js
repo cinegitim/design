@@ -77,7 +77,7 @@ function create({module,getContext,commit,exportBrief,copyPrompt}){
  $("style-preset").addEventListener("change",()=>{axes(find(),null);status("Varyasyonu düzenlemeye uygulamak için butona basın.")});
  $("style-save").addEventListener("click",()=>{
   try{const selection=read();commit(selection);
-   $("style-export").disabled=false;
+   $("style-export").disabled=false;$("style-copy").disabled=false;
    status("Stil uygulandı, ancak buluta kaydedilmedi. Üstteki kayıt düğmelerini kullanın · "+selection.approval_status+"")
   }catch(e){status("Stil uygulanamadı: "+e.message)}
  });
