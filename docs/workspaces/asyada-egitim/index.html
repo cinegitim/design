@@ -97,10 +97,10 @@ function card(g,posts){
  const pub=posts.filter(p=>pubUrl(p)&&(p.groupId===g.id||p.productId===id));
  const exact=pub.some(p=>p.productId===id);
  const src=sources[g.id]||{},url=src.v||'../../visual-editor/browser/?product='+encodeURIComponent(id);
- const wrap=el('div','visual-product design-card has-actions');wrap.dataset.search=norm([g.title,g.category,...g.versions.map(v=>v.label),pub.length?'yayımlandı':''].join(' '));
+ const wrap=el('div','visual-product design-card has-actions');wrap.dataset.search=norm([g.title,g.navMainCategory||g.category,g.navSubCategory||g.category,...g.versions.map(v=>v.label),pub.length?'yayımlandı':''].join(' '));
  const tile=el('a','tile');tile.href=url;tile.title='Tasarımı incele: '+g.title;
- const thumb=el('span','thumb');const image=el('img');image.src=src.photo||'';image.loading='lazy';image.alt=g.title+' tasarım önizlemesi';thumb.append(image);
- const body=el('span','tile-body'),cat=el('span','category',g.categoryPath?.[2]||'Karusel'),title=el('strong','',g.title);
+ const thumb=el('span','thumb');const image=el('img');image.src=src.photo||'../../asyada-seal/canonical-lockups/assets/h-02-primary-horizontal-light.svg';image.loading='lazy';image.alt=src.photo?g.title+' tasarım önizlemesi':'Önizleme henüz yok; onaylı marka işareti';thumb.append(image);
+ const body=el('span','tile-body'),cat=el('span','category',g.navSubCategory||g.categoryPath?.[2]||'Ürün'),title=el('strong','',g.title);
  const meta=el('span','version-meta',g.versions.length+' sürüm · Varsayılan: '+version+(g.currentId!==id?' · Yeni taslak: '+latest:''));
  const status=el('span','status'+(pub.length?' published':''),pub.length?(exact?'Yayımlandı · '+version:'Yayımlandı · sürüm belirtilmedi'):'İncelemede');
  body.append(cat,title,meta,status);tile.append(thumb,body);wrap.append(tile);
@@ -128,35 +128,74 @@ function logoCard(){
 }
 async function populate(){
  try{
- const response=await fetch('../../visual-editor/browser/product-groups.json',{cache:'no-store'});if(!response.ok)return;
- const registry=await response.json();const groups=registry.groups.filter(g=>g.brand==='asyada-egitim'&&g.categoryPath?.[0]==='Sosyal Medya');
- if(groups.length<10)return;
- const posts=window.BrandstudioPublicationBridge?await window.BrandstudioPublicationBridge.merged(registry):(registry.socialPublication?.posts||[]);
- const root=el('div','work-tree'),top=el('section','work-area');top.dataset.level='Sosyal Medya';
- const head=el('h3','','Sosyal Medya');top.append(head);
- const branches=new Map();
- groups.filter(g=>g.categoryPath[1]==='Karuseller').forEach(g=>{
-  const name=g.categoryPath[2],list=branches.get(name)||[];list.push(g);branches.set(name,list)
+ const [regResponse,libResponse]=await Promise.all([
+  fetch('../../visual-editor/browser/product-groups.json',{cache:'no-store'}),
+  fetch('../../library/catalog.json',{cache:'no-store'})
+ ]);
+ if(!regResponse.ok||!libResponse.ok)throw Error('Merkezî ürün/veri kataloğu erişilemiyor');
+ const registry=await regResponse.json(),library=await libResponse.json();
+ if(library.schema!==1||!Array.isArray(library.products)||!Array.isArray(registry.groups))
+  throw Error('Katalog şeması geçersiz');
+ const originals=new Map(registry.groups.map(g=>[g.id,g]));
+ const products=library.products.filter(x=>x.brand==='asyada-egitim');
+ if(products.length<10)throw Error('Merkezî ürün listesi eksik');
+ const groups=products.map(x=>{
+  const original=originals.get(x.groupId);
+  if(!original||original.defaultId!==x.defaultId||original.currentId!==x.currentId||
+     original.versions.length!==x.versions.length)
+   throw Error('Ürün sürüm bağlantısı eşleşmedi: '+x.groupId);
+  return {...original,navMainCategory:x.mainCategory,navSubCategory:x.subCategory,
+   navStyleLinks:x.styleLinks}
  });
- const carousel=el('div','work-class');carousel.dataset.level='Karuseller';carousel.append(el('h4','','Karuseller'),el('p','','Üniversite tanıtımları, başvuru rehberleri, şehir karşılaştırmaları ve kampanyalar kendi alt kategorilerinde.'));
- const priority=['Lansman ve Kampanyalar','Üniversite Tanıtımları','Başvuru ve Burs Rehberleri','Şehir ve Öğrenci Yaşamı'];
- priority.forEach(name=>{const entries=branches.get(name)||[];if(!entries.length)return;const subgroup=el('section','work-subgroup');subgroup.dataset.subcategory=name;subgroup.append(el('h5','',name));const grid=el('div','items');entries.forEach(g=>grid.append(card(g,posts)));subgroup.append(grid);carousel.append(subgroup)});
- top.append(carousel);
- const singles=groups.filter(g=>g.categoryPath?.[1]==='Tekil Paylaşımlar');
- if(singles.length){const single=el('div','work-class');single.dataset.level='Tekil Paylaşımlar';single.append(el('h4','','Tekil Paylaşımlar'),el('p','','Bağımsız yaratıcı görsel kampanyaları ve deneysel tekil postlar.'));const branch=el('section','work-subgroup');branch.dataset.subcategory='Creative Breakout';branch.append(el('h5','','Creative Breakout'));const tiles=el('div','items');singles.forEach(g=>tiles.append(card(g,posts)));branch.append(tiles);single.append(branch);top.append(single)}
-
- const identity=el('div','work-class');identity.dataset.level='Kimlik Uygulamaları';identity.append(el('h4','','Kimlik Uygulamaları'),el('p','','Logo, sosyal medya profili ve kapak tasarımları aynı görsel koleksiyonda.'));
- const sub=el('section','work-subgroup');sub.dataset.subcategory='Logolar ve Kapaklar';sub.append(el('h5','','Logolar ve Kapaklar'));const grid=el('div','items');grid.append(logoCard());sub.append(grid);identity.append(sub);top.append(identity);root.append(top);
- legacy.replaceWith(root);const oldField=input;const fresh=input.cloneNode(true);input.replaceWith(fresh);
- const refresh=()=>{const q=norm(fresh.value.trim());let shown=0;
- root.querySelectorAll('.work-subgroup').forEach(section=>{
- let n=0;section.querySelectorAll('.design-card').forEach(c=>{const visible=!q||c.dataset.search.includes(q);c.hidden=!visible;if(visible){n++;shown++}});section.hidden=n===0
- });
- root.querySelectorAll('.work-class').forEach(x=>{x.hidden=![...x.querySelectorAll('.work-subgroup')].some(sub=>!sub.hidden)});
- top.hidden=shown===0;counter.textContent=shown+' koleksiyon / tasarım ailesi';empty.hidden=shown!==0;
+ const posts=window.BrandstudioPublicationBridge
+  ?await window.BrandstudioPublicationBridge.merged(registry):(registry.socialPublication?.posts||[]);
+ const root=el('div','work-tree'),top=el('section','work-area');
+ top.dataset.level='Sosyal Medya';
+ top.append(el('h3','','Tasarım üretimleri'));
+ const classOrder=['Karuseller','Tekil Paylaşımlar','Profil ve Kapaklar'];
+ const subOrder=['Üniversite Tanıtımları','Üniversite Fırsatları','Başvuru ve Burs Rehberleri',
+  'Şehir ve Öğrenci Yaşamı','Lansman ve Kampanyalar'];
+ for(const main of classOrder){
+  const relevant=groups.filter(g=>g.navMainCategory===main);
+  if(!relevant.length)continue;
+  const section=el('div','work-class');section.dataset.level=main;
+  section.append(el('h4','',main),
+   el('p','','İçerik grupları ve ortak tarz ilişkileri merkezî Brandstudio kataloğundan okunur.'));
+  const subcategories=[...new Set(relevant.map(g=>g.navSubCategory))].sort((a,b)=>{
+   const ia=subOrder.indexOf(a),ib=subOrder.indexOf(b);
+   return (ia===-1?999:ia)-(ib===-1?999:ib)||a.localeCompare(b,'tr')
+  });
+  for(const sub of subcategories){
+   const subset=relevant.filter(g=>g.navSubCategory===sub);
+   const subgroup=el('section','work-subgroup');subgroup.dataset.subcategory=sub;
+   subgroup.append(el('h5','',sub));
+   const grid=el('div','items');
+   subset.forEach(g=>grid.append(card(g,posts)));
+   subgroup.append(grid);section.append(subgroup)
+  }
+  top.append(section)
+ }
+ root.append(top);
+ legacy.replaceWith(root);
+ const fresh=input.cloneNode(true);input.replaceWith(fresh);
+ const refresh=()=>{
+  const q=norm(fresh.value.trim());let shown=0;
+  root.querySelectorAll('.work-subgroup').forEach(section=>{
+   let n=0;
+   section.querySelectorAll('.design-card').forEach(c=>{
+    const visible=!q||c.dataset.search.includes(q);
+    c.hidden=!visible;if(visible){n++;shown++}
+   });
+   section.hidden=n===0
+  });
+  root.querySelectorAll('.work-class').forEach(x=>{
+   x.hidden=![...x.querySelectorAll('.work-subgroup')].some(sub=>!sub.hidden)
+  });
+  top.hidden=shown===0;counter.textContent=shown+' ürün ailesi';
+  if(empty)empty.hidden=shown!==0
  };
- fresh.addEventListener('input',refresh);refresh();
- }catch(e){console.warn('Brandstudio katalog sınıflandırması erişilemedi; mevcut görünüm korundu.',e)}
+ fresh.addEventListener('input',refresh);refresh()
+ }catch(e){console.warn('Brandstudio merkezî katalog okunamadı; eski ürün kartları korunuyor.',e)}
 }
 populate();
 })()</script><script src="publication-check.js" defer></script></body></html>
