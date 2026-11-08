@@ -36,6 +36,12 @@ function validCatalog(d){
    throw Error("Ürün sınıflandırması geçersiz");
   groups.add(p.groupId);
   for(const v of p.versions){if(versions.has(v.id))throw Error("Kaynak sürümü iki aileye bağlanmış");versions.add(v.id)}
+  const cover=p.thumbnail;
+  if(!cover||!p.versions.some(v=>v.id===cover.versionId)||
+   typeof cover.path!=="string"||
+   !/^(?:instagram|social-covers|cin-egitim|library\/previews)\/(?:[A-Za-z0-9_.-]+\/)*[A-Za-z0-9_.-]+\.(?:png|jpe?g|webp|svg)$/.test(cover.path)||
+   cover.path.split("/").some(part=>part==="."||part===".."))
+   throw Error("Ürünün doğrulanmış önizleme kaydı eksik veya geçersiz: "+p.groupId);
   for(const link of p.styleLinks||[]){
    const s=styleMap.get(styleKey(link.styleId,p.brand));
    if(!s||s.category!==FORMAT[p.mainCategory]||!s.presets.some(v=>v.id===link.presetId))
@@ -186,6 +192,26 @@ function linkBadge(link,p){
   :"Bu tarzın ilişkisi kaynak sürümü üzerinden doğrulandı.";
  return row
 }
+function productThumbnail(p){
+ const thumbnail=p.thumbnail;
+ const version=p.versions.find(v=>v.id===thumbnail.versionId);
+ const anchor=node("a","product-preview");
+ anchor.href=canonicalURL(p,thumbnail.versionId);
+ anchor.title=p.title+" · Kapak önizlemesini aç"+(version?" ("+version.label+")":"");
+ anchor.setAttribute("aria-label",p.title+" · "+(version?.label||"Kaynak")+" kapak önizlemesini Visual Editor'da aç");
+ const image=node("img","product-preview-image");
+ image.src="../"+thumbnail.path;
+ image.alt=p.title+" tasarımının "+(version?.label||"kaynak")+" sürümünden gerçek kapak görseli";
+ image.loading="lazy";image.decoding="async";
+ image.width=156;image.height=110;
+ image.addEventListener("error",()=>{
+  anchor.classList.add("preview-unavailable");
+  image.remove();
+  anchor.append(node("span","product-preview-error","Önizleme yüklenemedi"))
+ },{once:true});
+ anchor.append(image);
+ return anchor
+}
 function productCard(p,focus){
  const outer=node("article","product-card");
  const main=node("div","product-main");
@@ -215,7 +241,7 @@ function productCard(p,focus){
  }
  detail.append(summary,versions);
  actions.append(detail,editor);
- outer.append(main,actions);
+ outer.append(main,productThumbnail(p),actions);
  return outer
 }
 function entries(products){
