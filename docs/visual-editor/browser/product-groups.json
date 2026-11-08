@@ -443,6 +443,29 @@
         "KAIST'te 2027 burslu lisans fırsatları",
         "KAIST başvurunu birlikte planlayalım."
       ]
+    },
+    {
+      "id": "instagram-hong-kong-university-line-2027-001",
+      "title": "Sonraki Durak: Hong Kong · 2027 Üniversite Hattı",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Karuseller / Üniversite Fırsatları",
+      "currentId": "instagram-hong-kong-university-line-2027-001",
+      "defaultId": "instagram-hong-kong-university-line-2027-001",
+      "versions": [
+        {
+          "id": "instagram-hong-kong-university-line-2027-001",
+          "label": "v1 · 6 slayt · inceleme"
+        }
+      ],
+      "categoryPath": [
+        "Sosyal Medya",
+        "Karuseller",
+        "Üniversite Fırsatları"
+      ],
+      "lifecycle": "in-review",
+      "publicationAnchors": [
+        "Hong Kong 2027 Üniversite Hattı: üç üniversite, üç istasyon."
+      ]
     }
   ],
   "retired": [

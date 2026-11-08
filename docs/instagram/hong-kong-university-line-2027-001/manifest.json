@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "id": "instagram-hong-kong-university-line-2027-001",
+  "title": "Sonraki Durak: Hong Kong — 2027 Üniversite Hattı",
+  "brand": "asyada-egitim",
+  "category": "instagram-carousel",
+  "status": "in-review",
+  "human_creative_approval": false,
+  "social_published": false,
+  "version": "v1",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "slide_ids": [
+    "01-cover",
+    "02-university-line",
+    "03-qs-rankings",
+    "04-scholarship-transfer",
+    "05-application-documents",
+    "06-deadlines-cta"
+  ],
+  "editable_source_pattern": "source/{nn}.html",
+  "svg_source_pattern": "source/{nn}.svg",
+  "style": "Hong Kong original transit editorial / data-atlas inspired / Jost",
+  "logo_language": "tr",
+  "canonical_lockup_id": "H-02/dark",
+  "canonical_lockup_sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "logo_copy": "assets/h02-primary-horizontal-dark.svg",
+  "font": "assets/Jost-VF.ttf",
+  "photo": "assets/victoria-harbour.jpg",
+  "photo_rights": "CC0 1.0 / lumoplank / Wikimedia Commons",
+  "source_links_persist": true,
+  "rendered_exports": [],
+  "browser_export": "render.mjs",
+  "facts_verified_on": "2026-11-08",
+  "source_urls": [
+    "https://admission.cuhk.edu.hk/application/overseas-other-qualifications-non-local-international-team/important-dates/",
+    "https://join.hkust.edu.hk/admissions/international-qualifications",
+    "https://www.admissions.hku.hk/apply/international-qualifications",
+    "https://www.topuniversities.com/qs-top-uni-wur",
+    "https://admission.cuhk.edu.hk/fees-financing-your-studies/scholarships/admission-scholarships-for-undergraduates-only/",
+    "https://join.hkust.edu.hk/fees-and-scholarships",
+    "https://www.admissions.hku.hk/faqs/international"
+  ]
+}
