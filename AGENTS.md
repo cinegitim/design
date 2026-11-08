@@ -1,5 +1,9 @@
 # AI Brand Studio — shared GitHub source / OpenCode + Work/Codex
 
+## Non-negotiable Brandstudio production gate: code-first, never full-slide ImageGen
+
+For every brand-design production or revision in this repository, regardless of executor or channel, the **final composition MUST be authored and saved directly through the real Brandstudio repository/site pipeline**. Use canonical, editable HTML/CSS/SVG for typography, factual text, route graphs, dates, logos and layout. Image generation is permitted **only for isolated, text-free supporting scenes/photography/illustrations** which are then integrated as a layer into the canonical design. Never create or deliver a full carousel slide, full branded poster, full logo or complete visual layout using ImageGen, even as a convenient draft or substitution. Never describe generated images or independent HTML files as a Brandstudio delivery. A legitimate deliverable has an actual committed Brandstudio source, real browser-rendered PNG/JPEG, Visual Editor product and a verified site URL. If user requests to overwrite the same version, update that same registered ID and its outputs; do not create V2, retain old preview in active gallery, or announce an unverified deployment. Country-specific visuals must use **that country's** confirmed colors and graphic context; never carry South Korea's navy/cyan look into Hong Kong (Hong Kong red/white). The existing canonical H-02 logo must remain exact. No social publishing without explicit instruction.
+
 ## Shared Visual Editor style handoff (agent-neutral; opt-in)
 
 When a user provides a Visual Editor **Ajan komutunu kopyala** prompt or its

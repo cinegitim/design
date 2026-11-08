@@ -22,7 +22,7 @@
   ],
   "editable_source_pattern": "source/{nn}.html",
   "svg_source_pattern": "source/{nn}.svg",
-  "style": "Hong Kong original transit editorial / data-atlas inspired / Jost",
+  "style": "Hong Kong Flag Editorial · bauhinia/transit hybrid · ivory/flag-red/graphite",
   "logo_language": "tr",
   "canonical_lockup_id": "H-02/dark",
   "canonical_lockup_sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7",
@@ -33,18 +33,18 @@
   "photo_rights": "CC0 1.0 / lumoplank / Wikimedia Commons",
   "source_links_persist": true,
   "rendered_exports": [
-    "jpeg/01.jpg",
     "png/01.png",
-    "jpeg/02.jpg",
+    "jpeg/01.jpg",
     "png/02.png",
-    "jpeg/03.jpg",
+    "jpeg/02.jpg",
     "png/03.png",
-    "jpeg/04.jpg",
+    "jpeg/03.jpg",
     "png/04.png",
-    "jpeg/05.jpg",
+    "jpeg/04.jpg",
     "png/05.png",
-    "jpeg/06.jpg",
-    "png/06.png"
+    "jpeg/05.jpg",
+    "png/06.png",
+    "jpeg/06.jpg"
   ],
   "browser_export": "render.mjs",
   "facts_verified_on": "2026-11-08",
@@ -59,31 +59,43 @@
   ],
   "export_git_blob_shas": {
     "01": {
-      "jpeg": "2d4ac82da7ecf19e0c75c5975b98f834152d36d1",
-      "png": "dab1ff867acb0b70293ce1368eea52225dc1b779"
+      "png": "b2bb79d4394e4265975ada763cf740406f7edb37",
+      "jpeg": "d99956c59b8a1a8bef853d1ad5bf457ffe1f6e11"
     },
     "02": {
-      "jpeg": "683d2618adb9fc2a952c221165925b904fe10e61",
-      "png": "9830d733192fad71aa8eb3ca45f271cf1b13905a"
+      "png": "6cc65604f8a3dbbcce31d280b0cb6a03470517e0",
+      "jpeg": "28823d593f6f2b27a089fa75f91a713e645c1fc2"
     },
     "03": {
-      "jpeg": "133d54848050842fa8f1994b71db66ce2d7b2ea3",
-      "png": "b43a0d2f9e06338139948937b4c60342da8111b9"
+      "png": "4497cd891427b341222da753d487bc2e4da55be7",
+      "jpeg": "1c89cb9877bc9219915fa07928cfa851e74868ab"
     },
     "04": {
-      "jpeg": "aae56e3638880bee65291101886b6d0ff52a829a",
-      "png": "7283ce841135ff65b40eb78fcfb91111c10c9236"
+      "png": "3a17ef866a58c371d7ac26b572996ad96e5ae8c3",
+      "jpeg": "e6fa5358819109c2844741af621f0d565c88de1f"
     },
     "05": {
-      "jpeg": "0c5bf271bff73c9a1267cf456ce837fc1c3a2b11",
-      "png": "d71d0f628bc7a7e9a86e7dc82fa0f5d20937a05b"
+      "png": "82c18f1968a91158fb702a33869cf7066a3a3587",
+      "jpeg": "c4afca3eb050152fdf7a02748c3615ecb35245f6"
     },
     "06": {
-      "jpeg": "c558719567185c0c078e085cbabf8ddc7d2cb9f1",
-      "png": "76777f112856eea9d7a077df3a7e7804f39819fd"
+      "png": "372bb96af87b1c19bec97df13cc5a7af99bafdcb",
+      "jpeg": "101aec53b2ae1bfcb992842cad7e1fea0ac46b1c"
     }
   },
-  "render_method": "Chrome DevTools Browser Chromium Canvas: source editable SVG/HTML, canonical H-02, Jost and local CC0 photograph",
+  "render_method": "Canonical editable HTML/SVG + local Jost and approved H-02 + CC0 photo, actual connected Chrome Canvas 1080x1350",
   "render_verified_on": "2026-11-08",
-  "quality_note": "Slide 05 card-heading spacing revised and both static browser raster exports synchronized with updated editable HTML/SVG."
+  "quality_note": "Red/white V1 overwrite; cover pill/photo edge corrected; actual browser-rendered PNG/JPEG regenerated. Creative review pending.",
+  "design_identity": {
+    "country": "Hong Kong",
+    "country_colors": {
+      "primary": "#D31920",
+      "secondary": "#FFFCF7",
+      "typography": "#161B20",
+      "subtle_accent": "#D7A758"
+    },
+    "no_korea_palette": true,
+    "mode": "canonical-html-css-svg-and-authentic-photo-layer",
+    "full_slide_imagegen": false
+  }
 }
