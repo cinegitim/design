@@ -19,6 +19,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[3]
 SOURCE = "studio/production/catalog/navigation.json"
+PREVIEWS = "studio/production/catalog/previews.json"
 EDITOR = "docs/visual-editor/browser/navigation-classification.json"
 OUTPUT = "docs/library/catalog.json"
 IDENTIFIER = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -51,6 +52,7 @@ def build(root: Path = ROOT) -> dict:
     nav = load(root, SOURCE)
     groups = load(root, "docs/visual-editor/browser/product-groups.json")
     registry = load(root, "docs/visual-editor/browser/style-registry.json")
+    preview_config = load(root, PREVIEWS)
     require(nav.get("schema") == groups.get("schema") == registry.get("schema") == 1,
             "Incompatible library schema")
     require(nav.get("repository") == "cinegitim/design" and
@@ -82,6 +84,36 @@ def build(root: Path = ROOT) -> dict:
         if group.get("publishedVersionId") is not None:
             require(group["publishedVersionId"] in vids, "Published version not in product family")
         by_group[gid] = group
+
+    # Thumbnails are separately curated and point ONLY to authentic assets from
+    # existing source versions. Never fabricate a fallback branded artwork.
+    require(preview_config.get("schema") == 1 and
+            preview_config.get("repository") == "cinegitim/design" and
+            preview_config.get("scope") == "existing-product-cover-assets" and
+            isinstance(preview_config.get("entries"), list),
+            "Untrusted preview manifest")
+    thumbnails = {}
+    for entry in preview_config["entries"]:
+        gid, vid, image_path = (entry.get("groupId"), entry.get("versionId"), entry.get("path"))
+        require(gid in by_group and gid not in thumbnails,
+                "Duplicate or unknown preview group")
+        require(vid in [v["id"] for v in by_group[gid]["versions"]],
+                "Preview version is not in product family")
+        require(isinstance(image_path, str) and
+                re.fullmatch(r"(?:instagram|social-covers|cin-egitim|library/previews)/(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+[.](?:png|jpe?g|webp|svg)",image_path) is not None and
+                all(piece not in (".", "..") for piece in image_path.split("/")),
+                "Preview path must be a trusted relative design image")
+        asset = (root / "docs" / image_path).resolve()
+        require(asset.is_relative_to((root / "docs").resolve()),
+                "Preview cannot leave the published design directory")
+        # On sparse GitHub CI checkouts original image assets may not be
+        # present. Where mounted, still refuse symlinks or non-file entries.
+        if asset.exists():
+            require(asset.is_file() and not asset.is_symlink(),
+                    "Preview asset must be a regular file")
+        thumbnails[gid] = {"versionId":vid,"path":image_path}
+    require(set(thumbnails) == set(by_group),
+            "Every active product requires an explicit preview mapping")
 
     classification = {}
     for item in nav["items"]:
@@ -147,7 +179,8 @@ def build(root: Path = ROOT) -> dict:
             "mainCategory": entry["mainCategory"], "subCategory": entry["subCategory"],
             "versions": [{"id":v["id"],"label":v["label"]} for v in group["versions"]],
             "defaultId": group["defaultId"], "currentId": group["currentId"],
-            "publishedVersionId": group.get("publishedVersionId"), "styleLinks": links
+            "publishedVersionId": group.get("publishedVersionId"), "styleLinks": links,
+            "thumbnail": thumbnails[gid]
         })
 
     definitions = [{
@@ -174,7 +207,8 @@ def build(root: Path = ROOT) -> dict:
             "repository": "cinegitim/design",
             "taxonomy": SOURCE,
             "productVersions": "docs/visual-editor/browser/product-groups.json",
-            "styleRegistry": "docs/visual-editor/browser/style-registry.json"
+            "styleRegistry": "docs/visual-editor/browser/style-registry.json",
+            "previewSources": PREVIEWS
         },
         "rules": {
             "hierarchy": ["Ana kategori","İçerik alt kategorisi","Ortak tarz",
