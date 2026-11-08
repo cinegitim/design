@@ -63,7 +63,7 @@ class CanonicalLibraryTests(unittest.TestCase):
         self.assertEqual(len(data),5)
         self.assertEqual({p["subCategory"] for p in data},
                          {"Üniversite Tanıtımları","Şehir ve Öğrenci Yaşamı",
-                          "Başvuru ve Burs Rehberleri"})
+                          "Başvuru ve Burs Rehberleri","Üniversite Fırsatları"})
         self.assertEqual(len({x["groupId"] for x in catalog["products"]}),19)
         allversions=[v["id"] for p in catalog["products"] for v in p["versions"]]
         self.assertEqual(len(set(allversions)),32)
