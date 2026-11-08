@@ -59,8 +59,8 @@
   ],
   "export_git_blob_shas": {
     "01": {
-      "png": "6de52a4602112d955845a85a3260b8d78676442b",
-      "jpeg": "e5d666ca59439470769cb38f27080b3f9bc9ec04"
+      "png": "b2bb79d4394e4265975ada763cf740406f7edb37",
+      "jpeg": "d99956c59b8a1a8bef853d1ad5bf457ffe1f6e11"
     },
     "02": {
       "png": "6cc65604f8a3dbbcce31d280b0cb6a03470517e0",
@@ -85,7 +85,7 @@
   },
   "render_method": "Canonical editable HTML/SVG + local Jost and approved H-02 + CC0 photo, actual connected Chrome Canvas 1080x1350",
   "render_verified_on": "2026-11-08",
-  "quality_note": "Same V1 overwritten with Hong Kong flag red/ivory, new original 6 SVG artboards and 12 actual browser PNG/JPEG renders. User creative approval still pending.",
+  "quality_note": "Red/white V1 overwrite; cover pill/photo edge corrected; actual browser-rendered PNG/JPEG regenerated. Creative review pending.",
   "design_identity": {
     "country": "Hong Kong",
     "country_colors": {
