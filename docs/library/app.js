@@ -170,44 +170,61 @@ function renderStyleCards(){
  }
 }
 function linkBadge(link,p){
- const s=styleFor(p,link.styleId);
- const text=(s?.name||link.styleId)+" · "+(s?.presets.find(x=>x.id===link.presetId)?.label||link.presetId);
+ const style=styleFor(p,link.styleId);
+ const name=style?.name||link.styleId;
+ const preset=style?.presets.find(x=>x.id===link.presetId)?.label||link.presetId;
  const row=node("span","association "+link.status);
- row.append(node("strong","",text),node("small","",labels[link.status]||link.status));
+ row.append(node("strong","",name+" / "+preset),
+  node("small","",link.status==="proposed"?"· Öneri":"· Kaynağı doğrulandı"));
+ row.title=link.status==="proposed"
+  ?"Gelecek tasarımlar için öneridir; bu kaynağın tarzı doğrulanmış değildir."
+  :"Bu tarzın ilişkisi kaynak sürümü üzerinden doğrulandı.";
  return row
 }
 function productCard(p,focus){
  const outer=node("article","product-card");
- const header=node("div","product-label",p.mainCategory+" / "+p.subCategory);
- const name=node("h3","",p.title);const meta=node("p","meta",p.versions.length+" kaynak sürümü"
-  +(p.publishedVersionId?" · Kayıtlı yayın sürümü":" · Yayın sürümü eşleştirilmemiş"));
+ const main=node("div","product-main");
+ const label=node("div","product-label",p.mainCategory+" › "+p.subCategory);
+ const title=node("h3","",p.title);
  const marker=node("div","associations");
- const links=focus?[focus]:(p.styleLinks.length?p.styleLinks:[null]);
- for(const link of links)marker.append(link?linkBadge(link,p):node("span","unassigned","Tarz belirlenmedi"));
- const foot=node("div","product-actions");
- const open=node("a","primary-link","Visual Editor'da aç");
- open.href=canonicalURL(p,focus?.status==="verified"&&focus.versionId?focus.versionId:p.defaultId);
- const details=node("details","versions-details");
- const summary=node("summary","","Kaynak sürümleri ("+p.versions.length+")");
+ let links=focus?[focus]:p.styleLinks;
+ if(state.view==="content"&&(state.style||state.preset||state.status!=="all"))
+  links=p.styleLinks.filter(l=>(!state.style||state.style==="unassigned"||l.styleId===state.style)
+   &&(!state.preset||l.presetId===state.preset)&&(["all","unassigned"].includes(state.status)||l.status===state.status));
+ for(const link of links||[])marker.append(linkBadge(link,p));
+ if(!links?.length)marker.append(node("span","unassigned","Tarz henüz belirlenmedi"));
+ main.append(label,title,marker);
+ const actions=node("div","product-actions");
+ const editor=node("a","primary-link","Aç ↗");
+ editor.href=canonicalURL(p,focus?.status==="verified"&&focus.versionId?focus.versionId:p.defaultId);
+ editor.setAttribute("aria-label",p.title+" · Visual Editor'da aç");
+ const detail=node("details","versions-details");
+ const summary=node("summary","",p.versions.length+" sürüm ▾");
+ summary.setAttribute("aria-label",p.title+" için kaynak sürümleri");
  const versions=node("div","versions-list");
  for(const v of p.versions){
   const item=node("a","",v.label+(v.id===p.currentId?" · Son taslak":"")+
    (v.id===p.publishedVersionId?" · Yayınlanan":""));
-  item.href=canonicalURL(p,v.id);versions.append(item)
+  item.href=canonicalURL(p,v.id);
+  versions.append(item)
  }
- details.append(summary,versions);
- foot.append(open,details);
- outer.append(header,name,meta,marker,foot);
+ detail.append(summary,versions);
+ actions.append(detail,editor);
+ outer.append(main,actions);
  return outer
 }
 function entries(products){
  if(state.view==="content")return products.map(p=>({p,link:null}));
  const rows=[];
  for(const p of products){
-  const links=p.styleLinks.filter(l=>(!state.style||l.styleId===state.style)&&(!state.preset||l.presetId===state.preset)&&
-   (state.status==="all"||state.status==="unassigned"||l.status===state.status));
-  if(links.length)for(const l of links)rows.push({p,link:l});
-  else if(!state.style&&!p.styleLinks.length)rows.push({p,link:null})
+  const links=p.styleLinks.filter(l=>(!state.style||state.style==="unassigned"||l.styleId===state.style)
+   &&(!state.preset||l.presetId===state.preset)
+   &&(["all","unassigned"].includes(state.status)||l.status===state.status));
+  if(links.length){
+   for(const link of links)rows.push({p,link})
+  }else if(!p.styleLinks.length&&(!state.style||state.style==="unassigned")){
+   rows.push({p,link:null})
+  }
  }
  return rows
 }
@@ -223,83 +240,125 @@ function sortRows(rows){
    ?(link?.styleId||"zzzz")+"/"+(link?.presetId||"zzzz")
    :row.p.mainCategory+"/"+row.p.subCategory
  };
- return rows.sort((a,b)=>state.sort==="title"?tr(a.p.title,b.p.title):
-  tr(group(a),group(b))||tr(a.p.subCategory,b.p.subCategory)||tr(a.p.title,b.p.title))
+ return rows.sort((a,b)=>{
+  if(state.sort==="title")return tr(a.p.title,b.p.title);
+  return tr(group(a),group(b))||tr(a.p.subCategory,b.p.subCategory)||tr(a.p.title,b.p.title)
+ })
 }
 function heading(row){
+ if(state.sort==="title")return "Ürün adına göre";
  if(state.view==="style"||state.sort==="style"){
   const link=associationForRow(row);
   if(!link)return "Tarz belirlenmeyenler";
   const s=styleFor(row.p,link.styleId);
-  const preset=s?.presets.find(x=>x.id===link.presetId);
-  return (s?.name||link.styleId)+" / "+(preset?.label||link.presetId)
+  return s?.name||link.styleId
  }
- return row.p.mainCategory+" / "+row.p.subCategory
+ return state.main?row.p.subCategory:row.p.mainCategory+" / "+row.p.subCategory
 }
 function renderResults(){
  const products=filteredProducts(),rows=sortRows(entries(products));
  const total=catalog.products.filter(p=>p.brand===state.brand).length;
  const root=$("results");root.replaceChildren();
- $("result-count").textContent=products.length+" / "+total+" ürün · "+rows.length+" görünüm kaydı";
- $("scope-note").textContent=state.view==="style"
- ?"Aynı ürün farklı sürümlerde birden fazla ortak tarza bağlanabilir; kaynak ürün kopyalanmaz."
- :"İçerik konumu sabittir; ortak görsel tarzlar farklı içerik kategorilerinde tekrar kullanılabilir.";
- if(!rows.length){root.append(node("p","empty","Bu seçimde ürün bulunamadı. Başka kategori, tarz veya ilişki durumu seçebilirsiniz."));return}
- let last="",group=null;
+ $("result-count").textContent=products.length+" / "+total+" ürün";
+ const style=stylesForBrand().find(x=>x.id===state.style);
+ $("active-heading").textContent=state.view==="style"
+  ?(style?.name||"Ortak tarzlar"):state.sub||state.main||"Bütün ürünler";
+ $("scope-note").textContent=state.view==="style"&&rows.length
+  ?"Farklı içeriklerdeki ortak tarz önerileri ve doğrulanmış sürümler bir arada gösterilir.":"";
+ if(!rows.length){
+  root.append(node("p","empty","Bu seçimde ürün yok. Bir kategori veya filtreyi kaldırarak diğer kayıtları görebilirsin."));
+  return
+ }
+ let last="",section=null,countElement=null,currentCount=0;
  for(const row of rows){
-  const h=heading(row);
-  if(h!==last){
-   group=node("section","result-group");const title=node("div","result-heading");
-   title.append(node("h2","",h),node("span","",state.view==="style"||state.sort==="style"?"Ortak tasarım dili":"İçerik grubu"));
-   group.append(title);
-   const grid=node("div","product-grid");group.append(grid);root.append(group);last=h
+  const label=heading(row);
+  if(label!==last){
+   section=node("section","result-group");
+   const header=node("div","result-heading");
+   countElement=node("span","", "0 ürün");
+   header.append(node("h2","",label),countElement);
+   section.append(header,node("div","product-grid"));
+   root.append(section);last=label;currentCount=0
   }
-  group.lastChild.append(productCard(row.p,row.link))
+  currentCount++;countElement.textContent=currentCount+" kayıt";
+  section.lastChild.append(productCard(row.p,row.link))
  }
 }
 function renderFacts(){
  const products=catalog.products.filter(p=>p.brand===state.brand);
- const all=products.reduce((n,p)=>n+p.versions.length,0),linked=products.filter(p=>p.styleLinks.length).length;
+ const count=products.reduce((n,p)=>n+p.versions.length,0);
+ const links=products.flatMap(p=>p.styleLinks);
  $("metric-products").textContent=String(products.length);
- $("metric-versions").textContent=String(all);
+ $("metric-versions").textContent=String(count);
  $("metric-styles").textContent=String(stylesForBrand().length);
- $("metric-connections").textContent=linked+" öneri / bağlantı";
- const s=stylesForBrand().find(s=>s.id===state.style);
+ const verified=links.filter(x=>x.status==="verified").length;
+ const proposals=links.filter(x=>x.status==="proposed").length;
+ $("metric-connections").textContent=verified?verified+" doğrulanmış · "+proposals+" öneri":proposals+" tarz önerisi";
+ const style=stylesForBrand().find(x=>x.id===state.style);
  const el=$("style-explanation");
- if(s){
-  const use=usage(s);
-  el.hidden=false;el.replaceChildren();
-  el.append(node("span","eyebrow","Paylaşılan tasarım dili"),node("h2","",s.name),
-   node("p","",s.description),
-   node("p","usage",use.products+" ürün · "+use.subjects.length+" içerik alt kategorisi · "+use.verified+" kaynak sürümü doğrulanmış"));
-  const where=node("div","topic-tags");
-  for(const sub of use.subjects){const tag=node("span","topic-tag",sub);where.append(tag)}
-  el.append(where);
-  const source=node("a","source-link","Kanonik tarz tanımı");
-  source.href="https://github.com/cinegitim/design/blob/main/"+s.sourcePath;
-  source.target="_blank";source.rel="noopener noreferrer";
-  el.append(source)
- }else el.hidden=true
+ if(!style){el.hidden=true;return}
+ el.hidden=false;el.replaceChildren();
+ const info=usage(style);
+ el.append(node("h2","",style.name),
+  node("p","",style.description),
+  node("p","usage",info.products+" ürün · "+info.subjects.length+" içerik alanı · "+
+   info.verified+" kaynak sürümü doğrulanmış"));
+ const tags=node("div","topic-tags");
+ for(const label of info.subjects)tags.append(node("span","topic-tag",label));
+ el.append(tags);
+ const source=node("a","source-link","Kanonik stil tanımı ↗");
+ source.href="https://github.com/cinegitim/design/blob/main/"+style.sourcePath;
+ source.target="_blank";source.rel="noopener noreferrer";
+ el.append(source)
 }
+function renderActiveFilters(){
+ const root=$("active-filters");root.replaceChildren();
+ const set=(label,reset)=>{
+  const chip=node("button","filter-pill",label+" ×");chip.type="button";
+  chip.setAttribute("aria-label",label+" filtresini kaldır");
+  chip.onclick=()=>{reset();render()};
+  root.append(chip)
+ };
+ if(state.main)set(state.main,()=>{state.main="";state.sub="";state.style="";state.preset=""});
+ if(state.sub)set(state.sub,()=>{state.sub=""});
+ const style=stylesForBrand().find(x=>x.id===state.style);
+ if(state.style)set(style?.name||"Tarzı belirlenmemiş",()=>{state.style="";state.preset=""});
+ if(state.preset){
+  const preset=style?.presets.find(x=>x.id===state.preset);
+  set(preset?.label||state.preset,()=>{state.preset=""})
+ }
+ if(state.status!=="all")set(state.status==="proposed"?"Öneriler":state.status==="verified"?"Doğrulananlar":"Atanmamış",
+  ()=>{state.status="all"})
+}
+
 function render(){
- refreshControls();renderStyleCards();renderFacts();renderResults()
+ refreshControls();renderCategories();renderStyleCards();renderFacts();renderResults();renderActiveFilters()
 }
 function connect(){
  $("mode-content").onclick=()=>{state.view="content";state.sort="category";render()};
  $("mode-style").onclick=()=>{state.view="style";state.main="";state.sub="";state.sort="style";render()};
  for(const key of ["brand","main","sub","style","preset"]){
-  $(key).onchange=()=>{state[key]=$(key).value;
+  $(key).onchange=()=>{
+   state[key]=$(key).value;
    if(key==="brand"){state.main="";state.sub="";state.style="";state.preset=""}
    if(key==="main"){state.sub="";state.style="";state.preset=""}
    if(key==="style"){state.preset="";if(state.view==="style"){state.main="";state.sub=""}}
    render()
   }
  }
+ $("advanced-filters").addEventListener("toggle",()=>{
+  $("advanced-panel").hidden=!$("advanced-filters").open
+ });
  $("sort").onchange=()=>{state.sort=$("sort").value;renderResults()};
- $("status").onchange=()=>{state.status=$("status").value;renderResults()};
+ $("status").onchange=()=>{state.status=$("status").value;renderResults();renderActiveFilters();updateURL()};
  $("search").oninput=()=>{state.search=$("search").value;renderResults()};
- $("reset").onclick=()=>{state.main="";state.sub="";state.style="";state.preset="";state.search="";state.status="all";state.sort=state.view==="style"?"style":"category";render()};
+ $("reset").onclick=()=>{
+  state.main="";state.sub="";state.style="";state.preset="";
+  state.search="";state.status="all";state.sort=state.view==="style"?"style":"category";
+  render()
+ }
 }
+
 async function init(){
  try{
   const response=await fetch("catalog.json",{cache:"no-store"});
