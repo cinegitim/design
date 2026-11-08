@@ -171,6 +171,17 @@
         "status": "proposed",
         "scope": "future-design"
       }
+    },
+    {
+      "groupId": "instagram-hong-kong-university-line-2027-001",
+      "mainCategory": "Karuseller",
+      "subCategory": "Üniversite Fırsatları",
+      "suggestion": {
+        "styleId": "data-atlas",
+        "presetId": "timeline-path",
+        "status": "proposed",
+        "scope": "future-design"
+      }
     }
   ],
   "confirmedVersions": []

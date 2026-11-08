@@ -26,10 +26,10 @@ class CanonicalLibraryTests(unittest.TestCase):
         catalog=build(ROOT)
         self.assertEqual(output_text(catalog),(ROOT/OUTPUT).read_text(encoding="utf-8"))
         self.assertEqual((ROOT/SOURCE).read_bytes(),(ROOT/EDITOR).read_bytes())
-        self.assertEqual(len(catalog["products"]),18)
-        self.assertEqual(sum(len(x["versions"]) for x in catalog["products"]),31)
+        self.assertEqual(len(catalog["products"]),19)
+        self.assertEqual(sum(len(x["versions"]) for x in catalog["products"]),32)
         self.assertEqual(len(catalog["styles"]),3)
-        self.assertEqual(sum(bool(p.get("thumbnail")) for p in catalog["products"]),18)
+        self.assertEqual(sum(bool(p.get("thumbnail")) for p in catalog["products"]),19)
         for p in catalog["products"]:
             thumbnail=p["thumbnail"]
             self.assertIn(thumbnail["versionId"],{v["id"] for v in p["versions"]})
@@ -42,7 +42,7 @@ class CanonicalLibraryTests(unittest.TestCase):
             {"asyada-egitim","cin-egitim"}
         )
         self.assertEqual(
-            len([x for x in catalog["products"] if x["brand"]=="asyada-egitim"]),17
+            len([x for x in catalog["products"] if x["brand"]=="asyada-egitim"]),18
         )
         for p in catalog["products"]:
             for l in p["styleLinks"]:
@@ -60,13 +60,13 @@ class CanonicalLibraryTests(unittest.TestCase):
         data=[p for p in catalog["products"] if any(
             l["styleId"]=="data-atlas" for l in p["styleLinks"]
         )]
-        self.assertEqual(len(data),4)
+        self.assertEqual(len(data),5)
         self.assertEqual({p["subCategory"] for p in data},
                          {"Üniversite Tanıtımları","Şehir ve Öğrenci Yaşamı",
-                          "Başvuru ve Burs Rehberleri"})
-        self.assertEqual(len({x["groupId"] for x in catalog["products"]}),18)
+                          "Başvuru ve Burs Rehberleri","Üniversite Fırsatları"})
+        self.assertEqual(len({x["groupId"] for x in catalog["products"]}),19)
         allversions=[v["id"] for p in catalog["products"] for v in p["versions"]]
-        self.assertEqual(len(set(allversions)),31)
+        self.assertEqual(len(set(allversions)),32)
         self.assertTrue(all("sourcePath" in s and "sourceBlobSha" in s
                             for s in catalog["styles"]))
 
