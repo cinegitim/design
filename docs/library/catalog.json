@@ -673,6 +673,35 @@
         "versionId": "instagram-kaist-tech-track-2027-001-v2",
         "path": "library/previews/kaist-tech-track-2027-v2-cover.jpg"
       }
+    },
+    {
+      "groupId": "instagram-hong-kong-university-line-2027-001",
+      "title": "Sonraki Durak: Hong Kong · 2027 Üniversite Hattı",
+      "brand": "asyada-egitim",
+      "mainCategory": "Karuseller",
+      "subCategory": "Üniversite Fırsatları",
+      "versions": [
+        {
+          "id": "instagram-hong-kong-university-line-2027-001",
+          "label": "v1 · 6 slayt · inceleme"
+        }
+      ],
+      "defaultId": "instagram-hong-kong-university-line-2027-001",
+      "currentId": "instagram-hong-kong-university-line-2027-001",
+      "publishedVersionId": null,
+      "styleLinks": [
+        {
+          "styleId": "data-atlas",
+          "presetId": "timeline-path",
+          "status": "proposed",
+          "scope": "future-design",
+          "versionId": null
+        }
+      ],
+      "thumbnail": {
+        "versionId": "instagram-hong-kong-university-line-2027-001",
+        "path": "instagram/hong-kong-university-line-2027-001/jpeg/01.jpg"
+      }
     }
   ],
   "retiredCount": 2

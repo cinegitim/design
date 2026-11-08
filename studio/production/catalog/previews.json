@@ -93,6 +93,11 @@
       "groupId": "instagram-kaist-tech-track-2027-001",
       "versionId": "instagram-kaist-tech-track-2027-001-v2",
       "path": "library/previews/kaist-tech-track-2027-v2-cover.jpg"
+    },
+    {
+      "groupId": "instagram-hong-kong-university-line-2027-001",
+      "versionId": "instagram-hong-kong-university-line-2027-001",
+      "path": "instagram/hong-kong-university-line-2027-001/jpeg/01.jpg"
     }
   ]
 }
