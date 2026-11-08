@@ -141,12 +141,18 @@ function productCard(p,focus){
  const links=focus?[focus]:(p.styleLinks.length?p.styleLinks:[null]);
  for(const link of links)marker.append(link?linkBadge(link,p):node("span","unassigned","Tarz belirlenmedi"));
  const foot=node("div","product-actions");
- const open=node("a","primary-link","Tasarımı aç");
+ const open=node("a","primary-link","Visual Editor'da aç");
  open.href=canonicalURL(p,focus?.status==="verified"&&focus.versionId?focus.versionId:p.defaultId);
- const edit=node("a","secondary-link","Visual Editor");
- edit.href=open.href;
- const count=node("span","number-versions",p.versions.length+" sürüm");
- foot.append(open,edit,count);
+ const details=node("details","versions-details");
+ const summary=node("summary","","Kaynak sürümleri ("+p.versions.length+")");
+ const versions=node("div","versions-list");
+ for(const v of p.versions){
+  const item=node("a","",v.label+(v.id===p.currentId?" · Son taslak":"")+
+   (v.id===p.publishedVersionId?" · Yayınlanan":""));
+  item.href=canonicalURL(p,v.id);versions.append(item)
+ }
+ details.append(summary,versions);
+ foot.append(open,details);
  outer.append(header,name,meta,marker,foot);
  return outer
 }
@@ -161,19 +167,28 @@ function entries(products){
  }
  return rows
 }
+function associationForRow(row){
+ return row.link||row.p.styleLinks.find(l=>(!state.style||l.styleId===state.style)&&
+  (!state.preset||l.presetId===state.preset)&&
+  (state.status==="all"||l.status===state.status))||row.p.styleLinks[0]||null
+}
 function sortRows(rows){
- const group=row=>state.view==="style"||state.sort==="style"
-  ?(row.link?.styleId||row.p.styleLinks[0]?.styleId||"zzzz")+"/"+(row.link?.presetId||row.p.styleLinks[0]?.presetId||"zzzz")
-  :row.p.mainCategory+"/"+row.p.subCategory;
+ const group=row=>{
+  const link=associationForRow(row);
+  return state.view==="style"||state.sort==="style"
+   ?(link?.styleId||"zzzz")+"/"+(link?.presetId||"zzzz")
+   :row.p.mainCategory+"/"+row.p.subCategory
+ };
  return rows.sort((a,b)=>state.sort==="title"?tr(a.p.title,b.p.title):
   tr(group(a),group(b))||tr(a.p.subCategory,b.p.subCategory)||tr(a.p.title,b.p.title))
 }
 function heading(row){
  if(state.view==="style"||state.sort==="style"){
-  if(!row.link)return "Tarz belirlenmeyenler";
-  const s=styleFor(row.p,row.link.styleId);
-  const preset=s?.presets.find(x=>x.id===row.link.presetId);
-  return (s?.name||row.link.styleId)+" / "+(preset?.label||row.link.presetId)
+  const link=associationForRow(row);
+  if(!link)return "Tarz belirlenmeyenler";
+  const s=styleFor(row.p,link.styleId);
+  const preset=s?.presets.find(x=>x.id===link.presetId);
+  return (s?.name||link.styleId)+" / "+(preset?.label||link.presetId)
  }
  return row.p.mainCategory+" / "+row.p.subCategory
 }
@@ -191,7 +206,7 @@ function renderResults(){
   const h=heading(row);
   if(h!==last){
    group=node("section","result-group");const title=node("div","result-heading");
-   title.append(node("h2","",h),node("span","",state.view==="style"?"Ortak tasarım dili":"İçerik grubu"));
+   title.append(node("h2","",h),node("span","",state.view==="style"||state.sort==="style"?"Ortak tasarım dili":"İçerik grubu"));
    group.append(title);
    const grid=node("div","product-grid");group.append(grid);root.append(group);last=h
   }
