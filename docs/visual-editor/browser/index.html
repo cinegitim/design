@@ -535,12 +535,31 @@ var codec=globalThis.BrandstudioPortable,ux=globalThis.BrandstudioUX,discovery=g
 var history=ux.createHistory(40),savedState=copy(state),groupOpen={},dragging=false,dragRecorded=false,colorSessions={};
 var cloud=globalThis.BrandstudioCloud,cloudData=null,cloudSelected=false,cloudNonce=0;
  var styleModule=globalThis.BrandstudioStyleSelection,styleUI=null;
+var navUI=null,navRegistry=null,navConfig=null;
+function activeFamily(){
+ return catalog.find(function(g){return(g.versions||[]).some(function(v){return v.id===slug})})||null
+}
+function updateLibraryBreadcrumb(){
+ if(!record)return;
+ var group=activeFamily(),definition=navConfig?.items?.find(function(x){return x.groupId===(group?.familyId||group?.id)});
+ if(!definition)return;
+ var selected=state?.designStyle;
+ var styleEntry=navRegistry?.styles?.find(function(x){return x.style_id===selected?.style_id&&x.brand===brand});
+ var styleName=styleEntry?.name||'Tarz belirlenmedi',presetName=styleEntry?.presets?.[selected?.preset_id]?.label||'';
+ var proposed=definition.suggestion&&navRegistry?.styles?.find(function(x){return x.style_id===definition.suggestion.styleId});
+ var hint=!selected&&proposed?' (gelecek tasarım önerisi: '+proposed.name+')':'';
+ $('catalog-breadcrumb').textContent=(brand==='cin-egitim'?'Çin Eğitim':"Asya'da Eğitim")+' › '+
+  definition.mainCategory+' › '+definition.subCategory+' › '+styleName+
+  (presetName?' › '+presetName:'')+' › '+(group?.title||record.title)+hint
+}
+function refreshLibraryNavigation(){updateLibraryBreadcrumb();navUI?.sync()}
+
  var cloudSha=null,cloudReady=false,autoBusy=false,autoLastFailure=false;
  if(styleModule&&globalThis.BrandstudioStyleUI){
  styleUI=globalThis.BrandstudioStyleUI.create({
   module:styleModule,
   getContext:function(){return{brand:brand,record:record,state:state,slug:slug,current:current}},
-  commit:function(selection){if(JSON.stringify(state.designStyle)!==JSON.stringify(selection)){checkpoint();state.designStyle=selection;dirtyStatus()}},
+  commit:function(selection){if(JSON.stringify(state.designStyle)!==JSON.stringify(selection)){checkpoint();state.designStyle=selection;dirtyStatus();refreshLibraryNavigation()}},
   copyPrompt:async function(prompt){if(!navigator.clipboard?.writeText)throw Error("Tarayıcı panoya yazmayı desteklemiyor");await navigator.clipboard.writeText(prompt)},
   exportBrief:function(selection){var brief=styleModule.productionBrief({selection:selection,product:slug,version:current});
    download(slug+'-v'+current+'-production-brief.json',JSON.stringify(brief,null,2)+'\n','application/json')}
@@ -1643,7 +1662,9 @@ function renderCatalog(filter){
   var haystack=(item.title+' '+item.id+' '+item.family+' '+(item.category||'')+' '+
    (item.versions||[]).map(function(v){return v.label+' '+v.id}).join(' ')).toLocaleLowerCase('tr');
   if(query&&!haystack.includes(query))return;
-  var familyName=(item.brand==='cin-egitim'?'Çin Eğitim':'Asya’da Eğitim')+' › '+(item.categoryPath?.join(' › ')||item.category||item.family);
+  var navClass=navConfig?.items?.find(function(x){return x.groupId===(item.familyId||item.id)});
+  var familyName=(item.brand==='cin-egitim'?'Çin Eğitim':'Asya’da Eğitim')+' › '+
+   (navClass?navClass.mainCategory+' › '+navClass.subCategory:(item.categoryPath?.join(' › ')||item.category||item.family));
   if(!families[familyName]){var group=document.createElement('optgroup');group.label=familyName;picker.appendChild(group);families[familyName]=group}
   var option=document.createElement('option');option.value=item.id;
   option.textContent=item.title+' · '+(item.versions||[]).length+' sürüm'+
@@ -1669,6 +1690,7 @@ function renderProductVersions(selected){
  });
  sel.value=topVersionValue();sel.disabled=sel.options.length<=1;
  $('catalog-breadcrumb').textContent=(selected.brand==='cin-egitim'?'Çin Eğitim':'Asya’da Eğitim')+' › '+(selected.categoryPath?.join(' › ')||selected.category||'Diğer');
+ updateLibraryBreadcrumb();
  var status=$('catalog-status'),pub=selected.publications||[];
  var published=selected.lifecycle==='published'&&pub.length>0;
  var matchVersion=published&&pub.some(function(p){return p.productId===selected.id});
@@ -1723,7 +1745,7 @@ function openProduct(productId){
  renderV();
  var q=new URLSearchParams(location.search);q.set('product',slug);
  window.history.replaceState(null,'',location.pathname+'?'+q.toString()); // URL-only; browser archive storage unchanged.
- styleUI?.sync();show(0);renderFinalizeSummary();refreshCloud(slug);return true
+ styleUI?.sync();refreshLibraryNavigation();show(0);renderFinalizeSummary();refreshCloud(slug);return true
 }
 $('catalog-search').oninput=function(){renderCatalog(this.value)};
 $('catalog-select').onchange=function(){
@@ -1739,7 +1761,7 @@ $('catalog-version').onchange=function(){
    if(!canLeaveEditing()){this.value=old;return}
    state=copy(snapshot.state);current=n;cloudSelected=true;dirty=false;savedState=copy(state);
    history.clear();historyButtons();['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
-   $('unsaved').textContent='Kayıtlı sürüm açıldı';renderProductVersions(record);renderV();show(page);renderFinalizeSummary();return
+   $('unsaved').textContent='Kayıtlı sürüm açıldı';renderProductVersions(record);refreshLibraryNavigation();renderV();show(page);renderFinalizeSummary();return
  }
  
  // Choosing the original source of this product restores its clean v1,
@@ -1780,7 +1802,7 @@ async function refreshCloud(product){
       state=copy(codec.validateState(snap.state,pages.length));current=last;cloudSelected=true;
       savedState=copy(state);history.clear();historyButtons();
       ['paper','ink','red'].forEach(function(k){$(k).value=state.colors[k]});
-      styleUI?.sync();$('unsaved').textContent='Kayıtlı sürüm açıldı';show(page)
+      styleUI?.sync();refreshLibraryNavigation();$('unsaved').textContent='Kayıtlı sürüm açıldı';show(page)
     }
   }
   renderProductVersions(record);
@@ -2082,12 +2104,35 @@ $('side-download-jpeg').onclick=function(){exportRaster('jpeg')};
 
 async function init(){
  try{var styleResponse=await fetch('style-registry.json',{cache:'no-store'});if(!styleResponse.ok)throw Error('HTTP '+styleResponse.status);
-     styleUI?.setRegistry(await styleResponse.json())}
+     navRegistry=await styleResponse.json();styleUI?.setRegistry(navRegistry)}
  catch(e){$('style-status').textContent='Stil kataloğu alınamadı: '+e.message}
+ try{var classificationResponse=await fetch('navigation-classification.json',{cache:'no-store'});
+     if(!classificationResponse.ok)throw Error('HTTP '+classificationResponse.status);
+     navConfig=await classificationResponse.json()}
+ catch(e){$('nav-summary').textContent='İçerik sınıflandırması yüklenemedi: '+e.message}
 
  $('status').textContent='Tasarım kataloğu okunuyor…';
  catalog=await discovery.load(new URL('catalog.json',location.href));
  if(!catalog.length){$('status').textContent='Tasarım kataloğu açılamadı';return}
+ if(navConfig&&navRegistry&&globalThis.BrandstudioCatalogNavigation&&globalThis.BrandstudioCatalogNavigatorUI){
+  try{
+   navUI=globalThis.BrandstudioCatalogNavigatorUI.create({
+    model:globalThis.BrandstudioCatalogNavigation,records:catalog,
+    classification:navConfig,styleRegistry:navRegistry,
+    getActive:function(){
+     var group=activeFamily();
+     return{brand:group?.brand||brand,groupId:group?.familyId||group?.id||null,
+      openId:slug,versionId:slug,selection:state?.designStyle||null}
+    },
+    onOpen:function(id){
+     if(id===slug)return true;
+     if(!canLeaveEditing())return false;
+     return openProduct(id)
+    }
+   })
+  }catch(e){$('nav-summary').textContent='Kütüphane açılamadı: '+e.message;
+   $('catalog-explore-toggle').disabled=true}
+ }else{$('catalog-explore-toggle').disabled=true}
  renderCatalog('');
  var chosen=discovery.byId(catalog,slug)?slug:catalog[0].id;
  if(!openProduct(chosen))$('status').textContent='Tasarım yüklenemedi'
