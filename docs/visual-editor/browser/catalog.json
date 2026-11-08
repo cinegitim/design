@@ -453,5 +453,15 @@
       "instagram/kaist-tech-track-2027-001/v2/source/05.html",
       "instagram/kaist-tech-track-2027-001/v2/source/06.html"
     ]
+  },
+  {
+    "id": "instagram-hong-kong-metro-2027-concept-001",
+    "title": "Hong Kong 2027 · Metro Hattı · Hibrit Konsept",
+    "family": "instagram",
+    "kind": "html",
+    "pages": [
+      "instagram/hong-kong-metro-2027-concept-001/source/01.html",
+      "instagram/hong-kong-metro-2027-concept-001/source/02.html"
+    ]
   }
 ]

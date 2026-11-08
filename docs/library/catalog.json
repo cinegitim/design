@@ -30,7 +30,8 @@
             "Başvuru ve Burs Rehberleri",
             "Şehir ve Öğrenci Yaşamı",
             "Üniversite Tanıtımları",
-            "Üniversite Fırsatları"
+            "Üniversite Fırsatları",
+            "Konsept Denemeleri"
           ]
         },
         {
@@ -672,6 +673,27 @@
       "thumbnail": {
         "versionId": "instagram-kaist-tech-track-2027-001-v2",
         "path": "library/previews/kaist-tech-track-2027-v2-cover.jpg"
+      }
+    },
+    {
+      "groupId": "instagram-hong-kong-metro-2027-concept-001",
+      "title": "Sonraki Durak: Hong Kong · Üniversite Hattı",
+      "brand": "asyada-egitim",
+      "mainCategory": "Karuseller",
+      "subCategory": "Konsept Denemeleri",
+      "versions": [
+        {
+          "id": "instagram-hong-kong-metro-2027-concept-001",
+          "label": "Konsept v1 · 2/6 slayt önizleme"
+        }
+      ],
+      "defaultId": "instagram-hong-kong-metro-2027-concept-001",
+      "currentId": "instagram-hong-kong-metro-2027-concept-001",
+      "publishedVersionId": null,
+      "styleLinks": [],
+      "thumbnail": {
+        "versionId": "instagram-hong-kong-metro-2027-concept-001",
+        "path": "instagram/hong-kong-metro-2027-concept-001/jpeg/01.jpg"
       }
     }
   ],

@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "id": "instagram-hong-kong-metro-2027-concept-001",
+  "title": "Sonraki Durak: Hong Kong · 2027 Üniversite Hattı",
+  "brand": "asyada-egitim",
+  "category": "instagram-carousel-concept",
+  "status": "in-review",
+  "purpose": "Two-slide concept preview of proposed six-slide carousel, awaiting creative approval",
+  "production_route": "GitHub → Cloudflare Pages → Brandstudio Visual Editor",
+  "planned_slides": 6,
+  "authored_slides": [
+    "01",
+    "02"
+  ],
+  "editable_sources": [
+    "source/01.html",
+    "source/02.html"
+  ],
+  "rendered_outputs": [
+    "jpeg/01.jpg",
+    "jpeg/02.jpg"
+  ],
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "creative_method": "CC0 Hong Kong photo + editable HTML/CSS/SVG metro routes and university text",
+  "render_mode": "Chromium",
+  "logo_language": "tr",
+  "canonical_lockup_id": "H-02/dark",
+  "canonical_lockup_sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7",
+  "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "canonical_lockup_file": "assets/h02-primary-horizontal-dark.svg",
+  "visual_source": {
+    "path": "assets/victoria-harbour.jpg",
+    "author": "Wilfredor",
+    "license": "CC0 1.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Victoria_Harbour_skyscrapers.jpg",
+    "ai_generated": false
+  },
+  "brand_typeface": "Jost",
+  "style_status": "concept-only-unapproved",
+  "publication_approved": false,
+  "social_published": false,
+  "full_carousel_complete": false
+}

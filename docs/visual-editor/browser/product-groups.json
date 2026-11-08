@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "scope": "active-and-versioned",
-  "updated": "2026-10-31",
+  "updated": "2026-11-08",
   "archiveBranch": "archive/brand-identity-history-20261026",
   "notes": "Single product family; defaultId chooses an evidenced published revision when known; currentId remains latest working revision. Never assert which version was published from family-level proof. Legacy deep links to exact versions continue working. Canonical logo files remain protected.",
   "groups": [
@@ -442,6 +442,29 @@
       "publicationAnchors": [
         "KAIST'te 2027 burslu lisans fırsatları",
         "KAIST başvurunu birlikte planlayalım."
+      ]
+    },
+    {
+      "id": "instagram-hong-kong-metro-2027-concept-001",
+      "title": "Sonraki Durak: Hong Kong · Üniversite Hattı",
+      "brand": "asyada-egitim",
+      "category": "Sosyal Medya / Karuseller / Konsept Denemeleri",
+      "currentId": "instagram-hong-kong-metro-2027-concept-001",
+      "defaultId": "instagram-hong-kong-metro-2027-concept-001",
+      "versions": [
+        {
+          "id": "instagram-hong-kong-metro-2027-concept-001",
+          "label": "Konsept v1 · 2/6 slayt önizleme"
+        }
+      ],
+      "categoryPath": [
+        "Sosyal Medya",
+        "Karuseller",
+        "Konsept Denemeleri"
+      ],
+      "lifecycle": "in-review",
+      "publicationAnchors": [
+        "Sonraki durak Hong Kong: üç üniversite, farklı fırsatlar, tek yolculuk."
       ]
     }
   ],
