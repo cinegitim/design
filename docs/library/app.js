@@ -1,0 +1,261 @@
+/* Brandstudio main-site canonical design library.
+   Public, read-only static snapshot; no autosave or API/polling. */
+(()=>{"use strict";
+const $=id=>document.getElementById(id);
+const node=(tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=String(text);return el};
+const nameBrand=b=>b==="asyada-egitim"?"Asya'da Eğitim":b==="cin-egitim"?"Çin Eğitim":b;
+const canonicalURL=(g,v)=>"../visual-editor/browser/?product="+encodeURIComponent(v||g.defaultId);
+const styleKey=(styleId,brand)=>brand+"/"+styleId;
+const FORMAT={Karuseller:"instagram-carousel","Tekil Paylaşımlar":"social-post","Profil ve Kapaklar":"identity-application","Roll-up":"print-catalog"};
+const labels={verified:"Kaynağı doğrulandı",proposed:"Yeni tasarım önerisi"};
+const norm=x=>String(x||"").toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/ı/g,"i");
+let catalog=null;
+const query=new URLSearchParams(location.search);
+const state={
+ brand:["asyada-egitim","cin-egitim"].includes(query.get("brand"))?query.get("brand"):"asyada-egitim",
+ view:query.get("view")==="style"?"style":"content",
+ main:"",sub:"",style:"",preset:"",status:"all",sort:"category",search:""
+};
+const known=(id)=>$(id)?.value;
+const keys=styles=>styles.map(s=>s.id);
+const unique=arr=>[...new Set(arr)];
+const tr=(a,b)=>String(a).localeCompare(String(b),"tr");
+function validCatalog(d){
+ if(d?.schema!==1||!Array.isArray(d.products)||!Array.isArray(d.styles)||!Array.isArray(d.categories))
+  throw Error("Katalog şeması tanınmadı");
+ const groups=new Set(),versions=new Set(),styleMap=new Map();
+ for(const s of d.styles){
+  const key=styleKey(s.id,s.brand);
+  if(styleMap.has(key)||!s.presets?.length||!s.sourcePath)throw Error("Stil tanımı yinelendi veya eksik");
+  styleMap.set(key,s)
+ }
+ for(const p of d.products){
+  if(groups.has(p.groupId)||!p.title||!p.mainCategory||!p.subCategory||!Array.isArray(p.versions))
+   throw Error("Ürün sınıflandırması geçersiz");
+  groups.add(p.groupId);
+  for(const v of p.versions){if(versions.has(v.id))throw Error("Kaynak sürümü iki aileye bağlanmış");versions.add(v.id)}
+  for(const link of p.styleLinks||[]){
+   const s=styleMap.get(styleKey(link.styleId,p.brand));
+   if(!s||s.category!==FORMAT[p.mainCategory]||!s.presets.some(v=>v.id===link.presetId))
+    throw Error("Ürüne yanlış marka, format veya çeşitleme bağlanmış");
+   if(!["verified","proposed"].includes(link.status))throw Error("Desteklenmeyen tarz ilişki durumu")
+  }
+ }
+ return styleMap
+}
+const styleByKey=new Map();
+function styleFor(p,id){return styleByKey.get(styleKey(id,p.brand))}
+function stylesForBrand(){return catalog.styles.filter(s=>s.brand===state.brand)}
+function filteredProducts(){
+ return catalog.products.filter(p=>p.brand===state.brand&&(!state.main||p.mainCategory===state.main)&&
+ (!state.sub||p.subCategory===state.sub)&&
+ (!state.search||norm([p.title,p.mainCategory,p.subCategory,p.groupId,...p.versions.map(v=>v.id)].join(" ")).includes(norm(state.search)))&&
+ (!state.style||state.style==="unassigned" ? state.style!=="unassigned"||p.styleLinks.length===0 :
+  p.styleLinks.some(l=>l.styleId===state.style))&&
+ (!state.preset||p.styleLinks.some(l=>l.styleId===state.style&&l.presetId===state.preset))&&
+ (state.status==="all"||state.status==="unassigned"&&!p.styleLinks.length||
+  p.styleLinks.some(l=>l.status===state.status&&(!state.style||l.styleId===state.style)&&
+   (!state.preset||l.presetId===state.preset))))
+}
+function usage(s,products=catalog.products){
+ const involved=products.filter(p=>p.brand===s.brand&&p.styleLinks.some(l=>l.styleId===s.id));
+ const subject=unique(involved.map(p=>p.subCategory));
+ return {products:involved.length,subjects:subject,verified:involved.filter(p=>p.styleLinks.some(l=>l.styleId===s.id&&l.status==="verified")).length}
+}
+function setSelect(id,opts,value,disabled){
+ const select=$(id);select.replaceChildren();
+ for(const o of opts){const entry=node("option","",o.label);entry.value=o.id;select.append(entry)}
+ select.value=opts.some(x=>x.id===value)?value:opts[0]?.id||"";
+ select.disabled=Boolean(disabled)||opts.length<2;
+ return select.value
+}
+function updateURL(){
+ const q=new URLSearchParams();
+ if(state.brand!=="asyada-egitim")q.set("brand",state.brand);
+ if(state.view!=="content")q.set("view",state.view);
+ if(state.style)q.set("style",state.style);
+ history.replaceState(null,"",location.pathname+(q.size?"?"+q.toString():"")+location.hash)
+}
+function refreshControls(){
+ const brands=unique(catalog.products.map(p=>p.brand));
+ state.brand=setSelect("brand",brands.map(b=>({id:b,label:nameBrand(b)})),state.brand);
+ const prods=catalog.products.filter(p=>p.brand===state.brand);
+ const mains=unique(prods.map(p=>p.mainCategory));
+ if(state.main&&!mains.includes(state.main)){state.main="";state.sub=""}
+ state.main=setSelect("main",[{id:"",label:"Bütün ana kategoriler"},...mains.map(x=>({id:x,label:x}))],state.main);
+ const subs=unique(prods.filter(p=>!state.main||p.mainCategory===state.main).map(p=>p.subCategory));
+ if(state.sub&&!subs.includes(state.sub))state.sub="";
+ state.sub=setSelect("sub",[{id:"",label:"Bütün içerikler"},...subs.map(x=>({id:x,label:x}))],state.sub);
+ const ss=stylesForBrand().filter(s=>!state.main||s.category===FORMAT[state.main]);
+ const choices=[{id:"",label:"Bütün ortak tarzlar"},...ss.map(s=>({id:s.id,label:s.name})),{id:"unassigned",label:"Tarzı henüz belirlenmeyen"}];
+ if(state.style&&!choices.some(x=>x.id===state.style)){state.style="";state.preset=""}
+ state.style=setSelect("style",choices,state.style);
+ const focus=ss.find(s=>s.id===state.style);
+ state.preset=setSelect("preset",[{id:"",label:"Bütün çeşitlemeler"},...(focus?.presets||[]).map(x=>({id:x.id,label:x.label}))],state.preset,!focus);
+ $("mode-content").setAttribute("aria-pressed",String(state.view==="content"));
+ $("mode-style").setAttribute("aria-pressed",String(state.view==="style"));
+ $("catalog-crumb").textContent=state.view==="content"
+  ?"Ana kategori › İçerik alt kategorisi › Ortak tarz › Çeşitleme › Tekil ürün"
+  :"Ortak tarz › Çeşitleme › Ana kategori › İçerik alt kategorisi › Tekil ürün";
+ $("sort").value=state.sort;
+ $("status").value=state.status;
+ $("search").value=state.search;
+ updateURL()
+}
+function renderStyleCards(){
+ const root=$("style-rail");root.replaceChildren();
+ const ss=stylesForBrand().filter(s=>!state.main||s.category===FORMAT[state.main]);
+ const total=catalog.products.filter(p=>p.brand===state.brand).length;
+ const all=node("button","style-tile"+(!state.style?" selected":""),"Tüm tarzlar");
+ all.type="button";all.setAttribute("aria-pressed",String(!state.style));
+ all.append(node("small","",total+" ürün ailesi"));
+ all.onclick=()=>{state.style="";state.preset="";render()};
+ root.append(all);
+ for(const s of ss){
+  const info=usage(s);
+  const card=node("button","style-tile"+(state.style===s.id?" selected":""));
+  card.type="button";card.setAttribute("aria-pressed",String(state.style===s.id));
+  const visual=node("span","style-visual");visual.dataset.style=s.id;visual.setAttribute("aria-hidden","true");
+  const content=node("span","style-body");
+  content.append(node("strong","",s.name),node("small","",s.presets.length+" çeşitleme · "+info.products+" ürün önerisi/bağlantısı"));
+  card.append(visual,content);
+  const subjects=node("span","style-subjects",info.subjects.length?info.subjects.join(" · "):"Henüz ilişkilendirilmiş ürün yok");
+  card.append(subjects);
+  card.onclick=()=>{state.view="style";state.main="";state.sub="";state.style=s.id;state.preset="";state.sort="style";render()};
+  root.append(card)
+ }
+}
+function linkBadge(link,p){
+ const s=styleFor(p,link.styleId);
+ const text=(s?.name||link.styleId)+" · "+(s?.presets.find(x=>x.id===link.presetId)?.label||link.presetId);
+ const row=node("span","association "+link.status);
+ row.append(node("strong","",text),node("small","",labels[link.status]||link.status));
+ return row
+}
+function productCard(p,focus){
+ const outer=node("article","product-card");
+ const header=node("div","product-label",p.mainCategory+" / "+p.subCategory);
+ const name=node("h3","",p.title);const meta=node("p","meta",p.versions.length+" kaynak sürümü"
+  +(p.publishedVersionId?" · Kayıtlı yayın sürümü":" · Yayın sürümü eşleştirilmemiş"));
+ const marker=node("div","associations");
+ const links=focus?[focus]:(p.styleLinks.length?p.styleLinks:[null]);
+ for(const link of links)marker.append(link?linkBadge(link,p):node("span","unassigned","Tarz belirlenmedi"));
+ const foot=node("div","product-actions");
+ const open=node("a","primary-link","Tasarımı aç");
+ open.href=canonicalURL(p,focus?.status==="verified"&&focus.versionId?focus.versionId:p.defaultId);
+ const edit=node("a","secondary-link","Visual Editor");
+ edit.href=open.href;
+ const count=node("span","number-versions",p.versions.length+" sürüm");
+ foot.append(open,edit,count);
+ outer.append(header,name,meta,marker,foot);
+ return outer
+}
+function entries(products){
+ if(state.view==="content")return products.map(p=>({p,link:null}));
+ const rows=[];
+ for(const p of products){
+  const links=p.styleLinks.filter(l=>(!state.style||l.styleId===state.style)&&(!state.preset||l.presetId===state.preset)&&
+   (state.status==="all"||state.status==="unassigned"||l.status===state.status));
+  if(links.length)for(const l of links)rows.push({p,link:l});
+  else if(!state.style&&!p.styleLinks.length)rows.push({p,link:null})
+ }
+ return rows
+}
+function sortRows(rows){
+ const group=row=>state.view==="style"||state.sort==="style"
+  ?(row.link?.styleId||row.p.styleLinks[0]?.styleId||"zzzz")+"/"+(row.link?.presetId||row.p.styleLinks[0]?.presetId||"zzzz")
+  :row.p.mainCategory+"/"+row.p.subCategory;
+ return rows.sort((a,b)=>state.sort==="title"?tr(a.p.title,b.p.title):
+  tr(group(a),group(b))||tr(a.p.subCategory,b.p.subCategory)||tr(a.p.title,b.p.title))
+}
+function heading(row){
+ if(state.view==="style"||state.sort==="style"){
+  if(!row.link)return "Tarz belirlenmeyenler";
+  const s=styleFor(row.p,row.link.styleId);
+  const preset=s?.presets.find(x=>x.id===row.link.presetId);
+  return (s?.name||row.link.styleId)+" / "+(preset?.label||row.link.presetId)
+ }
+ return row.p.mainCategory+" / "+row.p.subCategory
+}
+function renderResults(){
+ const products=filteredProducts(),rows=sortRows(entries(products));
+ const total=catalog.products.filter(p=>p.brand===state.brand).length;
+ const root=$("results");root.replaceChildren();
+ $("result-count").textContent=products.length+" / "+total+" ürün · "+rows.length+" görünüm kaydı";
+ $("scope-note").textContent=state.view==="style"
+ ?"Aynı ürün farklı sürümlerde birden fazla ortak tarza bağlanabilir; kaynak ürün kopyalanmaz."
+ :"İçerik konumu sabittir; ortak görsel tarzlar farklı içerik kategorilerinde tekrar kullanılabilir.";
+ if(!rows.length){root.append(node("p","empty","Bu seçimde ürün bulunamadı. Başka kategori, tarz veya ilişki durumu seçebilirsiniz."));return}
+ let last="",group=null;
+ for(const row of rows){
+  const h=heading(row);
+  if(h!==last){
+   group=node("section","result-group");const title=node("div","result-heading");
+   title.append(node("h2","",h),node("span","",state.view==="style"?"Ortak tasarım dili":"İçerik grubu"));
+   group.append(title);
+   const grid=node("div","product-grid");group.append(grid);root.append(group);last=h
+  }
+  group.lastChild.append(productCard(row.p,row.link))
+ }
+}
+function renderFacts(){
+ const products=catalog.products.filter(p=>p.brand===state.brand);
+ const all=products.reduce((n,p)=>n+p.versions.length,0),linked=products.filter(p=>p.styleLinks.length).length;
+ $("metric-products").textContent=String(products.length);
+ $("metric-versions").textContent=String(all);
+ $("metric-styles").textContent=String(stylesForBrand().length);
+ $("metric-connections").textContent=linked+" öneri / bağlantı";
+ const s=stylesForBrand().find(s=>s.id===state.style);
+ const el=$("style-explanation");
+ if(s){
+  const use=usage(s);
+  el.hidden=false;el.replaceChildren();
+  el.append(node("span","eyebrow","Paylaşılan tasarım dili"),node("h2","",s.name),
+   node("p","",s.description),
+   node("p","usage",use.products+" ürün · "+use.subjects.length+" içerik alt kategorisi · "+use.verified+" kaynak sürümü doğrulanmış"));
+  const where=node("div","topic-tags");
+  for(const sub of use.subjects){const tag=node("span","topic-tag",sub);where.append(tag)}
+  el.append(where);
+  const source=node("a","source-link","Kanonik tarz tanımı");
+  source.href="https://github.com/cinegitim/design/blob/main/"+s.sourcePath;
+  source.target="_blank";source.rel="noopener noreferrer";
+  el.append(source)
+ }else el.hidden=true
+}
+function render(){
+ refreshControls();renderStyleCards();renderFacts();renderResults()
+}
+function connect(){
+ $("mode-content").onclick=()=>{state.view="content";state.sort="category";render()};
+ $("mode-style").onclick=()=>{state.view="style";state.main="";state.sub="";state.sort="style";render()};
+ for(const key of ["brand","main","sub","style","preset"]){
+  $(key).onchange=()=>{state[key]=$(key).value;
+   if(key==="brand"){state.main="";state.sub="";state.style="";state.preset=""}
+   if(key==="main"){state.sub="";state.style="";state.preset=""}
+   if(key==="style"){state.preset="";if(state.view==="style"){state.main="";state.sub=""}}
+   render()
+  }
+ }
+ $("sort").onchange=()=>{state.sort=$("sort").value;renderResults()};
+ $("status").onchange=()=>{state.status=$("status").value;renderResults()};
+ $("search").oninput=()=>{state.search=$("search").value;renderResults()};
+ $("reset").onclick=()=>{state.main="";state.sub="";state.style="";state.preset="";state.search="";state.status="all";state.sort=state.view==="style"?"style":"category";render()};
+}
+async function init(){
+ try{
+  const response=await fetch("catalog.json",{cache:"no-store"});
+  if(!response.ok)throw Error("HTTP "+response.status);
+  catalog=await response.json();
+  const validated=validCatalog(catalog);
+  for(const [k,v] of validated)styleByKey.set(k,v);
+  const styleQuery=query.get("style");
+  if(styleQuery&&stylesForBrand().some(s=>s.id===styleQuery))state.style=styleQuery;
+  connect();render();
+  $("load-status").hidden=true;$("library-content").hidden=false
+ }catch(err){
+  $("load-status").textContent="Tasarım kütüphanesi yüklenemedi: "+err.message;
+  $("load-status").setAttribute("role","alert")
+ }
+}
+init()
+})();
