@@ -110,17 +110,20 @@ function filter(index,opts={}){
   if(brand&&product.brand!==brand||main&&product.main!==main||sub&&product.sub!==sub)continue;
   const matches=product.links.filter(link=>(!style||style===link.styleId)&&(!preset||preset===link.presetId));
   let eligible=matches;
-  if(style==="unassigned"){eligible=product.links.filter(x=>x.status==="draft"||x.status==="verified");
-   if(eligible.length)continue;eligible=[]}
+  if(style==="unassigned"){if(product.links.length)continue;eligible=[]}
   else if(style&&matches.length===0)continue;
   if(scope==="verified"){eligible=eligible.filter(x=>x.status==="verified");if(!eligible.length)continue}
   if(scope==="proposed"){eligible=eligible.filter(x=>x.status==="proposed");if(!eligible.length)continue}
   if(scope==="draft"){eligible=eligible.filter(x=>x.status==="draft");if(!eligible.length)continue}
   if(scope==="unassigned"&&product.links.some(x=>x.status==="verified"||x.status==="draft"))continue;
-  const match=eligible.find(x=>x.status==="verified")||eligible.find(x=>x.status==="draft")||eligible[0]||null;
   const haystack=[product.title,product.groupId,product.main,product.sub,...product.versions.map(x=>x.label+" "+x.id)].join(" ").toLocaleLowerCase("tr");
   if(query&&!haystack.includes(query))continue;
-  items.push({...product,match,matchCount:eligible.length})
+  const ranked=eligible.slice().sort((a,b)=>({"verified":0,"draft":1,"proposed":2}[a.status]??3)-({"verified":0,"draft":1,"proposed":2}[b.status]??3));
+  // In style view the same source product can appear under two style paths
+  // (e.g. two verified revisions) without duplicating any source object.
+  const paths=opts.mode==="style"&&!style&&ranked.length?ranked:[ranked[0]||null];
+  for(const match of paths)items.push({...product,match,matchCount:eligible.length})
+
  }
  return sortProducts(items,sort)
 }
