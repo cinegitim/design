@@ -1,144 +1,72 @@
 <!doctype html>
-<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Yeni Ufuk × ASYA Manifestosu · Brandstudio Editable Cover</title>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yeni Ufuk × ASYA Manifestosu · Editorial Air V4</title>
 <style>
 @font-face{font-family:Jost;src:url("../../../assets/Jost-VF.ttf") format("truetype");font-weight:100 900;font-display:swap}
-:root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120}
-*{box-sizing:border-box}html,body{margin:0}body{font-family:Jost,Arial,sans-serif;background:var(--paper);overflow:hidden}
-.canvas{position:relative;isolation:isolate;overflow:hidden;background:var(--paper);width:1500px;height:500px}
-.photo{position:absolute;overflow:hidden;background:#172128}
-.photo img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.85) contrast(1.12) brightness(.88)}
-.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,26,34,.03),rgba(14,26,36,.36))}
-.lockup{position:absolute;display:block;object-fit:contain;z-index:4}
-.micro{position:absolute;z-index:4;letter-spacing:.16em;font-weight:650;white-space:nowrap}
-.title{position:absolute;z-index:4;font-weight:750;letter-spacing:-.065em;line-height:.98;margin:0;white-space:nowrap}
-.title span{color:var(--red)}
-.line{position:absolute;z-index:3;background:var(--red)}
-.folio{position:absolute;z-index:4;letter-spacing:.15em;font-size:18px;font-weight:600;white-space:nowrap}
-.outline{position:absolute;z-index:2;font-weight:850;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.54);letter-spacing:-.08em;line-height:1;white-space:nowrap}
-.tiny-mark{position:absolute;z-index:5;font-size:12px;font-weight:600;letter-spacing:.16em}
-.canvas.x .photo{inset:0 0 0 675px;clip-path:polygon(11% 0,100% 0,100% 100%,0 100%)}
-.canvas.x .photo img{object-position:50% 57%}
-.canvas.x .photo:after{background:linear-gradient(0deg,rgba(12,24,36,.74),transparent 54%),linear-gradient(90deg,transparent 22%,rgba(19,24,33,.15))}
-.canvas.x .lockup{width:355px;left:75px;top:40px}
-.canvas.x .micro{left:77px;top:185px;font-size:21px;color:var(--ink)}
-.canvas.x .title{left:74px;top:224px;font-size:82px;color:var(--ink)}
-.canvas.x .title .second{color:var(--ink)}
-.canvas.x .line{left:317px;top:434px;width:92px;height:7px}
-.canvas.x .outline{right:40px;bottom:95px;font-size:182px}
-.canvas.x .folio{right:64px;bottom:38px;color:#fff;font-size:15px;letter-spacing:.1em}
-.canvas.x .tiny-mark{left:325px;bottom:36px;color:#6c635d}
-.canvas.linkedin .photo{inset:0 auto 0 0;width:690px;clip-path:polygon(0 0,100% 0,92% 100%,0 100%)}
-.canvas.linkedin .photo img{object-position:50% 53%}
-.canvas.linkedin .photo:after{background:linear-gradient(90deg,rgba(17,28,35,.3),rgba(17,28,35,.12))}
-.canvas.linkedin .outline{left:40px;bottom:20px;font-size:168px;-webkit-text-stroke:1.3px rgba(255,255,255,.58)}
-.canvas.linkedin .lockup{right:56px;top:15px;width:334px}
-.canvas.linkedin .micro{left:714px;top:34px;font-size:16px;color:var(--red)}
-.canvas.linkedin .title{left:710px;top:145px;font-size:52px;letter-spacing:-.05em;color:var(--ink)}
-.canvas.linkedin .title .second{color:var(--red)}
-.canvas.linkedin .folio{right:61px;bottom:19px;color:#68615a;font-size:13px}
-.canvas.facebook-desktop .photo,.canvas.facebook-mobile .photo{top:0;bottom:0;left:0;width:950px;clip-path:polygon(0 0,100% 0,90% 100%,0 100%)}
-.canvas.facebook-desktop .photo img,.canvas.facebook-mobile .photo img{object-position:50% 50%;filter:saturate(.84) contrast(1.05) brightness(.82)}
-.canvas.facebook-desktop .photo:after,.canvas.facebook-mobile .photo:after{background:linear-gradient(0deg,rgba(13,21,27,.65),transparent 56%)}
-.canvas.facebook-desktop .outline,.canvas.facebook-mobile .outline{left:80px;bottom:93px;font-size:205px}
-.canvas.facebook-desktop .lockup,.canvas.facebook-mobile .lockup{width:400px;right:104px;top:62px}
-.canvas.facebook-desktop .micro,.canvas.facebook-mobile .micro{left:965px;top:240px;font-size:21px;color:var(--red)}
-.canvas.facebook-desktop .title,.canvas.facebook-mobile .title{left:960px;top:281px;font-size:78px;color:var(--ink)}
-.canvas.facebook-desktop .line,.canvas.facebook-mobile .line{left:966px;bottom:83px;width:108px;height:8px}
-.canvas.facebook-desktop .folio,.canvas.facebook-mobile .folio{left:360px;bottom:43px;color:#fff;font-size:17px}
-.canvas.facebook-mobile .photo{width:978px}
-.canvas.facebook-mobile .lockup{top:82px}
-.canvas.facebook-mobile .micro{top:275px}
-.canvas.facebook-mobile .title{top:315px}
-.canvas.facebook-mobile .line{bottom:98px}
-.canvas.facebook-mobile .folio{bottom:51px;left:360px}
-.canvas.facebook-mobile .outline{bottom:108px}
-
-/* v2: one AI-made visual layer; canonical logo & Jost text remain real DOM elements. */
-.photo,.canvas.x .photo,.canvas.linkedin .photo,.canvas.facebook-desktop .photo,.canvas.facebook-mobile .photo{inset:0!important;width:100%!important;clip-path:none!important}
-.photo img,.canvas.x .photo img,.canvas.linkedin .photo img,.canvas.facebook-desktop .photo img,.canvas.facebook-mobile .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:none!important}
-.photo:after,.canvas.x .photo:after,.canvas.linkedin .photo:after,.canvas.facebook-desktop .photo:after,.canvas.facebook-mobile .photo:after{
-content:"";position:absolute;inset:0;display:block!important;
-background:linear-gradient(90deg,rgba(247,243,233,.28) 0%,rgba(247,243,233,.08) 37%,transparent 58%)!important
-}
-.outline,.tiny-mark,.line{display:none!important}
-.canvas.x .lockup{left:67px;top:35px;width:342px}
-.canvas.x .micro{left:76px;top:180px;font-size:20px;color:var(--ink)}
-.canvas.x .title{left:70px;top:220px;font-size:73px;color:#8e181a;line-height:1.03;letter-spacing:-.053em}
-.canvas.x .title span,.canvas.x .title .second{color:#8e181a}
-.canvas.x .folio{left:325px;right:auto;bottom:24px;color:#F7F3E9;font-size:12px;text-shadow:0 1px 5px #1D2027}
-.canvas.linkedin .photo img{object-position:48% 50%}
-.canvas.linkedin .lockup{left:56px;right:auto;top:12px;width:310px}
-.canvas.linkedin .micro{left:66px;top:131px;font-size:16px;color:var(--ink)}
-.canvas.linkedin .title{left:62px;top:169px;font-size:47px;letter-spacing:-.052em;line-height:1;color:#8e181a}
-.canvas.linkedin .title span,.canvas.linkedin .title .second{color:#8e181a}
-.canvas.linkedin .folio{left:67px;right:auto;bottom:12px;font-size:12px;color:#514843}
-.canvas.facebook-desktop .photo img{object-position:50% 50%}
-.canvas.facebook-mobile .photo img{object-position:57% 50%}
-.canvas.facebook-desktop .lockup,.canvas.facebook-mobile .lockup{left:74px;right:auto;top:40px;width:385px}
-.canvas.facebook-desktop .micro,.canvas.facebook-mobile .micro{left:84px;top:216px;font-size:22px;color:var(--ink)}
-.canvas.facebook-desktop .title,.canvas.facebook-mobile .title{left:77px;top:262px;font-size:76px;line-height:1.03;letter-spacing:-.052em;color:#8e181a}
-.canvas.facebook-desktop .title span,.canvas.facebook-mobile .title span,.canvas.facebook-desktop .title .second,.canvas.facebook-mobile .title .second{color:#8e181a}
-.canvas.facebook-desktop .folio,.canvas.facebook-mobile .folio{left:355px;right:auto;bottom:28px;font-size:14px;color:#fff;text-shadow:0 1px 5px #1D2027}
-.canvas.facebook-mobile .lockup{top:62px}
-.canvas.facebook-mobile .micro{top:226px}
-.canvas.facebook-mobile .title{top:274px}
-.canvas.facebook-mobile .folio{bottom:40px}
-
-/* V3 legibility system: canonical lockup + editable Jost copy over real contrast surfaces. */
-:root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120;--headline:#851719}
-.readability-panel{position:absolute;z-index:3;background:rgba(247,243,233,.94);border:1px solid rgba(29,32,39,.13);border-radius:22px;box-shadow:0 12px 28px rgba(18,22,28,.16);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px)}
-.lockup{z-index:5;box-sizing:border-box;background:rgba(247,243,233,.96);padding:9px 14px;border-radius:14px;box-shadow:0 6px 18px rgba(15,20,30,.13)}
-.micro{z-index:6;color:var(--ink)!important;letter-spacing:.13em;font-weight:750;text-shadow:none!important}
-.title,.title span,.title .second{z-index:6;color:var(--headline)!important;font-weight:780;line-height:1.03;letter-spacing:-.055em;text-shadow:none!important}
-.folio.country-strip{position:absolute;z-index:7;left:auto;right:auto;bottom:auto;color:var(--paper)!important;display:flex;align-items:center;justify-content:center;white-space:nowrap;font-weight:720;letter-spacing:.025em;line-height:1.2;background:rgba(29,32,39,.95);border:1px solid rgba(247,243,233,.35);padding:13px 23px;border-radius:9px;box-shadow:0 9px 20px rgba(13,18,26,.25);text-shadow:none!important}
-.canvas.x .lockup{left:54px;top:27px;width:348px}
-.canvas.x .readability-panel{left:52px;top:164px;width:690px;height:222px}
-.canvas.x .micro{left:80px;top:182px;font-size:21px}
-.canvas.x .title{left:75px;top:222px;font-size:70px}
-.canvas.x .folio.country-strip{left:350px;right:auto;top:411px;bottom:auto;font-size:18px}
-.canvas.linkedin .lockup{left:42px;right:auto;top:8px;width:307px}
-.canvas.linkedin .readability-panel{left:399px;top:16px;width:1039px;height:214px;border-radius:17px}
-.canvas.linkedin .micro{left:430px;top:32px;font-size:17px}
-.canvas.linkedin .title{left:424px;top:69px;font-size:48px;line-height:1.08;letter-spacing:-.047em}
-.canvas.linkedin .folio.country-strip{left:429px;right:auto;top:157px;bottom:auto;font-size:18px;padding:12px 20px}
-.canvas.facebook-desktop .lockup{left:60px;right:auto;top:32px;width:387px}
-.canvas.facebook-desktop .readability-panel{left:58px;top:188px;width:766px;height:241px}
-.canvas.facebook-desktop .micro{left:91px;top:211px;font-size:23px}
-.canvas.facebook-desktop .title{left:85px;top:253px;font-size:77px}
-.canvas.facebook-desktop .folio.country-strip{left:361px;right:auto;top:479px;bottom:auto;font-size:21px}
-.canvas.facebook-mobile .lockup{left:62px;right:auto;top:58px;width:378px}
-.canvas.facebook-mobile .readability-panel{left:59px;top:208px;width:765px;height:251px}
-.canvas.facebook-mobile .micro{left:90px;top:233px;font-size:23px}
-.canvas.facebook-mobile .title{left:84px;top:273px;font-size:77px}
-.canvas.facebook-mobile .folio.country-strip{left:360px;right:auto;top:516px;bottom:auto;font-size:21px}
-
-</style></head><body>
-<div id="cover" class="canvas" role="img" aria-label="Asya'da Eğitim kapak tasarımı: Yeni Ufuk ve ASYA Manifestosu, onaylı logo ve yapay zekâ üretimi uluslararası kampüs görseli.">
-  <div class="photo"><img id="campus" alt="Asya'da uluslararası üniversite yaşamını temsil eden yapay zekâ üretimi kampüs sahnesi"></div>
-  <div class="readability-panel" aria-hidden="true"></div>
-  <div class="outline" aria-hidden="true">ASYA</div>
-  <img class="lockup" src="../assets/h02-light.svg" alt="Asya'da Eğitim — onaylı kurumsal logo H-02/light">
-  <div class="micro">ÜNİVERSİTE İÇİN</div>
-  <h1 class="title"><span>BAŞKA BİR</span><br><span class="second">DÜNYA VAR.</span></h1>
-  <div class="line" aria-hidden="true"></div>
-  <div class="folio country-strip">ÇİN · JAPONYA · GÜNEY KORE · SİNGAPUR · HONG KONG</div>
-  <div class="tiny-mark">ASYA'DA EĞİTİM / EDITORIAL 01</div>
+:root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120;--wine:#8E1C22}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{background:var(--paper);font-family:Jost,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.canvas{position:relative;width:1500px;height:500px;overflow:hidden;isolation:isolate}
+.photo{position:absolute;inset:0;z-index:0;overflow:hidden;background:#c9c7c2}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
+.canvas::before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(247,243,233,.70) 0%,rgba(247,243,233,.48) 28%,rgba(247,243,233,.20) 43%,rgba(247,243,233,0) 63%)}
+.canvas::after{content:"";position:absolute;z-index:1;left:0;bottom:0;width:63%;height:155px;pointer-events:none;background:linear-gradient(0deg,rgba(247,243,233,.94) 0%,rgba(247,243,233,.60) 37%,rgba(247,243,233,0) 100%);-webkit-mask-image:linear-gradient(90deg,#000 0%,#000 68%,transparent 100%);mask-image:linear-gradient(90deg,#000 0%,#000 68%,transparent 100%)}
+.lockup{position:absolute;z-index:3;display:block;object-fit:contain;object-position:left center;filter:none}
+.micro{position:absolute;z-index:3;white-space:nowrap;color:var(--ink);font-weight:600;letter-spacing:.22em;line-height:1.3}
+.micro::after{content:"";display:inline-block;vertical-align:middle;width:42px;height:1px;background:var(--red);opacity:.85;margin-left:20px}
+.title{position:absolute;z-index:3;white-space:nowrap;margin:0;color:var(--wine);font-weight:640;letter-spacing:-.057em;line-height:1.02}
+.title .hero{font-weight:790;color:#85191d}
+.country-line{position:absolute;z-index:3;display:flex;align-items:center;gap:0;margin:0;white-space:nowrap;font-size:19px;letter-spacing:.045em;font-weight:650;color:var(--ink);line-height:1.4;text-shadow:0 1px 12px rgba(247,243,233,.48)}
+.country-line::before{content:"";display:inline-block;flex:0 0 auto;width:4px;height:23px;background:var(--red);margin-right:17px}
+.country-line span+span::before{content:"·";color:var(--red);padding:0 13px;font-weight:650}
+.canvas.x .lockup{left:74px;top:27px;width:306px}
+.canvas.x .micro{left:83px;top:168px;font-size:18px}
+.canvas.x .title{left:76px;top:207px;font-size:67px}
+.canvas.x .country-line{left:79px;top:433px;font-size:19px}
+.canvas.linkedin::before{background:linear-gradient(90deg,rgba(247,243,233,.86) 0%,rgba(247,243,233,.82) 31%,rgba(247,243,233,.43) 55%,transparent 83%)}
+.canvas.linkedin::after{height:80px;width:73%;background:linear-gradient(0deg,rgba(247,243,233,.96) 0%,rgba(247,243,233,.30) 53%,transparent 100%)}
+.canvas.linkedin .photo img{object-position:49% 49%}
+.canvas.linkedin .lockup{left:52px;top:21px;width:240px}
+.canvas.linkedin .micro{left:349px;top:36px;font-size:15px}
+.canvas.linkedin .micro::after{width:32px;margin-left:12px}
+.canvas.linkedin .title{left:342px;top:74px;font-size:45px;line-height:1.04}
+.canvas.linkedin .country-line{left:349px;top:207px;font-size:16.5px}
+.canvas.linkedin .country-line::before{height:18px;width:3px;margin-right:12px}
+.canvas.linkedin .country-line span+span::before{padding:0 9px}
+.canvas.facebook-desktop::before,.canvas.facebook-mobile::before{background:linear-gradient(90deg,rgba(247,243,233,.91) 0%,rgba(247,243,233,.68) 24%,rgba(247,243,233,.33) 40%,rgba(247,243,233,0) 66%)}
+.canvas.facebook-desktop::after,.canvas.facebook-mobile::after{height:190px;width:65%}
+.canvas.facebook-desktop .lockup{left:77px;top:39px;width:340px}
+.canvas.facebook-desktop .micro{left:87px;top:211px;font-size:21px}
+.canvas.facebook-desktop .title{left:79px;top:254px;font-size:77px}
+.canvas.facebook-desktop .country-line{left:87px;top:542px;font-size:21px}
+.canvas.facebook-mobile .photo img{object-position:55% 50%}
+.canvas.facebook-mobile .lockup{left:79px;top:54px;width:332px}
+.canvas.facebook-mobile .micro{left:90px;top:235px;font-size:21px}
+.canvas.facebook-mobile .title{left:82px;top:281px;font-size:77px}
+.canvas.facebook-mobile .country-line{left:90px;top:631px;font-size:21px}
+</style>
+</head>
+<body>
+<div class="canvas" id="cover" role="img" aria-label="Asya'da Eğitim: Üniversite için başka bir dünya var. Beş ülkede üniversite fırsatlarını anlatan kapak.">
+ <div class="photo"><img id="campus" src="../assets/international-campus-ai-v2.jpg" alt="Çok kültürlü öğrencilerin yer aldığı yapay zekâ üretimi üniversite temsili"></div>
+ <img class="lockup" src="../assets/h02-light.svg" alt="Asya'da Eğitim kanonik H-02 logosu">
+ <div class="micro">ÜNİVERSİTE İÇİN</div>
+ <h1 class="title"><span>BAŞKA BİR</span><br><span class="hero">DÜNYA VAR.</span></h1>
+ <p class="country-line" aria-label="Çin, Japonya, Güney Kore, Singapur, Hong Kong"><span>ÇİN</span><span>JAPONYA</span><span>GÜNEY KORE</span><span>SİNGAPUR</span><span>HONG KONG</span></p>
 </div>
 <script>
-(function(){
-  const valid={"x":[1500,500],"linkedin":[1512,256],"facebook-desktop":[1702,617],"facebook-mobile":[1704,710]};
-  const requested=new URLSearchParams(location.search).get("platform");
-  const platform=Object.prototype.hasOwnProperty.call(valid,requested)?requested:"x";
-  const [w,h]=valid[platform],cover=document.getElementById("cover");
-  cover.classList.add(platform);cover.style.width=w+"px";cover.style.height=h+"px";
-  const photo="../assets/international-campus-ai-v2.jpg";
-  document.getElementById("campus").src=photo;
-  document.title="Yeni Ufuk × ASYA Manifestosu · "+platform;
-  // Keep LinkedIn headline and subtitle safely inside narrow 1512×256 canvas.
-  if(platform==="linkedin"){document.querySelector(".micro").textContent="ÜNİVERSİTE İÇİN";document.querySelector(".title").innerHTML="BAŞKA BİR <span class='second'>DÜNYA VAR.</span>";document.querySelector(".folio").textContent="ÇİN · JAPONYA · GÜNEY KORE · SİNGAPUR · HONG KONG";}
-  // Place profile-overlay-sensitive content on Facebook's right-hand editorial panel.
-  if(platform.startsWith("facebook")){document.querySelector(".micro").textContent="ÜNİVERSİTE İÇİN";document.querySelector(".folio").textContent="ÇİN · JAPONYA · GÜNEY KORE · SİNGAPUR · HONG KONG";document.querySelector(".tiny-mark").remove();}
-  if(platform==="x"){document.querySelector(".folio").textContent="ÇİN · JAPONYA · GÜNEY KORE · SİNGAPUR · HONG KONG";}
-}());
-</script></body></html>
+(()=>{const sizes={"x":[1500,500],"linkedin":[1512,256],"facebook-desktop":[1702,617],"facebook-mobile":[1704,710]};
+const requested=new URLSearchParams(location.search).get("platform");
+const platform=Object.hasOwn(sizes,requested)?requested:"x";
+const [w,h]=sizes[platform],cover=document.getElementById("cover");
+cover.classList.add(platform);cover.style.width=w+"px";cover.style.height=h+"px";
+if(platform==="linkedin")document.querySelector(".title").innerHTML='<span>BAŞKA BİR </span><span class="hero">DÜNYA VAR.</span>';
+document.title="Yeni Ufuk × ASYA Manifestosu — "+platform+" / Editorial Air V4";
+})();
+</script>
+</body>
+</html>
