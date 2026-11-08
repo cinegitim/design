@@ -45,11 +45,11 @@
     }
   ],
   "photography": [],
-  "renders": "not yet generated",
+  "renders": "Browser-native, on-demand PNG/JPEG export using existing local html2canvas 1.4.1 library and original campus photo compositing",
   "inspected_as_raster": false,
   "creative_approved": false,
   "social_published": false,
-  "notes": "V4.2 keeps the AI student background, canonical H-02 brand assets and editorial typography. Updated country order and geometric safe zones. Separate demo avatar overlay is not included in export images.",
+  "notes": "V4.2 keeps the AI student background, canonical H-02 brand assets and editorial typography. Updated country order and geometric safe zones. Separate demo avatar overlay is not included in export images. Browser PNG/JPEG export controls added; static raster copies are not pre-committed; raster conversion happens on user click.",
   "version": "v4.2 — Platform safe layouts and real-profile overlap previews",
   "imagery": {
     "path": "assets/international-campus-ai-v2.jpg",
@@ -99,5 +99,36 @@
     "facebook": "Move country list above the faces and out of lower-left profile overlay in desktop and mobile variants.",
     "inspection": "Preview toggle simulates circle overlays; actual cover crops and profile UIs may differ."
   },
-  "previewSeal": "assets/canonical-seal.svg"
+  "previewSeal": "assets/canonical-seal.svg",
+  "browserExports": {
+    "source": "index.html / source/cover.html",
+    "execution": "Client-side in Brandstudio site; 8 buttons on four preview cards",
+    "dimensions": {
+      "x": [
+        1500,
+        500
+      ],
+      "linkedin": [
+        1512,
+        256
+      ],
+      "facebook-desktop": [
+        1702,
+        617
+      ],
+      "facebook-mobile": [
+        1704,
+        710
+      ]
+    },
+    "formats": [
+      "PNG (lossless)",
+      "JPEG (quality 94%)"
+    ],
+    "sameCanonicalSource": true,
+    "imageAndLogo": "Original campus image, Jost webfont, canonical H-02 SVG",
+    "hidesProfileOverlay": true,
+    "requiresThirdPartyAPI": false,
+    "note": "Every export produces a new local file from the current canonical HTML/CSS artboard; no server-side raster cache or paid service"
+  }
 }
