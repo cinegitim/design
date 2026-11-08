@@ -21,14 +21,14 @@ const records=manifest.groups.map(g=>({
 const index=()=>N.build(records,navigation,registry);
 const asJson=x=>JSON.parse(JSON.stringify(x));
 
-test("18 products, all 31 source versions, independent brands and two retired assets remain intact",()=>{
+test("19 products, all 32 source versions, independent brands and two retired assets remain intact",()=>{
   const x=index();
-  assert.equal(x.products.length,18);
-  assert.equal(x.products.reduce((count,p)=>count+p.versions.length,0),31);
+  assert.equal(x.products.length,19);
+  assert.equal(x.products.reduce((count,p)=>count+p.versions.length,0),32);
   assert.deepEqual(new Set(x.products.map(p=>p.groupId)),new Set(manifest.groups.map(g=>g.id)));
-  assert.equal(navigation.items.length,18);
+  assert.equal(navigation.items.length,19);
   assert.equal(navigation.confirmedVersions.length,0);
-  assert.equal(new Set(navigation.items.map(x=>x.groupId)).size,18);
+  assert.equal(new Set(navigation.items.map(x=>x.groupId)).size,19);
   assert.equal(manifest.retired.length,2);
   assert.equal(x.products.find(x=>x.groupId==="cin-egitim-rollup").brand,"cin-egitim");
   assert.ok(x.products.every(x=>x.defaultId&&x.versions.some(v=>v.id===x.defaultId)));
@@ -38,16 +38,16 @@ test("content browser has 5-level paths with real content subjects, and proposal
  const x=index(),categories=N.facets(x,"asyada-egitim","");
  assert.deepEqual(asJson(categories.mains),["Karuseller","Profil ve Kapaklar","Tekil Paylaşımlar"]);
  const carousels=N.filter(x,{brand:"asyada-egitim",main:"Karuseller",sort:"category"});
- assert.equal(carousels.length,13);
+ assert.equal(carousels.length,14);
  assert.equal(carousels.filter(x=>x.sub==="Üniversite Tanıtımları").length,3);
  assert.equal(carousels.filter(x=>x.sub==="Başvuru ve Burs Rehberleri").length,3);
  assert.equal(carousels.filter(x=>x.sub==="Şehir ve Öğrenci Yaşamı").length,2);
  assert.equal(carousels.filter(x=>x.sub==="Lansman ve Kampanyalar").length,4);
- assert.equal(carousels.filter(x=>x.sub==="Üniversite Fırsatları").length,1);
+ assert.equal(carousels.filter(x=>x.sub==="Üniversite Fırsatları").length,2);
  const bavul=x.products.find(x=>x.groupId==="instagram-creative-breakout-bavul-001");
  assert.equal(bavul.sub,"Yaratıcı Kampanyalar");
  assert.equal(bavul.links.length,0,"Creative Breakout was a legacy subject label, not approved style usage");
- assert.ok(x.products.filter(p=>p.links.some(link=>link.status==="proposed")).length===13);
+ assert.ok(x.products.filter(p=>p.links.some(link=>link.status==="proposed")).length===14);
  assert.ok(x.products.every(p=>p.links.every(link=>link.status!=="verified")));
 });
 
@@ -56,13 +56,14 @@ test("one canonical style can span distinct subject categories and sort by famil
  const data=N.filter(x,{brand:"asyada-egitim",main:"Karuseller",style:"data-atlas",scope:"proposed"});
  assert.deepEqual(new Set(data.map(p=>p.groupId)),new Set([
   "instagram-burs-dosyasi-gks-2027-001","instagram-rotani-sec-tokyo-seoul-001",
-  "instagram-tsinghua-atlas-2027","instagram-six-steps"
+  "instagram-tsinghua-atlas-2027","instagram-six-steps",
+  "instagram-hong-kong-university-line-2027-001"
  ]));
  assert.deepEqual(new Set(data.map(p=>p.sub)),
-  new Set(["Başvuru ve Burs Rehberleri","Şehir ve Öğrenci Yaşamı","Üniversite Tanıtımları"]));
- assert.equal(N.useStats(x,"data-atlas","asyada-egitim").subcategories,3);
+  new Set(["Başvuru ve Burs Rehberleri","Şehir ve Öğrenci Yaşamı","Üniversite Tanıtımları","Üniversite Fırsatları"]));
+ assert.equal(N.useStats(x,"data-atlas","asyada-egitim").subcategories,4);
  assert.equal(N.useStats(x,"data-atlas","asyada-egitim").verified,0);
- assert.equal(N.useStats(x,"data-atlas","asyada-egitim").proposed,4);
+ assert.equal(N.useStats(x,"data-atlas","asyada-egitim").proposed,5);
  assert.equal(N.filter(x,{style:"data-atlas",preset:"metrics-overview",scope:"proposed"}).length,2);
  const sorted=N.filter(x,{brand:"asyada-egitim",main:"Karuseller",sort:"style"});
  const keys=sorted.map(p=>p.match?.styleId||"zzzz");
@@ -91,7 +92,7 @@ test("style-first navigation can alias the same single product under two indepen
  const same=N.filter(x,{mode:"content",brand:"asyada-egitim",scope:"verified"})
   .filter(p=>p.groupId==="instagram-tsinghua-atlas-2027");
  assert.equal(same.length,1,"content navigation never clones the underlying product");
- assert.equal(x.products.length,18);
+ assert.equal(x.products.length,19);
 });
 
 test("current cloud editing selection is a draft only and never a fabricated confirmed GitHub version",()=>{
