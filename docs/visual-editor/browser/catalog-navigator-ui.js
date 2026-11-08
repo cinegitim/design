@@ -117,7 +117,7 @@ function create({model,records,classification,styleRegistry,onOpen,getActive}){
  $("nav-sort").addEventListener("change",()=>{sort=$("nav-sort").value;renderRows()});
  $("nav-search").addEventListener("input",()=>{query=$("nav-search").value;renderRows()});
  $("nav-mode-content").addEventListener("click",()=>{mode="content";sort="category";$("nav-sort").value=sort;render()});
- $("nav-mode-style").addEventListener("click",()=>{mode="style";sort="style";$("nav-sort").value=sort;render()});
+ $("nav-mode-style").addEventListener("click",()=>{mode="style";main="";sub="";sort="style";$("nav-sort").value=sort;render()});
  $("catalog-explore-toggle").addEventListener("click",()=>show(!opened));
  $("nav-close").addEventListener("click",()=>show(false));
  document.addEventListener("keydown",event=>{
