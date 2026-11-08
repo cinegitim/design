@@ -49,8 +49,8 @@
   "inspected_as_raster": false,
   "creative_approved": false,
   "social_published": false,
-  "notes": "Version 3 solid panels, logo badges, heavy bar and box shadows discarded. Completely rewritten single-source layout with no rectangle surfaces, preserving original image asset and exact canonical H-02 SVG. Review-only; no social upload.",
-  "version": "v4 — Editorial Air (box-free redesign)",
+  "notes": "V4.1: Slightly enlarged kicker and softly feathered headline text shadow; original editorial V4 unchanged otherwise.",
+  "version": "v4.1 — Editorial Air typography polish",
   "imagery": {
     "path": "assets/international-campus-ai-v2.jpg",
     "source": "ChatGPT generated image in this conversation, final diverse international student campus scene",
@@ -74,5 +74,15 @@
       "facebook-desktop",
       "facebook-mobile"
     ]
+  },
+  "typographyRefinement": {
+    "kickerSizesPx": {
+      "x": 21,
+      "linkedin": 18,
+      "facebook-desktop": 24,
+      "facebook-mobile": 24
+    },
+    "headlineShadow": "0 2px 4px rgba(29,32,39,.16), 0 0 11px rgba(247,243,233,.36)",
+    "preserves": "layout, image, H-02 logo, country line, no boxes"
   }
 }
