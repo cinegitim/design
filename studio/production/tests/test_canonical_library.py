@@ -15,6 +15,7 @@ from build_library import build, load, output_text, SOURCE, EDITOR, OUTPUT  # no
 
 PATHS=[
  SOURCE,EDITOR,OUTPUT,
+ "studio/production/catalog/previews.json",
  "docs/visual-editor/browser/product-groups.json",
  "docs/visual-editor/browser/style-registry.json",
 ]
@@ -28,6 +29,13 @@ class CanonicalLibraryTests(unittest.TestCase):
         self.assertEqual(len(catalog["products"]),18)
         self.assertEqual(sum(len(x["versions"]) for x in catalog["products"]),31)
         self.assertEqual(len(catalog["styles"]),3)
+        self.assertEqual(sum(bool(p.get("thumbnail")) for p in catalog["products"]),18)
+        for p in catalog["products"]:
+            thumbnail=p["thumbnail"]
+            self.assertIn(thumbnail["versionId"],{v["id"] for v in p["versions"]})
+            self.assertTrue(thumbnail["path"].endswith((".png",".jpg",".jpeg",".svg",".webp")))
+            self.assertFalse(thumbnail["path"].startswith(("http:","https:","data:")))
+
         self.assertEqual(catalog["retiredCount"],2)
         self.assertEqual(
             {x["brand"] for x in catalog["products"]},
@@ -123,6 +131,33 @@ class CanonicalLibraryTests(unittest.TestCase):
                 finally:
                     env.cleanup()
 
+    def test_preview_sources_fail_closed_when_versions_paths_or_coverage_are_forged(self):
+        for case in ("missing","wrong-version","unknown-family","duplicate","traversal","remote","html"):
+            with self.subTest(case=case):
+                env,tmp=self._temp()
+                try:
+                    file=tmp/"studio/production/catalog/previews.json"
+                    data=json.loads(file.read_text(encoding="utf-8"))
+                    if case=="missing":
+                        data["entries"].pop()
+                    elif case=="wrong-version":
+                        data["entries"][0]["versionId"]="nonexistent-v99"
+                    elif case=="unknown-family":
+                        data["entries"][0]["groupId"]="nonexistent-product"
+                    elif case=="duplicate":
+                        data["entries"].append(dict(data["entries"][0]))
+                    elif case=="traversal":
+                        data["entries"][0]["path"]="instagram/../../secrets/cover.jpg"
+                    elif case=="remote":
+                        data["entries"][0]["path"]="https://example.test/cover.jpg"
+                    elif case=="html":
+                        data["entries"][0]["path"]="instagram/cover.html"
+                    file.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+                    with self.assertRaises((ValueError, KeyError)):
+                        build(tmp)
+                finally:
+                    env.cleanup()
+
     def test_main_website_is_connected_to_shared_data_source(self):
         site=(ROOT/"docs/library/index.html").read_text(encoding="utf-8")
         js=(ROOT/"docs/library/app.js").read_text(encoding="utf-8")
@@ -150,6 +185,13 @@ class CanonicalLibraryTests(unittest.TestCase):
         self.assertIn("function entries(products)",js)
         self.assertIn("function filteredProducts()",js)
         self.assertIn('node("article","product-card")',js)
+        self.assertIn('function productThumbnail(p)',js)
+        self.assertIn('outer.append(main,productThumbnail(p),actions)',js)
+        self.assertIn('image.loading="lazy"',js)
+        self.assertIn('image.decoding="async"',js)
+        self.assertIn('image.addEventListener("error"',js)
+        self.assertIn('.product-preview-image{',site)
+        self.assertIn('object-fit:contain',site)
         self.assertNotIn('Nasıl gezinmek istersin?',site)
         self.assertIn('class="sidebar-section" id="sidebar-categories" open',site)
         self.assertIn('class="sidebar-section" id="sidebar-styles" open',site)
