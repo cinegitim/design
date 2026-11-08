@@ -100,7 +100,7 @@ def build(root: Path = ROOT) -> dict:
         require(vid in [v["id"] for v in by_group[gid]["versions"]],
                 "Preview version is not in product family")
         require(isinstance(image_path, str) and
-                re.fullmatch(r"(?:instagram|social-covers|cin-egitim|library/previews)/(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+\\.(?:png|jpe?g|webp|svg)",image_path) is not None and
+                re.fullmatch(r"(?:instagram|social-covers|cin-egitim|library/previews)/(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+[.](?:png|jpe?g|webp|svg)",image_path) is not None and
                 all(piece not in (".", "..") for piece in image_path.split("/")),
                 "Preview path must be a trusted relative design image")
         asset = (root / "docs" / image_path).resolve()
