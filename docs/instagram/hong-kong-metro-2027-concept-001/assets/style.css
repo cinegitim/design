@@ -20,7 +20,7 @@ body{font-family:Jost,Arial,sans-serif;color:#f7fcff}
 .cover .destination{width:max-content;max-width:970px;display:block;background:var(--gold);padding:6px 28px 17px 20px;transform:skew(-7deg);box-shadow:12px 13px 0 #011c2a77;margin:21px 0 0}
 .cover .destination span{display:block;transform:skew(7deg);font-size:113px;line-height:1;letter-spacing:-5.5px;font-weight:900;color:#092b44}
 .cover .cn{position:absolute;z-index:9;top:229px;right:44px;writing-mode:vertical-rl;font-family:serif;color:#c5f3f0ba;font-size:48px;letter-spacing:16px}
-.cover .subcopy{position:absolute;z-index:8;left:60px;right:160px;top:499px;font-size:35px;line-height:1.21;font-weight:580;text-shadow:0 2px 20px #07192dcc}
+.cover .subcopy{position:absolute;z-index:8;left:60px;right:160px;top:553px;font-size:35px;line-height:1.21;font-weight:580;text-shadow:0 2px 20px #07192dcc}
 .cover .subcopy strong{color:var(--mint);font-weight:800}
 .cover .metro{position:absolute;inset:0;z-index:4}
 .cover .metro .rail-edge{fill:none;stroke:#001425e6;stroke-width:29;stroke-linecap:round;stroke-linejoin:round}
