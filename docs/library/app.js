@@ -14,7 +14,9 @@ const query=new URLSearchParams(location.search);
 const state={
  brand:["asyada-egitim","cin-egitim"].includes(query.get("brand"))?query.get("brand"):"asyada-egitim",
  view:query.get("view")==="style"?"style":"content",
- main:"",sub:"",style:"",preset:"",status:"all",sort:"category",search:""
+ main:query.get("main")||"",sub:query.get("sub")||"",style:query.get("style")||"",preset:query.get("preset")||"",
+ status:["proposed","verified","unassigned"].includes(query.get("status"))?query.get("status"):"all",
+ sort:query.get("view")==="style"?"style":"category",search:""
 };
 const known=(id)=>$(id)?.value;
 const keys=styles=>styles.map(s=>s.id);
@@ -47,15 +49,22 @@ const styleByKey=new Map();
 function styleFor(p,id){return styleByKey.get(styleKey(id,p.brand))}
 function stylesForBrand(){return catalog.styles.filter(s=>s.brand===state.brand)}
 function filteredProducts(){
- return catalog.products.filter(p=>p.brand===state.brand&&(!state.main||p.mainCategory===state.main)&&
- (!state.sub||p.subCategory===state.sub)&&
- (!state.search||norm([p.title,p.mainCategory,p.subCategory,p.groupId,...p.versions.map(v=>v.id)].join(" ")).includes(norm(state.search)))&&
- (!state.style||state.style==="unassigned" ? state.style!=="unassigned"||p.styleLinks.length===0 :
-  p.styleLinks.some(l=>l.styleId===state.style))&&
- (!state.preset||p.styleLinks.some(l=>l.styleId===state.style&&l.presetId===state.preset))&&
- (state.status==="all"||state.status==="unassigned"&&!p.styleLinks.length||
-  p.styleLinks.some(l=>l.status===state.status&&(!state.style||l.styleId===state.style)&&
-   (!state.preset||l.presetId===state.preset))))
+ return catalog.products.filter(p=>{
+  if(p.brand!==state.brand)return false;
+  if(state.main&&p.mainCategory!==state.main)return false;
+  if(state.sub&&p.subCategory!==state.sub)return false;
+  if(state.search&&!norm([p.title,p.mainCategory,p.subCategory,p.groupId,
+   ...p.versions.map(v=>v.id+" "+v.label)].join(" ")).includes(norm(state.search)))return false;
+  if(state.style==="unassigned"&&p.styleLinks.length)return false;
+  const associations=p.styleLinks.filter(l=>(!state.style||state.style==="unassigned"||l.styleId===state.style)
+   &&(!state.preset||l.presetId===state.preset));
+  if(state.style&&state.style!=="unassigned"&&!associations.length)return false;
+  if(state.preset&&!associations.length)return false;
+  if(state.status==="unassigned")return p.styleLinks.length===0;
+  if(["verified","proposed"].includes(state.status))
+   return associations.some(l=>l.status===state.status);
+  return true
+ })
 }
 function usage(s,products=catalog.products){
  const involved=products.filter(p=>p.brand===s.brand&&p.styleLinks.some(l=>l.styleId===s.id));
@@ -73,56 +82,91 @@ function updateURL(){
  const q=new URLSearchParams();
  if(state.brand!=="asyada-egitim")q.set("brand",state.brand);
  if(state.view!=="content")q.set("view",state.view);
- if(state.style)q.set("style",state.style);
+ for(const key of ["main","sub","style","preset","status"])
+  if(state[key]&&!(key==="status"&&state.status==="all"))q.set(key,state[key]);
  history.replaceState(null,"",location.pathname+(q.size?"?"+q.toString():"")+location.hash)
 }
 function refreshControls(){
  const brands=unique(catalog.products.map(p=>p.brand));
  state.brand=setSelect("brand",brands.map(b=>({id:b,label:nameBrand(b)})),state.brand);
- const prods=catalog.products.filter(p=>p.brand===state.brand);
- const mains=unique(prods.map(p=>p.mainCategory));
+ const products=catalog.products.filter(p=>p.brand===state.brand);
+ const mains=unique(products.map(p=>p.mainCategory));
  if(state.main&&!mains.includes(state.main)){state.main="";state.sub=""}
  state.main=setSelect("main",[{id:"",label:"Bütün ana kategoriler"},...mains.map(x=>({id:x,label:x}))],state.main);
- const subs=unique(prods.filter(p=>!state.main||p.mainCategory===state.main).map(p=>p.subCategory));
+ const subs=unique(products.filter(p=>!state.main||p.mainCategory===state.main).map(p=>p.subCategory));
  if(state.sub&&!subs.includes(state.sub))state.sub="";
- state.sub=setSelect("sub",[{id:"",label:"Bütün içerikler"},...subs.map(x=>({id:x,label:x}))],state.sub);
- const ss=stylesForBrand().filter(s=>!state.main||s.category===FORMAT[state.main]);
- const choices=[{id:"",label:"Bütün ortak tarzlar"},...ss.map(s=>({id:s.id,label:s.name})),{id:"unassigned",label:"Tarzı henüz belirlenmeyen"}];
- if(state.style&&!choices.some(x=>x.id===state.style)){state.style="";state.preset=""}
+ state.sub=setSelect("sub",[{id:"",label:"Bütün alt kategoriler"},...subs.map(x=>({id:x,label:x}))],state.sub);
+ const ss=stylesForBrand().filter(style=>!state.main||style.category===FORMAT[state.main]);
+ const choices=[{id:"",label:"Bütün ortak tarzlar"},...ss.map(style=>({id:style.id,label:style.name})),
+  {id:"unassigned",label:"Tarzı belirlenmemiş"}];
+ if(state.style&&!choices.some(o=>o.id===state.style)){state.style="";state.preset=""}
  state.style=setSelect("style",choices,state.style);
- const focus=ss.find(s=>s.id===state.style);
- state.preset=setSelect("preset",[{id:"",label:"Bütün çeşitlemeler"},...(focus?.presets||[]).map(x=>({id:x.id,label:x.label}))],state.preset,!focus);
+ const focus=ss.find(x=>x.id===state.style);
+ state.preset=setSelect("preset",[{id:"",label:"Bütün çeşitlemeler"},...(focus?.presets||[]).map(x=>({id:x.id,label:x.label}))],
+   state.preset,!focus);
  $("mode-content").setAttribute("aria-pressed",String(state.view==="content"));
  $("mode-style").setAttribute("aria-pressed",String(state.view==="style"));
- $("catalog-crumb").textContent=state.view==="content"
-  ?"Ana kategori › İçerik alt kategorisi › Ortak tarz › Çeşitleme › Tekil ürün"
-  :"Ortak tarz › Çeşitleme › Ana kategori › İçerik alt kategorisi › Tekil ürün";
+ $("library-content").dataset.view=state.view;
+ $("catalog-crumb").textContent="";
  $("sort").value=state.sort;
  $("status").value=state.status;
- $("search").value=state.search;
+ if($("search").value!==state.search)$("search").value=state.search;
  updateURL()
+}
+const clickNav=(button,selected,callback)=>{
+ button.type="button";button.setAttribute("aria-pressed",String(Boolean(selected)));
+ button.onclick=callback;
+ return button
+};
+function renderCategories(){
+ const root=$("category-tree");root.replaceChildren();
+ const items=catalog.products.filter(p=>p.brand===state.brand);
+ const all=clickNav(node("button","nav-item","Bütün ürünler"),!state.main&&state.view==="content",()=>{
+  state.view="content";state.main="";state.sub="";state.style="";state.preset="";state.sort="category";render()
+ });
+ all.append(node("span","count",items.length));root.append(all);
+ const mains=unique(items.map(x=>x.mainCategory));
+ for(const main of mains){
+  const members=items.filter(p=>p.mainCategory===main);
+  const details=node("details","sidebar-group");
+  details.open=state.main===main||(!state.main&&main==="Karuseller");
+  const summary=node("summary");
+  summary.append(node("span","",main),node("b","",members.length));details.append(summary);
+  const options=node("div","sidebar-options");
+  const allMain=clickNav(node("button","nav-item","Tüm "+main),state.view==="content"&&
+   state.main===main&&!state.sub,()=>{
+    state.view="content";state.main=main;state.sub="";state.style="";state.preset="";state.sort="category";render()
+   });
+  allMain.append(node("span","count",members.length));options.append(allMain);
+  const subjects=unique(members.map(p=>p.subCategory)).sort(tr);
+  for(const sub of subjects){
+   const btn=clickNav(node("button","nav-item"),state.view==="content"&&state.main===main&&state.sub===sub,()=>{
+    state.view="content";state.main=main;state.sub=sub;state.style="";state.preset="";state.sort="category";render()
+   });
+   btn.append(node("span","",sub),node("span","count",members.filter(p=>p.subCategory===sub).length));
+   options.append(btn)
+  }
+  details.append(options);root.append(details)
+ }
 }
 function renderStyleCards(){
  const root=$("style-rail");root.replaceChildren();
- const ss=stylesForBrand().filter(s=>!state.main||s.category===FORMAT[state.main]);
+ const ss=stylesForBrand().filter(x=>!state.main||x.category===FORMAT[state.main]);
  const total=catalog.products.filter(p=>p.brand===state.brand).length;
- const all=node("button","style-tile"+(!state.style?" selected":""),"Tüm tarzlar");
- all.type="button";all.setAttribute("aria-pressed",String(!state.style));
- all.append(node("small","",total+" ürün ailesi"));
- all.onclick=()=>{state.style="";state.preset="";render()};
- root.append(all);
- for(const s of ss){
-  const info=usage(s);
-  const card=node("button","style-tile"+(state.style===s.id?" selected":""));
-  card.type="button";card.setAttribute("aria-pressed",String(state.style===s.id));
-  const visual=node("span","style-visual");visual.dataset.style=s.id;visual.setAttribute("aria-hidden","true");
-  const content=node("span","style-body");
-  content.append(node("strong","",s.name),node("small","",s.presets.length+" çeşitleme · "+info.products+" ürün önerisi/bağlantısı"));
-  card.append(visual,content);
-  const subjects=node("span","style-subjects",info.subjects.length?info.subjects.join(" · "):"Henüz ilişkilendirilmiş ürün yok");
-  card.append(subjects);
-  card.onclick=()=>{state.view="style";state.main="";state.sub="";state.style=s.id;state.preset="";state.sort="style";render()};
-  root.append(card)
+ const all=clickNav(node("button","nav-item","Bütün tarzlar"),state.view==="style"&&!state.style,()=>{
+  state.view="style";state.main="";state.sub="";state.style="";state.preset="";state.sort="style";render()
+ });
+ all.append(node("span","count",total));root.append(all);
+ for(const style of ss){
+  const info=usage(style);
+  const btn=clickNav(node("button","nav-item nav-style"),state.view==="style"&&state.style===style.id,()=>{
+   state.view="style";state.main="";state.sub="";state.style=style.id;state.preset="";state.sort="style";render()
+  });
+  btn.dataset.style=style.id;
+  const copy=node("span","nav-copy");
+  copy.append(node("span","",style.name),node("small","",info.subjects.length+" içerik alanı · "+style.presets.length+" çeşitleme"));
+  btn.append(copy,node("span","count",info.products));
+  root.append(btn)
  }
 }
 function linkBadge(link,p){
