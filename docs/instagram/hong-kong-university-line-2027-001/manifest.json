@@ -32,7 +32,20 @@
   "photo": "assets/victoria-harbour.jpg",
   "photo_rights": "CC0 1.0 / lumoplank / Wikimedia Commons",
   "source_links_persist": true,
-  "rendered_exports": [],
+  "rendered_exports": [
+    "png/01.png",
+    "jpeg/01.jpg",
+    "png/02.png",
+    "jpeg/02.jpg",
+    "png/03.png",
+    "jpeg/03.jpg",
+    "png/04.png",
+    "jpeg/04.jpg",
+    "png/05.png",
+    "jpeg/05.jpg",
+    "png/06.png",
+    "jpeg/06.jpg"
+  ],
   "browser_export": "render.mjs",
   "facts_verified_on": "2026-11-08",
   "source_urls": [
@@ -44,10 +57,35 @@
     "https://join.hkust.edu.hk/fees-and-scholarships",
     "https://www.admissions.hku.hk/faqs/international"
   ],
-  "export_git_blob_shas": {},
-  "render_method": "Chrome DevTools Browser Chromium Canvas: source editable SVG/HTML, canonical H-02, Jost and local CC0 photograph",
-  "render_verified_on": null,
-  "quality_note": "User-requested overwrite of rejected V1: flag-red/ivory, independent metro editorial design. All prior Korean-tech palette rejected; no V2 added. All source slides replaced, actual browser PNG/JPEG re-render pending. Do not publish social.",
+  "export_git_blob_shas": {
+    "01": {
+      "png": "6de52a4602112d955845a85a3260b8d78676442b",
+      "jpeg": "e5d666ca59439470769cb38f27080b3f9bc9ec04"
+    },
+    "02": {
+      "png": "6cc65604f8a3dbbcce31d280b0cb6a03470517e0",
+      "jpeg": "28823d593f6f2b27a089fa75f91a713e645c1fc2"
+    },
+    "03": {
+      "png": "4497cd891427b341222da753d487bc2e4da55be7",
+      "jpeg": "1c89cb9877bc9219915fa07928cfa851e74868ab"
+    },
+    "04": {
+      "png": "3a17ef866a58c371d7ac26b572996ad96e5ae8c3",
+      "jpeg": "e6fa5358819109c2844741af621f0d565c88de1f"
+    },
+    "05": {
+      "png": "82c18f1968a91158fb702a33869cf7066a3a3587",
+      "jpeg": "c4afca3eb050152fdf7a02748c3615ecb35245f6"
+    },
+    "06": {
+      "png": "372bb96af87b1c19bec97df13cc5a7af99bafdcb",
+      "jpeg": "101aec53b2ae1bfcb992842cad7e1fea0ac46b1c"
+    }
+  },
+  "render_method": "Canonical editable HTML/SVG + local Jost and approved H-02 + CC0 photo, actual connected Chrome Canvas 1080x1350",
+  "render_verified_on": "2026-11-08",
+  "quality_note": "Same V1 overwritten with Hong Kong flag red/ivory, new original 6 SVG artboards and 12 actual browser PNG/JPEG renders. User creative approval still pending.",
   "design_identity": {
     "country": "Hong Kong",
     "country_colors": {

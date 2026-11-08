@@ -1,8 +1,0 @@
-{
-  "name": "brand-studio-cloud-production",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Shared Linux production environment for OpenCode or Work/Codex. GitHub CI never renders.",
-  "engines": {"node": "22.x"},
-  "dependencies": {"playwright-core": "1.56.1"}
-}

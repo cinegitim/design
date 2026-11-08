@@ -1,3 +1,0 @@
-# Photo provenance
-
-**File**: Hong Kong, Part 1 - HongKong8675.jpg. City skyline across Victoria Harbour at night. **Creator**: lumoplank. **Date**: 1 December 2024. **Source**: https://commons.wikimedia.org/wiki/File:Hong_Kong,_Part_1_-_HongKong8675.jpg. **License**: CC0 1.0 (public-domain dedication), Wikimedia Commons confirmed Flickr review, retrieved 8 November 2026. Local derivative: assets/victoria-harbour.jpg, 1280px Wikimedia thumbnail, scaled/cropped only by editable SVG masking. No fictional university campus scenes are claimed. All text, metro motifs and approved logo remain editable vector layers.
