@@ -113,6 +113,11 @@ function refreshControls(){
  if($("search").value!==state.search)$("search").value=state.search;
  updateURL()
 }
+function syncMobileSections(mode=state.view){
+ const mobile=window.matchMedia("(max-width:700px)").matches;
+ $("sidebar-categories").open=!mobile||mode==="content";
+ $("sidebar-styles").open=!mobile||mode==="style"
+}
 const clickNav=(button,selected,callback)=>{
  button.type="button";button.setAttribute("aria-pressed",String(Boolean(selected)));
  button.onclick=callback;
@@ -122,26 +127,26 @@ function renderCategories(){
  const root=$("category-tree");root.replaceChildren();
  const items=catalog.products.filter(p=>p.brand===state.brand);
  const all=clickNav(node("button","nav-item","Bütün ürünler"),!state.main&&state.view==="content",()=>{
-  state.view="content";state.main="";state.sub="";state.style="";state.preset="";state.sort="category";render()
+  state.view="content";state.main="";state.sub="";state.style="";state.preset="";state.sort="category";syncMobileSections("content");render()
  });
  all.append(node("span","count",items.length));root.append(all);
  const mains=unique(items.map(x=>x.mainCategory));
  for(const main of mains){
   const members=items.filter(p=>p.mainCategory===main);
   const details=node("details","sidebar-group");
-  details.open=state.main===main||(!state.main&&main==="Karuseller");
+  details.open=state.main===main||(!state.main&&main==="Karuseller"&&window.matchMedia("(min-width:701px)").matches);
   const summary=node("summary");
   summary.append(node("span","",main),node("b","",members.length));details.append(summary);
   const options=node("div","sidebar-options");
   const allMain=clickNav(node("button","nav-item","Tüm "+main),state.view==="content"&&
    state.main===main&&!state.sub,()=>{
-    state.view="content";state.main=main;state.sub="";state.style="";state.preset="";state.sort="category";render()
+    state.view="content";state.main=main;state.sub="";state.style="";state.preset="";state.sort="category";syncMobileSections("content");render()
    });
   allMain.append(node("span","count",members.length));options.append(allMain);
   const subjects=unique(members.map(p=>p.subCategory)).sort(tr);
   for(const sub of subjects){
    const btn=clickNav(node("button","nav-item"),state.view==="content"&&state.main===main&&state.sub===sub,()=>{
-    state.view="content";state.main=main;state.sub=sub;state.style="";state.preset="";state.sort="category";render()
+    state.view="content";state.main=main;state.sub=sub;state.style="";state.preset="";state.sort="category";syncMobileSections("content");render()
    });
    btn.append(node("span","",sub),node("span","count",members.filter(p=>p.subCategory===sub).length));
    options.append(btn)
@@ -154,13 +159,13 @@ function renderStyleCards(){
  const ss=stylesForBrand().filter(x=>!state.main||x.category===FORMAT[state.main]);
  const total=catalog.products.filter(p=>p.brand===state.brand).length;
  const all=clickNav(node("button","nav-item","Bütün tarzlar"),state.view==="style"&&!state.style,()=>{
-  state.view="style";state.main="";state.sub="";state.style="";state.preset="";state.sort="style";render()
+  state.view="style";state.main="";state.sub="";state.style="";state.preset="";state.sort="style";syncMobileSections("style");render()
  });
  all.append(node("span","count",total));root.append(all);
  for(const style of ss){
   const info=usage(style);
   const btn=clickNav(node("button","nav-item nav-style"),state.view==="style"&&state.style===style.id,()=>{
-   state.view="style";state.main="";state.sub="";state.style=style.id;state.preset="";state.sort="style";render()
+   state.view="style";state.main="";state.sub="";state.style=style.id;state.preset="";state.sort="style";syncMobileSections("style");render()
   });
   btn.dataset.style=style.id;
   const copy=node("span","nav-copy");
@@ -335,8 +340,8 @@ function render(){
  refreshControls();renderCategories();renderStyleCards();renderFacts();renderResults();renderActiveFilters()
 }
 function connect(){
- $("mode-content").onclick=()=>{state.view="content";state.sort="category";render()};
- $("mode-style").onclick=()=>{state.view="style";state.main="";state.sub="";state.sort="style";render()};
+ $("mode-content").onclick=()=>{state.view="content";state.sort="category";syncMobileSections("content");render()};
+ $("mode-style").onclick=()=>{state.view="style";state.main="";state.sub="";state.sort="style";syncMobileSections("style");render()};
  for(const key of ["brand","main","sub","style","preset"]){
   $(key).onchange=()=>{
    state[key]=$(key).value;
@@ -368,7 +373,10 @@ async function init(){
   for(const [k,v] of validated)styleByKey.set(k,v);
   const styleQuery=query.get("style");
   if(styleQuery&&stylesForBrand().some(s=>s.id===styleQuery))state.style=styleQuery;
-  connect();render();
+  connect();syncMobileSections();
+  const mobileQuery=window.matchMedia("(max-width:700px)");
+  if(mobileQuery.addEventListener)mobileQuery.addEventListener("change",()=>syncMobileSections());
+  render();
   $("load-status").hidden=true;$("library-content").hidden=false
  }catch(err){
   $("load-status").textContent="Tasarım kütüphanesi yüklenemedi: "+err.message;

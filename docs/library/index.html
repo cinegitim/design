@@ -33,7 +33,11 @@ button,input,select{font:inherit}button{cursor:pointer}a{color:inherit}a:focus-v
 .switcher button[aria-pressed=true]{background:var(--ink);color:white}
 .sidebar-sections{display:flex;flex-direction:column}.sidebar-section{margin:0 0 16px}
 .sidebar-title{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:0 4px 7px;margin:0 0 7px}
-.sidebar-title h2{font-size:11px;letter-spacing:.065em;color:#5d5c57;text-transform:uppercase;margin:0;font-weight:700}
+.sidebar-title h2{font-size:11px;letter-spacing:.065em;color:#5d5c57;text-transform:uppercase;margin:0;font-weight:700}.sidebar-section>.sidebar-title{list-style:none;cursor:pointer}
+.sidebar-section>.sidebar-title::-webkit-details-marker{display:none}
+.sidebar-section>.sidebar-title:after{content:"⌄";color:#878176;font-size:16px;line-height:1;transition:transform .14s}
+.sidebar-section:not([open])>.sidebar-title:after{transform:rotate(-90deg)}
+.sidebar-section:not([open]){margin-bottom:8px}
 .sidebar-help{font-size:10px;color:#8f8980;margin:1px 2px 9px;line-height:1.4}
 #library-content[data-view=style] #sidebar-styles{order:1}#library-content[data-view=style] #sidebar-categories{order:2}
 .sidebar-body{display:flex;flex-direction:column;gap:1px}
@@ -145,12 +149,12 @@ footer{border-top:1px solid var(--line);padding:20px 0 28px;color:#89837b;font-s
 <button id="mode-content" type="button" aria-pressed="true">İçeriğe göre</button>
 <button id="mode-style" type="button" aria-pressed="false">Tarza göre</button></div>
 <div class="sidebar-sections">
-<section class="sidebar-section" id="sidebar-categories">
-<div class="sidebar-title"><h2>İçerik kategorileri</h2></div>
-<div id="category-tree" class="sidebar-body" aria-label="Ana ve alt kategoriler"></div></section>
-<section class="sidebar-section" id="sidebar-styles">
-<div class="sidebar-title"><h2>Ortak tarzlar</h2></div>
-<div id="style-rail" class="sidebar-body" aria-label="Tekrarlanan tarz aileleri"></div></section>
+<details class="sidebar-section" id="sidebar-categories" open>
+<summary class="sidebar-title"><h2>İçerik kategorileri</h2></summary>
+<div id="category-tree" class="sidebar-body" aria-label="Ana ve alt kategoriler"></div></details>
+<details class="sidebar-section" id="sidebar-styles" open>
+<summary class="sidebar-title"><h2>Ortak tarzlar</h2></summary>
+<div id="style-rail" class="sidebar-body" aria-label="Tekrarlanan tarz aileleri"></div></details>
 </div>
 <div class="sidebar-foot"><a href="../system/">Tasarım dili tanımlarını incele ↗</a></div>
 </aside>

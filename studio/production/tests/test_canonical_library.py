@@ -151,6 +151,13 @@ class CanonicalLibraryTests(unittest.TestCase):
         self.assertIn("function filteredProducts()",js)
         self.assertIn('node("article","product-card")',js)
         self.assertNotIn('Nasıl gezinmek istersin?',site)
+        self.assertIn('class="sidebar-section" id="sidebar-categories" open',site)
+        self.assertIn('class="sidebar-section" id="sidebar-styles" open',site)
+        self.assertIn('function syncMobileSections(mode=state.view)',js)
+        self.assertIn('window.matchMedia("(max-width:700px)")',js)
+        self.assertIn('syncMobileSections("content")',js)
+        self.assertIn('syncMobileSections("style")',js)
+
 
         self.assertIn('href="library/"',home)
         self.assertIn('../library/?brand=asyada-egitim',system)
