@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Yeni Ufuk × ASYA Manifestosu · Editorial Air V4.1</title>
+<title>Yeni Ufuk × ASYA Manifestosu · Editorial Air V4.2</title>
 <style>
 @font-face{font-family:Jost;src:url("../../../assets/Jost-VF.ttf") format("truetype");font-weight:100 900;font-display:swap}
 :root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120;--wine:#8E1C22}
@@ -48,6 +48,29 @@ body{background:var(--paper);font-family:Jost,Arial,sans-serif;-webkit-font-smoo
 .canvas.facebook-mobile .micro{left:90px;top:230px;font-size:24px}
 .canvas.facebook-mobile .title{left:82px;top:281px;font-size:77px}
 .canvas.facebook-mobile .country-line{left:90px;top:631px;font-size:21px}
+
+/* V4.2: real account-preview safe geometry, not just uncropped banner artboards. 
+   Avatar positions below are deliberately conservative review approximations. */
+.canvas.x .lockup{left:246px;top:57px;width:240px}
+.canvas.x .micro{left:252px;top:155px;font-size:20px}
+.canvas.x .title{left:246px;top:192px;font-size:62px}
+.canvas.x .country-line{left:606px;top:96px;font-size:19px;text-shadow:0 0 12px rgba(247,243,233,.9),0 1px 2px rgba(247,243,233,.8)}
+.canvas.linkedin .lockup{display:none} /* Page's canonical profile logo already identifies the company. */
+.canvas.linkedin .micro{left:372px;top:34px;font-size:18px}
+.canvas.linkedin .title{left:366px;top:79px;font-size:45px}
+.canvas.linkedin .country-line{left:372px;top:200px;font-size:17px}
+.canvas.linkedin .country-line::before{height:18px}
+.canvas.facebook-desktop .country-line{left:634px;top:119px;font-size:21px;text-shadow:0 0 12px rgba(247,243,233,.92),0 1px 2px rgba(247,243,233,.7)}
+.canvas.facebook-mobile .country-line{left:634px;top:144px;font-size:21px;text-shadow:0 0 12px rgba(247,243,233,.92),0 1px 2px rgba(247,243,233,.7)}
+.profile-preview{display:none;position:absolute;inset:0;z-index:10;pointer-events:none}
+.preview-profile .profile-preview{display:block}
+.avatar-proof{position:absolute;overflow:hidden;border:9px solid #fff;border-radius:50%;background:#BD2120;box-shadow:0 2px 16px rgba(14,18,24,.22);display:grid;place-items:center}
+.avatar-proof img{display:block;width:100%;height:100%;object-fit:cover}
+.canvas.x .avatar-proof{left:70px;top:339px;width:266px;height:266px}
+.canvas.linkedin .avatar-proof{left:43px;top:94px;width:241px;height:241px}
+.canvas.facebook-desktop .avatar-proof{left:71px;top:450px;width:264px;height:264px}
+.canvas.facebook-mobile .avatar-proof{left:91px;top:555px;width:259px;height:259px}
+
 </style>
 </head>
 <body>
@@ -56,7 +79,8 @@ body{background:var(--paper);font-family:Jost,Arial,sans-serif;-webkit-font-smoo
  <img class="lockup" src="../assets/h02-light.svg" alt="Asya'da Eğitim kanonik H-02 logosu">
  <div class="micro">ÜNİVERSİTE İÇİN</div>
  <h1 class="title"><span>BAŞKA BİR</span><br><span class="hero">DÜNYA VAR.</span></h1>
- <p class="country-line" aria-label="Çin, Japonya, Güney Kore, Singapur, Hong Kong"><span>ÇİN</span><span>JAPONYA</span><span>GÜNEY KORE</span><span>SİNGAPUR</span><span>HONG KONG</span></p>
+ <p class="country-line" aria-label="Çin, Hong Kong, Güney Kore, Japonya, Singapur"><span>ÇİN</span><span>HONG KONG</span><span>GÜNEY KORE</span><span>JAPONYA</span><span>SİNGAPUR</span></p>
+  <div class="profile-preview" aria-hidden="true"><div class="avatar-proof"><img src="../assets/canonical-seal.svg" alt=""></div></div>
 </div>
 <script>
 (()=>{const sizes={"x":[1500,500],"linkedin":[1512,256],"facebook-desktop":[1702,617],"facebook-mobile":[1704,710]};
@@ -64,8 +88,9 @@ const requested=new URLSearchParams(location.search).get("platform");
 const platform=Object.hasOwn(sizes,requested)?requested:"x";
 const [w,h]=sizes[platform],cover=document.getElementById("cover");
 cover.classList.add(platform);cover.style.width=w+"px";cover.style.height=h+"px";
+if(new URLSearchParams(location.search).get("preview")==="profile")cover.classList.add("preview-profile");
 if(platform==="linkedin")document.querySelector(".title").innerHTML='<span>BAŞKA BİR </span><span class="hero">DÜNYA VAR.</span>';
-document.title="Yeni Ufuk × ASYA Manifestosu — "+platform+" / Editorial Air V4.1";
+document.title="Yeni Ufuk × ASYA Manifestosu — "+platform+" / Editorial Air V4.2";
 })();
 </script>
 </body>

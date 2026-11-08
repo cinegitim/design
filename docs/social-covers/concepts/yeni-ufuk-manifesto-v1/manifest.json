@@ -49,8 +49,8 @@
   "inspected_as_raster": false,
   "creative_approved": false,
   "social_published": false,
-  "notes": "V4.1: Slightly enlarged kicker and softly feathered headline text shadow; original editorial V4 unchanged otherwise.",
-  "version": "v4.1 — Editorial Air typography polish",
+  "notes": "V4.2 keeps the AI student background, canonical H-02 brand assets and editorial typography. Updated country order and geometric safe zones. Separate demo avatar overlay is not included in export images.",
+  "version": "v4.2 — Platform safe layouts and real-profile overlap previews",
   "imagery": {
     "path": "assets/international-campus-ai-v2.jpg",
     "source": "ChatGPT generated image in this conversation, final diverse international student campus scene",
@@ -84,5 +84,20 @@
     },
     "headlineShadow": "0 2px 4px rgba(29,32,39,.16), 0 0 11px rgba(247,243,233,.36)",
     "preserves": "layout, image, H-02 logo, country line, no boxes"
-  }
+  },
+  "countryOrder": [
+    "Çin",
+    "Hong Kong",
+    "Güney Kore",
+    "Japonya",
+    "Singapur"
+  ],
+  "platformSafeZones": {
+    "basis": "2026 platform documentation + conservative avatar overlay simulation; actual profile layouts vary by client",
+    "x": "Avatar overlay bottom left; wordmark and headline moved to center-left safe strip; countries moved to upper middle, away from avatar and mobile-side crops.",
+    "linkedin": "Avoid redundant in-banner corporate logo because company profile logo appears separately; keep title and country sequence clear of left logo overlay.",
+    "facebook": "Move country list above the faces and out of lower-left profile overlay in desktop and mobile variants.",
+    "inspection": "Preview toggle simulates circle overlays; actual cover crops and profile UIs may differ."
+  },
+  "previewSeal": "assets/canonical-seal.svg"
 }
