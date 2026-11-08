@@ -105,6 +105,14 @@ async function coverRaster(frame, width, height){
  const py=Number.isFinite(percent(position[1]??'50%'))?percent(position[1]):.5;
  ctx.drawImage(photo,(width-drawW)*px,(height-drawH)*py,drawW,drawH);
  ctx.drawImage(overlay,0,0,width,height);
+ /* Image elements in foreign-document clones may be silently skipped.
+    Restore the exact approved H-02 vector from the source <img>, in native
+    pixel coordinates, only when that lockup is visible on this platform. */
+ if(logo&&win.getComputedStyle(logo).display!=='none'){
+  if(!logo.naturalWidth)throw new Error('Onaylı logo yüklenemedi.');
+  const rect=logo.getBoundingClientRect(),origin=cover.getBoundingClientRect();
+  ctx.drawImage(logo,rect.left-origin.left,rect.top-origin.top,rect.width,rect.height);
+ }
  return canvas;
 }
 async function downloadRenderedCover(button){
