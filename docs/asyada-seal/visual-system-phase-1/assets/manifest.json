@@ -1,0 +1,53 @@
+{
+  "phase": "Asya'da Eğitim Visual System — Phase 1 prototypes",
+  "status": "HUMAN VISUAL SYSTEM REVIEW PENDING",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "canonical_manifest": "brands/asyada-egitim/assets/lockups/canonical-lockups.json",
+  "image_backend": "Pollinations gen_edit_image_free (imagery only; no text/logos in generation)",
+  "outputs": [
+    {
+      "id": "01-square-post",
+      "file": "brands/asyada-egitim/applications/phase-1/01-square-post.html",
+      "size": "1080x1080",
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_display_px": 360,
+      "lockup_minimum_px": 352,
+      "raster": "brands/asyada-egitim/applications/phase-1/raster/square-courtyard.jpg",
+      "raster_sha256": "d974a2f987fc3475f42b48c954c9c5c98ab271c715c6369cdbab25555123a4e7",
+      "raster_seed": 11
+    },
+    {
+      "id": "02-vertical-campaign",
+      "file": "brands/asyada-egitim/applications/phase-1/02-vertical-campaign.html",
+      "size": "1080x1350",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_display_px": 540,
+      "lockup_minimum_px": 528,
+      "raster": "brands/asyada-egitim/applications/phase-1/raster/vertical-path.jpg",
+      "raster_sha256": "00feeb1eb2ae5588da86c33a228cd7071a3ff4f59f99d84bc6ba8a026bd7a86b",
+      "raster_seed": 22
+    },
+    {
+      "id": "03-fair-flyer",
+      "file": "brands/asyada-egitim/applications/phase-1/03-fair-flyer.html",
+      "size": "A5 148x210mm",
+      "canonical_lockup_id": "F-05/light",
+      "canonical_lockup_sha256": "e1892f677d491f6e0e2491d6c8f3ad1b0d269ed9f1a16df98ea0b6329ceff810",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_display_mm": 80,
+      "lockup_minimum_mm": 75,
+      "raster": "brands/asyada-egitim/applications/phase-1/raster/flyer-campus.jpg",
+      "raster_sha256": "5f7a47fed2726016a4333ed3d04d26cf6d11bf66566b070d1702e9f4f070a52a",
+      "raster_seed": 33
+    }
+  ],
+  "rules": [
+    "No new visual style or template canonicalized.",
+    "Lockups used as complete files; placement/size only.",
+    "D-04/C-03/monochrome unused in this phase; remain canonical."
+  ]
+}

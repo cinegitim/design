@@ -1,0 +1,41 @@
+{
+ "W1": {
+  "stacked": "/Users/serdaryurt/Documents/OpenCode/Design/brands/asyada-egitim/explorations/wordmark-ref/lockups/W1-stacked.svg",
+  "horizontal": "/Users/serdaryurt/Documents/OpenCode/Design/brands/asyada-egitim/explorations/wordmark-ref/lockups/W1-horizontal.svg",
+  "dark": "/Users/serdaryurt/Documents/OpenCode/Design/brands/asyada-egitim/explorations/wordmark-ref/lockups/W1-horizontal-dark.svg",
+  "stacked_dims": [
+   969.0,
+   856.49
+  ],
+  "horizontal_dims": [
+   1345.0,
+   514.99
+  ]
+ },
+ "W2": {
+  "stacked": "/Users/serdaryurt/Documents/OpenCode/Design/brands/asyada-egitim/explorations/wordmark-ref/lockups/W2-stacked.svg",
+  "horizontal": "/Users/serdaryurt/Documents/OpenCode/Design/brands/asyada-egitim/explorations/wordmark-ref/lockups/W2-horizontal.svg",
+  "dark": "/Users/serdaryurt/Documents/OpenCode/Design/brands/asyada-egitim/explorations/wordmark-ref/lockups/W2-horizontal-dark.svg",
+  "stacked_dims": [
+   969.0,
+   856.49
+  ],
+  "horizontal_dims": [
+   1345.0,
+   514.99
+  ]
+ },
+ "W3": {
+  "stacked": "/Users/serdaryurt/Documents/OpenCode/Design/brands/asyada-egitim/explorations/wordmark-ref/lockups/W3-stacked.svg",
+  "horizontal": "/Users/serdaryurt/Documents/OpenCode/Design/brands/asyada-egitim/explorations/wordmark-ref/lockups/W3-horizontal.svg",
+  "dark": "/Users/serdaryurt/Documents/OpenCode/Design/brands/asyada-egitim/explorations/wordmark-ref/lockups/W3-horizontal-dark.svg",
+  "stacked_dims": [
+   969.0,
+   843.5
+  ],
+  "horizontal_dims": [
+   1345.0,
+   502.0
+  ]
+ }
+}

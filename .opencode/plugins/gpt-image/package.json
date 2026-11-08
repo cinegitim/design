@@ -1,0 +1,7 @@
+{
+  "name": "brand-studio-gpt-image",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Project-local OpenCode v2 adapter exposing image_generate and image_edit via the already-connected OpenAI/ChatGPT credential."
+}

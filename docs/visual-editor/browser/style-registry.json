@@ -1,0 +1,461 @@
+{
+  "schema": 1,
+  "repository": "cinegitim/design",
+  "brand": "asyada-egitim",
+  "categories": [
+    {
+      "id": "instagram-carousel",
+      "label": "Instagram karusel",
+      "registered": true
+    },
+    {
+      "id": "social-post",
+      "label": "Tekil sosyal medya",
+      "registered": false
+    },
+    {
+      "id": "identity-application",
+      "label": "Kurumsal uygulama",
+      "registered": false
+    },
+    {
+      "id": "print-catalog",
+      "label": "Baskı / katalog",
+      "registered": false
+    },
+    {
+      "id": "web-design",
+      "label": "Web tasarımı",
+      "registered": false
+    },
+    {
+      "id": "new-identity",
+      "label": "Yeni marka kimliği",
+      "registered": false
+    }
+  ],
+  "styles": [
+    {
+      "style_id": "editorial-campaign",
+      "name": "Editorial Campaign",
+      "brand": "asyada-egitim",
+      "category": "instagram-carousel",
+      "version": "0.1.1",
+      "status": "review-only",
+      "source_path": "brands/asyada-egitim/styles/instagram-carousel/editorial-campaign/style.json",
+      "source_blob_sha": "fc37855c1f5b87bf334ed1573358d08a5efb7cd2",
+      "description": "A large-type, modular editorial campaign language: Jost hierarchy, deliberate negative space and text/photo counterpoint. Different slide rhythms remain recognizably related.",
+      "default_preset": "institutional-paper",
+      "presets": {
+        "institutional-paper": {
+          "label": "Kurumsal krem",
+          "summary": "Paper is the main surface; moderate photos, balanced informational rhythm.",
+          "variants": {
+            "color_mode": "paper-dominant",
+            "layout_rhythm": "balanced",
+            "cover_archetype": "statement",
+            "interior_bias": "mixed",
+            "photo_density": "medium",
+            "cta_presentation": "soft-consultation"
+          }
+        },
+        "campaign-dynamic": {
+          "label": "Dinamik kampanya",
+          "summary": "Alternating photo windows and typographic contrasts with paper/red alternation.",
+          "variants": {
+            "color_mode": "paper-red-balanced",
+            "layout_rhythm": "dynamic",
+            "cover_archetype": "split-photo",
+            "interior_bias": "mixed",
+            "photo_density": "medium",
+            "cta_presentation": "direct-appointment"
+          }
+        },
+        "photo-editorial": {
+          "label": "Fotoğraf odaklı editoryal",
+          "summary": "Large documentary-looking image areas integrated with generous paper-based typography.",
+          "variants": {
+            "color_mode": "paper-dominant",
+            "layout_rhythm": "photo-led",
+            "cover_archetype": "image-window",
+            "interior_bias": "editorial-photo",
+            "photo_density": "high",
+            "cta_presentation": "soft-consultation"
+          }
+        },
+        "ink-accent": {
+          "label": "Kontrast vurgulu",
+          "summary": "Controlled ink contrasts and large type, with paper returning across the sequence.",
+          "variants": {
+            "color_mode": "dark-contrast-accented",
+            "layout_rhythm": "type-led",
+            "cover_archetype": "dark-contrast",
+            "interior_bias": "question-answer",
+            "photo_density": "low",
+            "cta_presentation": "profile-visit"
+          }
+        }
+      },
+      "variation_axes": {
+        "color_mode": {
+          "default": "paper-dominant",
+          "options": [
+            "paper-dominant",
+            "paper-red-balanced",
+            "dark-contrast-accented"
+          ],
+          "description": "Sequence-level distribution, not a fixed single-slide background."
+        },
+        "layout_rhythm": {
+          "default": "balanced",
+          "options": [
+            "balanced",
+            "dynamic",
+            "type-led",
+            "photo-led"
+          ],
+          "description": "Editorial cadence, never a single hard-coded template."
+        },
+        "cover_archetype": {
+          "default": "statement",
+          "options": [
+            "statement",
+            "split-photo",
+            "image-window",
+            "dark-contrast"
+          ],
+          "description": "The opening composition only."
+        },
+        "interior_bias": {
+          "default": "mixed",
+          "options": [
+            "mixed",
+            "question-answer",
+            "list-photo",
+            "comparison-grid",
+            "editorial-photo"
+          ],
+          "description": "A bias, not every slide's single layout."
+        },
+        "photo_density": {
+          "default": "medium",
+          "options": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "description": "Total photo prominence; optional imagery must be sourced or authorized."
+        },
+        "cta_presentation": {
+          "default": "soft-consultation",
+          "options": [
+            "soft-consultation",
+            "direct-appointment",
+            "profile-visit"
+          ],
+          "description": "Changes visual emphasis, never exact approved CTA wording."
+        }
+      },
+      "palette": {
+        "paper": "#F7F3E9",
+        "red": "#BD2120",
+        "ink": "#1D2027"
+      },
+      "font_family": "Jost",
+      "lockups": [
+        {
+          "id": "H-02/dark",
+          "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-dark.svg",
+          "sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7"
+        },
+        {
+          "id": "H-02/light",
+          "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
+          "sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a"
+        },
+        {
+          "id": "P-01/dark",
+          "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-dark.svg",
+          "sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f"
+        },
+        {
+          "id": "P-01/light",
+          "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-light.svg",
+          "sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2"
+        }
+      ],
+      "seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "style_id": "data-atlas",
+      "name": "Data Atlas",
+      "brand": "asyada-egitim",
+      "category": "instagram-carousel",
+      "version": "0.1.0",
+      "status": "review-only",
+      "source_path": "brands/asyada-egitim/styles/instagram-carousel/data-atlas/style.json",
+      "source_blob_sha": "2235ffc05cb3c203f795a93810d393d73815df97",
+      "description": "Evidence-led information design: numerical anchors, comparison matrices, timelines and modular diagram grids. A navigable information map, not an editorial-photo campaign.",
+      "default_preset": "metrics-overview",
+      "presets": {
+        "metrics-overview": {
+          "label": "Metrik atlası",
+          "summary": "Number-led overview, modular grids and comparative evidence.",
+          "variants": {
+            "structure": "modular-grid",
+            "evidence_focus": "metrics",
+            "content_density": "balanced",
+            "cover_device": "hero-number",
+            "media_role": "diagram-first",
+            "sequence_arc": "overview-detail"
+          }
+        },
+        "timeline-path": {
+          "label": "Zaman çizelgesi",
+          "summary": "Sequential milestones and verified dates anchored on a timeline rail.",
+          "variants": {
+            "structure": "timeline",
+            "evidence_focus": "steps",
+            "content_density": "spacious",
+            "cover_device": "timeline-start",
+            "media_role": "text-only",
+            "sequence_arc": "steps-outcome"
+          }
+        },
+        "comparison-led": {
+          "label": "Karşılaştırma panosu",
+          "summary": "Side-by-side differences, verified dimensions and compact ranking.",
+          "variants": {
+            "structure": "comparison",
+            "evidence_focus": "comparison",
+            "content_density": "dense",
+            "cover_device": "index-map",
+            "media_role": "diagram-first",
+            "sequence_arc": "question-evidence"
+          }
+        }
+      },
+      "variation_axes": {
+        "structure": {
+          "default": "modular-grid",
+          "options": [
+            "modular-grid",
+            "timeline",
+            "comparison"
+          ],
+          "description": "Main factual navigation structure."
+        },
+        "evidence_focus": {
+          "default": "metrics",
+          "options": [
+            "metrics",
+            "steps",
+            "ranking",
+            "comparison"
+          ],
+          "description": "Which kind of evidence receives the largest visual role."
+        },
+        "content_density": {
+          "default": "balanced",
+          "options": [
+            "spacious",
+            "balanced",
+            "dense"
+          ],
+          "description": "How much verified information is displayed per slide; never compromise readability."
+        },
+        "cover_device": {
+          "default": "hero-number",
+          "options": [
+            "hero-number",
+            "index-map",
+            "timeline-start"
+          ],
+          "description": "A cover that communicates structured information."
+        },
+        "media_role": {
+          "default": "diagram-first",
+          "options": [
+            "diagram-first",
+            "verified-photo",
+            "text-only"
+          ],
+          "description": "Verified media role, not permission to invent sources."
+        },
+        "sequence_arc": {
+          "default": "overview-detail",
+          "options": [
+            "overview-detail",
+            "question-evidence",
+            "steps-outcome"
+          ],
+          "description": "Explanatory order across multiple slides."
+        }
+      },
+      "palette": {
+        "paper": "#F7F3E9",
+        "red": "#BD2120",
+        "ink": "#1D2027"
+      },
+      "font_family": "Jost",
+      "lockups": [
+        {
+          "id": "H-02/dark",
+          "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-dark.svg",
+          "sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7"
+        },
+        {
+          "id": "H-02/light",
+          "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
+          "sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a"
+        },
+        {
+          "id": "P-01/dark",
+          "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-dark.svg",
+          "sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f"
+        },
+        {
+          "id": "P-01/light",
+          "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-light.svg",
+          "sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2"
+        }
+      ],
+      "seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "style_id": "conceptual-breakout",
+      "name": "Conceptual Breakout",
+      "brand": "asyada-egitim",
+      "category": "instagram-carousel",
+      "version": "0.1.0",
+      "status": "review-only",
+      "source_path": "brands/asyada-egitim/styles/instagram-carousel/conceptual-breakout/style.json",
+      "source_blob_sha": "47629d3af18421839568f019e311153c95b32a7e",
+      "description": "A high-concept visual surprise built around one material or object metaphor, oversized shapes and editorial tension; distinct from both photographic campaign grids and data-atlas diagrams.",
+      "default_preset": "object-metaphor",
+      "presets": {
+        "object-metaphor": {
+          "label": "Nesne metaforu",
+          "summary": "An oversized meaningful object anchors a narrative; plenty of brand-safe type space.",
+          "variants": {
+            "visual_metaphor": "object",
+            "materiality": "clean-cutout",
+            "layout_energy": "bold",
+            "cover_device": "hero-object",
+            "image_role": "concept-support",
+            "sequence_arc": "hook-reveal"
+          }
+        },
+        "typographic-shock": {
+          "label": "Tipografik gerilim",
+          "summary": "Bold Jost lettering and purposeful white space create a visual hook.",
+          "variants": {
+            "visual_metaphor": "type-tension",
+            "materiality": "paper-layer",
+            "layout_energy": "spacious",
+            "cover_device": "oversized-type",
+            "image_role": "minimal",
+            "sequence_arc": "contrast-payoff"
+          }
+        },
+        "editorial-collage": {
+          "label": "Katmanlı kolaj",
+          "summary": "Controlled paper/photo cutouts and staggered layout reveal a story in stages.",
+          "variants": {
+            "visual_metaphor": "collage",
+            "materiality": "photo-stage",
+            "layout_energy": "layered",
+            "cover_device": "reveal-window",
+            "image_role": "object-only",
+            "sequence_arc": "journey"
+          }
+        }
+      },
+      "variation_axes": {
+        "visual_metaphor": {
+          "default": "object",
+          "options": [
+            "object",
+            "type-tension",
+            "collage"
+          ],
+          "description": "Central expressive device for the story."
+        },
+        "materiality": {
+          "default": "clean-cutout",
+          "options": [
+            "clean-cutout",
+            "paper-layer",
+            "photo-stage"
+          ],
+          "description": "Rendering/material treatment of supporting visual layers."
+        },
+        "layout_energy": {
+          "default": "bold",
+          "options": [
+            "bold",
+            "spacious",
+            "layered"
+          ],
+          "description": "Composition energy and occupied space."
+        },
+        "cover_device": {
+          "default": "hero-object",
+          "options": [
+            "hero-object",
+            "oversized-type",
+            "reveal-window"
+          ],
+          "description": "First slide reveal/hook grammar."
+        },
+        "image_role": {
+          "default": "concept-support",
+          "options": [
+            "concept-support",
+            "object-only",
+            "minimal"
+          ],
+          "description": "Images never include final brand typography or logos."
+        },
+        "sequence_arc": {
+          "default": "hook-reveal",
+          "options": [
+            "hook-reveal",
+            "contrast-payoff",
+            "journey"
+          ],
+          "description": "How the concept unfolds through multiple slides."
+        }
+      },
+      "palette": {
+        "paper": "#F7F3E9",
+        "red": "#BD2120",
+        "ink": "#1D2027"
+      },
+      "font_family": "Jost",
+      "lockups": [
+        {
+          "id": "H-02/dark",
+          "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-dark.svg",
+          "sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7"
+        },
+        {
+          "id": "H-02/light",
+          "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
+          "sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a"
+        },
+        {
+          "id": "P-01/dark",
+          "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-dark.svg",
+          "sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f"
+        },
+        {
+          "id": "P-01/light",
+          "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-light.svg",
+          "sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2"
+        }
+      ],
+      "seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    }
+  ]
+}

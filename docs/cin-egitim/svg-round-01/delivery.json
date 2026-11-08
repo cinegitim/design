@@ -1,0 +1,24 @@
+{
+  "status": "CANONICAL SYMBOL / REVIEW RECORD",
+  "package": "svg-round-01.zip",
+  "sha256": "bed83b192ac872a6f08e68d460d4906b738f58c68a14d587267580dc8602da10",
+  "bytes": 1555549,
+  "members": [
+    "README.md",
+    "build.py",
+    "detail-brush.png",
+    "detail-pagoda.png",
+    "handoff.md",
+    "index.html",
+    "manifest.json",
+    "package.py",
+    "quality-review.md",
+    "source-sr.png",
+    "source-vs-svg.png",
+    "symbol-2x.png",
+    "symbol-mono.svg",
+    "symbol-preview.png",
+    "symbol.svg",
+    "verify.py"
+  ]
+}

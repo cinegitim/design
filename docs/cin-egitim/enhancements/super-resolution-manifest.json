@@ -1,0 +1,37 @@
+{
+  "status": "SUPER_RESOLUTION_REVIEW_PENDING",
+  "authorization": "User explicitly requested quality/detail improvement, not only a size increase.",
+  "reference_lock_changed": false,
+  "canonical_logo": false,
+  "source": "../reference/target-symbol.png",
+  "source_sha256": "6177f661a1971b985c2d2e0bb91b995d8df074f5ef9433caef5366f457a76b89",
+  "reference_lock_sha256": "f9a3652029660b2ce1cb4edd71908a001aff11b6ec30d880aff34bd49c69fd5c",
+  "source_dimensions": [
+    229,
+    231
+  ],
+  "output": "target-symbol-super-resolution-4x.png",
+  "output_sha256": "56ad9bc59a50a53f44db2c91800a5470868002b70fb692107c4e8e115582bdc7",
+  "output_dimensions": [
+    916,
+    924
+  ],
+  "method": "Local model-based Real-ESRGAN super-resolution + learned noise/artifact restoration",
+  "model": "realesrgan-x4plus",
+  "scale": 4,
+  "tile_size": 256,
+  "tool_release": "v0.2.5.0 / ncnn-vulkan-20220424-macos",
+  "official_download": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesrgan-ncnn-vulkan-20220424-macos.zip",
+  "executable_sha256": "c1c35d92079085de96b9d547fd7e4464bc8a2e9ccf28d7b8c712d72ade91b7cc",
+  "model_bin_sha256": "713ee713b0353afaa27976f0563a64a5043bd70b9bd8936c2e26e25ebcdbcddf",
+  "model_param_sha256": "35330ececcea33b6c397a72548e788d5d53becee4734c50b7fada36e89f10a86",
+  "learned_detail_estimation": true,
+  "text_to_image_generation": false,
+  "svg_or_vectorization": false,
+  "typography": false,
+  "limitation": "The model estimates high-frequency detail, so fine brush texture and edges may change. Not a faithful-detail guarantee, new locked target, or approved production logo.",
+  "comparisons": [
+    "super-resolution-comparison.png",
+    "super-resolution-detail.png"
+  ]
+}

@@ -1,0 +1,2564 @@
+{
+  "schema_version": 1,
+  "source_label": "legacy local Design working folder",
+  "baseline_commit": "e47a2cd3cb290ae0251f748e8680641929156319",
+  "status": "Preservation prepared; cloud account activation/cutover pending. No source files deleted.",
+  "files": [
+    {
+      "source_path": ".DS_Store",
+      "source_state": "ignored",
+      "bytes": 10244,
+      "sha256": "bcc40477b6028f9c6e2d8f3e42b37038bb82322eae2067e1706ba607624a6128",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/.DS_Store",
+      "source_state": "ignored",
+      "bytes": 8196,
+      "sha256": "0e034b2f57670347f4a6345eab4d00ecfd9bdd13f7a7ddab0dde51b03535ac43",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/README.md",
+      "source_state": "ignored",
+      "bytes": 982,
+      "sha256": "031d1568d9d5854d66f0ac0a94c63172ba460d78ec521a78b25a9e4affb5ce9b",
+      "disposition": "preserved",
+      "repository_path": "studio/archive/migration-20261001/projects/README.md",
+      "was_byte_unique": true
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/.DS_Store",
+      "source_state": "ignored",
+      "bytes": 12292,
+      "sha256": "784107182e5504bd66532d5ec61403168dfd8d68143217c0ac9520eeb4aa0d51",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/assets/favicon.svg",
+      "source_state": "ignored",
+      "bytes": 677,
+      "sha256": "f31a74e445bd0ff486ebe00bf053488087c2c4d703e7d4690d765ef99d2c3e3f",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/assets/favicon.svg"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/assets/icon.svg",
+      "source_state": "ignored",
+      "bytes": 683,
+      "sha256": "41762109e2d703d13d9f1f3457f834ed5898fbf296a19c24e89f525961d4106c",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/assets/icon.svg"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/assets/logo-compact.svg",
+      "source_state": "ignored",
+      "bytes": 2679,
+      "sha256": "de04000992286ea87961f821fde6b4b9acf7bb7260fb9cbbbbaf37db85de789a",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/assets/logo-compact.svg"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/assets/logo-mono.svg",
+      "source_state": "ignored",
+      "bytes": 10620,
+      "sha256": "357ed9b1e2d4cf3f87fd6b420b47689565a07f2dc175765b928c587ec8c799d6",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/assets/logo-mono.svg"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/assets/logo-primary.svg",
+      "source_state": "ignored",
+      "bytes": 10605,
+      "sha256": "309f83c6f359c5f0ae086fc69d4c578d58bd70a3732fffa55da5dd258b7d776d",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/assets/logo-primary.svg"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/assets/logo-secondary.svg",
+      "source_state": "ignored",
+      "bytes": 14010,
+      "sha256": "0e19cd73115c127febfd0b3680e96901f370d64cfc5125bc639b3bc931664e15",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/assets/logo-secondary.svg"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/00-dosya-rehberi.html",
+      "source_state": "ignored",
+      "bytes": 3989,
+      "sha256": "ddc2154055f7cbe5652a7077384d584d0878befa64a810c78698cde89ca50b68",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/00-dosya-rehberi.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/applications-digital.html",
+      "source_state": "ignored",
+      "bytes": 7053,
+      "sha256": "1e8b4ffdbf329d68fcba3bd9fbf1aa0c234614b00c8507bf6f7db58550192da8",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/applications-digital.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/applications-editorial.html",
+      "source_state": "ignored",
+      "bytes": 7024,
+      "sha256": "2dc641a52127188454b565e8d55098c531e38d9825f03d72c6ce001547b68e2b",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/applications-editorial.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/applications-event.html",
+      "source_state": "ignored",
+      "bytes": 6123,
+      "sha256": "dff9299de938009a44eefef83888dc9df6846c724ca60ee95d6e140ac8ee460e",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/applications-event.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/applications-institutional.html",
+      "source_state": "ignored",
+      "bytes": 11039,
+      "sha256": "0499181b4424d585550ceba74967b87a1f2e9c47677f827e0adf8a5672d46117",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/applications-institutional.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/applications-social.html",
+      "source_state": "ignored",
+      "bytes": 6418,
+      "sha256": "6790f094dd9978ebceac37ac3ef8dc6921364a387bbb9c6972494c2b9adca542",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/applications-social.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/core-refinement-1.html",
+      "source_state": "ignored",
+      "bytes": 8485,
+      "sha256": "b0243df63dfaddc1d15f0880997ea4778a92570cd6e56add9b4faa46f2ac613d",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/core-refinement-1.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/core-refinement-2.html",
+      "source_state": "ignored",
+      "bytes": 8865,
+      "sha256": "5aab8471d9968d5a3864d6b3bf8b65c170f0095796486b17b3756efffe384327",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/core-refinement-2.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/core-refinement-3.html",
+      "source_state": "ignored",
+      "bytes": 8367,
+      "sha256": "04a9022a038049572bad754fcd1d2b9d7f615f7754ae254232f59a648ec1b872",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/core-refinement-3.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/creative-territories-round-2.html",
+      "source_state": "ignored",
+      "bytes": 10408,
+      "sha256": "2e29e108c1ae3228aa0b260af50be50ae0c8b2037273739690db101788715b33",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/creative-territories-round-2.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/direction-3-fidelity-reconstruction.html",
+      "source_state": "ignored",
+      "bytes": 5939,
+      "sha256": "bfb151be19f4f89d522d53d2455ca3aa61a79405f890b83f584f8286b79b8683",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/direction-3-fidelity-reconstruction.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/direction-3-fidelity-reconstruction.png",
+      "source_state": "ignored",
+      "bytes": 507372,
+      "sha256": "368161d9fa706bff2b18de825a361344d3ab72930d79f22c8b0085c469de17e5",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/direction-3-fidelity-reconstruction.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/direction-a.html",
+      "source_state": "ignored",
+      "bytes": 11488,
+      "sha256": "e37937af0a4dc378ecf546d04418469969fa376e84b25fa8cac057f6462df53f",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/direction-a.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/direction-b.html",
+      "source_state": "ignored",
+      "bytes": 11226,
+      "sha256": "5352847b1cc3d3b54e290326cc40d6864239a5466b11dd3589cd25105e03d7f7",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/direction-b.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/direction-c.html",
+      "source_state": "ignored",
+      "bytes": 12373,
+      "sha256": "c6a0134e3207ae39a3c92ddf3e01d2b683f8d75d0f4bb2bf8e8c9308170f155a",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/direction-c.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/logo-board.html",
+      "source_state": "ignored",
+      "bytes": 21844,
+      "sha256": "01c38e0e0deea71befc53e86d07a103f934df3de85ff721e5d3f37fbdcccb012",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/logo-board.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/logo-client-review.html",
+      "source_state": "ignored",
+      "bytes": 17919,
+      "sha256": "7d75de0899d1e686d954851d8da5e7caa155f350fe2ba4e8f73ac20b9410a5d3",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/logo-client-review.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/logo-client-review.png",
+      "source_state": "ignored",
+      "bytes": 375545,
+      "sha256": "aaada861abc73c4db07cdc98c4670aaaafdbe1bc6eadaf676bed40b86c195ecc",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/logo-client-review.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/polli-1790726887820.jpg",
+      "source_state": "ignored",
+      "bytes": 167302,
+      "sha256": "d02c0d4430712a0959d814506cf2dfcc30626de3534d5ed8b69beae89bc8f2b8",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/polli-1790726887820.jpg"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/source-vs-production.html",
+      "source_state": "ignored",
+      "bytes": 3673,
+      "sha256": "a667407367d65cdd3c4e25a17d49154fba0fe3e732d96332dd887e3f5dc84cce",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/source-vs-production.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/visual-round-3-comparison.html",
+      "source_state": "ignored",
+      "bytes": 4002,
+      "sha256": "7749f529818bebb8c65c913b77afca05415135a298c4c282e67112b0e09e373c",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/visual-round-3-comparison.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/boards/visual-round-4-comparison.html",
+      "source_state": "ignored",
+      "bytes": 2386,
+      "sha256": "aaaf67031010f4f579e0e1e1a0ccea03d558a0be8831da88058b081f2f4fe381",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/boards/visual-round-4-comparison.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/brand-brief.md",
+      "source_state": "ignored",
+      "bytes": 3516,
+      "sha256": "5f09e47de082a4031adf059c362308fd44a1209d1ce6a33c87434d78c7643da1",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/brand-brief.md"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/brand-system.md",
+      "source_state": "ignored",
+      "bytes": 7354,
+      "sha256": "ca2fabef00ae9201c46e29fafd356f24ab042bc00b8c96a7a536835882fff1db",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/brand-system.md"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/.DS_Store",
+      "source_state": "ignored",
+      "bytes": 12292,
+      "sha256": "f4cb487cb5bfc0c6f9e98b888781eb26d07cb10dce4700897e88ba9ccc46338f",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/creative-territories-round-2.md",
+      "source_state": "ignored",
+      "bytes": 15457,
+      "sha256": "7ab7d071ec4a7b862e2c14e2d7f9bb5f9bddae8da38d64d12c3c2fe46b11789e",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/creative-territories-round-2.md"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/direction-3-refinement.html",
+      "source_state": "ignored",
+      "bytes": 8571,
+      "sha256": "75b7e3ce228eb5c69b894658cbae10c32e1a437815ec1d3a371fa929e217fea8",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/direction-3-refinement.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/high-aesthetic-direction-1/image-1790755210820.png",
+      "source_state": "ignored",
+      "bytes": 2329080,
+      "sha256": "d5c9dcdd3e601cfbc2430c625da363ab6b85dfaef603a48001b4eb5cc6514bcb",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/high-aesthetic-direction-1/image-1790755210820.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/high-aesthetic-direction-2/image-1790764889807.png",
+      "source_state": "ignored",
+      "bytes": 2256935,
+      "sha256": "31905cc032b4ff86abda93da9faf8bc050e17359850c0ed57bfc83b4b3279ddb",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/high-aesthetic-direction-2/image-1790764889807.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/high-aesthetic-direction-3/image-1790766584024.png",
+      "source_state": "ignored",
+      "bytes": 2161593,
+      "sha256": "cb568434504ede08d005d33275485310fe4adf755772640a3912d1f919568819",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/high-aesthetic-direction-3/image-1790766584024.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/01-contemporary-ink-a/image-1790846709514.png",
+      "source_state": "ignored",
+      "bytes": 2748655,
+      "sha256": "8b55ffe1749d1b664fcb744fa14c04d77a40f710f9bf078c6e8c9bf1f70feef5",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/01-contemporary-ink-a/image-1790846709514.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/01-contemporary-ink-a/image-1790848106991.png",
+      "source_state": "ignored",
+      "bytes": 2471854,
+      "sha256": "5194381be569b95d88d1a0dd996e1ae5a0d1db14eaec2e773cfc47a81cd82a9e",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/01-contemporary-ink-a/image-1790848106991.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/01-contemporary-ink-b/image-1790846781978.png",
+      "source_state": "ignored",
+      "bytes": 2619737,
+      "sha256": "0699614054daec08a949aa3fdec4dda4f675370cff230f1a83e132abf7651856",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/01-contemporary-ink-b/image-1790846781978.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/01-contemporary-ink-b/image-1790848103747.png",
+      "source_state": "ignored",
+      "bytes": 2455654,
+      "sha256": "9fb975c13b92871c7cce26403815443ae11187fc0c5db2644e8fe54c6db8a40c",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/01-contemporary-ink-b/image-1790848103747.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/04-brush-geometry-a/image-1790846880875.png",
+      "source_state": "ignored",
+      "bytes": 2451867,
+      "sha256": "5df1be872a2f800142e1700a7f5159d4f36bcfb4b3423531f761fc3237dde65f",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/04-brush-geometry-a/image-1790846880875.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/04-brush-geometry-a/image-1790848110833.png",
+      "source_state": "ignored",
+      "bytes": 2772553,
+      "sha256": "6eb30b987edc6a4726fc6f64d4155432258f0463f1324b8f8a952d9ec0e080f6",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/04-brush-geometry-a/image-1790848110833.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/04-brush-geometry-b/image-1790846797084.png",
+      "source_state": "ignored",
+      "bytes": 2643164,
+      "sha256": "c8d10659cdf9ed3d8291046f47dd1519b80280b55ff1c164b87d2074a540606a",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/04-brush-geometry-b/image-1790846797084.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/04-brush-geometry-b/image-1790848170654.png",
+      "source_state": "ignored",
+      "bytes": 2765712,
+      "sha256": "2355b04543a47aa76d43c996d8825b1455cf424837a93391b4d6c609eb080837",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/04-brush-geometry-b/image-1790848170654.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/05-typographic-asia-a/image-1790846879193.png",
+      "source_state": "ignored",
+      "bytes": 2580405,
+      "sha256": "d40301480a6164bd93f63f9c84cb87d5e5dd47477d77a2d88e3cf385e4dd0bdc",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/05-typographic-asia-a/image-1790846879193.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/05-typographic-asia-a/image-1790848186929.png",
+      "source_state": "ignored",
+      "bytes": 2547748,
+      "sha256": "49e56d5f55252afa7f483a364cbaa0f14a0dc9d7372b4cce1f882d52fbd17294",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/05-typographic-asia-a/image-1790848186929.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/05-typographic-asia-b/image-1790846973478.png",
+      "source_state": "ignored",
+      "bytes": 2384639,
+      "sha256": "fdb17acc1fc2e5784a0dca00d938bc98a05ff88f99d347de6f7d7cc336b17aac",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/05-typographic-asia-b/image-1790846973478.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/05-typographic-asia-b/image-1790848168816.png",
+      "source_state": "ignored",
+      "bytes": 2504318,
+      "sha256": "45e393d2dac0d7bb0a7fcdca39843ae346a4a7ef337ffee8a72e4bbfe60b7585",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/05-typographic-asia-b/image-1790848168816.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/06-open-character-a/image-1790846954014.png",
+      "source_state": "ignored",
+      "bytes": 2300135,
+      "sha256": "e1407f74ab555c2e74336836007ce4e1d0ea6b99a52df6cf5ff3f273420ea665",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/06-open-character-a/image-1790846954014.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/06-open-character-a/image-1790848245997.png",
+      "source_state": "ignored",
+      "bytes": 2784888,
+      "sha256": "a263a8d621deb9d391b19498f15845138173a9496cae4362e36b3edad4e50ad4",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/06-open-character-a/image-1790848245997.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/06-open-character-b/image-1790847037389.png",
+      "source_state": "ignored",
+      "bytes": 2310289,
+      "sha256": "3bec74e37fe7f5963f5231ec11fbdcf7f093c99f257c25e825fb8e2b5febf7c5",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/06-open-character-b/image-1790847037389.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/06-open-character-b/image-1790848242934.png",
+      "source_state": "ignored",
+      "bytes": 2252474,
+      "sha256": "66ff0b3a39bd6c0ef2c7430e2b5d37041c2c73e3455eed304d4a0690d9477261",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/06-open-character-b/image-1790848242934.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/07-young-asia-a/image-1790847051639.png",
+      "source_state": "ignored",
+      "bytes": 2012768,
+      "sha256": "07d3578c231d841e71e8060e1bb950b7f1d780b288e63ceff7289e7964dfeba4",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/07-young-asia-a/image-1790847051639.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/07-young-asia-a/image-1790848266070.png",
+      "source_state": "ignored",
+      "bytes": 2156099,
+      "sha256": "cdffa073eb531c7cce035897d5c0bff611e635d6be12bc519debfff958dff9bc",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/07-young-asia-a/image-1790848266070.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/07-young-asia-b/image-1790847135965.png",
+      "source_state": "ignored",
+      "bytes": 2237150,
+      "sha256": "1ab52828f711607ba3b481d50679f4b13560e46c61c2e65002138abff5fc6994",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/07-young-asia-b/image-1790847135965.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/07-young-asia-b/image-1790848346342.png",
+      "source_state": "ignored",
+      "bytes": 2194774,
+      "sha256": "ff836ad8b24083cd20c10197ff24e5157ab636177f0bf5ee8ba412dfa9be87b0",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/07-young-asia-b/image-1790848346342.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/08-future-east-a/image-1790847116536.png",
+      "source_state": "ignored",
+      "bytes": 1924746,
+      "sha256": "6cfc8db2ccce3d9e9ebc73573e04e577a3c84b6a5f64144bca7fb0afe8e88e96",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/08-future-east-a/image-1790847116536.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/08-future-east-a/image-1790848317882.png",
+      "source_state": "ignored",
+      "bytes": 2367894,
+      "sha256": "3e1db2534447c8508771203222c6cadc56ebaadb840861a85955ab6a8ea30d43",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/08-future-east-a/image-1790848317882.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/08-future-east-b/image-1790847198210.png",
+      "source_state": "ignored",
+      "bytes": 2093186,
+      "sha256": "3668834f71f4cd38c945634ab141ad7cdb3e238cccb57a7da3bb252902f55e45",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/08-future-east-b/image-1790847198210.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-3/08-future-east-b/image-1790848320070.png",
+      "source_state": "ignored",
+      "bytes": 2076088,
+      "sha256": "9fd14465c136864b64647d5122e3df47b9c88c8881e8f32e4c6cc11192190d79",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/08-future-east-b/image-1790848320070.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-4/01-china/image-1790848966424.png",
+      "source_state": "ignored",
+      "bytes": 2262395,
+      "sha256": "267d48cb7995a2985592a472e6b37dbf569479166db43e92d9f0d08c75e2bdad",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/01-china/image-1790848966424.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-4/02-hong-kong/image-1790848957685.png",
+      "source_state": "ignored",
+      "bytes": 2116073,
+      "sha256": "fcce3774422c3d63e8dc00bf1c49e70a4dc953a128af9b935531b8224a73657a",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/02-hong-kong/image-1790848957685.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-4/03-japan/image-1790849040577.png",
+      "source_state": "ignored",
+      "bytes": 2630539,
+      "sha256": "4bec292a8a94de9b9bc09d724a9a916d8b89d40715601eb6d79f0b64f2943661",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/03-japan/image-1790849040577.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-4/04-south-korea/image-1790849046058.png",
+      "source_state": "ignored",
+      "bytes": 2522202,
+      "sha256": "c5ea78845e0ecf1fa3a2a03e493497aef2d1faaf9fd92e6e245d9b87d5297e66",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/04-south-korea/image-1790849046058.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-4/05-singapore/image-1790849122705.png",
+      "source_state": "ignored",
+      "bytes": 2552920,
+      "sha256": "fbc27621482fd719b2d2caeeaeae9498c1f849dd59894a76c4223aff739cf6f3",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/05-singapore/image-1790849122705.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-5/01-china-b/image-1790849634561.png",
+      "source_state": "ignored",
+      "bytes": 2563974,
+      "sha256": "52786781681867bc387378331e95643ab9230532f7fd592ac86fa530bb5b07a5",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/01-china-b/image-1790849634561.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-5/02-hong-kong-b/image-1790849643155.png",
+      "source_state": "ignored",
+      "bytes": 2563634,
+      "sha256": "1d24bc6ea367ec326ac0dc7fd940e33b7c78f871b425f45d50aedbcca33625a9",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/02-hong-kong-b/image-1790849643155.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-5/03-japan-b/image-1790849698280.png",
+      "source_state": "ignored",
+      "bytes": 2643406,
+      "sha256": "df983a9a78e3e324d26977df87a987707842a3cb549870b99ab3495e8bc89201",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/03-japan-b/image-1790849698280.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-5/04-south-korea-b/image-1790849703749.png",
+      "source_state": "ignored",
+      "bytes": 1833544,
+      "sha256": "ee7316fa61ccce34b3d917faaccf46a4cdfea3a92fae95b07c371015938b7758",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/04-south-korea-b/image-1790849703749.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-5/05-singapore-b/image-1790849775384.png",
+      "source_state": "ignored",
+      "bytes": 2357991,
+      "sha256": "1ac1f1e9836c1faa4e617d5a243ba8b382d09677e5940bcfafb1c528830e158c",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/05-singapore-b/image-1790849775384.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-5/06-fair-booth/image-1790849773249.png",
+      "source_state": "ignored",
+      "bytes": 2296415,
+      "sha256": "cb93b4d2ce3174a75af554a7beddba572e39e5d55172afa7f5cd6050b0414644",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/06-fair-booth/image-1790849773249.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-5/07-office-interior/image-1790849829503.png",
+      "source_state": "ignored",
+      "bytes": 2466570,
+      "sha256": "d44ee9e06fb00789ef30506b676f5d34a75969f00f81d26feca9c942b176d80b",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/07-office-interior/image-1790849829503.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-5/08-social-suite/image-1790849845749.png",
+      "source_state": "ignored",
+      "bytes": 2419665,
+      "sha256": "638c726c7e94c648f48338d0dedeea5600ba49602d05053c6644d0eb8a9d6a63",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/08-social-suite/image-1790849845749.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-6/01-seal-abstract/image-1790850091126.png",
+      "source_state": "ignored",
+      "bytes": 2006851,
+      "sha256": "70d5fefaf737620e4528ef38d416ab18625d673af9db36437659dba8996bbe4e",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-6/01-seal-abstract/image-1790850091126.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-6/02-seal-grid/image-1790850092690.png",
+      "source_state": "ignored",
+      "bytes": 2328010,
+      "sha256": "24629223db5267cbd5182583a8234cba6b0e43af606007505695106828451ae1",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-6/02-seal-grid/image-1790850092690.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-6/03-seal-imprint/image-1790850150341.png",
+      "source_state": "ignored",
+      "bytes": 2896205,
+      "sha256": "cbd50426989b4743498174051cf162319d79e901edc60b724b4b913d461d2077",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-6/03-seal-imprint/image-1790850150341.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/explorations/visual-round-6/04-seal-night/image-1790850159986.png",
+      "source_state": "ignored",
+      "bytes": 1987756,
+      "sha256": "da6075ac869d6349f86264c7c8a849143db36eba2454643de04c2c048fdae3c6",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-6/04-seal-night/image-1790850159986.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/index.html",
+      "source_state": "ignored",
+      "bytes": 8749,
+      "sha256": "d2cf66bc05158a1c970ec7c960c55e62932cdca272cc9b0897854bc7af2a6bd4",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/index.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/reconstruction-direction-3/lockup-dark.svg",
+      "source_state": "ignored",
+      "bytes": 8888,
+      "sha256": "3c11a0d1581c03b274ecae808e79c38c243ec20a514d3eb697275174b2e5758a",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/reconstruction-direction-3/lockup-dark.svg"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/reconstruction-direction-3/lockup-light.svg",
+      "source_state": "ignored",
+      "bytes": 7807,
+      "sha256": "fc7004536d7790a55cc8a9e40b2b06f1f8a8b76ded7687bd594d8a2ed77a898d",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/reconstruction-direction-3/lockup-light.svg"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/reconstruction-direction-3/symbol-full.svg",
+      "source_state": "ignored",
+      "bytes": 1795,
+      "sha256": "f8c798e1eac38bf0c8e4568278d2b421d0d62cb1a5294591d7863be5a709e609",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/reconstruction-direction-3/symbol-full.svg"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/reconstruction-direction-3/symbol-mono.svg",
+      "source_state": "ignored",
+      "bytes": 628,
+      "sha256": "6c7fd6bbb4f9faa06b3d2766b4bf088bb70aa7855ad81738527eb09c5a7079f0",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/reconstruction-direction-3/symbol-mono.svg"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/reconstruction-direction-3/symbol-production.svg",
+      "source_state": "ignored",
+      "bytes": 713,
+      "sha256": "f2c71336892967fcc2103870f0d5414f458546bbab2a60b3b178096e44634b33",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/reconstruction-direction-3/symbol-production.svg"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share-runtime/cloudflared.log",
+      "source_state": "ignored",
+      "bytes": 6111,
+      "sha256": "f35337b0ca83494b7759e5135d93a441b854e893cbccee119919c706f08ab277",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share-runtime/cloudflared.pid",
+      "source_state": "ignored",
+      "bytes": 6,
+      "sha256": "69882a2ec5b2f3b2aae06d4bf4a6e65c8380345fabf6d4ea456fe0ef475206af",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share-runtime/server.log",
+      "source_state": "ignored",
+      "bytes": 10929,
+      "sha256": "1d9eeffd88a9d9de924b540c1338e4f81528c1608e9ccf7e7a58cdbf95da3cd8",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share-runtime/server.pid",
+      "source_state": "ignored",
+      "bytes": 6,
+      "sha256": "c65187119816be55fcd4ed0ebca347b86c17ed5f84d8d754ffe0d6c65d1bf29c",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/01-contemporary-ink-a.png",
+      "source_state": "ignored",
+      "bytes": 2471854,
+      "sha256": "5194381be569b95d88d1a0dd996e1ae5a0d1db14eaec2e773cfc47a81cd82a9e",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/01-contemporary-ink-a/image-1790848106991.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/01-contemporary-ink-b.png",
+      "source_state": "ignored",
+      "bytes": 2455654,
+      "sha256": "9fb975c13b92871c7cce26403815443ae11187fc0c5db2644e8fe54c6db8a40c",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/01-contemporary-ink-b/image-1790848103747.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/04-brush-geometry-a.png",
+      "source_state": "ignored",
+      "bytes": 2772553,
+      "sha256": "6eb30b987edc6a4726fc6f64d4155432258f0463f1324b8f8a952d9ec0e080f6",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/04-brush-geometry-a/image-1790848110833.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/04-brush-geometry-b.png",
+      "source_state": "ignored",
+      "bytes": 2765712,
+      "sha256": "2355b04543a47aa76d43c996d8825b1455cf424837a93391b4d6c609eb080837",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/04-brush-geometry-b/image-1790848170654.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/05-typographic-asia-a.png",
+      "source_state": "ignored",
+      "bytes": 2547748,
+      "sha256": "49e56d5f55252afa7f483a364cbaa0f14a0dc9d7372b4cce1f882d52fbd17294",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/05-typographic-asia-a/image-1790848186929.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/05-typographic-asia-b.png",
+      "source_state": "ignored",
+      "bytes": 2504318,
+      "sha256": "45e393d2dac0d7bb0a7fcdca39843ae346a4a7ef337ffee8a72e4bbfe60b7585",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/05-typographic-asia-b/image-1790848168816.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/06-open-character-a.png",
+      "source_state": "ignored",
+      "bytes": 2784888,
+      "sha256": "a263a8d621deb9d391b19498f15845138173a9496cae4362e36b3edad4e50ad4",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/06-open-character-a/image-1790848245997.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/06-open-character-b.png",
+      "source_state": "ignored",
+      "bytes": 2252474,
+      "sha256": "66ff0b3a39bd6c0ef2c7430e2b5d37041c2c73e3455eed304d4a0690d9477261",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/06-open-character-b/image-1790848242934.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/07-young-asia-a.png",
+      "source_state": "ignored",
+      "bytes": 2156099,
+      "sha256": "cdffa073eb531c7cce035897d5c0bff611e635d6be12bc519debfff958dff9bc",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/07-young-asia-a/image-1790848266070.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/07-young-asia-b.png",
+      "source_state": "ignored",
+      "bytes": 2194774,
+      "sha256": "ff836ad8b24083cd20c10197ff24e5157ab636177f0bf5ee8ba412dfa9be87b0",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/07-young-asia-b/image-1790848346342.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/08-future-east-a.png",
+      "source_state": "ignored",
+      "bytes": 2367894,
+      "sha256": "3e1db2534447c8508771203222c6cadc56ebaadb840861a85955ab6a8ea30d43",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/08-future-east-a/image-1790848317882.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/08-future-east-b.png",
+      "source_state": "ignored",
+      "bytes": 2076088,
+      "sha256": "9fd14465c136864b64647d5122e3df47b9c88c8881e8f32e4c6cc11192190d79",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/08-future-east-b/image-1790848320070.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/d1-luxury.png",
+      "source_state": "ignored",
+      "bytes": 2329080,
+      "sha256": "d5c9dcdd3e601cfbc2430c625da363ab6b85dfaef603a48001b4eb5cc6514bcb",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/high-aesthetic-direction-1/image-1790755210820.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/d2-structural.png",
+      "source_state": "ignored",
+      "bytes": 2256935,
+      "sha256": "31905cc032b4ff86abda93da9faf8bc050e17359850c0ed57bfc83b4b3279ddb",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/high-aesthetic-direction-2/image-1790764889807.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/d3-passage.png",
+      "source_state": "ignored",
+      "bytes": 2161593,
+      "sha256": "cb568434504ede08d005d33275485310fe4adf755772640a3912d1f919568819",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/high-aesthetic-direction-3/image-1790766584024.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r4-china.png",
+      "source_state": "ignored",
+      "bytes": 2262395,
+      "sha256": "267d48cb7995a2985592a472e6b37dbf569479166db43e92d9f0d08c75e2bdad",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/01-china/image-1790848966424.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r4-hongkong.png",
+      "source_state": "ignored",
+      "bytes": 2116073,
+      "sha256": "fcce3774422c3d63e8dc00bf1c49e70a4dc953a128af9b935531b8224a73657a",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/02-hong-kong/image-1790848957685.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r4-japan.png",
+      "source_state": "ignored",
+      "bytes": 2630539,
+      "sha256": "4bec292a8a94de9b9bc09d724a9a916d8b89d40715601eb6d79f0b64f2943661",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/03-japan/image-1790849040577.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r4-korea.png",
+      "source_state": "ignored",
+      "bytes": 2522202,
+      "sha256": "c5ea78845e0ecf1fa3a2a03e493497aef2d1faaf9fd92e6e245d9b87d5297e66",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/04-south-korea/image-1790849046058.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r4-singapore.png",
+      "source_state": "ignored",
+      "bytes": 2552920,
+      "sha256": "fbc27621482fd719b2d2caeeaeae9498c1f849dd59894a76c4223aff739cf6f3",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/05-singapore/image-1790849122705.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r5-china-b.png",
+      "source_state": "ignored",
+      "bytes": 2563974,
+      "sha256": "52786781681867bc387378331e95643ab9230532f7fd592ac86fa530bb5b07a5",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/01-china-b/image-1790849634561.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r5-fair-booth.png",
+      "source_state": "ignored",
+      "bytes": 2296415,
+      "sha256": "cb93b4d2ce3174a75af554a7beddba572e39e5d55172afa7f5cd6050b0414644",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/06-fair-booth/image-1790849773249.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r5-hk-b.png",
+      "source_state": "ignored",
+      "bytes": 2563634,
+      "sha256": "1d24bc6ea367ec326ac0dc7fd940e33b7c78f871b425f45d50aedbcca33625a9",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/02-hong-kong-b/image-1790849643155.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r5-japan-b.png",
+      "source_state": "ignored",
+      "bytes": 2643406,
+      "sha256": "df983a9a78e3e324d26977df87a987707842a3cb549870b99ab3495e8bc89201",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/03-japan-b/image-1790849698280.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r5-korea-b.png",
+      "source_state": "ignored",
+      "bytes": 1833544,
+      "sha256": "ee7316fa61ccce34b3d917faaccf46a4cdfea3a92fae95b07c371015938b7758",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/04-south-korea-b/image-1790849703749.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r5-office.png",
+      "source_state": "ignored",
+      "bytes": 2466570,
+      "sha256": "d44ee9e06fb00789ef30506b676f5d34a75969f00f81d26feca9c942b176d80b",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/07-office-interior/image-1790849829503.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r5-singapore-b.png",
+      "source_state": "ignored",
+      "bytes": 2357991,
+      "sha256": "1ac1f1e9836c1faa4e617d5a243ba8b382d09677e5940bcfafb1c528830e158c",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/05-singapore-b/image-1790849775384.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r5-social.png",
+      "source_state": "ignored",
+      "bytes": 2419665,
+      "sha256": "638c726c7e94c648f48338d0dedeea5600ba49602d05053c6644d0eb8a9d6a63",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/08-social-suite/image-1790849845749.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r6-seal-abstract.png",
+      "source_state": "ignored",
+      "bytes": 2006851,
+      "sha256": "70d5fefaf737620e4528ef38d416ab18625d673af9db36437659dba8996bbe4e",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-6/01-seal-abstract/image-1790850091126.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r6-seal-grid.png",
+      "source_state": "ignored",
+      "bytes": 2328010,
+      "sha256": "24629223db5267cbd5182583a8234cba6b0e43af606007505695106828451ae1",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-6/02-seal-grid/image-1790850092690.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r6-seal-imprint.png",
+      "source_state": "ignored",
+      "bytes": 2896205,
+      "sha256": "cbd50426989b4743498174051cf162319d79e901edc60b724b4b913d461d2077",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-6/03-seal-imprint/image-1790850150341.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/assets/r6-seal-night.png",
+      "source_state": "ignored",
+      "bytes": 1987756,
+      "sha256": "da6075ac869d6349f86264c7c8a849143db36eba2454643de04c2c048fdae3c6",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-6/04-seal-night/image-1790850159986.png"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/share/index.html",
+      "source_state": "ignored",
+      "bytes": 7591,
+      "sha256": "bac4469eb96edf7d0273e79330d33e4e3ea4dbb6424c29ad3c5ed359e577a64b",
+      "disposition": "duplicate",
+      "repository_path": "docs/asya-egitim/index.html"
+    },
+    {
+      "source_path": "_archive/migration-20261001/projects/asya-egitim/visual-fidelity-gap.md",
+      "source_state": "ignored",
+      "bytes": 3045,
+      "sha256": "654abbbe54f286aec3cb39158518d2f97c659f0cc453025ee0cc2f2393400ae8",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/visual-fidelity-gap.md"
+    },
+    {
+      "source_path": "_archive/migration-20261001/templates/brand-brief.md",
+      "source_state": "ignored",
+      "bytes": 782,
+      "sha256": "f6f80ddcaf2726ba9ede5894e982431697956cc867d1851856ccc51bf67c37f4",
+      "disposition": "preserved",
+      "repository_path": "studio/archive/migration-20261001/templates/brand-brief.md",
+      "was_byte_unique": true
+    },
+    {
+      "source_path": "_archive/migration-20261001/templates/brand-system.md",
+      "source_state": "ignored",
+      "bytes": 2865,
+      "sha256": "023fa9b33912c2c5df4d47c9fa6d7762e534f95eaf49f6d01ca784fab25b7d83",
+      "disposition": "duplicate",
+      "repository_path": "studio/templates/brand-system.md"
+    },
+    {
+      "source_path": "asya-egitim-site.zip",
+      "source_state": "ignored",
+      "bytes": 102907227,
+      "sha256": "05ebbc88cb93fe54e3fd6ca80488b6908b4e3be01c6c354ede40dbd7a4b0cae7",
+      "disposition": "duplicate_package",
+      "reason": "All creative members already tracked; package is not reuploaded.",
+      "entries": [
+        {
+          "path": "asya-egitim/visual-fidelity-gap.md",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/visual-fidelity-gap.md",
+          "sha256": "654abbbe54f286aec3cb39158518d2f97c659f0cc453025ee0cc2f2393400ae8"
+        },
+        {
+          "path": "asya-egitim/index.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/index.html",
+          "sha256": "d2cf66bc05158a1c970ec7c960c55e62932cdca272cc9b0897854bc7af2a6bd4"
+        },
+        {
+          "path": "asya-egitim/.DS_Store",
+          "disposition": "excluded_metadata",
+          "sha256": "784107182e5504bd66532d5ec61403168dfd8d68143217c0ac9520eeb4aa0d51"
+        },
+        {
+          "path": "asya-egitim/brand-brief.md",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/brand-brief.md",
+          "sha256": "5f09e47de082a4031adf059c362308fd44a1209d1ce6a33c87434d78c7643da1"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-5/05-singapore-b/image-1790849775384.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-5/05-singapore-b/image-1790849775384.png",
+          "sha256": "1ac1f1e9836c1faa4e617d5a243ba8b382d09677e5940bcfafb1c528830e158c"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-5/01-china-b/image-1790849634561.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-5/01-china-b/image-1790849634561.png",
+          "sha256": "52786781681867bc387378331e95643ab9230532f7fd592ac86fa530bb5b07a5"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-5/03-japan-b/image-1790849698280.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-5/03-japan-b/image-1790849698280.png",
+          "sha256": "df983a9a78e3e324d26977df87a987707842a3cb549870b99ab3495e8bc89201"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-5/06-fair-booth/image-1790849773249.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-5/06-fair-booth/image-1790849773249.png",
+          "sha256": "cb93b4d2ce3174a75af554a7beddba572e39e5d55172afa7f5cd6050b0414644"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-5/08-social-suite/image-1790849845749.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-5/08-social-suite/image-1790849845749.png",
+          "sha256": "638c726c7e94c648f48338d0dedeea5600ba49602d05053c6644d0eb8a9d6a63"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-5/02-hong-kong-b/image-1790849643155.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-5/02-hong-kong-b/image-1790849643155.png",
+          "sha256": "1d24bc6ea367ec326ac0dc7fd940e33b7c78f871b425f45d50aedbcca33625a9"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-5/04-south-korea-b/image-1790849703749.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-5/04-south-korea-b/image-1790849703749.png",
+          "sha256": "ee7316fa61ccce34b3d917faaccf46a4cdfea3a92fae95b07c371015938b7758"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-5/07-office-interior/image-1790849829503.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-5/07-office-interior/image-1790849829503.png",
+          "sha256": "d44ee9e06fb00789ef30506b676f5d34a75969f00f81d26feca9c942b176d80b"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/04-brush-geometry-a/image-1790846880875.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/04-brush-geometry-a/image-1790846880875.png",
+          "sha256": "5df1be872a2f800142e1700a7f5159d4f36bcfb4b3423531f761fc3237dde65f"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/04-brush-geometry-a/image-1790848110833.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/04-brush-geometry-a/image-1790848110833.png",
+          "sha256": "6eb30b987edc6a4726fc6f64d4155432258f0463f1324b8f8a952d9ec0e080f6"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/08-future-east-b/image-1790848320070.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/08-future-east-b/image-1790848320070.png",
+          "sha256": "9fd14465c136864b64647d5122e3df47b9c88c8881e8f32e4c6cc11192190d79"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/08-future-east-b/image-1790847198210.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/08-future-east-b/image-1790847198210.png",
+          "sha256": "3668834f71f4cd38c945634ab141ad7cdb3e238cccb57a7da3bb252902f55e45"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/05-typographic-asia-b/image-1790846973478.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/05-typographic-asia-b/image-1790846973478.png",
+          "sha256": "fdb17acc1fc2e5784a0dca00d938bc98a05ff88f99d347de6f7d7cc336b17aac"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/05-typographic-asia-b/image-1790848168816.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/05-typographic-asia-b/image-1790848168816.png",
+          "sha256": "45e393d2dac0d7bb0a7fcdca39843ae346a4a7ef337ffee8a72e4bbfe60b7585"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/01-contemporary-ink-a/image-1790846709514.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/01-contemporary-ink-a/image-1790846709514.png",
+          "sha256": "8b55ffe1749d1b664fcb744fa14c04d77a40f710f9bf078c6e8c9bf1f70feef5"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/01-contemporary-ink-a/image-1790848106991.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/01-contemporary-ink-a/image-1790848106991.png",
+          "sha256": "5194381be569b95d88d1a0dd996e1ae5a0d1db14eaec2e773cfc47a81cd82a9e"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/06-open-character-b/image-1790847037389.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/06-open-character-b/image-1790847037389.png",
+          "sha256": "3bec74e37fe7f5963f5231ec11fbdcf7f093c99f257c25e825fb8e2b5febf7c5"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/06-open-character-b/image-1790848242934.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/06-open-character-b/image-1790848242934.png",
+          "sha256": "66ff0b3a39bd6c0ef2c7430e2b5d37041c2c73e3455eed304d4a0690d9477261"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/07-young-asia-a/image-1790847051639.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/07-young-asia-a/image-1790847051639.png",
+          "sha256": "07d3578c231d841e71e8060e1bb950b7f1d780b288e63ceff7289e7964dfeba4"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/07-young-asia-a/image-1790848266070.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/07-young-asia-a/image-1790848266070.png",
+          "sha256": "cdffa073eb531c7cce035897d5c0bff611e635d6be12bc519debfff958dff9bc"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/04-brush-geometry-b/image-1790846797084.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/04-brush-geometry-b/image-1790846797084.png",
+          "sha256": "c8d10659cdf9ed3d8291046f47dd1519b80280b55ff1c164b87d2074a540606a"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/04-brush-geometry-b/image-1790848170654.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/04-brush-geometry-b/image-1790848170654.png",
+          "sha256": "2355b04543a47aa76d43c996d8825b1455cf424837a93391b4d6c609eb080837"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/08-future-east-a/image-1790848317882.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/08-future-east-a/image-1790848317882.png",
+          "sha256": "3e1db2534447c8508771203222c6cadc56ebaadb840861a85955ab6a8ea30d43"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/08-future-east-a/image-1790847116536.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/08-future-east-a/image-1790847116536.png",
+          "sha256": "6cfc8db2ccce3d9e9ebc73573e04e577a3c84b6a5f64144bca7fb0afe8e88e96"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/05-typographic-asia-a/image-1790848186929.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/05-typographic-asia-a/image-1790848186929.png",
+          "sha256": "49e56d5f55252afa7f483a364cbaa0f14a0dc9d7372b4cce1f882d52fbd17294"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/05-typographic-asia-a/image-1790846879193.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/05-typographic-asia-a/image-1790846879193.png",
+          "sha256": "d40301480a6164bd93f63f9c84cb87d5e5dd47477d77a2d88e3cf385e4dd0bdc"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/01-contemporary-ink-b/image-1790846781978.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/01-contemporary-ink-b/image-1790846781978.png",
+          "sha256": "0699614054daec08a949aa3fdec4dda4f675370cff230f1a83e132abf7651856"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/01-contemporary-ink-b/image-1790848103747.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/01-contemporary-ink-b/image-1790848103747.png",
+          "sha256": "9fb975c13b92871c7cce26403815443ae11187fc0c5db2644e8fe54c6db8a40c"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/06-open-character-a/image-1790848245997.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/06-open-character-a/image-1790848245997.png",
+          "sha256": "a263a8d621deb9d391b19498f15845138173a9496cae4362e36b3edad4e50ad4"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/06-open-character-a/image-1790846954014.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/06-open-character-a/image-1790846954014.png",
+          "sha256": "e1407f74ab555c2e74336836007ce4e1d0ea6b99a52df6cf5ff3f273420ea665"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/07-young-asia-b/image-1790848346342.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/07-young-asia-b/image-1790848346342.png",
+          "sha256": "ff836ad8b24083cd20c10197ff24e5157ab636177f0bf5ee8ba412dfa9be87b0"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-3/07-young-asia-b/image-1790847135965.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-3/07-young-asia-b/image-1790847135965.png",
+          "sha256": "1ab52828f711607ba3b481d50679f4b13560e46c61c2e65002138abff5fc6994"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-4/02-hong-kong/image-1790848957685.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-4/02-hong-kong/image-1790848957685.png",
+          "sha256": "fcce3774422c3d63e8dc00bf1c49e70a4dc953a128af9b935531b8224a73657a"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-4/05-singapore/image-1790849122705.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-4/05-singapore/image-1790849122705.png",
+          "sha256": "fbc27621482fd719b2d2caeeaeae9498c1f849dd59894a76c4223aff739cf6f3"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-4/03-japan/image-1790849040577.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-4/03-japan/image-1790849040577.png",
+          "sha256": "4bec292a8a94de9b9bc09d724a9a916d8b89d40715601eb6d79f0b64f2943661"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-4/04-south-korea/image-1790849046058.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-4/04-south-korea/image-1790849046058.png",
+          "sha256": "c5ea78845e0ecf1fa3a2a03e493497aef2d1faaf9fd92e6e245d9b87d5297e66"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-4/01-china/image-1790848966424.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-4/01-china/image-1790848966424.png",
+          "sha256": "267d48cb7995a2985592a472e6b37dbf569479166db43e92d9f0d08c75e2bdad"
+        },
+        {
+          "path": "asya-egitim/explorations/.DS_Store",
+          "disposition": "excluded_metadata",
+          "sha256": "f4cb487cb5bfc0c6f9e98b888781eb26d07cb10dce4700897e88ba9ccc46338f"
+        },
+        {
+          "path": "asya-egitim/explorations/high-aesthetic-direction-1/image-1790755210820.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/high-aesthetic-direction-1/image-1790755210820.png",
+          "sha256": "d5c9dcdd3e601cfbc2430c625da363ab6b85dfaef603a48001b4eb5cc6514bcb"
+        },
+        {
+          "path": "asya-egitim/explorations/direction-3-refinement.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/direction-3-refinement.html",
+          "sha256": "75b7e3ce228eb5c69b894658cbae10c32e1a437815ec1d3a371fa929e217fea8"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-6/04-seal-night/image-1790850159986.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-6/04-seal-night/image-1790850159986.png",
+          "sha256": "da6075ac869d6349f86264c7c8a849143db36eba2454643de04c2c048fdae3c6"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-6/03-seal-imprint/image-1790850150341.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-6/03-seal-imprint/image-1790850150341.png",
+          "sha256": "cbd50426989b4743498174051cf162319d79e901edc60b724b4b913d461d2077"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-6/01-seal-abstract/image-1790850091126.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-6/01-seal-abstract/image-1790850091126.png",
+          "sha256": "70d5fefaf737620e4528ef38d416ab18625d673af9db36437659dba8996bbe4e"
+        },
+        {
+          "path": "asya-egitim/explorations/visual-round-6/02-seal-grid/image-1790850092690.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/visual-round-6/02-seal-grid/image-1790850092690.png",
+          "sha256": "24629223db5267cbd5182583a8234cba6b0e43af606007505695106828451ae1"
+        },
+        {
+          "path": "asya-egitim/explorations/high-aesthetic-direction-2/image-1790764889807.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/high-aesthetic-direction-2/image-1790764889807.png",
+          "sha256": "31905cc032b4ff86abda93da9faf8bc050e17359850c0ed57bfc83b4b3279ddb"
+        },
+        {
+          "path": "asya-egitim/explorations/high-aesthetic-direction-3/image-1790766584024.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/high-aesthetic-direction-3/image-1790766584024.png",
+          "sha256": "cb568434504ede08d005d33275485310fe4adf755772640a3912d1f919568819"
+        },
+        {
+          "path": "asya-egitim/explorations/creative-territories-round-2.md",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/explorations/creative-territories-round-2.md",
+          "sha256": "7ab7d071ec4a7b862e2c14e2d7f9bb5f9bddae8da38d64d12c3c2fe46b11789e"
+        },
+        {
+          "path": "asya-egitim/reconstruction-direction-3/symbol-production.svg",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/reconstruction-direction-3/symbol-production.svg",
+          "sha256": "f2c71336892967fcc2103870f0d5414f458546bbab2a60b3b178096e44634b33"
+        },
+        {
+          "path": "asya-egitim/reconstruction-direction-3/lockup-light.svg",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/reconstruction-direction-3/lockup-light.svg",
+          "sha256": "fc7004536d7790a55cc8a9e40b2b06f1f8a8b76ded7687bd594d8a2ed77a898d"
+        },
+        {
+          "path": "asya-egitim/reconstruction-direction-3/lockup-dark.svg",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/reconstruction-direction-3/lockup-dark.svg",
+          "sha256": "3c11a0d1581c03b274ecae808e79c38c243ec20a514d3eb697275174b2e5758a"
+        },
+        {
+          "path": "asya-egitim/reconstruction-direction-3/symbol-mono.svg",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/reconstruction-direction-3/symbol-mono.svg",
+          "sha256": "6c7fd6bbb4f9faa06b3d2766b4bf088bb70aa7855ad81738527eb09c5a7079f0"
+        },
+        {
+          "path": "asya-egitim/reconstruction-direction-3/symbol-full.svg",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/reconstruction-direction-3/symbol-full.svg",
+          "sha256": "f8c798e1eac38bf0c8e4568278d2b421d0d62cb1a5294591d7863be5a709e609"
+        },
+        {
+          "path": "asya-egitim/boards/00-dosya-rehberi.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/00-dosya-rehberi.html",
+          "sha256": "ddc2154055f7cbe5652a7077384d584d0878befa64a810c78698cde89ca50b68"
+        },
+        {
+          "path": "asya-egitim/boards/direction-c.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/direction-c.html",
+          "sha256": "c6a0134e3207ae39a3c92ddf3e01d2b683f8d75d0f4bb2bf8e8c9308170f155a"
+        },
+        {
+          "path": "asya-egitim/boards/applications-social.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/applications-social.html",
+          "sha256": "6790f094dd9978ebceac37ac3ef8dc6921364a387bbb9c6972494c2b9adca542"
+        },
+        {
+          "path": "asya-egitim/boards/applications-event.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/applications-event.html",
+          "sha256": "dff9299de938009a44eefef83888dc9df6846c724ca60ee95d6e140ac8ee460e"
+        },
+        {
+          "path": "asya-egitim/boards/direction-b.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/direction-b.html",
+          "sha256": "5352847b1cc3d3b54e290326cc40d6864239a5466b11dd3589cd25105e03d7f7"
+        },
+        {
+          "path": "asya-egitim/boards/visual-round-4-comparison.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/visual-round-4-comparison.html",
+          "sha256": "aaaf67031010f4f579e0e1e1a0ccea03d558a0be8831da88058b081f2f4fe381"
+        },
+        {
+          "path": "asya-egitim/boards/direction-3-fidelity-reconstruction.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/direction-3-fidelity-reconstruction.html",
+          "sha256": "bfb151be19f4f89d522d53d2455ca3aa61a79405f890b83f584f8286b79b8683"
+        },
+        {
+          "path": "asya-egitim/boards/logo-client-review.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/logo-client-review.png",
+          "sha256": "aaada861abc73c4db07cdc98c4670aaaafdbe1bc6eadaf676bed40b86c195ecc"
+        },
+        {
+          "path": "asya-egitim/boards/logo-board.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/logo-board.html",
+          "sha256": "01c38e0e0deea71befc53e86d07a103f934df3de85ff721e5d3f37fbdcccb012"
+        },
+        {
+          "path": "asya-egitim/boards/creative-territories-round-2.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/creative-territories-round-2.html",
+          "sha256": "2e29e108c1ae3228aa0b260af50be50ae0c8b2037273739690db101788715b33"
+        },
+        {
+          "path": "asya-egitim/boards/core-refinement-1.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/core-refinement-1.html",
+          "sha256": "b0243df63dfaddc1d15f0880997ea4778a92570cd6e56add9b4faa46f2ac613d"
+        },
+        {
+          "path": "asya-egitim/boards/visual-round-3-comparison.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/visual-round-3-comparison.html",
+          "sha256": "7749f529818bebb8c65c913b77afca05415135a298c4c282e67112b0e09e373c"
+        },
+        {
+          "path": "asya-egitim/boards/applications-editorial.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/applications-editorial.html",
+          "sha256": "2dc641a52127188454b565e8d55098c531e38d9825f03d72c6ce001547b68e2b"
+        },
+        {
+          "path": "asya-egitim/boards/core-refinement-2.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/core-refinement-2.html",
+          "sha256": "5aab8471d9968d5a3864d6b3bf8b65c170f0095796486b17b3756efffe384327"
+        },
+        {
+          "path": "asya-egitim/boards/core-refinement-3.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/core-refinement-3.html",
+          "sha256": "04a9022a038049572bad754fcd1d2b9d7f615f7754ae254232f59a648ec1b872"
+        },
+        {
+          "path": "asya-egitim/boards/direction-a.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/direction-a.html",
+          "sha256": "e37937af0a4dc378ecf546d04418469969fa376e84b25fa8cac057f6462df53f"
+        },
+        {
+          "path": "asya-egitim/boards/direction-3-fidelity-reconstruction.png",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/direction-3-fidelity-reconstruction.png",
+          "sha256": "368161d9fa706bff2b18de825a361344d3ab72930d79f22c8b0085c469de17e5"
+        },
+        {
+          "path": "asya-egitim/boards/logo-client-review.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/logo-client-review.html",
+          "sha256": "7d75de0899d1e686d954851d8da5e7caa155f350fe2ba4e8f73ac20b9410a5d3"
+        },
+        {
+          "path": "asya-egitim/boards/applications-digital.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/applications-digital.html",
+          "sha256": "1e8b4ffdbf329d68fcba3bd9fbf1aa0c234614b00c8507bf6f7db58550192da8"
+        },
+        {
+          "path": "asya-egitim/boards/source-vs-production.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/source-vs-production.html",
+          "sha256": "a667407367d65cdd3c4e25a17d49154fba0fe3e732d96332dd887e3f5dc84cce"
+        },
+        {
+          "path": "asya-egitim/boards/polli-1790726887820.jpg",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/polli-1790726887820.jpg",
+          "sha256": "d02c0d4430712a0959d814506cf2dfcc30626de3534d5ed8b69beae89bc8f2b8"
+        },
+        {
+          "path": "asya-egitim/boards/applications-institutional.html",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/boards/applications-institutional.html",
+          "sha256": "0499181b4424d585550ceba74967b87a1f2e9c47677f827e0adf8a5672d46117"
+        },
+        {
+          "path": "asya-egitim/assets/logo-secondary.svg",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/assets/logo-secondary.svg",
+          "sha256": "0e19cd73115c127febfd0b3680e96901f370d64cfc5125bc639b3bc931664e15"
+        },
+        {
+          "path": "asya-egitim/assets/icon.svg",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/assets/icon.svg",
+          "sha256": "41762109e2d703d13d9f1f3457f834ed5898fbf296a19c24e89f525961d4106c"
+        },
+        {
+          "path": "asya-egitim/assets/logo-primary.svg",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/assets/logo-primary.svg",
+          "sha256": "309f83c6f359c5f0ae086fc69d4c578d58bd70a3732fffa55da5dd258b7d776d"
+        },
+        {
+          "path": "asya-egitim/assets/logo-compact.svg",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/assets/logo-compact.svg",
+          "sha256": "de04000992286ea87961f821fde6b4b9acf7bb7260fb9cbbbbaf37db85de789a"
+        },
+        {
+          "path": "asya-egitim/assets/logo-mono.svg",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/assets/logo-mono.svg",
+          "sha256": "357ed9b1e2d4cf3f87fd6b420b47689565a07f2dc175765b928c587ec8c799d6"
+        },
+        {
+          "path": "asya-egitim/assets/favicon.svg",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/assets/favicon.svg",
+          "sha256": "f31a74e445bd0ff486ebe00bf053488087c2c4d703e7d4690d765ef99d2c3e3f"
+        },
+        {
+          "path": "asya-egitim/brand-system.md",
+          "disposition": "duplicate",
+          "repository_path": "brands/asya-egitim/brand-system.md",
+          "sha256": "ca2fabef00ae9201c46e29fafd356f24ab042bc00b8c96a7a536835882fff1db"
+        }
+      ]
+    },
+    {
+      "source_path": "brands/asya-egitim/.DS_Store",
+      "source_state": "ignored",
+      "bytes": 12292,
+      "sha256": "784107182e5504bd66532d5ec61403168dfd8d68143217c0ac9520eeb4aa0d51",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asya-egitim/explorations/.DS_Store",
+      "source_state": "ignored",
+      "bytes": 12292,
+      "sha256": "f4cb487cb5bfc0c6f9e98b888781eb26d07cb10dce4700897e88ba9ccc46338f",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asya-egitim/share-runtime/cloudflared.log",
+      "source_state": "ignored",
+      "bytes": 2328210,
+      "sha256": "8473265a6c6a56201cfd2e1689fe382cc6d1534ffad35062a38b0d377bec082d",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asya-egitim/share-runtime/cloudflared.pid",
+      "source_state": "ignored",
+      "bytes": 6,
+      "sha256": "c6f8c524c987090f550036ba8fee4db16308124b42a10b20f9e42ad03f723ee0",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asya-egitim/share-runtime/monitor.log",
+      "source_state": "ignored",
+      "bytes": 163296,
+      "sha256": "288e1c8985db6b9cf8c99a9b99eab25ac55c1f63e7304091452fff82c83f4b4a",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asya-egitim/share-runtime/public-url.txt",
+      "source_state": "ignored",
+      "bytes": 56,
+      "sha256": "2d6e05b12f66e88c6a68d6961f1f63dfbae93aab950c2d3c4c9a45e5d1f69cd7",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asya-egitim/share-runtime/server.log",
+      "source_state": "ignored",
+      "bytes": 305123,
+      "sha256": "9316f41e7f4d4e122b1b0b2643d5fac2e90b199a0e63a00231f5423d3fba8880",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asya-egitim/share-runtime/server.pid",
+      "source_state": "ignored",
+      "bytes": 6,
+      "sha256": "c78a93211071a67496e6eeb1923cc33d2859f16b54bb6fb1a191b6ea9f4b0751",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/01-contemporary-ink-a.png",
+      "source_state": "ignored",
+      "bytes": 2471854,
+      "sha256": "5194381be569b95d88d1a0dd996e1ae5a0d1db14eaec2e773cfc47a81cd82a9e",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/01-contemporary-ink-a/image-1790848106991.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/01-contemporary-ink-b.png",
+      "source_state": "ignored",
+      "bytes": 2455654,
+      "sha256": "9fb975c13b92871c7cce26403815443ae11187fc0c5db2644e8fe54c6db8a40c",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/01-contemporary-ink-b/image-1790848103747.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/04-brush-geometry-a.png",
+      "source_state": "ignored",
+      "bytes": 2772553,
+      "sha256": "6eb30b987edc6a4726fc6f64d4155432258f0463f1324b8f8a952d9ec0e080f6",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/04-brush-geometry-a/image-1790848110833.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/04-brush-geometry-b.png",
+      "source_state": "ignored",
+      "bytes": 2765712,
+      "sha256": "2355b04543a47aa76d43c996d8825b1455cf424837a93391b4d6c609eb080837",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/04-brush-geometry-b/image-1790848170654.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/05-typographic-asia-a.png",
+      "source_state": "ignored",
+      "bytes": 2547748,
+      "sha256": "49e56d5f55252afa7f483a364cbaa0f14a0dc9d7372b4cce1f882d52fbd17294",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/05-typographic-asia-a/image-1790848186929.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/05-typographic-asia-b.png",
+      "source_state": "ignored",
+      "bytes": 2504318,
+      "sha256": "45e393d2dac0d7bb0a7fcdca39843ae346a4a7ef337ffee8a72e4bbfe60b7585",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/05-typographic-asia-b/image-1790848168816.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/06-open-character-a.png",
+      "source_state": "ignored",
+      "bytes": 2784888,
+      "sha256": "a263a8d621deb9d391b19498f15845138173a9496cae4362e36b3edad4e50ad4",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/06-open-character-a/image-1790848245997.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/06-open-character-b.png",
+      "source_state": "ignored",
+      "bytes": 2252474,
+      "sha256": "66ff0b3a39bd6c0ef2c7430e2b5d37041c2c73e3455eed304d4a0690d9477261",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/06-open-character-b/image-1790848242934.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/07-young-asia-a.png",
+      "source_state": "ignored",
+      "bytes": 2156099,
+      "sha256": "cdffa073eb531c7cce035897d5c0bff611e635d6be12bc519debfff958dff9bc",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/07-young-asia-a/image-1790848266070.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/07-young-asia-b.png",
+      "source_state": "ignored",
+      "bytes": 2194774,
+      "sha256": "ff836ad8b24083cd20c10197ff24e5157ab636177f0bf5ee8ba412dfa9be87b0",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/07-young-asia-b/image-1790848346342.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/08-future-east-a.png",
+      "source_state": "ignored",
+      "bytes": 2367894,
+      "sha256": "3e1db2534447c8508771203222c6cadc56ebaadb840861a85955ab6a8ea30d43",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/08-future-east-a/image-1790848317882.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/08-future-east-b.png",
+      "source_state": "ignored",
+      "bytes": 2076088,
+      "sha256": "9fd14465c136864b64647d5122e3df47b9c88c8881e8f32e4c6cc11192190d79",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-3/08-future-east-b/image-1790848320070.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/d1-luxury.png",
+      "source_state": "ignored",
+      "bytes": 2329080,
+      "sha256": "d5c9dcdd3e601cfbc2430c625da363ab6b85dfaef603a48001b4eb5cc6514bcb",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/high-aesthetic-direction-1/image-1790755210820.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/d2-structural.png",
+      "source_state": "ignored",
+      "bytes": 2256935,
+      "sha256": "31905cc032b4ff86abda93da9faf8bc050e17359850c0ed57bfc83b4b3279ddb",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/high-aesthetic-direction-2/image-1790764889807.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/d3-passage.png",
+      "source_state": "ignored",
+      "bytes": 2161593,
+      "sha256": "cb568434504ede08d005d33275485310fe4adf755772640a3912d1f919568819",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/high-aesthetic-direction-3/image-1790766584024.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r4-china.png",
+      "source_state": "ignored",
+      "bytes": 2262395,
+      "sha256": "267d48cb7995a2985592a472e6b37dbf569479166db43e92d9f0d08c75e2bdad",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/01-china/image-1790848966424.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r4-hongkong.png",
+      "source_state": "ignored",
+      "bytes": 2116073,
+      "sha256": "fcce3774422c3d63e8dc00bf1c49e70a4dc953a128af9b935531b8224a73657a",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/02-hong-kong/image-1790848957685.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r4-japan.png",
+      "source_state": "ignored",
+      "bytes": 2630539,
+      "sha256": "4bec292a8a94de9b9bc09d724a9a916d8b89d40715601eb6d79f0b64f2943661",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/03-japan/image-1790849040577.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r4-korea.png",
+      "source_state": "ignored",
+      "bytes": 2522202,
+      "sha256": "c5ea78845e0ecf1fa3a2a03e493497aef2d1faaf9fd92e6e245d9b87d5297e66",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/04-south-korea/image-1790849046058.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r4-singapore.png",
+      "source_state": "ignored",
+      "bytes": 2552920,
+      "sha256": "fbc27621482fd719b2d2caeeaeae9498c1f849dd59894a76c4223aff739cf6f3",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-4/05-singapore/image-1790849122705.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r5-china-b.png",
+      "source_state": "ignored",
+      "bytes": 2563974,
+      "sha256": "52786781681867bc387378331e95643ab9230532f7fd592ac86fa530bb5b07a5",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/01-china-b/image-1790849634561.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r5-fair-booth.png",
+      "source_state": "ignored",
+      "bytes": 2296415,
+      "sha256": "cb93b4d2ce3174a75af554a7beddba572e39e5d55172afa7f5cd6050b0414644",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/06-fair-booth/image-1790849773249.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r5-hk-b.png",
+      "source_state": "ignored",
+      "bytes": 2563634,
+      "sha256": "1d24bc6ea367ec326ac0dc7fd940e33b7c78f871b425f45d50aedbcca33625a9",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/02-hong-kong-b/image-1790849643155.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r5-japan-b.png",
+      "source_state": "ignored",
+      "bytes": 2643406,
+      "sha256": "df983a9a78e3e324d26977df87a987707842a3cb549870b99ab3495e8bc89201",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/03-japan-b/image-1790849698280.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r5-korea-b.png",
+      "source_state": "ignored",
+      "bytes": 1833544,
+      "sha256": "ee7316fa61ccce34b3d917faaccf46a4cdfea3a92fae95b07c371015938b7758",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/04-south-korea-b/image-1790849703749.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r5-office.png",
+      "source_state": "ignored",
+      "bytes": 2466570,
+      "sha256": "d44ee9e06fb00789ef30506b676f5d34a75969f00f81d26feca9c942b176d80b",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/07-office-interior/image-1790849829503.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r5-singapore-b.png",
+      "source_state": "ignored",
+      "bytes": 2357991,
+      "sha256": "1ac1f1e9836c1faa4e617d5a243ba8b382d09677e5940bcfafb1c528830e158c",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/05-singapore-b/image-1790849775384.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r5-social.png",
+      "source_state": "ignored",
+      "bytes": 2419665,
+      "sha256": "638c726c7e94c648f48338d0dedeea5600ba49602d05053c6644d0eb8a9d6a63",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-5/08-social-suite/image-1790849845749.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r6-seal-abstract.png",
+      "source_state": "ignored",
+      "bytes": 2006851,
+      "sha256": "70d5fefaf737620e4528ef38d416ab18625d673af9db36437659dba8996bbe4e",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-6/01-seal-abstract/image-1790850091126.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r6-seal-grid.png",
+      "source_state": "ignored",
+      "bytes": 2328010,
+      "sha256": "24629223db5267cbd5182583a8234cba6b0e43af606007505695106828451ae1",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-6/02-seal-grid/image-1790850092690.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r6-seal-imprint.png",
+      "source_state": "ignored",
+      "bytes": 2896205,
+      "sha256": "cbd50426989b4743498174051cf162319d79e901edc60b724b4b913d461d2077",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-6/03-seal-imprint/image-1790850150341.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/assets/r6-seal-night.png",
+      "source_state": "ignored",
+      "bytes": 1987756,
+      "sha256": "da6075ac869d6349f86264c7c8a849143db36eba2454643de04c2c048fdae3c6",
+      "disposition": "duplicate",
+      "repository_path": "brands/asya-egitim/explorations/visual-round-6/04-seal-night/image-1790850159986.png"
+    },
+    {
+      "source_path": "brands/asya-egitim/share/index.html",
+      "source_state": "ignored",
+      "bytes": 7591,
+      "sha256": "bac4469eb96edf7d0273e79330d33e4e3ea4dbb6424c29ad3c5ed359e577a64b",
+      "disposition": "duplicate",
+      "repository_path": "docs/asya-egitim/index.html"
+    },
+    {
+      "source_path": "brands/asyada-egitim/applications/instagram-carousel-01-v2/__pycache__/build.cpython-314.pyc",
+      "source_state": "ignored",
+      "bytes": 15058,
+      "sha256": "02e9c9a8a35215afd3407f7a3045876c5dfdade5f7f3c97209ff87935435e118",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asyada-egitim/applications/instagram-carousel-01-v3/__pycache__/build.cpython-314.pyc",
+      "source_state": "ignored",
+      "bytes": 21054,
+      "sha256": "be4ead60f2e5cc8c1ea745e9ec201e1db8fdb646921329995fc404451bffbe15",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asyada-egitim/applications/instagram-discovery-01/__pycache__/build.cpython-314.pyc",
+      "source_state": "ignored",
+      "bytes": 20237,
+      "sha256": "ccacc096232f51d32d31790bc9b829f9bb763d1610dae101c3106a8d3d443449",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asyada-egitim/explorations/instagram-profile-circle/README.md",
+      "source_state": "untracked",
+      "bytes": 829,
+      "sha256": "ae31d67f0aaaec9122c222044a30c077c748d5b278eb92583b4f9c443faf3110",
+      "disposition": "preserved",
+      "repository_path": "brands/asyada-egitim/explorations/instagram-profile-circle/README.md",
+      "was_byte_unique": true
+    },
+    {
+      "source_path": "brands/asyada-egitim/explorations/instagram-profile-circle/f05-negative-80.png",
+      "source_state": "untracked",
+      "bytes": 6941,
+      "sha256": "e0c61adf4940b56f56ab6cd1e0d462a050d6d25f8e7c1f3e647e28bb0b60ce15",
+      "disposition": "preserved",
+      "repository_path": "brands/asyada-egitim/explorations/instagram-profile-circle/f05-negative-80.png",
+      "was_byte_unique": true
+    },
+    {
+      "source_path": "brands/asyada-egitim/explorations/instagram-profile-circle/f05-red-80.png",
+      "source_state": "untracked",
+      "bytes": 6655,
+      "sha256": "7c3729538f08511dc2bbd984bf3f7e1afd76be34d7da3baa0414003efaddc4ae",
+      "disposition": "preserved",
+      "repository_path": "brands/asyada-egitim/explorations/instagram-profile-circle/f05-red-80.png",
+      "was_byte_unique": true
+    },
+    {
+      "source_path": "brands/asyada-egitim/explorations/instagram-profile-circle/f05-white-80.png",
+      "source_state": "untracked",
+      "bytes": 6782,
+      "sha256": "d06f6afdb3874877b8afa747c4d148187c8edf1ab20c1b5cf682614ce80bd25f",
+      "disposition": "preserved",
+      "repository_path": "brands/asyada-egitim/explorations/instagram-profile-circle/f05-white-80.png",
+      "was_byte_unique": true
+    },
+    {
+      "source_path": "brands/asyada-egitim/explorations/instagram-profile-circle/index.html",
+      "source_state": "untracked",
+      "bytes": 1699,
+      "sha256": "e62b8e69355d652286a69191c71f52161406f85ed86abc8f196923e413e14863",
+      "disposition": "preserved",
+      "repository_path": "brands/asyada-egitim/explorations/instagram-profile-circle/index.html",
+      "was_byte_unique": true
+    },
+    {
+      "source_path": "brands/asyada-egitim/explorations/instagram-profile-circle/instagram-profile-1080.png",
+      "source_state": "untracked",
+      "bytes": 72637,
+      "sha256": "750619821419f5e673f09768d3788561da3256e3d3860ce7db4d4e1459b25a25",
+      "disposition": "preserved",
+      "repository_path": "brands/asyada-egitim/explorations/instagram-profile-circle/instagram-profile-1080.png",
+      "was_byte_unique": false
+    },
+    {
+      "source_path": "brands/asyada-egitim/explorations/instagram-profile-circle/profile-circle-candidate.png",
+      "source_state": "untracked",
+      "bytes": 24525,
+      "sha256": "325c3ad35940e88703cbaf6ce1bbb8829aaa5e7ec231256a667ee7cfe92ee195",
+      "disposition": "preserved",
+      "repository_path": "brands/asyada-egitim/explorations/instagram-profile-circle/profile-circle-candidate.png",
+      "was_byte_unique": true
+    },
+    {
+      "source_path": "brands/asyada-egitim/explorations/instagram-profile-circle/profile-circle-candidate.svg",
+      "source_state": "untracked",
+      "bytes": 4813,
+      "sha256": "005243c9932a1fccd85f2d3d134ddf192d82d3618317cf7aed42514d1cfbb684",
+      "disposition": "preserved",
+      "repository_path": "brands/asyada-egitim/explorations/instagram-profile-circle/profile-circle-candidate.svg",
+      "was_byte_unique": false
+    },
+    {
+      "source_path": "brands/asyada-egitim/explorations/instagram-profile-circle/type-preview-160.png",
+      "source_state": "untracked",
+      "bytes": 22605,
+      "sha256": "087c2cdcdf2257ec3804750eda035349e27b7f9790b81ff29e0345c74688d0d8",
+      "disposition": "preserved",
+      "repository_path": "brands/asyada-egitim/explorations/instagram-profile-circle/type-preview-160.png",
+      "was_byte_unique": true
+    },
+    {
+      "source_path": "brands/asyada-egitim/explorations/instagram-profile-circle/type-preview-40.png",
+      "source_state": "untracked",
+      "bytes": 3362,
+      "sha256": "39c5582923d0fb35a342a6ff461b2be77e27ae1efc2311af377d4ed2b5667b0b",
+      "disposition": "preserved",
+      "repository_path": "brands/asyada-egitim/explorations/instagram-profile-circle/type-preview-40.png",
+      "was_byte_unique": true
+    },
+    {
+      "source_path": "brands/asyada-egitim/explorations/instagram-profile-circle/type-preview-80.png",
+      "source_state": "untracked",
+      "bytes": 9010,
+      "sha256": "fa3a022db098bc220304db77f38eb2a78f477a2720fc070f41e7164bf6f0e5e7",
+      "disposition": "preserved",
+      "repository_path": "brands/asyada-egitim/explorations/instagram-profile-circle/type-preview-80.png",
+      "was_byte_unique": true
+    },
+    {
+      "source_path": "brands/asyada-egitim/share-runtime/cloudflared-seal.log",
+      "source_state": "ignored",
+      "bytes": 2920095,
+      "sha256": "9a58e3c3dc8bde8b4428af2e16816dcad8371f627dd3ec1674a920eca00c2302",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asyada-egitim/share-runtime/cloudflared-seal.pid",
+      "source_state": "ignored",
+      "bytes": 6,
+      "sha256": "4897c656c3c0c0aba6fed89e6501f9c1c9e9a7b8cc73fd91fd6e073ce6dce4b0",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asyada-egitim/share-runtime/cloudflared.log",
+      "source_state": "ignored",
+      "bytes": 2490252,
+      "sha256": "c56309ca38cb155168e46d0df560e94c7dd559df702b2fdc470688d61b5aa4a6",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asyada-egitim/share-runtime/cloudflared.pid",
+      "source_state": "ignored",
+      "bytes": 6,
+      "sha256": "cc3d4b714c6318fde0443b42e3ad51e5e650e1414833acb05a7fa1279870b2b1",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asyada-egitim/share-runtime/monitor.log",
+      "source_state": "ignored",
+      "bytes": 336583,
+      "sha256": "3b08ce0464ecbd1f77b39e03e6a10876689c70dcd95c1539267698e80677faf0",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asyada-egitim/share-runtime/public-url-seal.txt",
+      "source_state": "ignored",
+      "bytes": 58,
+      "sha256": "87e1132abf58dc5e641ffea2b4c2de86064b29a9cabc054da3828c7d091d94fa",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asyada-egitim/share-runtime/public-url.txt",
+      "source_state": "ignored",
+      "bytes": 64,
+      "sha256": "e880c9e354c02b19c45f32078d8a0c1660f57ba7d30fb3b6b2eaf7fd40b456fe",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asyada-egitim/share-runtime/server-seal.log",
+      "source_state": "ignored",
+      "bytes": 271979,
+      "sha256": "e6c33e2c9edfb618c97acfb3c0cc496257e4ba889f536a31d7b0189372386285",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asyada-egitim/share-runtime/server-seal.pid",
+      "source_state": "ignored",
+      "bytes": 6,
+      "sha256": "688b5aed4a2c0f470e3b53f508f3f5a0669401cf110e95ee44d4ad34932db3be",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asyada-egitim/share-runtime/server.log",
+      "source_state": "ignored",
+      "bytes": 273219,
+      "sha256": "0b5aef15b30ade71f1f30ec28fa259db011eab1b1876a1aac7fc3046909136e9",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asyada-egitim/share-runtime/server.pid",
+      "source_state": "ignored",
+      "bytes": 6,
+      "sha256": "d43ec79c3c5ab7fba58534917c7b71174f68d73c8f7b728702959dc4df1a042d",
+      "disposition": "excluded_runtime",
+      "reason": "Reproducible/runtime/metadata; potential local paths, IPs or temporary URLs are not published."
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/app-billboard.png",
+      "source_state": "ignored",
+      "bytes": 2213454,
+      "sha256": "701db1039ec8fac95d85174107a752ea57f18454d8752f9b6edf79d77fe0e937",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-8-v01-applications/07-billboard/image-1790967598097.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/app-card.png",
+      "source_state": "ignored",
+      "bytes": 2889974,
+      "sha256": "54bf81a80e43c21b970ad888e3edc854d088ce7bd28e6d04152ff9cd84f5a7ab",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-8-v01-applications/02-business-card/image-1790967345701.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/app-cert.png",
+      "source_state": "ignored",
+      "bytes": 1992459,
+      "sha256": "35b3382ebbc7d128bf4d8e363496e6b9b883c2cc1ecec57dcaf57f40641781e3",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-8-v01-applications/09-certificate/image-1790967664331.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/app-letterhead.png",
+      "source_state": "ignored",
+      "bytes": 2572416,
+      "sha256": "3706331227291a767cb1ced334f487a7641bc1cd5c5128eca382e395da49df02",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-8-v01-applications/03-letterhead/image-1790967424223.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/app-notebook.png",
+      "source_state": "ignored",
+      "bytes": 2493052,
+      "sha256": "09548bbe52a1eef7176b2309817968988638e86710e717116e21378e8dfa76d8",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-8-v01-applications/01-notebook/image-1790967339167.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/app-rollup.png",
+      "source_state": "ignored",
+      "bytes": 2047794,
+      "sha256": "92cb6a00edb6a347cf9d37f3103fcd20b0045261e87354bfb42f2a8a31af5a34",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-8-v01-applications/04-rollup/image-1790967521498.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/app-signage.png",
+      "source_state": "ignored",
+      "bytes": 2350566,
+      "sha256": "9b4906020fad1693175a61f340bc7f373d6ab5793906a3c3a81d199bf57c760e",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-8-v01-applications/05-signage/image-1790967503180.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/app-social.png",
+      "source_state": "ignored",
+      "bytes": 1798673,
+      "sha256": "1e3441b82341d18f5f984a2553200db0bb13ce4a88f615308d14931ce34f0a54",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-8-v01-applications/06-social-post/image-1790967579046.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/app-story.png",
+      "source_state": "ignored",
+      "bytes": 1988537,
+      "sha256": "cd1aba0ee8fd100705195c0710b6f1b7acdc17c4c9ea99e2d3ceb9c59f60ff22",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-8-v01-applications/10-story/image-1790967727511.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/app-tote.png",
+      "source_state": "ignored",
+      "bytes": 2165444,
+      "sha256": "f8b4e125ea7ea40fe9a9e3139ebd0dafb01b779b573d833509fecf25b2c92c6e",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-8-v01-applications/08-tote/image-1790967649564.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/high-aesthetic-direction-1-image-1790872481961.png",
+      "source_state": "ignored",
+      "bytes": 1672153,
+      "sha256": "61574a2bb270bda61e2d6ba38fce2a068edd65ae4fb39b2e4644c9be5737d2e9",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/high-aesthetic-direction-1/image-1790872481961.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/high-aesthetic-direction-2-image-1790872546841.png",
+      "source_state": "ignored",
+      "bytes": 2048603,
+      "sha256": "04e4936dcbef6543cb152db48da731b6fa8dd3c817abab1b597b9eb3c83ad57d",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/high-aesthetic-direction-2/image-1790872546841.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/high-aesthetic-direction-3-image-1790872546813.png",
+      "source_state": "ignored",
+      "bytes": 2151604,
+      "sha256": "5d3b761d04a24f24bf0137d0164a02bddb0f5ed0d96b8bfdb0355ca9213b15ba",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/high-aesthetic-direction-3/image-1790872546813.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/seal-v-01.png",
+      "source_state": "ignored",
+      "bytes": 1222144,
+      "sha256": "e8890025a4de15dc945938034cfccfe4a7129e80bad760551b9cb5dc48f580ae",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-7-seal-variants/seal-v-01/image-1790886610188.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/seal-v-02.png",
+      "source_state": "ignored",
+      "bytes": 1192098,
+      "sha256": "255c5c4d2a14e07e2635522378f057832bb3e2124b98d8f09b83b59600745865",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-7-seal-variants/seal-v-02/image-1790886611394.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/seal-v-03.png",
+      "source_state": "ignored",
+      "bytes": 1255474,
+      "sha256": "f867ec0bbf1f15ea05b157f7eec4f3a617ec9b995e47707b30f8d9630eb20324",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-7-seal-variants/seal-v-03/image-1790886685683.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/seal-v-04.png",
+      "source_state": "ignored",
+      "bytes": 1200572,
+      "sha256": "ed59b67944a7a0408bdaeebce4ef96073ba37969ccfc8a52091c6d984a298754",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-7-seal-variants/seal-v-04/image-1790886681942.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/seal-v-05.png",
+      "source_state": "ignored",
+      "bytes": 1314349,
+      "sha256": "a92ff056e31391322639774fe4772cb9db725c82785c33f59218b7e49b607d9f",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-7-seal-variants/seal-v-05/image-1790886732024.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/seal-v-06.png",
+      "source_state": "ignored",
+      "bytes": 1279690,
+      "sha256": "a4875049475f2c5ed9e9989973f79cff13455efc7ceb2614e5fb74a4c1a507a4",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-7-seal-variants/seal-v-06/image-1790886731898.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/seal-v-07.png",
+      "source_state": "ignored",
+      "bytes": 1337305,
+      "sha256": "11d737b67f01d5b2cdd06aca5351bb505a2b4546be5a228a8bbb350fb0d5ce41",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-7-seal-variants/seal-v-07/image-1790886789318.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/seal-v-08.png",
+      "source_state": "ignored",
+      "bytes": 1093567,
+      "sha256": "9a5f09ac69aac44da29149e559a1f571401b22aa83270c0aef6e3c1fc6858847",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-7-seal-variants/seal-v-08/image-1790886773504.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/seal-v-09.png",
+      "source_state": "ignored",
+      "bytes": 1685594,
+      "sha256": "0cbe4b462655bd98b8d9f331bf65a5272901227e733350ab746ad880db3e1ba6",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-7-seal-variants/seal-v-09/image-1790886835944.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/seal-v-10.png",
+      "source_state": "ignored",
+      "bytes": 1143402,
+      "sha256": "754752cfb3612d9408fd2b4f03653f68849ea3c849dc41437f927b9e2405820b",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-7-seal-variants/seal-v-10/image-1790886832176.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-3-01-contemporary-ink-a.png",
+      "source_state": "ignored",
+      "bytes": 2554142,
+      "sha256": "b4166bc1d32a5ea1143c2e11500c128e776e9db3d16784e5d097dbf09b573779",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-3/01-contemporary-ink-a/image-1790871469083.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-3-01-contemporary-ink-b.png",
+      "source_state": "ignored",
+      "bytes": 2249573,
+      "sha256": "061f440086e3ce6dae6b8d2a8d7dc1785d99c671493a7b0ef8d5f3fefbd0c448",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-3/01-contemporary-ink-b/image-1790871459384.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-3-04-brush-geometry-a.png",
+      "source_state": "ignored",
+      "bytes": 2401916,
+      "sha256": "b75ddea1105df6ce03a5c7fa3abc4fb637c3acf65412a3f0a862b1e6ccf59476",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-3/04-brush-geometry-a/image-1790871522858.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-3-04-brush-geometry-b.png",
+      "source_state": "ignored",
+      "bytes": 2727027,
+      "sha256": "6bd502ab129f110ccc907f641e5b37d4028e801adb03c08ae06d27595d901c26",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-3/04-brush-geometry-b/image-1790871519077.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-3-05-typographic-asia-a.png",
+      "source_state": "ignored",
+      "bytes": 2223279,
+      "sha256": "e4a3df0234639a21d43126547e8138b556fa4b55c79b1678f377f7cffe5b9535",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-3/05-typographic-asia-a/image-1790871584814.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-3-05-typographic-asia-b.png",
+      "source_state": "ignored",
+      "bytes": 2388774,
+      "sha256": "7ed6b210c1986d91bceb7035daf3ff24f56d226372441df0f694b2a0281e5907",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-3/05-typographic-asia-b/image-1790871601043.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-3-06-open-character-a.png",
+      "source_state": "ignored",
+      "bytes": 2393077,
+      "sha256": "a7ba62a26ade05ca156caf1382c68ee69d9e515602873920028a2b8e63d1e77c",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-3/06-open-character-a/image-1790871682306.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-3-06-open-character-b.png",
+      "source_state": "ignored",
+      "bytes": 2431213,
+      "sha256": "54edcb20cac37bb5beee7435099600e97c77dae635780be4ef75ba5ac97565ec",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-3/06-open-character-b/image-1790871653640.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-3-07-young-asia-a.png",
+      "source_state": "ignored",
+      "bytes": 2052129,
+      "sha256": "4fb9a98fed08b00d3ca3f4a40acaff6111af349b61811f47dd6f7d9ffc38f0b5",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-3/07-young-asia-a/image-1790871757837.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-3-07-young-asia-b.png",
+      "source_state": "ignored",
+      "bytes": 2500666,
+      "sha256": "c50e633d986f9e7b416b95e00927f47bd22d4f140fa0b97bda188e429c554c5a",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-3/07-young-asia-b/image-1790871758615.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-3-08-future-east-a.png",
+      "source_state": "ignored",
+      "bytes": 2389969,
+      "sha256": "f93a734ccbbc4da1e181110671ac1b30664144ad02976337453834d96f293c8c",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-3/08-future-east-a/image-1790871822781.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-3-08-future-east-b.png",
+      "source_state": "ignored",
+      "bytes": 2209989,
+      "sha256": "f4bec9cd083667d2ad5c727834f7addecea2fa8436637095cfeaa7d8cf6dde13",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-3/08-future-east-b/image-1790871809730.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-4-01-china.png",
+      "source_state": "ignored",
+      "bytes": 2218795,
+      "sha256": "c4c23e40d79b0351b5f25fcf3020b8dca6aefb25f4897e6887a48e8a43571f97",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-4/01-china/image-1790871905219.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-4-02-hong-kong.png",
+      "source_state": "ignored",
+      "bytes": 2035943,
+      "sha256": "162a9b7302bc5c2328954d420eea48ac117dd5c0b7fd65cfdcc68176b8ce663c",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-4/02-hong-kong/image-1790871914483.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-4-03-japan.png",
+      "source_state": "ignored",
+      "bytes": 2748152,
+      "sha256": "12a2c137d11b5c0810cdd6ccc9a88a2b36c245885515018ace001bdba556122e",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-4/03-japan/image-1790871981975.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-4-04-south-korea.png",
+      "source_state": "ignored",
+      "bytes": 2239495,
+      "sha256": "86256e39403f1d7e65ac8c4729c2a9475c9aa6a67cc40e6c785c5e3b9a43dead",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-4/04-south-korea/image-1790871992443.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-4-05-singapore.png",
+      "source_state": "ignored",
+      "bytes": 2460290,
+      "sha256": "95d300b01925155627376369a7f8a2d529e66a08b12afaf8b10223dddd4a8838",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-4/05-singapore/image-1790872076289.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-5-01-china-b.png",
+      "source_state": "ignored",
+      "bytes": 2267373,
+      "sha256": "2c45cf3305722c88eabb4de0955492855748d1ec315a469c3516653b2aaacea7",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-5/01-china-b/image-1790872041248.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-5-02-hong-kong-b.png",
+      "source_state": "ignored",
+      "bytes": 2421135,
+      "sha256": "879edcbf541fab930d00e1b7bb0601d5c0f69f391d8bdba4a18f6cc9fe9dee99",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-5/02-hong-kong-b/image-1790872141485.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-5-03-japan-b.png",
+      "source_state": "ignored",
+      "bytes": 2580848,
+      "sha256": "5bde62e70c9a08dd4efacbbe578dc2183d2731377b58031f6d3eeaf36628dae0",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-5/03-japan-b/image-1790872143091.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-5-04-south-korea-b.png",
+      "source_state": "ignored",
+      "bytes": 2388822,
+      "sha256": "b3fef9e72791684b452c5956dedfd68325efae0a141a52be8cf1d7cb3c00b93a",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-5/04-south-korea-b/image-1790872186277.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-5-05-singapore-b.png",
+      "source_state": "ignored",
+      "bytes": 2374968,
+      "sha256": "ef25c6f901ce88be691199977638a77ed6957438838c997d56ff0d705cbf20ad",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-5/05-singapore-b/image-1790872193864.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-5-06-fair-booth.png",
+      "source_state": "ignored",
+      "bytes": 2312845,
+      "sha256": "600848a4ed8f4316b1d2e30e0ef4690aaa8c53c7c6727c5789e57bf2acd64037",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-5/06-fair-booth/image-1790872262933.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-5-07-office-interior.png",
+      "source_state": "ignored",
+      "bytes": 2397080,
+      "sha256": "c6e2f51527a53fb3efd1d6e08bf964db56def348306c77c479a01ec409a97eb7",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-5/07-office-interior/image-1790872254744.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-5-08-social-suite.png",
+      "source_state": "ignored",
+      "bytes": 2330280,
+      "sha256": "01f0fa445e93de7028e207d62d86462e6605b2fe020bb66b07749baf8a0a1cba",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-5/08-social-suite/image-1790872354824.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-6-01-seal-abstract.png",
+      "source_state": "ignored",
+      "bytes": 2314837,
+      "sha256": "5a6899a62e9fdf71b919382e63cb609104df18525ea64f5bbbcc3f2b7972ee99",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-6/01-seal-abstract/image-1790872314225.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-6-02-seal-grid.png",
+      "source_state": "ignored",
+      "bytes": 2207124,
+      "sha256": "b7dbbf6202f6e2c8dd1618c98500237d75afd0f8c4fe3c478b03a5b7432ad5e9",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-6/02-seal-grid/image-1790872418605.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-6-03-seal-imprint.png",
+      "source_state": "ignored",
+      "bytes": 2730918,
+      "sha256": "f810538e4fb8ea1534e548c89b0cc5b3f11ba38c760ecb054d7fc0bdb610bc9a",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-6/03-seal-imprint/image-1790872405339.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/visual-round-6-04-seal-night.png",
+      "source_state": "ignored",
+      "bytes": 1964424,
+      "sha256": "442fe67c96249d7286015a6deb9d45d42b650c9b5a71dc273e85418c34996472",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-6/04-seal-night/image-1790872468546.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/web-home.png",
+      "source_state": "ignored",
+      "bytes": 2441805,
+      "sha256": "155b5ac6a2206edc4f2962ae0b4f0783d761c3280e1397a751eebbde085a5f4c",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-9-v01-website/01-homepage/image-1790968854738.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/web-mobile.png",
+      "source_state": "ignored",
+      "bytes": 2314675,
+      "sha256": "36d5160f7edfb0d064d5e7c580e45cbf54a534eeb49f2f50f276ba22f2ffd784",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-9-v01-website/03-mobile/image-1790968921503.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/web-unis.png",
+      "source_state": "ignored",
+      "bytes": 2243720,
+      "sha256": "7837bf1983606f241dd89acc9e75886139b91d5c779f56a2b2200d01a9941fed",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-9-v01-website/02-universities/image-1790968848723.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/webhd-dark.png",
+      "source_state": "ignored",
+      "bytes": 2528436,
+      "sha256": "90121a4eeb767fa5385b78062f040eb7c5a4453c1f7b1ecb00616d1c049a4021",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-10-v01-web-hd/03-dark-hd/image-1790971923309.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/webhd-dir.png",
+      "source_state": "ignored",
+      "bytes": 2210591,
+      "sha256": "f8326e71ec074e21db52506639dd2105c356495cc617e461fc9bee6244dea4eb",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-10-v01-web-hd/02-directory-hd/image-1790971824699.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/assets/webhd-home.png",
+      "source_state": "ignored",
+      "bytes": 2554151,
+      "sha256": "a06d4c70862f7395a00983285fe7050f1f02e344e2d7587b43dec5f257678fb3",
+      "disposition": "duplicate",
+      "repository_path": "brands/asyada-egitim/explorations/visual-round-10-v01-web-hd/01-homepage-hd/image-1790971755788.png"
+    },
+    {
+      "source_path": "brands/asyada-egitim/share/index.html",
+      "source_state": "ignored",
+      "bytes": 11136,
+      "sha256": "6baf9c4d93b24c8c97b0e07175a8631b11c7db4526835f9ea8d8c1968ef39058",
+      "disposition": "preserved",
+      "repository_path": "brands/asyada-egitim/archive/historical-share-gallery/original.html",
+      "was_byte_unique": true
+    }
+  ],
+  "summary": {
+    "excluded_runtime": 30,
+    "preserved": 14,
+    "duplicate": 208,
+    "duplicate_package": 1
+  },
+  "unique_creative_files_preserved": 12,
+  "secret_review": "Known credential patterns inspected; not a full secret audit. Runtime log contents excluded."
+}

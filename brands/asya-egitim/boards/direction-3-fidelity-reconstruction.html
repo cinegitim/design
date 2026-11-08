@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yön 3 Fidelity Reconstruction — PROVISIONAL (onay bekliyor)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0E0D0C;--paper:#F6F2EA;--bronze:#C49A5E;--muted:#6F6A5E;--line:#E0D6BE;
+    --fd:"Fraunces",Georgia,serif;--ft:"Inter",system-ui,sans-serif;--fm:"IBM Plex Mono",monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--ft);line-height:1.55}
+  .wrap{max-width:1180px;margin:0 auto;padding:52px 36px 90px}
+  .tag{display:inline-block;font-family:var(--fm);font-size:.72rem;letter-spacing:.14em;background:#B3372A;color:#fff;padding:4px 10px;border-radius:99px}
+  h1{font-family:var(--fd);font-size:clamp(2rem,4.6vw,3.2rem);font-weight:600;margin:12px 0 6px}
+  h1 em{font-weight:400}
+  .lede{font-family:var(--fd);font-style:italic;font-size:1.12rem;color:#45403a;max-width:40em}
+  section{border-top:2px solid var(--ink);padding:22px 0 28px;margin-top:32px}
+  section h2{font-family:var(--fd);font-size:1.25rem;margin-bottom:4px}
+  .note{font-family:var(--fm);font-size:.74rem;color:var(--muted);margin-bottom:12px}
+  .cap{font-family:var(--fm);font-size:.74rem;color:var(--muted);margin-top:8px}
+  .cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  @media(max-width:900px){.cols3{grid-template-columns:1fr}}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .panel img{width:100%;display:block}
+  .panel .lbl{font-family:var(--fm);font-size:.72rem;padding:10px 14px;border-top:1px solid var(--line);color:var(--muted)}
+  .panel.dark{background:var(--ink)}
+  .sizes{display:flex;gap:26px;align-items:flex-end;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:4px;padding:26px}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:820px){.duo{grid-template-columns:1fr}}
+  @media(max-width:640px){.wrap{padding:34px 18px 60px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">PROVISIONAL — insan onayı bekleniyor · kanonik değil</span>
+  <h1>Fidelity reconstruction <em>/ kaynak → yeni rekonstrüksiyon → eski üretim</em></h1>
+  <p class="lede">Sütun A: görsel hakikat kaynağı. Sütun B: yeni rekonstrüksiyon (Bodoni Moda kelime-mark, ışıyan açıklık, eriyen komşu çıtalar). Sütun C: eski kanonik üretim (9 bar + yassı bronz).</p>
+
+  <section>
+    <h2>Yan yana: aynı marka mı?</h2>
+    <div class="cols3">
+      <div class="panel"><img src="../explorations/high-aesthetic-direction-3/image-1790766584024.png" alt="A: kaynak yön görseli"><div class="lbl">A · KAYNAK (1536px raster)</div></div>
+      <div class="panel dark"><img src="../reconstruction-direction-3/lockup-dark.svg" alt="B: yeni rekonstrüksiyon"><div class="lbl">B · REKONSTRÜKSİYON (vektör)</div></div>
+      <div class="panel"><img src="../assets/logo-primary.svg" alt="C: eski kanonik üretim" style="padding:30px"><div class="lbl">C · ESKİ ÜRETİM (kıyas için)</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Rekonstrüe sembol (büyük) + üretim sadeleştirmesi + mono</h2>
+    <div class="cols3">
+      <div class="panel dark"><img src="../reconstruction-direction-3/symbol-full.svg" alt="Tam efekt sembol"><div class="lbl">tam efekt: gradyan + glow + erime</div></div>
+      <div class="panel dark"><img src="../reconstruction-direction-3/symbol-production.svg" alt="Üretim sembolü"><div class="lbl">üretim: düz çekirdek + bronz yanlar</div></div>
+      <div class="panel"><img src="../reconstruction-direction-3/symbol-mono.svg" alt="Mono sembol" style="padding:24px"><div class="lbl">mono: tek renk, çekirdek boşaltmalı</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kilitlenmeler: koyu master + açık çeviri</h2>
+    <div class="duo">
+      <div class="panel dark"><img src="../reconstruction-direction-3/lockup-dark.svg" alt="Koyu master kilitlenme"><div class="lbl">koyu master (Bodoni path + Inter EN)</div></div>
+      <div class="panel"><img src="../reconstruction-direction-3/lockup-light.svg" alt="Açık çeviri kilitlenme"><div class="lbl">açık çeviri (mürekkep + bronz-yıkama açıklık)</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Boy kanıtı: 64 / 32 / 16 px</h2>
+    <div class="sizes">
+      <img src="../reconstruction-direction-3/symbol-production.svg" alt="64px" style="width:64px;background:#0E0D0C;border-radius:8px">
+      <img src="../reconstruction-direction-3/symbol-production.svg" alt="32px" style="width:32px;background:#0E0D0C;border-radius:6px">
+      <img src="../reconstruction-direction-3/symbol-production.svg" alt="16px gerçek" style="width:16px;height:16px;background:#0E0D0C;border-radius:3px">
+    </div>
+    <p class="cap">16px’te ışık yarığı seçilir; tam alan değil, açıklık okunur (dürüst sınır).</p>
+  </section>
+
+  <section>
+    <h2>Minimal ÇİN EĞİTİM uzantısı</h2>
+    <div class="panel"><div style="padding:26px 30px;background:#0E0D0C;color:#F6F2EA">
+      <img src="../reconstruction-direction-3/symbol-production.svg" alt="" style="width:120px">
+      <div style="font-family:var(--fd);font-weight:600;font-size:1.6rem;margin-top:8px">Asya Eğitim</div>
+      <div style="font-family:var(--fm);font-size:.85rem;color:#8f8875;letter-spacing:.18em;margin:4px 0 0 2px">↳ ÇİN EĞİTİM</div>
+    </div><div class="lbl">şemsiye tam sistem · alt satır basamaklı-muted · ayrı Çin kimliği yok (geçici dizgi kanıtı)</div></div>
+  </section>
+</div>
+</body>
+</html>

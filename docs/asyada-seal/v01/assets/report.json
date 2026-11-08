@@ -1,0 +1,103 @@
+{
+ "source": {
+  "file": "seal-source.png",
+  "native_px": [
+   400,
+   370
+  ],
+  "render_px": [
+   1200,
+   1110
+  ]
+ },
+ "A": {
+  "iou": 0.9224,
+  "mae": 4.369,
+  "rmse": 19.767,
+  "pixels_off_gt32": 29894,
+  "pct_off": 2.24,
+  "white_components": 1,
+  "component_areas": [
+   243362
+  ],
+  "bbox_src": [
+   0,
+   0,
+   1199,
+   1109
+  ],
+  "bbox_cand": [
+   0,
+   96,
+   1199,
+   1108
+  ],
+  "file_kb": 4.1,
+  "nodes": {
+   "circle": 1,
+   "stroke_paths": 0,
+   "cubic_segments": 91,
+   "line_segments": 0
+  }
+ },
+ "B": {
+  "iou": 0.8909,
+  "mae": 5.575,
+  "rmse": 24.615,
+  "pixels_off_gt32": 39744,
+  "pct_off": 2.98,
+  "white_components": 1,
+  "component_areas": [
+   246855
+  ],
+  "bbox_src": [
+   0,
+   0,
+   1199,
+   1109
+  ],
+  "bbox_cand": [
+   0,
+   96,
+   1199,
+   1109
+  ],
+  "file_kb": 2.2,
+  "nodes": {
+   "circle": 1,
+   "stroke_paths": 1,
+   "cubic_segments": 41,
+   "line_segments": 6
+  }
+ },
+ "C": {
+  "iou": 0.9094,
+  "mae": 4.895,
+  "rmse": 22.035,
+  "pixels_off_gt32": 34235,
+  "pct_off": 2.57,
+  "white_components": 1,
+  "component_areas": [
+   245581
+  ],
+  "bbox_src": [
+   0,
+   0,
+   1199,
+   1109
+  ],
+  "bbox_cand": [
+   0,
+   96,
+   1199,
+   1108
+  ],
+  "file_kb": 3.1,
+  "nodes": {
+   "circle": 1,
+   "stroke_paths": 1,
+   "cubic_segments": 62,
+   "line_segments": 6
+  }
+ }
+}

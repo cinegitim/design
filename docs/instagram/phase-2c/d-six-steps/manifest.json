@@ -1,0 +1,123 @@
+{
+  "id": "d-six-steps",
+  "title": "Üniversite başvurusu · 6 adım",
+  "slides": [
+    {
+      "index": 1,
+      "file": "d-six-steps/png/01.png",
+      "editable": null,
+      "layout": "Phase 2B cover retained unchanged",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "EDITORIAL"
+      ],
+      "ai_imagery": false,
+      "sha256": "189e6b5a0d77ddc79791cba4bac21f02864977c6f549da05906719a6b89aac36"
+    },
+    {
+      "index": 2,
+      "file": "d-six-steps/png/02.png",
+      "editable": "d-six-steps/editable/02.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "EDITORIAL"
+      ],
+      "ai_imagery": true,
+      "sha256": "288e3d2de4e663d5637db54c2933077d2e20730fa9709320267beb592e325ffc"
+    },
+    {
+      "index": 3,
+      "file": "d-six-steps/png/03.png",
+      "editable": "d-six-steps/editable/03.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "EDITORIAL",
+        "WASEDA"
+      ],
+      "ai_imagery": false,
+      "sha256": "0f8933a73173f870108a02a9a6f1ab643f6d1c59a90e8f2789d5b598c65de078"
+    },
+    {
+      "index": 4,
+      "file": "d-six-steps/png/04.png",
+      "editable": "d-six-steps/editable/04.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "WASEDA",
+        "EDITORIAL"
+      ],
+      "ai_imagery": true,
+      "sha256": "3086053f01062d84b9443f8e8ff84eee1657c186ab1242f44c57efaf81ebf66e"
+    },
+    {
+      "index": 5,
+      "file": "d-six-steps/png/05.png",
+      "editable": "d-six-steps/editable/05.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "WASEDA",
+        "EDITORIAL"
+      ],
+      "ai_imagery": false,
+      "sha256": "4f71826315f60756fe45447d023abf83992609bb3586841b2c2fe2480c643945"
+    },
+    {
+      "index": 6,
+      "file": "d-six-steps/png/06.png",
+      "editable": "d-six-steps/editable/06.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "WASEDA",
+        "EDITORIAL"
+      ],
+      "ai_imagery": true,
+      "sha256": "e5797e0ad1aa4f07f05a17f68822b9b52115cf8242371d07a8f76be06469d358"
+    },
+    {
+      "index": 7,
+      "file": "d-six-steps/png/07.png",
+      "editable": "d-six-steps/editable/07.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "EDITORIAL",
+        "HOUSING"
+      ],
+      "ai_imagery": false,
+      "sha256": "564f52ef2a0869231bd099221bd880317636082df02a7a793d05006cd20ece63"
+    },
+    {
+      "index": 8,
+      "file": "d-six-steps/png/08.png",
+      "editable": "d-six-steps/editable/08.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "EDITORIAL"
+      ],
+      "ai_imagery": false,
+      "sha256": "231bb8004f4e35653274bebc5dbf01fd3da35d9f1c634055469b49871773bd36"
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Üniversite İçin Başka Bir Dünya Var — Tasarım İnceleme</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap">
+    <style>
+        :root {
+            --paper: #F7F3E9;
+            --ink: #1D2027;
+            --red: #BD2120;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #0f1115;
+            color: #e5e7eb;
+            font-family: 'Jost', sans-serif;
+            padding: 30px 20px;
+        }
+        header {
+            max-width: 1400px;
+            margin: 0 auto 30px auto;
+            border-bottom: 1px solid #2d3748;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 { font-size: 26px; color: #fff; }
+        .badge {
+            background: var(--red);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #1a1e26;
+            border: 1px solid #2d3748;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-4px); }
+        .card-header {
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #a0aec0;
+            background: #14171e;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: var(--paper);
+        }
+        .card-footer {
+            padding: 12px 16px;
+            font-size: 13px;
+            color: #718096;
+            background: #14171e;
+            text-align: right;
+        }
+        .card-footer a {
+            color: #63b3ed;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .card-footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Üniversite İçin Başka Bir Dünya Var</h1>
+            <p style="color: #a0aec0; margin-top: 4px;">Asya'da Eğitim — Hızlı Üretim Motoru v2</p>
+        </div>
+        <span class="badge">4 Slayt Hazır</span>
+    </header>
+    <div class="grid">
+        
+        <div class="card">
+            <div class="card-header">01-cover — Üniversite için <span class='highlight'>başka bir dünya</span> var.</div>
+            <a href="01-cover.png" target="_blank">
+                <img src="01-cover.png" alt="01-cover" loading="lazy"/>
+            </a>
+            <div class="card-footer">
+                <a href="01-cover.html" target="_blank">HTML Kaynağı</a> • 
+                <a href="01-cover.png" download>PNG İndir</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">02-points — Yurtdışı Eğitimin Tek Yönü Yok</div>
+            <a href="02-points.png" target="_blank">
+                <img src="02-points.png" alt="02-points" loading="lazy"/>
+            </a>
+            <div class="card-footer">
+                <a href="02-points.html" target="_blank">HTML Kaynağı</a> • 
+                <a href="02-points.png" download>PNG İndir</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">03-points — Hedefine En Uygun Ülkeyi Seç</div>
+            <a href="03-points.png" target="_blank">
+                <img src="03-points.png" alt="03-points" loading="lazy"/>
+            </a>
+            <div class="card-footer">
+                <a href="03-points.html" target="_blank">HTML Kaynağı</a> • 
+                <a href="03-points.png" download>PNG İndir</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">04-cta — Senin rotan nerede başlıyor?</div>
+            <a href="04-cta.png" target="_blank">
+                <img src="04-cta.png" alt="04-cta" loading="lazy"/>
+            </a>
+            <div class="card-footer">
+                <a href="04-cta.html" target="_blank">HTML Kaynağı</a> • 
+                <a href="04-cta.png" download>PNG İndir</a>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

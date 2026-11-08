@@ -1,0 +1,108 @@
+{
+  "id": "c-tokyo",
+  "title": "Tokyo’da öğrenci hayatı",
+  "slides": [
+    {
+      "index": 1,
+      "file": "c-tokyo/png/01.png",
+      "editable": null,
+      "layout": "Phase 2B cover retained unchanged",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "METRO",
+        "HOUSING",
+        "CLUBS"
+      ],
+      "ai_imagery": true,
+      "sha256": "fa5b0f37b687f7d910f44ec60817526b20405adf107af508b270da8dcf07f10d"
+    },
+    {
+      "index": 2,
+      "file": "c-tokyo/png/02.png",
+      "editable": "c-tokyo/editable/02.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "METRO"
+      ],
+      "ai_imagery": false,
+      "sha256": "c87efee88a51997fd4c3f81579c57d6d5ff12176f4004701f967e9b29b502797"
+    },
+    {
+      "index": 3,
+      "file": "c-tokyo/png/03.png",
+      "editable": "c-tokyo/editable/03.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "HOUSING"
+      ],
+      "ai_imagery": true,
+      "sha256": "9b5504f91bbcfbc8fb8c19131262724fae760e62dba3687dc86c1f276dc3e7c0"
+    },
+    {
+      "index": 4,
+      "file": "c-tokyo/png/04.png",
+      "editable": "c-tokyo/editable/04.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "CLUBS"
+      ],
+      "ai_imagery": true,
+      "sha256": "1c2d0dd529adb2b2d6c6291c3bf11f8ce608243575964fc882abd1dd4fddfaef"
+    },
+    {
+      "index": 5,
+      "file": "c-tokyo/png/05.png",
+      "editable": "c-tokyo/editable/05.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "EDITORIAL"
+      ],
+      "ai_imagery": true,
+      "sha256": "96b181623383dc533a1c6a30584afedaf6be09ec9189b730b02434aa4c19930d"
+    },
+    {
+      "index": 6,
+      "file": "c-tokyo/png/06.png",
+      "editable": "c-tokyo/editable/06.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "METRO",
+        "HOUSING",
+        "CLUBS"
+      ],
+      "ai_imagery": false,
+      "sha256": "938d32d545d6d9bb443b892856a8fe39d6f06a72b0cf599da32807eb93dd7acd"
+    },
+    {
+      "index": 7,
+      "file": "c-tokyo/png/07.png",
+      "editable": "c-tokyo/editable/07.html",
+      "layout": "Phase 2C editorial photo collage",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "sources": [
+        "EDITORIAL"
+      ],
+      "ai_imagery": false,
+      "sha256": "1d9fd226d862eb23d21e82c57beca316ece5bfdaf7b95a402015018a9756c3e4"
+    }
+  ]
+}

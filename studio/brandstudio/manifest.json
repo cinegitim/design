@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "group": "Brandstudio",
+  "destination": {
+    "account": "asyadaegitim",
+    "account_id": "5f90104db6f24a941c04e974e250cb67",
+    "contact": "info@asyadaegitim.com"
+  },
+  "source": {
+    "account": "iakfiratt",
+    "account_id": "b462aa1499215378fe7f671a788c8a3c",
+    "status": "retired-after-verified-migration-2026-10-30",
+    "migration_verified": {
+      "editor_archived_records": 1,
+      "editor_archived_revision": "legacy-v2",
+      "editor_archived_history": 2,
+      "stage_schema_version": "1",
+      "stage_products": 0,
+      "stage_versions": 0
+    },
+    "retired_at": "2026-10-30",
+    "retired_resources": {
+      "pages": [
+        "brandstudio-migration"
+      ],
+      "workers": [
+        "brandstudio-stage",
+        "brandstudio-editor-store",
+        "brandstudio-legacy-audit (temporary inspection)"
+      ],
+      "databases": [
+        "brandstudio-editor",
+        "brandstudio-stage"
+      ],
+      "durable_objects": [
+        "brandstudio-editor-store_BrandstudioRevisionObject"
+      ],
+      "access_apps": [
+        "Brandstudio Editor"
+      ]
+    },
+    "last_audit": {
+      "old_durable_objects_with_data": 2,
+      "records": [
+        {
+          "product": "instagram-creative-breakout-bavul-001",
+          "revision": "0882e066-d82d-4d31-9d9f-5aac06b3b2ca",
+          "history": 4
+        },
+        {
+          "product": "brandstudio-internal-smoke-20261029",
+          "revision": "23ef77f3-a485-4c22-b98d-33ce5bb3085f",
+          "history": 2,
+          "test_only": true
+        }
+      ]
+    }
+  },
+  "editor": {
+    "origin": "https://studio.asyadaegitim.com",
+    "access_application": null,
+    "allowed_admins": [
+      "adminasya"
+    ],
+    "storage": "brandstudio-editor-store",
+    "admin_auth": {
+      "status": "live-verified",
+      "username": "adminasya",
+      "trusted_browser_session_days": 365,
+      "renew_within_days": 30,
+      "provider": "private Durable Object",
+      "credential_storage": "PBKDF2-SHA256-derived verifier stored in Cloudflare Worker Secrets; browser-side derivation with one-time HMAC challenges",
+      "old_cloudflare_access": "removed",
+      "verified": {
+        "login": true,
+        "reload_persists": true,
+        "authorized_api_get": true,
+        "idempotent_api_post": true,
+        "anonymous_api_401": true,
+        "versions_preserved": true
+      },
+      "cookie": "__Host-brandstudio_session",
+      "legacy_cookie": "__Host-branddesign_session (automatic migration)",
+      "storage_identity": "kept for backward-compatible sessions"
+    },
+    "backup": {
+      "mode": "durable-object-and-d1-dual-storage",
+      "d1_database": "brandstudio-editor",
+      "table": "editor_revision_backups",
+      "policy": "best-effort D1 mirror with read-repair; encrypted GitHub offsite archive on a separate provider",
+      "status": "live-verified",
+      "offsite_github": "live-verified",
+      "offsite_github_branch": "brandstudio-editor-history",
+      "offsite_encryption": "AES-256-GCM with independently retained user recovery key; no plaintext in public GitHub",
+      "offsite_schedule": "05:17 and 17:17 UTC",
+      "verified_revision": "0882e066-d82d-4d31-9d9f-5aac06b3b2ca",
+      "offsite_workflow_run": "https://github.com/cinegitim/design/actions/runs/40957072762",
+      "offsite_branch_head": "65cf0da9985de06c9f4ce36d9fad0d565bd97782",
+      "disaster_recovery_key": "User recovery key stored separately; do not commit it to GitHub"
+    },
+    "static_origin": "https://brandstudio-pages-git.pages.dev",
+    "static_origin_status": "live-verified Cloudflare Pages; authenticated editor GET 200; all 29 catalog entries loaded",
+    "static_pages_git": {
+      "repository": "cinegitim/design",
+      "production_branch": "main",
+      "auto_production_builds": false,
+      "auto_preview_builds": false,
+      "manual_deployments": true
+    }
+  },
+  "services": {
+    "gateway_worker": "brandstudio-edge",
+    "storage_worker": "brandstudio-editor-store",
+    "staging_worker": "brandstudio-stage",
+    "editor_d1": "brandstudio-editor",
+    "staging_d1": "brandstudio-stage",
+    "pages_project": "brandstudio-pages-git",
+    "admin_auth_worker": "brandstudio-admin-auth",
+    "legacy_unused_pages_project": "brandstudio-asyadaegitim (destination account; not part of source cleanup)"
+  },
+  "source_paths": [
+    "studio/cloudflare-brandstudio/asya-gateway/worker.mjs",
+    "studio/cloudflare-brandstudio/editor-store/worker.mjs",
+    "studio/cloudflare-brandstudio/src/worker.mjs",
+    "docs/visual-editor/browser/",
+    "functions/visual-editor/api/revisions.js"
+  ],
+  "status": "cloudflare-account-migration-completed",
+  "pending": []
+}

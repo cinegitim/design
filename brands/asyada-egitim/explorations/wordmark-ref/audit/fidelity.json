@@ -1,0 +1,23 @@
+{
+ "W1": {
+  "strict_iou": 0.4111,
+  "px_ratio": 1.2496,
+  "tolerant_iou_1px": 0.4205,
+  "tolerant_iou_2px": 0.4345,
+  "tolerant_iou_3px": 0.4457
+ },
+ "W2": {
+  "strict_iou": 0.6939,
+  "px_ratio": 1.1687,
+  "tolerant_iou_1px": 0.6952,
+  "tolerant_iou_2px": 0.7008,
+  "tolerant_iou_3px": 0.7059
+ },
+ "W3": {
+  "strict_iou": 0.5338,
+  "px_ratio": 1.0395,
+  "tolerant_iou_1px": 0.5553,
+  "tolerant_iou_2px": 0.5802,
+  "tolerant_iou_3px": 0.5995
+ }
+}

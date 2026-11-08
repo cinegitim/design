@@ -1,0 +1,46 @@
+from pathlib import Path
+import json,shutil,hashlib,subprocess,tempfile,os,signal
+from PIL import Image,ImageOps,ImageDraw
+ROOT=Path(__file__).resolve().parents[4];BASE=Path(__file__).resolve().parent;OUT=ROOT/'docs/instagram/carousel-01';AS=OUT/'assets';SRC=OUT/'source'
+AS.mkdir(parents=True,exist_ok=True);SRC.mkdir(parents=True,exist_ok=True)
+lock=json.loads((ROOT/'brands/asyada-egitim/assets/lockups/canonical-lockups.json').read_text())
+records={r['canonical_lockup_id']:r for r in lock['records']}
+for id,name in [('D-04/light','d04.svg'),('D-04/dark','d04-dark.svg'),('P-01/dark','p01-dark.svg')]:shutil.copy2(ROOT/records[id]['canonical_file_path'],AS/name)
+shutil.copy2(ROOT/'brands/asyada-egitim/explorations/wordmark-ref/weight-study/sources/Jost-VF.ttf',AS/'Jost-VF.ttf')
+plates={1:next((BASE/'plates/01-campus').glob('*.png')),2:next((BASE/'plates/02-threshold').glob('*.png')),3:next((BASE/'plates/03-routes').glob('*.png')),4:next((BASE/'plates/04-pathways').glob('*.png'))}
+for i,p in plates.items():shutil.copy2(p,AS/f'plate-{i:02}.png')
+from PIL import Image as PILImage
+pathplate=PILImage.open(plates[4]).convert('RGB')
+pathplate.crop((0,0,1024,520)).save(AS/'path-academic.jpg',quality=94)
+pathplate.crop((0,790,1024,1536)).save(AS/'path-campus-life.jpg',quality=94)
+CSS='''@font-face{font-family:Jost;src:url(../assets/Jost-VF.ttf);font-weight:100 900}*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1350px;overflow:hidden}body{font-family:Jost,Arial,sans-serif;background:#F7F3E9;color:#1D2027}.s{position:relative;width:1080px;height:1350px;overflow:hidden;background:#F7F3E9}.txt{position:absolute;line-height:1.08;letter-spacing:-.035em}.photo{position:absolute;object-fit:cover}.logo{position:absolute}.logo img{width:100%;height:auto;display:block}.small{font-weight:600}.red{color:#BD2120}.paper{color:#F7F3E9}'''
+slides=[
+'''<img class="photo" style="left:0;top:620px;width:1080px;height:730px;object-fit:cover;object-position:center 60%" src="../assets/plate-01.png"><img class="logo" style="left:64px;top:56px;width:240px" src="../assets/d04.svg"><div class="txt" style="left:64px;top:225px;font-size:78px;font-weight:500;width:950px;line-height:1.12">Üniversite için<br><b class="red" style="font-size:100px;font-weight:650">başka bir dünya</b><br>var.</div><div class="txt small" style="left:70px;top:544px;font-size:29px">Yurtdışı eğitimde yeni rotalar.</div><div class="txt red" style="left:880px;top:580px;font-size:25px;font-weight:600">01/05</div>''',
+'''<img class="photo" style="inset:0;width:1080px;height:1350px" src="../assets/plate-02.png"><div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(247,243,233,.98) 0%,rgba(247,243,233,.88) 43%,rgba(247,243,233,.05) 100%)"></div><img class="logo" style="left:64px;top:60px;width:210px" src="../assets/d04.svg"><div class="txt" style="left:64px;top:330px;width:760px;font-size:91px;font-weight:550">Yurtdışı eğitim<br>hep aynı yerler<br><b class="red" style="font-weight:700">mi demek?</b></div><div class="txt" style="left:70px;top:740px;font-size:34px;font-weight:500">Alışılmış rotaların ötesine bak.</div><div class="txt red" style="left:890px;top:1260px;font-size:25px;font-weight:600">02/05</div>''',
+'''<img class="photo" style="left:0;top:0;width:1080px;height:1350px;object-fit:cover" src="../assets/plate-03.png"><div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(29,32,39,.76),rgba(29,32,39,.16) 45%,rgba(29,32,39,.74))"></div><img class="logo" style="left:64px;top:54px;width:200px" src="../assets/d04-dark.svg"><div class="txt paper" style="left:64px;top:190px;font-size:78px;font-weight:600">Başka bir dünya.<br><span class="red">Birden fazla rota.</span></div><div class="txt paper" style="left:72px;top:735px;font-size:32px;font-weight:600">Çin</div><div class="txt paper" style="left:430px;top:530px;font-size:32px;font-weight:600;text-shadow:0 1px 8px #1D2027">Japonya</div><div class="txt paper" style="left:738px;top:745px;font-size:32px;font-weight:600">Güney Kore</div><div class="txt paper" style="left:80px;top:1090px;font-size:32px;font-weight:600">Singapur</div><div class="txt paper" style="left:736px;top:1090px;font-size:32px;font-weight:600">Hong Kong</div><div class="txt paper" style="left:900px;top:1260px;font-size:25px;font-weight:600">03/05</div>''',
+'''<div class="txt" style="left:64px;top:72px;font-size:94px;font-weight:600">Kendine uygun<br><span class="red">yolu bul.</span></div><img class="photo" style="left:0;top:315px;width:636px;height:510px;object-fit:cover;object-position:center 28%" src="../assets/path-academic.jpg"><img class="photo" style="left:636px;top:315px;width:444px;height:510px;object-fit:cover;object-position:center 65%" src="../assets/path-campus-life.jpg"><div class="txt" style="left:64px;top:858px;font-size:31px;font-weight:500">Farklı hedefler. Farklı başlangıçlar.</div><div style="position:absolute;left:64px;top:939px;width:950px;height:2px;background:#BD2120"></div><div class="txt" style="left:64px;top:986px;font-size:37px;font-weight:550">Lisans</div><div class="txt" style="left:560px;top:986px;font-size:37px;font-weight:550">Yüksek lisans</div><div style="position:absolute;left:64px;top:1054px;width:950px;height:1px;background:#b9b1a2"></div><div class="txt" style="left:64px;top:1090px;font-size:37px;font-weight:550">Dil programları</div><div class="txt" style="left:560px;top:1090px;font-size:37px;font-weight:550">Yaz okulları</div><img class="logo" style="left:64px;top:1210px;width:200px" src="../assets/d04.svg"><div class="txt red" style="left:900px;top:1260px;font-size:25px;font-weight:600">04/05</div>''',
+'''<div style="position:absolute;inset:0;background:#1D2027"></div><img class="photo" style="left:0;top:0;width:1080px;height:1350px;opacity:.10;object-fit:cover" src="../assets/plate-02.png"><div class="txt paper" style="left:72px;top:110px;width:920px;font-size:95px;font-weight:550">Senin rotan<br><b style="color:#F7F3E9;font-weight:700">nerede başlıyor?</b></div><div style="position:absolute;left:72px;top:400px;width:108px;height:8px;background:#BD2120"></div><div class="txt paper" style="left:76px;top:474px;font-size:39px;font-weight:500">Çin · Japonya · Güney Kore<br>Singapur · Hong Kong</div><div style="position:absolute;left:72px;top:684px;width:490px;height:84px;background:#BD2120"></div><div class="txt paper" style="left:98px;top:702px;font-size:39px;font-weight:650">Ücretsiz ön görüşme</div><div class="txt paper" style="left:76px;top:814px;font-size:30px;font-weight:400">Profildeki bağlantıyı ziyaret et.</div><img class="logo" style="left:72px;top:930px;width:390px" src="../assets/p01-dark.svg">'''
+]
+for i,body in enumerate(slides,1):
+ p=SRC/f'{i:02}.html';p.write_text(f'<!doctype html><html lang="tr"><meta charset="utf-8"><style>{CSS}</style><body><main class="s">{body}</main></body></html>')
+ chrome='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';out=OUT/(f'{i:02}-'+['cover','shift','routes','pathways','cta'][i-1]+'.png')
+ with tempfile.TemporaryDirectory(prefix='campaign01-',dir='/private/var/folders/3j/ffljsl_s66n94xjq7zdv8hb80000gn/T/opencode') as profile:
+  proc=subprocess.Popen([chrome,'--headless','--disable-gpu','--hide-scrollbars','--force-device-scale-factor=1','--window-size=1080,1350','--virtual-time-budget=3000',f'--user-data-dir={profile}',f'--screenshot={out}',p.as_uri()],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,start_new_session=True)
+  try:proc.wait(timeout=25)
+  except subprocess.TimeoutExpired:os.killpg(proc.pid,signal.SIGTERM);proc.wait(timeout=5)
+ assert out.exists(),out
+
+# Exact canonical geometry recorded; no logo recreation.
+for i in range(1,6):shutil.copy2(OUT/(f'{i:02}-'+['cover','shift','routes','pathways','cta'][i-1]+'.png'),AS/f'{i:02}.png')
+contact=Image.new('RGB',(5*216,270),'#D8D2C7')
+for i in range(1,6):
+ im=Image.open(AS/f'{i:02}.png').convert('RGB');im.thumbnail((210,262));contact.paste(im,((i-1)*216,4))
+contact.save(OUT/'sequence.jpg',quality=92)
+grid=Image.new('RGB',(1080,1080),'#D8D2C7')
+im=Image.open(AS/'01.png').convert('RGB').resize((360,450));grid.paste(im,(0,0));grid.paste(im.resize((240,300)),(120,150));grid.paste(im.resize((120,150)),(240,300));grid.save(OUT/'feed-preview.jpg',quality=90)
+manifest={'campaign':'Üniversite için başka bir dünya var.','status':'HUMAN APPROVAL PENDING','dimensions':[1080,1350],'chatgpt_image_generations':4,'backend':'gpt-image-2 via connected ChatGPT subscription','canonicals':{k:{'id':k,'sha256':records[k]['sha256'],'canonical_seal_sha256':lock['canonical_seal_sha256']} for k in ['D-04/light','D-04/dark','P-01/dark']},'slides':[]}
+for i,n in enumerate(['01-cover','02-shift','03-routes','04-pathways','05-cta'],1):
+ p=OUT/f'{n}.png';from PIL import Image as I;assert I.open(p).size==(1080,1350)
+ lid='P-01/dark' if i==5 else ('D-04/dark' if i==3 else 'D-04/light')
+ manifest['slides'].append({'file':p.name,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'source_html':f'source/{i:02}.html','canonical_lockup_id':lid,'canonical_lockup_sha256':records[lid]['sha256'],'canonical_seal_sha256':lock['canonical_seal_sha256']})
+(OUT/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))

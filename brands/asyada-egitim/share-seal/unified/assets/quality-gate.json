@@ -1,0 +1,151 @@
+{
+ "rows": [
+  {
+   "check": "text line TR1 within common measure W",
+   "value": "devL 0.00 devR 0.32 px",
+   "pass": true
+  },
+  {
+   "check": "text line TR2 within common measure W",
+   "value": "devL 0.00 devR 0.32 px",
+   "pass": true
+  },
+  {
+   "check": "text line EN within common measure W",
+   "value": "devL 0.00 devR 0.32 px",
+   "pass": true
+  },
+  {
+   "check": "three lines share one measure W",
+   "value": "widths [880.12, 880.12, 880.12] (spread 0.00 px)",
+   "pass": true
+  },
+  {
+   "check": "stacked: seal left edge",
+   "value": "0.29 px",
+   "pass": true
+  },
+  {
+   "check": "stacked: seal right edge",
+   "value": "0.25 px",
+   "pass": true
+  },
+  {
+   "check": "stacked: seal top edge",
+   "value": "0.37 px",
+   "pass": true
+  },
+  {
+   "check": "stacked: seal bottom edge",
+   "value": "0.23 px",
+   "pass": true
+  },
+  {
+   "check": "stacked: text left edge",
+   "value": "0.37 px",
+   "pass": true
+  },
+  {
+   "check": "stacked: text right edge",
+   "value": "1.06 px",
+   "pass": true
+  },
+  {
+   "check": "stacked: text top edge",
+   "value": "0.28 px",
+   "pass": true
+  },
+  {
+   "check": "stacked: text bottom edge",
+   "value": "0.37 px",
+   "pass": true
+  },
+  {
+   "check": "stacked: clearspace error",
+   "value": "-0.51 px (intended 85)",
+   "pass": true
+  },
+  {
+   "check": "stacked: optical centre axis",
+   "value": "0.69 px",
+   "pass": true
+  },
+  {
+   "check": "horizontal: seal left edge",
+   "value": "0.46 px",
+   "pass": true
+  },
+  {
+   "check": "horizontal: seal right edge",
+   "value": "0.94 px",
+   "pass": true
+  },
+  {
+   "check": "horizontal: seal top edge",
+   "value": "0.46 px",
+   "pass": true
+  },
+  {
+   "check": "horizontal: seal bottom edge",
+   "value": "0.48 px",
+   "pass": true
+  },
+  {
+   "check": "horizontal: text left edge",
+   "value": "0.75 px",
+   "pass": true
+  },
+  {
+   "check": "horizontal: text right edge",
+   "value": "1.40 px",
+   "pass": true
+  },
+  {
+   "check": "horizontal: text top edge",
+   "value": "0.46 px",
+   "pass": true
+  },
+  {
+   "check": "horizontal: text bottom edge",
+   "value": "0.48 px",
+   "pass": true
+  },
+  {
+   "check": "horizontal: clearspace error",
+   "value": "0.19 px (intended 85)",
+   "pass": true
+  },
+  {
+   "check": "horizontal: seal\u2194text vertical centre",
+   "value": "0.00 px",
+   "pass": true
+  },
+  {
+   "check": "canonical seal unmodified (SHA-256)",
+   "value": "8f5d46f0302c4cc7",
+   "pass": true
+  },
+  {
+   "check": "seal geometry byte-identical in all lockups",
+   "value": "3 files, 0 deviations",
+   "pass": true
+  },
+  {
+   "check": "no word/letter stretching (rigid bodies, tracking only)",
+   "value": "per-gap tracking tr2 3.20 / en 1.79 px",
+   "pass": true
+  },
+  {
+   "check": "Turkish diacritics intact (\u011e breve + 2 \u0130 dots)",
+   "value": "9 components, 6 letters, 0 orphans",
+   "pass": true
+  },
+  {
+   "check": "letter counters open (not filled solid)",
+   "value": "A counter (TR1)=0..23(24px), D bowl (TR1)=629..685(57px), G counter (TR2)=120..168(49px), O counter (EN)=380..394(15px)",
+   "pass": true
+  }
+ ],
+ "fail_count": 0,
+ "result": "PASS"
+}

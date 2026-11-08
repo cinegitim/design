@@ -1,0 +1,217 @@
+{
+  "canonical_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "variants": {
+    "poly": {
+      "paths": 31,
+      "subpaths": 40,
+      "M": 40,
+      "C": 0,
+      "Q": 0,
+      "L": 552,
+      "A": 0,
+      "Z": 40,
+      "nodes": 592,
+      "curves": 0,
+      "lines": 552,
+      "bytes": 10424,
+      "curvature_sign_flips": 113,
+      "measure": {
+        "tr1": {
+          "x0": 2.8,
+          "x1": 876.8,
+          "w": 874.0
+        },
+        "tr2": {
+          "x0": 0.0,
+          "x1": 879.9,
+          "w": 879.9
+        },
+        "en": {
+          "x0": 0.0,
+          "x1": 878.3,
+          "w": 878.3
+        },
+        "spread_px": 5.9
+      }
+    },
+    "smooth": {
+      "paths": 31,
+      "subpaths": 40,
+      "M": 40,
+      "C": 1460,
+      "Q": 0,
+      "L": 0,
+      "A": 0,
+      "Z": 31,
+      "nodes": 1500,
+      "curves": 1460,
+      "lines": 0,
+      "bytes": 61189,
+      "curvature_sign_flips": 110,
+      "measure": {
+        "tr1": {
+          "x0": 2.8,
+          "x1": 876.3,
+          "w": 873.5
+        },
+        "tr2": {
+          "x0": 0.0,
+          "x1": 879.9,
+          "w": 879.9
+        },
+        "en": {
+          "x0": 0.0,
+          "x1": 877.9,
+          "w": 877.9
+        },
+        "spread_px": 6.4
+      }
+    },
+    "A": {
+      "paths": 28,
+      "subpaths": 46,
+      "M": 46,
+      "C": 3,
+      "Q": 221,
+      "L": 43,
+      "A": 0,
+      "Z": 46,
+      "nodes": 313,
+      "curves": 224,
+      "lines": 43,
+      "bytes": 23555,
+      "curvature_sign_flips": 72,
+      "lockups": {
+        "horizontal": {
+          "svg": "A-lockup-horizontal.svg",
+          "png": "A-lockup-horizontal.png",
+          "size": [
+            1480.0,
+            514.0
+          ]
+        },
+        "stacked": {
+          "svg": "A-lockup-stacked.svg",
+          "png": "A-lockup-stacked.png",
+          "size": [
+            969.0,
+            969.0
+          ]
+        }
+      },
+      "alignment": [
+        {
+          "offset_px": -4.0,
+          "svg": "A-align-4.svg",
+          "png": "A-align-4.png"
+        },
+        {
+          "offset_px": 0.0,
+          "svg": "A-align+0.svg",
+          "png": "A-align+0.png"
+        },
+        {
+          "offset_px": 4.0,
+          "svg": "A-align+4.svg",
+          "png": "A-align+4.png"
+        },
+        {
+          "offset_px": 8.0,
+          "svg": "A-align+8.svg",
+          "png": "A-align+8.png"
+        }
+      ],
+      "measure": {
+        "tr1": {
+          "x0": 0.5,
+          "x1": 880.9,
+          "w": 880.4
+        },
+        "tr2": {
+          "x0": 0.0,
+          "x1": 880.9,
+          "w": 880.9
+        },
+        "en": {
+          "x0": 0.0,
+          "x1": 877.2,
+          "w": 877.2
+        },
+        "spread_px": 3.7
+      }
+    },
+    "B": {
+      "paths": 60,
+      "subpaths": 61,
+      "M": 61,
+      "C": 3,
+      "Q": 0,
+      "L": 104,
+      "A": 28,
+      "Z": 61,
+      "nodes": 196,
+      "curves": 31,
+      "lines": 104,
+      "bytes": 8114,
+      "curvature_sign_flips": 52,
+      "lockups": {
+        "horizontal": {
+          "svg": "B-lockup-horizontal.svg",
+          "png": "B-lockup-horizontal.png",
+          "size": [
+            1480.0,
+            514.0
+          ]
+        },
+        "stacked": {
+          "svg": "B-lockup-stacked.svg",
+          "png": "B-lockup-stacked.png",
+          "size": [
+            969.0,
+            969.0
+          ]
+        }
+      },
+      "alignment": [
+        {
+          "offset_px": -4.0,
+          "svg": "B-align-4.svg",
+          "png": "B-align-4.png"
+        },
+        {
+          "offset_px": 0.0,
+          "svg": "B-align+0.svg",
+          "png": "B-align+0.png"
+        },
+        {
+          "offset_px": 4.0,
+          "svg": "B-align+4.svg",
+          "png": "B-align+4.png"
+        },
+        {
+          "offset_px": 8.0,
+          "svg": "B-align+8.svg",
+          "png": "B-align+8.png"
+        }
+      ],
+      "measure": {
+        "tr1": {
+          "x0": 0.5,
+          "x1": 880.6,
+          "w": 880.1
+        },
+        "tr2": {
+          "x0": 0.0,
+          "x1": 880.9,
+          "w": 880.9
+        },
+        "en": {
+          "x0": 0.0,
+          "x1": 877.1,
+          "w": 877.1
+        },
+        "spread_px": 3.8
+      }
+    }
+  }
+}

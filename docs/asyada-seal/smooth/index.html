@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="tr"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Asya'da Eğitim — Pürüzsüz Kontur + Optik Hizalama · İNCELEME</title>
+<style>
+:root{--paper:#F7F3E9;--ink:#141210;--verm:#BD2120;--mute:#6b635a;--line:#ddd5c4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1220px;margin:0 auto;padding:40px 22px 90px}
+h1{font-size:34px;line-height:1.2;margin:0 0 6px}
+h2{font-size:23px;margin:56px 0 4px;padding-top:22px;border-top:1px solid var(--line)}
+h3{font-size:16px;margin:24px 0 6px}
+p{margin:9px 0}
+.sub{color:var(--mute);font-size:15px;margin-bottom:24px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.75}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:14px 0}
+th,td{text-align:left;padding:6px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.pending{background:var(--verm);color:#fff;padding:16px 20px;margin:26px 0;font-weight:600;letter-spacing:.04em}
+.note{background:#fff;border:1px solid var(--line);border-left:5px solid var(--verm);padding:15px 19px;margin:20px 0;border-radius:2px}
+.small{font-size:14px;color:var(--mute)}
+a{color:var(--verm)}
+img{max-width:100%;display:block}
+.cap{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:var(--mute);letter-spacing:.06em;text-transform:uppercase;margin:6px 0 0}
+.box{background:#fff;border:1px solid var(--line);border-radius:2px;padding:14px}
+.pass{color:#2f7a4a;font-weight:700}
+.fail{color:var(--verm);font-weight:700}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:2px;margin:0;padding:10px}
+.card img{border:1px solid #eee}
+figcaption{font-size:13px;color:var(--mute);margin-top:7px}
+.zoom{border:1px solid var(--line);background:#fff;border-radius:2px;margin:14px 0;padding:12px 16px}
+.zoom summary{cursor:pointer;font-size:15px;letter-spacing:.02em}
+.zoomrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px}
+.zoomrow img{width:100%;border:1px solid #eee}
+.badge{display:inline-block;background:#2f7a4a;color:#fff;font-family:ui-monospace,Menlo,monospace;font-size:11px;padding:4px 10px;border-radius:2px;font-weight:700}
+.badge.warn{background:var(--verm)}
+</style></head>
+<body><div class="wrap">
+
+<h1>Asya'da Eğitim — Pürüzsüz Kontur &amp; Optik Hizalama</h1>
+<p class="sub">İki kusur giderildi: (A) çokgen kontur yerine kübik Bézier; (B) mühürün dikey konumu bağımsız ölçüldü ve dört alternatife açıldı. Mühür ve kelime markası <b>kanonikleştirilmedi</b>.</p>
+
+<div class="pending">İNSAN GÖRSEL ONAYI BEKLENİYOR — hizalama seçimi yapılmadı, hiçbir kilit kanonik değil</div>
+
+<h2>A · Kontur yeniden kurulumu</h2>
+<p class="small">Önceki sürüm <span class="mono">approxPolyDP</span> ile 592 köşeli, 552 düz çizgili bir çokgendı; 800&nbsp;%de düz yüzler ve tırtıklı kenarlar okunuyordu. Yeni sürüm köşe algılayıcı ile ayrılan yaylar arasına kübik Bézier oturtuyor. Köşeler <b>bükülmedi</b>: her yayın uçları köşe noktasına sabitlenir, yön keskinliği korunur.</p>
+
+<div class="grid2">
+  <figure class="card"><img src="assets/WU-polygon.svg" alt="polygonal wordmark"><figcaption>ÖNCE · çokgen (592 köşe, 552 düz)</figcaption></figure>
+  <figure class="card"><img src="assets/WU-smooth.svg" alt="cubic wordmark"><figcaption>SONRA · kübik Bézier (1460 eğri, 0 düz)</figcaption></figure>
+</div>
+<p class="cap">Tam boy · üç satır ortak ölçü</p>
+
+<div class="box">
+  <div class="mono">
+    eğri sayısı ............ 1460 C &nbsp;/&nbsp; 0 L<br>
+    yay içi teğet kopması .... 0.0° (sınır 6°)<br>
+    eğri uyumu ............. ölçülen azami sapma ≈ 1.0&nbsp;px (yerel 881&nbsp;px)<br>
+    üç satır ölçüsü ........ TR1 879.5 · TR2 879.9 · EN 879.9 → fark 0.4&nbsp;px<br>
+    kanonik mühür ......... 8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a
+  </div>
+</div>
+
+<h3>Büyütülmüş kontur karşılaştırmaları</h3>
+<p class="small">Aynı bölge, iki sürüm, 100 / 400 / 800&nbsp;%.</p>
+    <details class="zoom" open>
+      <summary><b>s-spine</b> &mdash; 100&nbsp;/&nbsp;400&nbsp;/&nbsp;800&nbsp;%</summary>
+      <div class="zoomrow">
+<img src="assets/contour-s-spine-100.png" alt="s-spine at 100%">
+<img src="assets/contour-s-spine-400.png" alt="s-spine at 400%">
+<img src="assets/contour-s-spine-800.png" alt="s-spine at 800%">
+      </div>
+    </details>
+    <details class="zoom" >
+      <summary><b>a-apex</b> &mdash; 100&nbsp;/&nbsp;400&nbsp;/&nbsp;800&nbsp;%</summary>
+      <div class="zoomrow">
+<img src="assets/contour-a-apex-100.png" alt="a-apex at 100%">
+<img src="assets/contour-a-apex-400.png" alt="a-apex at 400%">
+<img src="assets/contour-a-apex-800.png" alt="a-apex at 800%">
+      </div>
+    </details>
+    <details class="zoom" >
+      <summary><b>d-bowl</b> &mdash; 100&nbsp;/&nbsp;400&nbsp;/&nbsp;800&nbsp;%</summary>
+      <div class="zoomrow">
+<img src="assets/contour-d-bowl-100.png" alt="d-bowl at 100%">
+<img src="assets/contour-d-bowl-400.png" alt="d-bowl at 400%">
+<img src="assets/contour-d-bowl-800.png" alt="d-bowl at 800%">
+      </div>
+    </details>
+    <details class="zoom" >
+      <summary><b>g-bowl</b> &mdash; 100&nbsp;/&nbsp;400&nbsp;/&nbsp;800&nbsp;%</summary>
+      <div class="zoomrow">
+<img src="assets/contour-g-bowl-100.png" alt="g-bowl at 100%">
+<img src="assets/contour-g-bowl-400.png" alt="g-bowl at 400%">
+<img src="assets/contour-g-bowl-800.png" alt="g-bowl at 800%">
+      </div>
+    </details>
+    <details class="zoom" >
+      <summary><b>i-dot</b> &mdash; 100&nbsp;/&nbsp;400&nbsp;/&nbsp;800&nbsp;%</summary>
+      <div class="zoomrow">
+<img src="assets/contour-i-dot-100.png" alt="i-dot at 100%">
+<img src="assets/contour-i-dot-400.png" alt="i-dot at 400%">
+<img src="assets/contour-i-dot-800.png" alt="i-dot at 800%">
+      </div>
+    </details>
+    <details class="zoom" >
+      <summary><b>en-line</b> &mdash; 100&nbsp;/&nbsp;400&nbsp;/&nbsp;800&nbsp;%</summary>
+      <div class="zoomrow">
+<img src="assets/contour-en-line-100.png" alt="en-line at 100%">
+<img src="assets/contour-en-line-400.png" alt="en-line at 400%">
+<img src="assets/contour-en-line-800.png" alt="en-line at 800%">
+      </div>
+    </details>
+
+<h2>B · Optik hizalama ölçümü</h2>
+<p class="small">Yatay kilit, mührü tüm kelime markası kutusuna göre ortalıyordu. Kutu, tırnak taşmasını ve alt boşluğu da içerdiği için bu geometrik olarak doğru ama algısal olarak değildir. Aşağıdaki değerler <b>birbirinden bağımsız</b> ölçüldü.</p>
+
+<table>
+<tr><th>Ölçüm</th><th>Değer (yerel px)</th><th>Nasıl</th></tr>
+<tr><td>Mühür görünür üst / alt</td><td>ölçüldü</td><td>10× render, kâğıt L=243, mürekkep eşiği L&lt;235</td></tr>
+<tr><td>TR1 kap çizgisi</td><td>-11.75</td><td>harf bileşenlerinin tepe medyanı (tepe noktası 1&nbsp;px sivrilemi değil)</td></tr>
+<tr><td>TR1 taban çizgisi</td><td>129.0</td><td>TR1 bandının alt kenarı</td></tr>
+<tr><td>Tırnak tepesi</td><td>-12.2</td><td>TR1 bandındaki tek küçük bileşen</td></tr>
+<tr><td>Tırnak taşması</td><td>0.45</td><td>kap çizgisi − tırnak tepesi</td></tr>
+<tr><td>Kelime markası üst / alt</td><td>-12.2 / 414.1</td><td>tüm mürekkep kutusu</td></tr>
+<tr><td>Kutu merkezi</td><td>200.95</td><td>geometrik orta</td></tr>
+<tr><td>Mürekkep ağırlık merkezi</td><td>162.14</td><td>algısal kütle merkezi</td></tr>
+<tr><td>Kap→taban orta</td><td>58.62</td><td>düz kenarlı mührün gözle hizalandığı referans</td></tr>
+</table>
+
+<h3>Dört yatay hizalama alternatifi</h3>
+<p class="small">Mühür yalnızca dikeyde kaydırıldı. Ölçekleme veya bozulma yok; her ikilide <b>tam olarak kanonik mühür</b> kullanıldı. Seçim yapılmadı.</p>
+<div class="grid4">
+      <figure class="card">
+        <img src="assets/align-4.png" alt="seal offset &minus;4">
+        <figcaption><b>&minus;4 px</b> &middot; seal 4&nbsp;px higher</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="assets/align-0.png" alt="seal offset 0">
+        <figcaption><b>0 px</b> &middot; current placement</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="assets/align-p4.png" alt="seal offset +4">
+        <figcaption><b>+4 px</b> &middot; seal 4&nbsp;px lower</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="assets/align-p8.png" alt="seal offset +8">
+        <figcaption><b>+8 px</b> &middot; seal 8&nbsp;px lower</figcaption>
+      </figure>
+</div>
+
+<h3>Kilit dikey &amp; yığın önizleme</h3>
+<div class="grid2">
+  <figure class="card"><img src="assets/WU-stacked.svg" alt="stacked lockup"><figcaption>Yığın</figcaption></figure>
+  <figure class="card"><img src="assets/WU-horizontal.svg" alt="horizontal lockup"><figcaption>Yatay</figcaption></figure>
+</div>
+<div class="box"><div class="mono">yığın ölçümü: {"px_per_native_unit": 0.4128, "ink_left_px": 43.6, "ink_right_px": 922.97, "ink_centre_px": 483.29, "canvas_centre_px": 483.29, "ink_top_px": 43.6, "ink_bottom_px": 896.32}</div></div>
+
+<h2>C · Doğrulama</h2>
+<h3>Kontur ve içerik kontrolleri (10 PASS / 0 FAIL)</h3>
+<table><tr><td><span class="pass">PASS</span></td><td>1460 cubic segments, 0 straight segments</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>worst join 0.00 deg (limit 6.0) at (np.float64(309.0), np.float64(376.3013673033979))</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>9 open counters vs 9 in the polygonal build; largest areas (native px2): [4257.4, 742.4, 741.0, 732.5, 518.6, 444.7]</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>977 px of red ink (30x49 native)</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>3 breve component(s) at x=[242, 411, 668]</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>2 dot components at x=[411, 668]</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>0 sign flips across 31 rings</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>TR1 879.50  TR2 879.90  EN 879.90  spread 0.40 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>left spread 0.00 px, right spread 0.40 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>8f5d46f0302c4cc7</td></tr></table>
+
+<h3>Geometri kabul kapısı &mdash; 0 FAIL / 29 kontrol</h3>
+<table><tr><td><span class="pass">PASS</span></td><td>text line TR1 within common measure W</td><td class="mono">devL 0.00 devR 0.76 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>text line TR2 within common measure W</td><td class="mono">devL 0.00 devR 0.32 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>text line EN within common measure W</td><td class="mono">devL 0.00 devR 0.32 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>three lines share one measure W</td><td class="mono">widths [879.68, 880.12, 880.12] (spread 0.44 px)</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>stacked: seal left edge</td><td class="mono">0.29 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>stacked: seal right edge</td><td class="mono">0.25 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>stacked: seal top edge</td><td class="mono">0.37 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>stacked: seal bottom edge</td><td class="mono">0.23 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>stacked: text left edge</td><td class="mono">0.37 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>stacked: text right edge</td><td class="mono">1.06 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>stacked: text top edge</td><td class="mono">0.28 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>stacked: text bottom edge</td><td class="mono">0.37 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>stacked: clearspace error</td><td class="mono">-0.51 px (intended 85)</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>stacked: optical centre axis</td><td class="mono">0.69 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>horizontal: seal left edge</td><td class="mono">0.46 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>horizontal: seal right edge</td><td class="mono">0.94 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>horizontal: seal top edge</td><td class="mono">0.46 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>horizontal: seal bottom edge</td><td class="mono">0.48 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>horizontal: text left edge</td><td class="mono">0.75 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>horizontal: text right edge</td><td class="mono">1.40 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>horizontal: text top edge</td><td class="mono">0.46 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>horizontal: text bottom edge</td><td class="mono">0.48 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>horizontal: clearspace error</td><td class="mono">0.19 px (intended 85)</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>horizontal: seal↔text vertical centre</td><td class="mono">0.00 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>canonical seal unmodified (SHA-256)</td><td class="mono">8f5d46f0302c4cc7</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>seal geometry byte-identical in all lockups</td><td class="mono">3 files, 0 deviations</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>no word/letter stretching (rigid bodies, tracking only)</td><td class="mono">per-gap tracking tr2 3.20 / en 1.79 px</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>Turkish diacritics intact (Ğ breve + 2 İ dots)</td><td class="mono">9 components, 6 letters, 0 orphans</td></tr>
+<tr><td><span class="pass">PASS</span></td><td>letter counters open (not filled solid)</td><td class="mono">A counter (TR1)=0..23(24px), D bowl (TR1)=629..685(57px), G counter (TR2)=120..168(49px), O counter (EN)=380..394(15px)</td></tr></table>
+
+<h2>D · Son boyut kullanım önizlemeleri</h2>
+<div class="grid2">
+  <figure class="card"><img src="assets/horizontal-800.png"><figcaption>yatay 800&nbsp;px</figcaption></figure>
+  <figure class="card"><img src="assets/horizontal-400.png"><figcaption>yatay 400&nbsp;px</figcaption></figure>
+  <figure class="card"><img src="assets/horizontal-200.png"><figcaption>yatay 200&nbsp;px</figcaption></figure>
+  <figure class="card"><img src="assets/stacked-350.png"><figcaption>yığın 350&nbsp;px</figcaption></figure>
+</div>
+<h3>Koyu zemin</h3>
+<div class="grid2">
+  <figure class="card" style="background:#141210"><img src="assets/horizontal-dark-800.png"><figcaption style="color:#ddd">yatay · koyu</figcaption></figure>
+  <figure class="card" style="background:#141210"><img src="assets/horizontal-dark-400.png"><figcaption style="color:#ddd">yatay · koyu</figcaption></figure>
+</div>
+
+<div class="note">
+<b>Ne yapılmadı.</b> Hizalama otomatik seçilmedi. Kelime markası ve kilitler kanonikleştirilmedi. Mühür dosyası değiştirilmedi — SHA-256 her kilitte doğrulandı. Görsel Üretim yok, ölçek büyütme yok; yalnızca gerçek vektör geometrisi.
+</div>
+
+<p class="small"><a href="../">← Asya'da Eğitim mühür galerisi</a></p>
+</div></body></html>

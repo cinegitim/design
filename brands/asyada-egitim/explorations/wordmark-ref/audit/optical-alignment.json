@@ -1,0 +1,83 @@
+{
+  "canonical_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "render_scale": 10.0,
+  "ink_threshold_L": 235.0,
+  "paper_L": 243.0,
+  "variants": [
+    {
+      "name": "h-offset-4",
+      "offset_px": -4.0,
+      "svg": "h-offset-4.svg",
+      "png": "h-offset-4.png",
+      "lockup_ink_top_px": 31.8,
+      "lockup_ink_bottom_px": 517.9,
+      "lockup_ink_centre_px": 274.85,
+      "lockup_ink_centroid_px": 228.62
+    },
+    {
+      "name": "h-offset+0",
+      "offset_px": 0.0,
+      "svg": "h-offset+0.svg",
+      "png": "h-offset+0.png",
+      "lockup_ink_top_px": 31.8,
+      "lockup_ink_bottom_px": 517.9,
+      "lockup_ink_centre_px": 274.85,
+      "lockup_ink_centroid_px": 230.97
+    },
+    {
+      "name": "h-offset+4",
+      "offset_px": 4.0,
+      "svg": "h-offset+4.svg",
+      "png": "h-offset+4.png",
+      "lockup_ink_top_px": 31.8,
+      "lockup_ink_bottom_px": 517.9,
+      "lockup_ink_centre_px": 274.85,
+      "lockup_ink_centroid_px": 233.32
+    },
+    {
+      "name": "h-offset+8",
+      "offset_px": 8.0,
+      "svg": "h-offset+8.svg",
+      "png": "h-offset+8.png",
+      "lockup_ink_top_px": 31.8,
+      "lockup_ink_bottom_px": 517.9,
+      "lockup_ink_centre_px": 274.85,
+      "lockup_ink_centroid_px": 235.68
+    }
+  ],
+  "wordmark": {
+    "top": -12.2,
+    "bottom": 414.1,
+    "bbox_centre": 200.95000000000002,
+    "ink_centroid": 162.14380089058346,
+    "mass": 9022175
+  },
+  "wordmark_tr1": {
+    "cap_line_y": -11.75,
+    "letter_top_median_y": -11.75,
+    "apostrophe_top_y": -12.2,
+    "band_top_y": -12.2,
+    "band_bottom_y": 129.0,
+    "band_rows": [
+      198,
+      1610
+    ]
+  },
+  "optical_reference": {
+    "cap_line_y": -11.75,
+    "tr1_baseline_y": 129.0,
+    "cap_to_baseline_mid_y": 58.62,
+    "wordmark_bbox_centre_y": 200.95,
+    "bbox_minus_optical_px": 142.33
+  },
+  "apostrophe_overshoot_px": 0.45,
+  "stacked": {
+    "px_per_native_unit": 0.4128,
+    "ink_left_px": 43.6,
+    "ink_right_px": 922.97,
+    "ink_centre_px": 483.29,
+    "canvas_centre_px": 483.29,
+    "ink_top_px": 43.6,
+    "ink_bottom_px": 896.32
+  }
+}

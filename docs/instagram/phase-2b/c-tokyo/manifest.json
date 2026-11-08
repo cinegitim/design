@@ -1,0 +1,116 @@
+{
+  "id": "c-tokyo",
+  "title": "Tokyo’da öğrenci hayatı",
+  "character": "Night-city journal, oversized ivory type, abstract rail thread and daylight interruptions.",
+  "slides": [
+    {
+      "index": 1,
+      "file": "c-tokyo/png/01.png",
+      "editable": "c-tokyo/editable/01.html",
+      "layout": "cover-c",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 600,
+      "sources": [
+        "METRO",
+        "HOUSING",
+        "CLUBS"
+      ],
+      "ai_imagery": true,
+      "sha256": "fa5b0f37b687f7d910f44ec60817526b20405adf107af508b270da8dcf07f10d"
+    },
+    {
+      "index": 2,
+      "file": "c-tokyo/png/02.png",
+      "editable": "c-tokyo/editable/02.html",
+      "layout": "rail",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "METRO"
+      ],
+      "ai_imagery": false,
+      "sha256": "5aa02925277cb0a6aec73f4594fcc1c95779aad58f360286dfe70455832c3552"
+    },
+    {
+      "index": 3,
+      "file": "c-tokyo/png/03.png",
+      "editable": "c-tokyo/editable/03.html",
+      "layout": "housing",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "HOUSING"
+      ],
+      "ai_imagery": true,
+      "sha256": "87c8df346088c9ee2ae79ae46e8b580d0fd32765f585ab073e963d18f27f7dff"
+    },
+    {
+      "index": 4,
+      "file": "c-tokyo/png/04.png",
+      "editable": "c-tokyo/editable/04.html",
+      "layout": "photo-top",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "CLUBS"
+      ],
+      "ai_imagery": true,
+      "sha256": "b32d224c9eab609e66ea82657a57bbd4a70557e98b73a8a9cd0b0db7bf5d0f7d"
+    },
+    {
+      "index": 5,
+      "file": "c-tokyo/png/05.png",
+      "editable": "c-tokyo/editable/05.html",
+      "layout": "photo-side",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "EDITORIAL"
+      ],
+      "ai_imagery": true,
+      "sha256": "d36b77a4d996950363afa05d51bb81761546bed162031e1c7be60e5afcfd7fb5"
+    },
+    {
+      "index": 6,
+      "file": "c-tokyo/png/06.png",
+      "editable": "c-tokyo/editable/06.html",
+      "layout": "summary",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 320,
+      "sources": [
+        "METRO",
+        "HOUSING",
+        "CLUBS"
+      ],
+      "ai_imagery": false,
+      "sha256": "5ea2a14f4996da327746a6d8cb519e46c5ccd829441828fd095d0c6bdd9d9774"
+    },
+    {
+      "index": 7,
+      "file": "c-tokyo/png/07.png",
+      "editable": "c-tokyo/editable/07.html",
+      "layout": "cta",
+      "canonical_lockup_id": "H-02/light",
+      "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "lockup_width_px": 600,
+      "sources": [
+        "EDITORIAL"
+      ],
+      "ai_imagery": false,
+      "sha256": "7fd67be63fb07951700454bcf4459cd350c16f6ea3aaca3ad6259cd34da7d23d"
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="tr"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Asya'da Eğitim — 16 Çıktılı Tutarlılık Deneyi</title>
+<style>
+:root{--paper:#F7F3E9;--ink:#141210;--ver:#BD2120;--mute:#6b635a;--line:#ddd5c4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 22px 90px}
+h1{font-size:34px;line-height:1.2;margin:0 0 6px}
+h2{font-size:23px;margin:52px 0 4px;padding-top:20px;border-top:1px solid var(--line)}
+h3{font-size:17px;margin:30px 0 8px}
+p{margin:10px 0}
+.sub{color:var(--mute);font-size:15px;margin-bottom:26px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.75}
+code{background:#fff;border:1px solid var(--line);border-radius:3px;padding:1px 5px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:14px 0}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.banner{background:#fff;border:1px solid var(--line);border-left:5px solid var(--ver);padding:16px 20px;margin:22px 0;border-radius:2px}
+.pending{background:var(--ver);color:#fff;padding:16px 20px;margin:26px 0;font-weight:600;letter-spacing:.04em}
+.grid4{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin:16px 0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(430px,1fr));gap:22px;margin:16px 0}
+figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+figure img{display:block;width:100%;height:auto}
+figcaption{font:11.5px/1.5 ui-monospace,Menlo,monospace;padding:9px 11px;color:var(--mute);border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:8px}
+.flag{color:var(--ver);font-weight:700}
+.ok{color:#2f7a4a;font-weight:700}
+a{color:var(--ver)}
+.sheet{width:100%;border:1px solid var(--line);background:#fff}
+.hash{word-break:break-all;font-size:11px;color:var(--mute)}
+ul{padding-left:20px}li{margin:7px 0}
+.small{font-size:14px;color:var(--mute)}
+</style></head><body><div class="wrap">
+
+<h1>16 Çıktılı Tutarlılık Deneyi</h1>
+<p class="sub">Asya'da Eğitim · Sosyal kare gönderi · V-01 görsel dili · 4 içerik ailesi × 4 bağımsız varyant<br>
+Amaç: modelin onaylı V-01 görsel dilini <b>ne kadar tutarlı</b> üretebildiğini ölçmek. Aynı marka, aynı şablon değil.</p>
+
+<div class="pending">İNSAN TUTARLILIK DEĞERLENDİRMESİ BEKLENİYOR — hiçbir çıktı otomatik seçilmedi ve hiçbir gözlem kanonikleştirilmedi.</div>
+
+<h2>Sabit referans paketi</h2>
+<p class="small">16 çalışmanın tamamı <b>aynı 3 referansla</b>, hiçbir zincirleme olmadan çalıştı. Hiçbir üretim, bir öncekinin referansı olmadı.</p>
+<table>
+<tr><th>Rol</th><th>Dosya</th><th>Boyut</th></tr>
+<tr><td><b>Stil / V-01 DNA</b></td><td class="mono">brands/asyada-egitim/share-seal/assets/seal-v-01.png</td><td class="mono">1536×1024</td></tr>
+<tr><td><b>Kompozisyon</b></td><td class="mono">brands/asyada-egitim/share-seal/assets/app-social.png</td><td class="mono">1254×1254</td></tr>
+<tr><td><b>Fotoğraf / doku</b></td><td class="mono">brands/asyada-egitim/share-seal/assets/ieft-booth.png</td><td class="mono">1536×1024</td></tr>
+</table>
+
+<h2>Sabit tutulan üretim ayarları</h2>
+<div class="mono">
+model          gpt-image-2 (tek sağlayıcı, sürüm sabit)<br>
+boyut          1024×1024 istek → her dosya 1254×1254 döndü (tümü tekdüze)<br>
+kalite         high<br>
+referans       3 dosya, 16/16 aynı, sıra aynı<br>
+ton            sıcak kağıt #F7F3E9 · vermilyon #BD2120 · mürekkep siyah<br>
+yasak          logo · amblem · mühür · monogram · kelime markası · yazı · rakam · tipografi · sahte arayüz<br>
+              küre · mezuniyet şapkası · el sıkışma · bayrak · swoosh · laurel<br>
+              mor-mavi parlama · holografik parçacık · lens flare · bokeh · 3B parlaklık<br>
+logo           Üretilmedi. Kanonik SVG her çıktıya SONRADAN deterministik olarak bindirildi.
+</div>
+
+<h2>Logo yerleşim kuralı — 16/16 birebir aynı</h2>
+<p class="small">Yalnızca izin verilen yerleşim parametreleri değişti (konum, boyut, açıklık). Geometri hiç değişmedi.</p>
+<div class="mono">
+konum          sol-alt · kenar boşluğu 75px (0.06 × kenar)<br>
+tabak          326px kare, köşe yarıçapı 21/400 oranı · kağıt #F7F3E9<br>
+logo           218×202px · tabak içinde 54px açıklık (logo yüksekliğinin 0.27'si)<br>
+canonical_logo_sha256  8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a
+</div>
+
+<h2>İletişim tablosu — 16 çıktı</h2>
+<img class="sheet" src="assets/sheet/all-16.png" alt="16 çıktının iletişim tablosu">
+
+<h2>Aile A — Burs / son başvuru</h2>
+<img class="sheet" src="assets/sheet/family-A.png" alt="Aile A">
+<h2>Aile B — Üniversite seçkisi</h2>
+<img class="sheet" src="assets/sheet/family-B.png" alt="Aile B">
+<h2>Aile C — Etkinlik / seminer / fuar</h2>
+<img class="sheet" src="assets/sheet/family-C.png" alt="Aile C">
+<h2>Aile D — Ülke / öğrenim hedefi keşfi</h2>
+<img class="sheet" src="assets/sheet/family-D.png" alt="Aile D">
+
+<h2>Sapma gözlemleri</h2>
+
+<div class="banner">
+<h3 style="margin-top:0">KRİTİK — format hatası: 16 çıktının 13'ünde siyah dolgu / yırtık kenar</h3>
+<p class="small">"Marka için temiz alan bırak" talimatı model tarafından <b>torn-paper vinyet + siyah arka plan</b> olarak yorumlandı. Kare sosyal gönderi yer kaplamıyor.</p>
+<table id="bf">
+<tr><th>Çıktı</th><th>Kenar siyah</th><th>Kare içi siyah</th><th>Durum</th></tr>
+</table>
+<p class="small">Yalnızca <b>B2</b> (%0.0), <b>C1</b> (%2.4) ve <b>D1</b> (%0.1) kenarı temiz tam-bleed kare. Bu üçü aynı zamanda ailelerinin en güçlü üretimleri — yani kalite ile temiz kenar yüksek ölçüde örtüşüyor.</p>
+</div>
+
+<div class="banner">
+<h3 style="margin-top:0">KRİTİK — logo bütünlüğü: 2 çıktıda model tarafından yeniden çizilmiş logo</h3>
+<p class="small">Kilitleme kuralı ihlal edildi. İki çıktıda model, V-01 mührünün geometrisini kaynak referanstan türetip kendi başına yeniden çizdi: krem güneş diski + üçgen zirveler + S kıvrımlı nehir, alan rengi üzerinde.</p>
+<table>
+<tr><th>Çıktı</th><th>Ne oldu</th></tr>
+<tr><td><b>A4</b></td><td>Mührün tamamı ana grafik olarak yeniden üretildi — kanonik logonun konuyla yarışan ikinci bir kopyası</td></tr>
+<tr><td><b>C4</b></td><td>Fuar bandolarının üzerinde yeniden çizilmiş mühür; ayrıca sol altta ikinci bir sahte işaret</td></tr>
+<tr><td>C3</td><td><span class="ok">Uyarı düzeyi</span> — amblem değil, manzara olarak sun-disc + zirve + nehir DNA'sı. Logonun okunmasıyla yarışıyor ama işaret değil</td></tr>
+</table>
+<p class="small">Bu, kilit kuralının somut kanıtı: model, stil referansı verildiğinde logoyu "stil örneği" değil "çizilecek nesne" olarak okuyor. <b>Stil referansı ile üretim referansı birbirine karıştırılmamalı.</b></p>
+</div>
+
+<div class="banner">
+<h3 style="margin-top:0">KLİŞE SAPMASI</h3>
+<p class="small">Referans paketinde olmayan, ama neredeyse her üretimde geri dönen motifler: <b>çiçek açan kiraz ağacı</b> (16 çıktının ~11'inde), <b>Beş Senden Dağı</b>, <b>pagoda</b> (D3). Referansta istenmemişti; model, "Asya eğitimi" fikrini jenerik JICA/gönüllülük görsel diline indirgedi. Ayrıca <b>B2</b> Avrupa gotik meydanı + sonbahar ağaçlarıyla Oksford/Cambridge klişesine kaydı — "Asya'da" vaadiyle çelişiyor.</p>
+</div>
+
+<div class="banner">
+<h3 style="margin-top:0">İçerik doğruluğu</h3>
+<p class="small">16/16 tipografi içermedi — sahte metin yasağı tam uyum. Yönlendirme metinleri görünür biçimde takip edilmedi: <b>D2</b> "Seoul, çok açık, gökyüzü kareyi aşıyor" istendi, hâlâ Çin gökdelenleri ve gürültü bandı verdi. <b>A2</b> "çok seyrek, çok negatif alan" istendi, model ısınmış-yanmış bir kağıt lekesi üretti.</p>
+</div>
+
+<h2>En güçlü çıktılarda hayatta kalan tekrarlayan görsel özellikler</h2>
+<p class="small"><b>Gözlemlerdir — henüz kanonikleştirilmedi.</b></p>
+<ul>
+<li><b>Vermilyon baskınlık + krem kağıt.</b> 16/16. En güçlü kalite sıçraması bu ikiliyi doğru oranda kurabilenlerde.</li>
+<li><b>Sıcak, düşük doygunluklu fotoğrafik derecelendirme.</b> Tüm fotoğrafik üretimlerde tutarlı; hiçbirinde yapay parlama yok.</li>
+<li><b>Atmosferik dağ silueti / pus.</b> En güçlü üç üretimde (D1, C1, B1) belirleyici öge.</li>
+<li><b>Grafik olan üretimlerde keskin düzlem + ince cetveller.</b> A4, C3, D4 aynı soyut dili paylaşıyor.</li>
+<li><b>İnsan ölçeği.</b> Güçlü olanlarda insan küçük ve bağlama yerleşik; zayıf olanlarda yok ya da dekoratif.</li>
+<li><b>Negatif alan = nefes.</b> Otomatik "dolu kompozisyon" eğilimi baskın; sade eğilim yalnızca birkaçında tuttu.</li>
+</ul>
+
+<h2>Çıktı bazlı inceleme</h2>
+<p class="small">Kırmızı bayrak = gözlenen kusur. "Aile" ve "temiz kare" ölçümü değil, gözle ve piksel ölçümüyle raporlanmıştır.</p>
+<div class="grid4">
+<figure><img src="assets/final/A1.png" alt="A1"><figcaption><b>A1</b><span class="flag">siyah dolgu %33</span></figcaption></figure>
+<figure><img src="assets/final/A2.png" alt="A2"><figcaption><b>A2</b><span class="flag">siyah dolgu %47</span></figcaption></figure>
+<figure><img src="assets/final/A3.png" alt="A3"><figcaption><b>A3</b><span class="flag">siyah dolgu %18</span></figcaption></figure>
+<figure><img src="assets/final/A4.png" alt="A4"><figcaption><b>A4</b><span class="flag">sahte logo + %29</span></figcaption></figure>
+<figure><img src="assets/final/B1.png" alt="B1"><figcaption><b>B1</b><span class="flag">siyah dolgu %30</span></figcaption></figure>
+<figure><img src="assets/final/B2.png" alt="B2"><figcaption><b>B2</b><span class="ok">temiz</span></figcaption></figure>
+<figure><img src="assets/final/B3.png" alt="B3"><figcaption><b>B3</b><span class="flag">siyah dolgu %45</span></figcaption></figure>
+<figure><img src="assets/final/B4.png" alt="B4"><figcaption><b>B4</b><span class="flag">siyah dolgu %49</span></figcaption></figure>
+<figure><img src="assets/final/C1.png" alt="C1"><figcaption><b>C1</b><span class="ok">temiz</span></figcaption></figure>
+<figure><img src="assets/final/C2.png" alt="C2"><figcaption><b>C2</b><span class="flag">siyah dolgu %23</span></figcaption></figure>
+<figure><img src="assets/final/C3.png" alt="C3"><figcaption><b>C3</b><span class="flag">%36 + DNA çakışması</span></figcaption></figure>
+<figure><img src="assets/final/C4.png" alt="C4"><figcaption><b>C4</b><span class="flag">sahte logo + %51</span></figcaption></figure>
+<figure><img src="assets/final/D1.png" alt="D1"><figcaption><b>D1</b><span class="ok">temiz</span></figcaption></figure>
+<figure><img src="assets/final/D2.png" alt="D2"><figcaption><b>D2</b><span class="flag">siyah şerit + gürültü</span></figcaption></figure>
+<figure><img src="assets/final/D3.png" alt="D3"><figcaption><b>D3</b><span class="flag">%22 + pagoda klş.</span></figcaption></figure>
+<figure><img src="assets/final/D4.png" alt="D4"><figcaption><b>D4</b><span class="flag">siyah dolgu %17</span></figcaption></figure>
+</div>
+
+<h2>Ham üretimler — üzerinde hiçbir işlem yapılmadı</h2>
+<p class="small">Logonun bindirildiği sürümler yukarıdadır. Aşağıdakiler modelden çıktığı hâliyle, değiştirilmeden sunulur.</p>
+<details><summary class="mono">16 ham PNG'yi aç (her biri ~2 MB)</summary>
+<div class="grid4">
+<figure><img loading="lazy" src="assets/raw/A1.png" alt="A1 ham"><figcaption><b>A1</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/A2.png" alt="A2 ham"><figcaption><b>A2</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/A3.png" alt="A3 ham"><figcaption><b>A3</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/A4.png" alt="A4 ham"><figcaption><b>A4</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/B1.png" alt="B1 ham"><figcaption><b>B1</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/B2.png" alt="B2 ham"><figcaption><b>B2</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/B3.png" alt="B3 ham"><figcaption><b>B3</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/B4.png" alt="B4 ham"><figcaption><b>B4</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/C1.png" alt="C1 ham"><figcaption><b>C1</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/C2.png" alt="C2 ham"><figcaption><b>C2</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/C3.png" alt="C3 ham"><figcaption><b>C3</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/C4.png" alt="C4 ham"><figcaption><b>C4</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/D1.png" alt="D1 ham"><figcaption><b>D1</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/D2.png" alt="D2 ham"><figcaption><b>D2</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/D3.png" alt="D3 ham"><figcaption><b>D3</b> ham</figcaption></figure>
+<figure><img loading="lazy" src="assets/raw/D4.png" alt="D4 ham"><figcaption><b>D4</b> ham</figcaption></figure>
+</div>
+</details>
+
+<h2>Kanonik logo doğrulaması — 16/16</h2>
+<p class="small">Her çıktı, logo bindirildikten sonra kanonik varlığın hash'ini kaydeder. 16 kayıt, tek bir hash'te birleşir.</p>
+<table><tr><th>Çıktı</th><th>canonical_logo_sha256</th><th>final_sha256</th></tr>
+<tr><td class="mono">A1 – D4 (16/16)</td><td class="hash mono">8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a</td><td class="mono"><a href="assets/manifest.json">manifest.json</a></td></tr>
+</table>
+<p class="small">Kanonik varlık: <code>brands/asyada-egitim/assets/v01-canonical.svg</code> · doğrulama <code>studio/tools/verify-canonical-logo.sh</code> · karar kaydı <code>brands/asyada-egitim/decisions/2026-10-07-v01-canonical-lock.md</code></p>
+
+<div class="banner">
+<h3 style="margin-top:0">Deneyin okuması</h3>
+<p class="small"><b>Aynı marka, aynı şablon değil</b> hedefi <b>başarıyla</b> tutuldu: 16 çıktı da aynı görsel aileyi taşıyor, dört ayrı içerik ailesi birbirinden net ayrışıyor ve hiçbiri birbirinin kopyası değil. Marka tutarlılığı yüksek.</p>
+<p class="small"><b>Ancak iki yapısal sorun var.</b> Birincisi: negatif alan talimatı sistematik biçimde üretimi bozdu — üretim güvenilirliği düşük. İkincisi ve daha önemlisi: model, referansta <b>stil</b> ile <b>logoyu</b> ayırt edemiyor. Kaynak paketinde mühür bulunduğu için mührü kopyalıyor. Bu, sonraki turlarda mührü referanstan çıkarıp yalnızca renk/doku/fotoğraf referansı vermek ya da mührü mutlaka kırpılmış, işaretsiz bir DNA örneği olarak vermek gerektiğini gösteriyor.</p>
+</div>
+
+<div class="pending">İNSAN TUTARLILIK DEĞERLENDİRMESİ BEKLENİYOR</div>
+<p class="small" style="text-align:center"><a href="../">← Mühür galerisine dön</a></p>
+
+</div>
+<script>
+const BF={"A1":[33.6,32.5],"A2":[97.8,46.5],"A3":[57.2,17.6],"A4":[56.3,28.7],"B1":[82.9,29.9],"B2":[0.0,1.0],"B3":[73.8,44.9],"B4":[77.9,49.3],"C1":[2.4,9.7],"C2":[79.4,22.6],"C3":[53.1,35.5],"C4":[73.8,50.7],"D1":[0.1,0.0],"D2":[59.7,47.5],"D3":[63.1,22.1],"D4":[56.8,16.6]};
+const t=document.getElementById('bf');
+for(const k in BF){
+  const clean=BF[k][0]<10;
+  const r=t.insertRow(-1);
+  [ k, BF[k][0].toFixed(1)+'%', BF[k][1].toFixed(1)+'%',
+    clean?'<span class="ok">temiz</span>':'<span class="flag">siyah dolgu</span>' ]
+    .forEach(c=>{const cell=r.insertCell();cell.innerHTML=c;});
+}
+</script>
+</body></html>

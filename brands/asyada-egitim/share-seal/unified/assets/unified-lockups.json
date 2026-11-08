@@ -1,0 +1,70 @@
+{
+ "W": 881.0,
+ "gap": 85.0,
+ "pad": 44.0,
+ "axis": 484.5,
+ "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+ "stacked": {
+  "dims": [
+   969.0,
+   941.25
+  ],
+  "seal": [
+   299.5,
+   44.0,
+   370.0,
+   342.25
+  ],
+  "wordmark_origin": [
+   44.0,
+   483.25
+  ],
+  "axis_svg_x": 528.5
+ },
+ "horizontal": {
+  "dims": [
+   1514.54,
+   514.0
+  ],
+  "seal": [
+   44.0,
+   44.0,
+   460.54,
+   426.0
+  ],
+  "wordmark_origin": [
+   589.54,
+   56.0
+  ],
+  "vertical_mid_svg_y": 257.0
+ },
+ "gaps": {
+  "stacked": {
+   "axis": 440.5,
+   "wm_x0": 0.0,
+   "wm_top": 427.25,
+   "wm_bot": 853.25,
+   "seal": [
+    255.5,
+    0.0,
+    370.0,
+    342.25
+   ],
+   "artwork_w_native": 881.0
+  },
+  "horizontal": {
+   "wm_x0": 545.54,
+   "wm_top": 0.0,
+   "wm_bot": 426.0,
+   "seal": [
+    0.0,
+    0.0,
+    460.54,
+    426.0
+   ],
+   "seal_cy": 213.0,
+   "wm_cy": 213.0,
+   "artwork_w_native": 1426.54
+  }
+ }
+}

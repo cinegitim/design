@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "id": "instagram-creative-breakout-bavul-001",
+  "title": "Bir Bavul. Binlerce İhtimal.",
+  "brand": "asyada-egitim",
+  "category": "instagram-single-post",
+  "status": "in-review",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "image_generation": {
+    "role": "image layer only",
+    "asset": "assets/miniature-asia.webp",
+    "source": "User-authorized original generated illustrative concept; text and model-rendered logo were cropped out."
+  },
+  "editable_source": "source/01.html",
+  "stylesheet": "assets/style.css",
+  "final_png": "png/01.png",
+  "canonical_lockup_id": "D-04/light",
+  "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "logo_file": "assets/d-04-light.svg",
+  "social_published": false,
+  "design_review": "pending"
+}

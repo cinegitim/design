@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asya Eğitim — Uygulama Sistemi 2/5 · Dijital / Web</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#141210;--paper:#F7F3E9;--bronze:#A8875B;--muted:#6F6A5E;--line:#E0D6BE;--card:#FFFFFF;
+    --ok:#2F7A4D;--urgent:#B3372A;
+    --fd:"Fraunces",Georgia,serif;--ft:"Inter",system-ui,sans-serif;--fm:"IBM Plex Mono",monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--ft);line-height:1.55}
+  .wrap{max-width:1120px;margin:0 auto;padding:52px 36px 90px}
+  .tag{display:inline-block;font-family:var(--fm);font-size:.72rem;letter-spacing:.14em;background:var(--ink);color:var(--paper);padding:4px 10px;border-radius:99px}
+  h1{font-family:var(--fd);font-size:clamp(2rem,4.6vw,3.2rem);font-weight:600;margin:12px 0 6px}
+  h1 em{font-weight:400}
+  .lede{font-family:var(--fd);font-style:italic;font-size:1.12rem;color:#45403a;max-width:38em}
+  section{border-top:2px solid var(--ink);padding:22px 0 28px;margin-top:32px}
+  section h2{font-family:var(--fd);font-size:1.25rem;margin-bottom:4px}
+  .note{font-family:var(--fm);font-size:.74rem;color:var(--muted);margin-bottom:12px}
+  .mock{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .cap{font-family:var(--fm);font-size:.74rem;color:var(--muted);margin-top:8px}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:820px){.duo{grid-template-columns:1fr}}
+  .nav{display:flex;align-items:center;gap:18px;padding:12px 20px;border-bottom:1px solid var(--line);font-size:.82rem}
+  .nav img{height:26px}
+  .nav .sp{flex:1}
+  .cta{display:inline-block;background:var(--ink);color:var(--paper);padding:10px 22px;border-radius:99px;font-weight:600;font-size:.86rem}
+  .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:0}
+  @media(max-width:700px){.hero{grid-template-columns:1fr}}
+  .hero .t{padding:34px 30px}
+  .hero .t h3{font-family:var(--fd);font-size:2rem;font-weight:600;line-height:1.12}
+  .hero .v{min-height:220px;background:linear-gradient(115deg,#2b2620 55%,#57503f 80%,var(--bronze) 135%);border-left:6px solid var(--bronze)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:18px 20px}
+  @media(max-width:700px){.cards{grid-template-columns:1fr}}
+  .ucard{border:1px solid var(--line);border-radius:6px;padding:14px;font-size:.8rem}
+  .ucard b{font-family:var(--fd);font-size:1.02rem;display:block}
+  .badge{display:inline-block;font-family:var(--fm);font-size:.66rem;padding:3px 10px;border-radius:99px;color:#fff}
+  .mobile{max-width:300px;margin:0 auto;border:2px solid var(--ink);border-radius:22px;overflow:hidden;background:var(--card)}
+  @media(max-width:640px){.wrap{padding:34px 18px 60px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">Uygulama sistemi · 2/5</span>
+  <h1>Dijital / web <em>ailesi</em></h1>
+  <p class="lede">Başlık: somut sonuç. Bilgi: son-tarih → gerekenler → danışman notu. Rozetler semantik renklerde; bronz yalnızca marjda.</p>
+
+  <section>
+    <h2>Navigasyon + hero</h2>
+    <p class="note">header 64px · hero: öğrenci anlatısı + tek CTA · sağ blok açıklık-kırpması</p>
+    <div class="mock">
+      <div class="nav"><img src="../assets/logo-compact.svg" alt="Asya Eğitim"><span>Üniversiteler</span><span>Ülkeler</span><span>Kabul Hikâyeleri</span><span class="sp"></span><span class="cta" style="padding:7px 16px">Görüşme Al</span></div>
+      <div class="hero">
+        <div class="t"><div style="font-family:var(--fm);font-size:.7rem;color:var(--muted)">KABUL HİKÂYESİ · 2026</div><h3>Zeynep — NUS Bilgisayar, tam burs.</h3><p style="font-size:.86rem;margin:8px 0 16px">“Doğru açıklık, doğru üniversiteydi.”</p><span class="cta">Hikâyeyi Oku</span></div>
+        <div class="v"></div>
+      </div>
+    </div>
+    <p class="cap">Hero ızgarası: metin solu, açıklık-kırpmalı görsel bloğu sağı; tek CTA kuralı.</p>
+  </section>
+
+  <section>
+    <h2>Üniversite bilgi sayfası + karşılaştırma kartları</h2>
+    <p class="note">bilgi üçlüsü + semantik durum rozeti · kart: 3 kolon → mobilde 1</p>
+    <div class="mock">
+      <div style="padding:22px 22px 6px"><div style="font-family:var(--fm);font-size:.7rem;color:var(--muted)">SEUL ULUSAL ÜNİVERSİTESİ · LİSANS</div>
+      <div style="font-family:var(--fd);font-size:1.6rem;font-weight:600">Bilgisayar Mühendisliği</div>
+      <div style="display:flex;gap:8px;margin-top:8px"><span class="badge" style="background:var(--ok)">BAŞVURU AÇIK</span><span class="badge" style="background:var(--urgent)">SON 10 GÜN</span></div></div>
+      <div class="cards">
+        <div class="ucard"><b>Seul Ulusal</b><span style="font-family:var(--fm);font-size:.7rem;color:var(--muted)">SON 15 OCAK</span><br>TOEFL 100+ · transkript<br><span style="border-left:4px solid var(--bronze);padding-left:6px">danışman notu</span></div>
+        <div class="ucard"><b>Tokyo Bilim</b><span style="font-family:var(--fm);font-size:.7rem;color:var(--muted)">SON 1 ŞUBAT</span><br>EJU + İngilizce iz · mülakat<br><span style="border-left:4px solid var(--bronze);padding-left:6px">danışman notu</span></div>
+        <div class="ucard"><b>NUS</b><span style="font-family:var(--fm);font-size:.7rem;color:var(--muted)">SON 28 ŞUBAT</span><br>IB 38+ · kişisel beyan<br><span style="border-left:4px solid var(--bronze);padding-left:6px">danışman notu</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Ülke açılışı + CTA + mobil kart</h2>
+    <div class="duo">
+      <div><div class="mock"><div style="padding:24px"><div style="font-family:var(--fm);font-size:.7rem;color:var(--muted)">ÜLKE · GÜNEY KORE</div><div style="font-family:var(--fd);font-size:1.7rem;font-weight:600">Disiplinli hayal,<br>kesin takvim.</div><p style="font-size:.84rem;margin:8px 0 16px">12 üniversite · burs haritası · vize rehberi.</p><span class="cta">Kore Dosyasını Aç</span></div></div><p class="cap">Ülke landing: başlık + kapsam + tek CTA.</p></div>
+      <div><div class="mobile"><div style="padding:16px"><img src="../assets/icon.svg" alt="Simge" style="width:34px"><div style="font-family:var(--fd);font-size:1.25rem;font-weight:600;margin-top:8px">Son 10 gün: Seul Ulusal</div><div style="font-size:.8rem">TOEFL 100+ · transkript hazır mı?</div><div style="margin-top:12px"><span class="cta" style="display:block;text-align:center">Dosyamı Kontrol Et</span></div></div></div><p class="cap">Mobil kart 360px: simge → sonuç → tek CTA; min dokunma 44px.</p></div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

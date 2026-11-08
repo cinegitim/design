@@ -1,0 +1,97 @@
+{
+  "measure_W": 881.0,
+  "candidates": {
+    "A": {
+      "file": "WA.svg",
+      "viewBox": [
+        0,
+        -12.0,
+        881.0,
+        437.00199999999995
+      ],
+      "lines": {
+        "tr1": {
+          "cap": 142.0,
+          "tracking_px": 0.733
+        },
+        "tr2": {
+          "cap": 142.0,
+          "tracking_px": 38.5
+        },
+        "en": {
+          "cap": 35.0,
+          "tracking_px": 24.019
+        }
+      },
+      "note": "candidate A - genuine outlines from Jost (SIL OFL) at wght 700, optically tracked on ink",
+      "ink": {
+        "tr1": {
+          "x0": 0.0,
+          "x1": 880.9,
+          "w": 880.9
+        },
+        "tr2": {
+          "x0": 0.0,
+          "x1": 880.9,
+          "w": 880.9
+        },
+        "en": {
+          "x0": 0.0,
+          "x1": 880.9,
+          "w": 880.9
+        }
+      },
+      "final_tracking_px": {
+        "tr1": 0.733,
+        "tr2": 38.5,
+        "en": 24.019
+      }
+    },
+    "B": {
+      "file": "WB.svg",
+      "viewBox": [
+        0,
+        -12.0,
+        881.0,
+        437.00199999999995
+      ],
+      "lines": {
+        "tr1": {
+          "cap": 142.0,
+          "tracking_px": 6.433
+        },
+        "tr2": {
+          "cap": 142.0,
+          "tracking_px": 52.24
+        },
+        "en": {
+          "cap": 35.0,
+          "tracking_px": 27.156
+        }
+      },
+      "note": "candidate B - hand-drafted glyphs, 168 stem on a 700 unit em; straight edges exact, curves true circular arcs",
+      "ink": {
+        "tr1": {
+          "x0": 0.0,
+          "x1": 880.9,
+          "w": 880.9
+        },
+        "tr2": {
+          "x0": 0.0,
+          "x1": 880.9,
+          "w": 880.9
+        },
+        "en": {
+          "x0": 0.0,
+          "x1": 880.9,
+          "w": 880.9
+        }
+      },
+      "final_tracking_px": {
+        "tr1": 6.433,
+        "tr2": 52.24,
+        "en": 27.156
+      }
+    }
+  }
+}

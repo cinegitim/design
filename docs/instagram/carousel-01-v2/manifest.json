@@ -1,0 +1,54 @@
+{
+  "campaign": "Üniversite için başka bir dünya var.",
+  "version": "v2 — Instagram-first redesign",
+  "status": "HUMAN APPROVAL PENDING",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "chatgpt_image_generations": 4,
+  "backend": "gpt-image-2 via connected ChatGPT subscription",
+  "logo_rule": "P-01 stacked primary lockup, identical scale/proportion on every slide; exact canonical SVG, no transforms",
+  "slides": [
+    {
+      "file": "01-cover.png",
+      "sha256": "77e465c4bffd923fbf1da8fea3d357e247055b4813cbc18cf8c3e5ccc42541f9",
+      "source_html": "source/01.html",
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "02-shift.png",
+      "sha256": "a794dec54c078fbfdaa46dc0cf51616ea72f4eed935b673f4ac95433eced14b3",
+      "source_html": "source/02.html",
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "03-routes.png",
+      "sha256": "45ea1ce2d4cfd053e9dfe7594bd8e634ae91c905282094eb755f3aa579554d88",
+      "source_html": "source/03.html",
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "04-pathways.png",
+      "sha256": "d00d79898b424b1c6ec8e4edcff2adaf36123aa78e0028a4a142a55aad629353",
+      "source_html": "source/04.html",
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "05-cta.png",
+      "sha256": "a1990b6dad2b426c1d6761779614e619b7fc863062785d3dc4b8dc28a21fbc84",
+      "source_html": "source/05.html",
+      "canonical_lockup_id": "P-01/dark",
+      "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    }
+  ]
+}

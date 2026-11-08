@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "repository": "cinegitim/design",
+  "scope": "existing-product-cover-assets",
+  "notes": "Each thumbnail is a real image from the corresponding existing source version. The two library/previews JPEGs are direct captures of canonical HTML artwork. Thumbnail links never change approved source files or imply an approval status.",
+  "entries": [
+    {
+      "groupId": "instagram-ieft-2026-firsatlar-001",
+      "versionId": "instagram-ieft-2026-firsatlar-001",
+      "path": "instagram/ieft-2026-firsatlar-001/png/01.png"
+    },
+    {
+      "groupId": "instagram-carousel-01",
+      "versionId": "carousel-01-v3",
+      "path": "instagram/carousel-01-v3/01-cover.png"
+    },
+    {
+      "groupId": "instagram-carousel-02",
+      "versionId": "instagram-carousel-02",
+      "path": "instagram/carousel-02/01-cover.png"
+    },
+    {
+      "groupId": "instagram-launch-creative-02",
+      "versionId": "instagram-launch-creative-02",
+      "path": "instagram/launch-creative-02/final/01-cover.png"
+    },
+    {
+      "groupId": "instagram-basvuru-rehberi",
+      "versionId": "instagram-basvuru-rehberi-china-001",
+      "path": "instagram/basvuru-rehberi-china-001/export/01.png"
+    },
+    {
+      "groupId": "instagram-burs-dosyasi-gks-2027-001",
+      "versionId": "instagram-burs-dosyasi-gks-2027-001",
+      "path": "instagram/burs-dosyasi-gks-2027-001/export/01.png"
+    },
+    {
+      "groupId": "instagram-rotani-sec-tokyo-seoul-001",
+      "versionId": "instagram-rotani-sec-tokyo-seoul-001-v3",
+      "path": "instagram/rotani-sec-tokyo-seoul-001/v3/final/01-admission-letter.png"
+    },
+    {
+      "groupId": "instagram-tsinghua-atlas-2027",
+      "versionId": "instagram-tsinghua-atlas-2027-v2",
+      "path": "instagram/tsinghua-atlas-2027/v2/png/01.png"
+    },
+    {
+      "groupId": "instagram-snu",
+      "versionId": "instagram-phase-2c-a-snu",
+      "path": "instagram/phase-2c/a-snu/png/01.png"
+    },
+    {
+      "groupId": "instagram-waseda",
+      "versionId": "instagram-phase-2c-b-waseda",
+      "path": "instagram/phase-2c/b-waseda/png/01.png"
+    },
+    {
+      "groupId": "instagram-tokyo",
+      "versionId": "instagram-phase-2c-c-tokyo",
+      "path": "instagram/phase-2c/c-tokyo/png/01.png"
+    },
+    {
+      "groupId": "instagram-six-steps",
+      "versionId": "instagram-phase-2c-d-six-steps",
+      "path": "instagram/phase-2c/d-six-steps/png/01.png"
+    },
+    {
+      "groupId": "asset-instagram-profile-photo",
+      "versionId": "asset-instagram-profile-photo",
+      "path": "instagram/profile-photo/instagram-profile-1080.png"
+    },
+    {
+      "groupId": "asset-social-covers-cover-graphics",
+      "versionId": "asset-social-covers-cover-graphics",
+      "path": "social-covers/assets/facebook-page-cover-desktop-v5-2x.svg"
+    },
+    {
+      "groupId": "cin-egitim-rollup",
+      "versionId": "cin-egitim-rollup-rollup-design-a",
+      "path": "library/previews/cin-egitim-rollup-a-cover.jpg"
+    },
+    {
+      "groupId": "instagram-creative-breakout-bavul-001",
+      "versionId": "instagram-creative-breakout-bavul-001",
+      "path": "instagram/creative-breakout-bavul-001/png/01.png"
+    },
+    {
+      "groupId": "instagram-utokyo-design-2027-001",
+      "versionId": "instagram-utokyo-design-2027-001-v2",
+      "path": "instagram/utokyo-design-2027-001/v2/png/01.png"
+    },
+    {
+      "groupId": "instagram-kaist-tech-track-2027-001",
+      "versionId": "instagram-kaist-tech-track-2027-001-v2",
+      "path": "library/previews/kaist-tech-track-2027-v2-cover.jpg"
+    },
+    {
+      "groupId": "instagram-hong-kong-university-line-2027-001",
+      "versionId": "instagram-hong-kong-university-line-2027-001",
+      "path": "instagram/hong-kong-university-line-2027-001/jpeg/01.jpg"
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "style_id": "conceptual-breakout",
+  "name": "Conceptual Breakout",
+  "brand": "asyada-egitim",
+  "category": "instagram-carousel",
+  "version": "0.1.0",
+  "status": "review-only",
+  "approval": {
+    "human_style_approval": false,
+    "canonical_brand_identity_unchanged": true,
+    "notes": "New proposed visual grammar. Canonical identity is approved, but this creative style has not been reviewed or approved by the user."
+  },
+  "description": "A high-concept visual surprise built around one material or object metaphor, oversized shapes and editorial tension; distinct from both photographic campaign grids and data-atlas diagrams.",
+  "source_of_truth": {
+    "brand": "brands/asyada-egitim/brand.json",
+    "canonical_lockups": "brands/asyada-egitim/assets/lockups/canonical-lockups.json",
+    "brand_status": "brands/asyada-egitim/status.md",
+    "production_rules": "studio/production/routes.json",
+    "methodology": ".opencode/skills/brand-studio/SKILL.md",
+    "comment": "Asya'da Eğitim has approved identity assets but no complete approved brand-system.md. These campaign choices are review-only."
+  },
+  "references": [
+    {
+      "id": "carousel-01",
+      "kind": "historical-candidate",
+      "gallery": "docs/instagram/carousel-01/",
+      "recipe": "brands/asyada-egitim/applications/instagram-carousel-01/build.py",
+      "note": "Historical visual reference only; not creative approval of this style or current asset usage."
+    },
+    {
+      "id": "carousel-01-v2",
+      "kind": "historical-candidate",
+      "gallery": "docs/instagram/carousel-01-v2/",
+      "recipe": "brands/asyada-egitim/applications/instagram-carousel-01-v2/build.py",
+      "note": "Historical visual reference only; not creative approval of this style or current asset usage."
+    },
+    {
+      "id": "carousel-01-v3",
+      "kind": "historical-candidate",
+      "gallery": "docs/instagram/carousel-01-v3/",
+      "recipe": "brands/asyada-egitim/applications/instagram-carousel-01-v3/build.py",
+      "note": "Historical visual reference only; not creative approval of this style or current asset usage."
+    },
+    {
+      "id": "carousel-02",
+      "kind": "historical-candidate",
+      "gallery": "docs/instagram/carousel-02/",
+      "recipe": "brands/asyada-egitim/applications/instagram-carousel-01-v3/build.py",
+      "note": "Historical visual reference only; not creative approval of this style or current asset usage."
+    }
+  ],
+  "hard_locks": {
+    "identity": "Exact pre-approved V-01 identity only; never reconstruct, redraw, typeset or transform a canonical lockup.",
+    "lockup_options": [
+      "H-02/dark",
+      "H-02/light",
+      "P-01/dark",
+      "P-01/light"
+    ],
+    "lockup_preference": {
+      "cover": "H-02/dark",
+      "interior": "H-02/dark or H-02/light; P-01 when space allows; always use the exact approved complete SVG"
+    },
+    "minimum_width_from_manifest": true,
+    "typeface": "Jost (campaign production family; not a new canonical brand typography approval)",
+    "palette_tokens": {
+      "paper": "#F7F3E9",
+      "red": "#BD2120",
+      "ink": "#1D2027"
+    },
+    "copy": "Preserve approved Turkish copy, official slogan and CTA exactly; no generated logo/wordmark text.",
+    "source": "Editable HTML/CSS/SVG and actual browser PNG render; optional AI only as separately composited non-text, non-logo imagery.",
+    "output_size_px": [
+      1080,
+      1350
+    ]
+  },
+  "soft_constants": [
+    "Choose one understandable visual concept per story, not a miscellaneous collage of stock objects.",
+    "Use striking object scale, negative space or contrast for the first slide; reveal the information through changing compositions.",
+    "Maintain editable Jost typography and official canonical logo as a separate safe layer; never embed lettering in generated imagery.",
+    "Give every slide a role in the reveal rather than recycling the same poster.",
+    "Keep all visual metaphors truthful and culturally appropriate; decorative images do not impersonate a real university."
+  ],
+  "color_behavior": {
+    "institutional_default": "paper-contrast",
+    "paper_as_anchor": true,
+    "default_guideline_for_five_slides": "Alternate quiet paper reveals and punchy ink or red moments without overwhelming text legibility.",
+    "allowed_surfaces": [
+      "paper",
+      "ink",
+      "red"
+    ],
+    "contrast_rule": "Identity logo uses approved contrast variant. Text remains visually legible on photographic/object treatments.",
+    "variation_rule": "Change scale, material and visual framing; never treat recoloring as the entire style difference."
+  },
+  "layout_grammar": {
+    "archetypes": [
+      "hero-object",
+      "diagonal-crop",
+      "cutpaper-layers",
+      "typographic-interruption",
+      "material-collage",
+      "reveal-window",
+      "poster-contrast",
+      "calm-cta"
+    ],
+    "sequence_rule": "Create a concept-driven narrative arc (hook → reveal → detail → response) with at least three composition treatments; concept beats must remain coherent.",
+    "text_fit": "Large display type must coexist with legible body copy; do not force an overlong text into an art-poster treatment.",
+    "media": "Optional original/authorized object, collage or cutout layers only; brand typography/logo remain editable canonical assets.",
+    "anti_patterns": [
+      "random collage",
+      "template-only moodboard",
+      "full-slide model-generated text",
+      "fake university imagery",
+      "visual gimmicks that obscure accurate details",
+      "unapproved logo redrawing"
+    ]
+  },
+  "variation_axes": {
+    "visual_metaphor": {
+      "default": "object",
+      "options": [
+        "object",
+        "type-tension",
+        "collage"
+      ],
+      "description": "Central expressive device for the story."
+    },
+    "materiality": {
+      "default": "clean-cutout",
+      "options": [
+        "clean-cutout",
+        "paper-layer",
+        "photo-stage"
+      ],
+      "description": "Rendering/material treatment of supporting visual layers."
+    },
+    "layout_energy": {
+      "default": "bold",
+      "options": [
+        "bold",
+        "spacious",
+        "layered"
+      ],
+      "description": "Composition energy and occupied space."
+    },
+    "cover_device": {
+      "default": "hero-object",
+      "options": [
+        "hero-object",
+        "oversized-type",
+        "reveal-window"
+      ],
+      "description": "First slide reveal/hook grammar."
+    },
+    "image_role": {
+      "default": "concept-support",
+      "options": [
+        "concept-support",
+        "object-only",
+        "minimal"
+      ],
+      "description": "Images never include final brand typography or logos."
+    },
+    "sequence_arc": {
+      "default": "hook-reveal",
+      "options": [
+        "hook-reveal",
+        "contrast-payoff",
+        "journey"
+      ],
+      "description": "How the concept unfolds through multiple slides."
+    }
+  },
+  "default_preset": "object-metaphor",
+  "presets": {
+    "object-metaphor": {
+      "label": "Nesne metaforu",
+      "summary": "An oversized meaningful object anchors a narrative; plenty of brand-safe type space.",
+      "variants": {
+        "visual_metaphor": "object",
+        "materiality": "clean-cutout",
+        "layout_energy": "bold",
+        "cover_device": "hero-object",
+        "image_role": "concept-support",
+        "sequence_arc": "hook-reveal"
+      }
+    },
+    "typographic-shock": {
+      "label": "Tipografik gerilim",
+      "summary": "Bold Jost lettering and purposeful white space create a visual hook.",
+      "variants": {
+        "visual_metaphor": "type-tension",
+        "materiality": "paper-layer",
+        "layout_energy": "spacious",
+        "cover_device": "oversized-type",
+        "image_role": "minimal",
+        "sequence_arc": "contrast-payoff"
+      }
+    },
+    "editorial-collage": {
+      "label": "Katmanlı kolaj",
+      "summary": "Controlled paper/photo cutouts and staggered layout reveal a story in stages.",
+      "variants": {
+        "visual_metaphor": "collage",
+        "materiality": "photo-stage",
+        "layout_energy": "layered",
+        "cover_device": "reveal-window",
+        "image_role": "object-only",
+        "sequence_arc": "journey"
+      }
+    }
+  },
+  "required_checks": [
+    "brand identity and chosen complete SVG lockup hashes verified against canonical manifest",
+    "actual HTML/CSS/SVG source preserved and Chromium/Playwright PNG raster verified at target size",
+    "legible Turkish copy, typography, contrast, line-wrap and logo clearspace checked on all slides",
+    "selected style's distinctive grammar and per-slide visual variety checked in a real render",
+    "brand-identity and creative human approvals remain distinct; no automatic publishing"
+  ],
+  "evaluation": {
+    "method": "Compare same brief rendered in registered style families; check grammar distinction and shared approved identity.",
+    "minimum_test_outputs": 3,
+    "status": "not-yet-benchmarked"
+  },
+  "preview_quality_contract": {
+    "status": "candidate-not-human-approved",
+    "reference_instagram_posts": [],
+    "source_preference": "Use verified assets and current original briefs. Historical candidate posts are not evidence this style was approved.",
+    "identity_gate": {
+      "composite_logo_required": true,
+      "allowed_approved_lockups": [
+        "H-02/dark",
+        "H-02/light",
+        "P-01/dark",
+        "P-01/light"
+      ],
+      "reject_seal_only_for_carousel": true,
+      "reject_retypeset_brand_name": true,
+      "reject_missing_or_unverified_lockup": true,
+      "manifest_sha256_required": true,
+      "minimum_width_enforce_from_canonical_manifest": true,
+      "note": "Complete outlined paths must be byte-for-byte identical to the canonical SVG record; brand name must not be a substitute HTML text block."
+    },
+    "density_and_layout_gate": {
+      "no_fixed_repeated_footer": true,
+      "logo_positions": "Can vary across safe, contrast-appropriate placements; each slide preserves clearspace.",
+      "image_usage": "Use owned/authorized meaningful object cutouts or paper/material forms; generated image layers may not carry logo or text.",
+      "composition": "Recognizable conceptual device and dramatic pacing distinct from the Editorial Campaign and the Data Atlas families.",
+      "prohibit_auto_approval": true,
+      "visual_inspection": "Compare full-page sequences at mobile scale against the existing campaign exemplars; check visual density and content legibility, not palette alone."
+    },
+    "test_acceptance": [
+      "All slides render at 1080 × 1350 from genuinely editable HTML/CSS/SVG.",
+      "Every slide uses exact approved SHA-256 verified canonical complete lockup.",
+      "The selected style differs compositionally from other registered families, not only by color.",
+      "Typography, contrast, safe area, asset provenance and responsive readability pass human review.",
+      "No creative or social-media publication approval is inferred."
+    ]
+  }
+}

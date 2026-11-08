@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "state": "applied",
+  "target_label": "legacy Design workspace",
+  "archive_source_sha": "f5c011eade436699aea4c1467da0c72c69c7e6a2",
+  "file_count": 635,
+  "bytes_removed": 1396608389,
+  "independently_verified_blobs": 332,
+  "git_status": "clean; archived tracked assets intentionally omitted by exact-file sparse checkout",
+  "existing_linked_worktrees_checked": 5,
+  "linked_worktree_pending_changes": 0,
+  "shared_git": "retained; approximately 829 MiB; required by linked worktrees",
+  "stash": "retained",
+  "active_preview_roots": "retained; approximately 431 MB of large preview assets",
+  "instructions_and_small_sources": "retained",
+  "persistent_baseline": "retained",
+  "unverified_zip": "asya-egitim-site.zip retained (102907227 bytes); no exact archived container blob in pinned main",
+  "target_disk_usage_before": "approximately 2.8 GiB",
+  "target_disk_usage_after": "approximately 1.5 GiB",
+  "remote_file_deletions": 0,
+  "image_or_render_calls": 0
+}

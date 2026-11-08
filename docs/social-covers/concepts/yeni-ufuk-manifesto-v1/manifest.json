@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "brand": "asyada-egitim",
+  "id": "social-covers-new-horizon-manifesto-v1",
+  "status": "review-only",
+  "title": "Yeni Ufuk × ASYA Manifestosu",
+  "slogan": "Üniversite için başka bir dünya var.",
+  "date": "2026-11-08",
+  "category": "social-cover",
+  "strategy": "Single AI-produced campus visual + canonical unboxed H-02 SVG + Jost editorial typography + feathered contrast illumination without hard backgrounds",
+  "canonical_lockup_id": "H-02/light",
+  "canonical_lockup_source": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
+  "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "source": "source/cover.html",
+  "copy": "assets/h02-light.svg",
+  "platforms": [
+    {
+      "id": "x",
+      "size": [
+        1500,
+        500
+      ]
+    },
+    {
+      "id": "linkedin",
+      "size": [
+        1512,
+        256
+      ]
+    },
+    {
+      "id": "facebook-desktop",
+      "size": [
+        1702,
+        617
+      ]
+    },
+    {
+      "id": "facebook-mobile",
+      "size": [
+        1704,
+        710
+      ]
+    }
+  ],
+  "photography": [],
+  "renders": "Browser-native, on-demand PNG/JPEG export using existing local html2canvas 1.4.1 library and original campus photo compositing",
+  "inspected_as_raster": false,
+  "creative_approved": false,
+  "social_published": false,
+  "notes": "V4.2 keeps the AI student background, canonical H-02 brand assets and editorial typography. Updated country order and geometric safe zones. Separate demo avatar overlay is not included in export images. Browser PNG/JPEG export controls added; static raster copies are not pre-committed; raster conversion happens on user click.",
+  "version": "v4.2 — Platform safe layouts and real-profile overlap previews",
+  "imagery": {
+    "path": "assets/international-campus-ai-v2.jpg",
+    "source": "ChatGPT generated image in this conversation, final diverse international student campus scene",
+    "representation": "conceptual composite; not an actual named university campus",
+    "format": "JPEG",
+    "github_blob_sha": "1f85dd1de2f385bb8d2f21b6732aa214f7ce6a3b",
+    "used_for": [
+      "x",
+      "linkedin",
+      "facebook-desktop",
+      "facebook-mobile"
+    ]
+  },
+  "readability": {
+    "method": "subtle localized warm-paper feather gradient and fine white bottom fade; no cards, badges, pills, or rectangular boxes",
+    "countries": "individually editable text spans with restrained red separator dots and a hairline red lead mark",
+    "contrast": "ink/wine on warm image wash",
+    "platforms": [
+      "x",
+      "linkedin",
+      "facebook-desktop",
+      "facebook-mobile"
+    ]
+  },
+  "typographyRefinement": {
+    "kickerSizesPx": {
+      "x": 21,
+      "linkedin": 18,
+      "facebook-desktop": 24,
+      "facebook-mobile": 24
+    },
+    "headlineShadow": "0 2px 4px rgba(29,32,39,.16), 0 0 11px rgba(247,243,233,.36)",
+    "preserves": "layout, image, H-02 logo, country line, no boxes"
+  },
+  "countryOrder": [
+    "Çin",
+    "Hong Kong",
+    "Güney Kore",
+    "Japonya",
+    "Singapur"
+  ],
+  "platformSafeZones": {
+    "basis": "2026 platform documentation + conservative avatar overlay simulation; actual profile layouts vary by client",
+    "x": "Avatar overlay bottom left; wordmark and headline moved to center-left safe strip; countries moved to upper middle, away from avatar and mobile-side crops.",
+    "linkedin": "Avoid redundant in-banner corporate logo because company profile logo appears separately; keep title and country sequence clear of left logo overlay.",
+    "facebook": "Move country list above the faces and out of lower-left profile overlay in desktop and mobile variants.",
+    "inspection": "Preview toggle simulates circle overlays; actual cover crops and profile UIs may differ."
+  },
+  "previewSeal": "assets/canonical-seal.svg",
+  "browserExports": {
+    "source": "index.html / source/cover.html",
+    "execution": "Client-side in Brandstudio site; 8 buttons on four preview cards",
+    "dimensions": {
+      "x": [
+        1500,
+        500
+      ],
+      "linkedin": [
+        1512,
+        256
+      ],
+      "facebook-desktop": [
+        1702,
+        617
+      ],
+      "facebook-mobile": [
+        1704,
+        710
+      ]
+    },
+    "formats": [
+      "PNG (lossless)",
+      "JPEG (quality 94%)"
+    ],
+    "sameCanonicalSource": true,
+    "imageAndLogo": "Original campus image, Jost webfont, canonical H-02 SVG",
+    "hidesProfileOverlay": true,
+    "requiresThirdPartyAPI": false,
+    "note": "Every export produces a new local file from the current canonical HTML/CSS artboard; no server-side raster cache or paid service"
+  }
+}

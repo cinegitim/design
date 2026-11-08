@@ -1,0 +1,69 @@
+{
+  "campaign": "Üniversite için başka bir dünya var.",
+  "status": "HUMAN APPROVAL PENDING",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "chatgpt_image_generations": 4,
+  "backend": "gpt-image-2 via connected ChatGPT subscription",
+  "canonicals": {
+    "D-04/light": {
+      "id": "D-04/light",
+      "sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    "D-04/dark": {
+      "id": "D-04/dark",
+      "sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    "P-01/dark": {
+      "id": "P-01/dark",
+      "sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    }
+  },
+  "slides": [
+    {
+      "file": "01-cover.png",
+      "sha256": "79b2002f59703d55a726d9ad2bd9eed4b864c30f814cca436b8ec46f5bc21a60",
+      "source_html": "source/01.html",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "02-shift.png",
+      "sha256": "ce68467e12c7e42af35d69c4791195f76fc9cda3881b412e6b7a17ad8a856fb1",
+      "source_html": "source/02.html",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "03-routes.png",
+      "sha256": "05ea6d288e4febc2f3b27ec6a36245c36cc5ba8057b6d6927dd6b84fbff29caa",
+      "source_html": "source/03.html",
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "04-pathways.png",
+      "sha256": "412cfa4862312852453d14628a1ba359fe155b534ac721337deb1ff863f0cb6c",
+      "source_html": "source/04.html",
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    },
+    {
+      "file": "05-cta.png",
+      "sha256": "0590d34dfdae57343e9da60224ed1c1471d0137889069c97dab0b47d426d819b",
+      "source_html": "source/05.html",
+      "canonical_lockup_id": "P-01/dark",
+      "canonical_lockup_sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"
+    }
+  ]
+}

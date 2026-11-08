@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "executor": "chatgpt-work",
+  "observed_at": "2026-11-02T09:00:00Z",
+  "host_kind": "connector",
+  "model_id": null,
+  "capabilities": {
+    "github-read": {
+      "status": "observed",
+      "evidence_source": "connector-action"
+    },
+    "filesystem": {
+      "status": "unknown",
+      "evidence_source": null
+    }
+  }
+}

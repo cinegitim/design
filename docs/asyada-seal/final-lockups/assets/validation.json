@@ -1,0 +1,5680 @@
+{
+  "status": "HUMAN FINAL LOCKUP APPROVAL PENDING",
+  "technical_checks_not_approval": true,
+  "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "source_wordmark_sha256": "668c0026043cf6ab2496c67feca152da37ad8348d2b6641a354a841b58e375f3",
+  "outline_assets_checked": 84,
+  "lockup_variants_checked": 80,
+  "typography_weights": {
+    "tr": 550,
+    "en": 350
+  },
+  "alignment_selected": null,
+  "text_elements": 0,
+  "image_elements": 0,
+  "image_generation_calls": 0,
+  "source_lettering_unchanged": true,
+  "seal_source_bytes_unchanged": true,
+  "minimum_native_raster_diagnostics": [
+    [
+      "P-01-light-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-light-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-light-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-light-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-dark-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-dark-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-dark-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-dark-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-mono-ink-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-mono-ink-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-mono-ink-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-mono-ink-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-mono-paper-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-mono-paper-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-mono-paper-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "P-01-mono-paper-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "H-02-light-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 1,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-light-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-light-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-light-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-dark-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 1,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-dark-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-dark-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-dark-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-mono-ink-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 1,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-mono-ink-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-mono-ink-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-mono-ink-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-mono-paper-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 1,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-mono-paper-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-mono-paper-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "H-02-mono-paper-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ]
+    ],
+    [
+      "C-03-light-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-light-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 290,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-light-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-light-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-dark-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-dark-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 290,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-dark-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-dark-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-mono-ink-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-mono-ink-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 290,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-mono-ink-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-mono-ink-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-mono-paper-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-mono-paper-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 290,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-mono-paper-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "C-03-mono-paper-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ]
+    ],
+    [
+      "D-04-light-m4.svg",
+      [
+        {
+          "line": "TR2",
+          "components": 10,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ]
+    ],
+    [
+      "D-04-dark-m4.svg",
+      [
+        {
+          "line": "TR2",
+          "components": 10,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ]
+    ],
+    [
+      "D-04-mono-ink-m4.svg",
+      [
+        {
+          "line": "TR2",
+          "components": 10,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ]
+    ],
+    [
+      "D-04-mono-paper-m4.svg",
+      [
+        {
+          "line": "TR2",
+          "components": 10,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ]
+    ],
+    [
+      "F-05-light-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-light-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-light-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-light-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-dark-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-dark-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-dark-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-dark-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-mono-ink-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-mono-ink-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-mono-ink-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-mono-ink-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-mono-paper-m4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-mono-paper-0.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-mono-paper-p4.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ],
+    [
+      "F-05-mono-paper-p8.svg",
+      [
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ]
+    ]
+  ],
+  "four_device_pixel_counter_component_checks_passed": true,
+  "contrast_ratios": {
+    "ink_on_paper": 14.71,
+    "paper_on_ink": 14.71,
+    "red_on_paper": 5.57,
+    "red_on_ink": 2.64,
+    "seal_white_on_red": 6.17
+  },
+  "checks": {
+    "P-01-light-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 302,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-light-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-light-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 302,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-light-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-dark-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 302,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-dark-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-dark-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 302,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-dark-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-mono-ink-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 302,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-mono-ink-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-mono-ink-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 302,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-mono-ink-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-mono-paper-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 302,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-mono-paper-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-mono-paper-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 302,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "P-01-mono-paper-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-light-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 1,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-light-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-light-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-light-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-dark-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 1,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-dark-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-dark-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-dark-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-mono-ink-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 1,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-mono-ink-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-mono-ink-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-mono-ink-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-mono-paper-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 1,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-mono-paper-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-mono-paper-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "H-02-mono-paper-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 528,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 296,
+          "cap_height_px": 47.18677753880368
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 297,
+          "cap_height_px": 46.84972912781223
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 2,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 297,
+          "cap_height_px": 11.79669438470092
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-light-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 290,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-light-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 290,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 290,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-light-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 289,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-light-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 290,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-dark-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 290,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-dark-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 290,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 290,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-dark-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 289,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-dark-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 290,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-mono-ink-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 290,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-mono-ink-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 290,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 290,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-mono-ink-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 289,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-mono-ink-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 290,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-mono-paper-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 290,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-mono-paper-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 290,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 290,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-mono-paper-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 289,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "C-03-mono-paper-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 448,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 290,
+          "cap_height_px": 46.18280960240717
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 291,
+          "cap_height_px": 45.8529323909614
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 291,
+          "cap_height_px": 11.545702400601792
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-light-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 10,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-light-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-light-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-light-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-dark-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 10,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-dark-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-dark-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-dark-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-mono-ink-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 10,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-mono-ink-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-mono-ink-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-mono-ink-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-mono-paper-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 10,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-mono-paper-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-mono-paper-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "D-04-mono-paper-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995
+      ],
+      "minimum_canvas_width_px": 200,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 133,
+          "cap_height_px": 21.295401753129276
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 134,
+          "cap_height_px": 21.143291740606927
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-light-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-light-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 302,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-light-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-light-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-dark-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-dark-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 302,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-dark-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-dark-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-mono-ink-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-mono-ink-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 302,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-mono-ink-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-mono-ink-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-mono-paper-m4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-mono-paper-0.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 302,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-mono-paper-p4.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 303,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    },
+    "F-05-mono-paper-p8.svg": {
+      "source_glyph_geometry_identical": true,
+      "seal_geometry_identical": true,
+      "clearspace_min_native": 70.0,
+      "common_measure_native": [
+        881.000000140625,
+        880.9999999148995,
+        881.000000171875
+      ],
+      "minimum_canvas_width_px": 352,
+      "native_raster_lines": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "expected_components": 7,
+          "enclosed_counters": 4,
+          "expected_counters": 4,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 48.26640547678228
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "expected_components": 9,
+          "enclosed_counters": 0,
+          "expected_counters": 0,
+          "components_and_counters_preserved": true,
+          "visible_width_px": 304,
+          "cap_height_px": 47.92164543766241
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "expected_components": 15,
+          "enclosed_counters": 0,
+          "expected_counters": 5,
+          "components_and_counters_preserved": false,
+          "visible_width_px": 304,
+          "cap_height_px": 12.06660136919557
+        }
+      ],
+      "four_device_pixels_per_css_pixel": [
+        {
+          "line": "TR1",
+          "components": 7,
+          "enclosed_counters": 4
+        },
+        {
+          "line": "TR2",
+          "components": 9,
+          "enclosed_counters": 0
+        },
+        {
+          "line": "EN",
+          "components": 15,
+          "enclosed_counters": 5
+        }
+      ],
+      "native_sampling_caveat": "At 1x, light English contours can fall below 50% alpha at isolated pixels; keep antialiasing. Geometry/counters preserved at 4x. Native proofs require visual review."
+    }
+  },
+  "limits": [
+    "Proposed minimum sizes visually inspected, not human approved.",
+    "Native counter/component tests are not an OCR or clinical readability guarantee.",
+    "Red apostrophe remains original selected accent on dark backgrounds; logo marks are not normal body text.",
+    "D-04 is Turkish-only; English omission requires human confirmation."
+  ]
+}

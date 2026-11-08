@@ -1,0 +1,171 @@
+{
+  "phase": "Instagram Studio — Phase 1B: Art Direction & Visual Quality",
+  "status": "HUMAN ART-DIRECTION APPROVAL PENDING",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "canonical_manifest": "brands/asyada-egitim/assets/lockups/canonical-lockups.json",
+  "lockups_used": [
+    {
+      "canonical_lockup_id": "D-04/light",
+      "sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "display_px": 220,
+      "minimum_px": 200,
+      "used_in": "B3, C3 CTA"
+    },
+    {
+      "canonical_lockup_id": "D-04/dark",
+      "sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "display_px": 220,
+      "minimum_px": 200,
+      "used_in": "A3 CTA"
+    },
+    {
+      "seal_only": "brands/asyada-egitim/assets/v01-canonical.svg",
+      "sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "display_px": 96,
+      "used_in": "A1, B1, C1 covers"
+    }
+  ],
+  "image_backend": "Pollinations gen_edit_image_free (imagery only; no text/logos/layouts in generation)",
+  "new_raster": [
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/raster/abstract-ribbon.jpg",
+      "seed": 201
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/raster/aerial-grid.jpg",
+      "seed": 202
+    }
+  ],
+  "reused_raster": "6 Phase-1 frames (hk/sg/jp) — no new calls",
+  "image_calls_total": 2,
+  "exports": [
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/a1-cover.png",
+      "sha256": "afbdbc3b56cd3d567cb6ad05244bc4bdbb9e080048b0b4082754b06d1ca4ad43",
+      "size_px": "1080x1350"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/a2-content.png",
+      "sha256": "d5c7dcaecb5dec95c13d5a17c5c63f3ce218b200642432dd7e2938bbdac2b360",
+      "size_px": "1080x1350"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/a3-cta.png",
+      "sha256": "cdbd6d1e20f23e4e0f5cc8eea1427c4f243c486acedf4982b1ac4cf1d5b8edaf",
+      "size_px": "1080x1350"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/b1-cover.png",
+      "sha256": "cf07c262ab306dbe5192db45f6dc1b15ee16dc89cc8164b6bb9411ac33d803af",
+      "size_px": "1080x1350"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/b2-content.png",
+      "sha256": "a84d86564ee2f536cebdf5cb3e9a864d211d9f75b1527154e935177799fbcc5c",
+      "size_px": "1080x1350"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/b3-cta.png",
+      "sha256": "bdb26e5a20a817af7c347c2ee1f5932e5acf97c0d094708c8c94fec68bfd1091",
+      "size_px": "1080x1350"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/c1-cover.png",
+      "sha256": "e3d9258c6aa489405a60d77db9b7f9b734f070f5be23e16dbba9837def4eded6",
+      "size_px": "1080x1350"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/c2-content.png",
+      "sha256": "4c0bdd51ac81af7bdbfd0802c2b791dafe16e3be6e97068b821f6bb083c58e0f",
+      "size_px": "1080x1350"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/c3-cta.png",
+      "sha256": "841145553242f514279f2dfbc72b0731751aac816c2648dde473939addb9efd3",
+      "size_px": "1080x1350"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/f1-deadline.png",
+      "sha256": "734d82fcc9ce0fca7caccce40ae3410dcf98f67cb1df5c8c19bcfbba91e18ca3",
+      "size_px": "1080x1350"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/f2-country.png",
+      "sha256": "290b1cdc3dddec4a58da8090788e1abcc2592a9ec345bc02faa03b880df448ad",
+      "size_px": "1080x1350"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/f3-event.png",
+      "sha256": "0e4f95839c5b55c8f3fb711a48c9044f39ce6961d48781adcff789e30ff7cde6",
+      "size_px": "1080x1350"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/f4-data.png",
+      "sha256": "2cfb2874fd4c9a64722216fb3854a0221c4212cf7e5dbb034cc519346cf74392",
+      "size_px": "1080x1350"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/f5-dossier.png",
+      "sha256": "9106f481b6e8fc3e442f75562b98ee07a910e8539e2b4ce96272e664ce6f5493",
+      "size_px": "1080x1350"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1b/exports/f6-night.png",
+      "sha256": "57c0ee39acda5cc091ec7621ac54c44509879a1c4d677a7857fe2937b6292f57",
+      "size_px": "1080x1350"
+    }
+  ],
+  "carousels": [
+    {
+      "id": "A",
+      "mode": "expressive editorial typography",
+      "slides": [
+        "a1-cover",
+        "a2-content",
+        "a3-cta"
+      ],
+      "topic": "China deadline countdown",
+      "cta": "Consultation",
+      "placeholders": "dates marked ornek"
+    },
+    {
+      "id": "B",
+      "mode": "photo storytelling",
+      "slides": [
+        "b1-cover",
+        "b2-content",
+        "b3-cta"
+      ],
+      "topic": "Kyoto term (fictional illustrative scenario)",
+      "cta": "Save/Share",
+      "placeholders": "clearly marked fictional scenario; no real persons/quotes/claims"
+    },
+    {
+      "id": "C",
+      "mode": "graphic information",
+      "slides": [
+        "c1-cover",
+        "c2-content",
+        "c3-cta"
+      ],
+      "topic": "HK vs SG budgets",
+      "cta": "Apply",
+      "placeholders": "all figures marked ornek-teyit bekliyor"
+    }
+  ],
+  "feed_covers": [
+    "a1,b1,c1 carousel covers",
+    "f1-deadline",
+    "f2-country",
+    "f3-event",
+    "f4-data",
+    "f5-dossier",
+    "f6-night"
+  ],
+  "rules": [
+    "No social-media template canonicalized.",
+    "Lockups/seal as complete files; placement/size only.",
+    "Amber #D9A441 exploratory pending approval; fallback to red planned.",
+    "No fabricated data, scholarships, testimonials, or claims."
+  ]
+}

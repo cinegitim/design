@@ -1,0 +1,59 @@
+{
+  "campaign": "Asya'da Eğitim — Rotanı Seç #001 / Tokyo mu, Seul mü?",
+  "contract_status": "immutable",
+  "language": "tr",
+  "slides": {
+    "01-hook": [
+      "ROTANI SEÇ / 001",
+      "TOKYO MU, SEUL MÜ?",
+      "Üniversite hayatını hangi şehirde kurardın?"
+    ],
+    "02-life-after-class": [
+      "Ders bitti. Şehir başladı.",
+      "TOKYO",
+      "Waseda çevresinde bir öğleden sonra.",
+      "SEUL",
+      "Sinchon'da ders çıkışı.",
+      "İki farklı kampüs çevresi, iki farklı günlük yaşam deneyimi."
+    ],
+    "03-universities": [
+      "Şehri değil, üniversiteni de seçiyorsun.",
+      "TOKYO",
+      "University of Tokyo",
+      "Waseda University",
+      "Sophia University",
+      "SEUL",
+      "Seoul National University",
+      "Yonsei University",
+      "Korea University",
+      "Farklı akademik alanlar, programlar ve kabul koşulları."
+    ],
+    "04-language": [
+      "İngilizce okuyabilirsin. Peki yaşayabilir misin?",
+      "Her iki şehirde de İngilizce lisans seçenekleri var. Ama her program İngilizce değil.",
+      "JAPONYA",
+      "Japonca, günlük yaşamını kolaylaştırır.",
+      "GÜNEY KORE",
+      "Korece, kampüs dışında önemli bir avantaj sağlar.",
+      "Başvurmadan önce bölümün öğretim dilini ve dil yeterlilik şartlarını kontrol et."
+    ],
+    "05-budget": [
+      "Hayalini kurduğun şehrin bir de bütçesi var.",
+      "Hesaba katman gereken dört temel gider:",
+      "Konaklama",
+      "Öğrenim ücreti",
+      "Ulaşım",
+      "Günlük yaşam",
+      "Yurt mu, kiralık ev mi? Kampüse yakınlık, ulaşım ve burs seçenekleri bütçeni değiştirebilir."
+    ],
+    "06-decision": [
+      "ROTANI SEÇ / 001",
+      "Peki senin rotan hangisi?",
+      "TOKYO",
+      "SEUL",
+      "Karar verirken bölümünü, eğitim dilini ve bütçeni birlikte düşün.",
+      "Yorumlarda tercihini söyle.",
+      "Asya'da Eğitim · Ücretsiz ön görüşme"
+    ]
+  }
+}

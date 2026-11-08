@@ -1,0 +1,195 @@
+{
+  "campaign": "Üniversite için başka bir dünya var.",
+  "title": "Asya’da Eğitim — Instagram Creative Breakout",
+  "status": "HUMAN CREATIVE BREAKOUT REVIEW PENDING",
+  "format": "Six independent 4:5 explorations: one cover + one interior for each direction; not a complete carousel.",
+  "directions": {
+    "A": "Cinematic Youth — immersive, image-led student-life photography, kinetic full-bleed crops and scale type integrated into scene.",
+    "B": "Bold Graphic / Kinetic — no photography; near-total typographic occupation, hard scale contrast, screenprint grain, collisions and a composition-specific logo notch.",
+    "C": "Experimental Editorial Collage — layered contemporary student/campus photographs, cut-paper interventions, translucent printed fragments and magazine-like asymmetry."
+  },
+  "tool_usage": {
+    "selected_gallery_compositions": 6,
+    "additional_generated_candidates": 2,
+    "gpt_image_2_generations_total": 8,
+    "gpt_image_2_edits_total": 3,
+    "selected_image_edit": "C-cover landmark cleanup only; the initial no-logo generation is retained beside the final logo-integrated image.",
+    "rejected_edits": "Two targeted Turkish-copy edits (A-interior, B-interior) did not reliably preserve/fix lettering; not used in final comps.",
+    "backend": "gpt-image-2 via connected ChatGPT subscription; user explicitly requested this backend."
+  },
+  "copy_review": {
+    "required_campaign_line": "Üniversite için başka bir dünya var.",
+    "destinations": [
+      "Çin",
+      "Japonya",
+      "Güney Kore",
+      "Singapur",
+      "Hong Kong"
+    ],
+    "note": "The exact campaign phrase is checked on covers; five destination names were checked on relevant designs. Some image-model secondary headline letterforms/diacritics remain exploratory in the interiors; they are clearly flagged in the gallery and must be accurately re-typeset after human direction approval, before production."
+  },
+  "logo_policy": "Only complete manifest-listed canonical SVGs were composited after generation. No logo was included in any image-generation prompt. Geometry untouched. Composition-specific placements use P-01 at 352px minimum or D-04 at 200px minimum; exact position/approved light-dark variant recorded per image.",
+  "imagery_disclosure": "All generated people/places are illustrative campaign imagery; no specific university or destination landmark claim is made.",
+  "comparisons": [
+    {
+      "directory": "docs/instagram/carousel-01-v3/",
+      "rejected_structure": "repeat top headline / bottom signature with separated photo strip and broad flat fields"
+    },
+    {
+      "directory": "docs/instagram/carousel-02/",
+      "rejected_structure": "same type-led poster skeleton, fixed footer/logo and rectangular photo blocks"
+    },
+    {
+      "directory": "docs/instagram/discovery-01/",
+      "rejected_structure": "paper dossier grid, recurring corner logo, ruled lists and stable type zones"
+    }
+  ],
+  "compositions": [
+    {
+      "id": "A-cover",
+      "direction": "A",
+      "kind": "Cover",
+      "original_file": "source-originals/A-cover.png",
+      "original_sha256": "cd75585ebf2985295c0118ecade1156c5bc2bbaeab735183b445d582e8f8a234",
+      "final_file": "composited/A-cover.png",
+      "final_sha256": "85cdde46df00efe83a0bba5b3492c2424994c8fc8e61c9735df4f76948b8bd1f",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_width_px": 220,
+      "logo_x_y_px": [
+        20,
+        1000
+      ],
+      "logo_placement_rationale": "Aperture in the lower-left dark jacket; switched to the approved small-use horizontal lockup so no critical type or face is covered.",
+      "minimum_supported_display_width_px": 200
+    },
+    {
+      "id": "A-interior",
+      "direction": "A",
+      "kind": "Interior",
+      "original_file": "source-originals/A-interior.png",
+      "original_sha256": "ff75c7da224d7ae312e49bdf92b36f8b458071fb1b7288da77bc4861c1f9729d",
+      "final_file": "composited/A-interior.png",
+      "final_sha256": "655e65110f2b8f095908a7f09cffa9dcffcc938c33348c665f50e61dae7ae12d",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_width_px": 352,
+      "logo_x_y_px": [
+        18,
+        18
+      ],
+      "logo_placement_rationale": "Upper-left bright glass; balances the opposite diagonal title axis.",
+      "minimum_supported_display_width_px": 352
+    },
+    {
+      "id": "B-cover",
+      "direction": "B",
+      "kind": "Cover",
+      "original_file": "source-originals/B-cover.png",
+      "original_sha256": "e0aba8e9260f52cdd1b18fedd387192b9fc8f046781e040717062dd46723d3ef",
+      "final_file": "composited/B-cover.png",
+      "final_sha256": "3a0c1d599e010083ed0d4a78c1934d481998e841a8fa585b4caad1037a001874",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "canonical_lockup_id": "D-04/light",
+      "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_width_px": 220,
+      "logo_x_y_px": [
+        842,
+        1192
+      ],
+      "logo_placement_rationale": "The generated composition contains a lower-right paper cutout specifically reserved for this mark.",
+      "minimum_supported_display_width_px": 200
+    },
+    {
+      "id": "B-interior",
+      "direction": "B",
+      "kind": "Interior",
+      "original_file": "source-originals/B-interior.png",
+      "original_sha256": "c97ce4330a19edc23cdde37e6407ef091be482b0863c5ec777ce712f89fa6046",
+      "final_file": "composited/B-interior.png",
+      "final_sha256": "bf46e5566d3deed6f11be32d0bf678d47f01bd235e759d068116db3d5b3defb9",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_width_px": 220,
+      "logo_x_y_px": [
+        850,
+        173
+      ],
+      "logo_placement_rationale": "Small ink contrast aperture in the kinetic field; distinct from the country-name type trajectories.",
+      "minimum_supported_display_width_px": 200
+    },
+    {
+      "id": "C-cover",
+      "direction": "C",
+      "kind": "Cover",
+      "original_file": "source-originals/C-cover-first-generation.png",
+      "original_sha256": "33e54a8c4a65ff88ba612c27a47d893d4008c07a0269e82838942141c054a423",
+      "final_file": "composited/C-cover.png",
+      "final_sha256": "042fc3d31b5fc586ea0a20b93994ebf0de9a5f7f1f43c5f22f5c5ca20bd2e590",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "canonical_lockup_id": "P-01/light",
+      "canonical_lockup_sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_width_px": 352,
+      "logo_x_y_px": [
+        704,
+        24
+      ],
+      "logo_placement_rationale": "Upper-right campus photo fragment, offset from central collage headline and portrait.",
+      "minimum_supported_display_width_px": 352,
+      "corrected_logo_free_base_file": "source-originals/C-cover.png",
+      "corrected_logo_free_base_sha256": "2d11c6c507637e5d91bbea89b3cb20128e5e4ff31db47f68127bb4235fe4f843"
+    },
+    {
+      "id": "C-interior",
+      "direction": "C",
+      "kind": "Interior",
+      "original_file": "source-originals/C-interior.png",
+      "original_sha256": "cab15e3ab6146a4bbdf0a01e348eeb8493bab514b7308e917252f91e623a89a6",
+      "final_file": "composited/C-interior.png",
+      "final_sha256": "b2e1e328c31d3ddc3bfad7cc2a31a608804c935d0ec5c527646eb1a7665616ee",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "canonical_lockup_id": "D-04/dark",
+      "canonical_lockup_sha256": "e77d5607426ce7764d4f5fdf2c7d4fb1f2779beaaabfc1e1644460133e55b335",
+      "canonical_logo_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "logo_width_px": 220,
+      "logo_x_y_px": [
+        22,
+        1190
+      ],
+      "logo_placement_rationale": "Lower-left dark photographic fragment below the Singapore label; no copy is obscured.",
+      "minimum_supported_display_width_px": 200
+    }
+  ]
+}

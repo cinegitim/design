@@ -1,0 +1,29 @@
+{
+  "name": "brandstudio-editor-store",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-01",
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "STORE",
+        "class_name": "BrandstudioRevisionObject"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "BrandstudioRevisionObject"
+      ]
+    }
+  ],
+  "workers_dev": false,
+  "d1_databases": [
+    {
+      "binding": "BACKUP_DB",
+      "database_name": "brandstudio-editor",
+      "database_id": "4e24af93-6070-4a13-a645-cb16a7406b43"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "status": "RASTER_ENLARGEMENT_REVIEW_PENDING",
+  "authorization": "User requested quality improvement only after confirming the locked symbol.",
+  "canonical_logo": false,
+  "reference_lock_changed": false,
+  "source": "../reference/target-symbol.png",
+  "source_sha256": "6177f661a1971b985c2d2e0bb91b995d8df074f5ef9433caef5366f457a76b89",
+  "source_dimensions": [
+    229,
+    231
+  ],
+  "output": "target-symbol-6x.png",
+  "output_sha256": "7d4252c4f9da19134f6b5db5403703fa76a0f42f7235dcec0473c06234b9a2de",
+  "output_dimensions": [
+    1374,
+    1386
+  ],
+  "scale": 6,
+  "resampler": "Pillow LANCZOS",
+  "sharpen": {
+    "algorithm": "UnsharpMask",
+    "radius": 1.2,
+    "percent": 60,
+    "threshold": 3
+  },
+  "generated_detail": false,
+  "svg_or_redrawing": false,
+  "typography": false,
+  "limitation": "Interpolation and mild sharpening improve enlarged presentation, not recover missing source detail."
+}

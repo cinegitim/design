@@ -1,0 +1,47 @@
+{
+  "checked_on": "2026-10-28",
+  "browser": "connected Chrome/Chromium",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "slides": [
+    {
+      "id": "01",
+      "image_path": "png/01.png",
+      "git_blob_sha": "95c48b3561356a24bae6c70a28e39bc71f82e7c2",
+      "visual_inspected": true
+    },
+    {
+      "id": "02",
+      "image_path": "png/02.png",
+      "git_blob_sha": "5c53d20ed5c877aa541677289f67d7f472b6e70d",
+      "visual_inspected": true
+    },
+    {
+      "id": "03",
+      "image_path": "png/03.png",
+      "git_blob_sha": "3a0cd3b5484e2677d8f16e84e0a019d73144b78d",
+      "visual_inspected": true
+    },
+    {
+      "id": "04",
+      "image_path": "png/04.png",
+      "git_blob_sha": "d22d0d77c826bd97f63657343e45e196a1180963",
+      "visual_inspected": true
+    },
+    {
+      "id": "05",
+      "image_path": "png/05.png",
+      "git_blob_sha": "d158716de32a27c99e9fb8149abb9fe635ab33b1",
+      "visual_inspected": true
+    },
+    {
+      "id": "06",
+      "image_path": "png/06.png",
+      "git_blob_sha": "8e72d643ce00375c92a3da1eefecc768a42deba3",
+      "visual_inspected": true
+    }
+  ],
+  "notes": "PNG screenshots made from DOM body at exactly 1080x1350 using actual Chrome, with Jost and canonical SVG logos loaded. CI independently audits submitted files. No image model used."
+}

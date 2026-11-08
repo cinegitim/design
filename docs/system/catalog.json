@@ -1,0 +1,466 @@
+{
+  "schema": 1,
+  "brand": {
+    "id": "asyada-egitim",
+    "name": "Asya'da Eğitim"
+  },
+  "brand_identity": {
+    "status": "approved-canonical",
+    "seal_id": "V-01",
+    "seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "font": "Jost",
+    "palette": {
+      "paper": "#F7F3E9",
+      "red": "#BD2120",
+      "ink": "#1D2027"
+    },
+    "canonical_manifest": "brands/asyada-egitim/assets/lockups/canonical-lockups.json",
+    "logo_generation_allowed": false
+  },
+  "categories": [
+    {
+      "id": "instagram-carousel",
+      "label": "Instagram karusel",
+      "style_count": 3,
+      "status": "registered"
+    },
+    {
+      "id": "social-post",
+      "label": "Tekil sosyal medya",
+      "style_count": 0,
+      "status": "not-configured"
+    },
+    {
+      "id": "identity-application",
+      "label": "Kurumsal uygulama",
+      "style_count": 0,
+      "status": "not-configured"
+    },
+    {
+      "id": "print-catalog",
+      "label": "Baskı / katalog",
+      "style_count": 0,
+      "status": "not-configured"
+    },
+    {
+      "id": "web-design",
+      "label": "Web tasarımı",
+      "style_count": 0,
+      "status": "not-configured"
+    },
+    {
+      "id": "new-identity",
+      "label": "Yeni marka kimliği",
+      "style_count": 0,
+      "status": "not-configured"
+    }
+  ],
+  "styles": [
+    {
+      "id": "editorial-campaign",
+      "name": "Editorial Campaign",
+      "category": "instagram-carousel",
+      "brand": "asyada-egitim",
+      "version": "0.1.1",
+      "status": "review-only",
+      "production_approved": false,
+      "description": "A large-type, modular editorial campaign language: Jost hierarchy, deliberate negative space and text/photo counterpoint. Different slide rhythms remain recognizably related.",
+      "source_path": "brands/asyada-egitim/styles/instagram-carousel/editorial-campaign/style.json",
+      "source_blob_sha": "fc37855c1f5b87bf334ed1573358d08a5efb7cd2",
+      "palette": {
+        "paper": "#F7F3E9",
+        "red": "#BD2120",
+        "ink": "#1D2027"
+      },
+      "font": "Jost",
+      "presets": [
+        {
+          "id": "institutional-paper",
+          "label": "Kurumsal krem"
+        },
+        {
+          "id": "campaign-dynamic",
+          "label": "Dinamik kampanya"
+        },
+        {
+          "id": "photo-editorial",
+          "label": "Fotoğraf odaklı editoryal"
+        },
+        {
+          "id": "ink-accent",
+          "label": "Kontrast vurgulu"
+        }
+      ],
+      "axes": [
+        "color_mode",
+        "layout_rhythm",
+        "cover_archetype",
+        "interior_bias",
+        "photo_density",
+        "cta_presentation"
+      ],
+      "lockups": [
+        "H-02/dark",
+        "H-02/light",
+        "P-01/dark",
+        "P-01/light"
+      ],
+      "lockup_assets": [
+        {
+          "id": "H-02/dark",
+          "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-dark.svg",
+          "sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7"
+        },
+        {
+          "id": "H-02/light",
+          "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
+          "sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a"
+        },
+        {
+          "id": "P-01/dark",
+          "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-dark.svg",
+          "sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f"
+        },
+        {
+          "id": "P-01/light",
+          "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-light.svg",
+          "sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2"
+        }
+      ]
+    },
+    {
+      "id": "data-atlas",
+      "name": "Data Atlas",
+      "category": "instagram-carousel",
+      "brand": "asyada-egitim",
+      "version": "0.1.0",
+      "status": "review-only",
+      "production_approved": false,
+      "description": "Evidence-led information design: numerical anchors, comparison matrices, timelines and modular diagram grids. A navigable information map, not an editorial-photo campaign.",
+      "source_path": "brands/asyada-egitim/styles/instagram-carousel/data-atlas/style.json",
+      "source_blob_sha": "2235ffc05cb3c203f795a93810d393d73815df97",
+      "palette": {
+        "paper": "#F7F3E9",
+        "red": "#BD2120",
+        "ink": "#1D2027"
+      },
+      "font": "Jost",
+      "presets": [
+        {
+          "id": "metrics-overview",
+          "label": "Metrik atlası"
+        },
+        {
+          "id": "timeline-path",
+          "label": "Zaman çizelgesi"
+        },
+        {
+          "id": "comparison-led",
+          "label": "Karşılaştırma panosu"
+        }
+      ],
+      "axes": [
+        "structure",
+        "evidence_focus",
+        "content_density",
+        "cover_device",
+        "media_role",
+        "sequence_arc"
+      ],
+      "lockups": [
+        "H-02/dark",
+        "H-02/light",
+        "P-01/dark",
+        "P-01/light"
+      ],
+      "lockup_assets": [
+        {
+          "id": "H-02/dark",
+          "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-dark.svg",
+          "sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7"
+        },
+        {
+          "id": "H-02/light",
+          "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
+          "sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a"
+        },
+        {
+          "id": "P-01/dark",
+          "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-dark.svg",
+          "sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f"
+        },
+        {
+          "id": "P-01/light",
+          "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-light.svg",
+          "sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2"
+        }
+      ]
+    },
+    {
+      "id": "conceptual-breakout",
+      "name": "Conceptual Breakout",
+      "category": "instagram-carousel",
+      "brand": "asyada-egitim",
+      "version": "0.1.0",
+      "status": "review-only",
+      "production_approved": false,
+      "description": "A high-concept visual surprise built around one material or object metaphor, oversized shapes and editorial tension; distinct from both photographic campaign grids and data-atlas diagrams.",
+      "source_path": "brands/asyada-egitim/styles/instagram-carousel/conceptual-breakout/style.json",
+      "source_blob_sha": "47629d3af18421839568f019e311153c95b32a7e",
+      "palette": {
+        "paper": "#F7F3E9",
+        "red": "#BD2120",
+        "ink": "#1D2027"
+      },
+      "font": "Jost",
+      "presets": [
+        {
+          "id": "object-metaphor",
+          "label": "Nesne metaforu"
+        },
+        {
+          "id": "typographic-shock",
+          "label": "Tipografik gerilim"
+        },
+        {
+          "id": "editorial-collage",
+          "label": "Katmanlı kolaj"
+        }
+      ],
+      "axes": [
+        "visual_metaphor",
+        "materiality",
+        "layout_energy",
+        "cover_device",
+        "image_role",
+        "sequence_arc"
+      ],
+      "lockups": [
+        "H-02/dark",
+        "H-02/light",
+        "P-01/dark",
+        "P-01/light"
+      ],
+      "lockup_assets": [
+        {
+          "id": "H-02/dark",
+          "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-dark.svg",
+          "sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7"
+        },
+        {
+          "id": "H-02/light",
+          "path": "brands/asyada-egitim/assets/lockups/h-02-primary-horizontal-light.svg",
+          "sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a"
+        },
+        {
+          "id": "P-01/dark",
+          "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-dark.svg",
+          "sha256": "16fc8c66e338a72515dd1fe9c43d5fe4394317039db4a00ec2a2c93358b5577f"
+        },
+        {
+          "id": "P-01/light",
+          "path": "brands/asyada-egitim/assets/lockups/p-01-primary-stacked-light.svg",
+          "sha256": "cdc4394d9fe69e2c2f44b6aedd4fc651ed19b3c3e021b10f46a8e0fe41b768b2"
+        }
+      ]
+    }
+  ],
+  "executors": [
+    {
+      "id": "codex-code-v1",
+      "executor": "codex",
+      "strategy": "code-first",
+      "required_capabilities": [
+        "filesystem",
+        "terminal"
+      ],
+      "categories": [
+        "*"
+      ],
+      "references": [
+        ".agents/skills/brand-studio/SKILL.md",
+        "studio/production/chatgpt/EXECUTION.md"
+      ],
+      "effort": null,
+      "status": "configured-route-not-live-verified"
+    },
+    {
+      "id": "opencode-code-v1",
+      "executor": "opencode",
+      "strategy": "code-first",
+      "required_capabilities": [
+        "filesystem",
+        "terminal"
+      ],
+      "categories": [
+        "*"
+      ],
+      "references": [],
+      "effort": null,
+      "status": "configured-route-not-live-verified"
+    },
+    {
+      "id": "antigravity-agent-v1",
+      "executor": "antigravity",
+      "strategy": "agent-skills",
+      "required_capabilities": [
+        "filesystem",
+        "terminal"
+      ],
+      "categories": [
+        "*"
+      ],
+      "references": [],
+      "effort": null,
+      "status": "configured-route-not-live-verified"
+    },
+    {
+      "id": "work-connected-v1",
+      "executor": "chatgpt-work",
+      "strategy": "connected-tools",
+      "required_capabilities": [
+        "github-read"
+      ],
+      "categories": [
+        "*"
+      ],
+      "references": [
+        "studio/work/README.md",
+        "studio/production/chatgpt/EXECUTION.md"
+      ],
+      "effort": null,
+      "status": "configured-route-not-live-verified"
+    },
+    {
+      "id": "chatgpt-high-connected-v1",
+      "executor": "chatgpt-chat",
+      "strategy": "github-connected-chat",
+      "required_capabilities": [
+        "github-read"
+      ],
+      "categories": [
+        "*"
+      ],
+      "references": [
+        "studio/production/chatgpt/EXECUTION.md",
+        "studio/production/chatgpt/skills/brandstudio-production/SKILL.md"
+      ],
+      "effort": "high",
+      "status": "configured-route-not-live-verified"
+    },
+    {
+      "id": "chatgpt-connected-v1",
+      "executor": "chatgpt-chat",
+      "strategy": "github-connected-chat",
+      "required_capabilities": [
+        "github-read"
+      ],
+      "categories": [
+        "*"
+      ],
+      "references": [
+        "studio/production/chatgpt/EXECUTION.md",
+        "studio/production/chatgpt/skills/brandstudio-production/SKILL.md"
+      ],
+      "effort": null,
+      "status": "configured-route-not-live-verified"
+    },
+    {
+      "id": "chat-image-v1",
+      "executor": "chatgpt-chat",
+      "strategy": "native-raster-layer-only",
+      "required_capabilities": [
+        "image-generation"
+      ],
+      "categories": [
+        "instagram-carousel",
+        "social-post"
+      ],
+      "references": [],
+      "effort": null,
+      "status": "configured-route-not-live-verified"
+    },
+    {
+      "id": "generic-limited-v1",
+      "executor": "*",
+      "strategy": "capability-limited",
+      "required_capabilities": [],
+      "categories": [
+        "*"
+      ],
+      "references": [],
+      "effort": null,
+      "status": "configured-route-not-live-verified"
+    }
+  ],
+  "model_families": [
+    {
+      "id": "gpt",
+      "name": "GPT",
+      "status": "advisory",
+      "capabilities_verified": false,
+      "emphasis": {
+        "code": "Kod ve teslim fişi üret; mevcut HTML/CSS/SVG kaynaklarını çalıştırılabilir testlerle doğrula.",
+        "image": "Görsel üretimi yalnız izinli fotoğraf, illüstrasyon ve arka plan katmanlarıyla sınırla; logoyu kanonik SVG'den ekle."
+      }
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "status": "advisory",
+      "capabilities_verified": false,
+      "emphasis": {
+        "code": "Kullanılabilen gerçek araçları tespit et; kod kaynaklarını aynı kanonik stil sözleşmesi ve GitHub PR kanıtlarıyla teslim et.",
+        "image": "Kompozisyon ve görsel referanslar üzerinde çalış; resmî logoyu asla yeniden çizme veya tipografisini üretme."
+      }
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "status": "advisory",
+      "capabilities_verified": false,
+      "emphasis": {
+        "code": "Uzun biçimli tasarım kaynaklarını küçük doğrulanabilir değişikliklere ayır; mevcut editör ve sürüm geçmişini koru.",
+        "image": "Görsel yeteneği gerçekten mevcutsa yalnız izinli görsel katmanlarda kullan; onaylı kimliği kodla kompozitle."
+      }
+    },
+    {
+      "id": "glm",
+      "name": "GLM",
+      "status": "advisory",
+      "capabilities_verified": false,
+      "emphasis": {
+        "code": "Kısıtlı araç ortamında bile stil paketini ve teslim alanlarını eksiksiz koru; uygulanmamış testleri geçti sayma.",
+        "image": "Desteklenmeyen görsel yeteneği varsayma; gerekirse yalnız kaynak/brief üret, görseli taklit etme."
+      }
+    },
+    {
+      "id": "qwen",
+      "name": "Qwen",
+      "status": "advisory",
+      "capabilities_verified": false,
+      "emphasis": {
+        "code": "Kanıta dayalı üretim planı ve düzenlenebilir kaynak sağla; render yoksa eksikliği açık kaydet.",
+        "image": "Görsel çıktıyı model adından varsayma; özgün kompozisyon üretimine izin varsa kullan, marka imzasını değiştirme."
+      }
+    },
+    {
+      "id": "other",
+      "name": "Diğer / doğrulanmamış",
+      "status": "advisory",
+      "capabilities_verified": false,
+      "emphasis": {
+        "code": "Model kimliği ve yetenekleri doğrulanmadan gelişmiş araçları varsayma; ancak taşınabilir sözleşmeyi izle.",
+        "image": "Görsel oluşturma yeteneği doğrulanmadıkça yalnız tasarım brief'i ve düzenlenebilir kaynak üret."
+      }
+    }
+  ],
+  "workflow": {
+    "style_selection": "canonical-github-registry",
+    "visual_editor_versions": "cloud-drafts",
+    "github_version": "pr-required",
+    "social_proof": "platform-evidence-required",
+    "creative_approval": "human-required",
+    "automatic_agent_execution": false
+  }
+}

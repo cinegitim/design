@@ -1,0 +1,173 @@
+{
+ "wordmark": {
+  "lines": {
+   "tr1": {
+    "x0_native": 0.0,
+    "x1_native": 879.678,
+    "width_native": 880.119,
+    "dev_left_px": 0.0,
+    "dev_right_px": 0.322
+   },
+   "tr2": {
+    "x0_native": 0.0,
+    "x1_native": 879.678,
+    "width_native": 880.119,
+    "dev_left_px": 0.0,
+    "dev_right_px": 0.322
+   },
+   "en": {
+    "x0_native": 0.0,
+    "x1_native": 879.678,
+    "width_native": 880.119,
+    "dev_left_px": 0.0,
+    "dev_right_px": 0.322
+   }
+  },
+  "worst_deviation_px": 0.322,
+  "tolerance_px": 1.0,
+  "gate_pass": true,
+  "W_native": 881.0
+ },
+ "lockups": {
+  "stacked": {
+   "render_px": [
+    1400,
+    1358
+   ],
+   "artwork_union_bbox_native": {
+    "x0": 43.63,
+    "x1": 923.94,
+    "y0": 43.63,
+    "y1": 897.62,
+    "w": 881.0,
+    "h": 854.68
+   },
+   "measured_seal_bbox_native": {
+    "x0": 299.21,
+    "x1": 669.75,
+    "y0": 43.63,
+    "y1": 386.48,
+    "w": 371.24,
+    "h": 343.53
+   },
+   "measured_text_bbox_native": {
+    "x0": 43.63,
+    "x1": 923.94,
+    "y0": 470.97,
+    "y1": 897.62,
+    "w": 881.0,
+    "h": 427.34
+   },
+   "intended_native": {
+    "seal": [
+     299.5,
+     44.0,
+     370.0,
+     342.25
+    ],
+    "wordmark": [
+     44.0,
+     471.25,
+     881.0,
+     426.0
+    ]
+   },
+   "deviations": {
+    "seal_left_edge_px": 0.29,
+    "seal_right_edge_px": 0.25,
+    "seal_top_edge_px": 0.37,
+    "seal_bottom_edge_px": 0.23,
+    "text_left_edge_px": 0.37,
+    "text_right_edge_px": 1.06,
+    "text_top_edge_px": 0.28,
+    "text_bottom_edge_px": 0.37,
+    "seal_wordmark_gap_px": 84.49,
+    "centre_axis_offset_px": 0.69,
+    "seal_vs_axis_offset_px": 0.02,
+    "intended_gap_px": 85.0,
+    "gap_error_px": -0.51
+   },
+   "px_per_native_unit": 1.44381
+  },
+  "horizontal": {
+   "render_px": [
+    1600,
+    479
+   ],
+   "artwork_union_bbox_native": {
+    "x0": 43.54,
+    "x1": 1469.14,
+    "y0": 43.54,
+    "y1": 469.52,
+    "w": 1426.54,
+    "h": 426.92
+   },
+   "measured_seal_bbox_native": {
+    "x0": 43.54,
+    "x1": 503.6,
+    "y0": 43.54,
+    "y1": 469.52,
+    "w": 461.0,
+    "h": 426.92
+   },
+   "measured_text_bbox_native": {
+    "x0": 588.79,
+    "x1": 1469.14,
+    "y0": 43.54,
+    "y1": 469.52,
+    "w": 881.29,
+    "h": 426.92
+   },
+   "intended_native": {
+    "seal": [
+     44.0,
+     44.0,
+     460.54,
+     426.0
+    ],
+    "wordmark": [
+     589.54,
+     44.0,
+     881.0,
+     426.0
+    ]
+   },
+   "deviations": {
+    "seal_left_edge_px": 0.46,
+    "seal_right_edge_px": 0.94,
+    "seal_top_edge_px": 0.46,
+    "seal_bottom_edge_px": 0.48,
+    "text_left_edge_px": 0.75,
+    "text_right_edge_px": 1.4,
+    "text_top_edge_px": 0.46,
+    "text_bottom_edge_px": 0.48,
+    "seal_wordmark_gap_px": 85.19,
+    "vertical_centre_offset_px": 0.0,
+    "intended_gap_px": 85.0,
+    "gap_error_px": 0.19
+   },
+   "px_per_native_unit": 1.0564
+  }
+ },
+ "previews": {
+  "stacked": [
+   "stacked-700.png",
+   "stacked-350.png",
+   "stacked-175.png"
+  ],
+  "horizontal": [
+   "horizontal-800.png",
+   "horizontal-400.png",
+   "horizontal-200.png"
+  ],
+  "horizontal-dark": [
+   "horizontal-dark-800.png",
+   "horizontal-dark-400.png",
+   "horizontal-dark-200.png"
+  ]
+ },
+ "guides": {
+  "stacked": "stacked-guides.png",
+  "horizontal": "horizontal-guides.png"
+ }
+}

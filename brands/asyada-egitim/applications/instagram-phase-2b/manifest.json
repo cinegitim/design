@@ -1,0 +1,974 @@
+{
+  "status": "HUMAN FULL-CAROUSEL APPROVAL PENDING",
+  "checked_on": "2026-10-08",
+  "successful_chatgpt_image_generations": 37,
+  "original_explorations": 27,
+  "corrective_generations": 6,
+  "complete_composition_generations": 4,
+  "backend": "gpt-image-2 via connected ChatGPT subscription",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "carousels": [
+    {
+      "id": "a-snu",
+      "title": "Seul Ulusal Üniversitesi",
+      "character": "Warm architectural editorial, red display type and monumental ranking.",
+      "slides": [
+        {
+          "index": 1,
+          "file": "a-snu/png/01.png",
+          "editable": "a-snu/editable/01.html",
+          "layout": "cover-a",
+          "canonical_lockup_id": "H-02/light",
+          "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 600,
+          "sources": [
+            "SNU"
+          ],
+          "ai_imagery": true,
+          "sha256": "58abbe7f95d9a742f4154dc0a4e364e27aefbbc52cd7812e7715d7892daab2b4"
+        },
+        {
+          "index": 2,
+          "file": "a-snu/png/02.png",
+          "editable": "a-snu/editable/02.html",
+          "layout": "collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "SNU"
+          ],
+          "ai_imagery": true,
+          "sha256": "c2d48319f8d886a9ff847f63fe6c724e5c65bce7fd7cd93bdf83b34a25801550"
+        },
+        {
+          "index": 3,
+          "file": "a-snu/png/03.png",
+          "editable": "a-snu/editable/03.html",
+          "layout": "rank",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "QS"
+          ],
+          "ai_imagery": false,
+          "sha256": "1acdd3320af5ed1a4cb794089706d1d62f7fb2219f895f211276eea656ae2f0f"
+        },
+        {
+          "index": 4,
+          "file": "a-snu/png/04.png",
+          "editable": "a-snu/editable/04.html",
+          "layout": "photo-top",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "SNU",
+            "LIFE"
+          ],
+          "ai_imagery": true,
+          "sha256": "116533b20b785e4be01ad006f76d22aec50aaa0421d8302710c37f7433d74d6b"
+        },
+        {
+          "index": 5,
+          "file": "a-snu/png/05.png",
+          "editable": "a-snu/editable/05.html",
+          "layout": "photo-side",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "LIFE"
+          ],
+          "ai_imagery": true,
+          "sha256": "2fdb16e68484e29812d3537b991ad518dff8c631904676230b63baae6f2bf3e0"
+        },
+        {
+          "index": 6,
+          "file": "a-snu/png/06.png",
+          "editable": "a-snu/editable/06.html",
+          "layout": "summary",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "EDITORIAL"
+          ],
+          "ai_imagery": false,
+          "sha256": "973e5f7c14e20c632d1718e8667df0d7e0635f988549c4184b23f34dcb1b9179"
+        },
+        {
+          "index": 7,
+          "file": "a-snu/png/07.png",
+          "editable": "a-snu/editable/07.html",
+          "layout": "cta",
+          "canonical_lockup_id": "H-02/light",
+          "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 600,
+          "sources": [
+            "EDITORIAL"
+          ],
+          "ai_imagery": false,
+          "sha256": "cca26c46fe265d048bec13d344d4eafe6404fcc8d998d44b052eebaeeb5431be"
+        }
+      ]
+    },
+    {
+      "id": "b-waseda",
+      "title": "Waseda · Gerçek başvuru takvimi",
+      "character": "Serif numerals, red registration rules and precise time-zone bulletin.",
+      "slides": [
+        {
+          "index": 1,
+          "file": "b-waseda/png/01.png",
+          "editable": "b-waseda/editable/01.html",
+          "layout": "cover-b",
+          "canonical_lockup_id": "H-02/light",
+          "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 600,
+          "sources": [
+            "WASEDA"
+          ],
+          "ai_imagery": false,
+          "sha256": "e7b3cce23d584272836b6ccdc7381753539257325fa3a7df0c3a8d4c60c43986"
+        },
+        {
+          "index": 2,
+          "file": "b-waseda/png/02.png",
+          "editable": "b-waseda/editable/02.html",
+          "layout": "window",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "WASEDA"
+          ],
+          "ai_imagery": false,
+          "sha256": "df47589a12a8a8a99905fb5e381db63cf0b6f8bd048553db1583e6ab4dfa1eb8"
+        },
+        {
+          "index": 3,
+          "file": "b-waseda/png/03.png",
+          "editable": "b-waseda/editable/03.html",
+          "layout": "photo-side",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "WASEDA"
+          ],
+          "ai_imagery": true,
+          "sha256": "6a32c7af7ae0c3f80d7a2fe0a024b0a8c09695ce545ee399fafb972b9a1b81e7"
+        },
+        {
+          "index": 4,
+          "file": "b-waseda/png/04.png",
+          "editable": "b-waseda/editable/04.html",
+          "layout": "dossier",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "WASEDA"
+          ],
+          "ai_imagery": false,
+          "sha256": "fd779742377143575e291b524926a9b906dcd846e2f6804ad3e0f01ec842ad0c"
+        },
+        {
+          "index": 5,
+          "file": "b-waseda/png/05.png",
+          "editable": "b-waseda/editable/05.html",
+          "layout": "timeline",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "WASEDA"
+          ],
+          "ai_imagery": false,
+          "sha256": "6181a82be8483928596ce1469f0c2f7761e8426be9a02ec1d1dced5300681528"
+        },
+        {
+          "index": 6,
+          "file": "b-waseda/png/06.png",
+          "editable": "b-waseda/editable/06.html",
+          "layout": "cta",
+          "canonical_lockup_id": "H-02/light",
+          "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 600,
+          "sources": [
+            "WASEDA"
+          ],
+          "ai_imagery": false,
+          "sha256": "09c693c5c31d0543003b50f179bda2924bf4754a63dd4169725bd38e39d7bd7c"
+        }
+      ]
+    },
+    {
+      "id": "c-tokyo",
+      "title": "Tokyo’da öğrenci hayatı",
+      "character": "Night-city journal, oversized ivory type, abstract rail thread and daylight interruptions.",
+      "slides": [
+        {
+          "index": 1,
+          "file": "c-tokyo/png/01.png",
+          "editable": "c-tokyo/editable/01.html",
+          "layout": "cover-c",
+          "canonical_lockup_id": "H-02/light",
+          "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 600,
+          "sources": [
+            "METRO",
+            "HOUSING",
+            "CLUBS"
+          ],
+          "ai_imagery": true,
+          "sha256": "fa5b0f37b687f7d910f44ec60817526b20405adf107af508b270da8dcf07f10d"
+        },
+        {
+          "index": 2,
+          "file": "c-tokyo/png/02.png",
+          "editable": "c-tokyo/editable/02.html",
+          "layout": "rail",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "METRO"
+          ],
+          "ai_imagery": false,
+          "sha256": "5aa02925277cb0a6aec73f4594fcc1c95779aad58f360286dfe70455832c3552"
+        },
+        {
+          "index": 3,
+          "file": "c-tokyo/png/03.png",
+          "editable": "c-tokyo/editable/03.html",
+          "layout": "housing",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "HOUSING"
+          ],
+          "ai_imagery": true,
+          "sha256": "87c8df346088c9ee2ae79ae46e8b580d0fd32765f585ab073e963d18f27f7dff"
+        },
+        {
+          "index": 4,
+          "file": "c-tokyo/png/04.png",
+          "editable": "c-tokyo/editable/04.html",
+          "layout": "photo-top",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "CLUBS"
+          ],
+          "ai_imagery": true,
+          "sha256": "b32d224c9eab609e66ea82657a57bbd4a70557e98b73a8a9cd0b0db7bf5d0f7d"
+        },
+        {
+          "index": 5,
+          "file": "c-tokyo/png/05.png",
+          "editable": "c-tokyo/editable/05.html",
+          "layout": "photo-side",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "EDITORIAL"
+          ],
+          "ai_imagery": true,
+          "sha256": "d36b77a4d996950363afa05d51bb81761546bed162031e1c7be60e5afcfd7fb5"
+        },
+        {
+          "index": 6,
+          "file": "c-tokyo/png/06.png",
+          "editable": "c-tokyo/editable/06.html",
+          "layout": "summary",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "METRO",
+            "HOUSING",
+            "CLUBS"
+          ],
+          "ai_imagery": false,
+          "sha256": "5ea2a14f4996da327746a6d8cb519e46c5ccd829441828fd095d0c6bdd9d9774"
+        },
+        {
+          "index": 7,
+          "file": "c-tokyo/png/07.png",
+          "editable": "c-tokyo/editable/07.html",
+          "layout": "cta",
+          "canonical_lockup_id": "H-02/light",
+          "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 600,
+          "sources": [
+            "EDITORIAL"
+          ],
+          "ai_imagery": false,
+          "sha256": "7fd67be63fb07951700454bcf4459cd350c16f6ea3aaca3ad6259cd34da7d23d"
+        }
+      ]
+    },
+    {
+      "id": "d-six-steps",
+      "title": "Üniversite başvurusu · 6 adım",
+      "character": "Monumental step numerals, red application thread, photographic diptychs and dossier typography.",
+      "slides": [
+        {
+          "index": 1,
+          "file": "d-six-steps/png/01.png",
+          "editable": "d-six-steps/editable/01.html",
+          "layout": "cover-d",
+          "canonical_lockup_id": "H-02/light",
+          "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 600,
+          "sources": [
+            "EDITORIAL"
+          ],
+          "ai_imagery": false,
+          "sha256": "189e6b5a0d77ddc79791cba4bac21f02864977c6f549da05906719a6b89aac36"
+        },
+        {
+          "index": 2,
+          "file": "d-six-steps/png/02.png",
+          "editable": "d-six-steps/editable/02.html",
+          "layout": "step-photo",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "EDITORIAL"
+          ],
+          "ai_imagery": true,
+          "sha256": "38cfe6beba54e1981543e3e71bb80c3eaf6d2d75b04acb2b49f51390695fbd87"
+        },
+        {
+          "index": 3,
+          "file": "d-six-steps/png/03.png",
+          "editable": "d-six-steps/editable/03.html",
+          "layout": "step-type",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "EDITORIAL",
+            "WASEDA"
+          ],
+          "ai_imagery": false,
+          "sha256": "6ff304d5d0268886c1ffbc99030c7b5a83ef07c38aaa9ddd9d537a1ef4bf94a8"
+        },
+        {
+          "index": 4,
+          "file": "d-six-steps/png/04.png",
+          "editable": "d-six-steps/editable/04.html",
+          "layout": "step-photo",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "WASEDA",
+            "EDITORIAL"
+          ],
+          "ai_imagery": true,
+          "sha256": "621e4b880d1219f6be49d082e1c73faddf8daa31343c77a817b7b1b760673418"
+        },
+        {
+          "index": 5,
+          "file": "d-six-steps/png/05.png",
+          "editable": "d-six-steps/editable/05.html",
+          "layout": "step-type",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "WASEDA",
+            "EDITORIAL"
+          ],
+          "ai_imagery": false,
+          "sha256": "d94f3fe63e7d70c709ed731d87c1a5763f8f11b015430c7612b0f432aa251048"
+        },
+        {
+          "index": 6,
+          "file": "d-six-steps/png/06.png",
+          "editable": "d-six-steps/editable/06.html",
+          "layout": "step-photo",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "WASEDA",
+            "EDITORIAL"
+          ],
+          "ai_imagery": true,
+          "sha256": "cc8ccb248bf8e0573f0f3ca779d5820d6baa544ec6722df1f981e253ff582013"
+        },
+        {
+          "index": 7,
+          "file": "d-six-steps/png/07.png",
+          "editable": "d-six-steps/editable/07.html",
+          "layout": "step-type",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 320,
+          "sources": [
+            "EDITORIAL",
+            "HOUSING"
+          ],
+          "ai_imagery": false,
+          "sha256": "12316b99765e6386be043dcb28bb686ab4e0375a6f9bbf6a22c5d2e7cfaa8561"
+        },
+        {
+          "index": 8,
+          "file": "d-six-steps/png/08.png",
+          "editable": "d-six-steps/editable/08.html",
+          "layout": "cta",
+          "canonical_lockup_id": "H-02/light",
+          "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "lockup_width_px": 600,
+          "sources": [
+            "EDITORIAL"
+          ],
+          "ai_imagery": false,
+          "sha256": "3785fa48f19d3f15790f06942da5784a051453b2c5dd2ecda55773c5099e3be3"
+        }
+      ]
+    }
+  ],
+  "derived_outputs": [
+    {
+      "file": "four-covers.jpg",
+      "sha256": "ff85210a8984f2dc18cd45de2cf211902c233e40ce0e41e52d32e503c13e8c2d",
+      "canonical_lockup_ids": [
+        "H-02/light",
+        "D-04/light"
+      ],
+      "canonical_lockup_sha256": {
+        "H-02/light": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+        "D-04/light": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e"
+      },
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "derivation": "Exact final slide pixels or packaged editable sources"
+    },
+    {
+      "file": "a-snu.zip",
+      "sha256": "d8db4250d87a13b4b5b3c4d0e7465fc135d5cb1b1e7b48f8cdd3930475a83019",
+      "canonical_lockup_ids": [
+        "H-02/light",
+        "D-04/light"
+      ],
+      "canonical_lockup_sha256": {
+        "H-02/light": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+        "D-04/light": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e"
+      },
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "derivation": "Exact final slide pixels or packaged editable sources"
+    },
+    {
+      "file": "b-waseda.zip",
+      "sha256": "97a87eaedb84ab74295fc4c2a2915a4aae73ff8954ce1194538a0f9e03a48ed2",
+      "canonical_lockup_ids": [
+        "H-02/light",
+        "D-04/light"
+      ],
+      "canonical_lockup_sha256": {
+        "H-02/light": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+        "D-04/light": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e"
+      },
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "derivation": "Exact final slide pixels or packaged editable sources"
+    },
+    {
+      "file": "c-tokyo.zip",
+      "sha256": "d489e0d5341d41b75084ee8b960fd84f3547d72947d3b9337790c548678b1e62",
+      "canonical_lockup_ids": [
+        "H-02/light",
+        "D-04/light"
+      ],
+      "canonical_lockup_sha256": {
+        "H-02/light": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+        "D-04/light": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e"
+      },
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "derivation": "Exact final slide pixels or packaged editable sources"
+    },
+    {
+      "file": "d-six-steps.zip",
+      "sha256": "4fc165f3c17a2a004da81d3013b4eb5a68224f3b956625ce83b6eec49e3944f9",
+      "canonical_lockup_ids": [
+        "H-02/light",
+        "D-04/light"
+      ],
+      "canonical_lockup_sha256": {
+        "H-02/light": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+        "D-04/light": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e"
+      },
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "derivation": "Exact final slide pixels or packaged editable sources"
+    },
+    {
+      "file": "a-snu/contact-sheet.jpg",
+      "sha256": "04d03c8f33775f8274204d1fe096e80fde33f530ed5b8afa0408c650c28f73d9",
+      "canonical_lockup_ids": [
+        "H-02/light",
+        "D-04/light"
+      ],
+      "canonical_lockup_sha256": {
+        "H-02/light": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+        "D-04/light": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e"
+      },
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "derivation": "Exact final slide pixels or packaged editable sources"
+    },
+    {
+      "file": "b-waseda/contact-sheet.jpg",
+      "sha256": "00f1b2a818c4543ec9b2605e1ce67b5f2648df1102bde5fcdee9406570ba9926",
+      "canonical_lockup_ids": [
+        "H-02/light",
+        "D-04/light"
+      ],
+      "canonical_lockup_sha256": {
+        "H-02/light": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+        "D-04/light": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e"
+      },
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "derivation": "Exact final slide pixels or packaged editable sources"
+    },
+    {
+      "file": "c-tokyo/contact-sheet.jpg",
+      "sha256": "26fbbd0b3dc4f5eff0793c4e1b828f718fabf065927964438a0d0d45f63835c5",
+      "canonical_lockup_ids": [
+        "H-02/light",
+        "D-04/light"
+      ],
+      "canonical_lockup_sha256": {
+        "H-02/light": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+        "D-04/light": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e"
+      },
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "derivation": "Exact final slide pixels or packaged editable sources"
+    },
+    {
+      "file": "d-six-steps/contact-sheet.jpg",
+      "sha256": "5d50b6a85433dd117bd0c98453a84938f1c816a3bb1e714a19a29235b66a33f8",
+      "canonical_lockup_ids": [
+        "H-02/light",
+        "D-04/light"
+      ],
+      "canonical_lockup_sha256": {
+        "H-02/light": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+        "D-04/light": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e"
+      },
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "derivation": "Exact final slide pixels or packaged editable sources"
+    }
+  ],
+  "image_generation_archive": [
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/a1-cover.png",
+      "sha256": "a91c867dac6af531614eef9b882cc34d10272d65acc2589cfbe279f2e9a89e55",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/a2-strengths.png",
+      "sha256": "9381e3bfb426e54aedaaef3821f7ed4747b423c5be7c394bb921fe83f70b53e9",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/a3-ranking.png",
+      "sha256": "06546eac648e17178729e41ac08bb31e0d368feb8e5b90f2f4ce674c99c6c16c",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/a4-campus.png",
+      "sha256": "92d949cd11d8766fcf3964721d4e2517d622ae424fbfa0079c4b2d60ff78bb4a",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/a5-why.png",
+      "sha256": "2424d0aa17647d0ad0df41078ea52ed2aacfee303d48c8057d949643e9a40740",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/a6-recap.png",
+      "sha256": "9b00b6944196d4011a101a604d26e6c23c3d9dd7d29b71db0a2d49b6175fc646",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/a7-cta.png",
+      "sha256": "65aa6afa50be32ca81beae2e3a82440b69b0e7621b3af0aaf0aec27eaebcf116",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/b1-cover.png",
+      "sha256": "2d23d8fe5f998e2eeb6eeaac86081aef976627560f20bf72fe630547cbab2ec6",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/b2-window.png",
+      "sha256": "29658f8bfbf36317cae21b5cf208e43507b5b243be9d34ddb10475fb13ad0eaa",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/b3-docs.png",
+      "sha256": "67ed254892dd33477f1d3955585e8644a5eae6ff9046c86ea9b29a3962822a0f",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/b4-language.png",
+      "sha256": "9fb39767576e73a9f43a9071c6361f2d5c659c7b3603ae05281fd86babb39ab4",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/b5-visa.png",
+      "sha256": "0d77f89aa8c60d5116a8e91e63d46ab2860acac191af404bafe6698cf1ea9407",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/b6-cta.png",
+      "sha256": "bef5249b607bccb7ae5d0d53dc0fc1c29d8c7f8c97338f256f1a12eca9fe4659",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/c1-cover.png",
+      "sha256": "b2a39672abed9d930be02d5a110c27e3f117e07711c49dcad7a7e4a4af4b5d3b",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/c2-train.png",
+      "sha256": "570cd99d2fc481424e564b5127469e3a3033bd82fd0b281712ba20ca1d6307c5",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/c3-housing.png",
+      "sha256": "c4258b71d11f52037dd28043371305ccbda1f728a7a973e5202cca83081cc319",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/c4-clubs.png",
+      "sha256": "04c28a19ad7c9a87e1f9e91109579476c86c668d641d28038b86ca275de22289",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/c5-konbini.png",
+      "sha256": "1f799478d7f737b334801310c83a6757a63f76f35d562e6cf59293987badf716",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/c6-recap.png",
+      "sha256": "97df12a003fd97acefd8fd7cd6a8a2ab76e42d72463c93768556acccac92dc5c",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/c7-cta.png",
+      "sha256": "d239db2f7fe423e9d9861e973503fc55c795db0fc2988e518b09232b9a3a8552",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/d1-cover.png",
+      "sha256": "0fcf11ffbf3a09bb355ebbae2e9fce44e91e692b2ec1cee3d7c1a04ab0093f64",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/d2-program.png",
+      "sha256": "2e9c0b48fbbf690c2b8f7ce3098778f0686be0e8c23f06a9adf4c796198721e5",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/d3-portal.png",
+      "sha256": "ed3d09d4c59ae98e18efdd53216b7bfb50ee208fa0f3c46a30c4b12e6f529607",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/d4-visa.png",
+      "sha256": "2779e7c3a04f3d996ea02e6259deea5249d2efb46959527ff6c09983f7b6c751",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/d5-counsel.png",
+      "sha256": "8335fb2e5e6d8b40d9c7cdd384f6e4a214e93ee6239534144572eb0dcf98b4c6",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/d6-recap.png",
+      "sha256": "2f2a8710a21620dff88742780bbfa8c59358a2b1334ad82d7ed5382a12a81a42",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/d7-cta.png",
+      "sha256": "d70bdba186f3628be29a3528bc55722b2af7ef418810bbb794c8e852201d3b44",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/direction-a/image-1791465344913.png",
+      "sha256": "dabf415dc808664ceba2bc66585b69e687548ae13269ef91efc29bdb60b78159",
+      "actual_size": [
+        1024,
+        1536
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/direction-b/image-1791465383179.png",
+      "sha256": "52a343472913c7cd5ccae1e8a9bc957c75a7eb3de8261cd9853bedfe8b86be14",
+      "actual_size": [
+        940,
+        1672
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/direction-c/image-1791465443970.png",
+      "sha256": "98f17183455ec6ab1baf1826a4465cc4eb6bcf7b4902dce2ea2e1c55a5097e41",
+      "actual_size": [
+        1024,
+        1536
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/direction-d/image-1791465499040.png",
+      "sha256": "e5e67b7bab5b7ce2fe834f66285d05aa54e4887a5819499ab2b4d1757b667c16",
+      "actual_size": [
+        1024,
+        1536
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/r-a2-strengths/image-1791464985680.png",
+      "sha256": "77dc26262bb56962e1fec9121dfc2ed3d5c4b5c861c5eb5b9beb443439da733e",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/r-a5-why/image-1791464978425.png",
+      "sha256": "e2f8751781afd4733671a8cab705584d0d36e996b3bc8a45712be54c8ce2bcec",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/r-a6-recap/image-1791464999922.png",
+      "sha256": "d9cdeac955af6279d0ee9794a979a4e5908ca15ee0d16a0357dd3ca92fc354e5",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/r-a7-cta/image-1791465043152.png",
+      "sha256": "71420513c397f8bb58cde9df735fe7b5a7cbaf62e988b9592c74710eddf7b2ce",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/r-b4-language/image-1791465041887.png",
+      "sha256": "3cdebcfce94c785f8d21763069eb77e277d4e95612e72d6e596e582e06893843",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2b/r-c4-clubs/image-1791465074838.png",
+      "sha256": "f96f110bc45a7ddde7e2ea91cc3397691c518e4a7af70eb83c73f01c69a095a4",
+      "actual_size": [
+        1122,
+        1402
+      ],
+      "backend": "gpt-image-2 via connected ChatGPT subscription",
+      "final_artwork": false
+    }
+  ]
+}

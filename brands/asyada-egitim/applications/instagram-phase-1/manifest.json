@@ -1,0 +1,94 @@
+{
+  "phase": "Instagram Studio — Phase 1: Visual Grammar & Carousel Design Families",
+  "status": "HUMAN INSTAGRAM DESIGN REVIEW PENDING",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "canonical_manifest": "brands/asyada-egitim/assets/lockups/canonical-lockups.json",
+  "lockups_used": [
+    {
+      "canonical_lockup_id": "D-04/light",
+      "canonical_file_path": "brands/asyada-egitim/assets/lockups/d-04-small-use-digital-light.svg",
+      "sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+      "display_px": 220,
+      "minimum_px": 200,
+      "used_in": "A/B/C CTA slides"
+    },
+    {
+      "seal_only": "brands/asyada-egitim/assets/v01-canonical.svg",
+      "sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "display_px": 96,
+      "used_in": "A/B/C covers"
+    }
+  ],
+  "image_backend": "Pollinations gen_edit_image_free (imagery only; no text/logos/layouts in generation)",
+  "raster_images": [
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1/raster/hk-campus.jpg",
+      "seed": 101,
+      "sha256": "7ac3d98e53804d195ff88578bc7d8b6eb386d04530161090b30841a5e79094fc"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1/raster/sg-campus.jpg",
+      "seed": 102,
+      "sha256": "81d71f342e478455d48053aa482c7be35d334f45892c9658e3acee46bf2056d1"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1/raster/jp-street.jpg",
+      "seed": 107,
+      "correction_of": "rejected blossom cover",
+      "sha256": "5f86940e059fe214e2f763dbf8febc3f7ca6f9ece1e745a5f7256b197cb6a43b"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1/raster/jp-lecture.jpg",
+      "seed": 104,
+      "sha256": "035fef3f74c884f7ad320dfec49c7d69ef6fc73835576471084cdef86064f142"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1/raster/jp-friends.jpg",
+      "seed": 108,
+      "correction_of": "rejected uniform-crest photo",
+      "sha256": "dc7fb26434c8490d1ddd8973cdd8e59b56f03015c9cd9c045770144a053b66c5"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1/raster/jp-library.jpg",
+      "seed": 106,
+      "sha256": "5fd753fd464b43a31f3adc23dfe07e868726841148024579022ce9acdecfb61d"
+    }
+  ],
+  "image_calls_total": 8,
+  "carousels": [
+    {
+      "id": "A",
+      "family": "Guide",
+      "structure": "Teach",
+      "mode": "Type-led",
+      "slides": 7,
+      "topic": "China application guide",
+      "cta": "Consultation"
+    },
+    {
+      "id": "B",
+      "family": "University",
+      "structure": "Compare",
+      "mode": "Grid-led",
+      "slides": 7,
+      "topic": "Hong Kong vs Singapore",
+      "cta": "Apply",
+      "placeholders": "all figures marked ornek-teyit bekliyor"
+    },
+    {
+      "id": "C",
+      "family": "Student Story",
+      "structure": "Story",
+      "mode": "Photo-led",
+      "slides": 7,
+      "topic": "Student life in Japan",
+      "cta": "Save/Share",
+      "placeholders": "clearly marked fictional illustrative scenario; no real persons, quotes, or claims"
+    }
+  ],
+  "rules": [
+    "No Instagram visual style or template canonicalized.",
+    "Lockups/seal used as complete files; placement/size only.",
+    "No fabricated admissions data, scholarships, testimonials, or university claims."
+  ]
+}

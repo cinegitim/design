@@ -1,0 +1,93 @@
+{
+ "origin": [
+  42,
+  80
+ ],
+ "epsilon": 0.9,
+ "tr1": {
+  "components": 6,
+  "letters": 6,
+  "orphans": 0
+ },
+ "tr2": {
+  "components": 9,
+  "letters": 6,
+  "orphans": 0
+ },
+ "en": {
+  "components": 15,
+  "letters": 15,
+  "orphans": 0
+ },
+ "red_components": 1,
+ "apostrophe_ref_box": [
+  578,
+  68,
+  607,
+  116
+ ],
+ "W_native": 881,
+ "layout": {
+  "tr1": {
+   "width_before": 881,
+   "delta": 0,
+   "per_gap": 0.0,
+   "n_gaps": 5,
+   "right_edge_residual": 0.0,
+   "gaps_before": [
+    27,
+    21,
+    -5,
+    65,
+    26
+   ]
+  },
+  "tr2": {
+   "width_before": 865,
+   "delta": 16,
+   "per_gap": 3.2,
+   "n_gaps": 5,
+   "right_edge_residual": 0.0,
+   "gaps_before": [
+    57,
+    78,
+    63,
+    61,
+    79
+   ]
+  },
+  "en": {
+   "width_before": 856,
+   "delta": 25,
+   "per_gap": 1.786,
+   "n_gaps": 14,
+   "right_edge_residual": 0.0,
+   "gaps_before": [
+    30,
+    30,
+    31,
+    27,
+    23,
+    29,
+    30,
+    30,
+    68,
+    32,
+    65,
+    27,
+    29,
+    29
+   ]
+  }
+ },
+ "red_dx": 0,
+ "viewBox": [
+  0,
+  -12,
+  881,
+  427
+ ],
+ "ink_top_ref_y": 68,
+ "ink_bottom_ref_y": 494,
+ "paths": 31
+}

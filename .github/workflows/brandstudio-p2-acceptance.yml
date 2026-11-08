@@ -1,0 +1,67 @@
+name: Brandstudio P2 acceptance (read-only)
+
+on:
+  pull_request:
+    paths:
+      - "studio/production/p2_acceptance.py"
+      - "studio/production/tests/test_p2_acceptance.py"
+      - "studio/production/handoff/**"
+      - "studio/production/contracts/**"
+      - "docs/instagram/brandstudio-p2-kaist-pilot-20261102/**"
+      - ".github/workflows/brandstudio-p2-acceptance.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: brandstudio-p2-acceptance-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  p2-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Read-only checkout, full Git ancestry, no persisted credentials
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+      - name: Install pinned offline contract validator
+        run: python3 -m pip install --disable-pip-version-check -r studio/production/contracts/requirements.txt
+      - name: Full existing production contract and P2 regression suite
+        run: python3 -m unittest discover -s studio/production/tests -v
+      - name: Verify installed system Chrome
+        run: |
+          set -euo pipefail
+          command -v google-chrome || command -v chromium
+      - name: Fetch immutable OpenCode and Work/coord Git refs (no changes to branches)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin \
+            "+refs/heads/publish/opencode-opencode-p2-kaist-20261102:refs/remotes/origin/publish/opencode-opencode-p2-kaist-20261102" \
+            "+refs/heads/work/brandstudio-p2-kaist-20261102:refs/remotes/origin/work/brandstudio-p2-kaist-20261102" \
+            "+refs/heads/coord/brandstudio-p2-kaist-20261102:refs/remotes/origin/coord/brandstudio-p2-kaist-20261102"
+          SOURCE_SHA="$(git rev-parse --verify refs/remotes/origin/publish/opencode-opencode-p2-kaist-20261102)"
+          WORK_SHA="$(git rev-parse --verify refs/remotes/origin/work/brandstudio-p2-kaist-20261102)"
+          COORD_SHA="$(git rev-parse --verify refs/remotes/origin/coord/brandstudio-p2-kaist-20261102)"
+          echo "P2_SOURCE_SHA=$SOURCE_SHA" >> "$GITHUB_ENV"
+          echo "P2_WORK_SHA=$WORK_SHA" >> "$GITHUB_ENV"
+          git worktree add --detach "$RUNNER_TEMP/p2-work" "$WORK_SHA"
+          git worktree add --detach "$RUNNER_TEMP/p2-coord" "$COORD_SHA"
+      - name: Validate real receipts, Git ancestry, canonical logo bytes and two Chrome renders
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 studio/production/p2_acceptance.py \
+            --work-root "$RUNNER_TEMP/p2-work" \
+            --coordinator-root "$RUNNER_TEMP/p2-coord" \
+            --git-root "$GITHUB_WORKSPACE" \
+            --source-head "$P2_SOURCE_SHA" \
+            --work-head "$P2_WORK_SHA"

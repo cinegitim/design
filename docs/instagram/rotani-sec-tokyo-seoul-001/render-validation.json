@@ -1,0 +1,672 @@
+{
+  "01-hook": {
+    "viewport": [
+      1080,
+      1350
+    ],
+    "jostLoaded": true,
+    "copy": [
+      {
+        "index": 0,
+        "text": "ROTANI SEÇ / 001",
+        "bounds": {
+          "x": 82,
+          "y": 70.6500015258789,
+          "width": 250.84375,
+          "height": 32,
+          "right": 332.84375,
+          "bottom": 102.6500015258789
+        }
+      },
+      {
+        "index": 1,
+        "text": "TOKYO MU, SEUL MÜ?",
+        "bounds": {
+          "x": 65,
+          "y": 488.8499755859375,
+          "width": 627.062744140625,
+          "height": 266.760009765625,
+          "right": 692.062744140625,
+          "bottom": 755.6099853515625
+        }
+      },
+      {
+        "index": 2,
+        "text": "Üniversite hayatını hangi şehirde kurardın?",
+        "bounds": {
+          "x": 67,
+          "y": 761.0750122070312,
+          "width": 446.21875,
+          "height": 104.0999755859375,
+          "right": 513.21875,
+          "bottom": 865.1749877929688
+        }
+      }
+    ],
+    "logo": {
+      "bounds": {
+        "x": 795,
+        "y": 1212.4830322265625,
+        "width": 238,
+        "height": 91.112060546875,
+        "right": 1033,
+        "bottom": 1303.5950927734375
+      },
+      "lockupId": "D-04/light",
+      "src": "../assets/lockups/d-04-small-use-digital-light.svg"
+    },
+    "images": [],
+    "expectedCopy": [
+      "ROTANI SEÇ / 001",
+      "TOKYO MU, SEUL MÜ?",
+      "Üniversite hayatını hangi şehirde kurardın?"
+    ],
+    "issues": []
+  },
+  "02-life-after-class": {
+    "viewport": [
+      1080,
+      1350
+    ],
+    "jostLoaded": true,
+    "copy": [
+      {
+        "index": 0,
+        "text": "Ders bitti. Şehir başladı.",
+        "bounds": {
+          "x": 59,
+          "y": 53.94999694824219,
+          "width": 387.3125,
+          "height": 158.6999969482422,
+          "right": 446.3125,
+          "bottom": 212.64999389648438
+        }
+      },
+      {
+        "index": 1,
+        "text": "TOKYO",
+        "bounds": {
+          "x": 88.4739990234375,
+          "y": 584.8079833984375,
+          "width": 139.3851318359375,
+          "height": 61,
+          "right": 227.859130859375,
+          "bottom": 645.8079833984375
+        }
+      },
+      {
+        "index": 2,
+        "text": "Waseda çevresinde bir öğleden sonra.",
+        "bounds": {
+          "x": 89.93599700927734,
+          "y": 647.541015625,
+          "width": 394.9375,
+          "height": 72.6400146484375,
+          "right": 484.87349700927734,
+          "bottom": 720.1810302734375
+        }
+      },
+      {
+        "index": 3,
+        "text": "SEUL",
+        "bounds": {
+          "x": 565.0070190429688,
+          "y": 915.8679809570312,
+          "width": 98.58795166015625,
+          "height": 61,
+          "right": 663.594970703125,
+          "bottom": 976.8679809570312
+        }
+      },
+      {
+        "index": 4,
+        "text": "Sinchon'da ders çıkışı.",
+        "bounds": {
+          "x": 564.051025390625,
+          "y": 978.60302734375,
+          "width": 280.640625,
+          "height": 41,
+          "right": 844.691650390625,
+          "bottom": 1019.60302734375
+        }
+      },
+      {
+        "index": 5,
+        "text": "İki farklı kampüs çevresi, iki farklı günlük yaşam deneyimi.",
+        "bounds": {
+          "x": 60,
+          "y": 1122.550048828125,
+          "width": 886.140625,
+          "height": 49,
+          "right": 946.140625,
+          "bottom": 1171.550048828125
+        }
+      }
+    ],
+    "logo": {
+      "bounds": {
+        "x": 808,
+        "y": 48.9987678527832,
+        "width": 220,
+        "height": 84.22122192382812,
+        "right": 1028,
+        "bottom": 133.21998977661133
+      },
+      "lockupId": "D-04/light",
+      "src": "../assets/lockups/d-04-small-use-digital-light.svg"
+    },
+    "images": [],
+    "expectedCopy": [
+      "Ders bitti. Şehir başladı.",
+      "TOKYO",
+      "Waseda çevresinde bir öğleden sonra.",
+      "SEUL",
+      "Sinchon'da ders çıkışı.",
+      "İki farklı kampüs çevresi, iki farklı günlük yaşam deneyimi."
+    ],
+    "issues": []
+  },
+  "03-universities": {
+    "viewport": [
+      1080,
+      1350
+    ],
+    "jostLoaded": true,
+    "copy": [
+      {
+        "index": 0,
+        "text": "Şehri değil, üniversiteni de seçiyorsun.",
+        "bounds": {
+          "x": 58,
+          "y": 49.57499694824219,
+          "width": 404.4910583496094,
+          "height": 206.33999633789062,
+          "right": 462.4910583496094,
+          "bottom": 255.9149932861328
+        }
+      },
+      {
+        "index": 1,
+        "text": "TOKYO",
+        "bounds": {
+          "x": 92.90599822998047,
+          "y": 551.6790161132812,
+          "width": 123.04688262939453,
+          "height": 42,
+          "right": 215.952880859375,
+          "bottom": 593.6790161132812
+        }
+      },
+      {
+        "index": 2,
+        "text": "University of Tokyo",
+        "bounds": {
+          "x": 94.02899932861328,
+          "y": 595.5159912109375,
+          "width": 230.109375,
+          "height": 39,
+          "right": 324.1383743286133,
+          "bottom": 634.5159912109375
+        }
+      },
+      {
+        "index": 3,
+        "text": "Waseda University",
+        "bounds": {
+          "x": 94.98799896240234,
+          "y": 634.739013671875,
+          "width": 224.03433227539062,
+          "height": 39,
+          "right": 319.02233123779297,
+          "bottom": 673.739013671875
+        }
+      },
+      {
+        "index": 4,
+        "text": "Sophia University",
+        "bounds": {
+          "x": 95.9469985961914,
+          "y": 673.9609985351562,
+          "width": 211.83322143554688,
+          "height": 39,
+          "right": 307.7802200317383,
+          "bottom": 712.9609985351562
+        }
+      },
+      {
+        "index": 5,
+        "text": "SEUL",
+        "bounds": {
+          "x": 611.0020141601562,
+          "y": 861.1929931640625,
+          "width": 88.640625,
+          "height": 42,
+          "right": 699.6426391601562,
+          "bottom": 903.1929931640625
+        }
+      },
+      {
+        "index": 6,
+        "text": "Seoul National University",
+        "bounds": {
+          "x": 610.1019897460938,
+          "y": 905.0330200195312,
+          "width": 306.35369873046875,
+          "height": 39,
+          "right": 916.4556884765625,
+          "bottom": 944.0330200195312
+        }
+      },
+      {
+        "index": 7,
+        "text": "Yonsei University",
+        "bounds": {
+          "x": 609.280029296875,
+          "y": 944.2589721679688,
+          "width": 206.51416015625,
+          "height": 39,
+          "right": 815.794189453125,
+          "bottom": 983.2589721679688
+        }
+      },
+      {
+        "index": 8,
+        "text": "Korea University",
+        "bounds": {
+          "x": 608.4580078125,
+          "y": 983.4849853515625,
+          "width": 199.04437255859375,
+          "height": 39,
+          "right": 807.5023803710938,
+          "bottom": 1022.4849853515625
+        }
+      },
+      {
+        "index": 9,
+        "text": "Farklı akademik alanlar, programlar ve kabul koşulları.",
+        "bounds": {
+          "x": 57,
+          "y": 1090.4749755859375,
+          "width": 797.46875,
+          "height": 47,
+          "right": 854.46875,
+          "bottom": 1137.4749755859375
+        }
+      }
+    ],
+    "logo": {
+      "bounds": {
+        "x": 818,
+        "y": 48.99882507324219,
+        "width": 210,
+        "height": 80.39297485351562,
+        "right": 1028,
+        "bottom": 129.3917999267578
+      },
+      "lockupId": "D-04/light",
+      "src": "../assets/lockups/d-04-small-use-digital-light.svg"
+    },
+    "images": [],
+    "expectedCopy": [
+      "Şehri değil, üniversiteni de seçiyorsun.",
+      "TOKYO",
+      "University of Tokyo",
+      "Waseda University",
+      "Sophia University",
+      "SEUL",
+      "Seoul National University",
+      "Yonsei University",
+      "Korea University",
+      "Farklı akademik alanlar, programlar ve kabul koşulları."
+    ],
+    "issues": []
+  },
+  "04-language": {
+    "viewport": [
+      1080,
+      1350
+    ],
+    "jostLoaded": true,
+    "copy": [
+      {
+        "index": 0,
+        "text": "İngilizce okuyabilirsin. Peki yaşayabilir misin?",
+        "bounds": {
+          "x": 61,
+          "y": 54.025001525878906,
+          "width": 643.90625,
+          "height": 159.98001098632812,
+          "right": 704.90625,
+          "bottom": 214.00501251220703
+        }
+      },
+      {
+        "index": 1,
+        "text": "Her iki şehirde de İngilizce lisans seçenekleri var. Ama her program İngilizce değil.",
+        "bounds": {
+          "x": 242.0919952392578,
+          "y": 377.03399658203125,
+          "width": 471.59393310546875,
+          "height": 119.39999389648438,
+          "right": 713.6859283447266,
+          "bottom": 496.4339904785156
+        }
+      },
+      {
+        "index": 2,
+        "text": "JAPONYA",
+        "bounds": {
+          "x": 83.41325378417969,
+          "y": 681.0999755859375,
+          "width": 158.7742462158203,
+          "height": 41,
+          "right": 242.1875,
+          "bottom": 722.0999755859375
+        }
+      },
+      {
+        "index": 3,
+        "text": "Japonca, günlük yaşamını kolaylaştırır.",
+        "bounds": {
+          "x": 84.03289031982422,
+          "y": 732.1749877929688,
+          "width": 329.31085205078125,
+          "height": 75.6400146484375,
+          "right": 413.34374237060547,
+          "bottom": 807.8150024414062
+        }
+      },
+      {
+        "index": 4,
+        "text": "GÜNEY KORE",
+        "bounds": {
+          "x": 640,
+          "y": 739.0999755859375,
+          "width": 220.953125,
+          "height": 41,
+          "right": 860.953125,
+          "bottom": 780.0999755859375
+        }
+      },
+      {
+        "index": 5,
+        "text": "Korece, kampüs dışında önemli bir avantaj sağlar.",
+        "bounds": {
+          "x": 640,
+          "y": 790.1749877929688,
+          "width": 322.53125,
+          "height": 75.6400146484375,
+          "right": 962.53125,
+          "bottom": 865.8150024414062
+        }
+      },
+      {
+        "index": 6,
+        "text": "Başvurmadan önce bölümün öğretim dilini ve dil yeterlilik şartlarını kontrol et.",
+        "bounds": {
+          "x": 169.375,
+          "y": 1213.7249755859375,
+          "width": 741.234375,
+          "height": 73.2000732421875,
+          "right": 910.609375,
+          "bottom": 1286.925048828125
+        }
+      }
+    ],
+    "logo": {
+      "bounds": {
+        "x": 813,
+        "y": 54.1706428527832,
+        "width": 220,
+        "height": 84.22122192382812,
+        "right": 1033,
+        "bottom": 138.39186477661133
+      },
+      "lockupId": "D-04/light",
+      "src": "../assets/lockups/d-04-small-use-digital-light.svg"
+    },
+    "images": [],
+    "expectedCopy": [
+      "İngilizce okuyabilirsin. Peki yaşayabilir misin?",
+      "Her iki şehirde de İngilizce lisans seçenekleri var. Ama her program İngilizce değil.",
+      "JAPONYA",
+      "Japonca, günlük yaşamını kolaylaştırır.",
+      "GÜNEY KORE",
+      "Korece, kampüs dışında önemli bir avantaj sağlar.",
+      "Başvurmadan önce bölümün öğretim dilini ve dil yeterlilik şartlarını kontrol et."
+    ],
+    "issues": []
+  },
+  "05-budget": {
+    "viewport": [
+      1080,
+      1350
+    ],
+    "jostLoaded": true,
+    "copy": [
+      {
+        "index": 0,
+        "text": "Hayalini kurduğun şehrin bir de bütçesi var.",
+        "bounds": {
+          "x": 58,
+          "y": 52.5,
+          "width": 649.390625,
+          "height": 144.60000610351562,
+          "right": 707.390625,
+          "bottom": 197.10000610351562
+        }
+      },
+      {
+        "index": 1,
+        "text": "Hesaba katman gereken dört temel gider:",
+        "bounds": {
+          "x": 61,
+          "y": 199.25,
+          "width": 562.453125,
+          "height": 43,
+          "right": 623.453125,
+          "bottom": 242.25
+        }
+      },
+      {
+        "index": 2,
+        "text": "Konaklama",
+        "bounds": {
+          "x": 79.77799987792969,
+          "y": 446.2239990234375,
+          "width": 168.25,
+          "height": 47,
+          "right": 248.0279998779297,
+          "bottom": 493.2239990234375
+        }
+      },
+      {
+        "index": 3,
+        "text": "Öğrenim ücreti",
+        "bounds": {
+          "x": 696.8809814453125,
+          "y": 490.7490234375,
+          "width": 230.546875,
+          "height": 47,
+          "right": 927.4278564453125,
+          "bottom": 537.7490234375
+        }
+      },
+      {
+        "index": 4,
+        "text": "Ulaşım",
+        "bounds": {
+          "x": 172.36000061035156,
+          "y": 855.8489990234375,
+          "width": 100.76560974121094,
+          "height": 47,
+          "right": 273.1256103515625,
+          "bottom": 902.8489990234375
+        }
+      },
+      {
+        "index": 5,
+        "text": "Günlük yaşam",
+        "bounds": {
+          "x": 623.7990112304688,
+          "y": 875.010986328125,
+          "width": 215.8125,
+          "height": 47,
+          "right": 839.6115112304688,
+          "bottom": 922.010986328125
+        }
+      },
+      {
+        "index": 6,
+        "text": "Yurt mu, kiralık ev mi? Kampüse yakınlık, ulaşım ve burs seçenekleri bütçeni değiştirebilir.",
+        "bounds": {
+          "x": 96,
+          "y": 1059.324951171875,
+          "width": 783.3125,
+          "height": 80.9600830078125,
+          "right": 879.3125,
+          "bottom": 1140.2850341796875
+        }
+      }
+    ],
+    "logo": {
+      "bounds": {
+        "x": 814,
+        "y": 47.998779296875,
+        "width": 218,
+        "height": 83.45556640625,
+        "right": 1032,
+        "bottom": 131.454345703125
+      },
+      "lockupId": "D-04/light",
+      "src": "../assets/lockups/d-04-small-use-digital-light.svg"
+    },
+    "images": [],
+    "expectedCopy": [
+      "Hayalini kurduğun şehrin bir de bütçesi var.",
+      "Hesaba katman gereken dört temel gider:",
+      "Konaklama",
+      "Öğrenim ücreti",
+      "Ulaşım",
+      "Günlük yaşam",
+      "Yurt mu, kiralık ev mi? Kampüse yakınlık, ulaşım ve burs seçenekleri bütçeni değiştirebilir."
+    ],
+    "issues": []
+  },
+  "06-decision": {
+    "viewport": [
+      1080,
+      1350
+    ],
+    "jostLoaded": true,
+    "copy": [
+      {
+        "index": 0,
+        "text": "ROTANI SEÇ / 001",
+        "bounds": {
+          "x": 72,
+          "y": 64.57499694824219,
+          "width": 239.4375,
+          "height": 30,
+          "right": 311.4375,
+          "bottom": 94.57499694824219
+        }
+      },
+      {
+        "index": 1,
+        "text": "Peki senin rotan hangisi?",
+        "bounds": {
+          "x": 58,
+          "y": 149.02499389648438,
+          "width": 455.875,
+          "height": 159.98001098632812,
+          "right": 513.875,
+          "bottom": 309.0050048828125
+        }
+      },
+      {
+        "index": 2,
+        "text": "TOKYO",
+        "bounds": {
+          "x": 57,
+          "y": 397.67498779296875,
+          "width": 431.1512451171875,
+          "height": 186,
+          "right": 488.1512451171875,
+          "bottom": 583.6749877929688
+        }
+      },
+      {
+        "index": 3,
+        "text": "SEUL",
+        "bounds": {
+          "x": 728.56201171875,
+          "y": 631.9089965820312,
+          "width": 304.62158203125,
+          "height": 186,
+          "right": 1033.18359375,
+          "bottom": 817.9089965820312
+        }
+      },
+      {
+        "index": 4,
+        "text": "Karar verirken bölümünü, eğitim dilini ve bütçeni birlikte düşün.",
+        "bounds": {
+          "x": 85,
+          "y": 807.25,
+          "width": 552.34375,
+          "height": 77.79998779296875,
+          "right": 637.34375,
+          "bottom": 885.0499877929688
+        }
+      },
+      {
+        "index": 5,
+        "text": "Yorumlarda tercihini söyle.",
+        "bounds": {
+          "x": 57.90625,
+          "y": 966.5999755859375,
+          "width": 600.046875,
+          "height": 69,
+          "right": 657.953125,
+          "bottom": 1035.5999755859375
+        }
+      },
+      {
+        "index": 6,
+        "text": "Asya'da Eğitim · Ücretsiz ön görüşme",
+        "bounds": {
+          "x": 59,
+          "y": 1073.175048828125,
+          "width": 495.671875,
+          "height": 42,
+          "right": 554.671875,
+          "bottom": 1115.175048828125
+        }
+      }
+    ],
+    "logo": {
+      "bounds": {
+        "x": 55,
+        "y": 1119.4642333984375,
+        "width": 548,
+        "height": 205.540283203125,
+        "right": 603,
+        "bottom": 1325.0045166015625
+      },
+      "lockupId": "H-02/dark",
+      "src": "../assets/lockups/h-02-primary-horizontal-dark.svg"
+    },
+    "images": [],
+    "expectedCopy": [
+      "ROTANI SEÇ / 001",
+      "Peki senin rotan hangisi?",
+      "TOKYO",
+      "SEUL",
+      "Karar verirken bölümünü, eğitim dilini ve bütçeni birlikte düşün.",
+      "Yorumlarda tercihini söyle.",
+      "Asya'da Eğitim · Ücretsiz ön görüşme"
+    ],
+    "issues": []
+  }
+}

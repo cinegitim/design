@@ -1,0 +1,89 @@
+{
+  "phase": "Instagram Studio — Phase 1C: IMAGE-FIRST CREATIVE EXPLORATION",
+  "status": "HUMAN CREATIVE DIRECTION SELECTION PENDING",
+  "adapter": "ChatGPT Image (image_generate, gpt-image-2, ChatGPT subscription)",
+  "generations": 10,
+  "concepts_presented": 9,
+  "note": "10 calls = 9 concepts + 1 path-retry; no silent substitution; Pollinations unused in this phase",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "concepts": [
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1c/e1-countdown.png",
+      "sha256": "4c8baaa8ec95d82c1ecdf4cc83a499249eeadcd8a7ce34f7c2675742c84c35bc",
+      "direction": "editorial",
+      "art_direction": "Dev '30' + mürekkep şerit, asimetrik kapak",
+      "params": "1024x1536 high, seed-free",
+      "critique": "Türkçe doğru; şerit kremlerle dengeli"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1c/e2-typewall.png",
+      "sha256": "f8681e0f5d5ec7c4bdac7ee9b098da5c100b455a6ca028e3e115777bb3b6e9c1",
+      "direction": "editorial",
+      "art_direction": "Kırpılmış dev grotesk + takvim ızgarası",
+      "params": "1024x1536 high, seed-free",
+      "critique": "İsviçre disiplini; 'Vize dosyası' doğru"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1c/e3-deadline.png",
+      "sha256": "d073d570f4f6dbd11b5f474f1929fde3f44c6da03a9a9a69ceb9d48376f08e50",
+      "direction": "editorial",
+      "art_direction": "Ultra-kalın 'SON' + 3 basamak",
+      "params": "1024x1536 high, seed-free",
+      "critique": "Güçlü; alt satır son glifte küçük bozukluk"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1c/p1-library-night.png",
+      "sha256": "952d936cc97d82793743f48af5d7927a9cea4b633d12555ac77cfa7366831279",
+      "direction": "photo",
+      "art_direction": "jp-library.jpg referanslı sinematik kapak",
+      "params": "1024x1536 high + 1 referans görsel",
+      "critique": "'Gece vardiyası' doğru; referans sadakati yüksek"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1c/p2-canteen.png",
+      "sha256": "17a09daa1113f51f88cbf6ed71844beb309a7c81817011af99345498de87a58d",
+      "direction": "photo",
+      "art_direction": "Yemekhane + diyagonal bant",
+      "params": "1024x1536 high, seed-free",
+      "critique": "Neşeli, dergi seviyesi; rozet yok"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1c/p3-street-type.png",
+      "sha256": "af59a2bf4b742baa4809cef80d9ca00b3a4ec29b6ab79f03b757cfbcbcd7f410",
+      "direction": "photo",
+      "art_direction": "Kontur 'Senin sokağın' + sabah sokağı",
+      "params": "1024x1536 high, seed-free",
+      "critique": "COĞRAFYA UYARISI: sokak İstanbul — şehir iddiasız sunulur"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1c/i1-city-vs.png",
+      "sha256": "e9db63d61ae632b9ac7baa15dca13babf47b3717cd65dca43c142843a54c704a",
+      "direction": "info",
+      "art_direction": "Bölünmüş diptik + VS halkası",
+      "params": "1024x1536 high, seed-free",
+      "critique": "'iki şehir, iki bütçe' doğru; motif ödünç alınabilir"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1c/i2-budget-bars.png",
+      "sha256": "8c4426443f962a401f3b56acd5118a8b612a7025bd351084789b0f9d41d75317",
+      "direction": "info",
+      "art_direction": "82/64 serif rakam + bar + yan ray",
+      "params": "1024x1536 high, seed-free",
+      "critique": "Müze-grafik kalitesi; rakamlar keşif amaçlı"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-1c/i3-steps-spiral.png",
+      "sha256": "1f3595169d44e5befb4227d5dd57862d0255a88bf2c033120f43a042ed2713fe",
+      "direction": "info",
+      "art_direction": "Şerit merdiven 5 basamak",
+      "params": "1024x1536 high, seed-free",
+      "critique": "Basamak sözcükleri doğru; 'kayıt' noktasında küçük iz"
+    }
+  ],
+  "rules": [
+    "No concept rebuilt/traced/decomposed in this phase.",
+    "No winners selected; no templates created.",
+    "Logo never requested from model; canonical SVG shown beside art in gallery chrome only.",
+    "Approximate model text accepted for exploration; exact text reconstructed post-selection."
+  ]
+}

@@ -1,0 +1,79 @@
+name: Brandstudio finalized product audit (lightweight)
+
+# Only finished-product PRs run this. No cron, worker, Pages build, paid API,
+# screenshot artifact storage, or checks on every Cloudflare manual save.
+on:
+  pull_request:
+    paths:
+      - "studio/production/finalized/**"
+      - "studio/production/finalized_audit.py"
+      - "studio/production/tests/test_finalized_audit.py"
+      - ".github/workflows/brandstudio-finalized-audit.yml"
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'Product/revision to check (e.g. product-id/0123456789ab)'
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: brandstudio-finalized-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  product-package:
+    name: product-package
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Read only finalization packages and checker
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout: |
+            studio/production/finalized/
+            studio/production/finalized_audit.py
+            studio/production/tests/test_finalized_audit.py
+          sparse-checkout-cone-mode: false
+
+      - name: Find changed packages and load independent checker from base
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PACKAGE: ${{ inputs.package }}
+        run: |
+          set -euo pipefail
+          CHECKER="$RUNNER_TEMP/brandstudio-finalized-audit.py"
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            [[ "$BASE_SHA" =~ ^[0-9a-f]{40}$ ]]
+            git fetch --no-tags --depth=1 origin "$BASE_SHA"
+            git diff --name-only "$BASE_SHA" HEAD -- studio/production/finalized/ > "$RUNNER_TEMP/brandstudio-changed.txt"
+            if git cat-file -e "$BASE_SHA:studio/production/finalized_audit.py" 2>/dev/null; then
+              git show "$BASE_SHA:studio/production/finalized_audit.py" > "$CHECKER"
+            else
+              # First-install bootstrap: this infrastructure PR also receives full audit.
+              echo "::notice::Initial checker bootstrap; subject to independent infrastructure review."
+              cp studio/production/finalized_audit.py "$CHECKER"
+            fi
+          else
+            # Manual run remains one-product only; never crawl all archived designs.
+            [[ "$PACKAGE" =~ ^[a-z0-9]+(-[a-z0-9]+)*/[a-f0-9]{12}$ ]]
+            echo "studio/production/finalized/$PACKAGE/manifest.json" > "$RUNNER_TEMP/brandstudio-changed.txt"
+            cp studio/production/finalized_audit.py "$CHECKER"
+          fi
+          echo "BRANDSTUDIO_CHECKER=$CHECKER" >> "$GITHUB_ENV"
+          echo "BRANDSTUDIO_CHANGED=$RUNNER_TEMP/brandstudio-changed.txt" >> "$GITHUB_ENV"
+
+      - name: Run compact rejection tests (stdlib only)
+        run: python3 -I -B -m unittest discover -s studio/production/tests -p 'test_finalized_audit.py' -v
+
+      - name: Check only changed packages, then smoke-render one candidate cover per product
+        run: |
+          python3 -I -B "$BRANDSTUDIO_CHECKER" \
+            --root "$GITHUB_WORKSPACE" \
+            --changed "$BRANDSTUDIO_CHANGED" \
+            --render-cover

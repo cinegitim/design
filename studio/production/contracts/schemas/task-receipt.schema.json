@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TaskReceipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^brandstudio-[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 130
+    },
+    "executor": {
+      "enum": [
+        "opencode",
+        "codex",
+        "chatgpt-work",
+        "chatgpt-chat",
+        "antigravity"
+      ]
+    },
+    "base_sha": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "head_sha": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "branch": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._/-]{0,180}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "changed_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(?:docs|brands|studio)/[A-Za-z0-9][A-Za-z0-9._/-]*$",
+        "maxLength": 400,
+        "not": {
+          "pattern": "(?:^|/)\\.\\.?(/|$)|//|\\\\|[?&#]"
+        }
+      },
+      "uniqueItems": true,
+      "maxItems": 500
+    },
+    "actual_tools": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+      },
+      "uniqueItems": true,
+      "minItems": 0,
+      "maxItems": 60
+    },
+    "failure_codes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+      },
+      "uniqueItems": true,
+      "minItems": 0,
+      "maxItems": 60
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+      },
+      "uniqueItems": true,
+      "minItems": 0,
+      "maxItems": 60
+    }
+  },
+  "required": [
+    "schema_version",
+    "task_id",
+    "executor",
+    "base_sha",
+    "head_sha",
+    "branch",
+    "changed_paths",
+    "actual_tools",
+    "failure_codes",
+    "evidence_refs"
+  ]
+}

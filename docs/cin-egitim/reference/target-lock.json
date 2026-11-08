@@ -1,0 +1,26 @@
+{
+  "brand": "cin-egitim",
+  "status": "TARGET_REFERENCE_LOCKED",
+  "approval_scope": "User-selected visual target only; NOT production logo approval.",
+  "target_locked": true,
+  "symbol_only": true,
+  "typography_included": false,
+  "development_allowed": false,
+  "production_logo_created": false,
+  "source_board": "target-board.png",
+  "source_board_sha256": "b6bffa28050233b7d9493ba8212a13ce720457448201ea42029907c0009ff3df",
+  "target_image": "target-symbol.png",
+  "target_image_sha256": "6177f661a1971b985c2d2e0bb91b995d8df074f5ef9433caef5366f457a76b89",
+  "source_crop_xyxy": [
+    50,
+    180,
+    279,
+    411
+  ],
+  "source_board_dimensions": [
+    1448,
+    1086
+  ],
+  "crop_method": "Lossless crop of top-left large symbol. No resize, tracing, cleanup, redrawing, or colour alteration.",
+  "instruction": "Previous Cin Eğitim studies deleted. Keep this symbol as the sole visual target and do not begin work."
+}

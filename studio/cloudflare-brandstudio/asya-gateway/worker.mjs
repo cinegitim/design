@@ -1,0 +1,375 @@
+import {submitEditorReview,reviewPrStatus} from './github-pr.mjs';
+import {submitProductFinalization,finalizationStatus} from './github-finalize.mjs';
+import {submitSourcePromotion,promotionStatus} from './github-promote.mjs';
+// Brandstudio admin gateway — Asyada Egitim. Username/password + trusted browser sessions.
+// No password, derived verifier or token is committed to GitHub.
+const STORE='BRANDSTUDIO_OBJECTS', AUTH='BRANDSTUDIO_AUTH';
+const KEY=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const enc=new TextEncoder(),COOKIE='__Host-brandstudio_session',LEGACY_COOKIE='__Host-branddesign_session';
+const YEAR=31536000;
+const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{'content-type':'application/json; charset=utf-8','cache-control':'no-store','x-content-type-options':'nosniff','referrer-policy':'no-referrer'}});
+const hex=bytes=>Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
+function fromHex(s){if(typeof s!=='string'||s.length%2||!/^[a-f0-9]+$/i.test(s))throw Error('hex');return Uint8Array.from(s.match(/.{2}/g),x=>parseInt(x,16))}
+async function sha256(x){return hex(new Uint8Array(await crypto.subtle.digest('SHA-256',enc.encode(x))))}
+function sessionToken(req){
+ const cookie=req.headers.get('Cookie')||'';
+ const current=cookie.match(/(?:^|;\s*)__Host-brandstudio_session=([a-f0-9]{64})(?:;|$)/);
+ if(current)return {token:current[1],legacy:false};
+ const previous=cookie.match(/(?:^|;\s*)__Host-branddesign_session=([a-f0-9]{64})(?:;|$)/);
+ return previous?{token:previous[1],legacy:true}:null
+}
+async function authObject(env,action,id,extra={}){
+ if(!env[AUTH])throw Error('Auth object binding missing');
+ // Preserve the existing DO identity to retain all previously issued device sessions.
+ const ns=env[AUTH],obj=ns.get(ns.idFromName('branddesign-admin'));
+ const r=await obj.fetch('https://brandstudio.internal/session',{
+  method:'POST',headers:{'content-type':'application/json'},
+  body:JSON.stringify({action,id,...extra})
+ });
+ if(!r.ok)throw Error('Auth backend unavailable');
+ return r.json()
+}
+async function session(req,env){
+ const previous=sessionToken(req);if(!previous)return {ok:false};
+ const token=previous.token,id=await sha256(token);
+ const result=await authObject(env,'check',id);
+ return result.ok?{ok:true,token,renewed:!!result.renewed,legacy:previous.legacy}:{ok:false}
+}
+function cookieHeader(token,maxAge=YEAR){
+ return COOKIE+'='+token+'; Path=/; Max-Age='+maxAge+'; HttpOnly; Secure; SameSite=Lax'
+}
+function expiredLegacyCookie(){
+ return LEGACY_COOKIE+'=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax'
+}
+function attachSession(response,user){
+ if(!user?.ok||(!user.legacy&&!user.renewed))return response;
+ const headers=new Headers(response.headers);
+ headers.append('Set-Cookie',cookieHeader(user.token));
+ if(user.legacy)headers.append('Set-Cookie',expiredLegacyCookie());
+ return new Response(response.body,{status:response.status,headers})
+}
+function sameOrigin(req){
+ const url=new URL(req.url);
+ return req.headers.get('Origin')===url.origin;
+}
+function redirect(url,header){
+ const headers={'Location':url,'Cache-Control':'no-store'};
+ if(header)headers['Set-Cookie']=header;
+ return new Response(null,{status:303,headers})
+}
+function target(value){
+ const s=String(value||'');
+ if(s.length>0&&s.length<350&&s.startsWith('/')&&!s.startsWith('//')&&!s.includes('\\')&&!/[\x00-\x1F\x7F]/.test(s))return s;
+ return '/visual-editor/browser/'
+}
+// Password stretching happens in the browser to respect Workers Free 10ms CPU limit.
+// A short-lived, one-use challenge prevents replay of a captured proof.
+const LOGIN_SCRIPT=String.raw`(function(){
+ const form=document.querySelector('form[action="/admin/login"]');
+ const button=form.querySelector('button[type=submit]');
+ const toBytes=s=>Uint8Array.from(s.match(/.{2}/g),x=>parseInt(x,16));
+ const toHex=b=>Array.from(new Uint8Array(b),v=>v.toString(16).padStart(2,'0')).join('');
+ const encoder=new TextEncoder();
+ form.addEventListener('submit',async event=>{
+  event.preventDefault();if(button.disabled)return;
+  const username=form.elements.namedItem('username').value;
+  const password=form.elements.namedItem('password').value;
+  button.disabled=true;button.textContent='Güvenli giriş doğrulanıyor…';
+  try{
+   const req=await fetch('/admin/challenge',{credentials:'same-origin',cache:'no-store'});
+   if(!req.ok)throw Error('Çok fazla deneme veya geçici bağlantı sorunu');
+   const c=await req.json();
+   if(!/^[a-f0-9]{64}$/.test(c.challenge)||!/^[a-f0-9]+$/.test(c.salt))throw Error('Geçersiz doğrulama');
+   const material=await crypto.subtle.importKey('raw',encoder.encode(password),'PBKDF2',false,['deriveBits']);
+   const bits=await crypto.subtle.deriveBits({name:'PBKDF2',salt:toBytes(c.salt),iterations:c.iterations,hash:'SHA-256'},material,256);
+   const hmac=await crypto.subtle.importKey('raw',bits,{name:'HMAC',hash:'SHA-256'},false,['sign']);
+   const message=['brandstudio-admin-login:v1',c.challenge,username,location.host].join('\n');
+   const proof=toHex(await crypto.subtle.sign('HMAC',hmac,encoder.encode(message)));
+   form.elements.namedItem('password').removeAttribute('name');
+   for(const [name,value] of [['challenge',c.challenge],['proof',proof]]){
+    const input=document.createElement('input');input.type='hidden';input.name=name;input.value=value;form.append(input)
+   }
+   form.submit()
+  }catch(e){
+   button.disabled=false;button.textContent='Admin paneline gir';
+   document.getElementById('message').textContent='Giriş hazırlanamadı. Lütfen tekrar dene.'
+  }
+ })
+})();`;
+function loginHtml(next,error,nonce){
+ const safe=next.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
+ return `<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Brandstudio · Admin Girişi</title><style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 20% 10%,#27334b 0,#111927 50%,#0c111b 100%);color:#edf2f8;font:15px/1.5 system-ui,Arial;display:grid;place-items:center;padding:25px}main{width:min(100%,435px);background:#182334;border:1px solid #34415a;box-shadow:0 22px 65px #0007;border-radius:18px;padding:34px}h1{font-size:27px;letter-spacing:-.8px;margin:4px 0 6px}p{color:#abb8cc;margin:0 0 24px}.brand{color:#f6a67e;font-size:12px;letter-spacing:.15em;font-weight:800}label{display:block;margin:16px 0 6px;color:#d5e0ef;font-weight:600;font-size:13px}input{width:100%;border:1px solid #45556d;border-radius:9px;padding:13px;background:#0e1725;color:#fff;font:inherit}input:focus{outline:2px solid #f5a47b;outline-offset:2px}button{margin:25px 0 10px;background:#bd2120;border:0;border-radius:10px;padding:14px;color:white;font:inherit;font-weight:750;width:100%;cursor:pointer}button:disabled{opacity:.65}small{color:#9faec2}aside{color:#ffbeb5;margin-top:12px;font-size:13px}</style></head><body><main><div class="brand">BRANDSTUDIO / ADMIN</div><h1>Tekrar hoş geldin.</h1><p>Bu tarayıcıda bir kez giriş yap. Güvenli oturumun sonraki ziyaretlerinde otomatik hatırlanır.</p><form method="post" action="/admin/login"><input type="hidden" name="next" value="${safe}"><label for="username">Kullanıcı adı</label><input id="username" name="username" required autocomplete="username" maxlength="64"><label for="password">Şifre</label><input id="password" name="password" type="password" required autocomplete="current-password"><button type="submit">Admin paneline gir</button></form><aside id="message">${error?'Giriş bilgileri doğrulanamadı veya çok fazla deneme yapıldı.':''}</aside><small>Güvenilen tarayıcı oturumu · 365 günlük yenilenen oturum · Çıkış yaparak sonlandırılabilir</small></main><script nonce="${nonce}">${LOGIN_SCRIPT}</script></body></html>`
+}
+function loginPage(next,error,status=200){
+ const nonce=hex(crypto.getRandomValues(new Uint8Array(16)));
+ const html=loginHtml(next,error,nonce);
+ return new Response(html,{status,headers:{'content-type':'text/html; charset=utf-8','cache-control':'no-store','content-security-policy':"default-src 'none'; script-src 'nonce-"+nonce+"'; connect-src 'self'; style-src 'unsafe-inline'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'",'x-frame-options':'DENY','x-content-type-options':'nosniff'}})
+}
+async function correctProof(username,challenge,proof,env,host){
+ if(!env.ADMIN_PBKDF2_SALT||!env.ADMIN_PBKDF2_HASH)throw Error('Admin password secret missing');
+ if(username!=='adminasya'||!/^[a-f0-9]{64}$/.test(challenge)||!/^[a-f0-9]{64}$/.test(proof))return false;
+ const key=await crypto.subtle.importKey('raw',fromHex(env.ADMIN_PBKDF2_HASH),{name:'HMAC',hash:'SHA-256'},false,['sign']);
+ const msg=['brandstudio-admin-login:v1',challenge,username,host].join('\n');
+ const expected=new Uint8Array(await crypto.subtle.sign('HMAC',key,enc.encode(msg)));
+ const actual=fromHex(proof);let diff=0;
+ for(let i=0;i<expected.length;i++)diff|=actual[i]^expected[i];
+ return diff===0
+}
+async function handleAdmin(req,env,url){
+ if(url.pathname==='/admin/logout'){
+  if(req.method!=='POST'||!sameOrigin(req))return json({error:'Güvenli istek gerekli'},403);
+  const item=sessionToken(req);
+  if(item)await authObject(env,'revoke',await sha256(item.token));
+  const headers=new Headers({Location:'/admin/login','Cache-Control':'no-store'});
+  headers.append('Set-Cookie',cookieHeader('',0));
+  headers.append('Set-Cookie',expiredLegacyCookie());
+  return new Response(null,{status:303,headers})
+ }
+ if(url.pathname==='/admin/session'){
+  if(req.method!=='GET')return json({error:'method'},405);
+  const status=await session(req,env);
+  return attachSession(json({authenticated:status.ok,session:'trusted-device',expiresAfterDays:365}),status)
+ }
+ if(url.pathname==='/admin/challenge'){
+  if(req.method!=='GET')return json({error:'method'},405);
+  if(!env.ADMIN_PBKDF2_SALT||!env.ADMIN_PBKDF2_HASH)return json({error:'Giriş yapılandırılmamış'},503);
+  const clientId=await sha256(req.headers.get('CF-Connecting-IP')||'unknown');
+  const check=await authObject(env,'attempt',clientId,{op:'probe'});
+  if(!check.ok)return json({error:'Çok fazla giriş denemesi'},429);
+  const challenge=await authObject(env,'challenge',clientId);
+  return json({challenge:challenge.challenge,salt:env.ADMIN_PBKDF2_SALT,iterations:210000})
+ }
+ // The production gallery is authenticated; only the administrator can request a new scan.
+ // A server-side Worker-to-Worker service binding keeps every credential outside browsers.
+ if(url.pathname==='/admin/publications/status'||url.pathname==='/admin/publications/refresh'){
+  const refresh=url.pathname.endsWith('/refresh');
+  if(req.method!==(refresh?'POST':'GET'))return json({error:'Yöntem desteklenmiyor'},405);
+  if(refresh&&!sameOrigin(req))return json({error:'Güvenli istek gerekli'},403);
+  const user=await session(req,env);
+  if(!user.ok)return json({error:'Admin girişi gerekli'},401);
+  if(!env.PUBLICATION_TRACKER||!env.BRANDSTUDIO_PUBLICATION_BRIDGE_TOKEN)
+   return attachSession(json({error:'Yayın denetim servisi yapılandırılmamış'},503),user);
+  try{
+   const resource=refresh?'refresh':'status';
+   let selected=['instagram'];
+   if(refresh){
+    const raw=await req.text();
+    if(raw.length>800)return json({error:'İstek çok büyük'},413);
+    let parsed;try{parsed=JSON.parse(raw)}catch(_){return json({error:'Geçersiz istek'},400)}
+    selected=parsed?.platforms;
+    const allowed=['instagram','facebook','linkedin','x'];
+    if(!Array.isArray(selected)||selected.length<1||selected.length>4||
+       selected.some(x=>!allowed.includes(x))||new Set(selected).size!==selected.length)
+       return json({error:'Geçersiz platform seçimi'},400);
+   }
+   const result=await env.PUBLICATION_TRACKER.fetch('https://brandstudio-publications.internal/api/'+resource,{
+    method:refresh?'POST':'GET',
+    headers:refresh?{'Authorization':'Bearer '+env.BRANDSTUDIO_PUBLICATION_BRIDGE_TOKEN,'Content-Type':'application/json'}:{Accept:'application/json'},
+    body:refresh?JSON.stringify({platforms:selected}):undefined
+   });
+   const body=await result.json();
+   if(refresh && !selected.some(p=>body?.platforms?.[p]?.state==='ok'))
+    return attachSession(json({error:'Seçilen platformlarda denetim tamamlanamadı',details:selected.map(p=>p+': '+(body?.platforms?.[p]?.message||body?.platforms?.[p]?.state||body?.error||'Bilinmeyen hata')).join('; ')},502),user);
+   return attachSession(json(body,result.status),user);
+  }catch(err){
+   console.error('Publication check failed:',String(err?.message||err));
+   return attachSession(json({error:'Instagram denetim servisine ulaşılamadı'},502),user);
+  }
+ }
+ if(url.pathname!=='/admin/login'&&url.pathname!=='/admin'&&url.pathname!=='/admin/')return json({error:'Yol bulunamadı'},404);
+ if(req.method==='GET'){
+  const user=await session(req,env);
+  if(user.ok)return attachSession(redirect(target(url.searchParams.get('next'))),user);
+  return loginPage(target(url.searchParams.get('next')),false)
+ }
+ if(req.method!=='POST'||!sameOrigin(req)||!req.headers.get('content-type')?.startsWith('application/x-www-form-urlencoded'))return json({error:'Güvenli istek gerekli'},403);
+ const body=await req.text();
+ if(body.length>1600)return json({error:'Çok büyük istek'},413);
+ const data=new URLSearchParams(body);
+ const username=String(data.get('username')||'').slice(0,64);
+ const proof=String(data.get('proof')||'').slice(0,128),challenge=String(data.get('challenge')||'').slice(0,128);
+ const clientId=await sha256(req.headers.get('CF-Connecting-IP')||'unknown');
+ const ratelimit=await authObject(env,'attempt',clientId,{op:'probe'});
+ if(!ratelimit.ok)return loginPage(target(data.get('next')),true,429);
+ const consumed=await authObject(env,'consume',clientId,{challenge});
+ const valid=consumed.ok&&await correctProof(username,challenge,proof,env,url.host);
+ if(!valid){await authObject(env,'attempt',clientId,{op:'failed'});return loginPage(target(data.get('next')),true,401)}
+ await authObject(env,'attempt',clientId,{op:'success'});
+ const secret=hex(crypto.getRandomValues(new Uint8Array(32)));
+ await authObject(env,'issue',await sha256(secret));
+ return redirect(target(data.get('next')),cookieHeader(secret))
+}
+function safeProduct(p){return typeof p==='string'&&p.length<=130&&KEY.test(p)}
+function validateDesignStyle(x){
+ if(!x||typeof x!=='object'||Array.isArray(x))return false;
+ const fields=['schema','brand','category','style_id','style_version','style_source_blob_sha','preset_id','lockup_id','lockup_sha256','seal_sha256','approval_status','font_family','palette','variation','overrides','source_path'];
+ if(Object.keys(x).length!==fields.length||fields.some(k=>!Object.prototype.hasOwnProperty.call(x,k)))return false;
+ const slug=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+ if(x.schema!==1||!['brand','category','style_id','preset_id'].every(k=>slug.test(x[k]||'')))return false;
+ if(!/^\d{1,2}\.\d{1,2}\.\d{1,2}$/.test(x.style_version||'')||!/^[a-f0-9]{40}$/.test(x.style_source_blob_sha||''))return false;
+ if(!/^(?:H-02|P-01|F-05)\/(?:light|dark|monochrome)$/.test(x.lockup_id||'')||!['lockup_sha256','seal_sha256'].every(k=>/^[a-f0-9]{64}$/.test(x[k]||'')))return false;
+ if(!['review-only','approved','locked'].includes(x.approval_status)||x.font_family!=='Jost')return false;
+ if(!x.palette||typeof x.palette!=='object'||Array.isArray(x.palette)||Object.keys(x.palette).length!==3||!['paper','ink','red'].every(k=>/^#[a-f\d]{6}$/i.test(x.palette[k]||'')))return false;
+ if(!x.variation||typeof x.variation!=='object'||Array.isArray(x.variation)||Object.keys(x.variation).length<1||Object.keys(x.variation).length>12||!x.overrides||typeof x.overrides!=='object'||Array.isArray(x.overrides)||Object.keys(x.overrides).length>12)return false;
+ for(const obj of [x.variation,x.overrides])
+  for(const [axis,val] of Object.entries(obj))
+   if(!/^[a-z][a-z0-9_]{1,30}$/.test(axis)||typeof val!=='string'||val.length>64||!slug.test(val))return false;
+ return x.source_path==='brands/'+x.brand+'/styles/'+x.category+'/'+x.style_id+'/style.json';
+}
+function validateState(s){
+ if(!s||typeof s!=='object'||Array.isArray(s)||!s.colors||!s.edits||!s.groups)return false;
+ if(!['paper','ink','red'].every(k=>/^#[a-f\d]{6}$/i.test(s.colors[k]||'')))return false;
+ if(typeof s.edits!=='object'||Array.isArray(s.edits)||Object.keys(s.edits).length>800)return false;
+ if(typeof s.groups!=='object'||Array.isArray(s.groups))return false;
+ if(s.designStyle!==undefined&&!validateDesignStyle(s.designStyle))return false;
+ for(const [key,edit] of Object.entries(s.edits)){
+  if(!/^\d{1,3}:\d{1,4}$/.test(key)||!edit||typeof edit!=='object')return false;
+  if(edit.styles&&(!edit.styles||typeof edit.styles!=='object'||Array.isArray(edit.styles)||Object.keys(edit.styles).length>80))return false;
+  if(edit.segments&&(!Array.isArray(edit.segments)||edit.segments.length>40||edit.segments.some(x=>typeof x!=='string'||x.length>1200)))return false;
+  if(edit.image!==undefined&&(!/^data:image\/(?:png|jpeg|webp);base64,[a-zA-Z0-9+/=]+$/.test(edit.image)||edit.image.length>650000))return false;
+  for(const value of Object.values(edit.styles||{})){if(typeof value!=='string'||value.length>1200||/expression\s*\(|javascript:|@import|url\s*\(/i.test(value))return false}
+ }
+ return true
+}
+function objectFor(context,product){
+ const binding=context.env[STORE];
+ return binding.get(binding.idFromName(product))
+}
+export async function onRequestGet(context){
+ if(!context.authenticated)return json({error:'Admin girişi gerekiyor'},401);
+ if(!context.env?.[STORE])return json({error:'Kayıt hizmeti yapılandırılmamış'},503);
+ const product=new URL(context.request.url).searchParams.get('product');
+ if(!safeProduct(product))return json({error:'Geçersiz tasarım'},400);
+ try{return await objectFor(context,product).fetch('https://brandstudio.internal/revisions?product='+encodeURIComponent(product))}
+ catch(e){console.error('Editor store read failed',String(e?.message||e));return json({error:'Kayıtlar okunamadı'},503)}
+}
+export async function onRequestPost(context){
+ if(!context.authenticated)return json({error:'Admin girişi gerekiyor'},401);
+ if(!context.env?.[STORE])return json({error:'Kayıt hizmeti yapılandırılmamış'},503);
+ const req=context.request,url=new URL(req.url);
+ if(req.headers.get('Origin')!==url.origin||req.headers.get('X-Brandstudio-Editor')!=='1'||!req.headers.get('Content-Type')?.startsWith('application/json'))return json({error:'Güvenli istek doğrulanamadı'},403);
+ const raw=await req.text();if(enc.encode(raw).length>900000)return json({error:'Kayıt çok büyük'},413);
+ let input;
+ try{input=JSON.parse(raw)}catch(_){return json({error:'Geçersiz veri'},400)}
+ const {product,version,state,expectedSha}=input;
+ if(!safeProduct(product)||!Number.isInteger(version)||version<1||version>26||!validateState(state)||!Object.prototype.hasOwnProperty.call(input,'expectedSha')||!(typeof expectedSha==='string'||expectedSha===null))return json({error:'Geçersiz kayıt'},400);
+ const body=JSON.stringify({product,version,state,expectedSha,note:String(input.note||'').slice(0,140),kind:['autosave','save','new','restore'].includes(input.kind)?input.kind:'autosave'});
+ try{
+  return await objectFor(context,product).fetch(new Request('https://brandstudio.internal/revisions?product='+encodeURIComponent(product),{method:'POST',headers:{'content-type':'application/json'},body}))
+ }catch(e){console.error('Editor store write failed',String(e?.message||e));return json({error:'Kayıt hizmetine erişilemiyor'},503)}
+}
+
+
+// Only the official cinegitim/design GitHub Actions backup workflow can export backups.
+// Every exported document is AES-256-GCM encrypted before leaving Cloudflare.
+const GITHUB_BACKUP_AUD='brandstudio-backup-v1';
+const GITHUB_JWKS='https://token.actions.githubusercontent.com/.well-known/jwks';
+const GITHUB_BACKUP_WORKFLOW='cinegitim/design/.github/workflows/brandstudio-offsite-backup.yml@refs/heads/main';
+let cachedGithubJwks=null,cachedGithubJwksAt=0;
+function decode64url(str){
+ if(typeof str!=='string'||str.length>16000||!/^[A-Za-z0-9_-]+$/.test(str))throw Error('Invalid base64url');
+ const base=str.replace(/-/g,'+').replace(/_/g,'/')+'='.repeat((4-str.length%4)%4);
+ return Uint8Array.from(atob(base),c=>c.charCodeAt(0))
+}
+function encode64url(bytes){
+ let text='';
+ for(let i=0;i<bytes.length;i+=8192)text+=String.fromCharCode(...bytes.subarray(i,i+8192));
+ return btoa(text).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'')
+}
+async function githubKey(kid){
+ if(!cachedGithubJwks||Date.now()-cachedGithubJwksAt>3600000){
+  const r=await fetch(GITHUB_JWKS,{headers:{Accept:'application/json'},cf:{cacheTtl:3600}});
+  if(!r.ok)throw Error('GitHub public key service unavailable');
+  const set=await r.json();
+  if(!Array.isArray(set.keys))throw Error('Invalid GitHub keys');
+  cachedGithubJwks=set.keys;cachedGithubJwksAt=Date.now()
+ }
+ const k=cachedGithubJwks.find(x=>x.kid===kid&&x.kty==='RSA'&&x.n&&x.e);
+ if(!k)throw Error('Unknown GitHub signing key');
+ return crypto.subtle.importKey('jwk',k,{name:'RSASSA-PKCS1-v1_5',hash:'SHA-256'},false,['verify'])
+}
+async function backupIdentity(request){
+ const auth=request.headers.get('Authorization')||'';
+ if(!auth.startsWith('Bearer ')||auth.length>17000)return false;
+ const token=auth.slice(7),p=token.split('.');
+ if(p.length!==3)return false;
+ try{
+  const header=JSON.parse(new TextDecoder().decode(decode64url(p[0])));
+  const claims=JSON.parse(new TextDecoder().decode(decode64url(p[1])));
+  const now=Math.floor(Date.now()/1000);
+  if(header.alg!=='RS256'||!header.kid||claims.iss!=='https://token.actions.githubusercontent.com'||claims.aud!==GITHUB_BACKUP_AUD)return false;
+  if(typeof claims.exp!=='number'||claims.exp<=now||claims.exp>now+900||typeof claims.iat!=='number'||claims.iat>now+30)return false;
+  if(claims.nbf&&claims.nbf>now+30)return false;
+  if(claims.repository!=='cinegitim/design'||String(claims.repository_id)!=='1401886207'||claims.ref!=='refs/heads/main'||claims.workflow_ref!==GITHUB_BACKUP_WORKFLOW)return false;
+  if(!['schedule','workflow_dispatch','push'].includes(claims.event_name))return false;
+  const key=await githubKey(header.kid);
+  return crypto.subtle.verify('RSASSA-PKCS1-v1_5',key,decode64url(p[2]),enc.encode(p[0]+'.'+p[1]))
+ }catch(e){console.error('Brandstudio backup identity rejected',String(e?.message||e));return false}
+}
+async function encryptedBackup(request,env,url){
+ if(request.method!=='GET')return json({error:'method'},405);
+ if(!(await backupIdentity(request)))return json({error:'Unauthorized'},401);
+ if(!env.BRANDSTUDIO_BACKUP_KEY||!/^[a-f0-9]{64}$/.test(env.BRANDSTUDIO_BACKUP_KEY))return json({error:'Backup encryption unavailable'},503);
+ const product=url.searchParams.get('product');
+ if(!safeProduct(product))return json({error:'Invalid product'},400);
+ const db=env[STORE];
+ const current=await db.get(db.idFromName(product)).fetch('https://brandstudio.internal/revisions?product='+encodeURIComponent(product));
+ if(!current.ok)return json({error:'Backup source unavailable'},503);
+ const document=await current.json();
+ if(!document.sha)return new Response(null,{status:204,headers:{'cache-control':'no-store'}});
+ const plaintext=enc.encode(JSON.stringify(document));
+ if(plaintext.length>1000000)return json({error:'Backup too large'},413);
+ const key=await crypto.subtle.importKey('raw',fromHex(env.BRANDSTUDIO_BACKUP_KEY),{name:'AES-GCM'},false,['encrypt']);
+ const iv=crypto.getRandomValues(new Uint8Array(12));
+ const cipher=await crypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:enc.encode('brandstudio-backup:v1:'+product)},key,plaintext);
+ return json({format:'brandstudio-aes256gcm-v1',product,revision:document.sha,createdAt:new Date().toISOString(),nonce:encode64url(iv),ciphertext:encode64url(new Uint8Array(cipher))})
+}
+
+const STATIC_ORIGIN='https://brandstudio-pages-git.pages.dev';
+export default {
+ async fetch(request,env,ctx){
+  const url=new URL(request.url);
+  try{
+   if(url.pathname==='/favicon.ico')return new Response(null,{status:204});
+   if(url.pathname==='/internal/backup')return encryptedBackup(request,env,url);
+   if(url.pathname.startsWith('/admin'))return handleAdmin(request,env,url);
+   if(request.method!=='GET'&&request.method!=='HEAD'&&!(request.method==='POST'&&['/visual-editor/api/revisions','/visual-editor/api/github-pr','/visual-editor/api/finalize','/visual-editor/api/promote'].includes(url.pathname)))return new Response('Method Not Allowed',{status:405});
+   const user=await session(request,env);
+   if(!user.ok){
+    if(url.pathname.startsWith('/visual-editor/api/'))return json({error:'Admin girişi gerekli'},401);
+    const next=target(url.pathname+url.search);
+    return redirect('/admin/login?next='+encodeURIComponent(next))
+   }
+   if(url.pathname==='/visual-editor/api/promote'){
+    if(request.method==='GET')return attachSession(promotionStatus({request,env,authenticated:true}),user);
+    return attachSession(await submitSourcePromotion({request,env,authenticated:true}),user)
+   }
+   if(url.pathname==='/visual-editor/api/finalize'){
+    if(request.method==='GET')return attachSession(finalizationStatus({request,env,authenticated:true}),user);
+    return attachSession(await submitProductFinalization({request,env,authenticated:true}),user)
+   }
+   if(url.pathname==='/visual-editor/api/github-pr'){
+    if(request.method==='GET')return attachSession(reviewPrStatus({request,env,authenticated:true}),user);
+    return attachSession(await submitEditorReview({request,env,authenticated:true}),user)
+   }
+   if(url.pathname==='/visual-editor/api/revisions'){
+    const context={request,env,authenticated:true};
+    if(request.method==='GET')return attachSession(await onRequestGet(context),user);
+    if(request.method==='POST')return attachSession(await onRequestPost(context),user);
+    return json({error:'Desteklenmeyen yöntem'},405)
+   }
+   const upstreamUrl=new URL(STATIC_ORIGIN+url.pathname+url.search);
+   const res=await fetch(upstreamUrl.toString(),{method:request.method,redirect:'follow',headers:{Accept:request.headers.get('Accept')||'*/*'},cf:{cacheEverything:true,cacheTtl:120}});
+   const headers=new Headers(res.headers);
+   headers.delete('set-cookie');headers.delete('access-control-allow-origin');
+   headers.set('X-Content-Type-Options','nosniff');
+   headers.set('Referrer-Policy','strict-origin-when-cross-origin');
+   if(url.pathname.startsWith('/visual-editor/'))headers.set('Cache-Control','no-store');
+   return attachSession(new Response(res.body,{status:res.status,headers}),user);
+  }catch(e){
+   console.error('Brandstudio gateway unavailable',String(e?.message||e));
+   return json({error:'Hizmet geçici olarak kullanılamıyor'},503)
+  }
+ }
+};

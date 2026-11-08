@@ -1,0 +1,685 @@
+{
+  "phase": "2C",
+  "status": "HUMAN FULL-CAROUSEL APPROVAL PENDING",
+  "factual_base": "Phase 2B content.json copied unchanged",
+  "dimensions": [
+    1080,
+    1350
+  ],
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "carousels": [
+    {
+      "id": "a-snu",
+      "title": "Seul Ulusal Üniversitesi",
+      "slides": [
+        {
+          "index": 1,
+          "file": "a-snu/png/01.png",
+          "editable": null,
+          "layout": "Phase 2B cover retained unchanged",
+          "canonical_lockup_id": "H-02/light",
+          "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "SNU"
+          ],
+          "ai_imagery": true,
+          "sha256": "58abbe7f95d9a742f4154dc0a4e364e27aefbbc52cd7812e7715d7892daab2b4"
+        },
+        {
+          "index": 2,
+          "file": "a-snu/png/02.png",
+          "editable": "a-snu/editable/02.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "SNU"
+          ],
+          "ai_imagery": true,
+          "sha256": "472f159fe8693a8190c9e9fc621b03501904d0bbf764e62d3f218a4bb0174b02"
+        },
+        {
+          "index": 3,
+          "file": "a-snu/png/03.png",
+          "editable": "a-snu/editable/03.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "QS"
+          ],
+          "ai_imagery": false,
+          "sha256": "0cd5d8c689a3b00d48ab94e1ce1f15110a51be0bd7a180aed319252ef41fbaec"
+        },
+        {
+          "index": 4,
+          "file": "a-snu/png/04.png",
+          "editable": "a-snu/editable/04.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "SNU",
+            "LIFE"
+          ],
+          "ai_imagery": true,
+          "sha256": "1ddca373f0d09ccad9451b93efbb96c0ed0f8e4cb2f4972886bb4879e3dcf9c6"
+        },
+        {
+          "index": 5,
+          "file": "a-snu/png/05.png",
+          "editable": "a-snu/editable/05.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "LIFE"
+          ],
+          "ai_imagery": true,
+          "sha256": "46ac0f36d1da569a96f0d54d6e78ec3fe970561e44ecf12c0fab047c4756cbaa"
+        },
+        {
+          "index": 6,
+          "file": "a-snu/png/06.png",
+          "editable": "a-snu/editable/06.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "EDITORIAL"
+          ],
+          "ai_imagery": false,
+          "sha256": "0448a275c6785e4c2919fd8c3abc693ce2ba7ab4baed510f33b693a260631039"
+        },
+        {
+          "index": 7,
+          "file": "a-snu/png/07.png",
+          "editable": "a-snu/editable/07.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "EDITORIAL"
+          ],
+          "ai_imagery": false,
+          "sha256": "d5e000c190e587d2888dc81276858232151025635a031445ce51dc0d0fbc044a"
+        }
+      ]
+    },
+    {
+      "id": "b-waseda",
+      "title": "Waseda · Gerçek başvuru takvimi",
+      "slides": [
+        {
+          "index": 1,
+          "file": "b-waseda/png/01.png",
+          "editable": null,
+          "layout": "Phase 2B cover retained unchanged",
+          "canonical_lockup_id": "H-02/light",
+          "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "WASEDA"
+          ],
+          "ai_imagery": false,
+          "sha256": "e7b3cce23d584272836b6ccdc7381753539257325fa3a7df0c3a8d4c60c43986"
+        },
+        {
+          "index": 2,
+          "file": "b-waseda/png/02.png",
+          "editable": "b-waseda/editable/02.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "WASEDA"
+          ],
+          "ai_imagery": false,
+          "sha256": "d18e24f9a546db0cd78c542ffb0ac27bb0cee080efdea800399b54e21cf4bbc6"
+        },
+        {
+          "index": 3,
+          "file": "b-waseda/png/03.png",
+          "editable": "b-waseda/editable/03.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "WASEDA"
+          ],
+          "ai_imagery": true,
+          "sha256": "08cf4907e87f970b34a580bdc0db732769a21b7aa5370b41a87ae77199402cf8"
+        },
+        {
+          "index": 4,
+          "file": "b-waseda/png/04.png",
+          "editable": "b-waseda/editable/04.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "WASEDA"
+          ],
+          "ai_imagery": false,
+          "sha256": "a6314a0ff77c4fa634485377412dc38cd34fed1cfa5219866b380695802d2bf6"
+        },
+        {
+          "index": 5,
+          "file": "b-waseda/png/05.png",
+          "editable": "b-waseda/editable/05.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "WASEDA"
+          ],
+          "ai_imagery": false,
+          "sha256": "bacd005a459e08ae8f5241d69ebc753ac34b158014f1e7430ca2f0b544bafbe8"
+        },
+        {
+          "index": 6,
+          "file": "b-waseda/png/06.png",
+          "editable": "b-waseda/editable/06.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "WASEDA"
+          ],
+          "ai_imagery": false,
+          "sha256": "cf3e266ffb78580fb3e3ee263f95bec30201a54169aea434a1fd0d069f8dfbe3"
+        }
+      ]
+    },
+    {
+      "id": "c-tokyo",
+      "title": "Tokyo’da öğrenci hayatı",
+      "slides": [
+        {
+          "index": 1,
+          "file": "c-tokyo/png/01.png",
+          "editable": null,
+          "layout": "Phase 2B cover retained unchanged",
+          "canonical_lockup_id": "H-02/light",
+          "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "METRO",
+            "HOUSING",
+            "CLUBS"
+          ],
+          "ai_imagery": true,
+          "sha256": "fa5b0f37b687f7d910f44ec60817526b20405adf107af508b270da8dcf07f10d"
+        },
+        {
+          "index": 2,
+          "file": "c-tokyo/png/02.png",
+          "editable": "c-tokyo/editable/02.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "METRO"
+          ],
+          "ai_imagery": false,
+          "sha256": "c87efee88a51997fd4c3f81579c57d6d5ff12176f4004701f967e9b29b502797"
+        },
+        {
+          "index": 3,
+          "file": "c-tokyo/png/03.png",
+          "editable": "c-tokyo/editable/03.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "HOUSING"
+          ],
+          "ai_imagery": true,
+          "sha256": "9b5504f91bbcfbc8fb8c19131262724fae760e62dba3687dc86c1f276dc3e7c0"
+        },
+        {
+          "index": 4,
+          "file": "c-tokyo/png/04.png",
+          "editable": "c-tokyo/editable/04.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "CLUBS"
+          ],
+          "ai_imagery": true,
+          "sha256": "1c2d0dd529adb2b2d6c6291c3bf11f8ce608243575964fc882abd1dd4fddfaef"
+        },
+        {
+          "index": 5,
+          "file": "c-tokyo/png/05.png",
+          "editable": "c-tokyo/editable/05.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "EDITORIAL"
+          ],
+          "ai_imagery": true,
+          "sha256": "96b181623383dc533a1c6a30584afedaf6be09ec9189b730b02434aa4c19930d"
+        },
+        {
+          "index": 6,
+          "file": "c-tokyo/png/06.png",
+          "editable": "c-tokyo/editable/06.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "METRO",
+            "HOUSING",
+            "CLUBS"
+          ],
+          "ai_imagery": false,
+          "sha256": "938d32d545d6d9bb443b892856a8fe39d6f06a72b0cf599da32807eb93dd7acd"
+        },
+        {
+          "index": 7,
+          "file": "c-tokyo/png/07.png",
+          "editable": "c-tokyo/editable/07.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "EDITORIAL"
+          ],
+          "ai_imagery": false,
+          "sha256": "1d9fd226d862eb23d21e82c57beca316ece5bfdaf7b95a402015018a9756c3e4"
+        }
+      ]
+    },
+    {
+      "id": "d-six-steps",
+      "title": "Üniversite başvurusu · 6 adım",
+      "slides": [
+        {
+          "index": 1,
+          "file": "d-six-steps/png/01.png",
+          "editable": null,
+          "layout": "Phase 2B cover retained unchanged",
+          "canonical_lockup_id": "H-02/light",
+          "canonical_lockup_sha256": "18b0b2b3a5ad5dfbf7aeb4deaca5b976a5dd772960c3c4468e0ede9820704b7a",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "EDITORIAL"
+          ],
+          "ai_imagery": false,
+          "sha256": "189e6b5a0d77ddc79791cba4bac21f02864977c6f549da05906719a6b89aac36"
+        },
+        {
+          "index": 2,
+          "file": "d-six-steps/png/02.png",
+          "editable": "d-six-steps/editable/02.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "EDITORIAL"
+          ],
+          "ai_imagery": true,
+          "sha256": "288e3d2de4e663d5637db54c2933077d2e20730fa9709320267beb592e325ffc"
+        },
+        {
+          "index": 3,
+          "file": "d-six-steps/png/03.png",
+          "editable": "d-six-steps/editable/03.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "EDITORIAL",
+            "WASEDA"
+          ],
+          "ai_imagery": false,
+          "sha256": "0f8933a73173f870108a02a9a6f1ab643f6d1c59a90e8f2789d5b598c65de078"
+        },
+        {
+          "index": 4,
+          "file": "d-six-steps/png/04.png",
+          "editable": "d-six-steps/editable/04.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "WASEDA",
+            "EDITORIAL"
+          ],
+          "ai_imagery": true,
+          "sha256": "3086053f01062d84b9443f8e8ff84eee1657c186ab1242f44c57efaf81ebf66e"
+        },
+        {
+          "index": 5,
+          "file": "d-six-steps/png/05.png",
+          "editable": "d-six-steps/editable/05.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "WASEDA",
+            "EDITORIAL"
+          ],
+          "ai_imagery": false,
+          "sha256": "4f71826315f60756fe45447d023abf83992609bb3586841b2c2fe2480c643945"
+        },
+        {
+          "index": 6,
+          "file": "d-six-steps/png/06.png",
+          "editable": "d-six-steps/editable/06.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "WASEDA",
+            "EDITORIAL"
+          ],
+          "ai_imagery": true,
+          "sha256": "e5797e0ad1aa4f07f05a17f68822b9b52115cf8242371d07a8f76be06469d358"
+        },
+        {
+          "index": 7,
+          "file": "d-six-steps/png/07.png",
+          "editable": "d-six-steps/editable/07.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "EDITORIAL",
+            "HOUSING"
+          ],
+          "ai_imagery": false,
+          "sha256": "564f52ef2a0869231bd099221bd880317636082df02a7a793d05006cd20ece63"
+        },
+        {
+          "index": 8,
+          "file": "d-six-steps/png/08.png",
+          "editable": "d-six-steps/editable/08.html",
+          "layout": "Phase 2C editorial photo collage",
+          "canonical_lockup_id": "D-04/light",
+          "canonical_lockup_sha256": "2ff2263dcdab496e81cda01601f4abb746890c3478d05a2ff6b9278c71f9b59e",
+          "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+          "sources": [
+            "EDITORIAL"
+          ],
+          "ai_imagery": false,
+          "sha256": "231bb8004f4e35653274bebc5dbf01fd3da35d9f1c634055469b49871773bd36"
+        }
+      ]
+    }
+  ],
+  "explorations": [
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/a2/image-1791468906753.png",
+      "sha256": "81668bee5e20edd3cdfbfadbcaaa4c8b3146c6e20f9a7202fea00b70f7db5877",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "interior-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/a2.jpg",
+      "preview_sha256": "743d61c53da37d2a6ed07eeff3b0dd4f294634e7d9193b0876ebab0940b691b8"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/a5/image-1791468927417.png",
+      "sha256": "6095aaca4102a70fb4dff9536dcb761429fc92fe576c38b3f778fd73cdc0a8cf",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "interior-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/a5.jpg",
+      "preview_sha256": "5185e12fefa1866c0ad23192561fe418b94e5cbe2a1d617ada915d4939c2e111"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/a6/image-1791468918583.png",
+      "sha256": "4b9320b65f3fa31ee81ab3d42249765827e8b4382f10c42e928bca5717aa2eec",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "interior-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/a6.jpg",
+      "preview_sha256": "f4f9bf91e58248783bc84c3366dab93264e964ee840d525da348daf5efdeb8f7"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/b2/image-1791468901731.png",
+      "sha256": "be48c0e9cfdaca632a35836945e6e2d74c32fba7c0a4f4c745e0c083e7b6a2e5",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "interior-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/b2.jpg",
+      "preview_sha256": "f314fd62ac3339a29ced15e99ec7e8c49a8e5b8ee8435770b9173e3b6f0e5a7f"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/b3/image-1791468901881.png",
+      "sha256": "ebd6c49c60766205ffe59703dcb181891a5c9bc97410d576b899941bb8b22425",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "interior-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/b3.jpg",
+      "preview_sha256": "2512ec481e541234f4326ba4e94807e9daecd82a82e534715e2b7d8c31b48cbe"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/b4/image-1791468900199.png",
+      "sha256": "6a45f18be074a17b64f996e79b84ce448fef720fac1ede3e7c71892c0daf2b41",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "interior-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/b4.jpg",
+      "preview_sha256": "b9f286de46ee6421c8f15a5dd7b0bcedd314212a91849275d3c0db7ca697b477"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/c2/image-1791468924197.png",
+      "sha256": "13e857ee3546bce3ec4c7a2d377701045f47fd7d7dd13ea821c9134481c98ad2",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "interior-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/c2.jpg",
+      "preview_sha256": "0be7b7bb4c81fb5d6599759d07078a8151f2548952c0bf6fb71586623df6a9c0"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/c3/image-1791468908217.png",
+      "sha256": "5a6f5787fc486fdf00fc47579f9442552e8d6a02f5a479312625eb01ce0e9224",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "interior-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/c3.jpg",
+      "preview_sha256": "65cfa37782e3be3704ce58af11193f6732a7a9e01a9e1c5b59096f8642438919"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/c4/image-1791468931726.png",
+      "sha256": "953211518c5ba08bd77e5783f68204f53f6c22adf79036664062f058a245b1e2",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "interior-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/c4.jpg",
+      "preview_sha256": "4cb1b69975ca37f341303d61491927fdadc69087d7471c4f18a974ea23770df3"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/d2/image-1791468915283.png",
+      "sha256": "f01b72f74cb6d687f37cf958badaf0619705e3684a4095f3c9200dfcfd57b106",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "interior-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/d2.jpg",
+      "preview_sha256": "bbd511d8be35a1ccf650bbbaf0a5f65b416a55e7c918cd62d6b0165bb23b4930"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/d3/image-1791468909678.png",
+      "sha256": "54884acb59aec05fb340ef7da3bc46ad2535494c8e7f236bafa46eda89609308",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "interior-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/d3.jpg",
+      "preview_sha256": "0210fec04136089b7fe10087e02cfe198ad7d5eafd99226a3be39a9814e32746"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/d5/image-1791468925966.png",
+      "sha256": "51280d18143f0da25fc75742ae7ff10e076759ed31161f3cc9873d8f17b74d64",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "interior-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/d5.jpg",
+      "preview_sha256": "b5e99b73e1a9ce7cee94506717724fab04d39a822dea9acb9ef0e41ed653d705"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/feed-f1/image-1791468999372.png",
+      "sha256": "3825132038da76bb1f03549fd9bdd1ef1e9085a8db4f39d8cfe9c68e3aaee1b3",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "feed-cover-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/feed-f1.jpg",
+      "preview_sha256": "3f2bc27589c4c7f246f5f3ad79e32714ebca85d098496aeafd97ef30cc18973f"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/feed-f2/image-1791468987944.png",
+      "sha256": "bad4137452db8c99d30a1c53e657f6bc5513169fd30e09829a22c5186e409779",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "feed-cover-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/feed-f2.jpg",
+      "preview_sha256": "09fca52ce57b3b8008215de949336fb2d2d6ee2e7b97e21fa254eac865275518"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/feed-f3/image-1791468999717.png",
+      "sha256": "6b8375785ab229d306fc011724d7b8b2af2a4f0e859edac781879d1b88f230ed",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "feed-cover-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/feed-f3.jpg",
+      "preview_sha256": "61b87a75f36f5c7901b4d6ceab751ac38554c50f2d961963c49d91877f64138c"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/feed-f4/image-1791468998659.png",
+      "sha256": "9368520fe12ac521dcb98af323d27e724135a178447cf48cc49c47d15d55c77d",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "feed-cover-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/feed-f4.jpg",
+      "preview_sha256": "7907eebab2af08f7cfd3932655fde5d8f1d794b05bddddb2931915849582fb0c"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/feed-f5/image-1791469000013.png",
+      "sha256": "d5c8ff2da1f146fa3855d0df133c0621f917fa2bfc889a20cb4bd4d2c3ccf1a7",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "feed-cover-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/feed-f5.jpg",
+      "preview_sha256": "66f37e8a03d10c81abd33cb7ba88db771b0c320a6dbb74fa2a403810929d1843"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/feed-f6/image-1791468998414.png",
+      "sha256": "ced8db62583524029e7bc5c45b4acb4177212032cf67bf3ff64f9aadd19e7522",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "feed-cover-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/feed-f6.jpg",
+      "preview_sha256": "c4d5ef8edb07718493706717910c9b8245f8aed5a7de263f45099fa5009741fa"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/feed-f7/image-1791469008625.png",
+      "sha256": "44da53a77dd90a8463cd9b22f4aa8be66d83c21fff33ca3868736b4a5d21dd39",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "feed-cover-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/feed-f7.jpg",
+      "preview_sha256": "2c629a3b3d4cc599b851210fe87db6cdef784ef0a14de6a2fdf0e371584e7dee"
+    },
+    {
+      "file": "brands/asyada-egitim/applications/instagram-phase-2c/explorations/feed-f8/image-1791469019161.png",
+      "sha256": "d5b06866df453958eacac9e31f33ea339c234727e6891fb40de084fa99ed93ef",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "type": "feed-cover-concept",
+      "usage": "exploration only; generated lettering/claims are not production copy",
+      "preview": "assets/explorations/feed-f8.jpg",
+      "preview_sha256": "27d959502eda3b0904d5af15fec9bc532bfeba91b7c56c5fb97982eae65073ba"
+    }
+  ],
+  "total_final_pngs": 28,
+  "concept_generation_calls": 20,
+  "image_backend": "gpt-image-2",
+  "interior_concepts": 12,
+  "feed_cover_concepts": 8
+}

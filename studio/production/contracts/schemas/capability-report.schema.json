@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CapabilityReport v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "executor": {
+      "enum": [
+        "opencode",
+        "codex",
+        "chatgpt-work",
+        "chatgpt-chat",
+        "antigravity"
+      ]
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "host_kind": {
+      "enum": [
+        "local",
+        "cloud",
+        "connector"
+      ]
+    },
+    "model_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "maxProperties": 80,
+      "patternProperties": {
+        "^[a-z][a-z0-9-]{0,79}$": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "evidence_source"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "observed",
+                "unknown"
+              ]
+            },
+            "evidence_source": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9.-]{2,80}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "executor",
+    "observed_at",
+    "host_kind",
+    "model_id",
+    "capabilities"
+  ]
+}

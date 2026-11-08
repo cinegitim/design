@@ -1,0 +1,193 @@
+{
+  "schema": "brandstudio-canonical-english-lockups-v1",
+  "brand_id": "asyada-egitim",
+  "brand_name": "Education in Asia",
+  "language": "en",
+  "status": "APPROVED / CANONICAL",
+  "human_approval_date": "2026-11-04",
+  "human_decision": "English-only V9 explicitly approved; all earlier English-only review SVG revisions removed from active repository files",
+  "design_version": "v9-equal-in-asia-size",
+  "source_approved_commit": "c96705d3577e227d0e341ec76919003a6267a2f7",
+  "canonical_seal_path": "brands/asyada-egitim/assets/v01-canonical.svg",
+  "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+  "shared_assets_directory": "brands/asyada-egitim/assets/lockups/",
+  "shared_public_directory": "docs/asyada-seal/canonical-lockups/assets/",
+  "turkish_canonical_manifest": "brands/asyada-egitim/assets/lockups/canonical-lockups.json",
+  "shared_identity_page": "docs/identity/index.html",
+  "brandstudio_logos_page": "docs/workspaces/asyada-egitim/logos-and-covers/index.html",
+  "languages_share_canonical_seal": true,
+  "language_selection_required": true,
+  "default_variant_id": "H-EN-02",
+  "current_variant_ids": [
+    "H-EN-02",
+    "P-EN-01"
+  ],
+  "approved_color_variants": [
+    "light",
+    "dark",
+    "monochrome"
+  ],
+  "typography": {
+    "headline": {
+      "family": "Jost",
+      "weight": 450,
+      "source": "docs/instagram/launch-creative-02/assets/Jost-VF.ttf",
+      "rendering": "true outlined SVG path glyphs"
+    },
+    "countries": {
+      "family": "Jost",
+      "weight": 350,
+      "source": "docs/instagram/launch-creative-02/assets/Jost-VF.ttf",
+      "rendering": "true outlined SVG path glyphs"
+    }
+  },
+  "headline_layout": {
+    "firstLine": "EDUCATION",
+    "secondLine": "IN ASIA",
+    "inScale": 1.1,
+    "asiaScale": 1.1,
+    "secondLineBaseline": 409,
+    "uppercase": true,
+    "flankingRules": false
+  },
+  "countries": [
+    "China",
+    "Hong Kong",
+    "Japan",
+    "Singapore",
+    "South Korea"
+  ],
+  "separators": {
+    "count": 4,
+    "color": "#BD2120",
+    "verticalCenter": true,
+    "monochrome": "same monochrome ink"
+  },
+  "allowed_operations": [
+    "proportional scaling",
+    "positioning",
+    "approved colour variant selection"
+  ],
+  "forbidden_operations": [
+    "redraw",
+    "retype",
+    "font substitution",
+    "image model lettering",
+    "distortion",
+    "cropping",
+    "perspective transform",
+    "unapproved recolouring",
+    "reconstructing from separate seal and text"
+  ],
+  "production_rules": [
+    "Select language explicitly: tr uses existing Turkish/bilingual canonical manifest; en uses this English-only canonical manifest. Never treat the English subtitle inside a Turkish bilingual lockup as the English-only brand signature.",
+    "Use one complete canonical SVG, including the original V-01 seal, wordmark and country subtitle; never generate this artwork with an image model, rebuild or adjust the lettering.",
+    "Default H-EN-02 for English horizontal/digital layouts; P-EN-01 for English stacked/centered layouts. Use same full logo and only proportional scaling/positioning.",
+    "Inspect actual legibility at usage size: the fine five-country subtitle may be unreadable below conservative horizontal 528 px or stacked 352 px; if too small, choose seal-only V-01 instead of retypesetting.",
+    "When exporting, record logo_language, canonical_lockup_id, canonical_lockup_sha256, canonical_seal_sha256. Never call a review asset canonical."
+  ],
+  "minimum_size_guidance": {
+    "horizontal_screen_width_px": 528,
+    "stacked_screen_width_px": 352,
+    "method": "conservative reference to approved H-02/P-01 footprint; must verify fine country line at actual size",
+    "use_seal_only_if_illegible": true
+  },
+  "records": [
+    {
+      "brand_id": "asyada-egitim",
+      "language": "en",
+      "variant_id": "H-EN-02",
+      "variant_name": "English horizontal",
+      "color_variant": "light",
+      "canonical_lockup_id": "H-EN-02/light",
+      "canonical_file_path": "brands/asyada-egitim/assets/lockups/h-en-02-horizontal-light.svg",
+      "public_mirror_path": "docs/asyada-seal/canonical-lockups/assets/h-en-02-horizontal-light.svg",
+      "sha256": "b3a70033fc37049730a24ca54e1fe5259e32fb40c255450206dd29e40b644dde",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "status": "APPROVED / CANONICAL",
+      "human_approval_date": "2026-11-04",
+      "geometry_version": "v9-equal-in-asia-size",
+      "runtime_font_dependency": false
+    },
+    {
+      "brand_id": "asyada-egitim",
+      "language": "en",
+      "variant_id": "H-EN-02",
+      "variant_name": "English horizontal",
+      "color_variant": "dark",
+      "canonical_lockup_id": "H-EN-02/dark",
+      "canonical_file_path": "brands/asyada-egitim/assets/lockups/h-en-02-horizontal-dark.svg",
+      "public_mirror_path": "docs/asyada-seal/canonical-lockups/assets/h-en-02-horizontal-dark.svg",
+      "sha256": "b7c6378e27724a5b85d1123acb5ee837f206ad89f16187d07dea9ac6e8ac4e3c",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "status": "APPROVED / CANONICAL",
+      "human_approval_date": "2026-11-04",
+      "geometry_version": "v9-equal-in-asia-size",
+      "runtime_font_dependency": false
+    },
+    {
+      "brand_id": "asyada-egitim",
+      "language": "en",
+      "variant_id": "H-EN-02",
+      "variant_name": "English horizontal",
+      "color_variant": "monochrome",
+      "canonical_lockup_id": "H-EN-02/monochrome",
+      "canonical_file_path": "brands/asyada-egitim/assets/lockups/h-en-02-horizontal-monochrome.svg",
+      "public_mirror_path": "docs/asyada-seal/canonical-lockups/assets/h-en-02-horizontal-monochrome.svg",
+      "sha256": "5bf0dc7d3dd1af302def44d1e0e00f65c3019aea91b3674269fa9f49410ee436",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "status": "APPROVED / CANONICAL",
+      "human_approval_date": "2026-11-04",
+      "geometry_version": "v9-equal-in-asia-size",
+      "runtime_font_dependency": false
+    },
+    {
+      "brand_id": "asyada-egitim",
+      "language": "en",
+      "variant_id": "P-EN-01",
+      "variant_name": "English stacked",
+      "color_variant": "light",
+      "canonical_lockup_id": "P-EN-01/light",
+      "canonical_file_path": "brands/asyada-egitim/assets/lockups/p-en-01-stacked-light.svg",
+      "public_mirror_path": "docs/asyada-seal/canonical-lockups/assets/p-en-01-stacked-light.svg",
+      "sha256": "d16331667a2173bd0ca169652fc346fbc80d29a1bdd6d517615fd65cbf10a34c",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "status": "APPROVED / CANONICAL",
+      "human_approval_date": "2026-11-04",
+      "geometry_version": "v9-equal-in-asia-size",
+      "runtime_font_dependency": false
+    },
+    {
+      "brand_id": "asyada-egitim",
+      "language": "en",
+      "variant_id": "P-EN-01",
+      "variant_name": "English stacked",
+      "color_variant": "dark",
+      "canonical_lockup_id": "P-EN-01/dark",
+      "canonical_file_path": "brands/asyada-egitim/assets/lockups/p-en-01-stacked-dark.svg",
+      "public_mirror_path": "docs/asyada-seal/canonical-lockups/assets/p-en-01-stacked-dark.svg",
+      "sha256": "d20bda0db7c46cc5bbb65327b19abff86577cde3b82389c2e5169735db2ea9a3",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "status": "APPROVED / CANONICAL",
+      "human_approval_date": "2026-11-04",
+      "geometry_version": "v9-equal-in-asia-size",
+      "runtime_font_dependency": false
+    },
+    {
+      "brand_id": "asyada-egitim",
+      "language": "en",
+      "variant_id": "P-EN-01",
+      "variant_name": "English stacked",
+      "color_variant": "monochrome",
+      "canonical_lockup_id": "P-EN-01/monochrome",
+      "canonical_file_path": "brands/asyada-egitim/assets/lockups/p-en-01-stacked-monochrome.svg",
+      "public_mirror_path": "docs/asyada-seal/canonical-lockups/assets/p-en-01-stacked-monochrome.svg",
+      "sha256": "bb415a7b651798f4e40d6a83c79c7c94cea49756f91ff60deb45f9d280f9fe8a",
+      "canonical_seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "status": "APPROVED / CANONICAL",
+      "human_approval_date": "2026-11-04",
+      "geometry_version": "v9-equal-in-asia-size",
+      "runtime_font_dependency": false
+    }
+  ]
+}
