@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Yeni Ufuk × ASYA Manifestosu · Editorial Air V4</title>
+<title>Yeni Ufuk × ASYA Manifestosu · Editorial Air V4.1</title>
 <style>
 @font-face{font-family:Jost;src:url("../../../assets/Jost-VF.ttf") format("truetype");font-weight:100 900;font-display:swap}
 :root{--paper:#F7F3E9;--ink:#1D2027;--red:#BD2120;--wine:#8E1C22}
@@ -18,20 +18,20 @@ body{background:var(--paper);font-family:Jost,Arial,sans-serif;-webkit-font-smoo
 .lockup{position:absolute;z-index:3;display:block;object-fit:contain;object-position:left center;filter:none}
 .micro{position:absolute;z-index:3;white-space:nowrap;color:var(--ink);font-weight:600;letter-spacing:.22em;line-height:1.3}
 .micro::after{content:"";display:inline-block;vertical-align:middle;width:42px;height:1px;background:var(--red);opacity:.85;margin-left:20px}
-.title{position:absolute;z-index:3;white-space:nowrap;margin:0;color:var(--wine);font-weight:640;letter-spacing:-.057em;line-height:1.02}
+.title{position:absolute;z-index:3;white-space:nowrap;margin:0;color:var(--wine);font-weight:640;letter-spacing:-.057em;line-height:1.02;text-shadow:0 2px 4px rgba(29,32,39,.16),0 0 11px rgba(247,243,233,.36)}
 .title .hero{font-weight:790;color:#85191d}
 .country-line{position:absolute;z-index:3;display:flex;align-items:center;gap:0;margin:0;white-space:nowrap;font-size:19px;letter-spacing:.045em;font-weight:650;color:var(--ink);line-height:1.4;text-shadow:0 1px 12px rgba(247,243,233,.48)}
 .country-line::before{content:"";display:inline-block;flex:0 0 auto;width:4px;height:23px;background:var(--red);margin-right:17px}
 .country-line span+span::before{content:"·";color:var(--red);padding:0 13px;font-weight:650}
 .canvas.x .lockup{left:74px;top:27px;width:306px}
-.canvas.x .micro{left:83px;top:168px;font-size:18px}
+.canvas.x .micro{left:83px;top:163px;font-size:21px}
 .canvas.x .title{left:76px;top:207px;font-size:67px}
 .canvas.x .country-line{left:79px;top:433px;font-size:19px}
 .canvas.linkedin::before{background:linear-gradient(90deg,rgba(247,243,233,.86) 0%,rgba(247,243,233,.82) 31%,rgba(247,243,233,.43) 55%,transparent 83%)}
 .canvas.linkedin::after{height:80px;width:73%;background:linear-gradient(0deg,rgba(247,243,233,.96) 0%,rgba(247,243,233,.30) 53%,transparent 100%)}
 .canvas.linkedin .photo img{object-position:49% 49%}
 .canvas.linkedin .lockup{left:52px;top:21px;width:240px}
-.canvas.linkedin .micro{left:349px;top:36px;font-size:15px}
+.canvas.linkedin .micro{left:349px;top:33px;font-size:18px}
 .canvas.linkedin .micro::after{width:32px;margin-left:12px}
 .canvas.linkedin .title{left:342px;top:74px;font-size:45px;line-height:1.04}
 .canvas.linkedin .country-line{left:349px;top:207px;font-size:16.5px}
@@ -40,12 +40,12 @@ body{background:var(--paper);font-family:Jost,Arial,sans-serif;-webkit-font-smoo
 .canvas.facebook-desktop::before,.canvas.facebook-mobile::before{background:linear-gradient(90deg,rgba(247,243,233,.91) 0%,rgba(247,243,233,.68) 24%,rgba(247,243,233,.33) 40%,rgba(247,243,233,0) 66%)}
 .canvas.facebook-desktop::after,.canvas.facebook-mobile::after{height:190px;width:65%}
 .canvas.facebook-desktop .lockup{left:77px;top:39px;width:340px}
-.canvas.facebook-desktop .micro{left:87px;top:211px;font-size:21px}
+.canvas.facebook-desktop .micro{left:87px;top:206px;font-size:24px}
 .canvas.facebook-desktop .title{left:79px;top:254px;font-size:77px}
 .canvas.facebook-desktop .country-line{left:87px;top:542px;font-size:21px}
 .canvas.facebook-mobile .photo img{object-position:55% 50%}
 .canvas.facebook-mobile .lockup{left:79px;top:54px;width:332px}
-.canvas.facebook-mobile .micro{left:90px;top:235px;font-size:21px}
+.canvas.facebook-mobile .micro{left:90px;top:230px;font-size:24px}
 .canvas.facebook-mobile .title{left:82px;top:281px;font-size:77px}
 .canvas.facebook-mobile .country-line{left:90px;top:631px;font-size:21px}
 </style>
@@ -65,7 +65,7 @@ const platform=Object.hasOwn(sizes,requested)?requested:"x";
 const [w,h]=sizes[platform],cover=document.getElementById("cover");
 cover.classList.add(platform);cover.style.width=w+"px";cover.style.height=h+"px";
 if(platform==="linkedin")document.querySelector(".title").innerHTML='<span>BAŞKA BİR </span><span class="hero">DÜNYA VAR.</span>';
-document.title="Yeni Ufuk × ASYA Manifestosu — "+platform+" / Editorial Air V4";
+document.title="Yeni Ufuk × ASYA Manifestosu — "+platform+" / Editorial Air V4.1";
 })();
 </script>
 </body>
