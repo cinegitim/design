@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Brandstudio kanonik tasarım kütüphanesi: içerik kategorisi, ortak tasarım dili ve çeşitlemelere göre tekil ürünleri keşfedin.">
+<title>Üretim Kütüphanesi · Brandstudio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f3e9;--ink:#1d2027;--red:#bd2120;--muted:#686354;--line:#d9d1bf;--surface:#fffdf7;--soft:#f0eadf;--focus:#bd2120}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--paper);font:15px/1.5 Jost,system-ui,sans-serif}
+button,select,input{font:inherit}button{cursor:pointer}a{color:inherit}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+[hidden]{display:none!important}.wrap{max-width:1270px;margin:auto;padding:0 27px}
+.eyebrow{text-transform:uppercase;letter-spacing:.17em;font-size:10px;font-weight:700;color:var(--red)}
+.mast{border-bottom:1px solid var(--line);background:#fbf9f3}
+.mast-inner{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-size:22px;letter-spacing:-.045em;font-weight:700;text-decoration:none;white-space:nowrap}.brand em{font-style:normal;color:var(--red)}
+nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap}nav a{text-decoration:none;color:#55564e;font-size:12px;font-weight:600}
+nav a[aria-current="page"]{color:var(--red);text-decoration:underline;text-underline-offset:7px}
+.hero{padding:42px 0 29px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:end;border-bottom:1px solid var(--line)}
+.hero h1{font:600 clamp(40px,5.2vw,66px)/1.03 "Source Serif 4",Georgia,serif;letter-spacing:-.055em;margin:10px 0 11px}
+.hero p{color:var(--muted);max-width:64ch;margin:0;font-size:15px;line-height:1.65}
+.hero-side{display:flex;gap:8px;align-items:center}
+.hero-side a{font-size:12px;padding:10px 13px;border:1px solid var(--line);border-radius:7px;text-decoration:none;font-weight:700;background:#fffaf2}
+.hero-side a:first-child{background:var(--ink);border-color:var(--ink);color:white}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--line);margin:22px 0 28px}
+.metric{padding:18px 20px;background:var(--surface);min-width:0}
+.metric strong{display:block;font:600 31px/1.1 "Source Serif 4",Georgia,serif;letter-spacing:-.03em}
+.metric small{font-size:11px;color:var(--muted);display:block;margin-top:7px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
+.headline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.headline h2{margin:0;font:600 clamp(21px,2.4vw,27px)/1.2 "Source Serif 4",Georgia,serif}
+.headline p{margin:0;color:var(--muted);font-size:12px}
+.switcher{display:inline-flex;gap:2px;padding:3px;background:#e7e0d5;border-radius:9px}
+.switcher button{border:0;padding:10px 17px;border-radius:6px;color:#48433b;background:transparent;font-weight:650;font-size:13px}
+.switcher button[aria-pressed="true"]{background:var(--ink);color:#fffdf7;box-shadow:0 1px 3px #0002}
+.crumb{font-size:11px;color:#867a68;margin:14px 0 17px;letter-spacing:.02em}
+.filters{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:11px}
+.filters label,.utility label{font-size:11px;color:var(--muted);font-weight:650;min-width:0;display:grid;gap:5px}
+.filters select,.utility select,.utility input{width:100%;min-width:0;color:var(--ink);background:#fff;border:1px solid #cfc6b8;border-radius:7px;font:12px Jost,system-ui;padding:11px 10px}
+[data-view="style"] .filters .style-first{order:-2}[data-view="style"] .filters .preset-first{order:-1}
+.utility{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:11px;align-items:end;margin:12px 0 0}
+.utility input{min-height:40px}.utility button{height:40px;white-space:nowrap;border:1px solid var(--line);border-radius:7px;background:var(--soft);font-size:12px;font-weight:700;padding:0 12px}
+.style-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:30px 0 12px}
+.style-heading h2{font:600 clamp(24px,3vw,32px)/1.2 "Source Serif 4",Georgia,serif;margin:6px 0 0;letter-spacing:-.035em}
+.style-heading p{margin:0;color:var(--muted);font-size:12px;max-width:450px}
+.style-rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.style-tile{display:flex;flex-direction:column;align-items:stretch;min-width:0;padding:13px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:10px;gap:10px;min-height:156px}
+.style-tile:hover{border-color:var(--ink)}.style-tile.selected{border-color:var(--red);box-shadow:0 0 0 1px var(--red);background:#fffaf4}
+.style-tile strong{font-size:15px;line-height:1.15;display:block;letter-spacing:-.01em}
+.style-tile small{color:var(--muted);font-size:11px;display:block;margin-top:4px;font-weight:450}
+.style-body{display:block}
+.style-visual{height:47px;display:block;position:relative;background:#f0e9da;overflow:hidden;border:1px solid #e2d8c6;border-radius:5px}
+.style-visual:before,.style-visual:after{content:"";position:absolute}
+.style-visual[data-style="editorial-campaign"]:before{left:12px;top:9px;width:43%;height:8px;background:var(--ink);box-shadow:0 14px 0 -1px var(--ink)}
+.style-visual[data-style="editorial-campaign"]:after{right:12px;top:7px;height:32px;width:25%;background:var(--red)}
+.style-visual[data-style="data-atlas"]:before{left:12px;right:12px;top:6px;height:22px;background:repeating-linear-gradient(90deg,transparent 0 24%,var(--ink) 24% 25%);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.style-visual[data-style="data-atlas"]:after{left:12px;right:30px;bottom:6px;height:7px;background:linear-gradient(90deg,var(--red) 0 23%,transparent 23% 27%,var(--ink) 27% 75%,transparent 75%)}
+.style-visual[data-style="conceptual-breakout"]:before{width:125%;height:18px;left:-8%;top:14px;transform:rotate(-15deg);background:var(--red)}
+.style-visual[data-style="conceptual-breakout"]:after{width:28px;height:28px;border:7px solid var(--ink);right:20%;top:4px;border-radius:50%}
+.style-subjects{font-size:10px;color:#665d50;line-height:1.45;min-height:28px;margin-top:auto;overflow-wrap:anywhere}
+.style-explanation{margin-top:18px;padding:17px 20px;border:1px solid var(--line);border-left:3px solid var(--red);background:#f5eee4;border-radius:7px}
+.style-explanation h2{font:600 25px "Source Serif 4",Georgia,serif;margin:5px 0}
+.style-explanation p{max-width:79ch;color:var(--muted);font-size:13px;line-height:1.55;margin:6px 0}
+.style-explanation .usage{font-size:12px;font-weight:700;color:var(--ink)}
+.topic-tags{display:flex;gap:5px;flex-wrap:wrap;margin:10px 0}.topic-tag{font-size:10px;padding:5px 9px;background:#fffdf7;border:1px solid var(--line);border-radius:99px}
+.source-link{font-size:11px;color:var(--red);font-weight:700;text-underline-offset:3px}
+.result-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:32px 0 7px}
+.result-head h2{font:600 29px "Source Serif 4",Georgia,serif;margin:0;letter-spacing:-.04em}
+.result-count{font-size:12px;color:#686354;font-variant-numeric:tabular-nums}
+.scope-note{color:var(--muted);font-size:12px;margin:0 0 14px}
+.results{display:grid;gap:25px}
+.result-group{min-width:0}
+.result-heading{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:9px 0;margin-bottom:13px}
+.result-heading h2{font-size:14px;margin:0;letter-spacing:-.01em;font-weight:700;color:var(--ink)}
+.result-heading span{font-size:10px;color:#807568;letter-spacing:.08em;text-transform:uppercase}
+.product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.product-card{display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);background:var(--surface);border-radius:11px;overflow:hidden;padding:17px;min-height:230px;gap:9px}
+.product-card:hover{border-color:#aa9583}
+.product-label{font-size:10px;color:var(--red);text-transform:uppercase;letter-spacing:.065em;font-weight:650}
+.product-card h3{font-size:18px;line-height:1.2;letter-spacing:-.025em;margin:0;overflow-wrap:anywhere}
+.product-card .meta{font-size:11px;color:var(--muted);margin:0}
+.associations{display:flex;flex-direction:column;gap:7px;flex:1}
+.association{display:grid;gap:3px;border-left:2px solid var(--red);padding-left:8px;font-size:11px}
+.association strong{line-height:1.3}.association small{font-size:10px;color:#9a583c}
+.association.verified{border-color:#31694a}.association.verified small{color:#31694a}
+.unassigned{font-size:11px;color:#77726d}
+.product-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:8px}
+.product-actions a{font-size:11px;font-weight:700;text-decoration:none;border-radius:6px;padding:9px 10px}
+.primary-link{background:var(--ink);color:white}.secondary-link{border:1px solid var(--line)}
+.number-versions{margin-left:auto;font-size:10px;color:var(--muted)}
+.empty{padding:34px;border:1px dashed var(--line);background:var(--surface);color:var(--muted);border-radius:11px}
+.note{margin:34px 0 43px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:12px;max-width:98ch;line-height:1.65}
+footer{border-top:1px solid var(--line);padding:21px 0 38px;color:var(--muted);font-size:11px}
+.footer-flex{display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px}
+@media(max-width:980px){.filters{grid-template-columns:repeat(3,minmax(0,1fr))}.style-rail{grid-template-columns:repeat(2,minmax(0,1fr))}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.wrap{padding:0 16px}.mast-inner{align-items:flex-start;padding:15px 0;flex-direction:column;min-height:0;gap:8px}nav{gap:12px}.hero{grid-template-columns:1fr;padding:35px 0 23px}.hero-side{flex-wrap:wrap}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.metric{padding:15px}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.utility{grid-template-columns:1fr 1fr}.utility label:first-child{grid-column:1/-1}.utility button{min-width:0}.style-rail{grid-template-columns:repeat(2,minmax(0,1fr))}.style-tile{padding:9px}.style-heading{align-items:flex-start;flex-direction:column}.product-grid{grid-template-columns:1fr}.switcher{width:100%}.switcher button{flex:1}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+<header class="mast"><div class="wrap mast-inner"><a class="brand" href="../">Brandstudio<em>.</em></a>
+<nav aria-label="Brandstudio gezinme"><a href="../">Markalar</a><a href="./" aria-current="page">Üretim Kütüphanesi</a><a href="../workspaces/asyada-egitim/">Asya'da Eğitim</a><a href="../system/">Tasarım Sistemi</a><a href="../visual-editor/browser/">Visual Editor</a></nav>
+</div></header>
+<main class="wrap">
+ <section class="hero"><div><span class="eyebrow">Brandstudio / Merkezî üretim envanteri</span>
+ <h1>Üretim Kütüphanesi.</h1>
+ <p>İçeriğe göre veya ortak tasarım diline göre keşfet. Üniversite tanıtımları, burs rehberleri ve kampanyalar aynı tarzı paylaşabilir; ürünlerin kaynak sürümleri ve kimlikleri tek yerde korunur.</p></div>
+ <div class="hero-side"><a href="../system/">Tasarım dilleri</a><a href="../visual-editor/browser/">Visual Editor</a></div></section>
+ <p id="load-status" class="empty" role="status">Kanonik tasarım envanteri yükleniyor…</p>
+ <div id="library-content" hidden>
+ <section class="stats" aria-label="Kütüphane özet ölçümleri">
+ <div class="metric"><strong id="metric-products">—</strong><small>Aktif ürün ailesi</small></div>
+ <div class="metric"><strong id="metric-versions">—</strong><small>Kaynak sürümü</small></div>
+ <div class="metric"><strong id="metric-styles">—</strong><small>Kayıtlı tarz ailesi</small></div>
+ <div class="metric"><strong id="metric-connections">—</strong><small>Tarz ilişkileri</small></div></section>
+ <section class="panel" aria-label="Kütüphane gezinme ve filtreleri">
+ <div class="headline"><div><span class="eyebrow">İki yol · aynı kaynaklar</span><h2>Nasıl gezinmek istersin?</h2></div>
+  <div class="switcher" role="group" aria-label="Gezinme görünümü"><button id="mode-content" type="button" aria-pressed="true">İçeriğe göre</button><button id="mode-style" type="button" aria-pressed="false">Tarza göre</button></div></div>
+ <div id="catalog-crumb" class="crumb" aria-live="polite"></div>
+ <div class="filters">
+  <label>Marka<select id="brand"></select></label>
+  <label>Ana kategori<select id="main"></select></label>
+  <label>İçerik alt kategorisi<select id="sub"></select></label>
+  <label class="style-first">Ortak tasarım tarzı<select id="style"></select></label>
+  <label class="preset-first">Tarz çeşitlemesi<select id="preset"></select></label>
+ </div>
+ <div class="utility">
+  <label>Ürün araması<input id="search" type="search" placeholder="Üniversite, burs, kampanya, ürün ID…" autocomplete="off"></label>
+  <label>Sıralama<select id="sort"><option value="category">İçeriğe göre</option><option value="style">Tarza göre</option><option value="title">Ürün adına göre</option></select></label>
+  <label>Tarz ilişkisinin kesinliği<select id="status"><option value="all">Tüm ürünler</option><option value="proposed">Önerilen</option><option value="verified">Kaynağı doğrulanmış</option><option value="unassigned">Tarz belirlenmemiş</option></select></label>
+  <button id="reset" type="button">Filtreleri sıfırla</button>
+ </div></section>
+ <div class="style-heading"><div><span class="eyebrow">Ortak tasarım dilleri</span><h2>Tarz kütüphanesi</h2></div><p>Bir tarz birden fazla içerik alt kategorisinde kullanılabilir. Küçük işaretler gerçek tasarım örneği değildir.</p></div>
+ <section id="style-rail" class="style-rail" aria-label="Ortak tasarım tarzları"></section>
+ <section id="style-explanation" class="style-explanation" aria-label="Seçili ortak tasarım dili" hidden></section>
+ <div class="result-head"><h2>Tekil ürünler</h2><span id="result-count" class="result-count"></span></div>
+ <p id="scope-note" class="scope-note"></p>
+ <div id="results" class="results" aria-live="polite"></div>
+ <p class="note">Kütüphanede “yeni tasarım önerisi” olarak gösterilen ilişkiler, geçmişte üretilmiş görselin aynı tarzla hazırlandığını iddia etmez. Geçmiş bir sürüme kesin tarz ataması, gerçek kaynak ve insan denetiminden sonra yapılır. Marka SVG'leri, yayın kanıtları ve kaynak sürümleri bu görünümde değiştirilmez. Veriler GitHub'daki kanonik kayıtlardan yayımlanan salt okunur statik kataloğa dayanır.</p>
+ </div>
+</main><footer><div class="wrap footer-flex"><span>Brandstudio · Kaynakta tek kayıt, sitede iki gezinme yolu.</span><span><a href="https://github.com/cinegitim/design">GitHub kaynakları</a> · <a href="../system/">Marka ve tasarım sistemi</a></span></div></footer>
+<script src="app.js" defer></script></body></html>
