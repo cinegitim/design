@@ -1,3 +1,7 @@
-# Hong Kong carousel v1 — renderer QA (2026-11-08)
+# Hong Kong Editorial V1 overwrite · current production QA
 
-Actual connected Chromium renderer fetched six GitHub branch HTML/SVG documents; loaded local Jost variable font, full canonical H-02 dark SVG and local CC0 photograph; embedded assets into SVG; rendered onto 1080 x 1350 native Canvas; encoded and preserved 6 PNG + 6 JPEG files. Every exported binary is a GitHub blob and is indexed in manifest.json. Cover actual pixels: (538,400) [22,29,46,255] opaque; PNG 1,517,319 bytes; JPEG 239,178 bytes. Vector-only slides 02–05 exported PNGs 156–170 kB; photo-heavy slides 01/06 larger. All dates/text/metro graphics are SVG, not image-generated. Browser PNG/JPEG downloader is included. Visual acceptance remains pending human review; no Instagram publication. Additional pixel-level visual review on live Pages planned.
+- 2026-11-08 user explicitly **rejected** previous navy/teal Korean-tech visual style.
+- Overwrite **same** product and v1 revision; no second version entry, no old preview, no archived rejected design in Brandstudio UI.
+- Canonical HTML/SVG/CSS and original brand H-02 lockup remain separate from authentic CC0 Victoria Harbour photo. **No generated full-slide art**.
+- Hong Kong flag red #D31920, ivory #FFFCF7, graphite #161B20, understated gold #D7A758; no cyan/teal South Korea identity.
+- Browser raster, color check, logo integrity and 6-slide editor check must pass before PR merge. Human creative approval remains pending and no social publication is authorized.
