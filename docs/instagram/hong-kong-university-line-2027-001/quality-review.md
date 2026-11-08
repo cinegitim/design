@@ -1,3 +1,3 @@
-# Initial art direction / review pending
+# Hong Kong carousel v1 — renderer QA (2026-11-08)
 
-Original six-slide metro/editorial vocabulary; source files are native SVG inside HTML. No finalized social publication. Pending actual browser raster QA and human creative approval. Site preview and browser exporter must be verified post-deployment.
+Actual connected Chromium renderer fetched six GitHub branch HTML/SVG documents; loaded local Jost variable font, full canonical H-02 dark SVG and local CC0 photograph; embedded assets into SVG; rendered onto 1080 x 1350 native Canvas; encoded and preserved 6 PNG + 6 JPEG files. Every exported binary is a GitHub blob and is indexed in manifest.json. Cover actual pixels: (538,400) [22,29,46,255] opaque; PNG 1,517,319 bytes; JPEG 239,178 bytes. Vector-only slides 02–05 exported PNGs 156–170 kB; photo-heavy slides 01/06 larger. All dates/text/metro graphics are SVG, not image-generated. Browser PNG/JPEG downloader is included. Visual acceptance remains pending human review; no Instagram publication. Additional pixel-level visual review on live Pages planned.
