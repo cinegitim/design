@@ -48,7 +48,8 @@ function create({model,records,classification,styleRegistry,onOpen,getActive}){
   $("nav-mode-style").setAttribute("aria-pressed",String(mode==="style"));
  }
  const statusText=link=>!link?"Tarz atanmamış":link.status==="verified"?"Kaynağı doğrulandı"
-  :link.status==="draft"?"Bu çalışma alanında seçili":"Öneri · geçmiş ürüne atanmadı";
+  :link.status==="draft"?"Bu çalışma alanında seçili"
+  :link.status==="proposed"?"Öneri · geçmiş ürüne atanmadı":"Tarz doğrulanamadı";
  function renderRows(){
   const products=model.filter(index,{mode,brand,main,sub,style,preset,scope,sort,query});
   const target=$("nav-results");target.replaceChildren();
