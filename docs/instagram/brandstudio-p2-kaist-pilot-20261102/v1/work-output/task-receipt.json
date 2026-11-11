@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "task_id": "brandstudio-p2-kaist-20261102",
+  "executor": "chatgpt-work",
+  "base_sha": "f44b775d9e52b736facf6d57706ffbf2b0e6ab69",
+  "branch": "work/brandstudio-p2-kaist-20261102",
+  "changed_paths": [
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/brand-system-demo.html",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/opencode-render-harness.html",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/render-frame.html",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/WORK-QA.md",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/task-receipt.json",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/handoff-envelope.json"
+  ],
+  "actual_tools": [
+    "github-read",
+    "github-write",
+    "connected-chrome"
+  ],
+  "failure_codes": [
+    "raw-github-content-served-as-text",
+    "no-dedicated-render-ci"
+  ],
+  "evidence_refs": [
+    "github:commit:1b5fd6ca37c81f6c9770ca964ee4228e78047d20",
+    "github:branch:work/brandstudio-p2-kaist-20261102",
+    "browser:1080x1350-render-harness",
+    "github:asset-blob:0469f6cab3ec46c93c1d4494aa725ae7432e1cb7",
+    "github:asset-blob:b92d101b53a4287b0c25c5aa364647b22e152467",
+    "github:workflow-run:41440207675",
+    "github:workflow-job:125259872850"
+  ],
+  "head_sha": null
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "task_id": "brandstudio-p2-kaist-pilot-20261102",
+  "executor": "opencode",
+  "base_sha": "f50318d619d7a46a7b4504dd0efaefd03c1265b2",
+  "head_sha": "206b2d1043c0b4a548667df4e0f5b2aac8351bd4",
+  "branch": "publish/opencode-opencode-p2-kaist-20261102",
+  "changed_paths": [
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/opencode-output/brand-system-demo.html",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/opencode-output/task-receipt.json",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/opencode-output/handoff-envelope.json"
+  ],
+  "actual_tools": [
+    "git",
+    "shell",
+    "read",
+    "write",
+    "edit"
+  ],
+  "failure_codes": [],
+  "evidence_refs": [
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/opencode-output/brand-system-demo.html",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/opencode-output/brand-system-demo.html.sha256"
+  ]
+}
