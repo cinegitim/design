@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "kind": "brandstudio-editor-review",
+  "product": "instagram-kaist-tech-track-2027-001-v2",
+  "version": 1,
+  "revision": "8a8a1c4c-77bc-482f-ae9e-2fa4c612dcc3",
+  "source": "cloudflare-durable-object",
+  "savedState": {
+    "colors": {
+      "paper": "#f7f3e9",
+      "ink": "#1d2027",
+      "red": "#bd2120"
+    },
+    "edits": {},
+    "groups": {},
+    "designStyle": {
+      "schema": 1,
+      "brand": "asyada-egitim",
+      "category": "instagram-carousel",
+      "style_id": "editorial-campaign",
+      "style_version": "0.1.1",
+      "style_source_blob_sha": "fc37855c1f5b87bf334ed1573358d08a5efb7cd2",
+      "preset_id": "institutional-paper",
+      "lockup_id": "H-02/dark",
+      "lockup_sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7",
+      "seal_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+      "approval_status": "review-only",
+      "font_family": "Jost",
+      "palette": {
+        "paper": "#F7F3E9",
+        "red": "#BD2120",
+        "ink": "#1D2027"
+      },
+      "variation": {
+        "color_mode": "paper-dominant",
+        "layout_rhythm": "balanced",
+        "cover_archetype": "statement",
+        "interior_bias": "mixed",
+        "photo_density": "medium",
+        "cta_presentation": "soft-consultation"
+      },
+      "overrides": {},
+      "source_path": "brands/asyada-egitim/styles/instagram-carousel/editorial-campaign/style.json"
+    }
+  },
+  "approval": {
+    "creative": "pending",
+    "socialPublished": false
+  },
+  "github": {
+    "status": "submitted-for-review"
+  }
+}
