@@ -1,0 +1,22 @@
+{
+  "observed_from": "github-connector",
+  "branch": "work/brandstudio-p2-kaist-20261102",
+  "base_sha": "1b5fd6ca37c81f6c9770ca964ee4228e78047d20",
+  "head_sha": "84abbeb55a88354288c98f2e1fc4ace3205179ab",
+  "repository": "cinegitim/design",
+  "compared_to": "1b5fd6ca37c81f6c9770ca964ee4228e78047d20",
+  "compare_status": "ahead",
+  "behind_by": 0,
+  "ahead_by": 11,
+  "changed_paths": [
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/REVIEW-QA.md",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/WORK-QA.md",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/brand-system-demo.html",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/handoff-envelope.json",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/opencode-render-harness.html",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/render-frame.html",
+    "docs/instagram/brandstudio-p2-kaist-pilot-20261102/v1/work-output/task-receipt.json"
+  ],
+  "commit_url": "https://github.com/cinegitim/design/commit/84abbeb55a88354288c98f2e1fc4ace3205179ab",
+  "scope": "GitHub transport/ancestry only, not Work model attestation"
+}

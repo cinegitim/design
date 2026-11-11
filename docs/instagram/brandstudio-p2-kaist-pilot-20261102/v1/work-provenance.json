@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "task_id": "brandstudio-p2-kaist-20261102",
+  "production_chain": [
+    {
+      "executor": "chatgpt-chat",
+      "stage": "source-inspection",
+      "head": "f50318d619d7a46a7b4504dd0efaefd03c1265b2",
+      "evidence": "GitHub connector source commit"
+    },
+    {
+      "executor": "opencode",
+      "stage": "local-authored-html",
+      "local_unpushed_head": "e1893e2c1d214eb50ee6b949642ca0d2d5bb36b3",
+      "remote_recovery_head": "1b5fd6ca37c81f6c9770ca964ee4228e78047d20",
+      "evidence": "user-supplied OpenCode run and exact original HTML SHA256",
+      "independent_host_attestation": false
+    },
+    {
+      "executor": "chatgpt-chat",
+      "stage": "opencode-transport-and-CSS-repair",
+      "head": "1b5fd6ca37c81f6c9770ca964ee4228e78047d20",
+      "evidence": "GitHub connector recovery and browser observation"
+    },
+    {
+      "executor": "chatgpt-work",
+      "stage": "independent-browser-render-QA",
+      "initial_head": "27e56ce668d3978a5fa91fd1d0a0f9a500bba84b",
+      "evidence": "user-supplied Work session and Github receipt with Chrome harness"
+    },
+    {
+      "executor": "chatgpt-chat",
+      "stage": "independent-reviewer-fixes",
+      "fix_pr": 199,
+      "review_commit": "56001b8105ff6bcea542cf7f60c7a19cd31170bd",
+      "merged_to_work_head": "84abbeb55a88354288c98f2e1fc4ace3205179ab",
+      "evidence": "PR #199, corrected Work HTML and canonical contract records"
+    }
+  ],
+  "verification": {
+    "github_source_to_work_ancestry_verified": true,
+    "work_standalone_images_loaded": true,
+    "work_standalone_font_loaded": true,
+    "work_harness_1080x1350_five_sections_fit": true,
+    "canonical_H02_svg_sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7",
+    "canonical_V01_svg_sha256": "8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a",
+    "creative_approved": false,
+    "pixel_diff_qa_complete": false,
+    "social_published": false
+  }
+}
