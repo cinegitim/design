@@ -1,7 +1,3 @@
-# Hong Kong Editorial V1 overwrite · current production QA
+# Hong Kong Identity V1 — 2026-11-24
 
-- 2026-11-08 user explicitly **rejected** previous navy/teal Korean-tech visual style.
-- Overwrite **same** product and v1 revision; no second version entry, no old preview, no archived rejected design in Brandstudio UI.
-- Canonical HTML/SVG/CSS and original brand H-02 lockup remain separate from authentic CC0 Victoria Harbour photo. **No generated full-slide art**.
-- Hong Kong flag red #D31920, ivory #FFFCF7, graphite #161B20, understated gold #D7A758; no cyan/teal South Korea identity.
-- Browser raster, color check, logo integrity and 6-slide editor check must pass before PR merge. Human creative approval remains pending and no social publication is authorized.
+Six canonical HTML/SVG sources and 12 browser exports rebuilt in isolated checkout. Existing product ID/version and locked H-02 hash preserved. Source data from previous V1; dates labeled as early rounds rather than final deadlines. No full-slide ImageGen. Actual rendered contact sheet inspected; corrected cover clipping, missing CJK glyph and CTA overlap; final render has zero out-of-canvas text boxes. Creative and social approval pending.
