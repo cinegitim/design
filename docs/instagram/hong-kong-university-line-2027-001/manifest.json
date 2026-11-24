@@ -22,7 +22,7 @@
   ],
   "editable_source_pattern": "source/{nn}.html",
   "svg_source_pattern": "source/{nn}.svg",
-  "style": "Hong Kong Flag Editorial · bauhinia/transit hybrid · ivory/flag-red/graphite",
+  "style": "Hong Kong Identity · architectural editorial collage · flag red, warm paper, graphite",
   "logo_language": "tr",
   "canonical_lockup_id": "H-02/dark",
   "canonical_lockup_sha256": "c9eb55f95a60924f34e6f7b043e81216963441833a4f158ff882d710cc8dd1e7",
@@ -59,40 +59,40 @@
   ],
   "export_git_blob_shas": {
     "01": {
-      "png": "b2bb79d4394e4265975ada763cf740406f7edb37",
-      "jpeg": "d99956c59b8a1a8bef853d1ad5bf457ffe1f6e11"
+      "png": "de9ec15031355a1bbf742bf915ace2142f1c8d9b",
+      "jpeg": "c45459b393b0112454986e5543fad84bf93899e0"
     },
     "02": {
-      "png": "6cc65604f8a3dbbcce31d280b0cb6a03470517e0",
-      "jpeg": "28823d593f6f2b27a089fa75f91a713e645c1fc2"
+      "png": "067585f69e640028e293e32ab3437fda412bad4d",
+      "jpeg": "10ec70b7f3206e3948b109e7202231b6f5a6e687"
     },
     "03": {
-      "png": "4497cd891427b341222da753d487bc2e4da55be7",
-      "jpeg": "1c89cb9877bc9219915fa07928cfa851e74868ab"
+      "png": "df231d2dc4198587160147ebcd8ff9c2ec2a6ccf",
+      "jpeg": "72e34f18036b26910fc5cadd63d14ecbdbff14f7"
     },
     "04": {
-      "png": "3a17ef866a58c371d7ac26b572996ad96e5ae8c3",
-      "jpeg": "e6fa5358819109c2844741af621f0d565c88de1f"
+      "png": "ef671325b9e7132b84604f33b9f46db9104eee14",
+      "jpeg": "3803ced840289398408698239b42923fc53c6158"
     },
     "05": {
-      "png": "82c18f1968a91158fb702a33869cf7066a3a3587",
-      "jpeg": "c4afca3eb050152fdf7a02748c3615ecb35245f6"
+      "png": "fbd00887f21758eab8ab683df5805c5fd1330d19",
+      "jpeg": "ce10a11844c6f8850fce30955877c5b572401cac"
     },
     "06": {
-      "png": "372bb96af87b1c19bec97df13cc5a7af99bafdcb",
-      "jpeg": "101aec53b2ae1bfcb992842cad7e1fea0ac46b1c"
+      "png": "830d4c8087e2218c1e16e21a8cad80685610aaa4",
+      "jpeg": "893ea4de4b1523d777b4c47cdbe38596634d2ecb"
     }
   },
-  "render_method": "Canonical editable HTML/SVG + local Jost and approved H-02 + CC0 photo, actual connected Chrome Canvas 1080x1350",
-  "render_verified_on": "2026-11-08",
-  "quality_note": "Red/white V1 overwrite; cover pill/photo edge corrected; actual browser-rendered PNG/JPEG regenerated. Creative review pending.",
+  "render_method": "Native editable HTML/SVG; locked H-02 and Jost; authentic CC0 photo; Brave Chromium CDP 1080x1350 screenshot",
+  "render_verified_on": "2026-11-24",
+  "quality_note": "Six revised V1 artboards; actual browser renders checked; no visible text overflow; cover and final-page layout corrected. Human creative review pending.",
   "design_identity": {
     "country": "Hong Kong",
     "country_colors": {
-      "primary": "#D31920",
-      "secondary": "#FFFCF7",
-      "typography": "#161B20",
-      "subtle_accent": "#D7A758"
+      "primary": "#C51224",
+      "secondary": "#F7F1E5",
+      "typography": "#232422",
+      "subtle_accent": "#EBD9D2"
     },
     "no_korea_palette": true,
     "mode": "canonical-html-css-svg-and-authentic-photo-layer",
